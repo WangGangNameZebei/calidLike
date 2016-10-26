@@ -7,18 +7,47 @@
 //
 
 #import "AppDelegate.h"
-
-@interface AppDelegate ()
-
-@end
+#import "MineViewController.h"
+#import "MyViewController.h"
+#import "CustomTabBarController.h"
+#import "SingleTon.h"
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    [[SingleTon sharedInstance] initialization];    // 蓝牙设备
+    CustomTabBarController *customTabBarController = [self createCustomTabBarController];
+    self.window.rootViewController = customTabBarController;
+    [self.window makeKeyAndVisible];
     return YES;
 }
+
+- (CustomTabBarController *)createCustomTabBarController {
+    MineViewController *minViewController = [MineViewController create];
+    MyViewController *myViewController = [MyViewController create];
+    CustomTabBarController *customTabBarController = [[CustomTabBarController alloc] initWithControllers:@[minViewController, myViewController] andImageGroups:[self createTabBarGroups]];
+    return customTabBarController;
+}
+
+- (NSArray *)createTabBarGroups {
+    NSArray *titles = @[NSLocalizedString(@"主页", nil), NSLocalizedString(@"我的", nil),];
+    NSArray *selectImages = @[@"zhuye_1.png", @"wode_1.png"];
+    NSArray *unSelectImages = @[@"zhuye_2",@"wode_2.png"];
+    NSMutableArray *imageGroups = [[NSMutableArray alloc] init];
+    for (int i = 0; i < titles.count; i++) {
+        TabBarItemImageGroup *imageGroup = [[TabBarItemImageGroup alloc] init];
+        imageGroup.title = [titles objectAtIndex:i];
+        imageGroup.selectImage = [selectImages objectAtIndex:i];
+        imageGroup.unSelectImage = [unSelectImages objectAtIndex:i];
+        [imageGroups addObject:imageGroup];
+    }
+    return imageGroups;
+}
+
+
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {
