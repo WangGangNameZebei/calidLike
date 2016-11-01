@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		0A052F601DBDF0E7002EB567 /* BlankTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A052F5E1DBDF0E7002EB567 /* BlankTableViewCell.m */; };
 		0A052F611DBDF0E7002EB567 /* BlankTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A052F5F1DBDF0E7002EB567 /* BlankTableViewCell.xib */; };
+		0A51E91A1DC825B9000D31F3 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A51E9181DC825B9000D31F3 /* RegisterViewController.m */; };
+		0A51E91B1DC825B9000D31F3 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A51E9191DC825B9000D31F3 /* RegisterViewController.xib */; };
+		0A51E91E1DC82629000D31F3 /* RegisterViewController+LogicalFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A51E91D1DC82629000D31F3 /* RegisterViewController+LogicalFlow.m */; };
+		0A51E9211DC82645000D31F3 /* RegisterViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A51E9201DC82645000D31F3 /* RegisterViewController+Configuration.m */; };
 		0A52AC881DBDFCA800FE6DCE /* kaika.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A52AC811DBDFCA800FE6DCE /* kaika.png */; };
 		0A52AC891DBDFCA800FE6DCE /* kaxinxi.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A52AC821DBDFCA800FE6DCE /* kaxinxi.png */; };
 		0A52AC8A1DBDFCA800FE6DCE /* shiduankaiqi.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A52AC831DBDFCA800FE6DCE /* shiduankaiqi.png */; };
@@ -36,6 +40,10 @@
 		0A87F7B01DB75D5E00EFF1F0 /* MinViewControllerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A87F7AF1DB75D5E00EFF1F0 /* MinViewControllerDataSource.m */; };
 		0A87F7B61DB7602E00EFF1F0 /* MinFuncTionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A87F7B41DB7602E00EFF1F0 /* MinFuncTionTableViewCell.m */; };
 		0A87F7B71DB7602E00EFF1F0 /* MinFuncTionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A87F7B51DB7602E00EFF1F0 /* MinFuncTionTableViewCell.xib */; };
+		0AA491301DC6F27D0013B974 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA4912E1DC6F27D0013B974 /* LoginViewController.m */; };
+		0AA491311DC6F27D0013B974 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AA4912F1DC6F27D0013B974 /* LoginViewController.xib */; };
+		0AA4913A1DC72E4F0013B974 /* LoginViewController+LogicalFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA491391DC72E4F0013B974 /* LoginViewController+LogicalFlow.m */; };
+		0AA4913D1DC72E6B0013B974 /* LoginViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA4913C1DC72E6B0013B974 /* LoginViewController+Configuration.m */; };
 		0ACFF8181DB5BCA00043D49A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACFF8171DB5BCA00043D49A /* main.m */; };
 		0ACFF81B1DB5BCA00043D49A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACFF81A1DB5BCA00043D49A /* AppDelegate.m */; };
 		0ACFF8211DB5BCA00043D49A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ACFF81F1DB5BCA00043D49A /* Main.storyboard */; };
@@ -68,6 +76,11 @@
 		0AD75CD31DBDDE5300297AC3 /* MyViewControllerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD75CD21DBDDE5300297AC3 /* MyViewControllerDataSource.m */; };
 		0AD75CD81DBDE6C100297AC3 /* MyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD75CD61DBDE6C100297AC3 /* MyTableViewCell.m */; };
 		0AD75CD91DBDE6C100297AC3 /* MyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AD75CD71DBDE6C100297AC3 /* MyTableViewCell.xib */; };
+		0AEC751B1DC83BEB00933D77 /* mima_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEC75171DC83BEB00933D77 /* mima_2.png */; };
+		0AEC751C1DC83BEB00933D77 /* mima_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEC75181DC83BEB00933D77 /* mima_1.png */; };
+		0AEC751D1DC83BEB00933D77 /* denglu_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEC75191DC83BEB00933D77 /* denglu_2.png */; };
+		0AEC751E1DC83BEB00933D77 /* key_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEC751A1DC83BEB00933D77 /* key_2.png */; };
+		0AEC75201DC83D7E00933D77 /* fanhui_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEC751F1DC83D7E00933D77 /* fanhui_1.png */; };
 		18EAEB9BC0645DD57F644E46 /* libPods-claidApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E454F03FAF2701EE86E173D /* libPods-claidApp.a */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +105,13 @@
 		0A052F5D1DBDF0E7002EB567 /* BlankTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlankTableViewCell.h; sourceTree = "<group>"; };
 		0A052F5E1DBDF0E7002EB567 /* BlankTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlankTableViewCell.m; sourceTree = "<group>"; };
 		0A052F5F1DBDF0E7002EB567 /* BlankTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlankTableViewCell.xib; sourceTree = "<group>"; };
+		0A51E9171DC825B9000D31F3 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		0A51E9181DC825B9000D31F3 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		0A51E9191DC825B9000D31F3 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
+		0A51E91C1DC82629000D31F3 /* RegisterViewController+LogicalFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RegisterViewController+LogicalFlow.h"; sourceTree = "<group>"; };
+		0A51E91D1DC82629000D31F3 /* RegisterViewController+LogicalFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RegisterViewController+LogicalFlow.m"; sourceTree = "<group>"; };
+		0A51E91F1DC82645000D31F3 /* RegisterViewController+Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RegisterViewController+Configuration.h"; sourceTree = "<group>"; };
+		0A51E9201DC82645000D31F3 /* RegisterViewController+Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RegisterViewController+Configuration.m"; sourceTree = "<group>"; };
 		0A52AC811DBDFCA800FE6DCE /* kaika.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kaika.png; sourceTree = "<group>"; };
 		0A52AC821DBDFCA800FE6DCE /* kaxinxi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kaxinxi.png; sourceTree = "<group>"; };
 		0A52AC831DBDFCA800FE6DCE /* shiduankaiqi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shiduankaiqi.png; sourceTree = "<group>"; };
@@ -133,6 +153,13 @@
 		0A87F7B31DB7602E00EFF1F0 /* MinFuncTionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MinFuncTionTableViewCell.h; sourceTree = "<group>"; };
 		0A87F7B41DB7602E00EFF1F0 /* MinFuncTionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MinFuncTionTableViewCell.m; sourceTree = "<group>"; };
 		0A87F7B51DB7602E00EFF1F0 /* MinFuncTionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MinFuncTionTableViewCell.xib; sourceTree = "<group>"; };
+		0AA4912D1DC6F27D0013B974 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		0AA4912E1DC6F27D0013B974 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		0AA4912F1DC6F27D0013B974 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		0AA491381DC72E4F0013B974 /* LoginViewController+LogicalFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LoginViewController+LogicalFlow.h"; sourceTree = "<group>"; };
+		0AA491391DC72E4F0013B974 /* LoginViewController+LogicalFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LoginViewController+LogicalFlow.m"; sourceTree = "<group>"; };
+		0AA4913B1DC72E6B0013B974 /* LoginViewController+Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LoginViewController+Configuration.h"; sourceTree = "<group>"; };
+		0AA4913C1DC72E6B0013B974 /* LoginViewController+Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LoginViewController+Configuration.m"; sourceTree = "<group>"; };
 		0ACFF8131DB5BCA00043D49A /* claidApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = claidApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0ACFF8171DB5BCA00043D49A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0ACFF8191DB5BCA00043D49A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -179,6 +206,11 @@
 		0AD75CD51DBDE6C100297AC3 /* MyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableViewCell.h; sourceTree = "<group>"; };
 		0AD75CD61DBDE6C100297AC3 /* MyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewCell.m; sourceTree = "<group>"; };
 		0AD75CD71DBDE6C100297AC3 /* MyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyTableViewCell.xib; sourceTree = "<group>"; };
+		0AEC75171DC83BEB00933D77 /* mima_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mima_2.png; sourceTree = "<group>"; };
+		0AEC75181DC83BEB00933D77 /* mima_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mima_1.png; sourceTree = "<group>"; };
+		0AEC75191DC83BEB00933D77 /* denglu_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = denglu_2.png; sourceTree = "<group>"; };
+		0AEC751A1DC83BEB00933D77 /* key_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = key_2.png; sourceTree = "<group>"; };
+		0AEC751F1DC83D7E00933D77 /* fanhui_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fanhui_1.png; sourceTree = "<group>"; };
 		2E454F03FAF2701EE86E173D /* libPods-claidApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-claidApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FAE10D1BB41DF3C48FA7264 /* Pods-claidApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-claidApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-claidApp/Pods-claidApp.release.xcconfig"; sourceTree = "<group>"; };
 		B07114D1ACC8FA1ADF51B95E /* Pods-claidApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-claidApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-claidApp/Pods-claidApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -218,6 +250,20 @@
 				0A052F5F1DBDF0E7002EB567 /* BlankTableViewCell.xib */,
 			);
 			path = BlankTableViewCell;
+			sourceTree = "<group>";
+		};
+		0A51E9161DC82576000D31F3 /* RegisterViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0A51E9171DC825B9000D31F3 /* RegisterViewController.h */,
+				0A51E9181DC825B9000D31F3 /* RegisterViewController.m */,
+				0A51E9191DC825B9000D31F3 /* RegisterViewController.xib */,
+				0A51E91C1DC82629000D31F3 /* RegisterViewController+LogicalFlow.h */,
+				0A51E91D1DC82629000D31F3 /* RegisterViewController+LogicalFlow.m */,
+				0A51E91F1DC82645000D31F3 /* RegisterViewController+Configuration.h */,
+				0A51E9201DC82645000D31F3 /* RegisterViewController+Configuration.m */,
+			);
+			path = RegisterViewController;
 			sourceTree = "<group>";
 		};
 		0A52AC801DBDFCA800FE6DCE /* MyImage */ = {
@@ -389,6 +435,11 @@
 			isa = PBXGroup;
 			children = (
 				0ACFF84D1DB5C48E0043D49A /* denglu_1.png */,
+				0AEC751F1DC83D7E00933D77 /* fanhui_1.png */,
+				0AEC75171DC83BEB00933D77 /* mima_2.png */,
+				0AEC75181DC83BEB00933D77 /* mima_1.png */,
+				0AEC75191DC83BEB00933D77 /* denglu_2.png */,
+				0AEC751A1DC83BEB00933D77 /* key_2.png */,
 				0ACFF84E1DB5C48E0043D49A /* fenxiang_1.png */,
 				0ACFF84F1DB5C48E0043D49A /* key_1.png */,
 				0ACFF8501DB5C48E0043D49A /* lanya_1.png */,
@@ -424,6 +475,7 @@
 			children = (
 				0ACFF8781DB5C76F0043D49A /* Basic */,
 				0ACFF8721DB5C6910043D49A /* LoginViewController */,
+				0A51E9161DC82576000D31F3 /* RegisterViewController */,
 				0ACFF8731DB5C6910043D49A /* MineViewController */,
 				0ACFF8741DB5C6910043D49A /* MyViewController */,
 			);
@@ -440,6 +492,13 @@
 		0ACFF8721DB5C6910043D49A /* LoginViewController */ = {
 			isa = PBXGroup;
 			children = (
+				0AA4912D1DC6F27D0013B974 /* LoginViewController.h */,
+				0AA4912E1DC6F27D0013B974 /* LoginViewController.m */,
+				0AA4912F1DC6F27D0013B974 /* LoginViewController.xib */,
+				0AA491381DC72E4F0013B974 /* LoginViewController+LogicalFlow.h */,
+				0AA491391DC72E4F0013B974 /* LoginViewController+LogicalFlow.m */,
+				0AA4913B1DC72E6B0013B974 /* LoginViewController+Configuration.h */,
+				0AA4913C1DC72E6B0013B974 /* LoginViewController+Configuration.m */,
 			);
 			path = LoginViewController;
 			sourceTree = "<group>";
@@ -663,15 +722,21 @@
 			files = (
 				0ACFF86B1DB5C48E0043D49A /* wode_1.png in Resources */,
 				0ACFF8261DB5BCA00043D49A /* LaunchScreen.storyboard in Resources */,
+				0AEC751B1DC83BEB00933D77 /* mima_2.png in Resources */,
 				0A52AC891DBDFCA800FE6DCE /* kaxinxi.png in Resources */,
+				0AEC751E1DC83BEB00933D77 /* key_2.png in Resources */,
 				0A052F611DBDF0E7002EB567 /* BlankTableViewCell.xib in Resources */,
+				0AEC751C1DC83BEB00933D77 /* mima_1.png in Resources */,
 				0A5FF94B1DB6032600249F0C /* MyViewController.xib in Resources */,
+				0A51E91B1DC825B9000D31F3 /* RegisterViewController.xib in Resources */,
 				0A5FF9371DB5F6A000249F0C /* CustomActionSheetCell.xib in Resources */,
 				0ACFF8641DB5C48E0043D49A /* lanya_1.png in Resources */,
 				0ACFF8681DB5C48E0043D49A /* quanxian_2.png in Resources */,
+				0AA491311DC6F27D0013B974 /* LoginViewController.xib in Resources */,
 				0ACFF86F1DB5C48E0043D49A /* zhuce_2.png in Resources */,
 				0ACFF8671DB5C48E0043D49A /* quanxian_1.png in Resources */,
 				0ACFF8661DB5C48E0043D49A /* mima_1.png in Resources */,
+				0AEC751D1DC83BEB00933D77 /* denglu_2.png in Resources */,
 				0A5FF9461DB6029700249F0C /* MineViewController.xib in Resources */,
 				0A52AC8A1DBDFCA800FE6DCE /* shiduankaiqi.png in Resources */,
 				0AD75CD91DBDE6C100297AC3 /* MyTableViewCell.xib in Resources */,
@@ -679,6 +744,7 @@
 				0A52AC8B1DBDFCA800FE6DCE /* touxiang.png in Resources */,
 				0A52AC8C1DBDFCA800FE6DCE /* weixin.png in Resources */,
 				0ACFF86E1DB5C48E0043D49A /* zhuce_1.png in Resources */,
+				0AEC75201DC83D7E00933D77 /* fanhui_1.png in Resources */,
 				0ACFF8631DB5C48E0043D49A /* key_1.png in Resources */,
 				0A87F7B71DB7602E00EFF1F0 /* MinFuncTionTableViewCell.xib in Resources */,
 				0ACFF8701DB5C48E0043D49A /* zhuye_1.png in Resources */,
@@ -772,21 +838,27 @@
 				0A5FF9301DB5F05000249F0C /* CustomActionSheet.m in Sources */,
 				0AD75CCD1DBDDDEC00297AC3 /* MyViewController+Configuration.m in Sources */,
 				0ACFF81B1DB5BCA00043D49A /* AppDelegate.m in Sources */,
+				0A51E9211DC82645000D31F3 /* RegisterViewController+Configuration.m in Sources */,
+				0AA491301DC6F27D0013B974 /* LoginViewController.m in Sources */,
 				0A6DA6DD1DB6F9020013D0CF /* MineViewController+Configuration.m in Sources */,
 				0A5FF94E1DB604C800249F0C /* CustomTabBarController.m in Sources */,
 				0ACFF8891DB5CCAC0043D49A /* BaseViewController.m in Sources */,
 				0A5FF9411DB5FABC00249F0C /* UIScreen+Utility.m in Sources */,
 				0A5FF9451DB6029700249F0C /* MineViewController.m in Sources */,
 				0A5FF94A1DB6032600249F0C /* MyViewController.m in Sources */,
+				0A51E91A1DC825B9000D31F3 /* RegisterViewController.m in Sources */,
 				0A87F7AA1DB74F8E00EFF1F0 /* SingleTon.m in Sources */,
 				0AD75CD81DBDE6C100297AC3 /* MyTableViewCell.m in Sources */,
 				0A87F7AD1DB7588900EFF1F0 /* MineViewController+Animation.m in Sources */,
 				0ACFF8931DB5CEFF0043D49A /* ChannelBaseView.m in Sources */,
 				0A87F7B01DB75D5E00EFF1F0 /* MinViewControllerDataSource.m in Sources */,
 				0ACFF8181DB5BCA00043D49A /* main.m in Sources */,
+				0AA4913A1DC72E4F0013B974 /* LoginViewController+LogicalFlow.m in Sources */,
+				0A51E91E1DC82629000D31F3 /* RegisterViewController+LogicalFlow.m in Sources */,
 				0A5FF9361DB5F6A000249F0C /* CustomActionSheetCell.m in Sources */,
 				0A5FF9401DB5FABC00249F0C /* UIImage+Utility.m in Sources */,
 				0A052F601DBDF0E7002EB567 /* BlankTableViewCell.m in Sources */,
+				0AA4913D1DC72E6B0013B974 /* LoginViewController+Configuration.m in Sources */,
 				0A6DA6DA1DB6F8D90013D0CF /* MineViewController+LogicalFlow.m in Sources */,
 				0ACFF8901DB5CDFA0043D49A /* BaseView.m in Sources */,
 				0AD75CD31DBDDE5300297AC3 /* MyViewControllerDataSource.m in Sources */,

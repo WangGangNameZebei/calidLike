@@ -43,7 +43,8 @@ static SingleTon *_instace = nil;
 }
 
 - (void)initialization {
-    _manager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
+    _manager = [[CBCentralManager alloc]initWithDelegate:self queue:nil];
+    
     self.PeripheralArray = [NSMutableArray array];
     self.delayInSeconds = 3.0;
 }
@@ -214,7 +215,9 @@ static SingleTon *_instace = nil;
 
 #pragma mark - 根据传进来的uuid去连接外设
 - (void)getPeripheralWithIdentifierAndConnect:(NSString *)identifierStr {
-    self.tarScanBool = NO;
+    [self stopScan];
+    if (!self.scanTimer)
+       [self.scanTimer invalidate];    // 释放函数
     NSUUID * uuid = [[NSUUID alloc]initWithUUIDString:identifierStr];
     
     NSArray *array = [self.manager retrievePeripheralsWithIdentifiers:@[uuid]];
@@ -225,13 +228,18 @@ static SingleTon *_instace = nil;
     
 }
 
+#pragma mark  手动连接   蓝牙设备
+- (void)shoudongConnectClick:(CBPeripheral *)peripheral {
+    _identiFication = NO;
+    [self connectClick:peripheral];
+}
 #pragma mark - 扫描
 -(void)startScan
 {
     _tarScanBool = NO;
     LOG(@"正在扫描外设...");
     [_manager scanForPeripheralsWithServices:nil options:@{CBCentralManagerScanOptionAllowDuplicatesKey : @YES }];
-
+ 
     
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(self.delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
@@ -245,10 +253,23 @@ static SingleTon *_instace = nil;
 - (void)targetScan
 {
     _tarScanBool = YES;
-    [self.manager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:@"0xFFF0"]] options:@{ CBCentralManagerScanOptionAllowDuplicatesKey : @YES }];
+    [self.manager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:@"0xFFF0"]] options:@{ CBCentralManagerScanOptionAllowDuplicatesKey : @YES}];
+   
     
 }
+#pragma mark - 后台
+- (void)lanyaHoutaiAction {
+   [self stopScan];
+   [self.scanTimer invalidate];    // 释放函数
+}
+#pragma mark - 前台
+- (void)lanyaQiantaiAction {
+    if (self.manager)
+     [self targetScan];
+}
+//定时器  到时 连接     蓝牙设备
 - (void) lianjielanyaAction {
+    [self stopScan];
     [self getPeripheralWithIdentifierAndConnect:[[NSUserDefaults standardUserDefaults] objectForKey:@"identifierStr"]];
 }
 #pragma mark - 停止扫描
@@ -279,13 +300,14 @@ static SingleTon *_instace = nil;
     NSArray *array = [self.manager retrievePeripheralsWithIdentifiers:@[uuid]];
     CBPeripheral *chucunPeripheral = [array lastObject];
     if (_tarScanBool && [peripheral.name isEqualToString:chucunPeripheral.name]){
-       [self.scanTimer invalidate];    // 释放函数
-        [self stopScan];
-        [self targetScan];
-        self.scanTimer = [NSTimer scheduledTimerWithTimeInterval:4.5 target:self selector:@selector(lianjielanyaAction) userInfo:nil repeats:NO];
+        [self.scanTimer invalidate];    // 释放函数
+       // [self stopScan];
+       //  [self targetScan];
+       self.scanTimer = [NSTimer scheduledTimerWithTimeInterval:4.5 target:self selector:@selector(lianjielanyaAction) userInfo:nil repeats:NO];
         
-    } else if (!_tarScanBool){
-        _tarScanBool = NO;
+       
+    } else {
+        
         if(![self.PeripheralArray containsObject:peripheral])
             
             [self.PeripheralArray addObject:peripheral];
@@ -303,7 +325,7 @@ static SingleTon *_instace = nil;
     if (!peripheral) {
         
         [self.delegate recivedPeripheralData:@"当前外设为空，可能为主动断开，不需重连，或为尚未扫描到设备"];
-        if ([self.delegate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
+        if (_identiFication && [self.delegate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
             [self.delegate switchEditInitPeripheralData:4];
         }
 
@@ -354,8 +376,7 @@ static SingleTon *_instace = nil;
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
     if ([self.delegate respondsToSelector:@selector(recivedPeripheralData:)]) {
         [self.delegate recivedPeripheralData:@"连接成功"];
-    
-}
+         }
     LOG(@"成功连接 peripheral: %@ ",peripheral);
     self.peripheral = peripheral;
     [self.peripheral setDelegate:self];
@@ -372,7 +393,7 @@ static SingleTon *_instace = nil;
 }
 
 #pragma mark - 已更新RSSI
--(void)peripheralDidUpdateRSSI:(CBPeripheral *)peripheral error:(NSError *)error
+- (void) peripheralDidUpdateRSSI:(CBPeripheral *)peripheral error:(NSError *)error
 {
     int rssi = abs([peripheral.RSSI intValue]);
     double ci = (rssi - 49) / (10 * 4.);
@@ -437,7 +458,7 @@ static SingleTon *_instace = nil;
             }
         }
     }
-    _identiFication = NO;
+    
 }
 
 #pragma mark - 根据特征更新通知状态

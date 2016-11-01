@@ -36,7 +36,6 @@
 
 - (UITableViewCell *)blankTableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
     BlankTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:BLANK_TABLEVIEW_CELL];
-    //cell.backgroundColor = [UIColor colorFromHexCode:@"#EDEDED"];
     return cell;
 }
 @end

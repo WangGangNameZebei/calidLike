@@ -9,9 +9,9 @@
 
 @protocol sendDataToVCDelegate <NSObject>
 @optional
-- (void)DoSomethingEveryFrame:(NSArray *)array;
-- (void)recivedPeripheralData:(id)data;
-- (void)switchEditInitPeripheralData:(NSInteger )data;
+- (void)DoSomethingEveryFrame:(NSArray *)array;     // 扫描设备代理
+- (void)recivedPeripheralData:(id)data;             // 数据传输代理
+- (void)switchEditInitPeripheralData:(NSInteger )data;      //蓝牙状态标识代理
 
 @end
 #define DataHasBeenHandRing @"DataHasBeenHandRing"
@@ -27,18 +27,21 @@
 @property (strong, nonatomic) NSMutableArray *nServices;
 @property (strong, nonatomic) NSMutableArray *PeripheralArray;
 @property (assign, nonatomic) double delayInSeconds;//扫描时长
-@property (assign, nonatomic) BOOL identiFication;   //自动连接 和 手动连接  标识
-@property (assign, nonatomic) BOOL tarScanBool;   //   目标扫描 和  扫描 标识
-@property (strong, nonatomic) NSTimer * scanTimer ;
+@property (assign, nonatomic) BOOL identiFication;   //目标连接  标识
+@property (assign, nonatomic) BOOL tarScanBool;   //   目标扫描  标识
+@property (strong, nonatomic) NSTimer * scanTimer;
 
 + (SingleTon *)sharedInstance;
 
+- (void)lanyaQiantaiAction;
+- (void)lanyaHoutaiAction;
 - (void)initialization;
-- (void)getPeripheralWithIdentifierAndConnect:(NSString *)identifierStr;
+- (void)getPeripheralWithIdentifierAndConnect:(NSString *)identifierStr;        //目标扫描
 - (void)sendCommand:(NSString *)String;
-- (void)startScan;
-- (void)stopScan;
-- (void)connectClick:(CBPeripheral *)peripheral;
-- (void)disConnection;
-- (void)targetScan;      //目标扫描
+- (void)startScan;          //扫描
+- (void)stopScan;           //停止扫描
+- (void)connectClick:(CBPeripheral *)peripheral;            //连接外设
+- (void)disConnection;      // 断开蓝牙
+- (void)targetScan;         //目标扫描
+- (void)shoudongConnectClick:(CBPeripheral *)peripheral;    // 手动 连接蓝牙设备
 @end

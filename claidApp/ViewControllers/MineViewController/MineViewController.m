@@ -37,9 +37,7 @@
      if (indexPath.section < self.peripherArray.count) {
          CBPeripheral *periphe = [self.peripherArray objectAtIndex:indexPath.section];
          [[NSUserDefaults standardUserDefaults] setObject:[periphe identifier].UUIDString forKey:@"identifierStr"];
-        // NSLog(@"zebei||||||||||||||||======>%@",[periphe.name substringWithRange:NSMakeRange(0,4)]);
-         //连接外设
-         [[SingleTon sharedInstance] connectClick:periphe];
+         [[SingleTon sharedInstance] shoudongConnectClick:periphe];
      } else  {
          [[SingleTon sharedInstance] disConnection];  //断开蓝牙
      }
