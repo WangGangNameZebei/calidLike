@@ -85,12 +85,11 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
      NSLog(@"===============  进入前台");
-       [[SingleTon sharedInstance] lanyaQiantaiAction];     //开启定时器
+       [[SingleTon sharedInstance] lanyaQiantaiAction];     //前台函数
 }
 
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-    NSLog(@"===============  杀掉线程");
 }
 
 
