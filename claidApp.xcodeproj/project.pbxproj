@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0A052F601DBDF0E7002EB567 /* BlankTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A052F5E1DBDF0E7002EB567 /* BlankTableViewCell.m */; };
 		0A052F611DBDF0E7002EB567 /* BlankTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A052F5F1DBDF0E7002EB567 /* BlankTableViewCell.xib */; };
+		0A35C6661DCD87DD0068AA83 /* KaiKaViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A35C6651DCD87DD0068AA83 /* KaiKaViewController+Configuration.m */; };
 		0A51E91A1DC825B9000D31F3 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A51E9181DC825B9000D31F3 /* RegisterViewController.m */; };
 		0A51E91B1DC825B9000D31F3 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A51E9191DC825B9000D31F3 /* RegisterViewController.xib */; };
 		0A51E91E1DC82629000D31F3 /* RegisterViewController+LogicalFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A51E91D1DC82629000D31F3 /* RegisterViewController+LogicalFlow.m */; };
@@ -35,15 +36,32 @@
 		0A6DA6DA1DB6F8D90013D0CF /* MineViewController+LogicalFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6DA6D91DB6F8D90013D0CF /* MineViewController+LogicalFlow.m */; };
 		0A6DA6DD1DB6F9020013D0CF /* MineViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6DA6DC1DB6F9020013D0CF /* MineViewController+Configuration.m */; };
 		0A6DA6E31DB705260013D0CF /* lanya_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A6DA6E21DB705260013D0CF /* lanya_3.png */; };
+		0A6FB2721DC978BC00345784 /* installViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6FB2701DC978BC00345784 /* installViewController.m */; };
+		0A6FB2731DC978BC00345784 /* installViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A6FB2711DC978BC00345784 /* installViewController.xib */; };
+		0A6FB2761DC978F700345784 /* installViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6FB2751DC978F700345784 /* installViewController+Configuration.m */; };
+		0A6FB2791DC9792A00345784 /* installViewController+LogicalFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6FB2781DC9792A00345784 /* installViewController+LogicalFlow.m */; };
+		0A7878CF1DCDBCB1008A37D0 /* KaiKaViewController+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7878CE1DCDBCB1008A37D0 /* KaiKaViewController+Animation.m */; };
+		0A83FE1D1DC9B32F006F4D61 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A83FE1C1DC9B32F006F4D61 /* libsqlite3.tbd */; };
 		0A87F7AA1DB74F8E00EFF1F0 /* SingleTon.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A87F7A91DB74F8E00EFF1F0 /* SingleTon.m */; };
 		0A87F7AD1DB7588900EFF1F0 /* MineViewController+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A87F7AC1DB7588900EFF1F0 /* MineViewController+Animation.m */; };
 		0A87F7B01DB75D5E00EFF1F0 /* MinViewControllerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A87F7AF1DB75D5E00EFF1F0 /* MinViewControllerDataSource.m */; };
 		0A87F7B61DB7602E00EFF1F0 /* MinFuncTionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A87F7B41DB7602E00EFF1F0 /* MinFuncTionTableViewCell.m */; };
 		0A87F7B71DB7602E00EFF1F0 /* MinFuncTionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A87F7B51DB7602E00EFF1F0 /* MinFuncTionTableViewCell.xib */; };
+		0A8C969A1DCC1A9200AAD161 /* HcdDateTimePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8C96951DCC1A9200AAD161 /* HcdDateTimePickerView.m */; };
+		0A8C969B1DCC1A9200AAD161 /* MXSCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8C96971DCC1A9200AAD161 /* MXSCycleScrollView.m */; };
+		0A8C969C1DCC1A9200AAD161 /* UIColor+HcdCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8C96991DCC1A9200AAD161 /* UIColor+HcdCustom.m */; };
+		0A8C969E1DCC30D700AAD161 /* xiangxia_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A8C969D1DCC30D700AAD161 /* xiangxia_1.png */; };
+		0A924F161DCB2A7300785BCF /* MyViewController+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A924F151DCB2A7300785BCF /* MyViewController+Animation.m */; };
+		0A9EEC691DCB0E2A00D74FC9 /* OpenCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9EEC681DCB0E2A00D74FC9 /* OpenCardView.m */; };
+		0A9EEC6B1DCB0E3C00D74FC9 /* OpenCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A9EEC6A1DCB0E3C00D74FC9 /* OpenCardView.xib */; };
 		0AA491301DC6F27D0013B974 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA4912E1DC6F27D0013B974 /* LoginViewController.m */; };
 		0AA491311DC6F27D0013B974 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AA4912F1DC6F27D0013B974 /* LoginViewController.xib */; };
 		0AA4913A1DC72E4F0013B974 /* LoginViewController+LogicalFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA491391DC72E4F0013B974 /* LoginViewController+LogicalFlow.m */; };
 		0AA4913D1DC72E6B0013B974 /* LoginViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA4913C1DC72E6B0013B974 /* LoginViewController+Configuration.m */; };
+		0AC68B991DCC6EBC00B71FB1 /* KaiKaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AC68B971DCC6EBC00B71FB1 /* KaiKaViewController.m */; };
+		0AC68B9A1DCC6EBC00B71FB1 /* KaiKaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AC68B981DCC6EBC00B71FB1 /* KaiKaViewController.xib */; };
+		0AC969951DC97EA100F62C57 /* login_background_img@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AC969941DC97EA100F62C57 /* login_background_img@2x.png */; };
+		0AC969981DC9820F00F62C57 /* installViewControllerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AC969971DC9820F00F62C57 /* installViewControllerDataSource.m */; };
 		0ACFF8181DB5BCA00043D49A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACFF8171DB5BCA00043D49A /* main.m */; };
 		0ACFF81B1DB5BCA00043D49A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACFF81A1DB5BCA00043D49A /* AppDelegate.m */; };
 		0ACFF8211DB5BCA00043D49A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ACFF81F1DB5BCA00043D49A /* Main.storyboard */; };
@@ -81,6 +99,7 @@
 		0AEC751D1DC83BEB00933D77 /* denglu_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEC75191DC83BEB00933D77 /* denglu_2.png */; };
 		0AEC751E1DC83BEB00933D77 /* key_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEC751A1DC83BEB00933D77 /* key_2.png */; };
 		0AEC75201DC83D7E00933D77 /* fanhui_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEC751F1DC83D7E00933D77 /* fanhui_1.png */; };
+		0AF7098E1DCB123C001F6AD8 /* XX_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF7098D1DCB123C001F6AD8 /* XX_1.png */; };
 		18EAEB9BC0645DD57F644E46 /* libPods-claidApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E454F03FAF2701EE86E173D /* libPods-claidApp.a */; };
 /* End PBXBuildFile section */
 
@@ -105,6 +124,8 @@
 		0A052F5D1DBDF0E7002EB567 /* BlankTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlankTableViewCell.h; sourceTree = "<group>"; };
 		0A052F5E1DBDF0E7002EB567 /* BlankTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlankTableViewCell.m; sourceTree = "<group>"; };
 		0A052F5F1DBDF0E7002EB567 /* BlankTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlankTableViewCell.xib; sourceTree = "<group>"; };
+		0A35C6641DCD87DD0068AA83 /* KaiKaViewController+Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KaiKaViewController+Configuration.h"; sourceTree = "<group>"; };
+		0A35C6651DCD87DD0068AA83 /* KaiKaViewController+Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KaiKaViewController+Configuration.m"; sourceTree = "<group>"; };
 		0A51E9171DC825B9000D31F3 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		0A51E9181DC825B9000D31F3 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		0A51E9191DC825B9000D31F3 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
@@ -144,6 +165,16 @@
 		0A6DA6DB1DB6F9020013D0CF /* MineViewController+Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MineViewController+Configuration.h"; sourceTree = "<group>"; };
 		0A6DA6DC1DB6F9020013D0CF /* MineViewController+Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MineViewController+Configuration.m"; sourceTree = "<group>"; };
 		0A6DA6E21DB705260013D0CF /* lanya_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lanya_3.png; sourceTree = "<group>"; };
+		0A6FB26F1DC978BC00345784 /* installViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = installViewController.h; sourceTree = "<group>"; };
+		0A6FB2701DC978BC00345784 /* installViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = installViewController.m; sourceTree = "<group>"; };
+		0A6FB2711DC978BC00345784 /* installViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = installViewController.xib; sourceTree = "<group>"; };
+		0A6FB2741DC978F700345784 /* installViewController+Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "installViewController+Configuration.h"; sourceTree = "<group>"; };
+		0A6FB2751DC978F700345784 /* installViewController+Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "installViewController+Configuration.m"; sourceTree = "<group>"; };
+		0A6FB2771DC9792A00345784 /* installViewController+LogicalFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "installViewController+LogicalFlow.h"; sourceTree = "<group>"; };
+		0A6FB2781DC9792A00345784 /* installViewController+LogicalFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "installViewController+LogicalFlow.m"; sourceTree = "<group>"; };
+		0A7878CD1DCDBCB1008A37D0 /* KaiKaViewController+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KaiKaViewController+Animation.h"; sourceTree = "<group>"; };
+		0A7878CE1DCDBCB1008A37D0 /* KaiKaViewController+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KaiKaViewController+Animation.m"; sourceTree = "<group>"; };
+		0A83FE1C1DC9B32F006F4D61 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		0A87F7A81DB74F8E00EFF1F0 /* SingleTon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleTon.h; sourceTree = "<group>"; };
 		0A87F7A91DB74F8E00EFF1F0 /* SingleTon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleTon.m; sourceTree = "<group>"; };
 		0A87F7AB1DB7588900EFF1F0 /* MineViewController+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MineViewController+Animation.h"; sourceTree = "<group>"; };
@@ -153,6 +184,18 @@
 		0A87F7B31DB7602E00EFF1F0 /* MinFuncTionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MinFuncTionTableViewCell.h; sourceTree = "<group>"; };
 		0A87F7B41DB7602E00EFF1F0 /* MinFuncTionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MinFuncTionTableViewCell.m; sourceTree = "<group>"; };
 		0A87F7B51DB7602E00EFF1F0 /* MinFuncTionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MinFuncTionTableViewCell.xib; sourceTree = "<group>"; };
+		0A8C96941DCC1A9200AAD161 /* HcdDateTimePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HcdDateTimePickerView.h; sourceTree = "<group>"; };
+		0A8C96951DCC1A9200AAD161 /* HcdDateTimePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HcdDateTimePickerView.m; sourceTree = "<group>"; };
+		0A8C96961DCC1A9200AAD161 /* MXSCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXSCycleScrollView.h; sourceTree = "<group>"; };
+		0A8C96971DCC1A9200AAD161 /* MXSCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXSCycleScrollView.m; sourceTree = "<group>"; };
+		0A8C96981DCC1A9200AAD161 /* UIColor+HcdCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HcdCustom.h"; sourceTree = "<group>"; };
+		0A8C96991DCC1A9200AAD161 /* UIColor+HcdCustom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HcdCustom.m"; sourceTree = "<group>"; };
+		0A8C969D1DCC30D700AAD161 /* xiangxia_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xiangxia_1.png; sourceTree = "<group>"; };
+		0A924F141DCB2A7300785BCF /* MyViewController+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MyViewController+Animation.h"; sourceTree = "<group>"; };
+		0A924F151DCB2A7300785BCF /* MyViewController+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MyViewController+Animation.m"; sourceTree = "<group>"; };
+		0A9EEC671DCB0E2A00D74FC9 /* OpenCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenCardView.h; sourceTree = "<group>"; };
+		0A9EEC681DCB0E2A00D74FC9 /* OpenCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenCardView.m; sourceTree = "<group>"; };
+		0A9EEC6A1DCB0E3C00D74FC9 /* OpenCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpenCardView.xib; sourceTree = "<group>"; };
 		0AA4912D1DC6F27D0013B974 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		0AA4912E1DC6F27D0013B974 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		0AA4912F1DC6F27D0013B974 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -160,6 +203,12 @@
 		0AA491391DC72E4F0013B974 /* LoginViewController+LogicalFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LoginViewController+LogicalFlow.m"; sourceTree = "<group>"; };
 		0AA4913B1DC72E6B0013B974 /* LoginViewController+Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LoginViewController+Configuration.h"; sourceTree = "<group>"; };
 		0AA4913C1DC72E6B0013B974 /* LoginViewController+Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LoginViewController+Configuration.m"; sourceTree = "<group>"; };
+		0AC68B961DCC6EBC00B71FB1 /* KaiKaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KaiKaViewController.h; sourceTree = "<group>"; };
+		0AC68B971DCC6EBC00B71FB1 /* KaiKaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KaiKaViewController.m; sourceTree = "<group>"; };
+		0AC68B981DCC6EBC00B71FB1 /* KaiKaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KaiKaViewController.xib; sourceTree = "<group>"; };
+		0AC969941DC97EA100F62C57 /* login_background_img@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_background_img@2x.png"; sourceTree = "<group>"; };
+		0AC969961DC9820F00F62C57 /* installViewControllerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = installViewControllerDataSource.h; sourceTree = "<group>"; };
+		0AC969971DC9820F00F62C57 /* installViewControllerDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = installViewControllerDataSource.m; sourceTree = "<group>"; };
 		0ACFF8131DB5BCA00043D49A /* claidApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = claidApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0ACFF8171DB5BCA00043D49A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0ACFF8191DB5BCA00043D49A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -211,6 +260,7 @@
 		0AEC75191DC83BEB00933D77 /* denglu_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = denglu_2.png; sourceTree = "<group>"; };
 		0AEC751A1DC83BEB00933D77 /* key_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = key_2.png; sourceTree = "<group>"; };
 		0AEC751F1DC83D7E00933D77 /* fanhui_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fanhui_1.png; sourceTree = "<group>"; };
+		0AF7098D1DCB123C001F6AD8 /* XX_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = XX_1.png; sourceTree = "<group>"; };
 		2E454F03FAF2701EE86E173D /* libPods-claidApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-claidApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FAE10D1BB41DF3C48FA7264 /* Pods-claidApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-claidApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-claidApp/Pods-claidApp.release.xcconfig"; sourceTree = "<group>"; };
 		B07114D1ACC8FA1ADF51B95E /* Pods-claidApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-claidApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-claidApp/Pods-claidApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -221,6 +271,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A83FE1D1DC9B32F006F4D61 /* libsqlite3.tbd in Frameworks */,
 				18EAEB9BC0645DD57F644E46 /* libPods-claidApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,6 +358,22 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		0A6FB26E1DC9788400345784 /* installViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0A6FB26F1DC978BC00345784 /* installViewController.h */,
+				0A6FB2701DC978BC00345784 /* installViewController.m */,
+				0A6FB2711DC978BC00345784 /* installViewController.xib */,
+				0A6FB2741DC978F700345784 /* installViewController+Configuration.h */,
+				0A6FB2751DC978F700345784 /* installViewController+Configuration.m */,
+				0A6FB2771DC9792A00345784 /* installViewController+LogicalFlow.h */,
+				0A6FB2781DC9792A00345784 /* installViewController+LogicalFlow.m */,
+				0AC969961DC9820F00F62C57 /* installViewControllerDataSource.h */,
+				0AC969971DC9820F00F62C57 /* installViewControllerDataSource.m */,
+			);
+			path = installViewController;
+			sourceTree = "<group>";
+		};
 		0A87F7A71DB74F8E00EFF1F0 /* lanya */ = {
 			isa = PBXGroup;
 			children = (
@@ -335,6 +402,52 @@
 				0A87F7B51DB7602E00EFF1F0 /* MinFuncTionTableViewCell.xib */,
 			);
 			path = MinFunctionTableViewCell;
+			sourceTree = "<group>";
+		};
+		0A8C96931DCC1A9200AAD161 /* HcdDateTimePicker */ = {
+			isa = PBXGroup;
+			children = (
+				0A8C96941DCC1A9200AAD161 /* HcdDateTimePickerView.h */,
+				0A8C96951DCC1A9200AAD161 /* HcdDateTimePickerView.m */,
+				0A8C96961DCC1A9200AAD161 /* MXSCycleScrollView.h */,
+				0A8C96971DCC1A9200AAD161 /* MXSCycleScrollView.m */,
+				0A8C96981DCC1A9200AAD161 /* UIColor+HcdCustom.h */,
+				0A8C96991DCC1A9200AAD161 /* UIColor+HcdCustom.m */,
+			);
+			path = HcdDateTimePicker;
+			sourceTree = "<group>";
+		};
+		0A9EEC5C1DCB0CF300D74FC9 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				0A9EEC631DCB0DCB00D74FC9 /* openCardView */,
+			);
+			name = Components;
+			path = Basic/Components;
+			sourceTree = "<group>";
+		};
+		0A9EEC631DCB0DCB00D74FC9 /* openCardView */ = {
+			isa = PBXGroup;
+			children = (
+				0A9EEC671DCB0E2A00D74FC9 /* OpenCardView.h */,
+				0A9EEC681DCB0E2A00D74FC9 /* OpenCardView.m */,
+				0A9EEC6A1DCB0E3C00D74FC9 /* OpenCardView.xib */,
+			);
+			path = openCardView;
+			sourceTree = "<group>";
+		};
+		0AC68B951DCC6E8200B71FB1 /* KaikaViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0AC68B961DCC6EBC00B71FB1 /* KaiKaViewController.h */,
+				0AC68B971DCC6EBC00B71FB1 /* KaiKaViewController.m */,
+				0AC68B981DCC6EBC00B71FB1 /* KaiKaViewController.xib */,
+				0A35C6641DCD87DD0068AA83 /* KaiKaViewController+Configuration.h */,
+				0A35C6651DCD87DD0068AA83 /* KaiKaViewController+Configuration.m */,
+				0A7878CD1DCDBCB1008A37D0 /* KaiKaViewController+Animation.h */,
+				0A7878CE1DCDBCB1008A37D0 /* KaiKaViewController+Animation.m */,
+			);
+			path = KaikaViewController;
 			sourceTree = "<group>";
 		};
 		0ACFF80A1DB5BC9F0043D49A = {
@@ -411,6 +524,7 @@
 				0ACFF88B1DB5CDC50043D49A /* Basic */,
 				0A5FF92D1DB5EFF800249F0C /* CustomActionSheet */,
 				0A87F7B11DB75FFF00EFF1F0 /* CustomCells */,
+				0A9EEC5C1DCB0CF300D74FC9 /* Components */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -435,6 +549,8 @@
 			isa = PBXGroup;
 			children = (
 				0ACFF84D1DB5C48E0043D49A /* denglu_1.png */,
+				0AF7098D1DCB123C001F6AD8 /* XX_1.png */,
+				0A8C969D1DCC30D700AAD161 /* xiangxia_1.png */,
 				0AEC751F1DC83D7E00933D77 /* fanhui_1.png */,
 				0AEC75171DC83BEB00933D77 /* mima_2.png */,
 				0AEC75181DC83BEB00933D77 /* mima_1.png */,
@@ -445,6 +561,7 @@
 				0ACFF8501DB5C48E0043D49A /* lanya_1.png */,
 				0ACFF8511DB5C48E0043D49A /* lanya_2.png */,
 				0ACFF8521DB5C48E0043D49A /* mima_1.png */,
+				0AC969941DC97EA100F62C57 /* login_background_img@2x.png */,
 				0ACFF8531DB5C48E0043D49A /* quanxian_1.png */,
 				0ACFF8541DB5C48E0043D49A /* quanxian_2.png */,
 				0ACFF8551DB5C48E0043D49A /* shezhi_1.png */,
@@ -465,6 +582,7 @@
 			isa = PBXGroup;
 			children = (
 				0A87F7A71DB74F8E00EFF1F0 /* lanya */,
+				0A8C96931DCC1A9200AAD161 /* HcdDateTimePicker */,
 				0A5FF9381DB5FABC00249F0C /* Utilities */,
 			);
 			path = Tools;
@@ -477,7 +595,9 @@
 				0ACFF8721DB5C6910043D49A /* LoginViewController */,
 				0A51E9161DC82576000D31F3 /* RegisterViewController */,
 				0ACFF8731DB5C6910043D49A /* MineViewController */,
+				0A6FB26E1DC9788400345784 /* installViewController */,
 				0ACFF8741DB5C6910043D49A /* MyViewController */,
+				0AC68B951DCC6E8200B71FB1 /* KaikaViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -531,6 +651,8 @@
 				0AD75CCC1DBDDDEC00297AC3 /* MyViewController+Configuration.m */,
 				0AD75CCE1DBDDE0F00297AC3 /* MyViewController+LogicalFlow.h */,
 				0AD75CCF1DBDDE0F00297AC3 /* MyViewController+LogicalFlow.m */,
+				0A924F141DCB2A7300785BCF /* MyViewController+Animation.h */,
+				0A924F151DCB2A7300785BCF /* MyViewController+Animation.m */,
 				0AD75CD11DBDDE5300297AC3 /* MyViewControllerDataSource.h */,
 				0AD75CD21DBDDE5300297AC3 /* MyViewControllerDataSource.m */,
 			);
@@ -596,6 +718,7 @@
 		51EC2D4BCFC8A555B596AA46 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0A83FE1C1DC9B32F006F4D61 /* libsqlite3.tbd */,
 				2E454F03FAF2701EE86E173D /* libPods-claidApp.a */,
 			);
 			name = Frameworks;
@@ -741,8 +864,10 @@
 				0A52AC8A1DBDFCA800FE6DCE /* shiduankaiqi.png in Resources */,
 				0AD75CD91DBDE6C100297AC3 /* MyTableViewCell.xib in Resources */,
 				0A52AC8E1DBDFCA800FE6DCE /* xiugaidianti.png in Resources */,
+				0AF7098E1DCB123C001F6AD8 /* XX_1.png in Resources */,
 				0A52AC8B1DBDFCA800FE6DCE /* touxiang.png in Resources */,
 				0A52AC8C1DBDFCA800FE6DCE /* weixin.png in Resources */,
+				0AC68B9A1DCC6EBC00B71FB1 /* KaiKaViewController.xib in Resources */,
 				0ACFF86E1DB5C48E0043D49A /* zhuce_1.png in Resources */,
 				0AEC75201DC83D7E00933D77 /* fanhui_1.png in Resources */,
 				0ACFF8631DB5C48E0043D49A /* key_1.png in Resources */,
@@ -752,6 +877,7 @@
 				0ACFF8691DB5C48E0043D49A /* shezhi_1.png in Resources */,
 				0ACFF8231DB5BCA00043D49A /* Assets.xcassets in Resources */,
 				0ACFF8711DB5C48E0043D49A /* zhuye_2.png in Resources */,
+				0AC969951DC97EA100F62C57 /* login_background_img@2x.png in Resources */,
 				0ACFF86D1DB5C48E0043D49A /* xiaoyanma_1.png in Resources */,
 				0ACFF8651DB5C48E0043D49A /* lanya_2.png in Resources */,
 				0ACFF86C1DB5C48E0043D49A /* wode_2.png in Resources */,
@@ -760,7 +886,10 @@
 				0ACFF8621DB5C48E0043D49A /* fenxiang_1.png in Resources */,
 				0A6DA6E31DB705260013D0CF /* lanya_3.png in Resources */,
 				0ACFF8211DB5BCA00043D49A /* Main.storyboard in Resources */,
+				0A6FB2731DC978BC00345784 /* installViewController.xib in Resources */,
+				0A9EEC6B1DCB0E3C00D74FC9 /* OpenCardView.xib in Resources */,
 				0A5FF9321DB5F0EF00249F0C /* CustomActionSheet.xib in Resources */,
+				0A8C969E1DCC30D700AAD161 /* xiangxia_1.png in Resources */,
 				0ACFF86A1DB5C48E0043D49A /* shezhi_2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -837,16 +966,22 @@
 				0A5FF93F1DB5FABC00249F0C /* UIColor+Utility.m in Sources */,
 				0A5FF9301DB5F05000249F0C /* CustomActionSheet.m in Sources */,
 				0AD75CCD1DBDDDEC00297AC3 /* MyViewController+Configuration.m in Sources */,
+				0A6FB2721DC978BC00345784 /* installViewController.m in Sources */,
 				0ACFF81B1DB5BCA00043D49A /* AppDelegate.m in Sources */,
 				0A51E9211DC82645000D31F3 /* RegisterViewController+Configuration.m in Sources */,
+				0A35C6661DCD87DD0068AA83 /* KaiKaViewController+Configuration.m in Sources */,
 				0AA491301DC6F27D0013B974 /* LoginViewController.m in Sources */,
 				0A6DA6DD1DB6F9020013D0CF /* MineViewController+Configuration.m in Sources */,
+				0A9EEC691DCB0E2A00D74FC9 /* OpenCardView.m in Sources */,
 				0A5FF94E1DB604C800249F0C /* CustomTabBarController.m in Sources */,
 				0ACFF8891DB5CCAC0043D49A /* BaseViewController.m in Sources */,
 				0A5FF9411DB5FABC00249F0C /* UIScreen+Utility.m in Sources */,
+				0A7878CF1DCDBCB1008A37D0 /* KaiKaViewController+Animation.m in Sources */,
 				0A5FF9451DB6029700249F0C /* MineViewController.m in Sources */,
 				0A5FF94A1DB6032600249F0C /* MyViewController.m in Sources */,
 				0A51E91A1DC825B9000D31F3 /* RegisterViewController.m in Sources */,
+				0A924F161DCB2A7300785BCF /* MyViewController+Animation.m in Sources */,
+				0AC68B991DCC6EBC00B71FB1 /* KaiKaViewController.m in Sources */,
 				0A87F7AA1DB74F8E00EFF1F0 /* SingleTon.m in Sources */,
 				0AD75CD81DBDE6C100297AC3 /* MyTableViewCell.m in Sources */,
 				0A87F7AD1DB7588900EFF1F0 /* MineViewController+Animation.m in Sources */,
@@ -856,11 +991,17 @@
 				0AA4913A1DC72E4F0013B974 /* LoginViewController+LogicalFlow.m in Sources */,
 				0A51E91E1DC82629000D31F3 /* RegisterViewController+LogicalFlow.m in Sources */,
 				0A5FF9361DB5F6A000249F0C /* CustomActionSheetCell.m in Sources */,
+				0A8C969B1DCC1A9200AAD161 /* MXSCycleScrollView.m in Sources */,
 				0A5FF9401DB5FABC00249F0C /* UIImage+Utility.m in Sources */,
 				0A052F601DBDF0E7002EB567 /* BlankTableViewCell.m in Sources */,
+				0AC969981DC9820F00F62C57 /* installViewControllerDataSource.m in Sources */,
+				0A6FB2761DC978F700345784 /* installViewController+Configuration.m in Sources */,
 				0AA4913D1DC72E6B0013B974 /* LoginViewController+Configuration.m in Sources */,
+				0A6FB2791DC9792A00345784 /* installViewController+LogicalFlow.m in Sources */,
 				0A6DA6DA1DB6F8D90013D0CF /* MineViewController+LogicalFlow.m in Sources */,
+				0A8C969A1DCC1A9200AAD161 /* HcdDateTimePickerView.m in Sources */,
 				0ACFF8901DB5CDFA0043D49A /* BaseView.m in Sources */,
+				0A8C969C1DCC1A9200AAD161 /* UIColor+HcdCustom.m in Sources */,
 				0AD75CD31DBDDE5300297AC3 /* MyViewControllerDataSource.m in Sources */,
 				0AD75CD01DBDDE0F00297AC3 /* MyViewController+LogicalFlow.m in Sources */,
 				0A87F7B61DB7602E00EFF1F0 /* MinFuncTionTableViewCell.m in Sources */,

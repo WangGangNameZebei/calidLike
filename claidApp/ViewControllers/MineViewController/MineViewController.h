@@ -16,7 +16,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *shuaKaButton;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UISwitch *zidongSwitch;
-@property (weak, nonatomic) IBOutlet UITextField *ceshiTextFileld;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UIView *functionListContainerView;
 @property (weak, nonatomic) IBOutlet UITableView *functionListUiTableView;

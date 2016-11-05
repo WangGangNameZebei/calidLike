@@ -11,5 +11,5 @@
 @interface MyViewController (Configuration)
 
 - (void)configureViews;
-
+- (void)openCardviewEdit;
 @end

@@ -144,21 +144,21 @@
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="yk3-oZ-iX3" firstAttribute="top" secondItem="wal-DU-dsC" secondAttribute="bottom" constant="23" id="0e9-Q2-9fu"/>
-                        <constraint firstAttribute="height" constant="270" id="5GT-Ti-FJB"/>
+                        <constraint firstItem="XNd-v7-WX9" firstAttribute="leading" secondItem="XIV-4f-V2y" secondAttribute="leading" id="5R4-Sy-PRF"/>
                         <constraint firstItem="GKx-1M-oPz" firstAttribute="leading" secondItem="XIV-4f-V2y" secondAttribute="trailing" constant="-1" id="6zi-a0-u4s"/>
                         <constraint firstItem="wal-DU-dsC" firstAttribute="centerY" secondItem="XNd-v7-WX9" secondAttribute="centerY" id="7Vi-zy-GOM"/>
-                        <constraint firstItem="jx3-2Y-wlV" firstAttribute="centerX" secondItem="yX7-Ap-Ka1" secondAttribute="centerX" constant="-103.5" id="AG7-RQ-rMj"/>
-                        <constraint firstItem="XIV-4f-V2y" firstAttribute="centerX" secondItem="yX7-Ap-Ka1" secondAttribute="centerX" constant="-102.5" id="FQh-ac-I6i"/>
+                        <constraint firstItem="GKx-1M-oPz" firstAttribute="leading" secondItem="jx3-2Y-wlV" secondAttribute="trailing" id="Bsb-Ej-ZOs"/>
+                        <constraint firstItem="jx3-2Y-wlV" firstAttribute="leading" secondItem="yX7-Ap-Ka1" secondAttribute="leading" constant="14" id="ILv-AU-Qm8"/>
+                        <constraint firstAttribute="height" constant="270" id="LKe-is-Yu2"/>
+                        <constraint firstAttribute="bottom" secondItem="yk3-oZ-iX3" secondAttribute="bottom" constant="54" id="N1E-Gz-zL6"/>
                         <constraint firstItem="wal-DU-dsC" firstAttribute="top" secondItem="i2P-gG-bYb" secondAttribute="bottom" constant="8" id="NfA-C8-gp9"/>
                         <constraint firstItem="i2P-gG-bYb" firstAttribute="top" secondItem="GKx-1M-oPz" secondAttribute="bottom" constant="12" id="PEt-iG-bN3"/>
-                        <constraint firstItem="XNd-v7-WX9" firstAttribute="centerY" secondItem="yX7-Ap-Ka1" secondAttribute="centerY" constant="12.5" id="Rq7-Y6-VN3"/>
+                        <constraint firstItem="XIV-4f-V2y" firstAttribute="top" secondItem="jx3-2Y-wlV" secondAttribute="bottom" constant="20" id="Pew-HT-BkW"/>
                         <constraint firstItem="wal-DU-dsC" firstAttribute="leading" secondItem="i2P-gG-bYb" secondAttribute="leading" id="Ulm-Zt-iqe"/>
-                        <constraint firstItem="XNd-v7-WX9" firstAttribute="centerX" secondItem="yX7-Ap-Ka1" secondAttribute="centerX" constant="-103" id="bZe-vP-JGo"/>
-                        <constraint firstAttribute="width" constant="270" id="bea-Aa-RFs"/>
-                        <constraint firstItem="XIV-4f-V2y" firstAttribute="centerY" secondItem="yX7-Ap-Ka1" secondAttribute="centerY" constant="-26" id="eQz-Ni-5b9"/>
-                        <constraint firstItem="yk3-oZ-iX3" firstAttribute="centerX" secondItem="yX7-Ap-Ka1" secondAttribute="centerX" id="i9J-x7-2hi"/>
+                        <constraint firstItem="jx3-2Y-wlV" firstAttribute="top" secondItem="yX7-Ap-Ka1" secondAttribute="top" constant="58" id="i0F-Sx-KkM"/>
                         <constraint firstItem="wal-DU-dsC" firstAttribute="leading" secondItem="XNd-v7-WX9" secondAttribute="trailing" id="ppP-od-qoo"/>
-                        <constraint firstItem="jx3-2Y-wlV" firstAttribute="centerY" secondItem="yX7-Ap-Ka1" secondAttribute="centerY" constant="-66.5" id="qGp-ud-7EP"/>
+                        <constraint firstAttribute="width" constant="270" id="wuV-mG-Ke9"/>
+                        <constraint firstItem="yk3-oZ-iX3" firstAttribute="centerX" secondItem="yX7-Ap-Ka1" secondAttribute="centerX" id="yVu-7L-2Rf"/>
                     </constraints>
                 </view>
                 <view alpha="0.94999998807907104" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jni-dM-pg6">
@@ -204,12 +204,12 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="jni-dM-pg6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="DeE-ca-FFN"/>
-                <constraint firstItem="yX7-Ap-Ka1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="44" id="GCJ-lV-VOd"/>
+                <constraint firstItem="yX7-Ap-Ka1" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-107.5" id="PEZ-1c-73S"/>
                 <constraint firstItem="jni-dM-pg6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="SgM-2D-oZ4"/>
+                <constraint firstItem="yX7-Ap-Ka1" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="i7E-7F-nl9"/>
                 <constraint firstAttribute="trailing" secondItem="jni-dM-pg6" secondAttribute="trailing" id="j2G-4n-zln"/>
-                <constraint firstItem="yX7-Ap-Ka1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="91" id="jMG-fk-B07"/>
             </constraints>
-            <point key="canvasLocation" x="42.5" y="67.5"/>
+            <point key="canvasLocation" x="-196" y="77"/>
         </view>
     </objects>
     <resources>

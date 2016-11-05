@@ -1,23 +1,21 @@
 //
-//  MyViewController.m
+//  installViewController.m
 //  claidApp
 //
-//  Created by kevinpc on 2016/10/18.
+//  Created by kevinpc on 2016/11/2.
 //  Copyright © 2016年 kevinpc. All rights reserved.
 //
 
-#import "MyViewController.h"
-#import "MyViewController+Configuration.h"
 #import "installViewController.h"
-#import "MyViewController+Animation.h"
-#import "KaiKaViewController.h"
+#import "installViewController+Configuration.h"
 
-@implementation MyViewController
+@implementation installViewController
 
 + (instancetype) create {
-    MyViewController *myViewController = [[MyViewController alloc] initWithNibName:@"MyViewController" bundle:nil];
-    return myViewController;
+    installViewController *installVC = [[installViewController alloc] initWithNibName:@"installViewController" bundle:nil];
+    return installVC;
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -31,18 +29,13 @@
 
 // 点击  UItableView
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-     if (indexPath.row == 0){
-         KaiKaViewController *kaiKaVC = [KaiKaViewController create];
-         [self hideTabBarAndpushViewController:kaiKaVC];
-     }
-
+    
+    
+    
 }
-//  管理员 设置 登录 跳转
-- (IBAction)shezhiButtonAction:(id)sender {
-    installViewController *installVC = [installViewController create];
-    [self hideTabBarAndpushViewController:installVC];
+- (IBAction)installReturnButtonAction:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
-
 
 /*
 #pragma mark - Navigation

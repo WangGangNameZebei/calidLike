@@ -9,7 +9,6 @@
 #import "BaseViewController.h"
 #import "MyViewControllerDataSource.h"
 
-
 @interface MyViewController : BaseViewController <UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
 

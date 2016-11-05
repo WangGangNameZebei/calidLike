@@ -23,6 +23,10 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="login_background_img.png" translatesAutoresizingMaskIntoConstraints="NO" id="3Us-NH-FJr">
+                    <frame key="frameInset" minY="32" width="375" height="603"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nZv-Al-x00">
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sNJ-w4-gNd">
@@ -70,7 +74,6 @@
                                     </constraints>
                                 </imageView>
                             </subviews>
-                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="210" id="Lv0-eg-VHp"/>
                                 <constraint firstItem="ItY-cT-kFE" firstAttribute="leading" secondItem="Ath-E8-Gnh" secondAttribute="leading" constant="15" id="OFB-Ir-8hx"/>
@@ -95,7 +98,6 @@
                                     </constraints>
                                 </imageView>
                             </subviews>
-                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="2Eq-xS-GyK" firstAttribute="top" secondItem="8Sb-5h-hAP" secondAttribute="top" id="GMv-oY-bGG"/>
                                 <constraint firstAttribute="trailing" secondItem="2Eq-xS-GyK" secondAttribute="trailing" id="GcT-vA-zcB"/>
@@ -137,7 +139,6 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="L6r-RE-ve5" firstAttribute="centerX" secondItem="nZv-Al-x00" secondAttribute="centerX" constant="-103" id="2Pb-uE-2Sv"/>
                         <constraint firstAttribute="bottom" secondItem="PQm-n9-bvE" secondAttribute="bottom" constant="20" id="2r1-JG-5Vo"/>
@@ -189,11 +190,12 @@
                 <constraint firstItem="wii-iG-Gyf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="mp1-Tu-jC7"/>
                 <constraint firstAttribute="trailing" secondItem="wii-iG-Gyf" secondAttribute="trailing" id="uEz-Hy-rwU"/>
             </constraints>
-            <point key="canvasLocation" x="14" y="49"/>
+            <point key="canvasLocation" x="13.5" y="48.5"/>
         </view>
     </objects>
     <resources>
         <image name="denglu_2.png" width="64" height="64"/>
+        <image name="login_background_img.png" width="320" height="568"/>
         <image name="mima_2.png" width="64" height="64"/>
     </resources>
 </document>
