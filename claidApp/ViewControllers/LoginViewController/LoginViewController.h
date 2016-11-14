@@ -15,5 +15,4 @@
 @property (weak, nonatomic) IBOutlet UIView *passwordView;
 @property (weak, nonatomic) IBOutlet UIImageView *phoneNumberImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *passwordImageView;
-
 @end
