@@ -27,6 +27,7 @@
     self.passwordTextField.clearButtonMode = UITextFieldViewModeAlways;
     self.passwordTextField.secureTextEntry = YES;
     self.passwordTextField.delegate = self;
+    
 }
 
 //  textFieldView编辑

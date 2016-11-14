@@ -26,7 +26,7 @@
     self.phoneNumberTextField.delegate = self;
     
     self.mishiTextField.clearButtonMode = UITextFieldViewModeAlways;
-    self.mishiTextField.secureTextEntry = YES;
+
     self.mishiTextField.delegate = self;
     
     self.passwordTextField.clearButtonMode = UITextFieldViewModeAlways;

@@ -33,16 +33,17 @@
 }
 - (IBAction)loginButtonAction:(id)sender {
    // [[NSUserDefaults standardUserDefaults] setObject:self.phoneNumberTextField.text forKey:@"phoneNumber"];    //   登录成功之后  要储存
-     [[SingleTon sharedInstance] initialization];    // 蓝牙设备
+    
+    [[SingleTon sharedInstance] initialization];    // 蓝牙设备
     CustomTabBarController *customTabBarController = [self createCustomTabBarController];
     UIApplication.sharedApplication.delegate.window.rootViewController = customTabBarController;
 }
+                                                                                                                                                                                  
 - (IBAction)registerButtonAction:(id)sender {
     RegisterViewController *registerVC = [RegisterViewController create];
     [self hideTabBarAndpushViewController:registerVC];
 }
-- (IBAction)forgetPsswordButtonAction:(id)sender {
-}
+
 
 - (CustomTabBarController *)createCustomTabBarController {
     MineViewController *minViewController = [MineViewController create];
@@ -65,8 +66,5 @@
     }
     return imageGroups;
 }
-
-
-
 
 @end
