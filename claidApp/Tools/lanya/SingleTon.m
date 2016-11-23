@@ -9,7 +9,7 @@
 #import "SingleTon.h"
 #import "MineViewController.h"
 #import "MineViewController+Configuration.h"
-#import "AESCrypt.h"
+#import <AESCrypt.h>
 
 
 /*输出宏*/
