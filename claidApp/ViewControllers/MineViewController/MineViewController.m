@@ -8,7 +8,7 @@
 
 #import "MineViewController.h"
 #import "MineViewController+Configuration.h"
-
+#import "MineViewController+Animation.h"
 @implementation MineViewController
 
 + (instancetype)create {
@@ -41,6 +41,7 @@
      } else  {
          [[SingleTon sharedInstance] disConnection];  //断开蓝牙
      }
+     [self animationHideFunctionView];
 }
 /*
 #pragma mark - Navigation

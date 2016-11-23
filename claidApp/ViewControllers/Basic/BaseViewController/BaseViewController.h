@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "CustomActionSheet.h"
 
-@interface BaseViewController : UIViewController
+#define AES_PASSWORD @"ufwjfitn"
+@interface BaseViewController : UIViewController<UIAlertViewDelegate>
 @property (strong, nonatomic) CustomActionSheet *customActionSheet;
 + (instancetype)create;
 - (void)hideTabBarAndpushViewController:(UIViewController *)viewController;
+- (void)alertViewmessage:(NSString *)massage;
+
+- (NSString *)keyChainIdentifierForVendorString;
 @end

@@ -10,6 +10,7 @@
 #import "MineViewController+Animation.h"
 #import "MinFuncTionTableViewCell.h"
 #import "MBProgressHUD.h"
+#import "AESCrypt.h"
 
 @implementation MineViewController (Configuration)
 
@@ -68,13 +69,17 @@
             [self switchEditInit];
             break;
         case 2:                             //  2  为 自动 连接 发现服务
-            [self writeDataActionString:@"123456"];
+             self.message = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESData"] password:AES_PASSWORD];
+            self.message = [NSString stringWithFormat:@"%@%@",@"AA",self.message];
+            [self writeDataActionString:self.message];
             break;
         case 3:                             //  3  为 发送数据成功
          [[SingleTon sharedInstance] disConnection];             //断开蓝牙
             break;
         case 4:                             //  4  为 主动断开蓝牙
-            [[SingleTon sharedInstance] targetScan];             //目标扫描
+            
+            if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"switch"] isEqualToString:@"YES"])
+                [[SingleTon sharedInstance] targetScan];             //目标扫描
             break;
         default:
             break;
@@ -132,6 +137,7 @@
         [ton getPeripheralWithIdentifierAndConnect:uuidstr];
         [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"switch"];
     } else {
+        [self.ton.manager stopScan];  //停止  扫描
         [[NSUserDefaults standardUserDefaults] setObject:@"NO" forKey:@"switch"];
     }
    

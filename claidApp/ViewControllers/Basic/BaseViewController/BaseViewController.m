@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-
+#import <SSKeychain.h>
 
 @implementation BaseViewController
 
@@ -31,9 +31,27 @@
     return self;
 }
 
+- (void)alertViewmessage:(NSString *)massage {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"  message:massage delegate:self cancelButtonTitle:@"返回" otherButtonTitles:nil];
+    [alertView show];
+}
+
+
 - (void)hideTabBarAndpushViewController:(UIViewController *)viewController {
     [viewController setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:viewController animated:YES];
+}
+
+- (NSString *)keyChainIdentifierForVendorString {        //从钥匙串读取UUID：
+    NSString *retrieveuuid = [SSKeychain passwordForService:@"zebei.claidApp.urthinker"account:@"user"];
+    if (retrieveuuid.length == 0) {
+        //给钥匙串中存UUID
+        NSUUID *uuid1 = [UIDevice currentDevice].identifierForVendor;
+        [SSKeychain setPassword: [NSString stringWithFormat:@"%@", uuid1]
+                     forService:@"zebei.claidApp.urthinker"account:@"user"];
+        retrieveuuid = [SSKeychain passwordForService:@"zebei.claidApp.urthinker"account:@"user"];
+    }
+    return retrieveuuid;
 }
 
 /*

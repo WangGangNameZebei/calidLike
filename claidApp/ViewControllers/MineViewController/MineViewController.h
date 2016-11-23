@@ -9,6 +9,7 @@
 #import "BaseViewController.h"
 #import "SingleTon.h"
 #import "MinViewControllerDataSource.h"
+
 @interface MineViewController : BaseViewController<sendDataToVCDelegate,UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *lanyaLinkButton;
@@ -25,4 +26,6 @@
 @property (strong, nonatomic) MinViewControllerDataSource *minViewControllerDataSource;
 @property (strong, nonatomic) NSMutableArray *peripherArray;
 @property (strong, nonatomic) SingleTon *ton;
+@property (strong, nonatomic) NSString *message;
+
 @end

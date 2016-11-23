@@ -9,6 +9,7 @@
 #import "MyViewControllerDataSource.h"
 #import "MyTableViewCell.h"
 #import "BlankTableViewCell.h"
+#import "LoginOutTableViewCell.h"
 
 @implementation MyViewControllerDataSource
 
@@ -17,8 +18,10 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 1) {
+    if (indexPath.row == 1 || indexPath.row == 8 || indexPath.row == 10) {
         return [self blankTableView:tableView indexPath:indexPath];
+    } else if (indexPath.row == 9){
+        return [self loginOutTableView:tableView indexPath:indexPath];
     } else {
         return [self myTableView:tableView indexPath:indexPath];
     }
@@ -36,6 +39,14 @@
 
 - (UITableViewCell *)blankTableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
     BlankTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:BLANK_TABLEVIEW_CELL];
+     if (indexPath.row == 8 || indexPath.row == 10)
+          cell.contentView.backgroundColor = [UIColor whiteColor];
     return cell;
 }
+
+- (UITableViewCell *)loginOutTableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
+    LoginOutTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:LOGIN_OUT_TABLEVIEW_CELL];
+    return cell;
+}
+
 @end

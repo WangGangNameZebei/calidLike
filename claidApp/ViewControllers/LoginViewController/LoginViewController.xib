@@ -26,7 +26,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="login_background_img.png" translatesAutoresizingMaskIntoConstraints="NO" id="3Us-NH-FJr">
-                    <frame key="frameInset" minY="32" width="375" height="603"/>
+                    <rect key="frame" x="0.0" y="32" width="375" height="603"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nZv-Al-x00">
@@ -66,8 +66,6 @@
                                     </constraints>
                                 </imageView>
                             </subviews>
-
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="0yC-NL-vF7" secondAttribute="trailing" constant="2" id="60U-gB-2rt"/>
                                 <constraint firstAttribute="height" constant="50" id="IOH-OI-DDh"/>
@@ -112,9 +110,6 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                             </subviews>
-
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="3RC-sw-j8H" secondAttribute="bottom" constant="10" id="IVf-5Z-SfF"/>
                                 <constraint firstAttribute="bottom" secondItem="2Eq-xS-GyK" secondAttribute="bottom" id="IrI-x9-gcc"/>

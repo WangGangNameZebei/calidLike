@@ -1,19 +1,19 @@
 //
-//  BlankTableViewCell.m
+//  LoginOutTableViewCell.m
 //  claidApp
 //
-//  Created by kevinpc on 2016/10/24.
+//  Created by kevinpc on 2016/11/14.
 //  Copyright © 2016年 kevinpc. All rights reserved.
 //
 
-#import "BlankTableViewCell.h"
+#import "LoginOutTableViewCell.h"
 
-@implementation BlankTableViewCell
+@implementation LoginOutTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.selectionStyle = UITableViewCellSelectionStyleNone;    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -21,4 +21,5 @@
 
     // Configure the view for the selected state
 }
+
 @end

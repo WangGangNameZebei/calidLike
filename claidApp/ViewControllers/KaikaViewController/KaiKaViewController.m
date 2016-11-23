@@ -27,8 +27,13 @@
       __block KaiKaViewController *youXiaoqiSelf = self;
      self.hcdDateTimePickerView = [[HcdDateTimePickerView alloc] initWithDatePickerMode:DatePickerDateHourMinuteMode defaultDateTime:[[NSDate alloc]initWithTimeIntervalSinceNow:1000]];
      self.hcdDateTimePickerView.clickedOkBtn = ^(NSString * datetimeStr){
+         if ([datetimeStr isEqualToString:@"11"]){
+              youXiaoqiSelf.youXiaoqiLable.text = @"暂无选择...";
+         } else  {
+             youXiaoqiSelf.youXiaoqiLable.text = datetimeStr;
+         }
           [youXiaoqiSelf imageViewCloseAnimationimageView:youXiaoqiSelf.youXiaoQiImageView];
-           youXiaoqiSelf.youXiaoqiLable.text = datetimeStr;
+         
     };
     
     if (self.hcdDateTimePickerView) {

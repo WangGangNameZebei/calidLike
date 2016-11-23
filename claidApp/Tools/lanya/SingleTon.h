@@ -30,6 +30,9 @@
 @property (assign, nonatomic) BOOL identiFication;   //目标连接  标识
 @property (assign, nonatomic) BOOL tarScanBool;   //   目标扫描  标识
 @property (strong, nonatomic) NSTimer * scanTimer;
+@property (strong, nonatomic) NSString *receiveData;
+@property (assign, nonatomic) BOOL jieHhou;
+
 
 + (SingleTon *)sharedInstance;
 

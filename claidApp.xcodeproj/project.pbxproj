@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		0A052F601DBDF0E7002EB567 /* BlankTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A052F5E1DBDF0E7002EB567 /* BlankTableViewCell.m */; };
 		0A052F611DBDF0E7002EB567 /* BlankTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A052F5F1DBDF0E7002EB567 /* BlankTableViewCell.xib */; };
+		0A0C1E521DD989FE0059EFEC /* LoginOutTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0C1E501DD989FE0059EFEC /* LoginOutTableViewCell.m */; };
+		0A0C1E531DD989FE0059EFEC /* LoginOutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A0C1E511DD989FE0059EFEC /* LoginOutTableViewCell.xib */; };
+		0A0FB99C1DDC367500F5CB7B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A0FB99B1DDC367500F5CB7B /* Security.framework */; };
 		0A35C6661DCD87DD0068AA83 /* KaiKaViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A35C6651DCD87DD0068AA83 /* KaiKaViewController+Configuration.m */; };
 		0A51E91A1DC825B9000D31F3 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A51E9181DC825B9000D31F3 /* RegisterViewController.m */; };
 		0A51E91B1DC825B9000D31F3 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A51E9191DC825B9000D31F3 /* RegisterViewController.xib */; };
@@ -52,6 +55,7 @@
 		0A8C969C1DCC1A9200AAD161 /* UIColor+HcdCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8C96991DCC1A9200AAD161 /* UIColor+HcdCustom.m */; };
 		0A8C969E1DCC30D700AAD161 /* xiangxia_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A8C969D1DCC30D700AAD161 /* xiangxia_1.png */; };
 		0A924F161DCB2A7300785BCF /* MyViewController+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A924F151DCB2A7300785BCF /* MyViewController+Animation.m */; };
+		0A95A2DA1DDA96B50019A691 /* NetWorkJudge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A95A2D91DDA96B50019A691 /* NetWorkJudge.m */; };
 		0A9EEC691DCB0E2A00D74FC9 /* OpenCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9EEC681DCB0E2A00D74FC9 /* OpenCardView.m */; };
 		0A9EEC6B1DCB0E3C00D74FC9 /* OpenCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A9EEC6A1DCB0E3C00D74FC9 /* OpenCardView.xib */; };
 		0AA491301DC6F27D0013B974 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA4912E1DC6F27D0013B974 /* LoginViewController.m */; };
@@ -124,6 +128,11 @@
 		0A052F5D1DBDF0E7002EB567 /* BlankTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlankTableViewCell.h; sourceTree = "<group>"; };
 		0A052F5E1DBDF0E7002EB567 /* BlankTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlankTableViewCell.m; sourceTree = "<group>"; };
 		0A052F5F1DBDF0E7002EB567 /* BlankTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlankTableViewCell.xib; sourceTree = "<group>"; };
+		0A0C1E4F1DD989FE0059EFEC /* LoginOutTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginOutTableViewCell.h; sourceTree = "<group>"; };
+		0A0C1E501DD989FE0059EFEC /* LoginOutTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginOutTableViewCell.m; sourceTree = "<group>"; };
+		0A0C1E511DD989FE0059EFEC /* LoginOutTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginOutTableViewCell.xib; sourceTree = "<group>"; };
+		0A0FB99A1DDC319C00F5CB7B /* claidApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = claidApp.entitlements; sourceTree = "<group>"; };
+		0A0FB99B1DDC367500F5CB7B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		0A35C6641DCD87DD0068AA83 /* KaiKaViewController+Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KaiKaViewController+Configuration.h"; sourceTree = "<group>"; };
 		0A35C6651DCD87DD0068AA83 /* KaiKaViewController+Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KaiKaViewController+Configuration.m"; sourceTree = "<group>"; };
 		0A51E9171DC825B9000D31F3 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
@@ -193,6 +202,8 @@
 		0A8C969D1DCC30D700AAD161 /* xiangxia_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xiangxia_1.png; sourceTree = "<group>"; };
 		0A924F141DCB2A7300785BCF /* MyViewController+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MyViewController+Animation.h"; sourceTree = "<group>"; };
 		0A924F151DCB2A7300785BCF /* MyViewController+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MyViewController+Animation.m"; sourceTree = "<group>"; };
+		0A95A2D81DDA96B50019A691 /* NetWorkJudge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorkJudge.h; sourceTree = "<group>"; };
+		0A95A2D91DDA96B50019A691 /* NetWorkJudge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorkJudge.m; sourceTree = "<group>"; };
 		0A9EEC671DCB0E2A00D74FC9 /* OpenCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenCardView.h; sourceTree = "<group>"; };
 		0A9EEC681DCB0E2A00D74FC9 /* OpenCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenCardView.m; sourceTree = "<group>"; };
 		0A9EEC6A1DCB0E3C00D74FC9 /* OpenCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpenCardView.xib; sourceTree = "<group>"; };
@@ -271,6 +282,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A0FB99C1DDC367500F5CB7B /* Security.framework in Frameworks */,
 				0A83FE1D1DC9B32F006F4D61 /* libsqlite3.tbd in Frameworks */,
 				18EAEB9BC0645DD57F644E46 /* libPods-claidApp.a in Frameworks */,
 			);
@@ -301,6 +313,16 @@
 				0A052F5F1DBDF0E7002EB567 /* BlankTableViewCell.xib */,
 			);
 			path = BlankTableViewCell;
+			sourceTree = "<group>";
+		};
+		0A0C1E4E1DD989C80059EFEC /* LoginOutTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0A0C1E4F1DD989FE0059EFEC /* LoginOutTableViewCell.h */,
+				0A0C1E501DD989FE0059EFEC /* LoginOutTableViewCell.m */,
+				0A0C1E511DD989FE0059EFEC /* LoginOutTableViewCell.xib */,
+			);
+			path = LoginOutTableViewCell;
 			sourceTree = "<group>";
 		};
 		0A51E9161DC82576000D31F3 /* RegisterViewController */ = {
@@ -389,6 +411,7 @@
 				0A87F7B21DB75FFF00EFF1F0 /* MinFunctionTableViewCell */,
 				0AD75CD41DBDE69100297AC3 /* MyTableViewCell */,
 				0A052F5C1DBDF0BD002EB567 /* BlankTableViewCell */,
+				0A0C1E4E1DD989C80059EFEC /* LoginOutTableViewCell */,
 			);
 			name = CustomCells;
 			path = Basic/CustomCells;
@@ -415,6 +438,15 @@
 				0A8C96991DCC1A9200AAD161 /* UIColor+HcdCustom.m */,
 			);
 			path = HcdDateTimePicker;
+			sourceTree = "<group>";
+		};
+		0A95A2D71DDA96640019A691 /* NetWorkJudge */ = {
+			isa = PBXGroup;
+			children = (
+				0A95A2D81DDA96B50019A691 /* NetWorkJudge.h */,
+				0A95A2D91DDA96B50019A691 /* NetWorkJudge.m */,
+			);
+			path = NetWorkJudge;
 			sourceTree = "<group>";
 		};
 		0A9EEC5C1DCB0CF300D74FC9 /* Components */ = {
@@ -475,6 +507,7 @@
 		0ACFF8151DB5BCA00043D49A /* claidApp */ = {
 			isa = PBXGroup;
 			children = (
+				0A0FB99A1DDC319C00F5CB7B /* claidApp.entitlements */,
 				0ACFF8191DB5BCA00043D49A /* AppDelegate.h */,
 				0ACFF81A1DB5BCA00043D49A /* AppDelegate.m */,
 				0ACFF8491DB5C48E0043D49A /* CustomViews */,
@@ -582,6 +615,7 @@
 			isa = PBXGroup;
 			children = (
 				0A87F7A71DB74F8E00EFF1F0 /* lanya */,
+				0A95A2D71DDA96640019A691 /* NetWorkJudge */,
 				0A8C96931DCC1A9200AAD161 /* HcdDateTimePicker */,
 				0A5FF9381DB5FABC00249F0C /* Utilities */,
 			);
@@ -718,6 +752,7 @@
 		51EC2D4BCFC8A555B596AA46 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0A0FB99B1DDC367500F5CB7B /* Security.framework */,
 				0A83FE1C1DC9B32F006F4D61 /* libsqlite3.tbd */,
 				2E454F03FAF2701EE86E173D /* libPods-claidApp.a */,
 			);
@@ -805,6 +840,11 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 4WY57YVPWE;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					0ACFF82B1DB5BCA00043D49A = {
 						CreatedOnToolsVersion = 8.0;
@@ -881,6 +921,7 @@
 				0ACFF86D1DB5C48E0043D49A /* xiaoyanma_1.png in Resources */,
 				0ACFF8651DB5C48E0043D49A /* lanya_2.png in Resources */,
 				0ACFF86C1DB5C48E0043D49A /* wode_2.png in Resources */,
+				0A0C1E531DD989FE0059EFEC /* LoginOutTableViewCell.xib in Resources */,
 				0ACFF8611DB5C48E0043D49A /* denglu_1.png in Resources */,
 				0A52AC8D1DBDFCA800FE6DCE /* woxinxi.png in Resources */,
 				0ACFF8621DB5C48E0043D49A /* fenxiang_1.png in Resources */,
@@ -973,6 +1014,7 @@
 				0AA491301DC6F27D0013B974 /* LoginViewController.m in Sources */,
 				0A6DA6DD1DB6F9020013D0CF /* MineViewController+Configuration.m in Sources */,
 				0A9EEC691DCB0E2A00D74FC9 /* OpenCardView.m in Sources */,
+				0A95A2DA1DDA96B50019A691 /* NetWorkJudge.m in Sources */,
 				0A5FF94E1DB604C800249F0C /* CustomTabBarController.m in Sources */,
 				0ACFF8891DB5CCAC0043D49A /* BaseViewController.m in Sources */,
 				0A5FF9411DB5FABC00249F0C /* UIScreen+Utility.m in Sources */,
@@ -994,6 +1036,7 @@
 				0A8C969B1DCC1A9200AAD161 /* MXSCycleScrollView.m in Sources */,
 				0A5FF9401DB5FABC00249F0C /* UIImage+Utility.m in Sources */,
 				0A052F601DBDF0E7002EB567 /* BlankTableViewCell.m in Sources */,
+				0A0C1E521DD989FE0059EFEC /* LoginOutTableViewCell.m in Sources */,
 				0AC969981DC9820F00F62C57 /* installViewControllerDataSource.m in Sources */,
 				0A6FB2761DC978F700345784 /* installViewController+Configuration.m in Sources */,
 				0AA4913D1DC72E6B0013B974 /* LoginViewController+Configuration.m in Sources */,
@@ -1154,6 +1197,7 @@
 			baseConfigurationReference = B07114D1ACC8FA1ADF51B95E /* Pods-claidApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = claidApp/claidApp.entitlements;
 				DEVELOPMENT_TEAM = 4WY57YVPWE;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = claidApp/Info.plist;
@@ -1175,6 +1219,7 @@
 			baseConfigurationReference = 3FAE10D1BB41DF3C48FA7264 /* Pods-claidApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = claidApp/claidApp.entitlements;
 				DEVELOPMENT_TEAM = 4WY57YVPWE;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = claidApp/Info.plist;

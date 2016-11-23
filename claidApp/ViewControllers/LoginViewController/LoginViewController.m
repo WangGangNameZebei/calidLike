@@ -37,6 +37,9 @@
     [[SingleTon sharedInstance] initialization];    // 蓝牙设备
     CustomTabBarController *customTabBarController = [self createCustomTabBarController];
     UIApplication.sharedApplication.delegate.window.rootViewController = customTabBarController;
+    
+      NSLog(@"从keyChain中取出的uuid-> %@",[self keyChainIdentifierForVendorString]);    // 获取钥匙串 的UUID
+
 }
                                                                                                                                                                                   
 - (IBAction)registerButtonAction:(id)sender {

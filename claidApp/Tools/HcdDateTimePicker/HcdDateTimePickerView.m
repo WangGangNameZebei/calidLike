@@ -671,7 +671,10 @@
     if (touch.view != self) {
         return NO;
     }
-    
+    typeof(self) __weak weak = self;
+    [self dismissBlock:^(BOOL Complete) {
+     weak.clickedOkBtn(@"11");
+    }];
     return YES;
 }
 
@@ -710,7 +713,7 @@
             
             weak.clickedOkBtn(dateTimeStr);
         } else {
-            weak.clickedOkBtn(@"");
+            weak.clickedOkBtn(@"11");
         }
     }];
     

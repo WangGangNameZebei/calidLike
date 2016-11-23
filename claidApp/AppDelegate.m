@@ -12,13 +12,17 @@
 #import "MineViewController.h"
 #import "MyViewController.h"
 #import "CustomTabBarController.h"
-
+#import "NetWorkJudge.h"
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    [NetWorkJudge StartWithBlock:^(NSInteger NetworkStatus) {
+        
+        NSLog(@"--------------->%ld",NetworkStatus);        //网络 监测      
+    }];
     NSString *uuidstr = [[NSUserDefaults standardUserDefaults] objectForKey:@"phoneNumber"];
     
     if (!uuidstr) {
@@ -86,6 +90,7 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application {
      NSLog(@"===============  进入前台");
        [[SingleTon sharedInstance] lanyaQiantaiAction];     //前台函数
+    
 }
 
 
