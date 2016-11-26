@@ -1209,7 +1209,7 @@
 					"-l\"AFNetworking\"",
 					"-l\"Masonry\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = zebei.claidApp;
+				PRODUCT_BUNDLE_IDENTIFIER = zebeiclaidApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1231,7 +1231,7 @@
 					"-l\"AFNetworking\"",
 					"-l\"Masonry\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = zebei.claidApp;
+				PRODUCT_BUNDLE_IDENTIFIER = zebeiclaidApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

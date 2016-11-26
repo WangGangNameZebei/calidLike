@@ -26,10 +26,11 @@
 @property (strong, nonatomic) CBCharacteristic *writeCharacteristic;
 @property (strong, nonatomic) NSMutableArray *nServices;
 @property (strong, nonatomic) NSMutableArray *PeripheralArray;
-@property (assign, nonatomic) double delayInSeconds;//扫描时长
-@property (assign, nonatomic) BOOL identiFication;   //目标连接  标识
-@property (assign, nonatomic) BOOL tarScanBool;   //   目标扫描  标识
+@property (assign, nonatomic) double delayInSeconds;        //扫描时长
+@property (assign, nonatomic) BOOL identiFication;          //目标连接  标识
+@property (assign, nonatomic) BOOL tarScanBool;             //   目标扫描  标识
 @property (strong, nonatomic) NSTimer * scanTimer;
+@property (strong, nonatomic) NSTimer * shukaTimer;         //刷卡 计时
 @property (strong, nonatomic) NSString *receiveData;
 @property (assign, nonatomic) BOOL jieHhou;
 
@@ -47,4 +48,5 @@
 - (void)disConnection;      // 断开蓝牙
 - (void)targetScan;         //目标扫描
 - (void)shoudongConnectClick:(CBPeripheral *)peripheral;    // 手动 连接蓝牙设备
+- (int)turnTheHexLiterals:(NSString *)string;
 @end

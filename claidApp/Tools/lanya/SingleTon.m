@@ -11,7 +11,6 @@
 #import "MineViewController+Configuration.h"
 #import <AESCrypt.h>
 
-
 /*输出宏*/
 #define AES_PASSWORD @"ufwjfitn"
 #ifdef DEBUG
@@ -117,7 +116,8 @@ static SingleTon *_instace = nil;
 
 #pragma mark - 处理传进来的字符串并发指令
 - (void)sendCommand:(NSString *)String {
-    
+    if(String.length > 200)
+        self.shukaTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(disConnection) userInfo:nil repeats:NO];
     
     if ([String isEqualToString:@"aa"] || [String isEqualToString:@"00"]) {
         _jieHhou = YES;
@@ -213,6 +213,7 @@ static SingleTon *_instace = nil;
     [self stopScan];
     [self getPeripheralWithIdentifierAndConnect:[[NSUserDefaults standardUserDefaults] objectForKey:@"identifierStr"]];
 }
+
 #pragma mark - 停止扫描
 - (void)stopScan {
     [self.manager stopScan];
@@ -414,7 +415,7 @@ static SingleTon *_instace = nil;
    NSLog(@"===== %@",[self hexadecimalString:characteristic.value]);
     NSString *str1 = [self hexadecimalString:characteristic.value];
     self.receiveData = [NSString stringWithFormat:@"%@%@",self.receiveData,str1];
-    if  (self.receiveData.length > 105  && self.receiveData.length <= 214){
+    if  (self.receiveData.length > 106  && self.receiveData.length <= 214){
         if ([self lanyaDataXiaoyanAction:[self.receiveData substringWithRange:NSMakeRange(4,104)]]) {
           [self sendCommand:@"aa"];
             LOG(@"成功1");
@@ -439,11 +440,47 @@ static SingleTon *_instace = nil;
                     LOG(@"失败2");
                 }
         
+    } else if (self.receiveData.length == 106){
+        [self.shukaTimer invalidate];    // 释放函数
+        
+        self.receiveData = [[self hexadecimalString:characteristic.value] substringWithRange:NSMakeRange(0,104)];
+        
+        
+        NSString *encryptedData = [AESCrypt encrypt:self.receiveData password:AES_PASSWORD];  //加密
+        [[NSUserDefaults standardUserDefaults] setObject:encryptedData forKey:@"lanyaAESErrornData"];  //存储
+        
+        if ([self.delegate respondsToSelector:@selector(recivedPeripheralData:)]) {
+            [self.delegate recivedPeripheralData:@"发送数据成功"];
+        }
+        if (!_jieHhou && [self.delegate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
+            [self.delegate switchEditInitPeripheralData:3];
+        }
+        if ([self.delegate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
+            [self.delegate switchEditInitPeripheralData:[self turnTheHexLiterals:[[self hexadecimalString:characteristic.value] substringWithRange:NSMakeRange(104,2)]]];
+        }
+
+       self.receiveData = @"";
     } else {
-        self.receiveData = @"";
- 
+      
+        if ([[self hexadecimalString:characteristic.value] isEqualToString:@"7265616401"]) {
+            self.receiveData = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESData"] password:AES_PASSWORD];
+            self.receiveData = [NSString stringWithFormat:@"%@%@",@"AA",[self.receiveData substringWithRange:NSMakeRange(0,104)]];
+            [self sendCommand:_receiveData];
+        } else if ([[self hexadecimalString:characteristic.value] isEqualToString:@"7265616402"]) {
+            self.receiveData = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESData"] password:AES_PASSWORD];
+           self.receiveData = [NSString stringWithFormat:@"%@%@",@"AA",[self.receiveData substringWithRange:NSMakeRange(104,104)]];
+           [self sendCommand:_receiveData];
+        } else if ([[self hexadecimalString:characteristic.value] isEqualToString:@"7265616403"]) {
+            self.receiveData = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESErrornData"] password:AES_PASSWORD];
+            self.receiveData = [NSString stringWithFormat:@"%@%@",@"AA",self.receiveData];
+            [self sendCommand:_receiveData];
+        } else {
+            if ([self.delegate respondsToSelector:@selector(recivedPeripheralData:)]) {
+                [self.delegate recivedPeripheralData:@"数据返回格式错误!"];
+            }
+        }
+       self.receiveData = @"";
     }
-  //  [self ToDealWithReturnData:characteristic.value];
     
     if ([self.delegate respondsToSelector:@selector(recivedPeripheralData:)]) {
         
@@ -459,13 +496,11 @@ static SingleTon *_instace = nil;
     unsigned char key2[100];
     NSString * TheTwoCharacters;
     int  aa;
-    
     for (NSInteger j = 0; j < data.length / 2; j++) {
         TheTwoCharacters = [data substringWithRange:NSMakeRange(j * 2,2)];
         aa= [self turnTheHexLiterals:TheTwoCharacters];
         key2[j] = aa;
     }
-    
     key1[0] = key2[48];
     key1[1] = key2[49];
     key1[2] = key2[50];
@@ -513,17 +548,12 @@ static SingleTon *_instace = nil;
         if ([self.delegate respondsToSelector:@selector(recivedPeripheralData:)]) {
             [self.delegate recivedPeripheralData:error.userInfo];
         
-    }
+        }
         [self.delegate recivedPeripheralData:error.userInfo];
         
     }else{
         LOG(@"发送数据成功==%@",characteristic.value);
-        if ([self.delegate respondsToSelector:@selector(recivedPeripheralData:)]) {
-        [self.delegate recivedPeripheralData:@"发送数据成功"];
-        }
-        if (!_jieHhou && [self.delegate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
-            [self.delegate switchEditInitPeripheralData:3];
-        }
+        
     }
 }
 
@@ -639,7 +669,7 @@ void xor(unsigned char key[]) {
     for (int i = 0;i < 4; i++) {
         str = str + key[i];
     }
-     NSLog(@"**************>%c",str);
+    
     for(j=0;j<slen;j++)
     {
         if (str % klen == 0 ){

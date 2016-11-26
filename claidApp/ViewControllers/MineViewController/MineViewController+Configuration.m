@@ -82,6 +82,7 @@
                 [[SingleTon sharedInstance] targetScan];             //目标扫描
             break;
         default:
+            [self lanyaShuakareturnPromptActioninteger:data];
             break;
     }
     
@@ -184,5 +185,81 @@
 }
 - (void)writeDataActionString:(NSString *)textStr {
     [[SingleTon sharedInstance] sendCommand:textStr];       //发送数据
+}
+#pragma mark - 刷卡数据返回  错误 报告
+- (void)lanyaShuakareturnPromptActioninteger:(NSInteger)promptInteger {
+    switch (promptInteger) {
+        case 0x2b:
+            [self alertViewmessage:@"循环用的EEPROM读写出现致命错误!"];
+            break;
+        case 0x34:
+            [self alertViewmessage:@"在设置卡上发现的UID卡!"];
+            break;
+        case 0x2c:
+            [self alertViewmessage:@"CRC错误或老卡变新卡时错误!"];
+            break;
+        case 0x24:
+            [self alertViewmessage:@"被复制或写附属地址出错!"];
+            break;
+        case 0x04:
+            [self alertViewmessage:@"卡被复制!"];
+            break;
+        case 0x2a:
+            [self alertViewmessage:@"在用户卡上发现的UID!"];
+            break;
+        case 0x30:
+            [self alertViewmessage:@"防潜返,已经是进入或出去!"];
+            break;
+        case 0x1a:
+            [self alertViewmessage:@"减次数为0!"];
+            break;
+        case 0x1b:
+            [self alertViewmessage:@"减次数为0!"];
+            break;
+        case 0x05:
+            [self alertViewmessage:@"滚动码处理出错!"];
+            break;
+        case 0x1f:
+            [self alertViewmessage:@"第一次被顶掉!"];
+            break;
+        case 0x22:
+            [self alertViewmessage:@"没有通讯上!"];
+            break;
+        case 0x23:
+            [self alertViewmessage:@"测试卡处理!"];
+            break;
+        case 0x35:
+            self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入  有循环码处理 2为电梯总线!",self.textView.text];
+            break;
+        case 0x36:
+            self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入  没有处理循环码 2为电梯总线!",self.textView.text];
+            break;
+        case 0x20:
+            self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入  有循环码处理 3为门禁!",self.textView.text];
+            break;
+        case 0x2e:
+            self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入 没有处理循环码 3为门禁!",self.textView.text];
+            break;
+        case 0x37:
+            self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入  有循环码处理 5 楼宇模块!",self.textView.text];
+            break;
+        case 0x38:
+            self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入 没有处理循环码 5 楼宇模块!",self.textView.text];
+            break;
+        case 0x21:
+            self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入  有循环码处理 1 为读卡器!",self.textView.text];
+            break;
+        case 0x2f:
+            self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入 没有处理循环码 1 为读卡器!",self.textView.text];
+            break;
+        case 0x39:
+            self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入  有循环码处理 4为光耦读卡器!",self.textView.text];
+            break;
+        case 0x3a:
+            self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入 没有处理循环码  4为光耦读卡器!",self.textView.text];
+            break;
+        default:
+            break;
+    }
 }
 @end
