@@ -9,9 +9,11 @@
 #import "BaseViewController.h"
 #import "installViewControllerDataSource.h"
 
+
 @interface installViewController : BaseViewController <UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *installTableView;
 
 @property (strong, nonatomic) installViewControllerDataSource *installVCDataSource;
+
 
 @end

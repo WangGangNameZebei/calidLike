@@ -7,27 +7,49 @@
 //
 
 #import "MineViewController+Configuration.h"
-#import "MineViewController+Animation.h"
-#import "MinFuncTionTableViewCell.h"
-#import "MBProgressHUD.h"
 #import "AESCrypt.h"
+
+#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
 
 @implementation MineViewController (Configuration)
 
 - (void)configureViews{
-   
-    [self configureFunctionListContainerView];
     [self initData];
-    [self minFunctionTableView];
+    [self carouselViewEdit];
     [self addGestRecognizer];
+}
+
+#pragma mark  滚动视图
+- (void)carouselViewEdit {
+    NSMutableArray *imageArray = [[NSMutableArray alloc] initWithArray: @[@"https://p1.bqimg.com/524586/894925a41a745ba8.jpg",@"https://p1.bqimg.com/524586/edd59898ac21642f.jpg",@"https://p1.bqimg.com/524586/d277aa654cd60c3d.jpg",@"https://p1.bqimg.com/524586/a49b8d3e1b953f25.jpg",@"https://p1.bqimg.com/524586/972bff3b7a5fb7e1.jpg"]];
+    
+    if (!self.carouselView) {
+        self.carouselView = [[JYCarousel alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, 200) configBlock:^JYConfiguration *(JYConfiguration *carouselConfig) {
+            carouselConfig.pageContollType = MiddlePageControl;
+            carouselConfig.pageTintColor = [UIColor whiteColor];
+            carouselConfig.currentPageTintColor = [UIColor blueColor];
+            carouselConfig.pushAnimationType = PushCube;
+            carouselConfig.placeholder = [UIImage imageNamed:@"zhanweiImage.png"];
+            carouselConfig.faileReloadTimes = 5;
+            carouselConfig.interValTime = 4.0f;
+            return carouselConfig;
+        } target:self];
+        
+        [self.view addSubview:self.carouselView];
+    }
+    //开始轮播
+    [self.carouselView startCarouselWithArray:imageArray];
+
+}
+
+- (void)carouselViewClick:(NSInteger)index{
+    NSLog(@"代理方式你点击图片索引index = %ld",index);
 }
 
 - (void)initData {
     self.ton = [SingleTon sharedInstance];
-    self.ton.delegate = self;
+    self.ton.deleGate = self;
     self.peripherArray = [NSMutableArray array];
-    NSString *str = [NSString stringWithFormat:@"尚无数据。"];
-    self.textView.text = str;
 }
 
 - (void)switchEditInit {
@@ -39,19 +61,8 @@
     }
 }
 
-- (void) minFunctionTableView {
-    [self.functionListUiTableView registerNib:[UINib nibWithNibName:@"MinFuncTionTableViewCell" bundle:nil] forCellReuseIdentifier:MINN_FUNCTION_CELL_NIB];
-    self.minViewControllerDataSource = [MinViewControllerDataSource new];
-    self.functionListUiTableView.delegate = self;
-    self.functionListUiTableView.dataSource = self.minViewControllerDataSource;
-    self.minViewControllerDataSource.dataArray = self.peripherArray;
-    
-}
 
-#pragma mark - UITableView Delegate
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 35;
-}
+
 
 #pragma mark - sendDataToVCDelegate
 
@@ -60,7 +71,7 @@
 }
 
 - (void)recivedPeripheralData:(id)data {
-    self.textView.text = [NSString stringWithFormat:@"%@\n%@",data,self.textView.text];
+
 }
 
 -(void)switchEditInitPeripheralData:(NSInteger)data {
@@ -77,9 +88,17 @@
          [[SingleTon sharedInstance] disConnection];             //断开蓝牙
             break;
         case 4:                             //  4  为 主动断开蓝牙
-            
             if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"switch"] isEqualToString:@"YES"])
                 [[SingleTon sharedInstance] targetScan];             //目标扫描
+            break;
+        case 5:
+             [self alertViewmessage:@"无本地链接!"];
+            break;
+        case 6:
+            [self alertViewmessage:@"数据返回格式错误!"];
+            break;
+        case 7:
+            [self alertViewmessage:@"刷卡失败!"];
             break;
         default:
             [self lanyaShuakareturnPromptActioninteger:data];
@@ -87,41 +106,11 @@
     }
     
 }
-- (IBAction)lanyaLinkButtonAction:(id)sender {
- 
-    if (self.functionListContainerView.hidden) {
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-        hud.label.text = NSLocalizedString(@"扫秒蓝牙中...", @"HUD loading title");
-        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
-             [[SingleTon sharedInstance] startScan]; // 扫描
-            [self doSomeWork];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                self.minViewControllerDataSource.dataArray = self.peripherArray;
-                if (self.peripherArray.count == 0){
-                    self.functionViewheight.constant = self.peripherArray.count * 35;
-                } else if (self.peripherArray.count > 6){
-                    self.functionViewheight.constant = 6 * 35;
-                } else {
-                  self.functionViewheight.constant = self.peripherArray.count * 35 + 35;
-                 }
-                [self.functionListUiTableView reloadData];
-                [self animationShowFunctionView];
-                [hud hideAnimated:YES];
-            });
-        });
-        
-    } else {
-        [self animationHideFunctionView];
-    }
-   
-    
-}
+
 - (IBAction)shuakaButtonAction:(id)sender {     // 手动刷卡
     [self autoConnectAction];
 }
-- (IBAction)cancelButtonAction:(id)sender {
-     [self.ton.manager stopScan];  //停止  扫描
-}
+
 - (IBAction)zidongSwitchAction:(id)sender {   //自动链接
     UISwitch *switchButton = (UISwitch*)sender;
     BOOL isButtonOn = [switchButton isOn];
@@ -130,7 +119,6 @@
         NSString *uuidstr = [[NSUserDefaults standardUserDefaults] objectForKey:@"identifierStr"];
         
         if (!uuidstr) {
-            self.textView.text = @"没有本地保存外设";
             NSLog(@"没有本地保存外设identifierStr");
             return;
         }
@@ -143,22 +131,7 @@
     }
    
 }
-- (void)configureFunctionListContainerView {
-    self.functionListContainerView.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.functionListContainerView.layer.shadowOffset = CGSizeMake(-2, 2);
-    self.functionListContainerView.layer.shadowOpacity = 0.2;
-    self.functionListContainerView.layer.shadowRadius = 10;
-    self.functionNSLayoutConstraint.constant = -140;
-    self.functionListContainerView.hidden = YES;
-    [self.view layoutIfNeeded];
-}
 
-#pragma mark - Tasks
-
-- (void)doSomeWork {
-    // Simulate by just waiting.
-    sleep(3.);
-}
 #pragma mark - 空白处收起键盘
 - (void)addGestRecognizer{
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapped:)];
@@ -176,7 +149,6 @@
     NSString *uuidstr = [[NSUserDefaults standardUserDefaults] objectForKey:@"identifierStr"];
     
     if (!uuidstr) {
-        self.textView.text = @"没有本地保存外设";
         NSLog(@"没有本地保存外设identifierStr");
         return;
     }
@@ -229,34 +201,34 @@
             [self alertViewmessage:@"测试卡处理!"];
             break;
         case 0x35:
-            self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入  有循环码处理 2为电梯总线!",self.textView.text];
+           // self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入  有循环码处理 2为电梯总线!",self.textView.text];
             break;
         case 0x36:
-            self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入  没有处理循环码 2为电梯总线!",self.textView.text];
+          //  self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入  没有处理循环码 2为电梯总线!",self.textView.text];
             break;
         case 0x20:
-            self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入  有循环码处理 3为门禁!",self.textView.text];
+          //  self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入  有循环码处理 3为门禁!",self.textView.text];
             break;
         case 0x2e:
-            self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入 没有处理循环码 3为门禁!",self.textView.text];
+          //  self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入 没有处理循环码 3为门禁!",self.textView.text];
             break;
         case 0x37:
-            self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入  有循环码处理 5 楼宇模块!",self.textView.text];
+          //  self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入  有循环码处理 5 楼宇模块!",self.textView.text];
             break;
         case 0x38:
-            self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入 没有处理循环码 5 楼宇模块!",self.textView.text];
+          //  self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入 没有处理循环码 5 楼宇模块!",self.textView.text];
             break;
         case 0x21:
-            self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入  有循环码处理 1 为读卡器!",self.textView.text];
+          //  self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入  有循环码处理 1 为读卡器!",self.textView.text];
             break;
         case 0x2f:
-            self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入 没有处理循环码 1 为读卡器!",self.textView.text];
+           // self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入 没有处理循环码 1 为读卡器!",self.textView.text];
             break;
         case 0x39:
-            self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入  有循环码处理 4为光耦读卡器!",self.textView.text];
+           // self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入  有循环码处理 4为光耦读卡器!",self.textView.text];
             break;
         case 0x3a:
-            self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入 没有处理循环码  4为光耦读卡器!",self.textView.text];
+          //  self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入 没有处理循环码  4为光耦读卡器!",self.textView.text];
             break;
         default:
             break;

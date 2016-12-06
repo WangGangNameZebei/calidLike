@@ -13,6 +13,7 @@
 #import "MyViewController.h"
 #import "CustomTabBarController.h"
 #import "NetWorkJudge.h"
+#import "ZLCGuidePageView.h"    //引导
 @implementation AppDelegate
 
 
@@ -23,23 +24,31 @@
         
         NSLog(@"--------------->%ld",NetworkStatus);        //网络 监测      
     }];
-    NSString *uuidstr = [[NSUserDefaults standardUserDefaults] objectForKey:@"phoneNumber"];
-    
-    if (!uuidstr) {
-        LoginViewController *loginViewController = [LoginViewController create];
-        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
-        navigationController.navigationBarHidden = YES;
-        self.window.rootViewController = navigationController;
-    } else {
+    //    NSString *uuidstr = [[NSUserDefaults standardUserDefaults] objectForKey:@"phoneNumber"];
+//    
+//    if (!uuidstr) {
+//        LoginViewController *loginViewController = [LoginViewController create];
+//        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
+//        navigationController.navigationBarHidden = YES;
+//        self.window.rootViewController = navigationController;
+//    } else {
         [[SingleTon sharedInstance] initialization];    // 蓝牙设备
          CustomTabBarController *customTabBarController = [self createCustomTabBarController];
         self.window.rootViewController = customTabBarController;
-    }  
+   // }
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:@"identifierStr"]){
+        //引导页图片数组
+        NSArray *images =  @[[UIImage imageNamed:@"image1.jpg"],[UIImage imageNamed:@"image2.jpg"],[UIImage imageNamed:@"image3.jpg"],[UIImage imageNamed:@"image4.jpg"],[UIImage imageNamed:@"image5.jpg"]];
+        //创建引导页视图
+        ZLCGuidePageView *pageView = [[ZLCGuidePageView alloc]initWithFrame:self.window.frame WithImages:images];
+        [self.window.rootViewController.view addSubview:pageView];
+        
+    }
+
     [self.window makeKeyAndVisible];
+    [NSThread sleepForTimeInterval:1];  //启动时间  (空白页显示 的时间)
     return YES;
 }
-
-
 - (CustomTabBarController *)createCustomTabBarController {
     MineViewController *minViewController = [MineViewController create];
     MyViewController *myViewController = [MyViewController create];
@@ -64,8 +73,6 @@
 
 
 
-
-
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -77,7 +84,25 @@
 
      NSLog(@"===============  进入后台");
     [[SingleTon sharedInstance] lanyaHoutaiAction];
+    UIApplication*   app = [UIApplication sharedApplication];
+    __block  UIBackgroundTaskIdentifier bgTask;
+    bgTask = [app beginBackgroundTaskWithExpirationHandler:^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (bgTask != UIBackgroundTaskInvalid)
+            {
+                bgTask = UIBackgroundTaskInvalid;
+            }
+        });
+    }];
     
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (bgTask != UIBackgroundTaskInvalid)
+            {
+                bgTask = UIBackgroundTaskInvalid;
+            }
+        });
+    });
     
 }
 

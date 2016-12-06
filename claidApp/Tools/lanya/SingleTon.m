@@ -63,21 +63,6 @@ static SingleTon *_instace = nil;
     
 }
 
-#pragma mark - 处理返回数据并抛出DataHasBeenHandRing通知
-- (void)ToDealWithReturnData:(NSData *)data {
-    
-//    Byte *BArray = (Byte *)[data bytes];
-//    NSString *string = [NSString stringWithFormat:@"%d",BArray[0]];
-//    for(int i=1;i<[data length];i++) {
-//        string = [NSString stringWithFormat:@"%@,%d",string,BArray[i]];
-//    }
-//   // LOG(@"收到的数据==%@",string);
-//    //创建一个消息对象
-//    NSNotification * notice = [NSNotification notificationWithName:DataHasBeenHandRing object:string userInfo:nil];
-//    //发送消息
-//    [[NSNotificationCenter defaultCenter] postNotification:notice];
-
-}
 
 - (int)changeToIntString:(NSString *)letter {
     
@@ -117,7 +102,7 @@ static SingleTon *_instace = nil;
 #pragma mark - 处理传进来的字符串并发指令
 - (void)sendCommand:(NSString *)String {
     if(String.length > 200)
-        self.shukaTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(disConnection) userInfo:nil repeats:NO];
+        self.shukaTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(shukaShibaiAction) userInfo:nil repeats:NO];
     
     if ([String isEqualToString:@"aa"] || [String isEqualToString:@"00"]) {
         _jieHhou = YES;
@@ -201,12 +186,34 @@ static SingleTon *_instace = nil;
 #pragma mark - 后台
 - (void)lanyaHoutaiAction {
    [self stopScan];
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"switch"] isEqualToString:@"YES"]) {
+     self.houtaiTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(houtaisaomiaoAction) userInfo:nil repeats:YES];
+    }
    [self.scanTimer invalidate];    // 释放函数
+  
 }
+
+- (void)houtaisaomiaoAction {
+    NSString *uuidstr = [[NSUserDefaults standardUserDefaults] objectForKey:@"identifierStr"];
+    
+    if (!uuidstr) {
+        if ( [self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
+            [self.deleGate switchEditInitPeripheralData:5];
+        }
+        return;
+    }
+    [self getPeripheralWithIdentifierAndConnect:uuidstr];    //连接蓝牙
+
+}
+
 #pragma mark - 前台
 - (void)lanyaQiantaiAction {
+    if (self.houtaiTimer) {
+        [self.houtaiTimer invalidate];
+        [self stopScan];
+    }
     if (self.manager)
-     [self targetScan];
+        [self targetScan];
 }
 //定时器  到时 连接     蓝牙设备
 - (void) lianjielanyaAction {
@@ -226,8 +233,8 @@ static SingleTon *_instace = nil;
     switch (central.state) {
         case CBCentralManagerStatePoweredOn:
             LOG(@"蓝牙已打开,现在可以扫描外设");
-            if ([self.delegate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
-                [self.delegate switchEditInitPeripheralData:1];
+            if ([self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
+                [self.deleGate switchEditInitPeripheralData:1];
             }
             break;
         default:
@@ -264,20 +271,16 @@ static SingleTon *_instace = nil;
     
     if (!peripheral) {
         
-        [self.delegate recivedPeripheralData:@"当前外设为空，可能为主动断开，不需重连，或为尚未扫描到设备"];
-        if (_identiFication && [self.delegate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
-            [self.delegate switchEditInitPeripheralData:4];
+        if (_identiFication && [self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
+            [self.deleGate switchEditInitPeripheralData:4];
         }
-
+        if (!_identiFication && [self.delegate respondsToSelector:@selector(DoSomethingtishiFrame:)]) {
+            [self.delegate DoSomethingtishiFrame:@"断开连接!"];
+        }
         return;
     }
-    if ([self.delegate respondsToSelector:@selector(recivedPeripheralData:)]) {
-        
-        [self.delegate recivedPeripheralData:peripheral];
     
-    }
-    
-    [self.manager connectPeripheral:peripheral options:@{CBConnectPeripheralOptionNotifyOnConnectionKey: @YES, CBConnectPeripheralOptionNotifyOnDisconnectionKey: @YES, CBConnectPeripheralOptionNotifyOnNotificationKey: @YES}];
+    [self.manager connectPeripheral:peripheral options:@{CBConnectPeripheralOptionNotifyOnConnectionKey: @YES, CBConnectPeripheralOptionNotifyOnDisconnectionKey: @YES, CBConnectPeripheralOptionNotifyOnNotificationKey: @YES,CBCentralManagerScanOptionAllowDuplicatesKey: @YES}];
 
     _peripheral = peripheral;
     
@@ -298,7 +301,12 @@ static SingleTon *_instace = nil;
     [_peripheral writeValue:data forCharacteristic:_writeCharacteristic type:CBCharacteristicWriteWithoutResponse];
     
 }
-
+- (void)shukaShibaiAction {
+    if ([self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
+        [self.deleGate switchEditInitPeripheralData:7];
+    }
+    [self disConnection];
+}
 #pragma mark - 主动断开设备
 -(void)disConnection
 {
@@ -314,11 +322,10 @@ static SingleTon *_instace = nil;
 
 #pragma mark - 连接外设成功，开始发现服务
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
-    if ([self.delegate respondsToSelector:@selector(recivedPeripheralData:)]) {
-        [self.delegate recivedPeripheralData:@"连接成功"];
-         }
+
     LOG(@"成功连接 peripheral: %@ ",peripheral);
     self.peripheral = peripheral;
+    [peripheral readRSSI];
     [self.peripheral setDelegate:self];
     [self.peripheral discoverServices:nil];
     
@@ -332,35 +339,29 @@ static SingleTon *_instace = nil;
     LOG(@"连接外设失败：%@",error);
 }
 
-#pragma mark - 已更新RSSI
-- (void) peripheralDidUpdateRSSI:(CBPeripheral *)peripheral error:(NSError *)error
-{
-    int rssi = abs([peripheral.RSSI intValue]);
-    double ci = (rssi - 49) / (10 * 4.);
+#pragma mark - RSSI
+- (void)peripheral:(CBPeripheral *)peripheral didReadRSSI:(NSNumber *)RSSI error:(NSError *)error {
+   // [peripheral readRSSI];
+    int rssi = abs([RSSI intValue]);
+    double ci = (rssi - 59) / (10 * 2.0);
     NSString *length = [NSString stringWithFormat:@"发现BLT4.0热点:%@,距离:%.1fm",_peripheral,pow(10,ci)];
     LOG(@"距离：%@",length);
-    NSString *str = [NSString stringWithFormat:@"距离：%@",length];
-    if ([self.delegate respondsToSelector:@selector(recivedPeripheralData:)]) {
-        [self.delegate recivedPeripheralData:str];
-    
-    }
+
 }
+
 
 #pragma mark - 已发现服务
 -(void) peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error{
     LOG(@"发现服务");
-    if ([self.delegate respondsToSelector:@selector(recivedPeripheralData:)]) {
-        [self.delegate recivedPeripheralData:@"发现服务"];
-    
+    if (!_identiFication && [self.delegate respondsToSelector:@selector(DoSomethingtishiFrame:)]) {
+        [self.delegate DoSomethingtishiFrame:@"连接成功!"];
     }
     
     for (CBService *s in peripheral.services) {
         [self.nServices addObject:s];
         if ([s.UUID isEqual:[CBUUID UUIDWithString:@"0xFFF0"]]) {
             [peripheral discoverCharacteristics:nil forService:s];
-            if ([self.delegate respondsToSelector:@selector(recivedPeripheralData:)]) {
-            [self.delegate recivedPeripheralData:@"发现手环服务"];
-            }
+        
         }
     }
 }
@@ -369,33 +370,21 @@ static SingleTon *_instace = nil;
 -(void) peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error{
     
     LOG(@"发现特征");
-    if ([self.delegate respondsToSelector:@selector(recivedPeripheralData:)]) {
-        
-        [self.delegate recivedPeripheralData:@"发现特征"];
-    
-    }
+  
 
     for (CBCharacteristic *c in service.characteristics) {
         if ([c.UUID isEqual:[CBUUID UUIDWithString:@"0xFFF6"]]) {
             _writeCharacteristic = c;
-            if ([self.delegate respondsToSelector:@selector(recivedPeripheralData:)]) {
-                
-                [self.delegate recivedPeripheralData:@"发现写的特征，已保存"];
-            }
             
-            if (_identiFication && [self.delegate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
-                [self.delegate switchEditInitPeripheralData:2];
+            if (_identiFication && [self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
+                [self.deleGate switchEditInitPeripheralData:2];
             }
+          
         
         }
         if ([c.UUID isEqual:[CBUUID UUIDWithString:@"0xFFF7"]]) {
             [self.peripheral setNotifyValue:YES forCharacteristic:c];
             
-            if ([self.delegate respondsToSelector:@selector(recivedPeripheralData:)]) {
-                
-                [self.delegate recivedPeripheralData:@"发现读的特征，已保存"];
-
-            }
         }
     }
     
@@ -448,15 +437,12 @@ static SingleTon *_instace = nil;
         
         NSString *encryptedData = [AESCrypt encrypt:self.receiveData password:AES_PASSWORD];  //加密
         [[NSUserDefaults standardUserDefaults] setObject:encryptedData forKey:@"lanyaAESErrornData"];  //存储
-        
-        if ([self.delegate respondsToSelector:@selector(recivedPeripheralData:)]) {
-            [self.delegate recivedPeripheralData:@"发送数据成功"];
-        }
+
         if (!_jieHhou && [self.delegate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
-            [self.delegate switchEditInitPeripheralData:3];
+            [self.deleGate switchEditInitPeripheralData:3];
         }
-        if ([self.delegate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
-            [self.delegate switchEditInitPeripheralData:[self turnTheHexLiterals:[[self hexadecimalString:characteristic.value] substringWithRange:NSMakeRange(104,2)]]];
+        if ([self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
+            [self.deleGate switchEditInitPeripheralData:[self turnTheHexLiterals:[[self hexadecimalString:characteristic.value] substringWithRange:NSMakeRange(104,2)]]];
         }
 
        self.receiveData = @"";
@@ -475,17 +461,11 @@ static SingleTon *_instace = nil;
             self.receiveData = [NSString stringWithFormat:@"%@%@",@"AA",self.receiveData];
             [self sendCommand:_receiveData];
         } else {
-            if ([self.delegate respondsToSelector:@selector(recivedPeripheralData:)]) {
-                [self.delegate recivedPeripheralData:@"数据返回格式错误!"];
+            if ( [self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
+                [self.deleGate switchEditInitPeripheralData:6];  //数据格式错误
             }
         }
        self.receiveData = @"";
-    }
-    
-    if ([self.delegate respondsToSelector:@selector(recivedPeripheralData:)]) {
-        
-        [self.delegate recivedPeripheralData:[self hexadecimalString:characteristic.value]];
-        
     }
 }
 
@@ -545,11 +525,6 @@ static SingleTon *_instace = nil;
 -(void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {    if (error) {
         LOG(@"ereor:====>%@",error.userInfo);
-        if ([self.delegate respondsToSelector:@selector(recivedPeripheralData:)]) {
-            [self.delegate recivedPeripheralData:error.userInfo];
-        
-        }
-        [self.delegate recivedPeripheralData:error.userInfo];
         
     }else{
         LOG(@"发送数据成功==%@",characteristic.value);
@@ -562,10 +537,7 @@ static SingleTon *_instace = nil;
     LOG(@"==>%@",error);
     LOG(@"意外断开，执行重连api");
     
-    if ([self.delegate respondsToSelector:@selector(recivedPeripheralData:)]) {
-        
-        [self.delegate recivedPeripheralData:@"已断开连接"];
-    }
+
 
     [self connectClick:_peripheral];
     

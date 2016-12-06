@@ -31,18 +31,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-// 点击  UItableView
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-     if (indexPath.section < self.peripherArray.count) {
-         CBPeripheral *periphe = [self.peripherArray objectAtIndex:indexPath.section];
-         [[NSUserDefaults standardUserDefaults] setObject:[periphe identifier].UUIDString forKey:@"identifierStr"];
-         [[SingleTon sharedInstance] shoudongConnectClick:periphe];
-     } else  {
-         [[SingleTon sharedInstance] disConnection];  //断开蓝牙
-     }
-     [self animationHideFunctionView];
-}
 /*
 #pragma mark - Navigation
 

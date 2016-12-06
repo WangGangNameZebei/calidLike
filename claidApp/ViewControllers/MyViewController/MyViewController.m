@@ -11,6 +11,7 @@
 #import "installViewController.h"
 #import "MyViewController+Animation.h"
 #import "KaiKaViewController.h"
+#import "LanyaViewController.h"
 
 @implementation MyViewController
 
@@ -34,6 +35,9 @@
      if (indexPath.row == 0){
          KaiKaViewController *kaiKaVC = [KaiKaViewController create];
          [self hideTabBarAndpushViewController:kaiKaVC];
+     } else if (indexPath.row == 2){
+         LanyaViewController *lanyaVC = [LanyaViewController create];
+         [self hideTabBarAndpushViewController:lanyaVC];
      }
 
 }

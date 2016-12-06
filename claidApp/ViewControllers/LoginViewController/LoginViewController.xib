@@ -163,7 +163,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="登录" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rVh-ch-x7H">
-                            <rect key="frame" x="166" y="20" width="43" height="26"/>
+                            <rect key="frame" x="166" y="25" width="43" height="26"/>
                             <constraints>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" id="RaY-hK-cvL"/>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" id="ath-lO-MI6"/>
@@ -176,7 +176,7 @@
                     <color key="backgroundColor" red="0.063819527629999998" green="0.80392915009999999" blue="0.43179529909999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="tintColor" red="0.99599474669999999" green="0.99613386390000003" blue="0.99595087770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="rVh-ch-x7H" firstAttribute="centerY" secondItem="wii-iG-Gyf" secondAttribute="centerY" constant="1" id="RVt-1u-c8v"/>
+                        <constraint firstItem="rVh-ch-x7H" firstAttribute="centerY" secondItem="wii-iG-Gyf" secondAttribute="centerY" constant="6" id="RVt-1u-c8v"/>
                         <constraint firstItem="rVh-ch-x7H" firstAttribute="centerX" secondItem="wii-iG-Gyf" secondAttribute="centerX" id="t3G-s0-eXs"/>
                         <constraint firstAttribute="height" constant="64" id="yXn-Y4-y86"/>
                     </constraints>

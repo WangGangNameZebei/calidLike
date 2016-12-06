@@ -10,7 +10,11 @@
 @protocol sendDataToVCDelegate <NSObject>
 @optional
 - (void)DoSomethingEveryFrame:(NSArray *)array;     // 扫描设备代理
-- (void)recivedPeripheralData:(id)data;             // 数据传输代理
+- (void)DoSomethingtishiFrame:(NSString *)string;     // 扫描设备代理
+@end
+
+@protocol mindsendDataToVCDelegate <NSObject>
+@optional
 - (void)switchEditInitPeripheralData:(NSInteger )data;      //蓝牙状态标识代理
 
 @end
@@ -21,6 +25,7 @@
 
 }
 @property (nonatomic, assign) id <sendDataToVCDelegate> delegate;
+@property (nonatomic, assign) id <mindsendDataToVCDelegate> deleGate;
 @property (nonatomic, strong) CBCentralManager *manager;
 @property (nonatomic, strong) CBPeripheral *peripheral;
 @property (strong, nonatomic) CBCharacteristic *writeCharacteristic;
@@ -31,8 +36,9 @@
 @property (assign, nonatomic) BOOL tarScanBool;             //   目标扫描  标识
 @property (strong, nonatomic) NSTimer * scanTimer;
 @property (strong, nonatomic) NSTimer * shukaTimer;         //刷卡 计时
+@property (strong, nonatomic) NSTimer * houtaiTimer;         
 @property (strong, nonatomic) NSString *receiveData;
-@property (assign, nonatomic) BOOL jieHhou;
+@property (assign, nonatomic) BOOL jieHhou;                 //发卡返回标识
 
 
 + (SingleTon *)sharedInstance;
