@@ -24,7 +24,7 @@
         self.controllers = controllers;
         self.imageGroups = imageGroups;
         self.tabBar.translucent = NO;
-        self.tabBar.tintColor = [UIColor colorWithIntRed:60 green:208 blue:108];
+        self.tabBar.tintColor = [UIColor colorFromHexCode:@"#1296db"];
         [self.tabBar setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]]];
         [self.tabBar setShadowImage:[UIImage imageWithColor:[UIColor clearColor]]];
     }

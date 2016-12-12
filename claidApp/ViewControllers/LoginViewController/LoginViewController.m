@@ -12,6 +12,8 @@
 #import "MineViewController.h"
 #import "MyViewController.h"
 #import "CustomTabBarController.h"
+#import "LanyaViewController.h"
+#import "AESCrypt.h"
 
 @implementation LoginViewController
 
@@ -26,25 +28,42 @@
     
     [self configureViews];
 }
-
+//出现的时候调用
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if ([AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESData"] password:AES_PASSWORD].length > 0){
+    CustomTabBarController *customTabBarController = [self createCustomTabBarController];
+    UIApplication.sharedApplication.delegate.window.rootViewController = customTabBarController;
+    
+    NSLog(@"从keyChain中取出的uuid-> %@",[self keyChainIdentifierForVendorString]);    // 获取钥匙串 的UUID
+    }    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)activationButtonAction:(id)sender {
+    
+    LanyaViewController *lanyaVC = [LanyaViewController create];
+    lanyaVC.titleNameString = [NSString stringWithFormat:@"物业激活"];
+    [self hideTabBarAndpushViewController:lanyaVC];
+
+}
 - (IBAction)loginButtonAction:(id)sender {
    // [[NSUserDefaults standardUserDefaults] setObject:self.phoneNumberTextField.text forKey:@"phoneNumber"];    //   登录成功之后  要储存
-    
-    [[SingleTon sharedInstance] initialization];    // 蓝牙设备
-    CustomTabBarController *customTabBarController = [self createCustomTabBarController];
-    UIApplication.sharedApplication.delegate.window.rootViewController = customTabBarController;
-    
-      NSLog(@"从keyChain中取出的uuid-> %@",[self keyChainIdentifierForVendorString]);    // 获取钥匙串 的UUID
+    [self promptInformationActionWarningString:@"此功能暂未开通"];
+//    [[SingleTon sharedInstance] initialization];    // 蓝牙设备
+//    CustomTabBarController *customTabBarController = [self createCustomTabBarController];
+//    UIApplication.sharedApplication.delegate.window.rootViewController = customTabBarController;
+//    
+//      NSLog(@"从keyChain中取出的uuid-> %@",[self keyChainIdentifierForVendorString]);    // 获取钥匙串 的UUID
 
 }
                                                                                                                                                                                   
 - (IBAction)registerButtonAction:(id)sender {
-    RegisterViewController *registerVC = [RegisterViewController create];
-    [self hideTabBarAndpushViewController:registerVC];
+    [self promptInformationActionWarningString:@"此功能暂未开通"];
+//    RegisterViewController *registerVC = [RegisterViewController create];
+//    [self hideTabBarAndpushViewController:registerVC];
 }
 
 

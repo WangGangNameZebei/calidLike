@@ -15,21 +15,21 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qs0-pq-XJc">
-                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="43.5"/>
+                        <rect key="frame" x="22" y="0.0" width="0.0" height="43.5"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" id="2on-kq-PFc"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="qs0-pq-XJc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="5dL-UM-vOI"/>
+                    <constraint firstItem="qs0-pq-XJc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="22" id="5dL-UM-vOI"/>
                     <constraint firstAttribute="bottom" secondItem="qs0-pq-XJc" secondAttribute="bottom" id="Kyt-JZ-2Ps"/>
                     <constraint firstItem="qs0-pq-XJc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="gH6-ls-uC0"/>
                 </constraints>

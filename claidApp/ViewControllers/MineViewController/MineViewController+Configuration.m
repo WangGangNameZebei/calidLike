@@ -8,7 +8,7 @@
 
 #import "MineViewController+Configuration.h"
 #import "AESCrypt.h"
-
+#import "UIColor+Utility.h"
 #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
 
 @implementation MineViewController (Configuration)
@@ -27,7 +27,7 @@
         self.carouselView = [[JYCarousel alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, 200) configBlock:^JYConfiguration *(JYConfiguration *carouselConfig) {
             carouselConfig.pageContollType = MiddlePageControl;
             carouselConfig.pageTintColor = [UIColor whiteColor];
-            carouselConfig.currentPageTintColor = [UIColor blueColor];
+            carouselConfig.currentPageTintColor = [UIColor colorFromHexCode:@"#1296db"];
             carouselConfig.pushAnimationType = PushCube;
             carouselConfig.placeholder = [UIImage imageNamed:@"zhanweiImage.png"];
             carouselConfig.faileReloadTimes = 5;
@@ -52,15 +52,6 @@
     self.peripherArray = [NSMutableArray array];
 }
 
-- (void)switchEditInit {
-    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"switch"] isEqualToString:@"YES"]){
-        [self.zidongSwitch setOn:YES];
-        [self zidongSwitchAction:self.zidongSwitch];
-    } else {
-        [self.zidongSwitch setOn:NO];
-    }
-}
-
 
 
 
@@ -80,9 +71,15 @@
             [self switchEditInit];
             break;
         case 2:                             //  2  为 自动 连接 发现服务
+            
              self.message = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESData"] password:AES_PASSWORD];
-            self.message = [NSString stringWithFormat:@"%@%@",@"AA",self.message];
-            [self writeDataActionString:self.message];
+            if (self.message.length > 0) {
+                self.message = [NSString stringWithFormat:@"%@%@",@"AA",self.message];
+                [self writeDataActionString:self.message];
+            } else {
+                [self promptInformationActionWarningString:@"暂未发卡!"];
+                [[SingleTon sharedInstance] disConnection];
+            }
             break;
         case 3:                             //  3  为 发送数据成功
          [[SingleTon sharedInstance] disConnection];             //断开蓝牙
@@ -92,13 +89,13 @@
                 [[SingleTon sharedInstance] targetScan];             //目标扫描
             break;
         case 5:
-             [self alertViewmessage:@"无本地链接!"];
+            [self promptInformationActionWarningString:@"无本地链接!"];
             break;
         case 6:
             [self alertViewmessage:@"数据返回格式错误!"];
             break;
         case 7:
-            [self alertViewmessage:@"刷卡失败!"];
+            [self promptInformationActionWarningString:@"刷卡失败!"];
             break;
         default:
             [self lanyaShuakareturnPromptActioninteger:data];
@@ -109,27 +106,6 @@
 
 - (IBAction)shuakaButtonAction:(id)sender {     // 手动刷卡
     [self autoConnectAction];
-}
-
-- (IBAction)zidongSwitchAction:(id)sender {   //自动链接
-    UISwitch *switchButton = (UISwitch*)sender;
-    BOOL isButtonOn = [switchButton isOn];
-    if (isButtonOn) {
-        SingleTon *ton = [SingleTon sharedInstance];
-        NSString *uuidstr = [[NSUserDefaults standardUserDefaults] objectForKey:@"identifierStr"];
-        
-        if (!uuidstr) {
-            NSLog(@"没有本地保存外设identifierStr");
-            return;
-        }
-        
-        [ton getPeripheralWithIdentifierAndConnect:uuidstr];
-        [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"switch"];
-    } else {
-        [self.ton.manager stopScan];  //停止  扫描
-        [[NSUserDefaults standardUserDefaults] setObject:@"NO" forKey:@"switch"];
-    }
-   
 }
 
 #pragma mark - 空白处收起键盘
@@ -149,7 +125,7 @@
     NSString *uuidstr = [[NSUserDefaults standardUserDefaults] objectForKey:@"identifierStr"];
     
     if (!uuidstr) {
-        NSLog(@"没有本地保存外设identifierStr");
+        [self promptInformationActionWarningString:@"没有本地保存的蓝牙!"];
         return;
     }
     [ton getPeripheralWithIdentifierAndConnect:uuidstr];    //连接蓝牙
@@ -201,34 +177,34 @@
             [self alertViewmessage:@"测试卡处理!"];
             break;
         case 0x35:
-           // self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入  有循环码处理 2为电梯总线!",self.textView.text];
+             [self promptInformationActionWarningString:@"正常进入,有循环码处理,2为电梯总线!"];
             break;
         case 0x36:
-          //  self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入  没有处理循环码 2为电梯总线!",self.textView.text];
+            [self promptInformationActionWarningString:@"正常进入,没有处理循环码,2为电梯总线!"];
             break;
         case 0x20:
-          //  self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入  有循环码处理 3为门禁!",self.textView.text];
+            [self promptInformationActionWarningString:@"正常进入,有处理循环码,3为门禁!"];
             break;
         case 0x2e:
-          //  self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入 没有处理循环码 3为门禁!",self.textView.text];
+            [self promptInformationActionWarningString:@"正常进入,没有处理循环码,3为门禁!"];
             break;
         case 0x37:
-          //  self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入  有循环码处理 5 楼宇模块!",self.textView.text];
+            [self promptInformationActionWarningString:@"正常进入,有处理循环码,5为楼宇模块!"];
             break;
         case 0x38:
-          //  self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入 没有处理循环码 5 楼宇模块!",self.textView.text];
+            [self promptInformationActionWarningString:@"正常进入,没有处理循环码,5为楼宇模块!"];
             break;
         case 0x21:
-          //  self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入  有循环码处理 1 为读卡器!",self.textView.text];
+            [self promptInformationActionWarningString:@"正常进入,有处理循环码,1为读卡器!"];
             break;
         case 0x2f:
-           // self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入 没有处理循环码 1 为读卡器!",self.textView.text];
+            [self promptInformationActionWarningString:@"正常进入,没有处理循环码,1为读卡器!"];
             break;
         case 0x39:
-           // self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入  有循环码处理 4为光耦读卡器!",self.textView.text];
+            [self promptInformationActionWarningString:@"正常进入,有处理循环码,4为光耦读卡器!"];
             break;
         case 0x3a:
-          //  self.textView.text = [NSString stringWithFormat:@"%@\n%@",@"正常进入 没有处理循环码  4为光耦读卡器!",self.textView.text];
+            [self promptInformationActionWarningString:@"正常进入,没有处理循环码,4为光耦读卡器!"];
             break;
         default:
             break;

@@ -20,6 +20,38 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self configureViews];
+    [self switchEditInit];
+}
+- (void)switchEditInit {
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"switch"] isEqualToString:@"YES"]){
+        [self.ziDongSwitch setOn:YES];
+        [self zidongAction:self.ziDongSwitch];
+    } else {
+        [self.ziDongSwitch setOn:NO];
+    }
+}
+
+- (IBAction)zidongAction:(id)sender {
+    UISwitch *switchButton = (UISwitch*)sender;
+    BOOL isButtonOn = [switchButton isOn];
+    if (isButtonOn) {
+        SingleTon *ton = [SingleTon sharedInstance];
+        NSString *uuidstr = [[NSUserDefaults standardUserDefaults] objectForKey:@"identifierStr"];
+        
+        if (!uuidstr) {
+            [self promptInformationActionWarningString:@"没有本地保存的蓝牙!"];
+            NSLog(@"没有本地保存外设identifierStr");
+            return;
+        }
+        
+        [ton getPeripheralWithIdentifierAndConnect:uuidstr];
+        [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"switch"];
+    } else {
+        [self.ton.manager stopScan];  //停止  扫描
+        [[NSUserDefaults standardUserDefaults] setObject:@"NO" forKey:@"switch"];
+    }
+
+    
 }
 
 //出现的时候调用

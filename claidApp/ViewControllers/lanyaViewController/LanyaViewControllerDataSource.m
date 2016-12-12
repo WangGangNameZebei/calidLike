@@ -35,7 +35,7 @@
 #pragma mark 自定cell
 - (UITableViewCell *)myTableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
     MyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:My_TABLEVIEW_CELL];
-    cell.myCellImageView.image = [UIImage imageNamed:@"lanya_3.png"];
+    cell.myCellImageView.image = [UIImage imageNamed:@"my_bluetooth_blue"];
     cell.myCellLabel.text =@"扫描蓝牙";
     return cell;
 }

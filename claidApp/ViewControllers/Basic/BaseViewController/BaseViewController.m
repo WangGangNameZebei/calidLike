@@ -8,7 +8,8 @@
 
 #import "BaseViewController.h"
 #import <SSKeychain.h>
-
+#import <Masonry.h>
+#import "UIScreen+Utility.h"
 @implementation BaseViewController
 
 + (instancetype)create {
@@ -54,6 +55,26 @@
     return retrieveuuid;
 }
 
+- (void)promptInformationActionWarningString:(NSString *)warningString {
+    UIView *warningStr = [[UIView alloc] initWithFrame:CGRectMake(([UIScreen screenWidth] - 310 )/ 2  , ([UIScreen screenHeight]) / 2 + 50, 310, 60)];
+    warningStr.backgroundColor = [UIColor blackColor];
+    UILabel *warLabel = [[UILabel alloc] initWithFrame:warningStr.bounds];
+    warLabel.textColor = [UIColor whiteColor];
+    warLabel.text = warningString;
+    warLabel.textAlignment = 1;
+    [warningStr addSubview:warLabel];
+    warningStr.alpha = .0f;
+    [self.view addSubview:warningStr];
+    
+    [UIView animateWithDuration:2.0 delay:0.2 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+        warningStr.alpha = 1;
+        
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        [warningStr removeFromSuperview];
+    }];
+    
+}
 /*
 - (void)viewDidLoad {
     [super viewDidLoad];

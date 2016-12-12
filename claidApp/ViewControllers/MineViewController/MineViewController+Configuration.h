@@ -11,5 +11,4 @@
 @interface MineViewController (Configuration)
 
 - (void)configureViews;
-- (void)switchEditInit;
 @end

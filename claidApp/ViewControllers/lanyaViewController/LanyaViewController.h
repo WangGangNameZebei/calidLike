@@ -12,9 +12,11 @@
 
 @interface LanyaViewController : BaseViewController<UITableViewDelegate,sendDataToVCDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *lanyaTableView;
+@property (weak, nonatomic) IBOutlet UILabel *lanyaTitleLabel;
 
 @property (strong, nonatomic) LanyaViewControllerDataSource *lanyaViewControllerDataSource;
 @property (strong, nonatomic) NSMutableArray *lanyaNameHuoquArray;
 
 @property (strong, nonatomic) SingleTon *sinTon;
+@property (strong, nonatomic) NSString *titleNameString;
 @end

@@ -14,6 +14,7 @@
 #import "CustomTabBarController.h"
 #import "NetWorkJudge.h"
 #import "ZLCGuidePageView.h"    //引导
+#import "TTSwitch.h"
 @implementation AppDelegate
 
 
@@ -24,30 +25,41 @@
         
         NSLog(@"--------------->%ld",NetworkStatus);        //网络 监测      
     }];
-    //    NSString *uuidstr = [[NSUserDefaults standardUserDefaults] objectForKey:@"phoneNumber"];
-//    
-//    if (!uuidstr) {
-//        LoginViewController *loginViewController = [LoginViewController create];
-//        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
-//        navigationController.navigationBarHidden = YES;
-//        self.window.rootViewController = navigationController;
-//    } else {
-        [[SingleTon sharedInstance] initialization];    // 蓝牙设备
+    [self ttSwitchAddImageAction];
+    [[SingleTon sharedInstance] initialization];    // 蓝牙设备
+   if (![[NSUserDefaults standardUserDefaults] objectForKey:@"identifierStr"]) {
+       
+        LoginViewController *loginViewController = [LoginViewController create];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
+        navigationController.navigationBarHidden = YES;
+        self.window.rootViewController = navigationController;
+       
+       //引导页图片数组
+       NSArray *images =  @[[UIImage imageNamed:@"image1.jpg"],[UIImage imageNamed:@"image2.jpg"],[UIImage imageNamed:@"image3.jpg"],[UIImage imageNamed:@"image4.jpg"],[UIImage imageNamed:@"image5.jpg"]];
+       //创建引导页视图
+       ZLCGuidePageView *pageView = [[ZLCGuidePageView alloc]initWithFrame:self.window.frame WithImages:images];
+       [self.window.rootViewController.view addSubview:pageView];
+
+    } else {
+        
          CustomTabBarController *customTabBarController = [self createCustomTabBarController];
         self.window.rootViewController = customTabBarController;
-   // }
-    if (![[NSUserDefaults standardUserDefaults] objectForKey:@"identifierStr"]){
-        //引导页图片数组
-        NSArray *images =  @[[UIImage imageNamed:@"image1.jpg"],[UIImage imageNamed:@"image2.jpg"],[UIImage imageNamed:@"image3.jpg"],[UIImage imageNamed:@"image4.jpg"],[UIImage imageNamed:@"image5.jpg"]];
-        //创建引导页视图
-        ZLCGuidePageView *pageView = [[ZLCGuidePageView alloc]initWithFrame:self.window.frame WithImages:images];
-        [self.window.rootViewController.view addSubview:pageView];
-        
-    }
+     }
+
 
     [self.window makeKeyAndVisible];
     [NSThread sleepForTimeInterval:1];  //启动时间  (空白页显示 的时间)
     return YES;
+}
+- (void)ttSwitchAddImageAction {
+    [[TTSwitch appearance] setTrackImage:[UIImage imageNamed:@"round-switch-track.png"]];
+    [[TTSwitch appearance] setOverlayImage:[UIImage imageNamed:@"round-switch-overlay"]];
+    [[TTSwitch appearance] setTrackMaskImage:[UIImage imageNamed:@"round-switch-mask"]];
+    [[TTSwitch appearance] setThumbImage:[UIImage imageNamed:@"round-switch-thumb"]];
+    [[TTSwitch appearance] setThumbHighlightImage:[UIImage imageNamed:@"round-switch-thumb-highlight"]];
+    [[TTSwitch appearance] setThumbMaskImage:[UIImage imageNamed:@"round-switch-mask"]];
+    [[TTSwitch appearance] setThumbInsetX:-3.0f];
+    [[TTSwitch appearance] setThumbOffsetY:-3.0f];
 }
 - (CustomTabBarController *)createCustomTabBarController {
     MineViewController *minViewController = [MineViewController create];
@@ -58,8 +70,8 @@
 
 - (NSArray *)createTabBarGroups {
     NSArray *titles = @[NSLocalizedString(@"主页", nil), NSLocalizedString(@"我的", nil),];
-    NSArray *selectImages = @[@"zhuye_1.png", @"wode_1.png"];
-    NSArray *unSelectImages = @[@"zhuye_2",@"wode_2.png"];
+    NSArray *selectImages = @[@"homePage_blue", @"my_blue"];
+    NSArray *unSelectImages = @[@"homePage_gray",@"my_gray"];
     NSMutableArray *imageGroups = [[NSMutableArray alloc] init];
     for (int i = 0; i < titles.count; i++) {
         TabBarItemImageGroup *imageGroup = [[TabBarItemImageGroup alloc] init];

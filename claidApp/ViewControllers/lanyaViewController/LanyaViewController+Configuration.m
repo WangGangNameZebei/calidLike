@@ -22,6 +22,7 @@
 }
 
 - (void)LanyainitData {
+    self.lanyaTitleLabel.text = self.titleNameString;
     self.sinTon = [SingleTon sharedInstance];
     self.sinTon.delegate = self;
     self.lanyaNameHuoquArray = [NSMutableArray array];
@@ -44,7 +45,7 @@
     self.lanyaNameHuoquArray = array;
 }
 - (void)DoSomethingtishiFrame:(NSString *)string {
-    [self alertViewmessage:string];
+    [self promptInformationActionWarningString:string];
 }
 
 #pragma mark - UITableView Delegate

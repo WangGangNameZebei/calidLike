@@ -140,18 +140,18 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yk3-oZ-iX3">
-                            <rect key="frame" x="85" y="274" width="175" height="42"/>
-                            <color key="backgroundColor" red="0.1081480011343956" green="0.79273545742034912" blue="0.44668000936508179" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <rect key="frame" x="85" y="274" width="175" height="60"/>
+                            <color key="backgroundColor" red="0.068421952426433563" green="0.58686798810958862" blue="0.84999686479568481" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="175" id="Eg7-aC-ONi"/>
-                                <constraint firstAttribute="height" constant="42" id="Jk7-Sc-ke5"/>
+                                <constraint firstAttribute="height" constant="60" id="Jk7-Sc-ke5"/>
                             </constraints>
                             <state key="normal" title="注册">
-                                <color key="titleColor" red="0.35672311299999998" green="0.35672311299999998" blue="0.35672311299999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" red="0.99991601705551147" green="1" blue="0.99987202882766724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="5"/>
+                                    <integer key="value" value="25"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                             <connections>
@@ -185,12 +185,12 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="注册" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xEK-ny-Qnl">
-                            <rect key="frame" x="166" y="25" width="43" height="25.5"/>
+                            <rect key="frame" x="165" y="25" width="45" height="25.5"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="25.5" id="6PS-RF-Ca0"/>
-                                <constraint firstAttribute="width" constant="43" id="ZrY-Rm-JiB"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" id="ZrY-Rm-JiB"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
                             <color key="textColor" red="0.9999160171" green="1" blue="0.99987202880000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="highlightedColor" red="0.9999160171" green="1" blue="0.99987202880000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </label>
@@ -212,7 +212,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.063819527629999998" green="0.80392915009999999" blue="0.43179529909999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.068421952426433563" green="0.58686798810958862" blue="0.84999686479568481" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="tintColor" red="0.99599474669999999" green="0.99613386390000003" blue="0.99595087770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="xEK-ny-Qnl" firstAttribute="centerX" secondItem="jni-dM-pg6" secondAttribute="centerX" id="2cT-M3-cRH"/>

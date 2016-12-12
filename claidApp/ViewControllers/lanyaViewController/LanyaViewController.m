@@ -18,7 +18,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     [self configureViews];
 }
 
@@ -60,6 +60,7 @@
     sleep(3.);
 }
 - (IBAction)returnButtonAction:(id)sender {
+    
      [self.navigationController popViewControllerAnimated:YES];
 }
 

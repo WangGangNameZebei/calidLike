@@ -10,14 +10,14 @@
 #import "SingleTon.h"
 #import "MinViewControllerDataSource.h"
 #import "JYCarousel.h"
-
+#import "TTSwitch.h"
 @interface MineViewController : BaseViewController<mindsendDataToVCDelegate,UITableViewDelegate,JYCarouselDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *shuaKaButton;
 
-@property (weak, nonatomic) IBOutlet UISwitch *zidongSwitch;
+@property (weak, nonatomic) IBOutlet TTSwitch *ziDongSwitch;
 
 
 @property (strong, nonatomic) MinViewControllerDataSource *minViewControllerDataSource;
@@ -26,4 +26,5 @@
 @property (strong, nonatomic) NSString *message;
 
 @property (nonatomic, strong) JYCarousel *carouselView;
+- (void)switchEditInit;
 @end

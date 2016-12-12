@@ -52,28 +52,28 @@
 #pragma mark textField 代理方法
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     if (textField.tag == 1) {
-        self.phoneNumberView.layer.borderColor = [[UIColor colorFromHexCode:@"#3CD06D"] CGColor];
-         self.phoneNumberImageView.image = [UIImage imageNamed:@"denglu_1.png"];
+        self.phoneNumberView.layer.borderColor = [[UIColor colorFromHexCode:@"#1296db"] CGColor];
+         self.phoneNumberImageView.image = [UIImage imageNamed:@"login_accountNumber_blue"];
     } else if (textField.tag == 2) {
-        self.mishiView.layer.borderColor = [[UIColor colorFromHexCode:@"#3CD06D"] CGColor];
-        self.mishiImageView.image = [UIImage imageNamed:@"key_1.png"];
+        self.mishiView.layer.borderColor = [[UIColor colorFromHexCode:@"#1296db"] CGColor];
+        self.mishiImageView.image = [UIImage imageNamed:@"login_secretKey_blue"];
     }else {
-        self.passwordView.layer.borderColor = [[UIColor colorFromHexCode:@"#3CD06D"] CGColor];
-         self.passwordImageView.image = [UIImage imageNamed:@"mima_1.png"];
+        self.passwordView.layer.borderColor = [[UIColor colorFromHexCode:@"#1296db"] CGColor];
+         self.passwordImageView.image = [UIImage imageNamed:@"login_passWord_blue"];
     }
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     if (textField.tag == 1) {
         self.phoneNumberView.layer.borderColor = [[UIColor colorFromHexCode:@"#C2C2C2"] CGColor];
-         self.phoneNumberImageView.image = [UIImage imageNamed:@"denglu_2.png"];
+         self.phoneNumberImageView.image = [UIImage imageNamed:@"login_accountNumber_gray"];
     } else if (textField.tag == 2) {
         self.mishiView.layer.borderColor = [[UIColor colorFromHexCode:@"#C2C2C2"] CGColor];
-         self.mishiImageView.image = [UIImage imageNamed:@"key_2.png"];
+         self.mishiImageView.image = [UIImage imageNamed:@"login_secretKey_gray"];
         
     } else {
         self.passwordView.layer.borderColor = [[UIColor colorFromHexCode:@"#C2C2C2"] CGColor];
-         self.passwordImageView.image = [UIImage imageNamed:@"mima_2.png"];
+         self.passwordImageView.image = [UIImage imageNamed:@"login_passWord_gray"];
     }
 }
 

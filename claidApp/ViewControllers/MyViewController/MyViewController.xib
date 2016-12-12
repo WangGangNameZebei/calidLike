@@ -24,43 +24,22 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IgW-RG-91T">
-                            <rect key="frame" x="166" y="25" width="43" height="25.5"/>
+                            <rect key="frame" x="165" y="24.5" width="45" height="26.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" id="D8j-KG-6w1"/>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" id="gU9-al-Ga0"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
                             <color key="textColor" red="0.9999160171" green="1" blue="0.99987202880000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="highlightedColor" red="0.9999160171" green="1" blue="0.99987202880000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shezhi_2.png" translatesAutoresizingMaskIntoConstraints="NO" id="6z4-P0-yMZ">
-                            <rect key="frame" x="8" y="24" width="28" height="28"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="28" id="505-6V-Ppd"/>
-                                <constraint firstAttribute="width" constant="28" id="ztb-8p-gGG"/>
-                            </constraints>
-                        </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0vs-t2-JI5">
-                            <rect key="frame" x="0.0" y="8" width="48" height="48"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="48" id="7sB-JX-jlh"/>
-                                <constraint firstAttribute="width" constant="48" id="csF-MF-c0Y"/>
-                            </constraints>
-                            <connections>
-                                <action selector="shezhiButtonAction:" destination="-1" eventType="touchUpInside" id="Mo1-lP-70w"/>
-                            </connections>
-                        </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.063819527629999998" green="0.80392915009999999" blue="0.43179529909999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.068421952426433563" green="0.58686798810958862" blue="0.84999686479568481" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="tintColor" red="0.99599474669999999" green="0.99613386390000003" blue="0.99595087770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="0vs-t2-JI5" firstAttribute="leading" secondItem="sM1-mG-f2q" secondAttribute="leading" id="8z1-j2-B0V"/>
                         <constraint firstItem="IgW-RG-91T" firstAttribute="centerX" secondItem="sM1-mG-f2q" secondAttribute="centerX" id="DcF-Fh-PBY"/>
                         <constraint firstAttribute="height" constant="64" id="Lls-t2-Wja"/>
-                        <constraint firstItem="0vs-t2-JI5" firstAttribute="centerY" secondItem="sM1-mG-f2q" secondAttribute="centerY" id="M8C-lT-xDl"/>
-                        <constraint firstItem="6z4-P0-yMZ" firstAttribute="centerY" secondItem="sM1-mG-f2q" secondAttribute="centerY" constant="6" id="b5J-UO-bBs"/>
                         <constraint firstItem="IgW-RG-91T" firstAttribute="centerY" secondItem="sM1-mG-f2q" secondAttribute="centerY" constant="5.75" id="cZe-qp-ppp"/>
-                        <constraint firstItem="6z4-P0-yMZ" firstAttribute="leading" secondItem="sM1-mG-f2q" secondAttribute="leading" constant="8" id="nld-vN-rjB"/>
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KuR-Hv-mr4">
@@ -81,7 +60,4 @@
             <point key="canvasLocation" x="18.5" y="44.5"/>
         </view>
     </objects>
-    <resources>
-        <image name="shezhi_2.png" width="32" height="32"/>
-    </resources>
 </document>

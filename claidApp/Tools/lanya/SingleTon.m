@@ -102,6 +102,10 @@ static SingleTon *_instace = nil;
 #pragma mark - 处理传进来的字符串并发指令
 - (void)sendCommand:(NSString *)String {
     if(String.length > 200)
+        if (self.shukaTimer) {
+            [self.shukaTimer invalidate];    // 释放函数
+            self.shukaTimer = nil;
+        }
         self.shukaTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(shukaShibaiAction) userInfo:nil repeats:NO];
     
     if ([String isEqualToString:@"aa"] || [String isEqualToString:@"00"]) {
@@ -144,8 +148,10 @@ static SingleTon *_instace = nil;
 #pragma mark - 根据传进来的uuid去连接外设
 - (void)getPeripheralWithIdentifierAndConnect:(NSString *)identifierStr {
     [self stopScan];
-    if (!self.scanTimer)
+    if (!self.scanTimer){
        [self.scanTimer invalidate];    // 释放函数
+        self.scanTimer = nil;
+    }
     NSUUID * uuid = [[NSUUID alloc]initWithUUIDString:identifierStr];
     NSArray *array = [self.manager retrievePeripheralsWithIdentifiers:@[uuid]];
     CBPeripheral *peripheral = [array lastObject];
@@ -189,7 +195,10 @@ static SingleTon *_instace = nil;
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"switch"] isEqualToString:@"YES"]) {
      self.houtaiTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(houtaisaomiaoAction) userInfo:nil repeats:YES];
     }
-   [self.scanTimer invalidate];    // 释放函数
+    if (self.scanTimer){
+       [self.scanTimer invalidate];    // 释放函数
+        self.scanTimer = nil;
+    }
   
 }
 
@@ -210,6 +219,7 @@ static SingleTon *_instace = nil;
 - (void)lanyaQiantaiAction {
     if (self.houtaiTimer) {
         [self.houtaiTimer invalidate];
+        self.houtaiTimer = nil;
         [self stopScan];
     }
     if (self.manager)
@@ -249,7 +259,10 @@ static SingleTon *_instace = nil;
 //    NSArray *array = [self.manager retrievePeripheralsWithIdentifiers:@[uuid]];
 //    CBPeripheral *chucunPeripheral = [array lastObject];   /[peripheral.name isEqualToString:chucunPeripheral.name]
     if (_tarScanBool){
-        [self.scanTimer invalidate];    // 释放函数
+        if (self.scanTimer){
+          [self.scanTimer invalidate];    // 释放函数
+            self.scanTimer = nil;
+        }
        self.scanTimer = [NSTimer scheduledTimerWithTimeInterval:6 target:self selector:@selector(lianjielanyaAction) userInfo:nil repeats:NO];
         
        
@@ -305,7 +318,11 @@ static SingleTon *_instace = nil;
     if ([self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
         [self.deleGate switchEditInitPeripheralData:7];
     }
-    [self disConnection];
+    if(self.shukaTimer) {
+      [self.shukaTimer invalidate];    // 释放函数
+      self.shukaTimer = nil;
+    }
+     [self disConnection];
 }
 #pragma mark - 主动断开设备
 -(void)disConnection
@@ -325,10 +342,11 @@ static SingleTon *_instace = nil;
 
     LOG(@"成功连接 peripheral: %@ ",peripheral);
     self.peripheral = peripheral;
-    [peripheral readRSSI];
+    //[peripheral readRSSI];
     [self.peripheral setDelegate:self];
     [self.peripheral discoverServices:nil];
-    
+    if (!_shukaTimer)
+     self.shukaTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(shukaShibaiAction) userInfo:nil repeats:NO];
     LOG(@"扫描服务");
     
 }
@@ -431,7 +449,8 @@ static SingleTon *_instace = nil;
         
     } else if (self.receiveData.length == 106){
         [self.shukaTimer invalidate];    // 释放函数
-        
+        if(self.shukaTimer)
+            self.shukaTimer = nil;
         self.receiveData = [[self hexadecimalString:characteristic.value] substringWithRange:NSMakeRange(0,104)];
         
         

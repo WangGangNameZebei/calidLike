@@ -17,4 +17,5 @@
 - (void)alertViewmessage:(NSString *)massage;
 
 - (NSString *)keyChainIdentifierForVendorString;
+- (void)promptInformationActionWarningString:(NSString *)warningString;
 @end
