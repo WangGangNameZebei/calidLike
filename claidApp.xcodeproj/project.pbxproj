@@ -51,6 +51,9 @@
 		0A7878CF1DCDBCB1008A37D0 /* KaiKaViewController+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7878CE1DCDBCB1008A37D0 /* KaiKaViewController+Animation.m */; };
 		0A83FE1D1DC9B32F006F4D61 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A83FE1C1DC9B32F006F4D61 /* libsqlite3.tbd */; };
 		0A8612261DEC0C8200AC1FB4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A8612251DEC0C8200AC1FB4 /* AVFoundation.framework */; };
+		0A86A9E31E0236C7006AE3CB /* gsgg1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0A86A9E01E0236C7006AE3CB /* gsgg1.jpg */; };
+		0A86A9E41E0236C7006AE3CB /* gsgg2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0A86A9E11E0236C7006AE3CB /* gsgg2.jpg */; };
+		0A86A9E51E0236C7006AE3CB /* gsgg3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0A86A9E21E0236C7006AE3CB /* gsgg3.jpg */; };
 		0A87F7AA1DB74F8E00EFF1F0 /* SingleTon.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A87F7A91DB74F8E00EFF1F0 /* SingleTon.m */; };
 		0A87F7AD1DB7588900EFF1F0 /* MineViewController+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A87F7AC1DB7588900EFF1F0 /* MineViewController+Animation.m */; };
 		0A87F7B01DB75D5E00EFF1F0 /* MinViewControllerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A87F7AF1DB75D5E00EFF1F0 /* MinViewControllerDataSource.m */; };
@@ -226,6 +229,9 @@
 		0A7878CE1DCDBCB1008A37D0 /* KaiKaViewController+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KaiKaViewController+Animation.m"; sourceTree = "<group>"; };
 		0A83FE1C1DC9B32F006F4D61 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		0A8612251DEC0C8200AC1FB4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		0A86A9E01E0236C7006AE3CB /* gsgg1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gsgg1.jpg; sourceTree = "<group>"; };
+		0A86A9E11E0236C7006AE3CB /* gsgg2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gsgg2.jpg; sourceTree = "<group>"; };
+		0A86A9E21E0236C7006AE3CB /* gsgg3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gsgg3.jpg; sourceTree = "<group>"; };
 		0A87F7A81DB74F8E00EFF1F0 /* SingleTon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleTon.h; sourceTree = "<group>"; };
 		0A87F7A91DB74F8E00EFF1F0 /* SingleTon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleTon.m; sourceTree = "<group>"; };
 		0A87F7AB1DB7588900EFF1F0 /* MineViewController+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MineViewController+Animation.h"; sourceTree = "<group>"; };
@@ -723,6 +729,9 @@
 			isa = PBXGroup;
 			children = (
 				0ACFF84D1DB5C48E0043D49A /* denglu_1.png */,
+				0A86A9E01E0236C7006AE3CB /* gsgg1.jpg */,
+				0A86A9E11E0236C7006AE3CB /* gsgg2.jpg */,
+				0A86A9E21E0236C7006AE3CB /* gsgg3.jpg */,
 				0AF7098D1DCB123C001F6AD8 /* XX_1.png */,
 				0A98AF4E1DF295F800BCA88C /* zhanweiImage.png */,
 				0A8C969D1DCC30D700AAD161 /* xiangxia_1.png */,
@@ -1093,11 +1102,14 @@
 				0A87F7B71DB7602E00EFF1F0 /* MinFuncTionTableViewCell.xib in Resources */,
 				0AFA94A61DF7ECD60044362D /* round-switch-thumb-highlight@2x.png in Resources */,
 				0AFA94AA1DF7ECD60044362D /* round-switch-track@2x.png in Resources */,
+				0A86A9E51E0236C7006AE3CB /* gsgg3.jpg in Resources */,
 				0AA5DA291DF554DA00CA816E /* image4.jpg in Resources */,
 				0ACFF8701DB5C48E0043D49A /* zhuye_1.png in Resources */,
 				0A52AC881DBDFCA800FE6DCE /* kaika.png in Resources */,
+				0A86A9E31E0236C7006AE3CB /* gsgg1.jpg in Resources */,
 				0ACFF8691DB5C48E0043D49A /* shezhi_1.png in Resources */,
 				0ACFF8231DB5BCA00043D49A /* Assets.xcassets in Resources */,
+				0A86A9E41E0236C7006AE3CB /* gsgg2.jpg in Resources */,
 				0AA5DA2A1DF554DA00CA816E /* image5.jpg in Resources */,
 				0ACFF8711DB5C48E0043D49A /* zhuye_2.png in Resources */,
 				0AC969951DC97EA100F62C57 /* login_background_img@2x.png in Resources */,
@@ -1403,6 +1415,7 @@
 			baseConfigurationReference = B07114D1ACC8FA1ADF51B95E /* Pods-claidApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = claidApp/claidApp.entitlements;
 				DEVELOPMENT_TEAM = 4WY57YVPWE;
 				ENABLE_BITCODE = YES;
@@ -1425,6 +1438,7 @@
 			baseConfigurationReference = 3FAE10D1BB41DF3C48FA7264 /* Pods-claidApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = claidApp/claidApp.entitlements;
 				DEVELOPMENT_TEAM = 4WY57YVPWE;
 				ENABLE_BITCODE = YES;

@@ -21,8 +21,7 @@
 
 #pragma mark  滚动视图
 - (void)carouselViewEdit {
-    NSMutableArray *imageArray = [[NSMutableArray alloc] initWithArray: @[@"https://p1.bqimg.com/524586/894925a41a745ba8.jpg",@"https://p1.bqimg.com/524586/edd59898ac21642f.jpg",@"https://p1.bqimg.com/524586/d277aa654cd60c3d.jpg",@"https://p1.bqimg.com/524586/a49b8d3e1b953f25.jpg",@"https://p1.bqimg.com/524586/972bff3b7a5fb7e1.jpg"]];
-    
+    NSMutableArray *imageArray = [[NSMutableArray alloc] initWithArray: @[@"gsgg1.jpg",@"gsgg2.jpg",@"gsgg3.jpg"]];
     if (!self.carouselView) {
         self.carouselView = [[JYCarousel alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, 200) configBlock:^JYConfiguration *(JYConfiguration *carouselConfig) {
             carouselConfig.pageContollType = MiddlePageControl;
@@ -71,8 +70,7 @@
             [self switchEditInit];
             break;
         case 2:                             //  2  为 自动 连接 发现服务
-            
-             self.message = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESData"] password:AES_PASSWORD];
+            self.message = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESData"] password:AES_PASSWORD];
             if (self.message.length > 0) {
                 self.message = [NSString stringWithFormat:@"%@%@",@"AA",self.message];
                 [self writeDataActionString:self.message];

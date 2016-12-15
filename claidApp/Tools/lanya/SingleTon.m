@@ -105,9 +105,10 @@ static SingleTon *_instace = nil;
         if (self.shukaTimer) {
             [self.shukaTimer invalidate];    // 释放函数
             self.shukaTimer = nil;
+            LOG(@"关闭刷卡定时器");
         }
         self.shukaTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(shukaShibaiAction) userInfo:nil repeats:NO];
-    
+       LOG(@"开启刷卡定时器");
     if ([String isEqualToString:@"aa"] || [String isEqualToString:@"00"]) {
         _jieHhou = YES;
     } else {
@@ -151,6 +152,7 @@ static SingleTon *_instace = nil;
     if (!self.scanTimer){
        [self.scanTimer invalidate];    // 释放函数
         self.scanTimer = nil;
+        LOG(@"关闭Scantime");
     }
     NSUUID * uuid = [[NSUUID alloc]initWithUUIDString:identifierStr];
     NSArray *array = [self.manager retrievePeripheralsWithIdentifiers:@[uuid]];
@@ -195,9 +197,11 @@ static SingleTon *_instace = nil;
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"switch"] isEqualToString:@"YES"]) {
      self.houtaiTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(houtaisaomiaoAction) userInfo:nil repeats:YES];
     }
+    LOG(@"开启后台定时器");
     if (self.scanTimer){
        [self.scanTimer invalidate];    // 释放函数
         self.scanTimer = nil;
+        LOG(@"关闭Scantime");
     }
   
 }
@@ -221,6 +225,7 @@ static SingleTon *_instace = nil;
         [self.houtaiTimer invalidate];
         self.houtaiTimer = nil;
         [self stopScan];
+        LOG(@"关闭后台定时器");
     }
     if (self.manager)
         [self targetScan];
@@ -262,9 +267,10 @@ static SingleTon *_instace = nil;
         if (self.scanTimer){
           [self.scanTimer invalidate];    // 释放函数
             self.scanTimer = nil;
+            LOG(@"关闭Scantime");
         }
        self.scanTimer = [NSTimer scheduledTimerWithTimeInterval:6 target:self selector:@selector(lianjielanyaAction) userInfo:nil repeats:NO];
-        
+        LOG(@"目标扫描 蓝牙 开启 连接蓝牙定时器(scantime)");
        
     } else {
         
@@ -321,6 +327,7 @@ static SingleTon *_instace = nil;
     if(self.shukaTimer) {
       [self.shukaTimer invalidate];    // 释放函数
       self.shukaTimer = nil;
+      LOG(@"关闭刷卡定时器");
     }
      [self disConnection];
 }
@@ -345,8 +352,8 @@ static SingleTon *_instace = nil;
     //[peripheral readRSSI];
     [self.peripheral setDelegate:self];
     [self.peripheral discoverServices:nil];
-    if (!_shukaTimer)
-     self.shukaTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(shukaShibaiAction) userInfo:nil repeats:NO];
+//    if (!_shukaTimer)
+//     self.shukaTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(shukaShibaiAction) userInfo:nil repeats:NO];
     LOG(@"扫描服务");
     
 }
@@ -448,9 +455,12 @@ static SingleTon *_instace = nil;
                 }
         
     } else if (self.receiveData.length == 106){
-        [self.shukaTimer invalidate];    // 释放函数
-        if(self.shukaTimer)
+       
+        if(self.shukaTimer){
+             [self.shukaTimer invalidate];    // 释放函数
             self.shukaTimer = nil;
+            LOG(@"关闭刷卡定时器");
+        }
         self.receiveData = [[self hexadecimalString:characteristic.value] substringWithRange:NSMakeRange(0,104)];
         
         
