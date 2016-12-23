@@ -162,6 +162,14 @@ static SingleTon *_instace = nil;
     
 }
 
+#pragma mark  连接蓝牙名字获取
+- (CBPeripheral *)lanyaNameString:(NSString *)uuidString {
+    NSUUID * uuid = [[NSUUID alloc]initWithUUIDString:uuidString];
+    NSArray *array = [self.manager retrievePeripheralsWithIdentifiers:@[uuid]];
+    CBPeripheral *peripheral = [array lastObject];
+    return peripheral;
+}
+
 #pragma mark  手动连接   蓝牙设备
 - (void)shoudongConnectClick:(CBPeripheral *)peripheral {
     _identiFication = NO;
@@ -400,7 +408,7 @@ static SingleTon *_instace = nil;
     for (CBCharacteristic *c in service.characteristics) {
         if ([c.UUID isEqual:[CBUUID UUIDWithString:@"0xFFF6"]]) {
             _writeCharacteristic = c;
-            
+    
             if (_identiFication && [self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
                 [self.deleGate switchEditInitPeripheralData:2];
             }
@@ -408,6 +416,7 @@ static SingleTon *_instace = nil;
         
         }
         if ([c.UUID isEqual:[CBUUID UUIDWithString:@"0xFFF7"]]) {
+            
             [self.peripheral setNotifyValue:YES forCharacteristic:c];
             
         }
@@ -425,7 +434,8 @@ static SingleTon *_instace = nil;
 #pragma mark - 获取外设发来的数据，不论是read和notify,获取数据都是从这个方法中读取。
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
-   
+   if (self.receiveData.length == 0)
+       self.receiveData = @"";
    NSLog(@"===== %@",[self hexadecimalString:characteristic.value]);
     NSString *str1 = [self hexadecimalString:characteristic.value];
     self.receiveData = [NSString stringWithFormat:@"%@%@",self.receiveData,str1];

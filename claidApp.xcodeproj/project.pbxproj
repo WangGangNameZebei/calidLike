@@ -74,6 +74,8 @@
 		0A98AF4C1DF270BF00BCA88C /* JYWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A98AF431DF270BF00BCA88C /* JYWeakTimer.m */; };
 		0A98AF4D1DF270BF00BCA88C /* UIImageView+JYImageViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A98AF451DF270BF00BCA88C /* UIImageView+JYImageViewManager.m */; };
 		0A98AF4F1DF295F800BCA88C /* zhanweiImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A98AF4E1DF295F800BCA88C /* zhanweiImage.png */; };
+		0A98E8EC1E0505B30086F6D5 /* LanyaHeadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A98E8EA1E0505B30086F6D5 /* LanyaHeadTableViewCell.m */; };
+		0A98E8ED1E0505B30086F6D5 /* LanyaHeadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A98E8EB1E0505B30086F6D5 /* LanyaHeadTableViewCell.xib */; };
 		0A9EEC691DCB0E2A00D74FC9 /* OpenCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9EEC681DCB0E2A00D74FC9 /* OpenCardView.m */; };
 		0A9EEC6B1DCB0E3C00D74FC9 /* OpenCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A9EEC6A1DCB0E3C00D74FC9 /* OpenCardView.xib */; };
 		0AA491301DC6F27D0013B974 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA4912E1DC6F27D0013B974 /* LoginViewController.m */; };
@@ -269,6 +271,9 @@
 		0A98AF441DF270BF00BCA88C /* UIImageView+JYImageViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+JYImageViewManager.h"; sourceTree = "<group>"; };
 		0A98AF451DF270BF00BCA88C /* UIImageView+JYImageViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+JYImageViewManager.m"; sourceTree = "<group>"; };
 		0A98AF4E1DF295F800BCA88C /* zhanweiImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zhanweiImage.png; sourceTree = "<group>"; };
+		0A98E8E91E0505B20086F6D5 /* LanyaHeadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanyaHeadTableViewCell.h; sourceTree = "<group>"; };
+		0A98E8EA1E0505B30086F6D5 /* LanyaHeadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanyaHeadTableViewCell.m; sourceTree = "<group>"; };
+		0A98E8EB1E0505B30086F6D5 /* LanyaHeadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LanyaHeadTableViewCell.xib; sourceTree = "<group>"; };
 		0A9EEC671DCB0E2A00D74FC9 /* OpenCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenCardView.h; sourceTree = "<group>"; };
 		0A9EEC681DCB0E2A00D74FC9 /* OpenCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenCardView.m; sourceTree = "<group>"; };
 		0A9EEC6A1DCB0E3C00D74FC9 /* OpenCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpenCardView.xib; sourceTree = "<group>"; };
@@ -512,6 +517,7 @@
 				0AD75CD41DBDE69100297AC3 /* MyTableViewCell */,
 				0A052F5C1DBDF0BD002EB567 /* BlankTableViewCell */,
 				0A0C1E4E1DD989C80059EFEC /* LoginOutTableViewCell */,
+				0A98E8E81E0505410086F6D5 /* LanyaHeadTabelViewCell */,
 			);
 			name = CustomCells;
 			path = Basic/CustomCells;
@@ -570,6 +576,16 @@
 				0A98AF451DF270BF00BCA88C /* UIImageView+JYImageViewManager.m */,
 			);
 			path = JYCarousel;
+			sourceTree = "<group>";
+		};
+		0A98E8E81E0505410086F6D5 /* LanyaHeadTabelViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0A98E8E91E0505B20086F6D5 /* LanyaHeadTableViewCell.h */,
+				0A98E8EA1E0505B30086F6D5 /* LanyaHeadTableViewCell.m */,
+				0A98E8EB1E0505B30086F6D5 /* LanyaHeadTableViewCell.xib */,
+			);
+			path = LanyaHeadTabelViewCell;
 			sourceTree = "<group>";
 		};
 		0A9EEC5C1DCB0CF300D74FC9 /* Components */ = {
@@ -1095,6 +1111,7 @@
 				0AF7098E1DCB123C001F6AD8 /* XX_1.png in Resources */,
 				0A52AC8B1DBDFCA800FE6DCE /* touxiang.png in Resources */,
 				0A52AC8C1DBDFCA800FE6DCE /* weixin.png in Resources */,
+				0A98E8ED1E0505B30086F6D5 /* LanyaHeadTableViewCell.xib in Resources */,
 				0AC68B9A1DCC6EBC00B71FB1 /* KaiKaViewController.xib in Resources */,
 				0ACFF86E1DB5C48E0043D49A /* zhuce_1.png in Resources */,
 				0AEC75201DC83D7E00933D77 /* fanhui_1.png in Resources */,
@@ -1222,6 +1239,7 @@
 				0A6DA6DD1DB6F9020013D0CF /* MineViewController+Configuration.m in Sources */,
 				0A9EEC691DCB0E2A00D74FC9 /* OpenCardView.m in Sources */,
 				0A95A2DA1DDA96B50019A691 /* NetWorkJudge.m in Sources */,
+				0A98E8EC1E0505B30086F6D5 /* LanyaHeadTableViewCell.m in Sources */,
 				0A6830E81DF10B3800D51770 /* LanyaViewControllerDataSource.m in Sources */,
 				0A5FF94E1DB604C800249F0C /* CustomTabBarController.m in Sources */,
 				0ACFF8891DB5CCAC0043D49A /* BaseViewController.m in Sources */,

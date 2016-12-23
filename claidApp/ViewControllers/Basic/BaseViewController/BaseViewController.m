@@ -31,12 +31,26 @@
     }
     return self;
 }
-
+#pragma mark  提示框  两种
 - (void)alertViewmessage:(NSString *)massage {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"  message:massage delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"  message:massage delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
     [alertView show];
 }
 
+- (void)alertViewDelegateString:(NSString *)stringMassage {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"版本提醒"  message:stringMassage delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"是的", nil];
+    [alertView show];
+
+}
+#pragma mark  提示框代理
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        NSString *string = [NSString stringWithFormat:@"items-apps://itunes.apple.com/app/id%@",@"AppID"];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:string]];
+    } else {
+        NSLog(@"点击了取消按钮");
+    }
+}
 
 - (void)hideTabBarAndpushViewController:(UIViewController *)viewController {
     [viewController setHidesBottomBarWhenPushed:YES];

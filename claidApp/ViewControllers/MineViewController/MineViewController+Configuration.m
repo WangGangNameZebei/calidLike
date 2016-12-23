@@ -18,7 +18,16 @@
     [self carouselViewEdit];
     [self addGestRecognizer];
 }
-
+#pragma mark检测升级
+- (void)upgradeAppAction {
+    static NSString *appId = @"xxxxxx";
+    // 返回是否有新版本
+    BOOL update = [self checkAppStoreVersionWithAppId:appId];
+    // 添加自己的代码 可以弹出一个提示框 这里不实现了
+    if (update) {
+        [self alertViewDelegateString:@"有新的版本可供检测,是否升级?"];
+    }
+}
 #pragma mark  滚动视图
 - (void)carouselViewEdit {
     NSMutableArray *imageArray = [[NSMutableArray alloc] initWithArray: @[@"gsgg1.jpg",@"gsgg2.jpg",@"gsgg3.jpg"]];
@@ -208,4 +217,46 @@
             break;
     }
 }
+
+#pragma mark -  检测 版本 号 是否升级
+- (BOOL)checkAppStoreVersionWithAppId:(NSString *)appId {
+    
+    // MARK: 拼接链接，转换成URL
+    NSString *checkUrlString = [NSString stringWithFormat:@"https://itunes.apple.com/lookup?id=%@", appId];
+    NSURL *checkUrl = [NSURL URLWithString:checkUrlString];
+    // MARK: 获取网路数据AppStore上app的信息
+    NSString *appInfoString = [NSString stringWithContentsOfURL:checkUrl encoding:NSUTF8StringEncoding error:nil];
+    // MARK: 字符串转json转字典
+    NSError *error = nil;
+    NSData *JSONData = [appInfoString dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *appInfo = [NSJSONSerialization JSONObjectWithData:JSONData options:NSJSONReadingMutableLeaves error:&error];
+    if (!error && appInfo) {
+        NSArray *resultArr = appInfo[@"results"];
+        NSDictionary *resultDic = resultArr.firstObject;
+        // 版本号
+        NSString *version = resultDic[@"trackName"];
+        // 下载地址
+      //  NSString *trackViewUrl = resultDic[@"trackViewUrl"];
+        // FRXME：比较版本号
+        return [self compareVersion:version];
+    }else {
+        // 返回错误 想当于没有更新吧
+        return NO;
+    }
+    
+}
+
+
+- (BOOL)compareVersion:(NSString *)serverVersion {
+    // 获取当前版本号
+    NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
+    NSString *appVersion = [infoDic objectForKey:@"CFBundleShortVersionString"];
+    // MARK： 比较方法
+    if ([appVersion compare:serverVersion options:NSNumericSearch] == NSOrderedAscending) {
+        return YES;
+       }else {
+        return NO;
+       }
+}
+
 @end

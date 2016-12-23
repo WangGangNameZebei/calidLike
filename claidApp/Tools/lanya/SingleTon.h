@@ -55,4 +55,5 @@
 - (void)targetScan;         //目标扫描
 - (void)shoudongConnectClick:(CBPeripheral *)peripheral;    // 手动 连接蓝牙设备
 - (int)turnTheHexLiterals:(NSString *)string;
+- (CBPeripheral *)lanyaNameString:(NSString *)uuidString;
 @end

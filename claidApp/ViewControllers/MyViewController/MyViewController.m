@@ -33,7 +33,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
      if (indexPath.row == 2){
          LanyaViewController *lanyaVC = [LanyaViewController create];
-         lanyaVC.titleNameString = [NSString stringWithFormat:@"扫描蓝牙"];
+         lanyaVC.titleNameString = [NSString stringWithFormat:@"蓝牙"];
          [self hideTabBarAndpushViewController:lanyaVC];
         
      } else if (indexPath.row == 1 || indexPath.row == 5 || indexPath.row == 7) {

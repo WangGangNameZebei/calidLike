@@ -24,8 +24,12 @@
 
 // 点击  UItableView
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0 || indexPath.row == 2 || indexPath.row == 4) {
     
-    if (indexPath.row == 0) {
+    } else if (indexPath.row == 1) {
+        CBPeripheral *peripheral = [[SingleTon sharedInstance] lanyaNameString:[[NSUserDefaults standardUserDefaults] objectForKey:@"identifierStr"]];
+        [[SingleTon sharedInstance] shoudongConnectClick:peripheral];
+    } else if (indexPath.row == 3) {
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
         hud.label.text = NSLocalizedString(@"扫秒蓝牙中...", @"HUD loading title");
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
@@ -38,13 +42,11 @@
             });
         });
  
-    } else if (indexPath.row == 1) {
-        
-    } else if (indexPath.row == (self.lanyaNameHuoquArray.count + 3)){
+    } else if (indexPath.row == (self.lanyaNameHuoquArray.count + 6)){
          [[SingleTon sharedInstance] disConnection];  //断开蓝牙
     } else {
-         if  (indexPath.row != (self.lanyaNameHuoquArray.count + 2) && indexPath.row != (self.lanyaNameHuoquArray.count + 4)){
-           CBPeripheral *periphe = [self.lanyaNameHuoquArray objectAtIndex:(indexPath.row - 2)];
+         if  (indexPath.row != (self.lanyaNameHuoquArray.count + 5) && indexPath.row != (self.lanyaNameHuoquArray.count + 7)){
+           CBPeripheral *periphe = [self.lanyaNameHuoquArray objectAtIndex:(indexPath.row - 5)];
            [[NSUserDefaults standardUserDefaults] setObject:[periphe identifier].UUIDString forKey:@"identifierStr"];
            [[SingleTon sharedInstance] shoudongConnectClick:periphe];
          }

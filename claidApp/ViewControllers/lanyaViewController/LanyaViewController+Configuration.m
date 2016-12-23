@@ -11,6 +11,7 @@
 #import "BlankTableViewCell.h"
 #import "MinFuncTionTableViewCell.h"
 #import "LoginOutTableViewCell.h"
+#import "LanyaHeadTableViewCell.h"
 
 @implementation LanyaViewController (Configuration)
 
@@ -33,6 +34,7 @@
     [self.lanyaTableView registerNib:[UINib nibWithNibName:@"BlankTableViewCell" bundle:nil] forCellReuseIdentifier:BLANK_TABLEVIEW_CELL];
     [self.lanyaTableView registerNib:[UINib nibWithNibName:@"MinFuncTionTableViewCell" bundle:nil] forCellReuseIdentifier:MINN_FUNCTION_CELL_NIB];
     [self.lanyaTableView registerNib:[UINib nibWithNibName:@"LoginOutTableViewCell" bundle:nil] forCellReuseIdentifier:LOGIN_OUT_TABLEVIEW_CELL];
+     [self.lanyaTableView registerNib:[UINib nibWithNibName:@"LanyaHeadTableViewCell" bundle:nil] forCellReuseIdentifier:LANYA_HEAD_TABELEVIEW_CELL];
     
     self.lanyaViewControllerDataSource = [LanyaViewControllerDataSource new];
     self.lanyaTableView.delegate = self;
@@ -46,14 +48,19 @@
 }
 - (void)DoSomethingtishiFrame:(NSString *)string {
     [self promptInformationActionWarningString:string];
+    [self.lanyaTableView reloadData];
 }
 
 #pragma mark - UITableView Delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 0){
-        return 70;
-    } else if (indexPath.row == 1) {
+    if (indexPath.row == 0 || indexPath.row == 2) {
         return 30;
+    } else if (indexPath.row == 1) {
+        return 60;
+    } else if (indexPath.row == 3){
+        return 70;
+    } else if (indexPath.row == 4) {
+        return 15;
     } else {
         return 55;
     }
