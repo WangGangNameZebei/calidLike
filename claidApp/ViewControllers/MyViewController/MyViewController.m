@@ -36,7 +36,15 @@
          lanyaVC.titleNameString = [NSString stringWithFormat:@"扫描蓝牙"];
          [self hideTabBarAndpushViewController:lanyaVC];
         
-     } else if (indexPath.row == 1 || indexPath.row == 5 || indexPath.row == 7) {
+     } else if (indexPath.row == 4) {
+        self.customAlertView = [[UIAlertView alloc] initWithTitle:@"请输入管理员口令" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+            [self.customAlertView setAlertViewStyle:UIAlertViewStylePlainTextInput];
+    
+         UITextField *nameField = [self.customAlertView textFieldAtIndex:0];
+         nameField.placeholder = @"您的口令是..";
+        [self.customAlertView show];
+        
+     }else if (indexPath.row == 1 || indexPath.row == 5 || indexPath.row == 7) {
          NSLog(@"空白区");
      } else {
          [self promptInformationActionWarningString:@"此功能暂未开通!"];
@@ -44,6 +52,19 @@
 
 }
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    if (buttonIndex == alertView.firstOtherButtonIndex) {
+        UITextField *nameField = [alertView textFieldAtIndex:0];
+        if ([nameField.text isEqual:@"calid"]) {
+           installViewController *installVC = [installViewController create];
+            [self hideTabBarAndpushViewController:installVC];
+        }
+    }
+    
+    
+    
+}
 /*
 #pragma mark - Navigation
 

@@ -101,7 +101,7 @@ static SingleTon *_instace = nil;
 
 #pragma mark - 处理传进来的字符串并发指令
 - (void)sendCommand:(NSString *)String {
-    if(String.length > 200)
+    if(String.length > 200) {
         if (self.shukaTimer) {
             [self.shukaTimer invalidate];    // 释放函数
             self.shukaTimer = nil;
@@ -109,6 +109,7 @@ static SingleTon *_instace = nil;
         }
         self.shukaTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(shukaShibaiAction) userInfo:nil repeats:NO];
        LOG(@"开启刷卡定时器");
+    }
     if ([String isEqualToString:@"aa"] || [String isEqualToString:@"00"]) {
         _jieHhou = YES;
     } else {

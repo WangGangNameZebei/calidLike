@@ -11,6 +11,6 @@
 
 @interface MyViewController : BaseViewController <UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
-
+@property (strong, nonatomic)UIAlertView *customAlertView;                  //管理员口令
 @property (strong, nonatomic) MyViewControllerDataSource *myViewControllerDataSource;
 @end
