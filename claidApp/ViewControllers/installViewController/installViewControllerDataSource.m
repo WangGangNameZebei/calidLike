@@ -9,21 +9,37 @@
 #import "installViewControllerDataSource.h"
 #import "MyTableViewCell.h"
 #import "BlankTableViewCell.h"
-
+#import "ZBGroup.h"
 
 @implementation installViewControllerDataSource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+//这是tabview创建多少组的回调
+- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
     return self.installDataArray.count;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    ZBGroup *group = self.installDataArray[section];
+    return group.isFolded? 0: group.size;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 1) {
-        return [self blankTableView:tableView indexPath:indexPath];
-    } else {
-        return [self myTableView:tableView indexPath:indexPath];
+//    if (indexPath.row == 1) {
+//        return [self blankTableView:tableView indexPath:indexPath];
+//    } else {
+//        return [self myTableView:tableView indexPath:indexPath];
+//    }
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CELL"];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"CELL"];
     }
-    return nil;
+    //将模型里的数据赋值给cell
+    ZBGroup *group = self.installDataArray[indexPath.section];
+    NSArray *arr=group.items;
+    cell.textLabel.text = arr[indexPath.row];
+   // cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    return cell;
+
     
 }
 
