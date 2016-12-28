@@ -7,28 +7,41 @@
 //
 
 #import "installViewController+Configuration.h"
-#import "MyTableViewCell.h"
-#import "BlankTableViewCell.h"
+#import "MinFuncTionTableViewCell.h"
+
 #import "UIScreen+Utility.h"
 #import "UIColor+Utility.h"
 
-#define SECTIONHEIGHT 80
+#define SECTIONHEIGHT 70
 
 
 @implementation installViewController (Configuration)
 
 - (void)configureViews {
     [self myTableViewInitEdit];
+    [self lanyaTableViewEdit];
 }
-
+- (void)lanyaTableViewEdit {
+    self.lanyaNameArray = [NSMutableArray array];
+    self.sinTon = [SingleTon sharedInstance];
+    self.sinTon.installDelegate = self;
+    
+     [self.lanyaTableView registerNib:[UINib nibWithNibName:@"MinFuncTionTableViewCell" bundle:nil] forCellReuseIdentifier:MINN_FUNCTION_CELL_NIB];
+    self.iLanyaDataSource = [installLanyaDataSource new];
+    self.iLanyaDelegate = [InstallLanyaDataDelegate new];
+    self.lanyaTableView.delegate = self.iLanyaDelegate;
+    self.lanyaTableView.dataSource = self.iLanyaDataSource;
+    self.iLanyaDataSource.lanyaNameArray = self.lanyaNameArray;
+    
+}
 - (void)myTableViewInitEdit {
     if (!self.installDataArray) {
         self.installDataArray = [NSMutableArray array];
     }
       NSArray *groupNames = @[@[@"出厂1",@"出厂2"],@[@"时间1",@"时间2"],@[@"同步1",@"同步2"],@[@"地址1",@"地址2",@"地址3",@"地址4",@"地址5",@"地址6",@"地址7",@"地址8"]];
-//    [self.installTableView registerNib:[UINib nibWithNibName:@"MyTableViewCell" bundle:nil] forCellReuseIdentifier:My_TABLEVIEW_CELL];
-//    [self.installTableView registerNib:[UINib nibWithNibName:@"BlankTableViewCell" bundle:nil] forCellReuseIdentifier:BLANK_TABLEVIEW_CELL];
+   [self.installTableView registerNib:[UINib nibWithNibName:@"MinFuncTionTableViewCell" bundle:nil] forCellReuseIdentifier:MINN_FUNCTION_CELL_NIB];
     self.installVCDataSource = [installViewControllerDataSource new];
+    self.installVCDataSource.delegate = self;
     self.installTableView.delegate = self;
     self.installTableView.dataSource = self.installVCDataSource;
     
@@ -39,11 +52,63 @@
         [self.installDataArray addObject:group1];
     }
     self.installVCDataSource.installDataArray = self.installDataArray;
-
-//    self.installVCDataSource.installDataArray = [NSMutableArray arrayWithObjects:@"连接蓝牙",@"空",@"出厂卡刷卡",@"地址卡刷卡",@"时间卡刷卡",@"同步卡刷卡",@"用户卡刷卡",@"查看信息", nil];
-//    self.installVCDataSource.installImageArray = [NSMutableArray arrayWithObjects:@"kaika.png",@"空",@"shiduankaiqi.png",@"touxiang.png",@"woxinxi.png",@"weixin.png",@"touxiang.png",@"kaxinxi.png", nil];
     
 }
+#pragma mark - cell 长按代理
+- (void)installLongPress:(UIGestureRecognizer *)recognizer {
+    CGPoint location = [recognizer locationInView:self.installTableView];
+    self.selectIndexPath = [self.installTableView indexPathForRowAtPoint:location];
+    MinFuncTionTableViewCell *cell = (MinFuncTionTableViewCell *)recognizer.view;
+    //这里把cell做为第一响应(cell默认是无法成为responder,需要重写canBecomeFirstResponder方法)
+    [cell becomeFirstResponder];
+    
+    UIMenuItem *itCopy = [[UIMenuItem alloc] initWithTitle:@"修改备注" action:@selector(handleCopyCell:)];
+    UIMenuController *menu = [UIMenuController sharedMenuController];
+    [menu setMenuItems:[NSArray arrayWithObjects:itCopy,nil]];
+    [menu setTargetRect:cell.frame inView:self.installTableView];
+    [menu setMenuVisible:YES animated:YES];
+    
+}
+- (void)handleCopyCell:(id)sender{
+    self.modifyAlertView = [[UIAlertView alloc] initWithTitle:@"请输入备注" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [self.modifyAlertView setAlertViewStyle:UIAlertViewStylePlainTextInput];
+    
+    UITextField *nameField = [self.modifyAlertView textFieldAtIndex:0];
+     nameField.placeholder = @"您的备注是..";
+    [self.modifyAlertView show];
+
+   // [self.installTableView reloadData];
+}
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    if (buttonIndex == alertView.firstOtherButtonIndex) {
+        //UITextField *nameField = [alertView textFieldAtIndex:0];
+      
+    }
+    
+    
+}
+// 用于UIMenuController显示，缺一不可
+-(BOOL)canBecomeFirstResponder{
+    return YES;
+}
+// 用于UIMenuController显示，缺一不可
+-(BOOL)canPerformAction:(SEL)action withSender:(id)sender{
+    if (action ==@selector(handleCopyCell:)){
+        return YES;
+    }
+    return NO;//隐藏系统默认的菜单项
+}
+
+#pragma mark - 蓝牙 Delegate
+- (void)installDoSomethingEveryFrame:(NSMutableArray *)array {
+    self.lanyaNameArray = array;
+}
+
+- (void)installDoSomethingtishiFrame:(NSString *)string {
+    [self promptInformationActionWarningString:string];
+}
+
 
 #pragma mark - UITableView Delegate
 //设置headerView高度
@@ -51,7 +116,7 @@
     return SECTIONHEIGHT;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60;
+    return 55;
 }
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     //首先创建一个大的view，nameview

@@ -8,6 +8,7 @@
 
 #import "installViewController.h"
 #import "installViewController+Configuration.h"
+#import "MBProgressHUD.h"
 
 @implementation installViewController
 
@@ -30,11 +31,32 @@
 // 点击  UItableView
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    
-    
 }
+
 - (IBAction)installReturnButtonAction:(id)sender {
+    [[SingleTon sharedInstance] disConnection];  //断开蓝牙
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)scanLanyaButton:(id)sender {
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    hud.label.text = NSLocalizedString(@"扫秒蓝牙中...", @"HUD loading title");
+    dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
+        [[SingleTon sharedInstance] startScan]; // 扫描
+        [self doSomeWork];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.iLanyaDataSource.lanyaNameArray = self.lanyaNameArray;
+            self.iLanyaDelegate.lanyaNameArray = self.lanyaNameArray;
+            [self.lanyaTableView reloadData];
+            [hud hideAnimated:YES];
+        });
+    });
+
+}
+#pragma mark - Tasks
+- (void)doSomeWork {
+    // Simulate by just waiting.
+    sleep(3.);
 }
 
 /*

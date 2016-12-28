@@ -9,16 +9,9 @@
 #import "SingleTon.h"
 #import "MineViewController.h"
 #import "MineViewController+Configuration.h"
-#import <AESCrypt.h>
+#import "SingleTon+InstallWarden.h"
 
-/*输出宏*/
-#define AES_PASSWORD @"ufwjfitn"
-#ifdef DEBUG
-#define LOG(...) NSLog(__VA_ARGS__);
-#define LOG_METHOD NSLog(@"%s", __func__);
-#else
-#define LOG(...); #define LOG_METHOD;
-#endif
+
 @implementation SingleTon
 
 static SingleTon *_instace = nil;
@@ -107,7 +100,7 @@ static SingleTon *_instace = nil;
             self.shukaTimer = nil;
             LOG(@"关闭刷卡定时器");
         }
-        self.shukaTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(shukaShibaiAction) userInfo:nil repeats:NO];
+        self.shukaTimer = [NSTimer scheduledTimerWithTimeInterval:4 target:self selector:@selector(shukaShibaiAction) userInfo:nil repeats:NO];
        LOG(@"开启刷卡定时器");
     }
     if ([String isEqualToString:@"aa"] || [String isEqualToString:@"00"]) {
@@ -155,6 +148,7 @@ static SingleTon *_instace = nil;
         self.scanTimer = nil;
         LOG(@"关闭Scantime");
     }
+    
     NSUUID * uuid = [[NSUUID alloc]initWithUUIDString:identifierStr];
     NSArray *array = [self.manager retrievePeripheralsWithIdentifiers:@[uuid]];
     CBPeripheral *peripheral = [array lastObject];
@@ -212,7 +206,6 @@ static SingleTon *_instace = nil;
         self.scanTimer = nil;
         LOG(@"关闭Scantime");
     }
-  
 }
 
 - (void)houtaisaomiaoAction {
@@ -269,27 +262,26 @@ static SingleTon *_instace = nil;
 #pragma mark - 查到外设时
 -(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
 {
-//    NSUUID * uuid = [[NSUUID alloc]initWithUUIDString:[[NSUserDefaults standardUserDefaults] objectForKey:@"identifierStr"]];
-//    NSArray *array = [self.manager retrievePeripheralsWithIdentifiers:@[uuid]];
-//    CBPeripheral *chucunPeripheral = [array lastObject];   /[peripheral.name isEqualToString:chucunPeripheral.name]
     if (_tarScanBool){
         if (self.scanTimer){
           [self.scanTimer invalidate];    // 释放函数
             self.scanTimer = nil;
             LOG(@"关闭Scantime");
         }
-       self.scanTimer = [NSTimer scheduledTimerWithTimeInterval:6 target:self selector:@selector(lianjielanyaAction) userInfo:nil repeats:NO];
+       self.scanTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(lianjielanyaAction) userInfo:nil repeats:0];
         LOG(@"目标扫描 蓝牙 开启 连接蓝牙定时器(scantime)");
        
     } else {
         
         if(![self.PeripheralArray containsObject:peripheral])
-            
             [self.PeripheralArray addObject:peripheral];
         
         if ([self.delegate respondsToSelector:@selector(DoSomethingEveryFrame:)])
-            
             [self.delegate DoSomethingEveryFrame:self.PeripheralArray];
+        
+       if ([self.installDelegate respondsToSelector:@selector(installDoSomethingEveryFrame:)]) {
+          [self.installDelegate installDoSomethingEveryFrame:self.PeripheralArray];
+        }
     }
 }
 
@@ -361,8 +353,6 @@ static SingleTon *_instace = nil;
     //[peripheral readRSSI];
     [self.peripheral setDelegate:self];
     [self.peripheral discoverServices:nil];
-//    if (!_shukaTimer)
-//     self.shukaTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(shukaShibaiAction) userInfo:nil repeats:NO];
     LOG(@"扫描服务");
     
 }
@@ -390,6 +380,9 @@ static SingleTon *_instace = nil;
     if (!_identiFication && [self.delegate respondsToSelector:@selector(DoSomethingtishiFrame:)]) {
         [self.delegate DoSomethingtishiFrame:@"连接成功!"];
     }
+    if (!_identiFication && [self.installDelegate respondsToSelector:@selector(installDoSomethingtishiFrame:)]) {
+        [self.installDelegate installDoSomethingtishiFrame:@"连接成功!"];
+    }
     
     for (CBService *s in peripheral.services) {
         [self.nServices addObject:s];
@@ -402,10 +395,7 @@ static SingleTon *_instace = nil;
 
 #pragma mark - 已搜索到Characteristics
 -(void) peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error{
-    
     LOG(@"发现特征");
-  
-
     for (CBCharacteristic *c in service.characteristics) {
         if ([c.UUID isEqual:[CBUUID UUIDWithString:@"0xFFF6"]]) {
             _writeCharacteristic = c;
@@ -451,13 +441,7 @@ static SingleTon *_instace = nil;
         }
     } else if (self.receiveData.length > 214) {
                 if ([self lanyaDataXiaoyanAction:[self.receiveData substringWithRange:NSMakeRange(112,104)]]){
-                    NSString *str = [NSString stringWithFormat:@"收到数据：%@",characteristic.value];
-                    LOG(@"收到的String 类型数据：%@",str);
-                    [self sendCommand:@"aa"];
-                    self.receiveData = [NSString stringWithFormat:@"%@%@",[self.receiveData substringWithRange:NSMakeRange(4,104)],[self.receiveData substringWithRange:NSMakeRange(112,104)]];
-                    NSString *encryptedData = [AESCrypt encrypt:self.receiveData password:AES_PASSWORD];  //加密
-                    [[NSUserDefaults standardUserDefaults] setObject:encryptedData forKey:@"lanyaAESData"];  //存储
-                    LOG(@"成功2");
+                    [self hairpinUserCardData:characteristic];
                     self.receiveData = @"";
                 } else {
                     [self sendCommand:@"00"];
@@ -466,19 +450,16 @@ static SingleTon *_instace = nil;
                 }
         
     } else if (self.receiveData.length == 106){
-       
-        if(self.shukaTimer){
-             [self.shukaTimer invalidate];    // 释放函数
+        if (self.shukaTimer){
+            [self.shukaTimer invalidate];    // 释放函数
             self.shukaTimer = nil;
-            LOG(@"关闭刷卡定时器");
+            LOG(@"关闭shukaTimer");
         }
         self.receiveData = [[self hexadecimalString:characteristic.value] substringWithRange:NSMakeRange(0,104)];
-        
-        
         NSString *encryptedData = [AESCrypt encrypt:self.receiveData password:AES_PASSWORD];  //加密
         [[NSUserDefaults standardUserDefaults] setObject:encryptedData forKey:@"lanyaAESErrornData"];  //存储
 
-        if (!_jieHhou && [self.delegate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
+        if (!_jieHhou && [self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
             [self.deleGate switchEditInitPeripheralData:3];
         }
         if ([self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
@@ -487,25 +468,8 @@ static SingleTon *_instace = nil;
 
        self.receiveData = @"";
     } else {
-      
-        if ([[self hexadecimalString:characteristic.value] isEqualToString:@"7265616401"]) {
-            self.receiveData = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESData"] password:AES_PASSWORD];
-            self.receiveData = [NSString stringWithFormat:@"%@%@",@"AA",[self.receiveData substringWithRange:NSMakeRange(0,104)]];
-            [self sendCommand:_receiveData];
-        } else if ([[self hexadecimalString:characteristic.value] isEqualToString:@"7265616402"]) {
-            self.receiveData = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESData"] password:AES_PASSWORD];
-           self.receiveData = [NSString stringWithFormat:@"%@%@",@"AA",[self.receiveData substringWithRange:NSMakeRange(104,104)]];
-           [self sendCommand:_receiveData];
-        } else if ([[self hexadecimalString:characteristic.value] isEqualToString:@"7265616403"]) {
-            self.receiveData = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESErrornData"] password:AES_PASSWORD];
-            self.receiveData = [NSString stringWithFormat:@"%@%@",@"AA",self.receiveData];
-            [self sendCommand:_receiveData];
-        } else {
-            if ( [self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
-                [self.deleGate switchEditInitPeripheralData:6];  //数据格式错误
-            }
-        }
-       self.receiveData = @"";
+        [self hairpinReadData:characteristic];
+        self.receiveData = @"";
     }
 }
 
@@ -544,22 +508,6 @@ static SingleTon *_instace = nil;
 
 
 
-//将传入的NSData类型转换成NSString并返回
-- (NSString*)hexadecimalString:(NSData *)data{
-    NSString* result;
-    const unsigned char* dataBuffer = (const unsigned char*)[data bytes];
-    if(!dataBuffer){
-        return nil;
-    }
-    NSUInteger dataLength = [data length];
-    NSMutableString* hexString = [NSMutableString stringWithCapacity:(dataLength * 2)];
-    for(int i = 0; i < dataLength; i++){
-        [hexString appendString:[NSString stringWithFormat:@"%02lx", (unsigned long)dataBuffer[i]]];
-    }
-    result = [NSString stringWithString:hexString];
-    return result;
-}
-
 
 #pragma mark - 用于检测中心向外设写数据是否成功
 -(void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
@@ -576,9 +524,6 @@ static SingleTon *_instace = nil;
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(nullable NSError *)error {
     LOG(@"==>%@",error);
     LOG(@"意外断开，执行重连api");
-    
-
-
     [self connectClick:_peripheral];
     
 }

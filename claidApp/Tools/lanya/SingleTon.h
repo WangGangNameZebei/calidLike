@@ -6,18 +6,38 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
+#import <AESCrypt.h>
 
-@protocol sendDataToVCDelegate <NSObject>
+
+/*输出宏*/
+#define AES_PASSWORD @"ufwjfitn"
+#ifdef DEBUG
+#define LOG(...) NSLog(__VA_ARGS__);
+#define LOG_METHOD NSLog(@"%s", __func__);
+#else
+#define LOG(...); #define LOG_METHOD;
+#endif
+
+
+@protocol sendDataToVCDelegate <NSObject>           // 蓝牙连接
 @optional
-- (void)DoSomethingEveryFrame:(NSArray *)array;     // 扫描设备代理
+- (void)DoSomethingEveryFrame:(NSMutableArray *)array;     // 扫描设备代理
 - (void)DoSomethingtishiFrame:(NSString *)string;     // 扫描设备代理
 @end
 
-@protocol mindsendDataToVCDelegate <NSObject>
+
+@protocol installLanyaDelegate <NSObject>
+@optional
+- (void)installDoSomethingEveryFrame:(NSMutableArray *)array;     // 扫描设备代理
+- (void)installDoSomethingtishiFrame:(NSString *)string;     // 扫描设备代理
+@end
+
+@protocol mindsendDataToVCDelegate <NSObject>           //主界面 连接 蓝牙
 @optional
 - (void)switchEditInitPeripheralData:(NSInteger )data;      //蓝牙状态标识代理
 
 @end
+
 #define DataHasBeenHandRing @"DataHasBeenHandRing"
 @interface SingleTon : NSObject<CBCentralManagerDelegate,CBPeripheralDelegate>
 {
@@ -26,6 +46,8 @@
 }
 @property (nonatomic, assign) id <sendDataToVCDelegate> delegate;
 @property (nonatomic, assign) id <mindsendDataToVCDelegate> deleGate;
+@property (nonatomic, assign) id <installLanyaDelegate> installDelegate;
+
 @property (nonatomic, strong) CBCentralManager *manager;
 @property (nonatomic, strong) CBPeripheral *peripheral;
 @property (strong, nonatomic) CBCharacteristic *writeCharacteristic;

@@ -108,6 +108,7 @@
     return self;
 }
 
+
 - (void)initSelfView{
 
     if (!self.pageControl) {

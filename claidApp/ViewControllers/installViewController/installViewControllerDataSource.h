@@ -8,9 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol installViewControllerDelegate <NSObject>
+@optional
+- (void)installLongPress:(UIGestureRecognizer *)recognizer;     // 长按cell
+@end
+
 @interface installViewControllerDataSource : NSObject <UITableViewDataSource>
 
 @property (strong, nonatomic) NSMutableArray *installDataArray;
 @property (strong, nonatomic) NSMutableArray *installImageArray;
+
+@property (nonatomic, assign) id <installViewControllerDelegate> delegate;
 
 @end

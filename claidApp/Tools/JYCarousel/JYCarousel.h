@@ -64,8 +64,6 @@
                        target:(id<JYCarouselDelegate>)target;
 
 
-
-
 #pragma mark - ==============开始轮播==============
 
 /**

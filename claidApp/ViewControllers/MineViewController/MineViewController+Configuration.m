@@ -9,7 +9,8 @@
 #import "MineViewController+Configuration.h"
 #import "AESCrypt.h"
 #import "UIColor+Utility.h"
-#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+#import "UIScreen+Utility.h"
+#import <Masonry.h>
 
 @implementation MineViewController (Configuration)
 
@@ -31,8 +32,9 @@
 #pragma mark  滚动视图
 - (void)carouselViewEdit {
     NSMutableArray *imageArray = [[NSMutableArray alloc] initWithArray: @[@"gsgg1.jpg",@"gsgg2.jpg",@"gsgg3.jpg"]];
+    
     if (!self.carouselView) {
-        self.carouselView = [[JYCarousel alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, 200) configBlock:^JYConfiguration *(JYConfiguration *carouselConfig) {
+        self.carouselView = [[JYCarousel alloc] initWithFrame:CGRectMake(0, 64, [UIScreen screenWidth], 200) configBlock:^JYConfiguration *(JYConfiguration *carouselConfig) {
             carouselConfig.pageContollType = MiddlePageControl;
             carouselConfig.pageTintColor = [UIColor whiteColor];
             carouselConfig.currentPageTintColor = [UIColor colorFromHexCode:@"#1296db"];
@@ -44,7 +46,13 @@
         } target:self];
         
         [self.view addSubview:self.carouselView];
-    }
+        [self.carouselView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.offset(0);
+            make.top.width.offset(64);
+            make.right.offset(0);
+            make.bottom.equalTo(self.ziDongView.mas_top).with.offset(20);
+        }];
+     }
     //开始轮播
     [self.carouselView startCarouselWithArray:imageArray];
 

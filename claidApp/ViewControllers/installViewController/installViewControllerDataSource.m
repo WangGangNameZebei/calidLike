@@ -7,8 +7,7 @@
 //
 
 #import "installViewControllerDataSource.h"
-#import "MyTableViewCell.h"
-#import "BlankTableViewCell.h"
+#import "MinFuncTionTableViewCell.h"
 #import "ZBGroup.h"
 
 @implementation installViewControllerDataSource
@@ -23,37 +22,27 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    if (indexPath.row == 1) {
-//        return [self blankTableView:tableView indexPath:indexPath];
-//    } else {
-//        return [self myTableView:tableView indexPath:indexPath];
-//    }
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CELL"];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"CELL"];
-    }
+   MinFuncTionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MINN_FUNCTION_CELL_NIB];
     //将模型里的数据赋值给cell
     ZBGroup *group = self.installDataArray[indexPath.section];
     NSArray *arr=group.items;
-    cell.textLabel.text = arr[indexPath.row];
-   // cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.lanyaNameLabel.text = arr[indexPath.row];
+  
+    UILongPressGestureRecognizer * longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(cellLongPress:)];
+    [cell addGestureRecognizer:longPressGesture];
+
+    return cell;
     
-    return cell;
-
+}
+- (void)cellLongPress:(UIGestureRecognizer *)recognizer{
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        
+        if ([self.delegate respondsToSelector:@selector(installLongPress:)])
+            [self.delegate installLongPress:recognizer];
     
+    }
 }
 
-#pragma mark 自定cell
-- (UITableViewCell *)myTableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
-    MyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:My_TABLEVIEW_CELL];
-   cell.myCellImageView.image = [UIImage imageNamed:[self.installImageArray objectAtIndex:indexPath.item]];
-    cell.myCellLabel.text = [self.installDataArray objectAtIndex:indexPath.row];
-    return cell;
-}
 
-- (UITableViewCell *)blankTableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
-    BlankTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:BLANK_TABLEVIEW_CELL];
-    return cell;
-}
 
 @end
