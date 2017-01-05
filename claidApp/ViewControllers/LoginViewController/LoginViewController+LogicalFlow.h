@@ -10,6 +10,6 @@
 
 @interface LoginViewController (LogicalFlow)
 
-- (void)requestLoginPostForUsername:(NSString *)username password:(NSString *)password lannyaKey:(NSString *)lanyaKey;
+- (void)requestLoginPostForUsername:(NSString *)username password:(NSString *)password;
 
 @end

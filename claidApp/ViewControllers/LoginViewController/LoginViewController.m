@@ -11,10 +11,9 @@
 #import "RegisterViewController.h"
 #import "MineViewController.h"
 #import "MyViewController.h"
-#import "CustomTabBarController.h"
 #import "LanyaViewController.h"
 #import "AESCrypt.h"
-
+#import "LoginViewController+LogicalFlow.h"
 @implementation LoginViewController
 
 + (instancetype)create {
@@ -50,8 +49,9 @@
 
 }
 - (IBAction)loginButtonAction:(id)sender {
-   // [[NSUserDefaults standardUserDefaults] setObject:self.phoneNumberTextField.text forKey:@"phoneNumber"];    //   登录成功之后  要储存
-    [self promptInformationActionWarningString:@"此功能暂未开通"];
+    [self requestLoginPostForUsername:self.phoneNumberTextField.text password:self.passwordTextField.text];
+ //   [[NSUserDefaults standardUserDefaults] setObject:self.phoneNumberTextField.text forKey:@"phoneNumber"];    //   登录成功之后  要储存
+   // [self promptInformationActionWarningString:@"此功能暂未开通"];
 //    [[SingleTon sharedInstance] initialization];    // 蓝牙设备
 //    CustomTabBarController *customTabBarController = [self createCustomTabBarController];
 //    UIApplication.sharedApplication.delegate.window.rootViewController = customTabBarController;
@@ -61,9 +61,8 @@
 }
                                                                                                                                                                                   
 - (IBAction)registerButtonAction:(id)sender {
-    [self promptInformationActionWarningString:@"此功能暂未开通"];
-//    RegisterViewController *registerVC = [RegisterViewController create];
-//    [self hideTabBarAndpushViewController:registerVC];
+    RegisterViewController *registerVC = [RegisterViewController create];
+    [self hideTabBarAndpushViewController:registerVC];
 }
 
 

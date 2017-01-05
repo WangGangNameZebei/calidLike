@@ -8,16 +8,33 @@
 
 #import "LoginViewController+LogicalFlow.h"
 #import <AFHTTPRequestOperationManager.h>
+#import <AESCrypt.h>
 
-#define LOGIN_URL @"http://www.calid.com/api/login"
+
+/*输出宏*/
+#define AES_PASSWORD @"ufwjfitn"
+#define LOGIN_URL @"http://192.168.1.114:8080/calid/login.do"
 @implementation LoginViewController (LogicalFlow)
 
-- (void)requestLoginPostForUsername:(NSString *)username password:(NSString *)password lannyaKey:(NSString *)lanyaKey {
+- (void)requestLoginPostForUsername:(NSString *)username password:(NSString *)password {
     AFHTTPRequestOperationManager *manager = [self tokenManager];
-    NSDictionary *parameters = @{@"username":username,@"password":password,@"lanyakey":lanyaKey};
+    NSDictionary *parameters = @{@"accounts":username,@"passwd":password};
     [manager POST:LOGIN_URL parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-        
-        NSLog(@"返回数据=======>%@",[responseObject objectForKey:@"result"]);
+        NSString *requestTmp = [NSString stringWithString:operation.responseString];
+        NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];
+        //系统自带JSON解析
+        NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableContainers error:nil];
+        if ([[resultDic objectForKey:@"status"] integerValue] == 200) {
+            NSString *dataString = [resultDic objectForKey:@"data"];
+            NSString *encryptedData = [AESCrypt encrypt:dataString password:AES_PASSWORD];  //加密
+            [[NSUserDefaults standardUserDefaults] setObject:encryptedData forKey:@"lanyaAESData"];  //存储
+            CustomTabBarController *customTabBarController = [self createCustomTabBarController];
+           UIApplication.sharedApplication.delegate.window.rootViewController = customTabBarController;
+            
+        } else {
+                [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
+
+        }
     
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
         NSLog(@"返回数据------->%@",error);
@@ -26,8 +43,13 @@
 }
 
 - (AFHTTPRequestOperationManager *)tokenManager {
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+     // 设置请求格式
+     manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    // 设置返回格式
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     return manager;
 }
 

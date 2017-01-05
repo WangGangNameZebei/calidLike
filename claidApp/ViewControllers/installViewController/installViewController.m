@@ -31,11 +31,23 @@
 // 点击  UItableView
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    SingleTon *ton = [SingleTon sharedInstance];
+    NSString *uuidstr = [[NSUserDefaults standardUserDefaults] objectForKey:@"identifierStr"];
+    if (!uuidstr) {
+        [self promptInformationActionWarningString:@"没有本地保存的蓝牙!"];
+        return;
+    }
+     [ton installShoudongConnectClick:uuidstr];
+     self.selectIndexPath = indexPath;
 }
 
 - (IBAction)installReturnButtonAction:(id)sender {
     [[SingleTon sharedInstance] disConnection];  //断开蓝牙
     [self.navigationController popViewControllerAnimated:YES];
+}
+- (IBAction)emptyButtonAction:(id)sender {
+       [self.tool dropTableWithClass:[InstallCardData class]];
+       [self refreshInstallTableView];
 }
 
 - (IBAction)scanLanyaButton:(id)sender {

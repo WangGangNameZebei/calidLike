@@ -64,6 +64,7 @@
     
   
     MinFuncTionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MINN_FUNCTION_CELL_NIB];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone; 
     if  (indexPath.row == (self.lanyaNameArray.count + 5) || indexPath.row == (self.lanyaNameArray.count + 7)){
         cell.lanyaNameLabel.text = @"";
     } else if (indexPath.row == 1) {

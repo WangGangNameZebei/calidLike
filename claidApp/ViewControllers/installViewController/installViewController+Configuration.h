@@ -11,5 +11,5 @@
 @interface installViewController (Configuration)
 
 - (void)configureViews;
-
+- (void)refreshInstallTableView;        //刷新 installView
 @end

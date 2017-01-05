@@ -154,6 +154,7 @@ static SingleTon *_instace = nil;
     CBPeripheral *peripheral = [array lastObject];
     [self connectClick:peripheral];
     _identiFication = YES;
+    self.installBool  = NO;
     
 }
 
@@ -168,7 +169,26 @@ static SingleTon *_instace = nil;
 #pragma mark  手动连接   蓝牙设备
 - (void)shoudongConnectClick:(CBPeripheral *)peripheral {
     _identiFication = NO;
+    self.installBool  = NO;
     [self connectClick:peripheral];
+}
+// 设置卡  连接   
+- (void)installShoudongConnectClick:(NSString *)uuids {
+    _identiFication = NO;
+    self.installBool  = YES;
+    
+    [self stopScan];
+    if (!self.scanTimer){
+        [self.scanTimer invalidate];    // 释放函数
+        self.scanTimer = nil;
+        LOG(@"关闭Scantime");
+    }
+    
+    NSUUID * uuid = [[NSUUID alloc]initWithUUIDString:uuids];
+    NSArray *array = [self.manager retrievePeripheralsWithIdentifiers:@[uuid]];
+    CBPeripheral *peripheral = [array lastObject];
+    [self connectClick:peripheral];
+  
 }
 #pragma mark - 扫描
 -(void)startScan
@@ -403,7 +423,9 @@ static SingleTon *_instace = nil;
             if (_identiFication && [self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
                 [self.deleGate switchEditInitPeripheralData:2];
             }
-          
+            if (self.installBool  && [self.installDelegate  respondsToSelector:@selector(installEditInitPeripheralData:)]){
+                [self.installDelegate installEditInitPeripheralData:1];
+            }
         
         }
         if ([c.UUID isEqual:[CBUUID UUIDWithString:@"0xFFF7"]]) {
@@ -499,15 +521,12 @@ static SingleTon *_instace = nil;
     key[1] = numberKey>>16;
     key[2] = numberKey>>8;
     key[3] = numberKey;
-    if (key[0] == key1[0] && key[1] == key1[1] && key1[2] == key1[2] && key[3] == key1[3]) {
+    if (key[0] == key1[0] && key[1] == key1[1] && key[2] == key1[2] && key[3] == key1[3]) {
         return YES;
     } else {
         return NO;
     }
 }
-
-
-
 
 #pragma mark - 用于检测中心向外设写数据是否成功
 -(void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error

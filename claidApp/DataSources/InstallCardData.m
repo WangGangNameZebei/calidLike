@@ -10,10 +10,12 @@
 
 @implementation InstallCardData
 
-+(instancetype)initinstallNamestr:(NSString *)installNamestr installData:(NSString *)installdata {
++ (instancetype)initinstallNamestr:(NSString *)installNamestr installData:(NSString *)installdata identification:(NSInteger)identification {
     InstallCardData *installCardData = [[InstallCardData alloc] init];
     installCardData.installName = installNamestr;
+    installCardData.installNamePractical = installNamestr;
     installCardData.installData = installdata;
+    installCardData.identification = identification;
     return installCardData;
 }
 

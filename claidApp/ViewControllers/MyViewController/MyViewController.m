@@ -11,6 +11,7 @@
 #import "installViewController.h"
 #import "MyViewController+Animation.h"
 #import "LanyaViewController.h"
+#import "LoginViewController.h"
 
 @implementation MyViewController
 
@@ -44,9 +45,15 @@
          nameField.placeholder = @"您的口令是..";
         [self.customAlertView show];
         
-     }else if (indexPath.row == 1 || indexPath.row == 5 || indexPath.row == 7) {
+     } else if (indexPath.row == 1 || indexPath.row == 5 || indexPath.row == 7) {
          NSLog(@"空白区");
-     } else {
+     } else if (indexPath.row == 6) {
+         [self clearAllUserDefaultsData];
+         LoginViewController *loginViewController = [LoginViewController create];
+         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
+         navigationController.navigationBarHidden = YES;
+         UIApplication.sharedApplication.delegate.window.rootViewController = navigationController;
+     }else {
          [self promptInformationActionWarningString:@"此功能暂未开通!"];
      }
 
@@ -63,6 +70,17 @@
     }
     
 
+}
+
+//清除数据
+- (void)clearAllUserDefaultsData {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    NSDictionary *dic = [userDefaults dictionaryRepresentation];
+    for (id  key in dic) {
+        [userDefaults removeObjectForKey:key];
+    }
+    [userDefaults synchronize];
 }
 /*
 #pragma mark - Navigation

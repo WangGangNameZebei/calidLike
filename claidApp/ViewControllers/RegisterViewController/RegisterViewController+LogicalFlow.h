@@ -10,4 +10,6 @@
 
 @interface RegisterViewController (LogicalFlow)
 
+- (void)registerPostForUsername:(NSString *)username password:(NSString *)password oraKey:(NSString *)orakey;
+
 @end

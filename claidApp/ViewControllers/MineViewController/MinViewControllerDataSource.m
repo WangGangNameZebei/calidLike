@@ -18,7 +18,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
    
     MinFuncTionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MINN_FUNCTION_CELL_NIB forIndexPath:indexPath];
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     if ( indexPath.section < self.dataArray.count) {
         CBPeripheral *periphe = [self.dataArray objectAtIndex:indexPath.section];

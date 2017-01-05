@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "InstallCardData.h"
 @protocol installViewControllerDelegate <NSObject>
 @optional
 - (void)installLongPress:(UIGestureRecognizer *)recognizer;     // 长按cell
@@ -16,7 +16,7 @@
 @interface installViewControllerDataSource : NSObject <UITableViewDataSource>
 
 @property (strong, nonatomic) NSMutableArray *installDataArray;
-@property (strong, nonatomic) NSMutableArray *installImageArray;
+@property (strong, nonatomic)InstallCardData *installCardData;      //数据库类
 
 @property (nonatomic, assign) id <installViewControllerDelegate> delegate;
 

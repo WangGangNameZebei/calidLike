@@ -26,7 +26,8 @@
     //将模型里的数据赋值给cell
     ZBGroup *group = self.installDataArray[indexPath.section];
     NSArray *arr=group.items;
-    cell.lanyaNameLabel.text = arr[indexPath.row];
+    self.installCardData = arr[indexPath.row];
+    cell.lanyaNameLabel.text = self.installCardData.installNamePractical;
   
     UILongPressGestureRecognizer * longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(cellLongPress:)];
     [cell addGestureRecognizer:longPressGesture];

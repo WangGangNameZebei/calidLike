@@ -7,6 +7,7 @@
 //
 
 #import "BaseViewController.h"
+#import "CustomTabBarController.h"
 
 @interface LoginViewController : BaseViewController <UITextFieldDelegate,UIApplicationDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextField;
@@ -15,4 +16,8 @@
 @property (weak, nonatomic) IBOutlet UIView *passwordView;
 @property (weak, nonatomic) IBOutlet UIImageView *phoneNumberImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *passwordImageView;
+
+
+- (CustomTabBarController *)createCustomTabBarController;
+- (NSArray *)createTabBarGroups;
 @end

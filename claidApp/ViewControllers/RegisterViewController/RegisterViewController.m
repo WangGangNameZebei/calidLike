@@ -8,6 +8,7 @@
 
 #import "RegisterViewController.h"
 #import "RegisterViewController+Configuration.h"
+#import "RegisterViewController+LogicalFlow.h"
 
 @implementation RegisterViewController
 
@@ -28,6 +29,7 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)registerButtonAction:(id)sender {
+    [self registerPostForUsername:self.phoneNumberTextField.text password:self.passwordTextField.text oraKey:self.mishiTextField.text];
 }
 - (IBAction)returnButtonAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];

@@ -54,12 +54,26 @@
                                 <action selector="installReturnButtonAction:" destination="-1" eventType="touchUpInside" id="jdm-Q9-3X4"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgT-la-czI">
+                            <rect key="frame" x="321" y="21" width="46" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="FYg-nO-f8K"/>
+                                <constraint firstAttribute="width" constant="46" id="o1z-br-LqI"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <state key="normal" title="清空"/>
+                            <connections>
+                                <action selector="emptyButtonAction:" destination="-1" eventType="touchUpInside" id="jMq-iS-ncs"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.11332534998655319" green="0.60901933908462524" blue="0.85404843091964722" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="tintColor" red="0.99599474669999999" green="0.99613386390000003" blue="0.99595087770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="Ays-Co-cc9" firstAttribute="centerY" secondItem="Cmn-2D-tVY" secondAttribute="centerY" constant="5.75" id="0Vj-sS-dBw"/>
+                        <constraint firstItem="dgT-la-czI" firstAttribute="centerY" secondItem="Cmn-2D-tVY" secondAttribute="centerY" constant="4" id="1cV-Kq-c1S"/>
                         <constraint firstItem="Ays-Co-cc9" firstAttribute="centerX" secondItem="Cmn-2D-tVY" secondAttribute="centerX" id="57Q-dk-Bbo"/>
+                        <constraint firstAttribute="trailing" secondItem="dgT-la-czI" secondAttribute="trailing" constant="8" id="FVL-0m-gyc"/>
                         <constraint firstItem="bmO-JZ-FyA" firstAttribute="leading" secondItem="Cmn-2D-tVY" secondAttribute="leading" constant="8" id="NRS-Ad-Irh"/>
                         <constraint firstItem="Usj-Qv-cbW" firstAttribute="leading" secondItem="Cmn-2D-tVY" secondAttribute="leading" id="WvV-od-HJk"/>
                         <constraint firstItem="Usj-Qv-cbW" firstAttribute="centerY" secondItem="Cmn-2D-tVY" secondAttribute="centerY" id="mnt-gM-NpI"/>

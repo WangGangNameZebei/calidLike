@@ -10,7 +10,6 @@
 
 @interface SingleTon (InstallWarden)
 - (void)hairpinUserCardData:(CBCharacteristic *)characteristic;         //用户卡  发卡
-- (void)hairpinInstallData:(CBCharacteristic *)characteristic;          //管理初始化 发卡
 - (void)hairpinReadData:(CBCharacteristic *)characteristic;
 
 

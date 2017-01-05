@@ -9,7 +9,7 @@
 #import "BaseViewController.h"
 #import "MyViewControllerDataSource.h"
 
-@interface MyViewController : BaseViewController <UITableViewDelegate>
+@interface MyViewController : BaseViewController <UITableViewDelegate,UIApplicationDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
 @property (strong, nonatomic)UIAlertView *customAlertView;                  //管理员口令
 @property (strong, nonatomic) MyViewControllerDataSource *myViewControllerDataSource;

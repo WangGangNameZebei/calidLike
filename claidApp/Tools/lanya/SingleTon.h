@@ -7,7 +7,8 @@
 #import <Foundation/Foundation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
 #import <AESCrypt.h>
-
+#import "InstallCardData.h"
+#import "DBTool.h"
 
 /*输出宏*/
 #define AES_PASSWORD @"ufwjfitn"
@@ -29,7 +30,8 @@
 @protocol installLanyaDelegate <NSObject>
 @optional
 - (void)installDoSomethingEveryFrame:(NSMutableArray *)array;     // 扫描设备代理
-- (void)installDoSomethingtishiFrame:(NSString *)string;     // 扫描设备代理
+- (void)installDoSomethingtishiFrame:(NSString *)string;     // 提示
+- (void)installEditInitPeripheralData:(NSInteger )data;
 @end
 
 @protocol mindsendDataToVCDelegate <NSObject>           //主界面 连接 蓝牙
@@ -56,12 +58,15 @@
 @property (assign, nonatomic) double delayInSeconds;        //扫描时长
 @property (assign, nonatomic) BOOL identiFication;          //目标连接  标识
 @property (assign, nonatomic) BOOL tarScanBool;             //   目标扫描  标识
+@property (assign, nonatomic) BOOL installBool;             //   设置卡  连接标识
 @property (strong, nonatomic) NSTimer * scanTimer;
 @property (strong, nonatomic) NSTimer * shukaTimer;         //刷卡 计时
 @property (strong, nonatomic) NSTimer * houtaiTimer;         
 @property (strong, nonatomic) NSString *receiveData;
 @property (assign, nonatomic) BOOL jieHhou;                 //发卡返回标识
-
+@property (strong,nonatomic)DBTool *tool;                   //数据库
+@property (strong, nonatomic)InstallCardData *installCardData;      //数据库类
+@property (strong, nonatomic) NSMutableArray *numberArrar ;         //数据库便利数组
 
 + (SingleTon *)sharedInstance;
 
@@ -76,6 +81,11 @@
 - (void)disConnection;      // 断开蓝牙
 - (void)targetScan;         //目标扫描
 - (void)shoudongConnectClick:(CBPeripheral *)peripheral;    // 手动 连接蓝牙设备
+- (void)installShoudongConnectClick:(NSString *)uuids;   //设置卡  连接 蓝牙
 - (int)turnTheHexLiterals:(NSString *)string;
 - (CBPeripheral *)lanyaNameString:(NSString *)uuidString;
+
+
+
+
 @end
