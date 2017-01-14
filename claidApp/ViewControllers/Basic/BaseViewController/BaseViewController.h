@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "CustomActionSheet.h"
 
-#define AES_PASSWORD @"ufwjfitn"
 @interface BaseViewController : UIViewController<UIAlertViewDelegate>
 @property (strong, nonatomic) CustomActionSheet *customActionSheet;
 + (instancetype)create;

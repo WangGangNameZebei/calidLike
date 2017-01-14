@@ -34,7 +34,7 @@
     CustomTabBarController *customTabBarController = [self createCustomTabBarController];
     UIApplication.sharedApplication.delegate.window.rootViewController = customTabBarController;
     
-    NSLog(@"从keyChain中取出的uuid-> %@",[self keyChainIdentifierForVendorString]);    // 获取钥匙串 的UUID
+  //  NSLog(@"从keyChain中取出的uuid-> %@",[self keyChainIdentifierForVendorString]);    // 获取钥匙串 的UUID
     }    
 }
 - (void)didReceiveMemoryWarning {

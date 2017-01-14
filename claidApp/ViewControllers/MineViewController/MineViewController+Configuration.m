@@ -65,21 +65,12 @@
 - (void)initData {
     self.ton = [SingleTon sharedInstance];
     self.ton.deleGate = self;
-    self.peripherArray = [NSMutableArray array];
 }
 
 
 
 
 #pragma mark - sendDataToVCDelegate
-
-- (void)DoSomethingEveryFrame:(NSMutableArray *)array {
-    self.peripherArray = array;
-}
-
-- (void)recivedPeripheralData:(id)data {
-
-}
 
 -(void)switchEditInitPeripheralData:(NSInteger)data {
     switch (data) {
@@ -89,8 +80,9 @@
         case 2:                             //  2  为 自动 连接 发现服务
             self.message = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESData"] password:AES_PASSWORD];
             if (self.message.length > 0) {
-                self.message = [NSString stringWithFormat:@"%@%@",@"AA",self.message];
-                [self writeDataActionString:self.message];
+               self.message = @"0180010101FF3344556600000000000000000000000000000000000000000000000000000000000000";
+                self.message = [NSString stringWithFormat:@"%@%@",@"cc",self.message];
+                 [[SingleTon sharedInstance] sendCommand:self.message];       //发送数据
             } else {
                 [self promptInformationActionWarningString:@"暂未发卡!"];
                 [[SingleTon sharedInstance] disConnection];
@@ -146,9 +138,7 @@
     [ton getPeripheralWithIdentifierAndConnect:uuidstr];    //连接蓝牙
     
 }
-- (void)writeDataActionString:(NSString *)textStr {
-    [[SingleTon sharedInstance] sendCommand:textStr];       //发送数据
-}
+
 #pragma mark - 刷卡数据返回  错误 报告
 - (void)lanyaShuakareturnPromptActioninteger:(NSInteger)promptInteger {
     switch (promptInteger) {

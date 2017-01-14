@@ -23,7 +23,6 @@
 
 
 @property (strong, nonatomic) MinViewControllerDataSource *minViewControllerDataSource;
-@property (strong, nonatomic) NSMutableArray *peripherArray;
 @property (strong, nonatomic) SingleTon *ton;
 @property (strong, nonatomic) NSString *message;
 

@@ -11,14 +11,12 @@
 #import <AESCrypt.h>
 
 
-/*输出宏*/
-#define AES_PASSWORD @"ufwjfitn"
-#define LOGIN_URL @"http://192.168.1.114:8080/calid/login.do"
+
 @implementation LoginViewController (LogicalFlow)
 
 - (void)requestLoginPostForUsername:(NSString *)username password:(NSString *)password {
     AFHTTPRequestOperationManager *manager = [self tokenManager];
-    NSDictionary *parameters = @{@"accounts":username,@"passwd":password};
+    NSDictionary *parameters = @{@"accounts":username,@"passwd":password,@"IMEI":[self keyChainIdentifierForVendorString]};
     [manager POST:LOGIN_URL parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         NSString *requestTmp = [NSString stringWithString:operation.responseString];
         NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];
@@ -37,7 +35,7 @@
         }
     
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
-        NSLog(@"返回数据------->%@",error);
+        [self promptInformationActionWarningString:[NSString stringWithFormat:@"%ld",(long)error.code]];
 
     }];
 }

@@ -9,7 +9,7 @@
 #import "RegisterViewController+LogicalFlow.h"
 #import <AFHTTPRequestOperationManager.h>
 
-#define REGISTER_URL @"http://192.168.1.114:8080/calid/addUser.do"
+
 @implementation RegisterViewController (LogicalFlow)
 - (void)registerPostForUsername:(NSString *)username password:(NSString *)password oraKey:(NSString *)orakey {
     AFHTTPRequestOperationManager *manager = [self tokenManager];
@@ -32,8 +32,7 @@
         }
 
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
-        NSLog(@"返回数据------->%@",error);
-        
+      [self promptInformationActionWarningString:[NSString stringWithFormat:@"%ld",(long)error.code]];        
     }];
 
 }

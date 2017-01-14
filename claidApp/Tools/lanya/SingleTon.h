@@ -10,15 +10,6 @@
 #import "InstallCardData.h"
 #import "DBTool.h"
 
-/*输出宏*/
-#define AES_PASSWORD @"ufwjfitn"
-#ifdef DEBUG
-#define LOG(...) NSLog(__VA_ARGS__);
-#define LOG_METHOD NSLog(@"%s", __func__);
-#else
-#define LOG(...); #define LOG_METHOD;
-#endif
-
 
 @protocol sendDataToVCDelegate <NSObject>           // 蓝牙连接
 @optional
@@ -82,7 +73,7 @@
 - (void)targetScan;         //目标扫描
 - (void)shoudongConnectClick:(CBPeripheral *)peripheral;    // 手动 连接蓝牙设备
 - (void)installShoudongConnectClick:(NSString *)uuids;   //设置卡  连接 蓝牙
-- (int)turnTheHexLiterals:(NSString *)string;
+
 - (CBPeripheral *)lanyaNameString:(NSString *)uuidString;
 
 
