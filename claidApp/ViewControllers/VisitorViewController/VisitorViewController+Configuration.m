@@ -1,0 +1,174 @@
+//
+//  VisitorViewController+Configuration.m
+//  claidApp
+//
+//  Created by kevinpc on 2017/1/16.
+//  Copyright © 2017年 kevinpc. All rights reserved.
+//
+
+#import "VisitorViewController+Configuration.h"
+#import "UIColor+Utility.h"
+@implementation VisitorViewController (Configuration)
+
+- (void)configureViews {
+    [self lanyainitData];
+    [self textFieldViewEdit];
+    [self addGestRecognizer];
+}
+
+- (void)lanyainitData {
+    [[VisitorSingleTon sharedInstance] initialization];
+    self.visitorton = [VisitorSingleTon sharedInstance];
+    self.visitorton.delegate = self;
+}
+
+#pragma mrak 蓝牙代理
+- (void)visitorEditInitPeripheralData:(NSInteger)data {
+    NSString *message;
+    switch (data) {
+        case 1:         //连接 成功 发现   服务
+           message = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESData"] password:AES_PASSWORD];
+            if (message.length > 0) {
+               message = @"0180010101FF3344556600000000000000000000000000000000000000000000000000000000000000";
+                message = [NSString stringWithFormat:@"%@%@",@"cc",message];
+                [[VisitorSingleTon sharedInstance] sendCommand:message];       //发送数据
+            } else {
+                [self promptInformationActionWarningString:@"暂未发卡!"];
+                [[VisitorSingleTon sharedInstance] disConnection];
+            }
+            break;
+          case 2:
+            [self promptInformationActionWarningString:@"刷卡失败!"];
+            [[VisitorSingleTon sharedInstance] disConnection];
+            break;
+        default:
+            [self lanyaShuakareturnPromptActioninteger:data];
+            [[VisitorSingleTon sharedInstance] disConnection];
+            break;
+    }
+}
+
+//textField 编辑
+- (void)textFieldViewEdit {
+    self.shukaButton.backgroundColor = [UIColor colorFromHexCode:@"C2C2C2"];
+    self.visitorTextField.clearButtonMode = UITextFieldViewModeAlways;
+    self.visitorTextField.delegate = self;
+    [self viewlayer:self.visitorView];
+}
+
+#pragma mark UIView 边框编辑
+- (void)viewlayer:(UIView *)view {
+    view.layer.cornerRadius = 6;
+    view.layer.masksToBounds = YES;
+    view.layer.borderWidth = 1;
+    view.layer.borderColor = [[UIColor colorFromHexCode:@"#C2C2C2"] CGColor];
+    self.visitorImageView.image = [UIImage imageNamed:@"login_secretKey_gray"];
+}
+
+#pragma mark textField 代理方法
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+        self.visitorView.layer.borderColor = [[UIColor colorFromHexCode:@"#1296db"] CGColor];
+        self.visitorImageView.image = [UIImage imageNamed:@"login_secretKey_blue"];
+        
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+        self.visitorView.layer.borderColor = [[UIColor colorFromHexCode:@"#C2C2C2"] CGColor];
+        self.visitorImageView.image = [UIImage imageNamed:@"login_secretKey_gray"];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self.visitorTextField resignFirstResponder];
+    return YES;
+}
+#pragma mark - 空白处收起键盘
+- (void)addGestRecognizer {
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapped:)];
+    tap.numberOfTouchesRequired =1;
+    tap.numberOfTapsRequired =1;
+    tap.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:tap];
+}
+- (void)tapped:(UIGestureRecognizer *)gestureRecognizer{
+    [self.view endEditing:YES];
+}
+
+
+#pragma mark - 刷卡数据返回  错误 报告
+- (void)lanyaShuakareturnPromptActioninteger:(NSInteger)promptInteger {
+    switch (promptInteger) {
+        case 0x2b:
+            [self alertViewmessage:@"循环用的EEPROM读写出现致命错误!"];
+            break;
+        case 0x34:
+            [self alertViewmessage:@"在设置卡上发现的UID卡!"];
+            break;
+        case 0x2c:
+            [self alertViewmessage:@"CRC错误或老卡变新卡时错误!"];
+            break;
+        case 0x24:
+            [self alertViewmessage:@"被复制或写附属地址出错!"];
+            break;
+        case 0x04:
+            [self alertViewmessage:@"卡被复制!"];
+            break;
+        case 0x2a:
+            [self alertViewmessage:@"在用户卡上发现的UID!"];
+            break;
+        case 0x30:
+            [self alertViewmessage:@"防潜返,已经是进入或出去!"];
+            break;
+        case 0x1a:
+            [self alertViewmessage:@"减次数为0!"];
+            break;
+        case 0x1b:
+            [self alertViewmessage:@"减次数为0!"];
+            break;
+        case 0x05:
+            [self alertViewmessage:@"滚动码处理出错!"];
+            break;
+        case 0x1f:
+            [self alertViewmessage:@"第一次被顶掉!"];
+            break;
+        case 0x22:
+            [self alertViewmessage:@"没有通讯上!"];
+            break;
+        case 0x23:
+            [self alertViewmessage:@"测试卡处理!"];
+            break;
+        case 0x35:
+            [self promptInformationActionWarningString:@"正常进入,有循环码处理,2为电梯总线!"];
+            break;
+        case 0x36:
+            [self promptInformationActionWarningString:@"正常进入,没有处理循环码,2为电梯总线!"];
+            break;
+        case 0x20:
+            [self promptInformationActionWarningString:@"正常进入,有处理循环码,3为门禁!"];
+            break;
+        case 0x2e:
+            [self promptInformationActionWarningString:@"正常进入,没有处理循环码,3为门禁!"];
+            break;
+        case 0x37:
+            [self promptInformationActionWarningString:@"正常进入,有处理循环码,5为楼宇模块!"];
+            break;
+        case 0x38:
+            [self promptInformationActionWarningString:@"正常进入,没有处理循环码,5为楼宇模块!"];
+            break;
+        case 0x21:
+            [self promptInformationActionWarningString:@"正常进入,有处理循环码,1为读卡器!"];
+            break;
+        case 0x2f:
+            [self promptInformationActionWarningString:@"正常进入,没有处理循环码,1为读卡器!"];
+            break;
+        case 0x39:
+            [self promptInformationActionWarningString:@"正常进入,有处理循环码,4为光耦读卡器!"];
+            break;
+        case 0x3a:
+            [self promptInformationActionWarningString:@"正常进入,没有处理循环码,4为光耦读卡器!"];
+            break;
+        default:
+            break;
+    }
+}
+
+@end

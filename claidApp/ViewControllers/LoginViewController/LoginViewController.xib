@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -200,13 +200,29 @@
                         <action selector="activationButtonAction:" destination="-1" eventType="touchUpInside" id="qfJ-f1-WqI"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q3T-Nc-tA3">
+                    <rect key="frame" x="6" y="66" width="90" height="39"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" id="7M5-HV-sW9"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" id="Yu6-0g-pVM"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <state key="normal" title="我是访客">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="visitorButtonAction:" destination="-1" eventType="touchUpInside" id="Wfl-Te-jBu"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="c36-H7-dNa" firstAttribute="top" secondItem="wii-iG-Gyf" secondAttribute="bottom" constant="2" id="3Oa-7d-du9"/>
+                <constraint firstItem="q3T-Nc-tA3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="6" id="7Eu-ym-WCL"/>
                 <constraint firstItem="wii-iG-Gyf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="XeL-Mr-FGH"/>
                 <constraint firstAttribute="trailing" secondItem="nZv-Al-x00" secondAttribute="trailing" constant="15" id="bB3-ds-wDd"/>
                 <constraint firstItem="4R4-Zf-z36" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-198.5" id="bIL-80-K3J"/>
+                <constraint firstItem="q3T-Nc-tA3" firstAttribute="top" secondItem="wii-iG-Gyf" secondAttribute="bottom" constant="2" id="iwT-Qs-rEL"/>
                 <constraint firstItem="wii-iG-Gyf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="mp1-Tu-jC7"/>
                 <constraint firstItem="nZv-Al-x00" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="mqJ-8f-IMC"/>
                 <constraint firstItem="nZv-Al-x00" firstAttribute="top" secondItem="wii-iG-Gyf" secondAttribute="bottom" constant="150" id="rfF-4t-dWD"/>

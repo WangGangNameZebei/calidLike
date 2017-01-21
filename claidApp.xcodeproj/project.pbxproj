@@ -11,7 +11,13 @@
 		0A052F611DBDF0E7002EB567 /* BlankTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A052F5F1DBDF0E7002EB567 /* BlankTableViewCell.xib */; };
 		0A0C1E521DD989FE0059EFEC /* LoginOutTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0C1E501DD989FE0059EFEC /* LoginOutTableViewCell.m */; };
 		0A0C1E531DD989FE0059EFEC /* LoginOutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A0C1E511DD989FE0059EFEC /* LoginOutTableViewCell.xib */; };
+		0A0EBEA31E2F0E7D00E4A89E /* VisitorSingleTon.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0EBEA21E2F0E7D00E4A89E /* VisitorSingleTon.m */; };
+		0A0EBEA91E2F3B9600E4A89E /* VisitorSingleTon+Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0EBEA81E2F3B9600E4A89E /* VisitorSingleTon+Tool.m */; };
 		0A0FB99C1DDC367500F5CB7B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A0FB99B1DDC367500F5CB7B /* Security.framework */; };
+		0A131A1C1E2C58A3009D11E2 /* VisitorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A131A1A1E2C58A3009D11E2 /* VisitorViewController.m */; };
+		0A131A1D1E2C58A3009D11E2 /* VisitorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A131A1B1E2C58A3009D11E2 /* VisitorViewController.xib */; };
+		0A131A201E2C62C3009D11E2 /* VisitorViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A131A1F1E2C62C3009D11E2 /* VisitorViewController+Configuration.m */; };
+		0A131A231E2C9838009D11E2 /* VisitorViewController+LogicalFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A131A221E2C9838009D11E2 /* VisitorViewController+LogicalFlow.m */; };
 		0A35C6661DCD87DD0068AA83 /* KaiKaViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A35C6651DCD87DD0068AA83 /* KaiKaViewController+Configuration.m */; };
 		0A51E91A1DC825B9000D31F3 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A51E9181DC825B9000D31F3 /* RegisterViewController.m */; };
 		0A51E91B1DC825B9000D31F3 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A51E9191DC825B9000D31F3 /* RegisterViewController.xib */; };
@@ -146,8 +152,19 @@
 		0A0C1E4F1DD989FE0059EFEC /* LoginOutTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginOutTableViewCell.h; sourceTree = "<group>"; };
 		0A0C1E501DD989FE0059EFEC /* LoginOutTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginOutTableViewCell.m; sourceTree = "<group>"; };
 		0A0C1E511DD989FE0059EFEC /* LoginOutTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginOutTableViewCell.xib; sourceTree = "<group>"; };
+		0A0EBEA11E2F0E7D00E4A89E /* VisitorSingleTon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisitorSingleTon.h; sourceTree = "<group>"; };
+		0A0EBEA21E2F0E7D00E4A89E /* VisitorSingleTon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisitorSingleTon.m; sourceTree = "<group>"; };
+		0A0EBEA71E2F3B9600E4A89E /* VisitorSingleTon+Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VisitorSingleTon+Tool.h"; sourceTree = "<group>"; };
+		0A0EBEA81E2F3B9600E4A89E /* VisitorSingleTon+Tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VisitorSingleTon+Tool.m"; sourceTree = "<group>"; };
 		0A0FB99A1DDC319C00F5CB7B /* claidApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = claidApp.entitlements; sourceTree = "<group>"; };
 		0A0FB99B1DDC367500F5CB7B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		0A131A191E2C58A3009D11E2 /* VisitorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisitorViewController.h; sourceTree = "<group>"; };
+		0A131A1A1E2C58A3009D11E2 /* VisitorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisitorViewController.m; sourceTree = "<group>"; };
+		0A131A1B1E2C58A3009D11E2 /* VisitorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VisitorViewController.xib; sourceTree = "<group>"; };
+		0A131A1E1E2C62C3009D11E2 /* VisitorViewController+Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VisitorViewController+Configuration.h"; sourceTree = "<group>"; };
+		0A131A1F1E2C62C3009D11E2 /* VisitorViewController+Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VisitorViewController+Configuration.m"; sourceTree = "<group>"; };
+		0A131A211E2C9838009D11E2 /* VisitorViewController+LogicalFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VisitorViewController+LogicalFlow.h"; sourceTree = "<group>"; };
+		0A131A221E2C9838009D11E2 /* VisitorViewController+LogicalFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VisitorViewController+LogicalFlow.m"; sourceTree = "<group>"; };
 		0A35C6641DCD87DD0068AA83 /* KaiKaViewController+Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KaiKaViewController+Configuration.h"; sourceTree = "<group>"; };
 		0A35C6651DCD87DD0068AA83 /* KaiKaViewController+Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KaiKaViewController+Configuration.m"; sourceTree = "<group>"; };
 		0A51E9171DC825B9000D31F3 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
@@ -378,6 +395,31 @@
 				0A0C1E511DD989FE0059EFEC /* LoginOutTableViewCell.xib */,
 			);
 			path = LoginOutTableViewCell;
+			sourceTree = "<group>";
+		};
+		0A0EBEA01E2F0E3E00E4A89E /* VIsitorLanya */ = {
+			isa = PBXGroup;
+			children = (
+				0A0EBEA11E2F0E7D00E4A89E /* VisitorSingleTon.h */,
+				0A0EBEA21E2F0E7D00E4A89E /* VisitorSingleTon.m */,
+				0A0EBEA71E2F3B9600E4A89E /* VisitorSingleTon+Tool.h */,
+				0A0EBEA81E2F3B9600E4A89E /* VisitorSingleTon+Tool.m */,
+			);
+			path = VIsitorLanya;
+			sourceTree = "<group>";
+		};
+		0A131A181E2C5860009D11E2 /* VisitorViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0A131A191E2C58A3009D11E2 /* VisitorViewController.h */,
+				0A131A1A1E2C58A3009D11E2 /* VisitorViewController.m */,
+				0A131A1B1E2C58A3009D11E2 /* VisitorViewController.xib */,
+				0A131A1E1E2C62C3009D11E2 /* VisitorViewController+Configuration.h */,
+				0A131A1F1E2C62C3009D11E2 /* VisitorViewController+Configuration.m */,
+				0A131A211E2C9838009D11E2 /* VisitorViewController+LogicalFlow.h */,
+				0A131A221E2C9838009D11E2 /* VisitorViewController+LogicalFlow.m */,
+			);
+			path = VisitorViewController;
 			sourceTree = "<group>";
 		};
 		0A51E9161DC82576000D31F3 /* RegisterViewController */ = {
@@ -733,6 +775,7 @@
 			isa = PBXGroup;
 			children = (
 				0A87F7A71DB74F8E00EFF1F0 /* lanya */,
+				0A0EBEA01E2F0E3E00E4A89E /* VIsitorLanya */,
 				0A95A2D71DDA96640019A691 /* NetWorkJudge */,
 				0AA5DA1D1DF554DA00CA816E /* ZLCGuidePage */,
 				0A8C96931DCC1A9200AAD161 /* HcdDateTimePicker */,
@@ -754,6 +797,7 @@
 				0ACFF8741DB5C6910043D49A /* MyViewController */,
 				0AC68B951DCC6E8200B71FB1 /* KaikaViewController */,
 				0A6830DD1DF106D500D51770 /* lanyaViewController */,
+				0A131A181E2C5860009D11E2 /* VisitorViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -983,7 +1027,7 @@
 		0ACFF80B1DB5BC9F0043D49A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = kevinpc;
 				TargetAttributes = {
 					0ACFF8121DB5BC9F0043D49A = {
@@ -1033,6 +1077,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A131A1D1E2C58A3009D11E2 /* VisitorViewController.xib in Resources */,
 				0A052F611DBDF0E7002EB567 /* BlankTableViewCell.xib in Resources */,
 				0AA5DA281DF554DA00CA816E /* image3.jpg in Resources */,
 				0A5FF94B1DB6032600249F0C /* MyViewController.xib in Resources */,
@@ -1148,12 +1193,14 @@
 				0A611E301E11F40E0002B1C9 /* SingleTon+InstallWarden.m in Sources */,
 				0A5FF93F1DB5FABC00249F0C /* UIColor+Utility.m in Sources */,
 				0A5FF9301DB5F05000249F0C /* CustomActionSheet.m in Sources */,
+				0A0EBEA91E2F3B9600E4A89E /* VisitorSingleTon+Tool.m in Sources */,
 				0AD75CCD1DBDDDEC00297AC3 /* MyViewController+Configuration.m in Sources */,
 				0A961CE91E10ECD1004050B0 /* ZBGroup.m in Sources */,
 				0A6830E51DF1087600D51770 /* LanyaViewController+Configuration.m in Sources */,
 				0A6FB2721DC978BC00345784 /* installViewController.m in Sources */,
 				0ACFF81B1DB5BCA00043D49A /* AppDelegate.m in Sources */,
 				0A51E9211DC82645000D31F3 /* RegisterViewController+Configuration.m in Sources */,
+				0A131A1C1E2C58A3009D11E2 /* VisitorViewController.m in Sources */,
 				0A35C6661DCD87DD0068AA83 /* KaiKaViewController+Configuration.m in Sources */,
 				0A611E331E120BFA0002B1C9 /* installLanyaDataSource.m in Sources */,
 				0A98AF461DF270BF00BCA88C /* JYCarousel.m in Sources */,
@@ -1193,12 +1240,15 @@
 				0A8C969B1DCC1A9200AAD161 /* MXSCycleScrollView.m in Sources */,
 				0A5FF9401DB5FABC00249F0C /* UIImage+Utility.m in Sources */,
 				0A052F601DBDF0E7002EB567 /* BlankTableViewCell.m in Sources */,
+				0A131A231E2C9838009D11E2 /* VisitorViewController+LogicalFlow.m in Sources */,
 				0A0C1E521DD989FE0059EFEC /* LoginOutTableViewCell.m in Sources */,
 				0AC969981DC9820F00F62C57 /* installViewControllerDataSource.m in Sources */,
+				0A131A201E2C62C3009D11E2 /* VisitorViewController+Configuration.m in Sources */,
 				0A6FB2761DC978F700345784 /* installViewController+Configuration.m in Sources */,
 				0AA4913D1DC72E6B0013B974 /* LoginViewController+Configuration.m in Sources */,
 				0A6FB2791DC9792A00345784 /* installViewController+LogicalFlow.m in Sources */,
 				0A6DA6DA1DB6F8D90013D0CF /* MineViewController+LogicalFlow.m in Sources */,
+				0A0EBEA31E2F0E7D00E4A89E /* VisitorSingleTon.m in Sources */,
 				0A8C969A1DCC1A9200AAD161 /* HcdDateTimePickerView.m in Sources */,
 				0ACFF8901DB5CDFA0043D49A /* BaseView.m in Sources */,
 				0A8C969C1DCC1A9200AAD161 /* UIColor+HcdCustom.m in Sources */,
@@ -1284,6 +1334,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1332,6 +1383,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

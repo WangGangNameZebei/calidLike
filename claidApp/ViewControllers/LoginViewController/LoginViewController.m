@@ -14,6 +14,7 @@
 #import "LanyaViewController.h"
 #import "AESCrypt.h"
 #import "LoginViewController+LogicalFlow.h"
+#import "VisitorViewController.h"
 @implementation LoginViewController
 
 + (instancetype)create {
@@ -41,13 +42,17 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)activationButtonAction:(id)sender {
-    
+- (IBAction)activationButtonAction:(id)sender {    
     LanyaViewController *lanyaVC = [LanyaViewController create];
     lanyaVC.titleNameString = [NSString stringWithFormat:@"物业激活"];
     [self hideTabBarAndpushViewController:lanyaVC];
-
 }
+
+- (IBAction)visitorButtonAction:(id)sender {
+    VisitorViewController *visitorVC = [VisitorViewController create];
+    [self hideTabBarAndpushViewController:visitorVC];
+}
+
 - (IBAction)loginButtonAction:(id)sender {
     [self requestLoginPostForUsername:self.phoneNumberTextField.text password:self.passwordTextField.text];
  //   [[NSUserDefaults standardUserDefaults] setObject:self.phoneNumberTextField.text forKey:@"phoneNumber"];    //   登录成功之后  要储存

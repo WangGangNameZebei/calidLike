@@ -107,8 +107,11 @@ static SingleTon *_instace = nil;
         self.scanTimer = nil;
         LOG(@"关闭Scantime");
     }
-    
+    LOG(@"====%@", identifierStr);
     NSUUID * uuid = [[NSUUID alloc]initWithUUIDString:identifierStr];
+    NSString *deviceId = [uuid UUIDString];
+    LOG(@"----%@", uuid);
+    LOG(@"----%@", deviceId);
     NSArray *array = [self.manager retrievePeripheralsWithIdentifiers:@[uuid]];
     CBPeripheral *peripheral = [array lastObject];
     [self connectClick:peripheral];
@@ -438,7 +441,7 @@ static SingleTon *_instace = nil;
         }
         [self mainHairpinReturnData:characteristic];            //刷卡最后 返回 数据
        self.receiveData = @"";
-    } else if (self.receiveData.length == 94) {                 //刷卡 第二串 返回
+    } else if (self.receiveData.length == 94) {                 //刷卡 第1串 返回
         [self lanyaSendoutDataAction:[self hexadecimalString:characteristic.value]];
         self.receiveData = @"";
         

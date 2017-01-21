@@ -12,12 +12,14 @@
 #import "MyViewController+Animation.h"
 #import "LanyaViewController.h"
 #import "LoginViewController.h"
+#import "VisitorViewController.h"
+
 
 @implementation MyViewController
 
 + (instancetype) create {
     MyViewController *myViewController = [[MyViewController alloc] initWithNibName:@"MyViewController" bundle:nil];
-    return myViewController;
+    return myViewController;  
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -37,7 +39,7 @@
          lanyaVC.titleNameString = [NSString stringWithFormat:@"蓝牙"];
          [self hideTabBarAndpushViewController:lanyaVC];
         
-     } else if (indexPath.row == 4) {
+     } else if (indexPath.row == 6) {
         self.customAlertView = [[UIAlertView alloc] initWithTitle:@"请输入管理员口令" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
             [self.customAlertView setAlertViewStyle:UIAlertViewStylePlainTextInput];
     
@@ -45,14 +47,17 @@
          nameField.placeholder = @"您的口令是..";
         [self.customAlertView show];
         
-     } else if (indexPath.row == 1 || indexPath.row == 5 || indexPath.row == 7) {
+     } else if (indexPath.row == 1 || indexPath.row == 7 || indexPath.row == 9) {
          NSLog(@"空白区");
-     } else if (indexPath.row == 6) {
+     } else if (indexPath.row == 8) {
          [self clearAllUserDefaultsData];
          LoginViewController *loginViewController = [LoginViewController create];
          UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
          navigationController.navigationBarHidden = YES;
          UIApplication.sharedApplication.delegate.window.rootViewController = navigationController;
+     } else if (indexPath.row == 5){
+         VisitorViewController *visitor = [VisitorViewController create];
+         [self hideTabBarAndpushViewController:visitor];
      }else {
          [self promptInformationActionWarningString:@"此功能暂未开通!"];
      }
@@ -75,7 +80,6 @@
 //清除数据
 - (void)clearAllUserDefaultsData {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    
     NSDictionary *dic = [userDefaults dictionaryRepresentation];
     for (id  key in dic) {
         [userDefaults removeObjectForKey:key];

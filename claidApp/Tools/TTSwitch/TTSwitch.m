@@ -217,7 +217,7 @@ static const CGFloat kTTSwitchAnimationDuration = 0.25;
     [self thumbImageHighlighted:NO];
     
     if (animated) {
-        CGFloat distanceOfTravel = fabsf((_on ? 1.0f : 0.0f) - [self valueAtThumbPosition]);
+        CGFloat distanceOfTravel = fabs((_on ? 1.0f : 0.0f) - [self valueAtThumbPosition]);
         CGFloat animationDuration = kTTSwitchAnimationDuration * distanceOfTravel;
         
         [UIView animateWithDuration:animationDuration animations:^{

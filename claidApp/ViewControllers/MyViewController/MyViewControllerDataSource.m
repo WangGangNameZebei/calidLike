@@ -18,9 +18,9 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 1 || indexPath.row == 5|| indexPath.row == 7) {
+    if (indexPath.row == 1 || indexPath.row == 7|| indexPath.row == 9) {
         return [self blankTableView:tableView indexPath:indexPath];
-    } else if (indexPath.row == 6){
+    } else if (indexPath.row == 8){
         return [self loginOutTableView:tableView indexPath:indexPath];
     } else {
         return [self myTableView:tableView indexPath:indexPath];
@@ -39,7 +39,7 @@
 
 - (UITableViewCell *)blankTableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
     BlankTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:BLANK_TABLEVIEW_CELL];
-     if (indexPath.row == 5 || indexPath.row == 7)
+     if (indexPath.row == 7 || indexPath.row == 9)
           cell.contentView.backgroundColor = [UIColor whiteColor];
     return cell;
 }

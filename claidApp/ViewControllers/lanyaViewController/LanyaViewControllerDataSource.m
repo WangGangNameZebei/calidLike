@@ -47,7 +47,7 @@
 - (UITableViewCell *)lanyaHeadTabelViwe:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
     LanyaHeadTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:LANYA_HEAD_TABELEVIEW_CELL];
     if (indexPath.row == 0) {
-       cell.LanyaHeadLabelText.text =@"已连接设备";
+       cell.LanyaHeadLabelText.text =@"已连接过的设备";
     } else {
        cell.LanyaHeadLabelText.text =@"可用设备";
     }

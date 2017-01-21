@@ -1,17 +1,16 @@
 //
-//  SingleTon+tool.m
+//  VisitorSingleTon+Tool.m
 //  claidApp
 //
-//  Created by kevinpc on 2017/1/6.
+//  Created by kevinpc on 2017/1/18.
 //  Copyright © 2017年 kevinpc. All rights reserved.
 //
 
-#import "SingleTon+tool.h"
+#import "VisitorSingleTon+Tool.h"
 
-@implementation SingleTon (tool)
-
+@implementation VisitorSingleTon (Tool)
 //将传入的NSData类型转换成NSString并返回
-- (NSString*)hexadecimalString:(NSData *)data{
+- (NSString*)visitorhexadecimalString:(NSData *)data{
     NSString* result;
     const unsigned char* dataBuffer = (const unsigned char*)[data bytes];
     if(!dataBuffer){
@@ -27,7 +26,7 @@
 }
 
 #pragma mark - 指令字面值转16进制
-- (NSInteger)turnTheHexLiterals:(NSString *)string {
+- (NSInteger)visitorturnTheHexLiterals:(NSString *)string {
     
     NSString *FirstNumStr = [string substringWithRange:NSMakeRange(0,1)];
     int a = [self changeToIntString:FirstNumStr];
@@ -74,7 +73,7 @@
 }
 
 #pragma mark - 发送发卡指令
-- (NSString *)payByCardInstructionsActionString:(NSString *)string {
+- (NSString *)visitorpayByCardInstructionsActionString:(NSString *)string {
     unsigned int numberKey;
     unsigned char key1[4];
     unsigned char key2[100];
@@ -83,9 +82,9 @@
     NSString *strTow = @"";
     NSInteger  aa;
     string = [string substringWithRange:NSMakeRange(2, 12)];
-        aa =10000000+rand()%(99999999 - 10000000 + 1);
-        strOne = [NSString stringWithFormat:@"%@%ld",strOne,(long)aa];
-  
+    aa =10000000+rand()%(99999999 - 10000000 + 1);
+    strOne = [NSString stringWithFormat:@"%@%ld",strOne,(long)aa];
+    
     string = [NSString stringWithFormat:@"%@%@",string,strOne];
     
     for (NSInteger I = 0; I < 32; I++) {
@@ -94,10 +93,10 @@
     
     for (NSInteger j = 0; j < string.length / 2; j++) {
         TheTwoCharacters = [string substringWithRange:NSMakeRange(j * 2,2)];
-        aa= [self turnTheHexLiterals:TheTwoCharacters];
+        aa= [self visitorturnTheHexLiterals:TheTwoCharacters];
         key2[j] = aa;
     }
-    numberKey = crcs32(key2,42);
+    numberKey = visicrcs32(key2,42);
     key1[0] = numberKey>>24;
     key1[1] = numberKey>>16;
     key1[2] = numberKey>>8;
@@ -108,7 +107,7 @@
     return strOne;
 }
 #pragma mark - 发送数据加密
-- (void)lanyaSendoutDataAction:(NSString *)data {
+- (void)visitorlanyaSendoutDataAction:(NSString *)data {
     unsigned int numberKey;
     unsigned char key1[4];
     unsigned char key2[100];
@@ -120,17 +119,17 @@
     
     for (NSInteger j = 0; j < data.length / 2; j++) {
         TheTwoCharacters = [data substringWithRange:NSMakeRange(j * 2,2)];
-        aa= [self turnTheHexLiterals:TheTwoCharacters];
+        aa= [self visitorturnTheHexLiterals:TheTwoCharacters];
         key2[j] = aa;
     }
     key1[0] = key2[42];
     key1[1] = key2[43];
     key1[2] = key2[44];
     key1[3] = key2[45];
-    xor(key1);
+    visixor(key1);
     
     for(NSInteger I = 0; I < 48; I++) {
-        key2[I] = key2[I]^tmpstr[I];
+        key2[I] = key2[I]^visitmpstr[I];
     }
     key1[0] = key2[16];
     key1[1] = key2[17];
@@ -156,14 +155,14 @@
     key[1] = number>>16;
     key[2] = number>>8;
     key[3] = number;
-    xor(key);
+    visixor(key);
     for (NSInteger j = 0; j < string.length / 2; j++) {
         TheTwoCharacters = [string substringWithRange:NSMakeRange(j * 2,2)];
-        aa= [self turnTheHexLiterals:TheTwoCharacters];
+        aa= [self visitorturnTheHexLiterals:TheTwoCharacters];
         key2[j] = aa;
     }
     for(NSInteger I = 0; I < string.length / 2; I++) {
-        key2[I] = key2[I]^tmpstr[I];
+        key2[I] = key2[I]^visitmpstr[I];
     }
     strTow = @"";strOne = @"";
     for (NSInteger i = 0; i < string.length / 2; i++) {
@@ -172,56 +171,23 @@
     }
     return strTow;
 }
-#pragma mark - 效验数据
-- (BOOL)lanyaDataXiaoyanAction:(NSString *)data {
-    unsigned int numberKey;
-    unsigned char key[4];
-    unsigned char key1[4];
-    unsigned char key2[100];
-    NSString * TheTwoCharacters;
-    NSInteger  aa;
-    for (NSInteger j = 0; j < data.length / 2; j++) {
-        TheTwoCharacters = [data substringWithRange:NSMakeRange(j * 2,2)];
-        aa= [self turnTheHexLiterals:TheTwoCharacters];
-        key2[j] = aa;
-    }
-    key1[0] = key2[48];
-    key1[1] = key2[49];
-    key1[2] = key2[50];
-    key1[3] = key2[51];
-    xor(key1);
-    
-    for(NSInteger I = 0; I < 48; I++) {
-        key2[I] = key2[I]^tmpstr[I];
-    }
-    numberKey = crcs32(key2,48);
-    key[0] = numberKey>>24;
-    key[1] = numberKey>>16;
-    key[2] = numberKey>>8;
-    key[3] = numberKey;
-    if (key[0] == key1[0] && key[1] == key1[1] && key[2] == key1[2] && key[3] == key1[3]) {
-        return YES;
-    } else {
-        return NO;
-    }
-}
 
 
 
 #pragma mark - C  语言 的加密 算法
-unsigned int crcs32( unsigned char buf[], unsigned char len)
+unsigned int visicrcs32( unsigned char buf[], unsigned char len)
 {
     unsigned int ret = 0x13141516;
     int i;
     for(i = 0; i < len;i++)
     {
-        ret = CRC32_table[((ret & 0xFF) ^ buf[i])] ^ (ret >> 8);
+        ret = visiCRC32_table[((ret & 0xFF) ^ buf[i])] ^ (ret >> 8);
     }
     ret = ~ret;
     return ret;
 }
 
-unsigned int CRC32_table[256] =
+unsigned int visiCRC32_table[256] =
 {
     0x00000000, 0x77073096, 0xEE0E612C, 0x990951BA,
     0x076DC419, 0x706AF48F, 0xE963A535, 0x9E6495A3,
@@ -288,9 +254,9 @@ unsigned int CRC32_table[256] =
     0xB3667A2E, 0xC4614AB8, 0x5D681B02, 0x2A6F2B94,
     0xB40BBE37, 0xC30C8EA1, 0x5A05DF1B, 0x2D02EF8D
 };
-char tmpstr[54];
+char visitmpstr[54];
 //数据  加密 算法
-void xor(unsigned char key[]) {
+void visixor(unsigned char key[]) {
     int j;
     int slen= 54; //strlen(source);
     int klen= 4; //strlen(key);
@@ -310,16 +276,16 @@ void xor(unsigned char key[]) {
     for(j=0;j<slen;j++)
     {
         if (str % klen == 0 ){
-            tmpstr[j]=(numberOne[j]^key[j%klen]) ^ str;
+            visitmpstr[j]=(numberOne[j]^key[j%klen]) ^ str;
         }else if (str % klen == 1) {
-            tmpstr[j]=(numberOne[j]^key[j%klen])^(~(str)) ;
+            visitmpstr[j]=(numberOne[j]^key[j%klen])^(~(str)) ;
         }else if (str % klen == 2) {
-            tmpstr[j]=numberOne[j]^key[j%klen];
+            visitmpstr[j]=numberOne[j]^key[j%klen];
         } else {
-            tmpstr[j]=~((numberOne[j]^key[j%klen]) ^ str);
+            visitmpstr[j]=~((numberOne[j]^key[j%klen]) ^ str);
         }
-        if(!tmpstr[j])
-            tmpstr[j]=numberOne[j];
+        if(!visitmpstr[j])
+            visitmpstr[j]=numberOne[j];
     }
     
 }
