@@ -27,6 +27,7 @@
         [self.ziDongSwitch setOn:YES];
         [self zidongAction:self.ziDongSwitch];
     } else {
+        self.ziDongLabei.text = @"手动刷卡";
         [self.ziDongSwitch setOn:NO];
     }
 }
@@ -36,17 +37,18 @@
     BOOL isButtonOn = [switchButton isOn];
     if (isButtonOn) {
         SingleTon *ton = [SingleTon sharedInstance];
-        NSString *uuidstr = [[NSUserDefaults standardUserDefaults] objectForKey:@"identifierStr"];
+      //  NSString *uuidstr =[[NSUserDefaults standardUserDefaults] objectForKey:@"identifierStr"];
         
-        if (!uuidstr) {
-            [self promptInformationActionWarningString:@"没有本地保存的蓝牙!"];
-            NSLog(@"没有本地保存外设identifierStr");
-            return;
-        }
+//        if (!uuidstr) {
+//            [self promptInformationActionWarningString:@"没有本地保存的蓝牙!"];
+//            return;
+//        }
         
-        [ton getPeripheralWithIdentifierAndConnect:uuidstr];
+        [ton getPeripheralWithIdentifierAndConnect:SINGLE_TON_UUID_STR];
+        self.ziDongLabei.text = @"自动刷卡";
         [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"switch"];
     } else {
+        self.ziDongLabei.text = @"手动刷卡";
         [self.ton.manager stopScan];  //停止  扫描
         [[NSUserDefaults standardUserDefaults] setObject:@"NO" forKey:@"switch"];
     }

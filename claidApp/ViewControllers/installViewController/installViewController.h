@@ -12,7 +12,7 @@
 #import "InstallLanyaDataDelegate.h"
 #import "ZBGroup.h"
 #import "SingleTon.h"           //蓝牙
-#import "DBTool.h"          //数据库
+#import "DBTool.h"              //数据库
 #import "InstallCardData.h"
 @interface installViewController : BaseViewController <UITableViewDelegate,installLanyaDelegate,installViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *installTableView;

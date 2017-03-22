@@ -18,6 +18,7 @@
     [self initData];
     [self carouselViewEdit];
     [self addGestRecognizer];
+    [self SDshuakabiaoshiAction:YES];
 }
 #pragma mark检测升级
 - (void)upgradeAppAction {
@@ -29,6 +30,17 @@
         [self alertViewDelegateString:@"有新的版本可供检测,是否升级?"];
     }
 }
+
+- (void)SDshuakabiaoshiAction:(BOOL)boolData{
+     self.SDshukaBiaoshi = boolData;
+    if(boolData){
+      self.shuaKaButton.backgroundColor = [UIColor colorFromHexCode:@"1296db"];        
+    } else {
+      self.shuaKaButton.backgroundColor = [UIColor colorFromHexCode:@"C2C2C2"];
+    }
+    
+}
+
 #pragma mark  滚动视图
 - (void)carouselViewEdit {
     NSMutableArray *imageArray = [[NSMutableArray alloc] initWithArray: @[@"gsgg1.jpg",@"gsgg2.jpg",@"gsgg3.jpg"]];
@@ -84,6 +96,7 @@
                 self.message = [NSString stringWithFormat:@"%@%@",@"cc",self.message];
                  [[SingleTon sharedInstance] sendCommand:self.message];       //发送数据
             } else {
+                [self SDshuakabiaoshiAction:YES];
                 [self promptInformationActionWarningString:@"暂未发卡!"];
                 [[SingleTon sharedInstance] disConnection];
             }
@@ -91,11 +104,13 @@
         case 3:                             //  3  为 发送数据成功
          [[SingleTon sharedInstance] disConnection];             //断开蓝牙
             break;
-        case 4:                             //  4  为 主动断开蓝牙
+        case 4://  4  为 主动断开蓝牙
+            [self SDshuakabiaoshiAction:YES];
             if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"switch"] isEqualToString:@"YES"])
                 [[SingleTon sharedInstance] targetScan];             //目标扫描
             break;
         case 5:
+            
             [self promptInformationActionWarningString:@"无本地链接!"];
             break;
         case 6:
@@ -112,7 +127,10 @@
 }
 
 - (IBAction)shuakaButtonAction:(id)sender {     // 手动刷卡
-    [self autoConnectAction];
+    if (self.SDshukaBiaoshi){
+      [self SDshuakabiaoshiAction:NO];
+      [self autoConnectAction];
+    }
 }
 
 #pragma mark - 空白处收起键盘
@@ -129,18 +147,13 @@
 #pragma mark  自动连接蓝牙函数
 - (void)autoConnectAction {
     SingleTon *ton = [SingleTon sharedInstance];
-    NSString *uuidstr = [[NSUserDefaults standardUserDefaults] objectForKey:@"identifierStr"];
-    
-    if (!uuidstr) {
-        [self promptInformationActionWarningString:@"没有本地保存的蓝牙!"];
-        return;
-    }
-    [ton getPeripheralWithIdentifierAndConnect:uuidstr];    //连接蓝牙
+    [ton getPeripheralWithIdentifierAndConnect:SINGLE_TON_UUID_STR];    //连接蓝牙
     
 }
 
 #pragma mark - 刷卡数据返回  错误 报告
 - (void)lanyaShuakareturnPromptActioninteger:(NSInteger)promptInteger {
+    
     switch (promptInteger) {
         case 0x2b:
             [self alertViewmessage:@"循环用的EEPROM读写出现致命错误!"];

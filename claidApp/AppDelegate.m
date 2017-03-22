@@ -27,7 +27,7 @@
     }];
     [self ttSwitchAddImageAction];
     [[SingleTon sharedInstance] initialization];    // 蓝牙设备
-   if (![[NSUserDefaults standardUserDefaults] objectForKey:@"identifierStr"]) {
+   if (![[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESData"]) {
        
         LoginViewController *loginViewController = [LoginViewController create];
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];

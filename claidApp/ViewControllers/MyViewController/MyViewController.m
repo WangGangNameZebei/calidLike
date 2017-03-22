@@ -56,8 +56,9 @@
          navigationController.navigationBarHidden = YES;
          UIApplication.sharedApplication.delegate.window.rootViewController = navigationController;
      } else if (indexPath.row == 5){
-         VisitorViewController *visitor = [VisitorViewController create];
-         [self hideTabBarAndpushViewController:visitor];
+         [self promptInformationActionWarningString:@"此功能暂未开通!"];
+//         VisitorViewController *visitor = [VisitorViewController create];
+//         [self hideTabBarAndpushViewController:visitor];
      }else {
          [self promptInformationActionWarningString:@"此功能暂未开通!"];
      }
@@ -68,7 +69,7 @@
     
     if (buttonIndex == alertView.firstOtherButtonIndex) {
         UITextField *nameField = [alertView textFieldAtIndex:0];
-        if ([nameField.text isEqual:@"calid"]) {
+        if ([nameField.text isEqual:@"admin"]) {
            installViewController *installVC = [installViewController create];
             [self hideTabBarAndpushViewController:installVC];
         }

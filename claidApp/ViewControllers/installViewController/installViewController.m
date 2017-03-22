@@ -32,12 +32,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     SingleTon *ton = [SingleTon sharedInstance];
-    NSString *uuidstr = [[NSUserDefaults standardUserDefaults] objectForKey:@"identifierStr"];
-    if (!uuidstr) {
-        [self promptInformationActionWarningString:@"没有本地保存的蓝牙!"];
-        return;
-    }
-     [ton installShoudongConnectClick:uuidstr];
+//    NSString *uuidstr = [[NSUserDefaults standardUserDefaults] objectForKey:@"identifierStr"];
+//    if (!uuidstr) {
+//        [self promptInformationActionWarningString:@"没有本地保存的蓝牙!"];
+//        return;
+//    }
+     [ton installShoudongConnectClick:SINGLE_TON_UUID_STR];
      self.selectIndexPath = indexPath;
 }
 

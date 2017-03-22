@@ -59,7 +59,7 @@ static SingleTon *_instace = nil;
             self.shukaTimer = nil;
             LOG(@"关闭刷卡定时器");
         }
-        self.shukaTimer = [NSTimer scheduledTimerWithTimeInterval:4 target:self selector:@selector(shukaShibaiAction) userInfo:nil repeats:NO];
+        self.shukaTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(shukaShibaiAction) userInfo:nil repeats:NO];
        LOG(@"开启刷卡定时器");
     }
     if ([String isEqualToString:@"aa"] || [String isEqualToString:@"00"]) {
@@ -114,9 +114,9 @@ static SingleTon *_instace = nil;
     LOG(@"----%@", deviceId);
     NSArray *array = [self.manager retrievePeripheralsWithIdentifiers:@[uuid]];
     CBPeripheral *peripheral = [array lastObject];
-    [self connectClick:peripheral];
     _identiFication = YES;
     self.installBool  = NO;
+    [self connectClick:peripheral];
     
 }
 
@@ -191,15 +191,15 @@ static SingleTon *_instace = nil;
 }
 
 - (void)houtaisaomiaoAction {
-    NSString *uuidstr = [[NSUserDefaults standardUserDefaults] objectForKey:@"identifierStr"];
-    
-    if (!uuidstr) {
-        if ( [self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
-            [self.deleGate switchEditInitPeripheralData:5];
-        }
-        return;
-    }
-    [self getPeripheralWithIdentifierAndConnect:uuidstr];    //连接蓝牙
+//    NSString *uuidstr = [[NSUserDefaults standardUserDefaults] objectForKey:@"identifierStr"];
+//    
+//    if (!uuidstr) {
+//        if ( [self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
+//            [self.deleGate switchEditInitPeripheralData:5];
+//        }
+//        return;
+//    }
+    [self getPeripheralWithIdentifierAndConnect:SINGLE_TON_UUID_STR];    //连接蓝牙
 
 }
 
@@ -217,7 +217,7 @@ static SingleTon *_instace = nil;
 //定时器  到时 连接     蓝牙设备
 - (void) lianjielanyaAction {
     [self stopScan];
-    [self getPeripheralWithIdentifierAndConnect:[[NSUserDefaults standardUserDefaults] objectForKey:@"identifierStr"]];
+    [self getPeripheralWithIdentifierAndConnect:SINGLE_TON_UUID_STR];
 }
 
 #pragma mark - 停止扫描

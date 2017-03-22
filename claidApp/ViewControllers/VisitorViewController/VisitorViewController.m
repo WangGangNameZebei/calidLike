@@ -38,15 +38,15 @@
 }
 
 - (IBAction)paybyCardButtonAction:(id)sender {
-    VisitorSingleTon *ton = [VisitorSingleTon sharedInstance];
-    NSString *uuidstr = [[NSUserDefaults standardUserDefaults] objectForKey:@"identifierStr"];
-    
-    if (!uuidstr) {
-        [self promptInformationActionWarningString:@"没有本地保存的蓝牙!"];
-        NSLog(@"没有本地保存外设identifierStr");
-        return;
-    }
-    [ton getPeripheralWithIdentifierAndConnect:uuidstr];
+//    VisitorSingleTon *ton = [VisitorSingleTon sharedInstance];
+//    NSString *uuidstr = [[NSUserDefaults standardUserDefaults] objectForKey:@"identifierStr"];
+//    
+//    if (!uuidstr) {
+//        [self promptInformationActionWarningString:@"没有本地保存的蓝牙!"];
+//        NSLog(@"没有本地保存外设identifierStr");
+//        return;
+//    }
+//    [ton getPeripheralWithIdentifierAndConnect:uuidstr];
     
 }
 

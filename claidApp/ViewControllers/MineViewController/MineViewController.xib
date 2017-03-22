@@ -15,6 +15,7 @@
                 <outlet property="shuaKaButton" destination="GWh-6t-HIA" id="dcd-7K-wIB"/>
                 <outlet property="titleLabel" destination="ZUI-mA-zzj" id="pUO-I0-9Jy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="ziDongLabei" destination="dnG-wM-EgI" id="Nf2-hw-Spd"/>
                 <outlet property="ziDongSwitch" destination="rXj-5A-LRC" id="oOo-1G-kxa"/>
                 <outlet property="ziDongView" destination="yF2-R9-9cp" id="r5B-Gc-7FS"/>
             </connections>

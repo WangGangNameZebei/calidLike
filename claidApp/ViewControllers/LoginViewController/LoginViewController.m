@@ -49,8 +49,9 @@
 }
 
 - (IBAction)visitorButtonAction:(id)sender {
-    VisitorViewController *visitorVC = [VisitorViewController create];
-    [self hideTabBarAndpushViewController:visitorVC];
+    [self promptInformationActionWarningString:@"此功能暂未开通!"];
+//    VisitorViewController *visitorVC = [VisitorViewController create];
+//    [self hideTabBarAndpushViewController:visitorVC];
 }
 
 - (IBAction)loginButtonAction:(id)sender {
@@ -80,8 +81,8 @@
 
 - (NSArray *)createTabBarGroups {
     NSArray *titles = @[NSLocalizedString(@"主页", nil), NSLocalizedString(@"我的", nil),];
-    NSArray *selectImages = @[@"zhuye_1.png", @"wode_1.png"];
-    NSArray *unSelectImages = @[@"zhuye_2",@"wode_2.png"];
+    NSArray *selectImages = @[@"homePage_blue", @"my_blue"];
+    NSArray *unSelectImages = @[@"homePage_gray",@"my_gray"];
     NSMutableArray *imageGroups = [[NSMutableArray alloc] init];
     for (int i = 0; i < titles.count; i++) {
         TabBarItemImageGroup *imageGroup = [[TabBarItemImageGroup alloc] init];

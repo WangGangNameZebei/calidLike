@@ -9,6 +9,10 @@
 /*AES加密宏*/
 #define AES_PASSWORD @"ufwjfitn"
 
+/* 蓝牙刷卡固定死的 uuid*/
+
+#define SINGLE_TON_UUID_STR @"FACE5307-0FBF-48CE-BF91-462449156AC3"
+
 /*输出宏*/
 #ifdef DEBUG
 #define LOG(...) NSLog(__VA_ARGS__);

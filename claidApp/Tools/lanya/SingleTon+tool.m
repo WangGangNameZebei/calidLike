@@ -141,7 +141,7 @@
     strOne = [lanyaDataStr substringWithRange:NSMakeRange(0,104)];
     strTow = [self jiamiaTostringAcction:strOne numberKey:numberKey];
     strTow = [NSString stringWithFormat:@"%@%@",strTow,[self jiamiaTostringAcction:[lanyaDataStr substringWithRange:NSMakeRange(104, 104)] numberKey:numberKey]];
-    [self sendCommand:[NSString stringWithFormat:@"aa%@",strTow]];
+    [self sendCommand:[NSString stringWithFormat:@"AA%@",strTow]];
 }
 
 // 加密 算法

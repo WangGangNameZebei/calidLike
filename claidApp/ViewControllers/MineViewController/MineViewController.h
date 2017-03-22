@@ -19,12 +19,14 @@
 
 @property (weak, nonatomic) IBOutlet TTSwitch *ziDongSwitch;
 @property (strong, nonatomic) IBOutlet UIView *ziDongView;
+@property (strong, nonatomic) IBOutlet UILabel *ziDongLabei;
 
 
 
 @property (strong, nonatomic) MinViewControllerDataSource *minViewControllerDataSource;
 @property (strong, nonatomic) SingleTon *ton;
 @property (strong, nonatomic) NSString *message;
+@property (assign, nonatomic) BOOL SDshukaBiaoshi; // 手动刷卡 标识
 
 @property (nonatomic, strong) JYCarousel *carouselView;
 - (void)switchEditInit;
