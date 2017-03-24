@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
-#import <AESCrypt.h>
+
 
 @protocol VisitorDataToVCDelegate <NSObject>           //主界面 连接 蓝牙
 @optional

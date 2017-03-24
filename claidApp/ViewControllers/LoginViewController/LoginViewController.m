@@ -55,13 +55,16 @@
 }
 
 - (IBAction)loginButtonAction:(id)sender {
+    if (self.phoneNumberTextField.text.length==0){
+       [self promptInformationActionWarningString:@"账号不能为空!"];
+        return;
+    }
+    if (self.passwordTextField.text.length==0){
+      [self promptInformationActionWarningString:@"密码不能为空!"];
+        return;
+    }
     [self requestLoginPostForUsername:self.phoneNumberTextField.text password:self.passwordTextField.text];
- //   [[NSUserDefaults standardUserDefaults] setObject:self.phoneNumberTextField.text forKey:@"phoneNumber"];    //   登录成功之后  要储存
-   // [self promptInformationActionWarningString:@"此功能暂未开通"];
-//    [[SingleTon sharedInstance] initialization];    // 蓝牙设备
-//    CustomTabBarController *customTabBarController = [self createCustomTabBarController];
-//    UIApplication.sharedApplication.delegate.window.rootViewController = customTabBarController;
-//    
+   
 //      NSLog(@"从keyChain中取出的uuid-> %@",[self keyChainIdentifierForVendorString]);    // 获取钥匙串 的UUID
 
 }

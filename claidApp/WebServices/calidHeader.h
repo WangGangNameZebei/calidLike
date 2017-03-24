@@ -22,6 +22,10 @@
 #endif
 
 //登录    URL
-#define LOGIN_URL @"http://192.168.1.107:8080/calid/login.do"
+#define LOGIN_URL @"http://139.199.28.175:8080/calid/login.do"
 //注册    URL
-#define REGISTER_URL @"http://192.168.1.107:8080/calid/addUser.do"
+#define REGISTER_URL @"http://139.199.28.175:8080/calid/addUser.do"
+//邀请访客   URL
+#define INVITAION_VISITOR_URL @"http://139.199.28.175:8080/calid/addTourist.do"
+//我是访客   URL
+#define VISITOR_URL @"http://139.199.28.175:8080/calid/getKeyByPhoneNum.do"

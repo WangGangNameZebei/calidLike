@@ -11,7 +11,6 @@
 #import <AESCrypt.h>
 
 
-
 @implementation LoginViewController (LogicalFlow)
 
 - (void)requestLoginPostForUsername:(NSString *)username password:(NSString *)password {
@@ -26,8 +25,10 @@
             NSString *dataString = [resultDic objectForKey:@"data"];
             NSString *encryptedData = [AESCrypt encrypt:dataString password:AES_PASSWORD];  //加密
             [[NSUserDefaults standardUserDefaults] setObject:encryptedData forKey:@"lanyaAESData"];  //存储
+            dataString = [resultDic objectForKey:@"oraKey"];
+             [[NSUserDefaults standardUserDefaults] setObject:dataString forKey:@"userorakey"];  //存储
             CustomTabBarController *customTabBarController = [self createCustomTabBarController];
-           UIApplication.sharedApplication.delegate.window.rootViewController = customTabBarController;
+            UIApplication.sharedApplication.delegate.window.rootViewController = customTabBarController;
             
         } else {
                 [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];

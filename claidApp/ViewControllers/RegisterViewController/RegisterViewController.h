@@ -18,5 +18,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *phoneNumberImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *mishiImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *passwordImageView;
+@property (strong, nonatomic) IBOutlet UIView *confirmPasswordView;
+@property (strong, nonatomic) IBOutlet UIImageView *confirmPasswordImageView;
+@property (strong, nonatomic) IBOutlet UITextField *confirmPasswordTextField;
 
 @end

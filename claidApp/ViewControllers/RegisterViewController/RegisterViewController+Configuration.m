@@ -32,6 +32,9 @@
     self.passwordTextField.clearButtonMode = UITextFieldViewModeAlways;
     self.passwordTextField.secureTextEntry = YES;
     self.passwordTextField.delegate = self;
+    self.confirmPasswordTextField.clearButtonMode = UITextFieldViewModeAlways;
+    self.confirmPasswordTextField.secureTextEntry = YES;
+    self.confirmPasswordTextField.delegate = self;
 }
 
 //  textFieldView编辑
@@ -39,6 +42,7 @@
     [self viewlayer:self.phoneNumberView];
     [self viewlayer:self.mishiView];
     [self viewlayer:self.passwordView];
+    [self viewlayer:self.confirmPasswordView];
 }
 
 #pragma mark UIView 边框编辑
@@ -57,9 +61,12 @@
     } else if (textField.tag == 2) {
         self.mishiView.layer.borderColor = [[UIColor colorFromHexCode:@"#1296db"] CGColor];
         self.mishiImageView.image = [UIImage imageNamed:@"login_secretKey_blue"];
-    }else {
-        self.passwordView.layer.borderColor = [[UIColor colorFromHexCode:@"#1296db"] CGColor];
+    }else if (textField.tag == 3){
+         self.passwordView.layer.borderColor = [[UIColor  colorFromHexCode:@"#1296db"] CGColor];
          self.passwordImageView.image = [UIImage imageNamed:@"login_passWord_blue"];
+    } else {
+        self.confirmPasswordView.layer.borderColor = [[UIColor  colorFromHexCode:@"#1296db"] CGColor];
+        self.confirmPasswordImageView.image = [UIImage imageNamed:@"login_passWord_blue"];
     }
 }
 
@@ -71,9 +78,12 @@
         self.mishiView.layer.borderColor = [[UIColor colorFromHexCode:@"#C2C2C2"] CGColor];
          self.mishiImageView.image = [UIImage imageNamed:@"login_secretKey_gray"];
         
-    } else {
+    } else if (textField.tag == 3){
         self.passwordView.layer.borderColor = [[UIColor colorFromHexCode:@"#C2C2C2"] CGColor];
          self.passwordImageView.image = [UIImage imageNamed:@"login_passWord_gray"];
+    } else{
+        self.confirmPasswordView.layer.borderColor = [[UIColor colorFromHexCode:@"#C2C2C2"] CGColor];
+        self.confirmPasswordImageView.image = [UIImage imageNamed:@"login_passWord_gray"];
     }
 }
 
@@ -81,6 +91,7 @@
     [self.phoneNumberTextField resignFirstResponder];
     [self.mishiTextField resignFirstResponder];
     [self.passwordTextField resignFirstResponder];
+     [self.confirmPasswordTextField resignFirstResponder];
     return YES;
 }
 #pragma mark - 空白处收起键盘

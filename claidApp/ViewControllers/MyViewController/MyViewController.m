@@ -13,7 +13,7 @@
 #import "LanyaViewController.h"
 #import "LoginViewController.h"
 #import "VisitorViewController.h"
-
+#import "invitaionCodeViewController.h"
 
 @implementation MyViewController
 
@@ -56,9 +56,12 @@
          navigationController.navigationBarHidden = YES;
          UIApplication.sharedApplication.delegate.window.rootViewController = navigationController;
      } else if (indexPath.row == 5){
-         [self promptInformationActionWarningString:@"此功能暂未开通!"];
-//         VisitorViewController *visitor = [VisitorViewController create];
-//         [self hideTabBarAndpushViewController:visitor];
+        VisitorViewController *visitor = [VisitorViewController create];
+        [self hideTabBarAndpushViewController:visitor];
+     } else if (indexPath.row == 4){
+         invitaionCodeViewController *inviCodeVC = [invitaionCodeViewController create];
+         [self hideTabBarAndpushViewController:inviCodeVC];
+     
      }else {
          [self promptInformationActionWarningString:@"此功能暂未开通!"];
      }

@@ -8,12 +8,40 @@
 
 #import "VisitorViewController+Configuration.h"
 #import "UIColor+Utility.h"
+#import "MinFuncTionTableViewCell.h"
+
 @implementation VisitorViewController (Configuration)
 
 - (void)configureViews {
     [self lanyainitData];
     [self textFieldViewEdit];
     [self addGestRecognizer];
+    [self ownerChoiceViewEdit];
+    [self visitorTableViewEdit];
+}
+
+// 发卡数据选择tableView 编辑
+- (void)visitorTableViewEdit {
+    self.requestBool = YES;
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"lanyaVisitorAESData"];
+    self.tool = [DBTool sharedDBTool];
+    [self.visitorTableView registerNib:[UINib nibWithNibName:@"MinFuncTionTableViewCell" bundle:nil] forCellReuseIdentifier:MINN_FUNCTION_CELL_NIB];
+    
+    self.visitorViewControllerDataSource = [VisitorViewControllerDataSource new];
+    self.visitorTableView.delegate = self;
+    self.visitorTableView.dataSource = self.visitorViewControllerDataSource;    
+    self.visitorViewControllerDataSource.beizhuNameArray = [self.tool selectWithClass:[VisitorCalss class] params:nil];
+}
+
+// 游客选择View初始化
+- (void)ownerChoiceViewEdit{
+    self.ownerChoiceView.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.ownerChoiceView.layer.shadowOffset = CGSizeMake(-2, 2);
+    self.ownerChoiceView.layer.shadowOpacity = 0.2;
+    self.ownerChoiceView.layer.shadowRadius = 10;
+    self.ownerChoiceViewTopConstraint.constant = -140;
+    self.ownerChoiceView.hidden = YES;
+    [self.view layoutIfNeeded];
 }
 
 - (void)lanyainitData {
@@ -27,7 +55,7 @@
     NSString *message;
     switch (data) {
         case 1:         //连接 成功 发现   服务
-           message = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESData"] password:AES_PASSWORD];
+           message = [[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaVisitorAESData"];
             if (message.length > 0) {
                message = @"0180010101FF3344556600000000000000000000000000000000000000000000000000000000000000";
                 message = [NSString stringWithFormat:@"%@%@",@"cc",message];
@@ -51,6 +79,7 @@
 //textField 编辑
 - (void)textFieldViewEdit {
     self.shukaButton.backgroundColor = [UIColor colorFromHexCode:@"C2C2C2"];
+    self.visitorTextField.keyboardType = UIKeyboardTypeNumberPad;        //数字键盘
     self.visitorTextField.clearButtonMode = UITextFieldViewModeAlways;
     self.visitorTextField.delegate = self;
     [self viewlayer:self.visitorView];
@@ -62,19 +91,19 @@
     view.layer.masksToBounds = YES;
     view.layer.borderWidth = 1;
     view.layer.borderColor = [[UIColor colorFromHexCode:@"#C2C2C2"] CGColor];
-    self.visitorImageView.image = [UIImage imageNamed:@"login_secretKey_gray"];
+    self.visitorImageView.image = [UIImage imageNamed:@"login_accountNumber_gray"];
 }
 
 #pragma mark textField 代理方法
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
         self.visitorView.layer.borderColor = [[UIColor colorFromHexCode:@"#1296db"] CGColor];
-        self.visitorImageView.image = [UIImage imageNamed:@"login_secretKey_blue"];
+        self.visitorImageView.image = [UIImage imageNamed:@"login_accountNumber_blue"];
         
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
         self.visitorView.layer.borderColor = [[UIColor colorFromHexCode:@"#C2C2C2"] CGColor];
-        self.visitorImageView.image = [UIImage imageNamed:@"login_secretKey_gray"];
+        self.visitorImageView.image = [UIImage imageNamed:@"login_accountNumber_gray"];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -137,38 +166,43 @@
             [self alertViewmessage:@"测试卡处理!"];
             break;
         case 0x35:
-            [self promptInformationActionWarningString:@"正常进入,有循环码处理,2为电梯总线!"];
-            break;
         case 0x36:
-            [self promptInformationActionWarningString:@"正常进入,没有处理循环码,2为电梯总线!"];
-            break;
         case 0x20:
-            [self promptInformationActionWarningString:@"正常进入,有处理循环码,3为门禁!"];
-            break;
         case 0x2e:
-            [self promptInformationActionWarningString:@"正常进入,没有处理循环码,3为门禁!"];
-            break;
         case 0x37:
-            [self promptInformationActionWarningString:@"正常进入,有处理循环码,5为楼宇模块!"];
-            break;
         case 0x38:
-            [self promptInformationActionWarningString:@"正常进入,没有处理循环码,5为楼宇模块!"];
-            break;
         case 0x21:
-            [self promptInformationActionWarningString:@"正常进入,有处理循环码,1为读卡器!"];
-            break;
         case 0x2f:
-            [self promptInformationActionWarningString:@"正常进入,没有处理循环码,1为读卡器!"];
-            break;
         case 0x39:
-            [self promptInformationActionWarningString:@"正常进入,有处理循环码,4为光耦读卡器!"];
-            break;
         case 0x3a:
-            [self promptInformationActionWarningString:@"正常进入,没有处理循环码,4为光耦读卡器!"];
+            [self paybycardSuccessAction];
+            [self promptInformationActionWarningString:@"正常进入!"];
             break;
         default:
             break;
     }
 }
 
+// 刷卡次数更新
+- (void)paybycardSuccessAction {
+    self.readDataArr = [self.tool selectWithClass:[VisitorCalss class] params:nil];
+    NSString *lanyaDataStr = [[NSUserDefaults standardUserDefaults] objectForKey:@"userInformation"];
+    for (NSInteger j=0; j <self.readDataArr.count; j++) {
+        self.viReadClass = self.readDataArr[j];
+        if (self.viReadClass .visitorName == [lanyaDataStr integerValue]){
+            j = self.readDataArr.count + 1;
+        }
+    }
+    
+    self.viReadClass.visitorFrequency=self.viReadClass.visitorFrequency-1;
+    if (self.viReadClass.visitorFrequency == 0){
+       [self.tool deleteRecordWithClass:[VisitorCalss class] andKey:@"visitorName" isEqualValue:lanyaDataStr];
+        self.shukaButton.backgroundColor = [UIColor colorFromHexCode:@"C2C2C2"];
+        [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"lanyaVisitorAESData"];
+        
+    }else{
+      [self.tool updateWithObj:self.viReadClass andKey:@"visitorName" isEqualValue:lanyaDataStr];
+    }
+
+}
 @end

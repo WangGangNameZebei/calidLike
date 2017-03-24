@@ -9,5 +9,5 @@
 #import "VisitorViewController.h"
 
 @interface VisitorViewController (LogicalFlow)
-- (void)visitorLoginPostForKeyname:(NSString *)keyname;
+- (void)visitorPostForPhoneNumber:(NSString *)phoneNumber;
 @end

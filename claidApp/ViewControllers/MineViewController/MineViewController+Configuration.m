@@ -105,6 +105,10 @@
          [[SingleTon sharedInstance] disConnection];             //断开蓝牙
             break;
         case 4://  4  为 主动断开蓝牙
+            if (self.paybycardTimer){
+                [self.paybycardTimer invalidate];    // 释放函数
+                self.paybycardTimer = nil;
+            }
             [self SDshuakabiaoshiAction:YES];
             if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"switch"] isEqualToString:@"YES"])
                 [[SingleTon sharedInstance] targetScan];             //目标扫描
@@ -129,8 +133,13 @@
 - (IBAction)shuakaButtonAction:(id)sender {     // 手动刷卡
     if (self.SDshukaBiaoshi){
       [self SDshuakabiaoshiAction:NO];
+    self.paybycardTimer = [NSTimer scheduledTimerWithTimeInterval:6 target:self selector:@selector(paybycardTimerAction) userInfo:nil repeats:NO];
       [self autoConnectAction];
     }
+}
+
+- (void)paybycardTimerAction{
+     [self SDshuakabiaoshiAction:YES];
 }
 
 #pragma mark - 空白处收起键盘

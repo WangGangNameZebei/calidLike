@@ -50,9 +50,14 @@
 		0A6FB2731DC978BC00345784 /* installViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A6FB2711DC978BC00345784 /* installViewController.xib */; };
 		0A6FB2761DC978F700345784 /* installViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6FB2751DC978F700345784 /* installViewController+Configuration.m */; };
 		0A6FB2791DC9792A00345784 /* installViewController+LogicalFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6FB2781DC9792A00345784 /* installViewController+LogicalFlow.m */; };
+		0A73048A1E8352990016639A /* invitaionCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7304881E8352990016639A /* invitaionCodeViewController.m */; };
+		0A73048B1E8352990016639A /* invitaionCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7304891E8352990016639A /* invitaionCodeViewController.xib */; };
+		0A73048E1E8359E00016639A /* invitaionCodeViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A73048D1E8359E00016639A /* invitaionCodeViewController+Configuration.m */; };
+		0A7304911E8359FC0016639A /* invitaionCodeViewController+LogicalFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7304901E8359FC0016639A /* invitaionCodeViewController+LogicalFlow.m */; };
 		0A7878CF1DCDBCB1008A37D0 /* KaiKaViewController+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7878CE1DCDBCB1008A37D0 /* KaiKaViewController+Animation.m */; };
 		0A83FE1D1DC9B32F006F4D61 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A83FE1C1DC9B32F006F4D61 /* libsqlite3.tbd */; };
 		0A8612261DEC0C8200AC1FB4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A8612251DEC0C8200AC1FB4 /* AVFoundation.framework */; };
+		0A86A0AA1E84BEDF00044556 /* VisitorViewControllerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A86A0A91E84BEDF00044556 /* VisitorViewControllerDataSource.m */; };
 		0A86A9E31E0236C7006AE3CB /* gsgg1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0A86A9E01E0236C7006AE3CB /* gsgg1.jpg */; };
 		0A86A9E41E0236C7006AE3CB /* gsgg2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0A86A9E11E0236C7006AE3CB /* gsgg2.jpg */; };
 		0A86A9E51E0236C7006AE3CB /* gsgg3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0A86A9E21E0236C7006AE3CB /* gsgg3.jpg */; };
@@ -67,10 +72,7 @@
 		0A8C969E1DCC30D700AAD161 /* xiangxia_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A8C969D1DCC30D700AAD161 /* xiangxia_1.png */; };
 		0A924F161DCB2A7300785BCF /* MyViewController+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A924F151DCB2A7300785BCF /* MyViewController+Animation.m */; };
 		0A95A2DA1DDA96B50019A691 /* NetWorkJudge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A95A2D91DDA96B50019A691 /* NetWorkJudge.m */; };
-		0A961CDF1E10AD02004050B0 /* DBTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A961CDE1E10AD02004050B0 /* DBTool.m */; };
-		0A961CE21E10AE0A004050B0 /* InstallCardData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A961CE11E10AE0A004050B0 /* InstallCardData.m */; };
 		0A961CE51E10E6C9004050B0 /* installViewController+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A961CE41E10E6C9004050B0 /* installViewController+Animation.m */; };
-		0A961CE91E10ECD1004050B0 /* ZBGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A961CE81E10ECD1004050B0 /* ZBGroup.m */; };
 		0A98AF461DF270BF00BCA88C /* JYCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A98AF371DF270BF00BCA88C /* JYCarousel.m */; };
 		0A98AF471DF270BF00BCA88C /* JYCarouselAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A98AF391DF270BF00BCA88C /* JYCarouselAnimation.m */; };
 		0A98AF481DF270BF00BCA88C /* JYConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A98AF3B1DF270BF00BCA88C /* JYConfiguration.m */; };
@@ -96,6 +98,11 @@
 		0AA5DA2B1DF554DA00CA816E /* ZLCGuidePageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA5DA251DF554DA00CA816E /* ZLCGuidePageView.m */; };
 		0AA5DA2D1DF558C500CA816E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AA5DA2C1DF558C500CA816E /* Images.xcassets */; };
 		0AA5DA301DF55A5C00CA816E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AA5DA2E1DF55A5C00CA816E /* LaunchScreen.storyboard */; };
+		0ABEA9B21E83974B00FC7FD3 /* ZBGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABEA9AD1E83974B00FC7FD3 /* ZBGroup.m */; };
+		0ABEA9B31E83974B00FC7FD3 /* DBTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABEA9AF1E83974B00FC7FD3 /* DBTool.m */; };
+		0ABEA9B41E83974B00FC7FD3 /* InstallCardData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABEA9B11E83974B00FC7FD3 /* InstallCardData.m */; };
+		0ABEA9B81E839C3600FC7FD3 /* VisitorCalss.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABEA9B71E839C3600FC7FD3 /* VisitorCalss.m */; };
+		0ABEA9BB1E83B34200FC7FD3 /* VisitorViewController+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABEA9BA1E83B34200FC7FD3 /* VisitorViewController+Animation.m */; };
 		0AC68B991DCC6EBC00B71FB1 /* KaiKaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AC68B971DCC6EBC00B71FB1 /* KaiKaViewController.m */; };
 		0AC68B9A1DCC6EBC00B71FB1 /* KaiKaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AC68B981DCC6EBC00B71FB1 /* KaiKaViewController.xib */; };
 		0AC969981DC9820F00F62C57 /* installViewControllerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AC969971DC9820F00F62C57 /* installViewControllerDataSource.m */; };
@@ -222,10 +229,19 @@
 		0A6FB2751DC978F700345784 /* installViewController+Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "installViewController+Configuration.m"; sourceTree = "<group>"; };
 		0A6FB2771DC9792A00345784 /* installViewController+LogicalFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "installViewController+LogicalFlow.h"; sourceTree = "<group>"; };
 		0A6FB2781DC9792A00345784 /* installViewController+LogicalFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "installViewController+LogicalFlow.m"; sourceTree = "<group>"; };
+		0A7304871E8352990016639A /* invitaionCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = invitaionCodeViewController.h; sourceTree = "<group>"; };
+		0A7304881E8352990016639A /* invitaionCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = invitaionCodeViewController.m; sourceTree = "<group>"; };
+		0A7304891E8352990016639A /* invitaionCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = invitaionCodeViewController.xib; sourceTree = "<group>"; };
+		0A73048C1E8359E00016639A /* invitaionCodeViewController+Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "invitaionCodeViewController+Configuration.h"; sourceTree = "<group>"; };
+		0A73048D1E8359E00016639A /* invitaionCodeViewController+Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "invitaionCodeViewController+Configuration.m"; sourceTree = "<group>"; };
+		0A73048F1E8359FC0016639A /* invitaionCodeViewController+LogicalFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "invitaionCodeViewController+LogicalFlow.h"; sourceTree = "<group>"; };
+		0A7304901E8359FC0016639A /* invitaionCodeViewController+LogicalFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "invitaionCodeViewController+LogicalFlow.m"; sourceTree = "<group>"; };
 		0A7878CD1DCDBCB1008A37D0 /* KaiKaViewController+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KaiKaViewController+Animation.h"; sourceTree = "<group>"; };
 		0A7878CE1DCDBCB1008A37D0 /* KaiKaViewController+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KaiKaViewController+Animation.m"; sourceTree = "<group>"; };
 		0A83FE1C1DC9B32F006F4D61 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		0A8612251DEC0C8200AC1FB4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		0A86A0A81E84BEDF00044556 /* VisitorViewControllerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisitorViewControllerDataSource.h; sourceTree = "<group>"; };
+		0A86A0A91E84BEDF00044556 /* VisitorViewControllerDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisitorViewControllerDataSource.m; sourceTree = "<group>"; };
 		0A86A9E01E0236C7006AE3CB /* gsgg1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gsgg1.jpg; sourceTree = "<group>"; };
 		0A86A9E11E0236C7006AE3CB /* gsgg2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gsgg2.jpg; sourceTree = "<group>"; };
 		0A86A9E21E0236C7006AE3CB /* gsgg3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gsgg3.jpg; sourceTree = "<group>"; };
@@ -249,14 +265,8 @@
 		0A924F151DCB2A7300785BCF /* MyViewController+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MyViewController+Animation.m"; sourceTree = "<group>"; };
 		0A95A2D81DDA96B50019A691 /* NetWorkJudge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorkJudge.h; sourceTree = "<group>"; };
 		0A95A2D91DDA96B50019A691 /* NetWorkJudge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorkJudge.m; sourceTree = "<group>"; };
-		0A961CDD1E10ACF9004050B0 /* DBTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBTool.h; sourceTree = "<group>"; };
-		0A961CDE1E10AD02004050B0 /* DBTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTool.m; sourceTree = "<group>"; };
-		0A961CE01E10AE0A004050B0 /* InstallCardData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstallCardData.h; sourceTree = "<group>"; };
-		0A961CE11E10AE0A004050B0 /* InstallCardData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstallCardData.m; sourceTree = "<group>"; };
 		0A961CE31E10E6C9004050B0 /* installViewController+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "installViewController+Animation.h"; sourceTree = "<group>"; };
 		0A961CE41E10E6C9004050B0 /* installViewController+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "installViewController+Animation.m"; sourceTree = "<group>"; };
-		0A961CE71E10ECD1004050B0 /* ZBGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBGroup.h; sourceTree = "<group>"; };
-		0A961CE81E10ECD1004050B0 /* ZBGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBGroup.m; sourceTree = "<group>"; };
 		0A98AF361DF270BF00BCA88C /* JYCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYCarousel.h; sourceTree = "<group>"; };
 		0A98AF371DF270BF00BCA88C /* JYCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYCarousel.m; sourceTree = "<group>"; };
 		0A98AF381DF270BF00BCA88C /* JYCarouselAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYCarouselAnimation.h; sourceTree = "<group>"; };
@@ -296,6 +306,16 @@
 		0AA5DA251DF554DA00CA816E /* ZLCGuidePageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLCGuidePageView.m; sourceTree = "<group>"; };
 		0AA5DA2C1DF558C500CA816E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0AA5DA2F1DF55A5C00CA816E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0ABEA9AC1E83974B00FC7FD3 /* ZBGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBGroup.h; sourceTree = "<group>"; };
+		0ABEA9AD1E83974B00FC7FD3 /* ZBGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBGroup.m; sourceTree = "<group>"; };
+		0ABEA9AE1E83974B00FC7FD3 /* DBTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTool.h; sourceTree = "<group>"; };
+		0ABEA9AF1E83974B00FC7FD3 /* DBTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTool.m; sourceTree = "<group>"; };
+		0ABEA9B01E83974B00FC7FD3 /* InstallCardData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstallCardData.h; sourceTree = "<group>"; };
+		0ABEA9B11E83974B00FC7FD3 /* InstallCardData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstallCardData.m; sourceTree = "<group>"; };
+		0ABEA9B61E839C3600FC7FD3 /* VisitorCalss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisitorCalss.h; sourceTree = "<group>"; };
+		0ABEA9B71E839C3600FC7FD3 /* VisitorCalss.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisitorCalss.m; sourceTree = "<group>"; };
+		0ABEA9B91E83B34200FC7FD3 /* VisitorViewController+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VisitorViewController+Animation.h"; sourceTree = "<group>"; };
+		0ABEA9BA1E83B34200FC7FD3 /* VisitorViewController+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VisitorViewController+Animation.m"; sourceTree = "<group>"; };
 		0AC459801E26288700E813E0 /* calidHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = calidHeader.h; sourceTree = "<group>"; };
 		0AC68B961DCC6EBC00B71FB1 /* KaiKaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KaiKaViewController.h; sourceTree = "<group>"; };
 		0AC68B971DCC6EBC00B71FB1 /* KaiKaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KaiKaViewController.m; sourceTree = "<group>"; };
@@ -418,6 +438,10 @@
 				0A131A1F1E2C62C3009D11E2 /* VisitorViewController+Configuration.m */,
 				0A131A211E2C9838009D11E2 /* VisitorViewController+LogicalFlow.h */,
 				0A131A221E2C9838009D11E2 /* VisitorViewController+LogicalFlow.m */,
+				0ABEA9B91E83B34200FC7FD3 /* VisitorViewController+Animation.h */,
+				0ABEA9BA1E83B34200FC7FD3 /* VisitorViewController+Animation.m */,
+				0A86A0A81E84BEDF00044556 /* VisitorViewControllerDataSource.h */,
+				0A86A0A91E84BEDF00044556 /* VisitorViewControllerDataSource.m */,
 			);
 			path = VisitorViewController;
 			sourceTree = "<group>";
@@ -499,6 +523,20 @@
 			path = installViewController;
 			sourceTree = "<group>";
 		};
+		0A7304861E8352420016639A /* InvitationCodeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0A7304871E8352990016639A /* invitaionCodeViewController.h */,
+				0A7304881E8352990016639A /* invitaionCodeViewController.m */,
+				0A7304891E8352990016639A /* invitaionCodeViewController.xib */,
+				0A73048C1E8359E00016639A /* invitaionCodeViewController+Configuration.h */,
+				0A73048D1E8359E00016639A /* invitaionCodeViewController+Configuration.m */,
+				0A73048F1E8359FC0016639A /* invitaionCodeViewController+LogicalFlow.h */,
+				0A7304901E8359FC0016639A /* invitaionCodeViewController+LogicalFlow.m */,
+			);
+			path = InvitationCodeViewController;
+			sourceTree = "<group>";
+		};
 		0A87F7A71DB74F8E00EFF1F0 /* lanya */ = {
 			isa = PBXGroup;
 			children = (
@@ -557,15 +595,6 @@
 				0A95A2D91DDA96B50019A691 /* NetWorkJudge.m */,
 			);
 			path = NetWorkJudge;
-			sourceTree = "<group>";
-		};
-		0A961CE61E10EC9E004050B0 /* classInstall */ = {
-			isa = PBXGroup;
-			children = (
-				0A961CE71E10ECD1004050B0 /* ZBGroup.h */,
-				0A961CE81E10ECD1004050B0 /* ZBGroup.m */,
-			);
-			path = classInstall;
 			sourceTree = "<group>";
 		};
 		0A98AF351DF270BF00BCA88C /* JYCarousel */ = {
@@ -642,6 +671,37 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
+		0ABEA9AA1E83974B00FC7FD3 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				0ABEA9AB1E83974B00FC7FD3 /* classInstall */,
+				0ABEA9AE1E83974B00FC7FD3 /* DBTool.h */,
+				0ABEA9AF1E83974B00FC7FD3 /* DBTool.m */,
+				0ABEA9B01E83974B00FC7FD3 /* InstallCardData.h */,
+				0ABEA9B11E83974B00FC7FD3 /* InstallCardData.m */,
+				0ABEA9B51E839C0700FC7FD3 /* classVisitor */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		0ABEA9AB1E83974B00FC7FD3 /* classInstall */ = {
+			isa = PBXGroup;
+			children = (
+				0ABEA9AC1E83974B00FC7FD3 /* ZBGroup.h */,
+				0ABEA9AD1E83974B00FC7FD3 /* ZBGroup.m */,
+			);
+			path = classInstall;
+			sourceTree = "<group>";
+		};
+		0ABEA9B51E839C0700FC7FD3 /* classVisitor */ = {
+			isa = PBXGroup;
+			children = (
+				0ABEA9B61E839C3600FC7FD3 /* VisitorCalss.h */,
+				0ABEA9B71E839C3600FC7FD3 /* VisitorCalss.m */,
+			);
+			path = classVisitor;
+			sourceTree = "<group>";
+		};
 		0AC68B951DCC6E8200B71FB1 /* KaikaViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -685,7 +745,7 @@
 				0ACFF8191DB5BCA00043D49A /* AppDelegate.h */,
 				0ACFF81A1DB5BCA00043D49A /* AppDelegate.m */,
 				0ACFF8491DB5C48E0043D49A /* CustomViews */,
-				0ACFF84A1DB5C48E0043D49A /* DataSources */,
+				0ABEA9AA1E83974B00FC7FD3 /* Category */,
 				0ACFF84B1DB5C48E0043D49A /* Resources */,
 				0ACFF85E1DB5C48E0043D49A /* Tools */,
 				0ACFF85F1DB5C48E0043D49A /* ViewControllers */,
@@ -737,18 +797,6 @@
 			path = CustomViews;
 			sourceTree = "<group>";
 		};
-		0ACFF84A1DB5C48E0043D49A /* DataSources */ = {
-			isa = PBXGroup;
-			children = (
-				0A961CDD1E10ACF9004050B0 /* DBTool.h */,
-				0A961CDE1E10AD02004050B0 /* DBTool.m */,
-				0A961CE01E10AE0A004050B0 /* InstallCardData.h */,
-				0A961CE11E10AE0A004050B0 /* InstallCardData.m */,
-				0A961CE61E10EC9E004050B0 /* classInstall */,
-			);
-			path = DataSources;
-			sourceTree = "<group>";
-		};
 		0ACFF84B1DB5C48E0043D49A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -798,6 +846,7 @@
 				0AC68B951DCC6E8200B71FB1 /* KaikaViewController */,
 				0A6830DD1DF106D500D51770 /* lanyaViewController */,
 				0A131A181E2C5860009D11E2 /* VisitorViewController */,
+				0A7304861E8352420016639A /* InvitationCodeViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1032,8 +1081,8 @@
 				TargetAttributes = {
 					0ACFF8121DB5BC9F0043D49A = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 4WY57YVPWE;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = 9D67V2X4VK;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Keychain = {
 								enabled = 1;
@@ -1096,6 +1145,7 @@
 				0A87F7B71DB7602E00EFF1F0 /* MinFuncTionTableViewCell.xib in Resources */,
 				0AFA94A61DF7ECD60044362D /* round-switch-thumb-highlight@2x.png in Resources */,
 				0AFA94AA1DF7ECD60044362D /* round-switch-track@2x.png in Resources */,
+				0A73048B1E8352990016639A /* invitaionCodeViewController.xib in Resources */,
 				0A86A9E51E0236C7006AE3CB /* gsgg3.jpg in Resources */,
 				0AA5DA291DF554DA00CA816E /* image4.jpg in Resources */,
 				0A86A9E31E0236C7006AE3CB /* gsgg1.jpg in Resources */,
@@ -1190,12 +1240,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A86A0AA1E84BEDF00044556 /* VisitorViewControllerDataSource.m in Sources */,
 				0A611E301E11F40E0002B1C9 /* SingleTon+InstallWarden.m in Sources */,
 				0A5FF93F1DB5FABC00249F0C /* UIColor+Utility.m in Sources */,
 				0A5FF9301DB5F05000249F0C /* CustomActionSheet.m in Sources */,
 				0A0EBEA91E2F3B9600E4A89E /* VisitorSingleTon+Tool.m in Sources */,
 				0AD75CCD1DBDDDEC00297AC3 /* MyViewController+Configuration.m in Sources */,
-				0A961CE91E10ECD1004050B0 /* ZBGroup.m in Sources */,
 				0A6830E51DF1087600D51770 /* LanyaViewController+Configuration.m in Sources */,
 				0A6FB2721DC978BC00345784 /* installViewController.m in Sources */,
 				0ACFF81B1DB5BCA00043D49A /* AppDelegate.m in Sources */,
@@ -1207,6 +1257,7 @@
 				0AA491301DC6F27D0013B974 /* LoginViewController.m in Sources */,
 				0A6DA6DD1DB6F9020013D0CF /* MineViewController+Configuration.m in Sources */,
 				0A611E361E120C4D0002B1C9 /* InstallLanyaDataDelegate.m in Sources */,
+				0ABEA9B31E83974B00FC7FD3 /* DBTool.m in Sources */,
 				0A9EEC691DCB0E2A00D74FC9 /* OpenCardView.m in Sources */,
 				0A95A2DA1DDA96B50019A691 /* NetWorkJudge.m in Sources */,
 				0A98E8EC1E0505B30086F6D5 /* LanyaHeadTableViewCell.m in Sources */,
@@ -1216,12 +1267,12 @@
 				0A5FF9411DB5FABC00249F0C /* UIScreen+Utility.m in Sources */,
 				0A7878CF1DCDBCB1008A37D0 /* KaiKaViewController+Animation.m in Sources */,
 				0A5FF9451DB6029700249F0C /* MineViewController.m in Sources */,
-				0A961CDF1E10AD02004050B0 /* DBTool.m in Sources */,
+				0A73048E1E8359E00016639A /* invitaionCodeViewController+Configuration.m in Sources */,
 				0A98AF491DF270BF00BCA88C /* JYImageCache.m in Sources */,
 				0AA5DA2B1DF554DA00CA816E /* ZLCGuidePageView.m in Sources */,
-				0A961CE21E10AE0A004050B0 /* InstallCardData.m in Sources */,
 				0A5FF94A1DB6032600249F0C /* MyViewController.m in Sources */,
 				0A51E91A1DC825B9000D31F3 /* RegisterViewController.m in Sources */,
+				0ABEA9BB1E83B34200FC7FD3 /* VisitorViewController+Animation.m in Sources */,
 				0A924F161DCB2A7300785BCF /* MyViewController+Animation.m in Sources */,
 				0AC68B991DCC6EBC00B71FB1 /* KaiKaViewController.m in Sources */,
 				0A87F7AA1DB74F8E00EFF1F0 /* SingleTon.m in Sources */,
@@ -1243,6 +1294,7 @@
 				0A131A231E2C9838009D11E2 /* VisitorViewController+LogicalFlow.m in Sources */,
 				0A0C1E521DD989FE0059EFEC /* LoginOutTableViewCell.m in Sources */,
 				0AC969981DC9820F00F62C57 /* installViewControllerDataSource.m in Sources */,
+				0A7304911E8359FC0016639A /* invitaionCodeViewController+LogicalFlow.m in Sources */,
 				0A131A201E2C62C3009D11E2 /* VisitorViewController+Configuration.m in Sources */,
 				0A6FB2761DC978F700345784 /* installViewController+Configuration.m in Sources */,
 				0AA4913D1DC72E6B0013B974 /* LoginViewController+Configuration.m in Sources */,
@@ -1253,15 +1305,19 @@
 				0ACFF8901DB5CDFA0043D49A /* BaseView.m in Sources */,
 				0A8C969C1DCC1A9200AAD161 /* UIColor+HcdCustom.m in Sources */,
 				0A98AF471DF270BF00BCA88C /* JYCarouselAnimation.m in Sources */,
+				0A73048A1E8352990016639A /* invitaionCodeViewController.m in Sources */,
 				0A98AF481DF270BF00BCA88C /* JYConfiguration.m in Sources */,
 				0A6830E11DF1072C00D51770 /* LanyaViewController.m in Sources */,
 				0AD75CD31DBDDE5300297AC3 /* MyViewControllerDataSource.m in Sources */,
+				0ABEA9B21E83974B00FC7FD3 /* ZBGroup.m in Sources */,
 				0A961CE51E10E6C9004050B0 /* installViewController+Animation.m in Sources */,
 				0AD75CD01DBDDE0F00297AC3 /* MyViewController+LogicalFlow.m in Sources */,
 				0A98AF4B1DF270BF00BCA88C /* JYPageControl.m in Sources */,
 				0A98AF4C1DF270BF00BCA88C /* JYWeakTimer.m in Sources */,
 				0A64025B1E1F691000CADD0F /* SingleTon+tool.m in Sources */,
 				0A87F7B61DB7602E00EFF1F0 /* MinFuncTionTableViewCell.m in Sources */,
+				0ABEA9B41E83974B00FC7FD3 /* InstallCardData.m in Sources */,
+				0ABEA9B81E839C3600FC7FD3 /* VisitorCalss.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1338,7 +1394,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Qingan Feng (FXFG946Z4D)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Qingan Feng (FXFG946Z4D)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1360,6 +1417,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "cb7ce0e1-7927-4173-aab6-0f0f0a62fbbd";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1387,7 +1445,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Qingan Feng (FXFG946Z4D)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Qingan Feng (FXFG946Z4D)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1402,6 +1461,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "cb7ce0e1-7927-4173-aab6-0f0f0a62fbbd";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1415,7 +1475,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = claidApp/claidApp.entitlements;
-				DEVELOPMENT_TEAM = 4WY57YVPWE;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Qingan Feng (FXFG946Z4D)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 9D67V2X4VK;
 				ENABLE_BITCODE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/claidApp/WebServices/calidHeader.h";
@@ -1428,8 +1490,11 @@
 					"-l\"AFNetworking\"",
 					"-l\"Masonry\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = zebei.claidApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shenyangcalid.YuTiKong;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "cb7ce0e1-7927-4173-aab6-0f0f0a62fbbd";
+				PROVISIONING_PROFILE_SPECIFIER = aZebiYTK;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1440,7 +1505,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = claidApp/claidApp.entitlements;
-				DEVELOPMENT_TEAM = 4WY57YVPWE;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Qingan Feng (FXFG946Z4D)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/claidApp/WebServices/calidHeader.h";
@@ -1453,8 +1520,10 @@
 					"-l\"AFNetworking\"",
 					"-l\"Masonry\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = zebei.claidApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shenyangcalid.YuTiKong;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

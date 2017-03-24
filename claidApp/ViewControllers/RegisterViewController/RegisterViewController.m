@@ -29,7 +29,23 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)registerButtonAction:(id)sender {
-    [self registerPostForUsername:self.phoneNumberTextField.text password:self.passwordTextField.text oraKey:self.mishiTextField.text];
+    if (self.phoneNumberTextField.text.length==0){
+        [self promptInformationActionWarningString:@"电话不能为空!"];
+        return;
+    }
+    if (self.mishiTextField.text.length==0){
+        [self promptInformationActionWarningString:@"推荐码不能为空!"];
+        return;
+    }
+    if (self.passwordTextField.text.length==0){
+        [self promptInformationActionWarningString:@"密码不能为空!"];
+        return;
+    }
+    if ([self.passwordTextField.text isEqualToString:self.confirmPasswordTextField.text] ){
+     [self registerPostForUsername:self.phoneNumberTextField.text password:self.passwordTextField.text oraKey:self.mishiTextField.text];
+    } else {
+       [self promptInformationActionWarningString:@"密码输入不一致!"];
+    }
 }
 - (IBAction)returnButtonAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
