@@ -207,7 +207,7 @@
     numberView.layer.cornerRadius = 25/2;
     ZBGroup *numbergroup = self.installDataArray[section];
     NSArray *NArr=numbergroup.items;
-    numberLabel.text= [NSString stringWithFormat:@"%ld",NArr.count];
+    numberLabel.text= [NSString stringWithFormat:@"%ld",(unsigned long)NArr.count];
     //割线
     UIView *FGView=[[UIView alloc] initWithFrame:CGRectMake(0, SECTIONHEIGHT-1,[UIScreen screenWidth], 1)];
     FGView.backgroundColor = [UIColor colorFromHexCode:@"#C2C2C2"];

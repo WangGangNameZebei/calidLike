@@ -80,9 +80,6 @@
                     <subviews>
                         <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HWg-R7-Ha3">
                             <rect key="frame" x="40" y="0.0" width="253" height="50"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="253" id="ZjL-83-tKP"/>
-                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
@@ -97,11 +94,12 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="4Ve-b2-2qz"/>
                         <constraint firstItem="iy2-p7-4eZ" firstAttribute="leading" secondItem="aMy-xH-ie2" secondAttribute="leading" constant="8" id="5bM-9W-xsC"/>
-                        <constraint firstAttribute="trailing" secondItem="HWg-R7-Ha3" secondAttribute="trailing" id="EU8-2T-v7u"/>
-                        <constraint firstAttribute="bottom" secondItem="HWg-R7-Ha3" secondAttribute="bottom" id="JF1-YU-Djt"/>
                         <constraint firstItem="iy2-p7-4eZ" firstAttribute="top" secondItem="aMy-xH-ie2" secondAttribute="top" constant="10" id="SuU-6V-6eA"/>
-                        <constraint firstItem="HWg-R7-Ha3" firstAttribute="top" secondItem="aMy-xH-ie2" secondAttribute="top" id="T3g-B0-IHt"/>
+                        <constraint firstAttribute="trailing" secondItem="HWg-R7-Ha3" secondAttribute="trailing" id="XmD-su-1Ih"/>
+                        <constraint firstAttribute="bottom" secondItem="HWg-R7-Ha3" secondAttribute="bottom" id="cGK-fI-GaM"/>
                         <constraint firstAttribute="bottom" secondItem="iy2-p7-4eZ" secondAttribute="bottom" constant="10" id="drY-Nl-pR9"/>
+                        <constraint firstItem="HWg-R7-Ha3" firstAttribute="leading" secondItem="iy2-p7-4eZ" secondAttribute="trailing" constant="2" id="hvs-aG-cHD"/>
+                        <constraint firstItem="HWg-R7-Ha3" firstAttribute="top" secondItem="aMy-xH-ie2" secondAttribute="top" id="ms6-7r-8AG"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="备注信息  :" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pYg-u4-Dup">

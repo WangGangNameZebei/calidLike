@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet TTSwitch *ziDongSwitch;
 @property (strong, nonatomic) IBOutlet UIView *ziDongView;
 @property (strong, nonatomic) IBOutlet UILabel *ziDongLabei;
+@property (strong, nonatomic) IBOutlet UIView *JYimageView;
 
 
 
