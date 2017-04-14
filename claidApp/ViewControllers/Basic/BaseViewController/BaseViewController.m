@@ -45,7 +45,7 @@
 #pragma mark  提示框代理
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
-        NSString *string = [NSString stringWithFormat:@"items-apps://itunes.apple.com/app/id%@",@"AppID"];
+        NSString *string = [NSString stringWithFormat:@"items-apps://itunes.apple.com/app/id%@",@"1219844769"];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:string]];
     } else {
         NSLog(@"点击了取消按钮");

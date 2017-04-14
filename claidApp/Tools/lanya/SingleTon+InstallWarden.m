@@ -42,28 +42,28 @@
     }
 
     if ([identificationString isEqualToString:@"aa12"]) {    //地址卡
-        self.installCardData = [InstallCardData initinstallNamestr:[NSString stringWithFormat:@"地址%ld",(self.numberArrar.count + 1)] installData:dataString identification:12];
+        self.installCardData = [InstallCardData initinstallNamestr:[NSString stringWithFormat:@"地址%lu",(self.numberArrar.count + 1)] installData:dataString identification:12];
         [self.tool insertWithObj:self.installCardData];
     } else if ([identificationString isEqualToString:@"aa22"]){     //时间卡
-        self.installCardData = [InstallCardData initinstallNamestr:[NSString stringWithFormat:@"时间%ld",(self.numberArrar.count + 1)] installData:dataString identification:22];
+        self.installCardData = [InstallCardData initinstallNamestr:[NSString stringWithFormat:@"时间%lu",(self.numberArrar.count + 1)] installData:dataString identification:22];
         [self.tool insertWithObj:self.installCardData];
     } else if ([identificationString isEqualToString:@"aa32"]){     //同步卡
-        self.installCardData = [InstallCardData initinstallNamestr:[NSString stringWithFormat:@"同步%ld",(self.numberArrar.count + 1)] installData:dataString identification:32];
+        self.installCardData = [InstallCardData initinstallNamestr:[NSString stringWithFormat:@"同步%lu",(self.numberArrar.count + 1)] installData:dataString identification:32];
         [self.tool insertWithObj:self.installCardData];
     } else if ([identificationString isEqualToString:@"aa42"]){     //出厂卡
-        self.installCardData = [InstallCardData initinstallNamestr:[NSString stringWithFormat:@"出厂%ld",(self.numberArrar.count + 1)] installData:dataString identification:42];
+        self.installCardData = [InstallCardData initinstallNamestr:[NSString stringWithFormat:@"出厂%lu",(self.numberArrar.count + 1)] installData:dataString identification:42];
         [self.tool insertWithObj:self.installCardData];
     } else if ([identificationString isEqualToString:@"aa52"]){     //开放卡
-        self.installCardData = [InstallCardData initinstallNamestr:[NSString stringWithFormat:@"开放%ld",(self.numberArrar.count + 1)] installData:dataString identification:52];
+        self.installCardData = [InstallCardData initinstallNamestr:[NSString stringWithFormat:@"开放%lu",(self.numberArrar.count + 1)] installData:dataString identification:52];
         [self.tool insertWithObj:self.installCardData];
     } else if ([identificationString isEqualToString:@"aa62"]){     //清空挂失卡
-        self.installCardData = [InstallCardData initinstallNamestr:[NSString stringWithFormat:@"清空挂失卡%ld",(self.numberArrar.count + 1)] installData:dataString identification:62];
+        self.installCardData = [InstallCardData initinstallNamestr:[NSString stringWithFormat:@"清空挂失卡%lu",(self.numberArrar.count + 1)] installData:dataString identification:62];
         [self.tool insertWithObj:self.installCardData];
     } else if ([identificationString isEqualToString:@"aa72"]){     //挂失卡
-        self.installCardData = [InstallCardData initinstallNamestr:[NSString stringWithFormat:@"挂失%ld",(self.numberArrar.count + 1)] installData:dataString identification:72];
+        self.installCardData = [InstallCardData initinstallNamestr:[NSString stringWithFormat:@"挂失%lu",(self.numberArrar.count + 1)] installData:dataString identification:72];
         [self.tool insertWithObj:self.installCardData];
     } else if ([identificationString isEqualToString:@"aa82"]){     //解挂卡
-        self.installCardData = [InstallCardData initinstallNamestr:[NSString stringWithFormat:@"解挂%ld",(self.numberArrar.count + 1)] installData:dataString identification:82];
+        self.installCardData = [InstallCardData initinstallNamestr:[NSString stringWithFormat:@"解挂%lu",(self.numberArrar.count + 1)] installData:dataString identification:82];
         [self.tool insertWithObj:self.installCardData];
     } else {
          LOG(@"数据头错误");

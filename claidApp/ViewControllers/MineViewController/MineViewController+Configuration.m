@@ -10,7 +10,6 @@
 #import "AESCrypt.h"
 #import "UIColor+Utility.h"
 #import "UIScreen+Utility.h"
-#import <Masonry.h>
 
 @implementation MineViewController (Configuration)
 
@@ -22,7 +21,7 @@
 }
 #pragma mark检测升级
 - (void)upgradeAppAction {
-    static NSString *appId = @"xxxxxx";
+    static NSString *appId = @"1219844769";
     // 返回是否有新版本
     BOOL update = [self checkAppStoreVersionWithAppId:appId];
     // 添加自己的代码 可以弹出一个提示框 这里不实现了
@@ -44,9 +43,9 @@
 #pragma mark  滚动视图
 - (void)carouselViewEdit {
     NSMutableArray *imageArray = [[NSMutableArray alloc] initWithArray: @[@"gsgg1.jpg",@"gsgg2.jpg",@"gsgg3.jpg"]];
-    
     if (!self.carouselView) {
-        self.carouselView = [[JYCarousel alloc] initWithFrame:CGRectMake(0, 64, [UIScreen screenWidth], 200) configBlock:^JYConfiguration *(JYConfiguration *carouselConfig) {
+        self.carouselView = [[JYCarousel alloc] initWithFrame:CGRectMake(0, 0, [UIScreen screenWidth],[UIScreen screenHeight] *19/55)
+                                                  configBlock:^JYConfiguration *(JYConfiguration *carouselConfig) {
             carouselConfig.pageContollType = MiddlePageControl;
             carouselConfig.pageTintColor = [UIColor whiteColor];
             carouselConfig.currentPageTintColor = [UIColor colorFromHexCode:@"#1296db"];
@@ -57,21 +56,16 @@
             return carouselConfig;
         } target:self];
         
-        [self.view addSubview:self.carouselView];
-        [self.carouselView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.offset(0);
-            make.top.width.offset(64);
-            make.right.offset(0);
-            make.bottom.equalTo(self.ziDongView.mas_top).with.offset(20);
-        }];
+        [self.JYimageView addSubview:self.carouselView];
+
      }
-    //开始轮播
+        //开始轮播
     [self.carouselView startCarouselWithArray:imageArray];
 
 }
 
 - (void)carouselViewClick:(NSInteger)index{
-    NSLog(@"代理方式你点击图片索引index = %ld",index);
+    NSLog(@"代理方式你点击图片索引index = %ld",(long)index);
 }
 
 - (void)initData {
@@ -204,34 +198,19 @@
             [self alertViewmessage:@"测试卡处理!"];
             break;
         case 0x35:
-             [self promptInformationActionWarningString:@"正常进入,有循环码处理,2为电梯总线!"];
-            break;
         case 0x36:
-            [self promptInformationActionWarningString:@"正常进入,没有处理循环码,2为电梯总线!"];
-            break;
         case 0x20:
-            [self promptInformationActionWarningString:@"正常进入,有处理循环码,3为门禁!"];
-            break;
         case 0x2e:
-            [self promptInformationActionWarningString:@"正常进入,没有处理循环码,3为门禁!"];
-            break;
         case 0x37:
-            [self promptInformationActionWarningString:@"正常进入,有处理循环码,5为楼宇模块!"];
-            break;
         case 0x38:
-            [self promptInformationActionWarningString:@"正常进入,没有处理循环码,5为楼宇模块!"];
-            break;
         case 0x21:
-            [self promptInformationActionWarningString:@"正常进入,有处理循环码,1为读卡器!"];
-            break;
         case 0x2f:
-            [self promptInformationActionWarningString:@"正常进入,没有处理循环码,1为读卡器!"];
-            break;
         case 0x39:
-            [self promptInformationActionWarningString:@"正常进入,有处理循环码,4为光耦读卡器!"];
-            break;
         case 0x3a:
-            [self promptInformationActionWarningString:@"正常进入,没有处理循环码,4为光耦读卡器!"];
+            [self promptInformationActionWarningString:@"正常进入"];
+            break;
+        case 0x11:
+            [self promptInformationActionWarningString:@"权限过期!"];
             break;
         default:
             break;

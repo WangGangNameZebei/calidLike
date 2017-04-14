@@ -8,7 +8,7 @@
 
 #import "installViewController+Configuration.h"
 #import "MinFuncTionTableViewCell.h"
-
+#import "SingleTon+tool.h"
 #import "UIScreen+Utility.h"
 #import "UIColor+Utility.h"
 
@@ -169,10 +169,17 @@
 }
 - (void)installEditInitPeripheralData:(NSInteger)data {
     if (data == 1) {
+      NSString *message = @"0180010101FF3344556600000000000000000000000000000000000000000000000000000000000000";
+        message = [NSString stringWithFormat:@"%@%@",@"cc",message];
+        [[SingleTon sharedInstance] sendCommand:message];       //发送数据
+    } else {
         ZBGroup *group = self.installDataArray[self.selectIndexPath.section];
         NSArray *arr=group.items;
         self.installCardData = arr[self.selectIndexPath.row];
-         [[SingleTon sharedInstance] sendCommand:[NSString stringWithFormat:@"%@%@",@"AA",self.installCardData.installData]];       //发送数据
+       NSString *strOne = [self.installCardData.installData substringWithRange:NSMakeRange(0,104)];
+      NSString *strTow = [[SingleTon sharedInstance] jiamiaTostringAcction:strOne numberKey:data];
+        strTow = [NSString stringWithFormat:@"%@%@",strTow,[[SingleTon sharedInstance] jiamiaTostringAcction:[self.installCardData.installData substringWithRange:NSMakeRange(104, 104)] numberKey:data]];
+        [[SingleTon sharedInstance] sendCommand:[NSString stringWithFormat:@"AA%@",strTow]];     //发送数据
     }
 }
 
@@ -207,7 +214,7 @@
     numberView.layer.cornerRadius = 25/2;
     ZBGroup *numbergroup = self.installDataArray[section];
     NSArray *NArr=numbergroup.items;
-    numberLabel.text= [NSString stringWithFormat:@"%ld",NArr.count];
+    numberLabel.text= [NSString stringWithFormat:@"%ld",(unsigned long)NArr.count];
     //割线
     UIView *FGView=[[UIView alloc] initWithFrame:CGRectMake(0, SECTIONHEIGHT-1,[UIScreen screenWidth], 1)];
     FGView.backgroundColor = [UIColor colorFromHexCode:@"#C2C2C2"];

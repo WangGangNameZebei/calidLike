@@ -1475,8 +1475,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = claidApp/claidApp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Qingan Feng (FXFG946Z4D)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shenyang callide Technology Co. Ltd. (9D67V2X4VK)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 9D67V2X4VK;
 				ENABLE_BITCODE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1492,8 +1492,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.shenyangcalid.YuTiKong;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cb7ce0e1-7927-4173-aab6-0f0f0a62fbbd";
-				PROVISIONING_PROFILE_SPECIFIER = aZebiYTK;
+				PROVISIONING_PROFILE = "7bc592ec-ad1a-44a2-bcc5-46e59c1fec96";
+				PROVISIONING_PROFILE_SPECIFIER = admin.YuTiKong;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1505,9 +1505,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = claidApp/claidApp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Qingan Feng (FXFG946Z4D)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shenyang callide Technology Co. Ltd. (9D67V2X4VK)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = 9D67V2X4VK;
 				ENABLE_BITCODE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/claidApp/WebServices/calidHeader.h";
@@ -1522,7 +1522,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.shenyangcalid.YuTiKong;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "7bc592ec-ad1a-44a2-bcc5-46e59c1fec96";
+				PROVISIONING_PROFILE_SPECIFIER = admin.YuTiKong;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
