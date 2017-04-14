@@ -137,6 +137,13 @@
     key1[2] = key2[18];
     key1[3] = key2[19];
     numberKey = (key1[3]) + (key1[2]<<8) + (key1[1]<<16) + (key1[0]<<24);
+    
+    if (self.installBool){
+        if ([self.installDelegate  respondsToSelector:@selector(installEditInitPeripheralData:)]){
+            [self.installDelegate installEditInitPeripheralData:numberKey];
+        }
+        return;
+    }
     NSString *lanyaDataStr = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESData"] password:AES_PASSWORD];
     strOne = [lanyaDataStr substringWithRange:NSMakeRange(0,104)];
     strTow = [self jiamiaTostringAcction:strOne numberKey:numberKey];

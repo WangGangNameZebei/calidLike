@@ -23,7 +23,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [NetWorkJudge StartWithBlock:^(NSInteger NetworkStatus) {
         
-        NSLog(@"--------------->%ld",NetworkStatus);        //网络 监测      
+        NSLog(@"--------------->%ld",(long)NetworkStatus);        //网络 监测
     }];
     [self ttSwitchAddImageAction];
     [[SingleTon sharedInstance] initialization];    // 蓝牙设备

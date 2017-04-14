@@ -178,6 +178,10 @@
             [self paybycardSuccessAction];
             [self promptInformationActionWarningString:@"正常进入!"];
             break;
+        case 0x11:
+            [self paybycardSuccessAction];
+            [self promptInformationActionWarningString:@"业主权限过期!"];
+            break;
         default:
             break;
     }

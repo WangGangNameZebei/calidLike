@@ -14,4 +14,5 @@
 - (BOOL)lanyaDataXiaoyanAction:(NSString *)data;            //效验数据
 - (void)lanyaSendoutDataAction:(NSString *)data;            //发送数据加密
 - (NSString *)payByCardInstructionsActionString:(NSString *)string;             //发送数据指令
+- (NSString *)jiamiaTostringAcction:(NSString *)string numberKey:(NSInteger)number ;
 @end

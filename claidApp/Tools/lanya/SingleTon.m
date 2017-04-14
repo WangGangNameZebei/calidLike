@@ -359,6 +359,7 @@ static SingleTon *_instace = nil;
 #pragma mark - 已发现服务
 -(void) peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error{
     LOG(@"发现服务");
+    NSString *strone;
     if (!_identiFication && [self.delegate respondsToSelector:@selector(DoSomethingtishiFrame:)]) {
         [self.delegate DoSomethingtishiFrame:@"连接成功!"];
     }
@@ -368,7 +369,9 @@ static SingleTon *_instace = nil;
     
     for (CBService *s in peripheral.services) {
         [self.nServices addObject:s];
-        if ([s.UUID isEqual:[CBUUID UUIDWithString:@"0xFFF0"]]) {
+        if ([NSString stringWithFormat:@"%@",s.UUID].length > 8)
+            strone = [[NSString stringWithFormat:@"%@",s.UUID] substringWithRange:NSMakeRange(0, 8)];
+        if ([s.UUID isEqual:[CBUUID UUIDWithString:@"0xFFF0"]]||[strone isEqualToString:@"0000FFF0"]) {
             [peripheral discoverCharacteristics:nil forService:s];
         
         }

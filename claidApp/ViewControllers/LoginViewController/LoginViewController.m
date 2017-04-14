@@ -50,8 +50,8 @@
 
 - (IBAction)visitorButtonAction:(id)sender {
     [self promptInformationActionWarningString:@"此功能暂未开通!"];
-//    VisitorViewController *visitorVC = [VisitorViewController create];
-//    [self hideTabBarAndpushViewController:visitorVC];
+   VisitorViewController *visitorVC = [VisitorViewController create];
+   [self hideTabBarAndpushViewController:visitorVC];
 }
 
 - (IBAction)loginButtonAction:(id)sender {

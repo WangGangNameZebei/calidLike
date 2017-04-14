@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MineViewController">
             <connections>
+                <outlet property="JYimageView" destination="02U-9h-Qvd" id="hNz-zr-Z77"/>
                 <outlet property="shuaKaButton" destination="GWh-6t-HIA" id="dcd-7K-wIB"/>
                 <outlet property="titleLabel" destination="ZUI-mA-zzj" id="pUO-I0-9Jy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -47,6 +48,10 @@
                         <constraint firstAttribute="height" constant="64" id="t25-nO-mVd"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="02U-9h-Qvd">
+                    <rect key="frame" x="0.0" y="64" width="375" height="236"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yF2-R9-9cp">
                     <rect key="frame" x="0.0" y="320" width="375" height="48"/>
                     <subviews>
@@ -69,8 +74,8 @@
                             <rect key="frame" x="269" y="10" width="76" height="28"/>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="76" id="Qb1-wb-HFd"/>
-                                <constraint firstAttribute="height" constant="28" id="ryl-KR-HQD"/>
+                                <constraint firstAttribute="height" constant="28" id="8jo-rS-fIA"/>
+                                <constraint firstAttribute="width" constant="76" id="bRW-nB-nMK"/>
                             </constraints>
                             <connections>
                                 <action selector="zidongAction:" destination="-1" eventType="valueChanged" id="aHo-9x-yrv"/>
@@ -79,15 +84,15 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="rXj-5A-LRC" firstAttribute="leading" secondItem="dnG-wM-EgI" secondAttribute="trailing" constant="93" id="70M-Br-k4E"/>
-                        <constraint firstItem="dnG-wM-EgI" firstAttribute="centerY" secondItem="rXj-5A-LRC" secondAttribute="centerY" id="GXL-fy-Fj4"/>
+                        <constraint firstAttribute="trailing" secondItem="rXj-5A-LRC" secondAttribute="trailing" constant="30" id="1QU-Jv-hd6"/>
+                        <constraint firstItem="rXj-5A-LRC" firstAttribute="centerY" secondItem="yF2-R9-9cp" secondAttribute="centerY" id="2ZV-Vb-hpR"/>
                         <constraint firstItem="dnG-wM-EgI" firstAttribute="bottom" secondItem="yF2-R9-9cp" secondAttribute="bottomMargin" id="KFJ-V3-YQe"/>
                         <constraint firstItem="dnG-wM-EgI" firstAttribute="leading" secondItem="yF2-R9-9cp" secondAttribute="leading" constant="10" id="Vyp-4p-H3Z"/>
                         <constraint firstAttribute="height" constant="48" id="lrE-cL-c5W"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GWh-6t-HIA">
-                    <rect key="frame" x="91" y="400" width="180" height="180"/>
+                    <rect key="frame" x="90.5" y="400" width="180" height="180"/>
                     <color key="backgroundColor" red="0.0680837482213974" green="0.57491987943649292" blue="0.83432072401046753" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="180" id="Cg8-s8-ioZ"/>
@@ -107,13 +112,17 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="02U-9h-Qvd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="7wi-af-3VX"/>
                 <constraint firstItem="yF2-R9-9cp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Hsa-pA-LAE"/>
+                <constraint firstItem="02U-9h-Qvd" firstAttribute="top" secondItem="wYL-n9-X8y" secondAttribute="bottom" id="N2Y-fn-Hmi"/>
                 <constraint firstItem="GWh-6t-HIA" firstAttribute="top" secondItem="yF2-R9-9cp" secondAttribute="bottom" constant="32" id="UUQ-Hc-EqR"/>
+                <constraint firstAttribute="trailing" secondItem="02U-9h-Qvd" secondAttribute="trailing" id="XG0-ux-khb"/>
                 <constraint firstItem="GWh-6t-HIA" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="-7" id="Yqf-oG-rd2"/>
                 <constraint firstItem="GWh-6t-HIA" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="156.5" id="bAC-Uu-Uz0"/>
                 <constraint firstItem="wYL-n9-X8y" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="h5m-cE-aMI"/>
                 <constraint firstAttribute="trailing" secondItem="yF2-R9-9cp" secondAttribute="trailing" id="i1l-wz-sYT"/>
                 <constraint firstItem="wYL-n9-X8y" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="nHh-RC-w5P"/>
+                <constraint firstItem="yF2-R9-9cp" firstAttribute="top" secondItem="02U-9h-Qvd" secondAttribute="bottom" constant="20" id="niN-ea-GSd"/>
                 <constraint firstAttribute="trailing" secondItem="wYL-n9-X8y" secondAttribute="trailing" id="qbA-x4-JA4"/>
             </constraints>
             <point key="canvasLocation" x="-185.5" y="4.5"/>
