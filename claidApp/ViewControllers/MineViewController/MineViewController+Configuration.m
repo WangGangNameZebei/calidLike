@@ -14,6 +14,7 @@
 @implementation MineViewController (Configuration)
 
 - (void)configureViews{
+    [self upgradeAppAction];
     [self initData];
     [self carouselViewEdit];
     [self addGestRecognizer];
