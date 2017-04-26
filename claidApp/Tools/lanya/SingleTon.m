@@ -191,14 +191,7 @@ static SingleTon *_instace = nil;
 }
 
 - (void)houtaisaomiaoAction {
-//    NSString *uuidstr = [[NSUserDefaults standardUserDefaults] objectForKey:@"identifierStr"];
-//    
-//    if (!uuidstr) {
-//        if ( [self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
-//            [self.deleGate switchEditInitPeripheralData:5];
-//        }
-//        return;
-//    }
+
     [self getPeripheralWithIdentifierAndConnect:SINGLE_TON_UUID_STR];    //连接蓝牙
 
 }
@@ -231,7 +224,7 @@ static SingleTon *_instace = nil;
 {
     switch (central.state) {
         case CBCentralManagerStatePoweredOn:
-            LOG(@"蓝牙已打开,现在可以扫描外设");
+            LOG(@"蓝牙已打开,现在可以扫描外设");            
             if ([self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
                 [self.deleGate switchEditInitPeripheralData:1];
             }
@@ -254,7 +247,19 @@ static SingleTon *_instace = nil;
         LOG(@"目标扫描 蓝牙 开启 连接蓝牙定时器(scantime)");
        
     } else {
-        
+        NSString *strUUid = SINGLE_TON_UUID_STR;
+        if (strUUid.length < 2 && [NSString stringWithFormat:@"%@",peripheral.name].length > 10) {
+          if ([[[NSString stringWithFormat:@"%@",peripheral.name]  substringWithRange:NSMakeRange(0,5)] isEqualToString:@"CALID"]) {
+                [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%@",peripheral.identifier] forKey:@"identifierStr"];  //存储
+               if ([self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
+                   [self.deleGate switchEditInitPeripheralData:5];
+               }
+              if ([self.installDelegate  respondsToSelector:@selector(installEditInitPeripheralData:)]){
+                  [self.installDelegate installEditInitPeripheralData:2];
+              }
+
+          }
+       }
         if(![self.PeripheralArray containsObject:peripheral])
             [self.PeripheralArray addObject:peripheral];
         
@@ -272,7 +277,6 @@ static SingleTon *_instace = nil;
 {
     
     if (!peripheral) {
-        
         if (_identiFication && [self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
             [self.deleGate switchEditInitPeripheralData:4];
         }

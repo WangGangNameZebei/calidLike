@@ -36,15 +36,12 @@
     UISwitch *switchButton = (UISwitch*)sender;
     BOOL isButtonOn = [switchButton isOn];
     if (isButtonOn) {
-        SingleTon *ton = [SingleTon sharedInstance];
-      //  NSString *uuidstr =[[NSUserDefaults standardUserDefaults] objectForKey:@"identifierStr"];
-        
-//        if (!uuidstr) {
-//            [self promptInformationActionWarningString:@"没有本地保存的蓝牙!"];
-//            return;
-//        }
-        
-        [ton getPeripheralWithIdentifierAndConnect:SINGLE_TON_UUID_STR];
+        NSString *strUUid = SINGLE_TON_UUID_STR;
+        if (!strUUid) {
+            [self.ton startScan]; // 扫描
+            return;
+        }
+        [self.ton getPeripheralWithIdentifierAndConnect:SINGLE_TON_UUID_STR];
         self.ziDongLabei.text = @"自动刷卡";
         [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"switch"];
     } else {

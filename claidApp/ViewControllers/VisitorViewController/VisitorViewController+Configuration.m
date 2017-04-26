@@ -59,19 +59,22 @@
             if (message.length > 0) {
                message = @"0180010101FF3344556600000000000000000000000000000000000000000000000000000000000000";
                 message = [NSString stringWithFormat:@"%@%@",@"cc",message];
-                [[VisitorSingleTon sharedInstance] sendCommand:message];       //发送数据
+                [self.visitorton sendCommand:message];       //发送数据
             } else {
                 [self promptInformationActionWarningString:@"暂未发卡!"];
-                [[VisitorSingleTon sharedInstance] disConnection];
+                [self.visitorton disConnection];
             }
             break;
           case 2:
             [self promptInformationActionWarningString:@"刷卡失败!"];
-            [[VisitorSingleTon sharedInstance] disConnection];
+            [self.visitorton disConnection];
+            break;
+          case 3:
+          [self.visitorton getPeripheralWithIdentifierAndConnect:SINGLE_TON_UUID_STR];
             break;
         default:
             [self lanyaShuakareturnPromptActioninteger:data];
-            [[VisitorSingleTon sharedInstance] disConnection];
+            [self.visitorton disConnection];
             break;
     }
 }

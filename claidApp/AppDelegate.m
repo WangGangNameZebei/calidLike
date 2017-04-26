@@ -15,12 +15,17 @@
 #import "NetWorkJudge.h"
 #import "ZLCGuidePageView.h"    //引导
 #import "TTSwitch.h"
+
+
+
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+
+    
     [NetWorkJudge StartWithBlock:^(NSInteger NetworkStatus) {
         
         NSLog(@"--------------->%ld",(long)NetworkStatus);        //网络 监测
@@ -45,7 +50,8 @@
          CustomTabBarController *customTabBarController = [self createCustomTabBarController];
         self.window.rootViewController = customTabBarController;
      }
-
+    
+      
 
     [self.window makeKeyAndVisible];
     [NSThread sleepForTimeInterval:1];  //启动时间  (空白页显示 的时间)
@@ -84,7 +90,6 @@
 }
 
 
-
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -95,7 +100,12 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
 
      NSLog(@"===============  进入后台");
-    [[SingleTon sharedInstance] lanyaHoutaiAction];
+
+   [[SingleTon sharedInstance] lanyaHoutaiAction];
+    
+
+    
+
     UIApplication*   app = [UIApplication sharedApplication];
     __block  UIBackgroundTaskIdentifier bgTask;
     bgTask = [app beginBackgroundTaskWithExpirationHandler:^{
@@ -120,19 +130,25 @@
 
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
+   
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+
 }
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+
      NSLog(@"===============  进入前台");
-       [[SingleTon sharedInstance] lanyaQiantaiAction];     //前台函数
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"switch"] isEqualToString:@"YES"]) {
+      [[SingleTon sharedInstance] lanyaQiantaiAction];     //前台函数
+    }
+    
     
 }
 
 
 - (void)applicationWillTerminate:(UIApplication *)application {
+   
 }
-
 
 @end

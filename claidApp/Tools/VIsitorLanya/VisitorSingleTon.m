@@ -144,7 +144,15 @@ static VisitorSingleTon *_instace = nil;
 #pragma mark - 查到外设时
 -(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
 {
-        
+    NSString *strUUid = SINGLE_TON_UUID_STR;
+    if (strUUid.length < 2 && [NSString stringWithFormat:@"%@",peripheral.name].length > 10) {
+        if ([[[NSString stringWithFormat:@"%@",peripheral.name]  substringWithRange:NSMakeRange(0,5)] isEqualToString:@"CALID"]) {
+            [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%@",peripheral.identifier] forKey:@"identifierStr"];  //存储
+            if ([self.delegate respondsToSelector:@selector(visitorEditInitPeripheralData:)]){
+                [self.delegate visitorEditInitPeripheralData:3];
+            }
+        }
+    }
         if(![self.PeripheralArray containsObject:peripheral])
             [self.PeripheralArray addObject:peripheral];
     
