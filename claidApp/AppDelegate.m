@@ -24,10 +24,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    
-   // [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];   // 后台运行次数
 
-    
     [NetWorkJudge StartWithBlock:^(NSInteger NetworkStatus) {
         
         NSLog(@"--------------->%ld",(long)NetworkStatus);        //网络 监测
@@ -151,23 +148,6 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
    
-}
-
-
-
-
-#pragma mark - Background fetch related delegate
-- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
-{
-    NSLog(@"我就是传说中的Background Fetch💦");
-    UILocalNotification * localNoti = [[UILocalNotification alloc] init];
-    localNoti.hasAction = YES;
-    //滑动来...
-    NSArray * actionMsgs = @[@"查看一个巨大的秘密",@"看看小伙伴在做什么",@"看美女图片",@"领取奖品",@"看看洪哥在做什么",@"掏钱买下一个DropBeacon",@"请世文吃饭"];
-    localNoti.alertAction = [actionMsgs objectAtIndex:arc4random()%actionMsgs.count];
-    localNoti.alertBody = @"我就是传说中的Background Fetch💦";
-    [[UIApplication sharedApplication] scheduleLocalNotification:localNoti];
-    completionHandler(UIBackgroundFetchResultNewData);
 }
 
 @end
