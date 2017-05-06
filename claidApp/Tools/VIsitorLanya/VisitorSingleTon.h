@@ -35,5 +35,5 @@
 -(void)connectClick:(CBPeripheral *)peripheral;         //连接外设
 - (void)disConnection;      // 断开蓝牙
 - (void)getPeripheralWithIdentifierAndConnect:(NSString *)identifierStr;       //目标 连接蓝牙
-
+-(void)startScan;
 @end

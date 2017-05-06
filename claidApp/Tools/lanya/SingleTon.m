@@ -49,6 +49,10 @@ static SingleTon *_instace = nil;
 
 #pragma mark - 处理传进来的字符串并发指令
 - (void)sendCommand:(NSString *)String {
+    NSString *strHead;
+    NSData *writeData;
+    NSInteger datalength;
+    NSInteger jiequlength = 38;
     if ([[String substringWithRange:NSMakeRange(0,2)] isEqualToString:@"cc"]  &&  String.length < 200) {
        String = [self payByCardInstructionsActionString:String];
     }
@@ -78,9 +82,34 @@ static SingleTon *_instace = nil;
         CommandStr = [NSString stringWithFormat:@"%@%@",CommandStr,@"0"];
     }
     
-    NSData *data = [self ToDealWithCommandString:CommandStr StrLenght:length/2];
-    
-    [self writeChar:data];
+    if (length > 20){
+        if ([[CommandStr substringWithRange:NSMakeRange(0,2)] isEqualToString:@"cc"]) {
+            strHead = @"c";
+        }else{
+            strHead = @"a";
+        }
+        datalength =((length-2)/2) %19;
+        if (datalength>0) {
+            datalength =((length-2)/2) / 19 +1;
+        } else {
+            datalength =((length-2)/2) / 19;
+        }
+        CommandStr = [CommandStr substringWithRange:NSMakeRange(2, length-2)];
+        for (NSInteger aa = 0; aa <datalength; aa++) {
+            if (aa == datalength - 1)
+                jiequlength = CommandStr.length - aa*38;
+            strHead = [NSString stringWithFormat:@"%@%ld%@",[strHead substringWithRange:NSMakeRange(0,1)],(long)aa,[CommandStr substringWithRange:NSMakeRange(aa*38,jiequlength)]];
+            LOG(@"##################################%@",strHead);
+            writeData = [self ToDealWithCommandString:strHead StrLenght:strHead.length/2];
+            [self writeChar:writeData];
+            
+        }
+    } else {
+        writeData = [self ToDealWithCommandString:CommandStr StrLenght:length/2];
+        [self writeChar:writeData];
+        
+    }
+
 
 }
 
@@ -172,7 +201,7 @@ static SingleTon *_instace = nil;
 - (void)targetScan
 {
     _tarScanBool = YES;
-    [self.manager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:@"0xFFF0"]] options:@{ CBCentralManagerScanOptionAllowDuplicatesKey : @YES}];
+    [self.manager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:SINGLE_TON_UUID_STR]] options:@{ CBCentralManagerScanOptionAllowDuplicatesKey : @YES}];
    
     
 }
@@ -191,14 +220,7 @@ static SingleTon *_instace = nil;
 }
 
 - (void)houtaisaomiaoAction {
-//    NSString *uuidstr = [[NSUserDefaults standardUserDefaults] objectForKey:@"identifierStr"];
-//    
-//    if (!uuidstr) {
-//        if ( [self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
-//            [self.deleGate switchEditInitPeripheralData:5];
-//        }
-//        return;
-//    }
+
     [self getPeripheralWithIdentifierAndConnect:SINGLE_TON_UUID_STR];    //连接蓝牙
 
 }
@@ -231,7 +253,7 @@ static SingleTon *_instace = nil;
 {
     switch (central.state) {
         case CBCentralManagerStatePoweredOn:
-            LOG(@"蓝牙已打开,现在可以扫描外设");
+            LOG(@"蓝牙已打开,现在可以扫描外设");            
             if ([self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
                 [self.deleGate switchEditInitPeripheralData:1];
             }
@@ -254,7 +276,19 @@ static SingleTon *_instace = nil;
         LOG(@"目标扫描 蓝牙 开启 连接蓝牙定时器(scantime)");
        
     } else {
-        
+        NSString *strUUid = SINGLE_TON_UUID_STR;
+        if (strUUid.length < 2 && [NSString stringWithFormat:@"%@",peripheral.name].length > 10) {
+          if ([[[NSString stringWithFormat:@"%@",peripheral.name]  substringWithRange:NSMakeRange(0,5)] isEqualToString:@"CALID"]) {
+                [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%@",peripheral.identifier] forKey:@"identifierStr"];  //存储
+               if ([self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
+                   [self.deleGate switchEditInitPeripheralData:5];
+               }
+              if ([self.installDelegate  respondsToSelector:@selector(installEditInitPeripheralData:)]){
+                  [self.installDelegate installEditInitPeripheralData:2];
+              }
+
+          }
+       }
         if(![self.PeripheralArray containsObject:peripheral])
             [self.PeripheralArray addObject:peripheral];
         
@@ -272,7 +306,6 @@ static SingleTon *_instace = nil;
 {
     
     if (!peripheral) {
-        
         if (_identiFication && [self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
             [self.deleGate switchEditInitPeripheralData:4];
         }
@@ -369,9 +402,10 @@ static SingleTon *_instace = nil;
     
     for (CBService *s in peripheral.services) {
         [self.nServices addObject:s];
-        if ([NSString stringWithFormat:@"%@",s.UUID].length > 8)
-            strone = [[NSString stringWithFormat:@"%@",s.UUID] substringWithRange:NSMakeRange(0, 8)];
-        if ([s.UUID isEqual:[CBUUID UUIDWithString:@"0xFFF0"]]||[strone isEqualToString:@"0000FFF0"]) {
+        strone = [NSString stringWithFormat:@"%@",s.UUID];
+         if (strone.length > 8)
+            strone= [strone substringWithRange:NSMakeRange(4,4)];
+        if ([strone isEqual:@"FFF0"] ) {
             [peripheral discoverCharacteristics:nil forService:s];
         
         }
@@ -382,7 +416,10 @@ static SingleTon *_instace = nil;
 -(void) peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error{
     LOG(@"发现特征");
     for (CBCharacteristic *c in service.characteristics) {
-        if ([c.UUID isEqual:[CBUUID UUIDWithString:@"0xFFF6"]]) {
+        NSString *str1 = [NSString stringWithFormat:@"%@",c.UUID];
+        if (str1.length > 8)
+           str1 = [str1 substringWithRange:NSMakeRange(4,4)];
+        if ([str1 isEqualToString:@"FFF6"]) {
             _writeCharacteristic = c;
     
             if (_identiFication && [self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
@@ -393,7 +430,7 @@ static SingleTon *_instace = nil;
             }
         
         }
-        if ([c.UUID isEqual:[CBUUID UUIDWithString:@"0xFFF7"]]) {
+        if ([str1 isEqualToString:@"FFF7"]) {
             
             [self.peripheral setNotifyValue:YES forCharacteristic:c];
             
@@ -412,11 +449,28 @@ static SingleTon *_instace = nil;
 #pragma mark - 获取外设发来的数据，不论是read和notify,获取数据都是从这个方法中读取。
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
+    NSInteger jishunumber = 38;
    if (self.receiveData.length == 0)
-       self.receiveData = @"";
+       self.receiveData = @"";//
    NSLog(@"===== %@",[self hexadecimalString:characteristic.value]);
     NSString *str1 = [self hexadecimalString:characteristic.value];
-    self.receiveData = [NSString stringWithFormat:@"%@%@",self.receiveData,str1];
+   // self.receiveData = [NSString stringWithFormat:@"%@%@",self.receiveData,str1];
+    
+    if ([self hexadecimalString:characteristic.value].length == 40) {
+        if ([[str1 substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"d2"]) {   // 第一串  返回d2结束
+            jishunumber = 16;
+        } else if ([[str1 substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"b2"]) {       //  刷卡正确返回
+            jishunumber = 30;
+        }else if ([[str1 substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"ee"]) {        //刷卡错误
+            jishunumber = 10;
+        }
+        self.receiveData = [NSString stringWithFormat:@"%@%@",self.receiveData,[str1 substringWithRange:NSMakeRange(2, jishunumber)]];
+        if (jishunumber == 38)
+            return;
+    } else {
+      self.receiveData = [NSString stringWithFormat:@"%@%@",self.receiveData,str1];
+    }
+    
     if  (self.receiveData.length > 106  && self.receiveData.length <= 214){
         if ([self lanyaDataXiaoyanAction:[self.receiveData substringWithRange:NSMakeRange(4,104)]]) {
           [self sendCommand:@"aa"];
@@ -442,10 +496,14 @@ static SingleTon *_instace = nil;
             self.shukaTimer = nil;
             LOG(@"关闭shukaTimer");
         }
-        [self mainHairpinReturnData:characteristic];            //刷卡最后 返回 数据
+        [self mainHairpinReturnData:self.receiveData];            //刷卡最后 返回 数据
        self.receiveData = @"";
-    } else if (self.receiveData.length == 94) {                 //刷卡 第1串 返回
-        [self lanyaSendoutDataAction:[self hexadecimalString:characteristic.value]];
+    } else if (self.receiveData.length == 92 || self.receiveData.length == 94) {                 //刷卡 第1串 返回
+        if (self.receiveData.length == 94) {
+            [self lanyaSendoutDataAction:[self.receiveData substringWithRange:NSMakeRange(2,92)]];
+        } else {
+          [self lanyaSendoutDataAction:self.receiveData];
+        }
         self.receiveData = @"";
         
     } else {

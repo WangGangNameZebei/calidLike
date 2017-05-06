@@ -11,7 +11,7 @@
 #import "RegisterViewController.h"
 #import "MineViewController.h"
 #import "MyViewController.h"
-#import "LanyaViewController.h"
+#import "PropertyActivationViewController.h"
 #import "AESCrypt.h"
 #import "LoginViewController+LogicalFlow.h"
 #import "VisitorViewController.h"
@@ -43,9 +43,8 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)activationButtonAction:(id)sender {    
-    LanyaViewController *lanyaVC = [LanyaViewController create];
-    lanyaVC.titleNameString = [NSString stringWithFormat:@"物业激活"];
-    [self hideTabBarAndpushViewController:lanyaVC];
+    PropertyActivationViewController *paVC = [PropertyActivationViewController create];
+    [self hideTabBarAndpushViewController:paVC];
 }
 
 - (IBAction)visitorButtonAction:(id)sender {

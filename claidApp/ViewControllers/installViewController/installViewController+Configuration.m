@@ -171,15 +171,17 @@
     if (data == 1) {
       NSString *message = @"0180010101FF3344556600000000000000000000000000000000000000000000000000000000000000";
         message = [NSString stringWithFormat:@"%@%@",@"cc",message];
-        [[SingleTon sharedInstance] sendCommand:message];       //发送数据
-    } else {
+        [self.sinTon sendCommand:message];       //发送数据
+    } else if (data == 2){
+         [self.sinTon installShoudongConnectClick:SINGLE_TON_UUID_STR];
+    }else {
         ZBGroup *group = self.installDataArray[self.selectIndexPath.section];
         NSArray *arr=group.items;
         self.installCardData = arr[self.selectIndexPath.row];
        NSString *strOne = [self.installCardData.installData substringWithRange:NSMakeRange(0,104)];
       NSString *strTow = [[SingleTon sharedInstance] jiamiaTostringAcction:strOne numberKey:data];
         strTow = [NSString stringWithFormat:@"%@%@",strTow,[[SingleTon sharedInstance] jiamiaTostringAcction:[self.installCardData.installData substringWithRange:NSMakeRange(104, 104)] numberKey:data]];
-        [[SingleTon sharedInstance] sendCommand:[NSString stringWithFormat:@"AA%@",strTow]];     //发送数据
+        [self.sinTon sendCommand:[NSString stringWithFormat:@"AA%@",strTow]];     //发送数据
     }
 }
 

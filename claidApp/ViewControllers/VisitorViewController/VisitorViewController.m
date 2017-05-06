@@ -56,8 +56,13 @@
         [self promptInformationActionWarningString:@"请点击+号选择发卡权限!"];
         return;
     }
-   VisitorSingleTon *ton = [VisitorSingleTon sharedInstance];
-   [ton getPeripheralWithIdentifierAndConnect:SINGLE_TON_UUID_STR];
+    NSString *strUUid = SINGLE_TON_UUID_STR;
+ 
+    if (!strUUid) {
+        [self.visitorton startScan]; // 扫描
+        return;
+    }
+   [self.visitorton getPeripheralWithIdentifierAndConnect:SINGLE_TON_UUID_STR];
     
 }
 

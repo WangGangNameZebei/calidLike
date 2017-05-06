@@ -30,15 +30,15 @@
 
 // 点击  UItableView
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+   self.selectIndexPath = indexPath;
     SingleTon *ton = [SingleTon sharedInstance];
-//    NSString *uuidstr = [[NSUserDefaults standardUserDefaults] objectForKey:@"identifierStr"];
-//    if (!uuidstr) {
-//        [self promptInformationActionWarningString:@"没有本地保存的蓝牙!"];
-//        return;
-//    }
+   NSString *uuidstr = SINGLE_TON_UUID_STR;
+    if (!uuidstr) {
+        [ton startScan]; //扫描
+        return;
+    }
      [ton installShoudongConnectClick:SINGLE_TON_UUID_STR];
-     self.selectIndexPath = indexPath;
+    
 }
 
 - (IBAction)installReturnButtonAction:(id)sender {

@@ -10,6 +10,7 @@
 #import "AESCrypt.h"
 #import "UIColor+Utility.h"
 #import "UIScreen+Utility.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 @implementation MineViewController (Configuration)
 
@@ -19,7 +20,35 @@
     [self carouselViewEdit];
     [self addGestRecognizer];
     [self SDshuakabiaoshiAction:YES];
+    [self shakeAction];
 }
+#pragma mark 摇一摇实现
+-(void)shakeAction {
+    [UIApplication sharedApplication].applicationSupportsShakeToEdit = YES;
+    // 并让自己成为第一响应者
+    [self becomeFirstResponder];
+}
+
+- (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+    NSLog(@"开始摇动");
+    return;
+}
+
+- (void)motionCancelled:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+    NSLog(@"取消摇动");
+    return;
+}
+
+
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+    if (event.subtype == UIEventSubtypeMotionShake) { // 判断是否是摇动结束
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);  //震动
+        [self shuakaButtonAction:self.shuaKaButton];
+        NSLog(@"摇动结束");
+    }  
+    return;  
+}
+
 #pragma mark检测升级
 - (void)upgradeAppAction {
     static NSString *appId = @"1219844769";
@@ -70,8 +99,11 @@
 }
 
 - (void)initData {
+    CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, screenLockStateChanged, NotificationPwdUI, NULL, CFNotificationSuspensionBehaviorDeliverImmediately);  // 解锁检测        后台可运行(选模式)
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(litActionbiaoshi) name:@"litActionbiaoshi" object:nil];       //通知注册
     self.ton = [SingleTon sharedInstance];
     self.ton.deleGate = self;
+    self.litBool = YES;
 }
 
 
@@ -89,15 +121,15 @@
             if (self.message.length > 0) {
                self.message = @"0180010101FF3344556600000000000000000000000000000000000000000000000000000000000000";
                 self.message = [NSString stringWithFormat:@"%@%@",@"cc",self.message];
-                 [[SingleTon sharedInstance] sendCommand:self.message];       //发送数据
+                 [self.ton sendCommand:self.message];       //发送数据
             } else {
                 [self SDshuakabiaoshiAction:YES];
                 [self promptInformationActionWarningString:@"暂未发卡!"];
-                [[SingleTon sharedInstance] disConnection];
+                [self.ton disConnection];
             }
             break;
         case 3:                             //  3  为 发送数据成功
-         [[SingleTon sharedInstance] disConnection];             //断开蓝牙
+         [self.ton disConnection];             //断开蓝牙
             break;
         case 4://  4  为 主动断开蓝牙
             if (self.paybycardTimer){
@@ -106,11 +138,11 @@
             }
             [self SDshuakabiaoshiAction:YES];
             if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"switch"] isEqualToString:@"YES"])
-                [[SingleTon sharedInstance] targetScan];             //目标扫描
+                [self.ton targetScan];             //目标扫描
             break;
         case 5:
-            
-            [self promptInformationActionWarningString:@"无本地链接!"];
+            [self autoConnectAction];  //发现蓝牙 连接刷卡
+           
             break;
         case 6:
             [self alertViewmessage:@"数据返回格式错误!"];
@@ -127,8 +159,14 @@
 
 - (IBAction)shuakaButtonAction:(id)sender {     // 手动刷卡
     if (self.SDshukaBiaoshi){
+     
       [self SDshuakabiaoshiAction:NO];
     self.paybycardTimer = [NSTimer scheduledTimerWithTimeInterval:6 target:self selector:@selector(paybycardTimerAction) userInfo:nil repeats:NO];
+        NSString *strUUid = SINGLE_TON_UUID_STR;
+        if (!strUUid) {
+            [self.ton startScan]; // 扫描
+            return;
+        }
       [self autoConnectAction];
     }
 }
@@ -150,8 +188,7 @@
 }
 #pragma mark  自动连接蓝牙函数
 - (void)autoConnectAction {
-    SingleTon *ton = [SingleTon sharedInstance];
-    [ton getPeripheralWithIdentifierAndConnect:SINGLE_TON_UUID_STR];    //连接蓝牙
+    [self.ton  getPeripheralWithIdentifierAndConnect:SINGLE_TON_UUID_STR];    //连接蓝牙
     
 }
 
@@ -198,9 +235,17 @@
         case 0x23:
             [self alertViewmessage:@"测试卡处理!"];
             break;
+        case 0x0d:
+            [self alertViewmessage:@"地址不对!"];
+            break;
+        case 0x20:
+            [self promptInformationActionWarningString:@"成功,权限所剩不多!"];
+            break;
+        case 0x0f:
+            [self alertViewmessage:@"准时段可进入!"];
+            break;
         case 0x35:
         case 0x36:
-        case 0x20:
         case 0x2e:
         case 0x37:
         case 0x38:
@@ -214,6 +259,7 @@
             [self promptInformationActionWarningString:@"权限过期!"];
             break;
         default:
+            [self promptInformationActionWarningString:@"哎呀,什么鬼,出错了吧!"];
             break;
     }
 }
@@ -258,5 +304,28 @@
         return NO;
        }
 }
+#pragma mark -  亮屏幕检测和通知
+static void screenLockStateChanged(CFNotificationCenterRef center,void* observer,CFStringRef name,const void* object,CFDictionaryRef userInfo)
 
+{
+    //创建通知
+    NSNotification *notification =[NSNotification notificationWithName:@"litActionbiaoshi" object:nil userInfo:nil];
+    //通过通知中心发送通知
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
+}
+//  通知 亮屏幕  刷卡
+- (void)litActionbiaoshi {
+    if (self.litBool){
+        self.litBool = NO;
+        return;
+    }else{
+        self.litBool = YES;
+     NSString *strUUid = SINGLE_TON_UUID_STR;
+     if (!strUUid) {
+         [self.ton startScan];  // 扫描
+         return;
+     }
+     [self.ton getPeripheralWithIdentifierAndConnect:SINGLE_TON_UUID_STR];    //连接蓝牙
+    }
+}
 @end

@@ -116,7 +116,6 @@
     NSString *strOne;
     NSString *strTow;
     NSInteger  aa;
-    data = [data substringWithRange:NSMakeRange(2,92)];
     
     for (NSInteger j = 0; j < data.length / 2; j++) {
         TheTwoCharacters = [data substringWithRange:NSMakeRange(j * 2,2)];
@@ -136,6 +135,7 @@
     key1[1] = key2[17];
     key1[2] = key2[18];
     key1[3] = key2[19];
+    NSLog(@"++++++++++++++++++++++++++++++++++++======>%c%c%c%c",key1[0],key1[1],key1[2],key1[3]);
     numberKey = (key1[3]) + (key1[2]<<8) + (key1[1]<<16) + (key1[0]<<24);
     
     if (self.installBool){
@@ -211,6 +211,38 @@
     } else {
         return NO;
     }
+}
+#pragma mark - 数据解密
+- (NSString *)lanyaDataDecryptedAction:(NSString *)data {
+    NSString *dataString =@"";
+    NSString *strrone = @"";
+    unsigned char key1[4];
+    unsigned char key2[100];
+    NSString * TheTwoCharacters;
+    NSInteger  aa;
+    for (NSInteger j = 0; j < data.length / 2; j++) {
+        TheTwoCharacters = [data substringWithRange:NSMakeRange(j * 2,2)];
+        aa= [self turnTheHexLiterals:TheTwoCharacters];
+        key2[j] = aa;
+    }
+    key1[0] = key2[48];
+    key1[1] = key2[49];
+    key1[2] = key2[50];
+    key1[3] = key2[51];
+    xor(key1);
+    
+    for(NSInteger I = 0; I < 48; I++) {
+        key2[I] = key2[I]^tmpstr[I];
+    }
+
+    for (NSInteger i = 0; i < 48; i++) {
+        strrone =[NSString stringWithFormat:@"%x",key2[i]&0xff];
+        if (strrone.length == 1)
+          strrone = [NSString stringWithFormat:@"0%@",strrone];
+        dataString = [NSString stringWithFormat:@"%@%@",dataString,strrone];
+    }
+    
+    return dataString;
 }
 
 
@@ -329,6 +361,73 @@ void xor(unsigned char key[]) {
             tmpstr[j]=numberOne[j];
     }
     
+}
+#pragma mark- 16 进制字符串 与 互相文字转换
+//16 进制的数转换字符串
+- (NSString *)changeLanguage:(NSString *)chinese {
+    NSString *strResult;
+    if (chinese.length%2==0) {
+        //第二次转换
+        NSData *newData = [self hexToByteToNSData:chinese];
+        unsigned long encode = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+        strResult = [[NSString alloc] initWithData:newData encoding:encode];
+    }else{
+        NSString *strResult = @"已假定是汉字的转换，所传字符串的长度必须是4的倍数!";
+        NSLog(@"%@",strResult);
+        return NULL;
+    }
+    return strResult;
+}
+//将汉字字符串转换成16进制字符串
+- (NSString *)chineseToHex:(NSString *)chineseStr {
+    NSStringEncoding encodingGB18030= CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+    NSData *responseData =[chineseStr dataUsingEncoding:encodingGB18030];
+    NSString *string=[self NSDataToByteTohex:responseData];
+    return string;
+}
+
+- (NSString *)NSDataToByteTohex:(NSData *)data{
+    Byte *bytes = (Byte *)[data bytes];
+    NSString *hexStr=@"";
+    for(int i=0;i<[data length];i++)
+    {
+        NSString *newHexStr = [NSString stringWithFormat:@"%x",bytes[i]&0xff];///16进制数
+        if([newHexStr length]==1)
+            hexStr = [NSString stringWithFormat:@"%@0%@",hexStr,newHexStr];
+        else
+            hexStr = [NSString stringWithFormat:@"%@%@",hexStr,newHexStr];
+    }
+    return hexStr;
+}
+- (NSData *)hexToByteToNSData:(NSString *)str{
+    int j=0;
+    Byte bytes[[str length]/2];
+    for(int i=0;i<[str length];i++)
+    {
+        int int_ch;  ///两位16进制数转化后的10进制数
+        unichar hex_char1 = [str characterAtIndex:i]; ////两位16进制数中的第一位(高位*16)
+        int int_ch1;
+        if(hex_char1 >= '0' && hex_char1 <='9')
+            int_ch1 = (hex_char1-48)*16;   //// 0 的Ascll - 48
+        else if(hex_char1 >= 'A' && hex_char1 <='F')
+            int_ch1 = (hex_char1-55)*16; //// A 的Ascll - 65
+        else
+            int_ch1 = (hex_char1-87)*16; //// a 的Ascll - 97
+        i++;
+        unichar hex_char2 = [str characterAtIndex:i]; ///两位16进制数中的第二位(低位)
+        int int_ch2;
+        if(hex_char2 >= '0' && hex_char2 <='9')
+            int_ch2 = (hex_char2-48); //// 0 的Ascll - 48
+        else if(hex_char2 >= 'A' && hex_char2 <='F')
+            int_ch2 = hex_char2-55; //// A 的Ascll - 65
+        else
+            int_ch2 = hex_char2-87; //// a 的Ascll - 97
+        int_ch = int_ch1+int_ch2;
+        bytes[j] = int_ch;  ///将转化后的数放入Byte数组里
+        j++;
+    }
+    NSData *newData = [[NSData alloc] initWithBytes:bytes length:[str length]/2 ];
+    return newData;
 }
 
 @end

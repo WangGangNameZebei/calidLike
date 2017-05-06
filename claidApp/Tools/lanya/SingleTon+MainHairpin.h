@@ -10,6 +10,6 @@
 
 @interface SingleTon (MainHairpin)
 
-- (void)mainHairpinReturnData:(CBCharacteristic *)characteristic;
+- (void)mainHairpinReturnData:(NSString *)characteristic;
 
 @end

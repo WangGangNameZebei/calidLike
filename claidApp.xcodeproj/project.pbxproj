@@ -19,6 +19,11 @@
 		0A131A201E2C62C3009D11E2 /* VisitorViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A131A1F1E2C62C3009D11E2 /* VisitorViewController+Configuration.m */; };
 		0A131A231E2C9838009D11E2 /* VisitorViewController+LogicalFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A131A221E2C9838009D11E2 /* VisitorViewController+LogicalFlow.m */; };
 		0A35C6661DCD87DD0068AA83 /* KaiKaViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A35C6651DCD87DD0068AA83 /* KaiKaViewController+Configuration.m */; };
+		0A3C4D941EB9A66800B6F279 /* PropertyActivationSingleTon.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3C4D921EB9A66800B6F279 /* PropertyActivationSingleTon.m */; };
+		0A3C4D991EB9A92300B6F279 /* PropertyActivationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3C4D971EB9A92300B6F279 /* PropertyActivationViewController.m */; };
+		0A3C4D9A1EB9A92300B6F279 /* PropertyActivationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A3C4D981EB9A92300B6F279 /* PropertyActivationViewController.xib */; };
+		0A3C4D9D1EB9B35C00B6F279 /* PropertyActivationViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3C4D9C1EB9B35C00B6F279 /* PropertyActivationViewController+Configuration.m */; };
+		0A3C4DA01EB9BBF400B6F279 /* PropertyActivationViewControllerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3C4D9F1EB9BBF400B6F279 /* PropertyActivationViewControllerDataSource.m */; };
 		0A51E91A1DC825B9000D31F3 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A51E9181DC825B9000D31F3 /* RegisterViewController.m */; };
 		0A51E91B1DC825B9000D31F3 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A51E9191DC825B9000D31F3 /* RegisterViewController.xib */; };
 		0A51E91E1DC82629000D31F3 /* RegisterViewController+LogicalFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A51E91D1DC82629000D31F3 /* RegisterViewController+LogicalFlow.m */; };
@@ -46,6 +51,7 @@
 		0A6830E81DF10B3800D51770 /* LanyaViewControllerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6830E71DF10B3800D51770 /* LanyaViewControllerDataSource.m */; };
 		0A6DA6DA1DB6F8D90013D0CF /* MineViewController+LogicalFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6DA6D91DB6F8D90013D0CF /* MineViewController+LogicalFlow.m */; };
 		0A6DA6DD1DB6F9020013D0CF /* MineViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6DA6DC1DB6F9020013D0CF /* MineViewController+Configuration.m */; };
+		0A6F65FC1EBAF5B400092DDE /* ClassUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6F65FB1EBAF5B400092DDE /* ClassUserInfo.m */; };
 		0A6FB2721DC978BC00345784 /* installViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6FB2701DC978BC00345784 /* installViewController.m */; };
 		0A6FB2731DC978BC00345784 /* installViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A6FB2711DC978BC00345784 /* installViewController.xib */; };
 		0A6FB2761DC978F700345784 /* installViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6FB2751DC978F700345784 /* installViewController+Configuration.m */; };
@@ -174,6 +180,15 @@
 		0A131A221E2C9838009D11E2 /* VisitorViewController+LogicalFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VisitorViewController+LogicalFlow.m"; sourceTree = "<group>"; };
 		0A35C6641DCD87DD0068AA83 /* KaiKaViewController+Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KaiKaViewController+Configuration.h"; sourceTree = "<group>"; };
 		0A35C6651DCD87DD0068AA83 /* KaiKaViewController+Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KaiKaViewController+Configuration.m"; sourceTree = "<group>"; };
+		0A3C4D911EB9A66800B6F279 /* PropertyActivationSingleTon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyActivationSingleTon.h; sourceTree = "<group>"; };
+		0A3C4D921EB9A66800B6F279 /* PropertyActivationSingleTon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropertyActivationSingleTon.m; sourceTree = "<group>"; };
+		0A3C4D961EB9A92300B6F279 /* PropertyActivationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyActivationViewController.h; sourceTree = "<group>"; };
+		0A3C4D971EB9A92300B6F279 /* PropertyActivationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropertyActivationViewController.m; sourceTree = "<group>"; };
+		0A3C4D981EB9A92300B6F279 /* PropertyActivationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PropertyActivationViewController.xib; sourceTree = "<group>"; };
+		0A3C4D9B1EB9B35C00B6F279 /* PropertyActivationViewController+Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PropertyActivationViewController+Configuration.h"; sourceTree = "<group>"; };
+		0A3C4D9C1EB9B35C00B6F279 /* PropertyActivationViewController+Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PropertyActivationViewController+Configuration.m"; sourceTree = "<group>"; };
+		0A3C4D9E1EB9BBF400B6F279 /* PropertyActivationViewControllerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyActivationViewControllerDataSource.h; sourceTree = "<group>"; };
+		0A3C4D9F1EB9BBF400B6F279 /* PropertyActivationViewControllerDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropertyActivationViewControllerDataSource.m; sourceTree = "<group>"; };
 		0A51E9171DC825B9000D31F3 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		0A51E9181DC825B9000D31F3 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		0A51E9191DC825B9000D31F3 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
@@ -222,6 +237,8 @@
 		0A6DA6D91DB6F8D90013D0CF /* MineViewController+LogicalFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MineViewController+LogicalFlow.m"; sourceTree = "<group>"; };
 		0A6DA6DB1DB6F9020013D0CF /* MineViewController+Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MineViewController+Configuration.h"; sourceTree = "<group>"; };
 		0A6DA6DC1DB6F9020013D0CF /* MineViewController+Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MineViewController+Configuration.m"; sourceTree = "<group>"; };
+		0A6F65FA1EBAF5B400092DDE /* ClassUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassUserInfo.h; sourceTree = "<group>"; };
+		0A6F65FB1EBAF5B400092DDE /* ClassUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassUserInfo.m; sourceTree = "<group>"; };
 		0A6FB26F1DC978BC00345784 /* installViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = installViewController.h; sourceTree = "<group>"; };
 		0A6FB2701DC978BC00345784 /* installViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = installViewController.m; sourceTree = "<group>"; };
 		0A6FB2711DC978BC00345784 /* installViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = installViewController.xib; sourceTree = "<group>"; };
@@ -446,6 +463,29 @@
 			path = VisitorViewController;
 			sourceTree = "<group>";
 		};
+		0A3C4D8E1EB9A66800B6F279 /* PropertyActivationLanya */ = {
+			isa = PBXGroup;
+			children = (
+				0A3C4D911EB9A66800B6F279 /* PropertyActivationSingleTon.h */,
+				0A3C4D921EB9A66800B6F279 /* PropertyActivationSingleTon.m */,
+			);
+			path = PropertyActivationLanya;
+			sourceTree = "<group>";
+		};
+		0A3C4D951EB9A8FF00B6F279 /* PropertyActivationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0A3C4D961EB9A92300B6F279 /* PropertyActivationViewController.h */,
+				0A3C4D971EB9A92300B6F279 /* PropertyActivationViewController.m */,
+				0A3C4D981EB9A92300B6F279 /* PropertyActivationViewController.xib */,
+				0A3C4D9B1EB9B35C00B6F279 /* PropertyActivationViewController+Configuration.h */,
+				0A3C4D9C1EB9B35C00B6F279 /* PropertyActivationViewController+Configuration.m */,
+				0A3C4D9E1EB9BBF400B6F279 /* PropertyActivationViewControllerDataSource.h */,
+				0A3C4D9F1EB9BBF400B6F279 /* PropertyActivationViewControllerDataSource.m */,
+			);
+			path = PropertyActivationViewController;
+			sourceTree = "<group>";
+		};
 		0A51E9161DC82576000D31F3 /* RegisterViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -499,6 +539,15 @@
 				0A6830E71DF10B3800D51770 /* LanyaViewControllerDataSource.m */,
 			);
 			path = lanyaViewController;
+			sourceTree = "<group>";
+		};
+		0A6F65F61EBAF0EE00092DDE /* classUserinfo */ = {
+			isa = PBXGroup;
+			children = (
+				0A6F65FA1EBAF5B400092DDE /* ClassUserInfo.h */,
+				0A6F65FB1EBAF5B400092DDE /* ClassUserInfo.m */,
+			);
+			path = classUserinfo;
 			sourceTree = "<group>";
 		};
 		0A6FB26E1DC9788400345784 /* installViewController */ = {
@@ -680,6 +729,7 @@
 				0ABEA9B01E83974B00FC7FD3 /* InstallCardData.h */,
 				0ABEA9B11E83974B00FC7FD3 /* InstallCardData.m */,
 				0ABEA9B51E839C0700FC7FD3 /* classVisitor */,
+				0A6F65F61EBAF0EE00092DDE /* classUserinfo */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -824,6 +874,7 @@
 			children = (
 				0A87F7A71DB74F8E00EFF1F0 /* lanya */,
 				0A0EBEA01E2F0E3E00E4A89E /* VIsitorLanya */,
+				0A3C4D8E1EB9A66800B6F279 /* PropertyActivationLanya */,
 				0A95A2D71DDA96640019A691 /* NetWorkJudge */,
 				0AA5DA1D1DF554DA00CA816E /* ZLCGuidePage */,
 				0A8C96931DCC1A9200AAD161 /* HcdDateTimePicker */,
@@ -847,6 +898,7 @@
 				0A6830DD1DF106D500D51770 /* lanyaViewController */,
 				0A131A181E2C5860009D11E2 /* VisitorViewController */,
 				0A7304861E8352420016639A /* InvitationCodeViewController */,
+				0A3C4D951EB9A8FF00B6F279 /* PropertyActivationViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1152,6 +1204,7 @@
 				0ACFF8231DB5BCA00043D49A /* Assets.xcassets in Resources */,
 				0A86A9E41E0236C7006AE3CB /* gsgg2.jpg in Resources */,
 				0AA5DA2A1DF554DA00CA816E /* image5.jpg in Resources */,
+				0A3C4D9A1EB9A92300B6F279 /* PropertyActivationViewController.xib in Resources */,
 				0AFA94A31DF7ECD60044362D /* round-switch-overlay.png in Resources */,
 				0AFA94A81DF7ECD60044362D /* round-switch-thumb@2x.png in Resources */,
 				0AA5DA271DF554DA00CA816E /* image2.jpg in Resources */,
@@ -1241,6 +1294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A86A0AA1E84BEDF00044556 /* VisitorViewControllerDataSource.m in Sources */,
+				0A3C4D941EB9A66800B6F279 /* PropertyActivationSingleTon.m in Sources */,
 				0A611E301E11F40E0002B1C9 /* SingleTon+InstallWarden.m in Sources */,
 				0A5FF93F1DB5FABC00249F0C /* UIColor+Utility.m in Sources */,
 				0A5FF9301DB5F05000249F0C /* CustomActionSheet.m in Sources */,
@@ -1254,9 +1308,11 @@
 				0A35C6661DCD87DD0068AA83 /* KaiKaViewController+Configuration.m in Sources */,
 				0A611E331E120BFA0002B1C9 /* installLanyaDataSource.m in Sources */,
 				0A98AF461DF270BF00BCA88C /* JYCarousel.m in Sources */,
+				0A3C4D991EB9A92300B6F279 /* PropertyActivationViewController.m in Sources */,
 				0AA491301DC6F27D0013B974 /* LoginViewController.m in Sources */,
 				0A6DA6DD1DB6F9020013D0CF /* MineViewController+Configuration.m in Sources */,
 				0A611E361E120C4D0002B1C9 /* InstallLanyaDataDelegate.m in Sources */,
+				0A6F65FC1EBAF5B400092DDE /* ClassUserInfo.m in Sources */,
 				0ABEA9B31E83974B00FC7FD3 /* DBTool.m in Sources */,
 				0A9EEC691DCB0E2A00D74FC9 /* OpenCardView.m in Sources */,
 				0A95A2DA1DDA96B50019A691 /* NetWorkJudge.m in Sources */,
@@ -1280,6 +1336,7 @@
 				0A87F7AD1DB7588900EFF1F0 /* MineViewController+Animation.m in Sources */,
 				0ACFF8931DB5CEFF0043D49A /* ChannelBaseView.m in Sources */,
 				0A6402581E1F678E00CADD0F /* SingleTon+MainHairpin.m in Sources */,
+				0A3C4DA01EB9BBF400B6F279 /* PropertyActivationViewControllerDataSource.m in Sources */,
 				0A98AF4D1DF270BF00BCA88C /* UIImageView+JYImageViewManager.m in Sources */,
 				0A87F7B01DB75D5E00EFF1F0 /* MinViewControllerDataSource.m in Sources */,
 				0ACFF8181DB5BCA00043D49A /* main.m in Sources */,
@@ -1311,6 +1368,7 @@
 				0AD75CD31DBDDE5300297AC3 /* MyViewControllerDataSource.m in Sources */,
 				0ABEA9B21E83974B00FC7FD3 /* ZBGroup.m in Sources */,
 				0A961CE51E10E6C9004050B0 /* installViewController+Animation.m in Sources */,
+				0A3C4D9D1EB9B35C00B6F279 /* PropertyActivationViewController+Configuration.m in Sources */,
 				0AD75CD01DBDDE0F00297AC3 /* MyViewController+LogicalFlow.m in Sources */,
 				0A98AF4B1DF270BF00BCA88C /* JYPageControl.m in Sources */,
 				0A98AF4C1DF270BF00BCA88C /* JYWeakTimer.m in Sources */,

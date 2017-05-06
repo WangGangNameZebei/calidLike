@@ -9,14 +9,15 @@
 /*AES加密宏*/
 #define AES_PASSWORD @"ufwjfitn"
 
-/* 蓝牙刷卡固定死的 uuid*/
+/* 蓝牙刷卡的 uuid*/
 
-#define SINGLE_TON_UUID_STR @"FACE5307-0FBF-48CE-BF91-462449156AC3"
+#define SINGLE_TON_UUID_STR [[NSUserDefaults standardUserDefaults] objectForKey:@"identifierStr"]
 
 /*输出宏*/
 #define LOG(...) NSLog(__VA_ARGS__);
 #define LOG_METHOD NSLog(@"%s", __func__);
-
+/*解锁屏幕*/
+#define NotificationPwdUI CFSTR("com.apple.springboard.hasBlankedScreen")
 
 //登录    URL
 #define LOGIN_URL @"http://139.199.102.233:8080/calid/login.do"

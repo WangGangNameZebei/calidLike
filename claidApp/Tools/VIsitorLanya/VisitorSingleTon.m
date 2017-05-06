@@ -45,6 +45,10 @@ static VisitorSingleTon *_instace = nil;
 
 #pragma mark - 处理传进来的字符串并发指令
 - (void)sendCommand:(NSString *)String {
+    NSString *strHead;
+    NSData *writeData;
+    NSInteger datalength;
+    NSInteger jiequlength = 38;
     if ([[String substringWithRange:NSMakeRange(0,2)] isEqualToString:@"cc"]  &&  String.length < 200) {
         String = [self visitorpayByCardInstructionsActionString:String];
     }
@@ -61,9 +65,33 @@ static VisitorSingleTon *_instace = nil;
         CommandStr = [NSString stringWithFormat:@"%@%@",CommandStr,@"0"];
     }
     
-    NSData *data = [self ToDealWithCommandString:CommandStr StrLenght:length/2];
-    
-    [self writeChar:data];
+    if (length > 20){
+        if ([[CommandStr substringWithRange:NSMakeRange(0,2)] isEqualToString:@"cc"]) {
+            strHead = @"c";
+        }else{
+            strHead = @"a";
+        }
+        datalength =((length-2)/2) %19;
+        if (datalength>0) {
+            datalength =((length-2)/2) / 19 +1;
+        } else {
+            datalength =((length-2)/2) / 19;
+        }
+        CommandStr = [CommandStr substringWithRange:NSMakeRange(2, length-2)];
+        for (NSInteger aa = 0; aa <datalength; aa++) {
+            if (aa == datalength - 1)
+                jiequlength = CommandStr.length - aa*38;
+            strHead = [NSString stringWithFormat:@"%@%ld%@",[strHead substringWithRange:NSMakeRange(0,1)],(long)aa,[CommandStr substringWithRange:NSMakeRange(aa*38,jiequlength)]];
+            writeData = [self ToDealWithCommandString:strHead StrLenght:strHead.length/2];
+            [self writeChar:writeData];
+            
+        }
+    } else {
+        writeData = [self ToDealWithCommandString:CommandStr StrLenght:length/2];
+        [self writeChar:writeData];
+        
+    }
+
     
 }
 
@@ -119,7 +147,7 @@ static VisitorSingleTon *_instace = nil;
 #pragma mark - 目标扫描
 - (void)targetScan
 {
-    [self.manager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:@"0xFFF0"]] options:@{ CBCentralManagerScanOptionAllowDuplicatesKey : @YES}];
+    [self.manager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:SINGLE_TON_UUID_STR]] options:@{ CBCentralManagerScanOptionAllowDuplicatesKey : @YES}];
     
 }
 
@@ -144,7 +172,15 @@ static VisitorSingleTon *_instace = nil;
 #pragma mark - 查到外设时
 -(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
 {
-        
+    NSString *strUUid = SINGLE_TON_UUID_STR;
+    if (strUUid.length < 2 && [NSString stringWithFormat:@"%@",peripheral.name].length > 10) {
+        if ([[[NSString stringWithFormat:@"%@",peripheral.name]  substringWithRange:NSMakeRange(0,5)] isEqualToString:@"CALID"]) {
+            [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%@",peripheral.identifier] forKey:@"identifierStr"];  //存储
+            if ([self.delegate respondsToSelector:@selector(visitorEditInitPeripheralData:)]){
+                [self.delegate visitorEditInitPeripheralData:3];
+            }
+        }
+    }
         if(![self.PeripheralArray containsObject:peripheral])
             [self.PeripheralArray addObject:peripheral];
     
@@ -226,28 +262,31 @@ static VisitorSingleTon *_instace = nil;
 #pragma mark - 已发现服务
 -(void) peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error{
     LOG(@"发现服务");
-    
     for (CBService *s in peripheral.services) {
         [self.nServices addObject:s];
-        if ([s.UUID isEqual:[CBUUID UUIDWithString:@"0xFFF0"]]) {
+      NSString *strone = [NSString stringWithFormat:@"%@",s.UUID];
+        if (strone.length > 8)
+            strone= [strone substringWithRange:NSMakeRange(4,4)];
+        if ([strone isEqual:@"FFF0"] ) {
             [peripheral discoverCharacteristics:nil forService:s];
             
         }
     }
+
 }
 
 #pragma mark - 已搜索到Characteristics
 -(void) peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error{
-    LOG(@"发现特征");
     for (CBCharacteristic *c in service.characteristics) {
-        if ([c.UUID isEqual:[CBUUID UUIDWithString:@"0xFFF6"]]) {
+        NSString *str1 = [[NSString stringWithFormat:@"%@",c.UUID] substringWithRange:NSMakeRange(4,4)];
+        if ([str1 isEqualToString:@"FFF6"]) {
             _writeCharacteristic = c;
             if ([self.delegate respondsToSelector:@selector(visitorEditInitPeripheralData:)]){
                 [self.delegate visitorEditInitPeripheralData:1];
             }
             
         }
-        if ([c.UUID isEqual:[CBUUID UUIDWithString:@"0xFFF7"]]) {
+        if ([str1 isEqualToString:@"FFF7"]) {
             
             [self.peripheral setNotifyValue:YES forCharacteristic:c];
             
@@ -266,11 +305,25 @@ static VisitorSingleTon *_instace = nil;
 #pragma mark - 获取外设发来的数据，不论是read和notify,获取数据都是从这个方法中读取。
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
+    NSInteger jishunumber = 38;
     if (self.receiveData.length == 0)
         self.receiveData = @"";
     NSLog(@"===== %@",[self visitorhexadecimalString:characteristic.value]);
     NSString *str1 = [self visitorhexadecimalString:characteristic.value];
-    self.receiveData = [NSString stringWithFormat:@"%@%@",self.receiveData,str1];
+    //self.receiveData = [NSString stringWithFormat:@"%@%@",self.receiveData,str1];
+    if ([self visitorhexadecimalString:characteristic.value].length == 40) {
+        if ([[str1 substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"d2"]) {   // 第一串  返回d2结束
+            jishunumber = 16;
+        } else if ([[str1 substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"b2"]) {       //  刷卡正确返回
+            jishunumber = 30;
+        }else if ([[str1 substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"ee"]) {        //刷卡错误
+            jishunumber = 10;
+        }
+        self.receiveData = [NSString stringWithFormat:@"%@%@",self.receiveData,[str1 substringWithRange:NSMakeRange(2, jishunumber)]];
+        if (jishunumber == 38)
+            return;
+    }
+
   if  (self.receiveData.length == 94 ){
       [self visitorlanyaSendoutDataAction:[self visitorhexadecimalString:characteristic.value]];
       self.receiveData = @"";

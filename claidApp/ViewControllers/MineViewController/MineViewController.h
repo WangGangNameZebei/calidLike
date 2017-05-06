@@ -21,7 +21,7 @@
 @property (strong, nonatomic) IBOutlet UIView *ziDongView;
 @property (strong, nonatomic) IBOutlet UILabel *ziDongLabei;
 @property (strong, nonatomic) IBOutlet UIView *JYimageView;
-
+@property (assign, nonatomic) BOOL litBool;                 // 手机亮屏幕标识
 
 
 @property (strong, nonatomic) MinViewControllerDataSource *minViewControllerDataSource;
