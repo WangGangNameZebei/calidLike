@@ -240,12 +240,15 @@ static PropertyActivationSingleTon *_instace = nil;
 -(void) peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error{
     LOG(@"发现特征");
     for (CBCharacteristic *c in service.characteristics) {
-        if ([c.UUID isEqual:[CBUUID UUIDWithString:@"0xFFF6"]]) {
+        NSString *str1 = [NSString stringWithFormat:@"%@",c.UUID];
+        if (str1.length > 8)
+            str1 = [str1 substringWithRange:NSMakeRange(4,4)];
+        if ([str1 isEqualToString:@"FFF6"]) {
             _pAwriteCharacteristic = c;
             if ([self.delegate respondsToSelector:@selector(pADoSomethingtishiFrame:)])
                 [self.delegate pADoSomethingtishiFrame:@"连接成功"];
         }
-        if ([c.UUID isEqual:[CBUUID UUIDWithString:@"0xFFF7"]]) {
+        if ([str1 isEqualToString:@"FFF7"]) {
             
             [self.pAperipheral setNotifyValue:YES forCharacteristic:c];
             
@@ -264,14 +267,21 @@ static PropertyActivationSingleTon *_instace = nil;
 #pragma mark - 获取外设发来的数据，不论是read和notify,获取数据都是从这个方法中读取。
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
-    
+    NSInteger jishunumber = 38;
     if (self.receiveData.length == 0)
         self.receiveData = @"";
     NSLog(@"===== %@",[self.singleton hexadecimalString:characteristic.value]);
+
     NSString *str1 = [self.singleton hexadecimalString:characteristic.value];
-    self.receiveData = [NSString stringWithFormat:@"%@%@",self.receiveData,str1];
-    if  (self.receiveData.length > 106  && self.receiveData.length <= 214 && [[str1 substringWithRange:NSMakeRange(0, 4)] isEqualToString:@"aa02"]){
-        if ([self.singleton lanyaDataXiaoyanAction:[self.receiveData substringWithRange:NSMakeRange(4,104)]]) {
+        if ([[str1 substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"f2"]) {   // 第一串
+              jishunumber = 30;
+        }
+        self.receiveData = [NSString stringWithFormat:@"%@%@",self.receiveData,[str1 substringWithRange:NSMakeRange(2, jishunumber)]];
+        if (jishunumber == 38)
+            return;
+
+    if  (self.receiveData.length > 104  && self.receiveData.length < 210 && [[self.receiveData substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"02"]){
+        if ([self.singleton lanyaDataXiaoyanAction:[self.receiveData substringWithRange:NSMakeRange(2,104)]]) {
             [self sendCommand:@"aa"];
             LOG(@"成功1");
         } else {
@@ -279,15 +289,14 @@ static PropertyActivationSingleTon *_instace = nil;
             LOG(@"失败1");
             self.receiveData = @"";
         }
-    } else if (self.receiveData.length > 214 && [[str1 substringWithRange:NSMakeRange(0, 4)] isEqualToString:@"aa02"]) {
-        if ([self.singleton lanyaDataXiaoyanAction:[self.receiveData substringWithRange:NSMakeRange(112,104)]]){
+    } else if (self.receiveData.length > 210 && [[self.receiveData substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"02"]) {
+        if ([self.singleton lanyaDataXiaoyanAction:[self.receiveData substringWithRange:NSMakeRange(108,104)]]){
           
             [self sendCommand:@"aa"];
-            self.receiveData = [NSString stringWithFormat:@"%@%@",[self.receiveData substringWithRange:NSMakeRange(4,104)],[self.receiveData substringWithRange:NSMakeRange(112,104)]];
-            if ([[str1 substringWithRange:NSMakeRange(0, 4)] isEqualToString:@"aa02"]) {    //用户卡
+            self.receiveData = [NSString stringWithFormat:@"%@%@",[self.receiveData substringWithRange:NSMakeRange(2,104)],[self.receiveData substringWithRange:NSMakeRange(108,104)]];
                NSString *encryptedData = [AESCrypt encrypt:self.receiveData password:AES_PASSWORD];  //加密
                [[NSUserDefaults standardUserDefaults] setObject:encryptedData forKey:@"lanyaAESData"];  //存储
-            }
+        
             self.receiveData = @"";
         } else {
             [self sendCommand:@"00"];
@@ -295,10 +304,10 @@ static PropertyActivationSingleTon *_instace = nil;
             LOG(@"失败2");
         }
         
-    } else {
-        if ([[str1 substringWithRange:NSMakeRange(0, 4)] isEqualToString:@"aab2"] && self.receiveData.length > 214) {
-            NSString *userInfoOne = [self.singleton lanyaDataDecryptedAction:[self.receiveData substringWithRange:NSMakeRange(4,104)]];
-             NSString *userInfoTow = [self.singleton lanyaDataDecryptedAction:[self.receiveData substringWithRange:NSMakeRange(112,104)]];
+    } else if ([[self.receiveData substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"b2"] ||  [[self.receiveData substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"a2"]) {
+        if (self.receiveData.length > 210) {
+            NSString *userInfoOne = [self.singleton lanyaDataDecryptedAction:[self.receiveData substringWithRange:NSMakeRange(2,104)]];
+             NSString *userInfoTow = [self.singleton lanyaDataDecryptedAction:[self.receiveData substringWithRange:NSMakeRange(108,104)]];
             NSLog(@"++++>%@ ===%@",userInfoOne,userInfoTow);
             self.pAtool = [DBTool sharedDBTool];
             NSArray *data = [self.pAtool selectWithClass:[ClassUserInfo class] params:nil];
@@ -313,13 +322,14 @@ static PropertyActivationSingleTon *_instace = nil;
             }
             if ([self.delegate respondsToSelector:@selector(pADoSomethingtishiFrame:)])
                 [self.delegate pADoSomethingtishiFrame:self.receiveData];
-          self.receiveData = @"";
+            self.receiveData = @"";
         }
         [self sendCommand:@"aa"];
+    } else {
+        self.receiveData = @"";
+        [self sendCommand:@"00"];
     }
  
-    
-    
 }
 
 #pragma mark - 用于检测中心向外设写数据是否成功

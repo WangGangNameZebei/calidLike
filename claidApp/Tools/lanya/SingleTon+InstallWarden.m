@@ -75,16 +75,16 @@
 }
 
 
-- (void)hairpinReadData:(CBCharacteristic *)characteristic {
-    if ([[self hexadecimalString:characteristic.value] isEqualToString:@"7265616401"]) {
+- (void)hairpinReadData:(NSString *)characteristic {
+    if ([characteristic isEqualToString:@"7265616401"]) {
         self.receiveData = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESData"] password:AES_PASSWORD];
         self.receiveData = [NSString stringWithFormat:@"%@%@",@"AA",[self.receiveData substringWithRange:NSMakeRange(0,104)]];
         [self sendCommand:self.receiveData];
-    } else if ([[self hexadecimalString:characteristic.value] isEqualToString:@"7265616402"]) {
+    } else if ([characteristic isEqualToString:@"7265616402"]) {
         self.receiveData = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESData"] password:AES_PASSWORD];
         self.receiveData = [NSString stringWithFormat:@"%@%@",@"AA",[self.receiveData substringWithRange:NSMakeRange(104,104)]];
         [self sendCommand:self.receiveData];
-    } else if ([[self hexadecimalString:characteristic.value] isEqualToString:@"7265616403"]) {
+    } else if ([characteristic isEqualToString:@"7265616403"]) {
         self.receiveData = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESErrornData"] password:AES_PASSWORD];
         self.receiveData = [NSString stringWithFormat:@"%@%@",@"AA",self.receiveData];
         [self sendCommand:self.receiveData];

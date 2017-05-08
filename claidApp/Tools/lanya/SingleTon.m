@@ -461,8 +461,11 @@ static SingleTon *_instace = nil;
             jishunumber = 16;
         } else if ([[str1 substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"b2"]) {       //  刷卡正确返回
             jishunumber = 30;
-        }else if ([[str1 substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"ee"]) {        //刷卡错误
+        } else if ([[str1 substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"ee"]) {        //刷卡错误
             jishunumber = 10;
+        } else if ([[str1 substringWithRange:NSMakeRange(0, 8)] isEqualToString:@"72656164"]) {   // 软件读取信息
+            jishunumber = 10;
+            str1 = [NSString stringWithFormat:@"aa%@",str1];
         }
         self.receiveData = [NSString stringWithFormat:@"%@%@",self.receiveData,[str1 substringWithRange:NSMakeRange(2, jishunumber)]];
         if (jishunumber == 38)
@@ -507,7 +510,7 @@ static SingleTon *_instace = nil;
         self.receiveData = @"";
         
     } else {
-        [self hairpinReadData:characteristic];                  //读取
+        [self hairpinReadData:self.receiveData];                  //读取
         self.receiveData = @"";
     }
 }

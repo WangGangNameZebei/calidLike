@@ -376,6 +376,15 @@ void xor(unsigned char key[]) {
         NSLog(@"%@",strResult);
         return NULL;
     }
+    NSMutableString *deleteStr =  [NSMutableString stringWithString:strResult];         // 过滤 文字空白的   \0
+    for (int i = 0; i < deleteStr.length; i ++) {
+        strResult = [deleteStr substringWithRange:NSMakeRange(i, 1)];
+        if ([strResult isEqualToString:@"\0"]){
+            [deleteStr deleteCharactersInRange:NSMakeRange(i, 1)];
+            i--;
+        }
+    }
+    strResult = deleteStr;
     return strResult;
 }
 //将汉字字符串转换成16进制字符串

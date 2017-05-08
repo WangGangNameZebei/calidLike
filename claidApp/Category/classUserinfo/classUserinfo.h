@@ -2,7 +2,7 @@
 //  ClassUserInfo.h
 //  claidApp
 //
-//  Created by kevinpc on 2017/5/4.
+//  Created by kevinpc on 2017/5/8.
 //  Copyright © 2017年 kevinpc. All rights reserved.
 //
 

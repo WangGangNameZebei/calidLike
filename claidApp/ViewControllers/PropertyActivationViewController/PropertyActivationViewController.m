@@ -28,6 +28,21 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)pARegisteredButtonAction:(id)sender {
+    if (self.pAPhoneNumberTextField.text.length!=11){
+        [self promptInformationActionWarningString:@"请输入正确电话号码!"];
+        return;
+    }
+    if (self.pAPasswordTextField.text.length==0){
+        [self promptInformationActionWarningString:@"密码不能为空!"];
+        return;
+    }
+    if ([self.pAPasswordTextField.text isEqualToString:self.pAConfirmPasswordTextField.text] ){
+      // 注册信息 点击   注册
+    } else {
+        [self promptInformationActionWarningString:@"密码输入不一致!"];
+    }
+}
 
 - (IBAction)saoMiaoButtonAction:(id)sender {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];

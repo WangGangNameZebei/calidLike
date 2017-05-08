@@ -14,6 +14,7 @@
 #import "LoginViewController.h"
 #import "VisitorViewController.h"
 #import "invitaionCodeViewController.h"
+#import "MycradInfoViewController.h"
 
 @implementation MyViewController
 
@@ -34,12 +35,15 @@
 
 // 点击  UItableView
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-     if (indexPath.row == 2){
+     if (indexPath.row == 2){       // 蓝牙
          LanyaViewController *lanyaVC = [LanyaViewController create];
          lanyaVC.titleNameString = [NSString stringWithFormat:@"蓝牙"];
          [self hideTabBarAndpushViewController:lanyaVC];
         
-     } else if (indexPath.row == 6) {
+     } else if (indexPath.row == 3) {   //卡信息
+         MycradInfoViewController *mycradinfoVC = [MycradInfoViewController create];
+         [self hideTabBarAndpushViewController:mycradinfoVC];
+     } else if (indexPath.row == 6) {     //物业设置
         self.customAlertView = [[UIAlertView alloc] initWithTitle:@"请输入管理员口令" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
             [self.customAlertView setAlertViewStyle:UIAlertViewStylePlainTextInput];
     
@@ -49,16 +53,16 @@
         
      } else if (indexPath.row == 1 || indexPath.row == 7 || indexPath.row == 9) {
          NSLog(@"空白区");
-     } else if (indexPath.row == 8) {
+     } else if (indexPath.row == 8) {        //退出登入
          [self clearAllUserDefaultsData];
          LoginViewController *loginViewController = [LoginViewController create];
          UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
          navigationController.navigationBarHidden = YES;
          UIApplication.sharedApplication.delegate.window.rootViewController = navigationController;
-     } else if (indexPath.row == 5){
+     } else if (indexPath.row == 5){     // 我是 访客
         VisitorViewController *visitor = [VisitorViewController create];
         [self hideTabBarAndpushViewController:visitor];
-     } else if (indexPath.row == 4){
+     } else if (indexPath.row == 4){        // 邀请访客
          invitaionCodeViewController *inviCodeVC = [invitaionCodeViewController create];
          [self hideTabBarAndpushViewController:inviCodeVC];
      

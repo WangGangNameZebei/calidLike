@@ -24,6 +24,8 @@
 		0A3C4D9A1EB9A92300B6F279 /* PropertyActivationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A3C4D981EB9A92300B6F279 /* PropertyActivationViewController.xib */; };
 		0A3C4D9D1EB9B35C00B6F279 /* PropertyActivationViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3C4D9C1EB9B35C00B6F279 /* PropertyActivationViewController+Configuration.m */; };
 		0A3C4DA01EB9BBF400B6F279 /* PropertyActivationViewControllerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3C4D9F1EB9BBF400B6F279 /* PropertyActivationViewControllerDataSource.m */; };
+		0A45E1BC1EBD9EEC00BE4980 /* MycradInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A45E1BA1EBD9EEC00BE4980 /* MycradInfoViewController.m */; };
+		0A45E1BD1EBD9EED00BE4980 /* MycradInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A45E1BB1EBD9EEC00BE4980 /* MycradInfoViewController.xib */; };
 		0A51E91A1DC825B9000D31F3 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A51E9181DC825B9000D31F3 /* RegisterViewController.m */; };
 		0A51E91B1DC825B9000D31F3 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A51E9191DC825B9000D31F3 /* RegisterViewController.xib */; };
 		0A51E91E1DC82629000D31F3 /* RegisterViewController+LogicalFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A51E91D1DC82629000D31F3 /* RegisterViewController+LogicalFlow.m */; };
@@ -51,7 +53,6 @@
 		0A6830E81DF10B3800D51770 /* LanyaViewControllerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6830E71DF10B3800D51770 /* LanyaViewControllerDataSource.m */; };
 		0A6DA6DA1DB6F8D90013D0CF /* MineViewController+LogicalFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6DA6D91DB6F8D90013D0CF /* MineViewController+LogicalFlow.m */; };
 		0A6DA6DD1DB6F9020013D0CF /* MineViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6DA6DC1DB6F9020013D0CF /* MineViewController+Configuration.m */; };
-		0A6F65FC1EBAF5B400092DDE /* ClassUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6F65FB1EBAF5B400092DDE /* ClassUserInfo.m */; };
 		0A6FB2721DC978BC00345784 /* installViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6FB2701DC978BC00345784 /* installViewController.m */; };
 		0A6FB2731DC978BC00345784 /* installViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A6FB2711DC978BC00345784 /* installViewController.xib */; };
 		0A6FB2761DC978F700345784 /* installViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6FB2751DC978F700345784 /* installViewController+Configuration.m */; };
@@ -127,6 +128,11 @@
 		0AD75CD81DBDE6C100297AC3 /* MyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD75CD61DBDE6C100297AC3 /* MyTableViewCell.m */; };
 		0AD75CD91DBDE6C100297AC3 /* MyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AD75CD71DBDE6C100297AC3 /* MyTableViewCell.xib */; };
 		0AEC75201DC83D7E00933D77 /* fanhui_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEC751F1DC83D7E00933D77 /* fanhui_1.png */; };
+		0AF131DE1EC00A590056F2A0 /* ClassUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF131DD1EC00A590056F2A0 /* ClassUserInfo.m */; };
+		0AF131E11EC0435E0056F2A0 /* MycradInfoViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF131E01EC0435E0056F2A0 /* MycradInfoViewController+Configuration.m */; };
+		0AF131E61EC0488D0056F2A0 /* MycradInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF131E41EC0488D0056F2A0 /* MycradInfoTableViewCell.m */; };
+		0AF131E71EC0488D0056F2A0 /* MycradInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AF131E51EC0488D0056F2A0 /* MycradInfoTableViewCell.xib */; };
+		0AF131EA1EC04C190056F2A0 /* MycradInfoViewControllerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF131E91EC04C190056F2A0 /* MycradInfoViewControllerDataSource.m */; };
 		0AFA948A1DF7EC670044362D /* TTSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFA94891DF7EC670044362D /* TTSwitch.m */; };
 		0AFA94A11DF7ECD60044362D /* round-switch-mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AFA948C1DF7ECD60044362D /* round-switch-mask.png */; };
 		0AFA94A21DF7ECD60044362D /* round-switch-mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AFA948D1DF7ECD60044362D /* round-switch-mask@2x.png */; };
@@ -189,6 +195,9 @@
 		0A3C4D9C1EB9B35C00B6F279 /* PropertyActivationViewController+Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PropertyActivationViewController+Configuration.m"; sourceTree = "<group>"; };
 		0A3C4D9E1EB9BBF400B6F279 /* PropertyActivationViewControllerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyActivationViewControllerDataSource.h; sourceTree = "<group>"; };
 		0A3C4D9F1EB9BBF400B6F279 /* PropertyActivationViewControllerDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropertyActivationViewControllerDataSource.m; sourceTree = "<group>"; };
+		0A45E1B91EBD9EEC00BE4980 /* MycradInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MycradInfoViewController.h; sourceTree = "<group>"; };
+		0A45E1BA1EBD9EEC00BE4980 /* MycradInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MycradInfoViewController.m; sourceTree = "<group>"; };
+		0A45E1BB1EBD9EEC00BE4980 /* MycradInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MycradInfoViewController.xib; sourceTree = "<group>"; };
 		0A51E9171DC825B9000D31F3 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		0A51E9181DC825B9000D31F3 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		0A51E9191DC825B9000D31F3 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
@@ -237,8 +246,6 @@
 		0A6DA6D91DB6F8D90013D0CF /* MineViewController+LogicalFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MineViewController+LogicalFlow.m"; sourceTree = "<group>"; };
 		0A6DA6DB1DB6F9020013D0CF /* MineViewController+Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MineViewController+Configuration.h"; sourceTree = "<group>"; };
 		0A6DA6DC1DB6F9020013D0CF /* MineViewController+Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MineViewController+Configuration.m"; sourceTree = "<group>"; };
-		0A6F65FA1EBAF5B400092DDE /* ClassUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassUserInfo.h; sourceTree = "<group>"; };
-		0A6F65FB1EBAF5B400092DDE /* ClassUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassUserInfo.m; sourceTree = "<group>"; };
 		0A6FB26F1DC978BC00345784 /* installViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = installViewController.h; sourceTree = "<group>"; };
 		0A6FB2701DC978BC00345784 /* installViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = installViewController.m; sourceTree = "<group>"; };
 		0A6FB2711DC978BC00345784 /* installViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = installViewController.xib; sourceTree = "<group>"; };
@@ -368,6 +375,15 @@
 		0AD75CD61DBDE6C100297AC3 /* MyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewCell.m; sourceTree = "<group>"; };
 		0AD75CD71DBDE6C100297AC3 /* MyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyTableViewCell.xib; sourceTree = "<group>"; };
 		0AEC751F1DC83D7E00933D77 /* fanhui_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fanhui_1.png; sourceTree = "<group>"; };
+		0AF131DC1EC00A590056F2A0 /* ClassUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassUserInfo.h; sourceTree = "<group>"; };
+		0AF131DD1EC00A590056F2A0 /* ClassUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassUserInfo.m; sourceTree = "<group>"; };
+		0AF131DF1EC0435D0056F2A0 /* MycradInfoViewController+Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MycradInfoViewController+Configuration.h"; sourceTree = "<group>"; };
+		0AF131E01EC0435E0056F2A0 /* MycradInfoViewController+Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MycradInfoViewController+Configuration.m"; sourceTree = "<group>"; };
+		0AF131E31EC0488D0056F2A0 /* MycradInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MycradInfoTableViewCell.h; sourceTree = "<group>"; };
+		0AF131E41EC0488D0056F2A0 /* MycradInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MycradInfoTableViewCell.m; sourceTree = "<group>"; };
+		0AF131E51EC0488D0056F2A0 /* MycradInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MycradInfoTableViewCell.xib; sourceTree = "<group>"; };
+		0AF131E81EC04C190056F2A0 /* MycradInfoViewControllerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MycradInfoViewControllerDataSource.h; sourceTree = "<group>"; };
+		0AF131E91EC04C190056F2A0 /* MycradInfoViewControllerDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MycradInfoViewControllerDataSource.m; sourceTree = "<group>"; };
 		0AFA94881DF7EC670044362D /* TTSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTSwitch.h; sourceTree = "<group>"; };
 		0AFA94891DF7EC670044362D /* TTSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTSwitch.m; sourceTree = "<group>"; };
 		0AFA948C1DF7ECD60044362D /* round-switch-mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "round-switch-mask.png"; sourceTree = "<group>"; };
@@ -486,6 +502,20 @@
 			path = PropertyActivationViewController;
 			sourceTree = "<group>";
 		};
+		0A45E1B81EBD9EAF00BE4980 /* MycardInfoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0A45E1B91EBD9EEC00BE4980 /* MycradInfoViewController.h */,
+				0A45E1BA1EBD9EEC00BE4980 /* MycradInfoViewController.m */,
+				0A45E1BB1EBD9EEC00BE4980 /* MycradInfoViewController.xib */,
+				0AF131DF1EC0435D0056F2A0 /* MycradInfoViewController+Configuration.h */,
+				0AF131E01EC0435E0056F2A0 /* MycradInfoViewController+Configuration.m */,
+				0AF131E81EC04C190056F2A0 /* MycradInfoViewControllerDataSource.h */,
+				0AF131E91EC04C190056F2A0 /* MycradInfoViewControllerDataSource.m */,
+			);
+			path = MycardInfoViewController;
+			sourceTree = "<group>";
+		};
 		0A51E9161DC82576000D31F3 /* RegisterViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -544,8 +574,8 @@
 		0A6F65F61EBAF0EE00092DDE /* classUserinfo */ = {
 			isa = PBXGroup;
 			children = (
-				0A6F65FA1EBAF5B400092DDE /* ClassUserInfo.h */,
-				0A6F65FB1EBAF5B400092DDE /* ClassUserInfo.m */,
+				0AF131DC1EC00A590056F2A0 /* ClassUserInfo.h */,
+				0AF131DD1EC00A590056F2A0 /* ClassUserInfo.m */,
 			);
 			path = classUserinfo;
 			sourceTree = "<group>";
@@ -609,6 +639,7 @@
 				0A052F5C1DBDF0BD002EB567 /* BlankTableViewCell */,
 				0A0C1E4E1DD989C80059EFEC /* LoginOutTableViewCell */,
 				0A98E8E81E0505410086F6D5 /* LanyaHeadTabelViewCell */,
+				0AF131E21EC0480E0056F2A0 /* MycradInfoTableViewCell */,
 			);
 			name = CustomCells;
 			path = Basic/CustomCells;
@@ -894,6 +925,7 @@
 				0ACFF8731DB5C6910043D49A /* MineViewController */,
 				0A6FB26E1DC9788400345784 /* installViewController */,
 				0ACFF8741DB5C6910043D49A /* MyViewController */,
+				0A45E1B81EBD9EAF00BE4980 /* MycardInfoViewController */,
 				0AC68B951DCC6E8200B71FB1 /* KaikaViewController */,
 				0A6830DD1DF106D500D51770 /* lanyaViewController */,
 				0A131A181E2C5860009D11E2 /* VisitorViewController */,
@@ -1015,6 +1047,16 @@
 				0AD75CD71DBDE6C100297AC3 /* MyTableViewCell.xib */,
 			);
 			path = MyTableViewCell;
+			sourceTree = "<group>";
+		};
+		0AF131E21EC0480E0056F2A0 /* MycradInfoTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0AF131E31EC0488D0056F2A0 /* MycradInfoTableViewCell.h */,
+				0AF131E41EC0488D0056F2A0 /* MycradInfoTableViewCell.m */,
+				0AF131E51EC0488D0056F2A0 /* MycradInfoTableViewCell.xib */,
+			);
+			path = MycradInfoTableViewCell;
 			sourceTree = "<group>";
 		};
 		0AFA94871DF7EC670044362D /* TTSwitch */ = {
@@ -1211,9 +1253,11 @@
 				0AA5DA261DF554DA00CA816E /* image1.jpg in Resources */,
 				0A0C1E531DD989FE0059EFEC /* LoginOutTableViewCell.xib in Resources */,
 				0AFA94A41DF7ECD60044362D /* round-switch-overlay@2x.png in Resources */,
+				0AF131E71EC0488D0056F2A0 /* MycradInfoTableViewCell.xib in Resources */,
 				0AFA94A71DF7ECD60044362D /* round-switch-thumb.png in Resources */,
 				0AA5DA301DF55A5C00CA816E /* LaunchScreen.storyboard in Resources */,
 				0A98AF4F1DF295F800BCA88C /* zhanweiImage.png in Resources */,
+				0A45E1BD1EBD9EED00BE4980 /* MycradInfoViewController.xib in Resources */,
 				0ACFF8211DB5BCA00043D49A /* Main.storyboard in Resources */,
 				0AFA94A11DF7ECD60044362D /* round-switch-mask.png in Resources */,
 				0A6FB2731DC978BC00345784 /* installViewController.xib in Resources */,
@@ -1312,11 +1356,12 @@
 				0AA491301DC6F27D0013B974 /* LoginViewController.m in Sources */,
 				0A6DA6DD1DB6F9020013D0CF /* MineViewController+Configuration.m in Sources */,
 				0A611E361E120C4D0002B1C9 /* InstallLanyaDataDelegate.m in Sources */,
-				0A6F65FC1EBAF5B400092DDE /* ClassUserInfo.m in Sources */,
+				0AF131E61EC0488D0056F2A0 /* MycradInfoTableViewCell.m in Sources */,
 				0ABEA9B31E83974B00FC7FD3 /* DBTool.m in Sources */,
 				0A9EEC691DCB0E2A00D74FC9 /* OpenCardView.m in Sources */,
 				0A95A2DA1DDA96B50019A691 /* NetWorkJudge.m in Sources */,
 				0A98E8EC1E0505B30086F6D5 /* LanyaHeadTableViewCell.m in Sources */,
+				0AF131DE1EC00A590056F2A0 /* ClassUserInfo.m in Sources */,
 				0A6830E81DF10B3800D51770 /* LanyaViewControllerDataSource.m in Sources */,
 				0A5FF94E1DB604C800249F0C /* CustomTabBarController.m in Sources */,
 				0ACFF8891DB5CCAC0043D49A /* BaseViewController.m in Sources */,
@@ -1345,10 +1390,12 @@
 				0A51E91E1DC82629000D31F3 /* RegisterViewController+LogicalFlow.m in Sources */,
 				0AFA948A1DF7EC670044362D /* TTSwitch.m in Sources */,
 				0A5FF9361DB5F6A000249F0C /* CustomActionSheetCell.m in Sources */,
+				0AF131E11EC0435E0056F2A0 /* MycradInfoViewController+Configuration.m in Sources */,
 				0A8C969B1DCC1A9200AAD161 /* MXSCycleScrollView.m in Sources */,
 				0A5FF9401DB5FABC00249F0C /* UIImage+Utility.m in Sources */,
 				0A052F601DBDF0E7002EB567 /* BlankTableViewCell.m in Sources */,
 				0A131A231E2C9838009D11E2 /* VisitorViewController+LogicalFlow.m in Sources */,
+				0AF131EA1EC04C190056F2A0 /* MycradInfoViewControllerDataSource.m in Sources */,
 				0A0C1E521DD989FE0059EFEC /* LoginOutTableViewCell.m in Sources */,
 				0AC969981DC9820F00F62C57 /* installViewControllerDataSource.m in Sources */,
 				0A7304911E8359FC0016639A /* invitaionCodeViewController+LogicalFlow.m in Sources */,
@@ -1365,6 +1412,7 @@
 				0A73048A1E8352990016639A /* invitaionCodeViewController.m in Sources */,
 				0A98AF481DF270BF00BCA88C /* JYConfiguration.m in Sources */,
 				0A6830E11DF1072C00D51770 /* LanyaViewController.m in Sources */,
+				0A45E1BC1EBD9EEC00BE4980 /* MycradInfoViewController.m in Sources */,
 				0AD75CD31DBDDE5300297AC3 /* MyViewControllerDataSource.m in Sources */,
 				0ABEA9B21E83974B00FC7FD3 /* ZBGroup.m in Sources */,
 				0A961CE51E10E6C9004050B0 /* installViewController+Animation.m in Sources */,
