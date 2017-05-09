@@ -41,7 +41,7 @@
 
 
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
-    if (event.subtype == UIEventSubtypeMotionShake) { // 判断是否是摇动结束
+    if (event.subtype == UIEventSubtypeMotionShake && [[[NSUserDefaults standardUserDefaults] objectForKey:@"shakeswitch"] isEqualToString:@"YES"]) { // 判断是否是摇动结束
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);  //震动
         [self shuakaButtonAction:self.shuaKaButton];
         NSLog(@"摇动结束");
@@ -308,10 +308,13 @@
 static void screenLockStateChanged(CFNotificationCenterRef center,void* observer,CFStringRef name,const void* object,CFDictionaryRef userInfo)
 
 {
-    //创建通知
-    NSNotification *notification =[NSNotification notificationWithName:@"litActionbiaoshi" object:nil userInfo:nil];
-    //通过通知中心发送通知
-    [[NSNotificationCenter defaultCenter] postNotification:notification];
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"brightScreenswitch"] isEqualToString:@"YES"]){
+        //创建通知
+        NSNotification *notification =[NSNotification notificationWithName:@"litActionbiaoshi" object:nil userInfo:nil];
+        //通过通知中心发送通知
+        [[NSNotificationCenter defaultCenter] postNotification:notification];
+    }
+   
 }
 //  通知 亮屏幕  刷卡
 - (void)litActionbiaoshi {

@@ -15,6 +15,7 @@
 #import "VisitorViewController.h"
 #import "invitaionCodeViewController.h"
 #import "MycradInfoViewController.h"
+#import "DBTool.h"
 
 @implementation MyViewController
 
@@ -87,6 +88,9 @@
 
 //清除数据
 - (void)clearAllUserDefaultsData {
+    DBTool *dbtool = [DBTool sharedDBTool];
+   [dbtool dropTableWithClass:[InstallCardData class]];
+   [dbtool dropTableWithClass:[ClassUserInfo class]];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *dic = [userDefaults dictionaryRepresentation];
     for (id  key in dic) {

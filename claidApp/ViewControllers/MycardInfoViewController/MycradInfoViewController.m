@@ -30,6 +30,22 @@
 - (IBAction)myinforeturnButtonAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+- (IBAction)sharkSwitchAction:(id)sender {
+    UISwitch *mySwitch = (UISwitch *)sender;
+    if (mySwitch.isOn){
+       [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"shakeswitch"];
+    }else{
+       [[NSUserDefaults standardUserDefaults] setObject:@"NO" forKey:@"shakeswitch"];
+    }
+}
+- (IBAction)brightScreenSwitchAction:(id)sender {
+    UISwitch *mySwitch = (UISwitch *)sender;
+    if (mySwitch.isOn){
+         [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"brightScreenswitch"];
+    } else {
+        [[NSUserDefaults standardUserDefaults] setObject:@"NO" forKey:@"brightScreenswitch"];
+    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

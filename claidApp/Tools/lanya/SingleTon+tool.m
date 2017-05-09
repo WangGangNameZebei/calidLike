@@ -135,7 +135,6 @@
     key1[1] = key2[17];
     key1[2] = key2[18];
     key1[3] = key2[19];
-    NSLog(@"++++++++++++++++++++++++++++++++++++======>%c%c%c%c",key1[0],key1[1],key1[2],key1[3]);
     numberKey = (key1[3]) + (key1[2]<<8) + (key1[1]<<16) + (key1[0]<<24);
     
     if (self.installBool){

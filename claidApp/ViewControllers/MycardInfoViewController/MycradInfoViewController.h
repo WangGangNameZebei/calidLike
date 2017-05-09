@@ -13,6 +13,8 @@
 
 @interface MycradInfoViewController : BaseViewController<UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *myCradInfoTableView;
+@property (strong, nonatomic) IBOutlet UISwitch *myInfoshakeSwitch;
+@property (strong, nonatomic) IBOutlet UISwitch *myInfoBrightScreenSwitch;
 
 @property (strong, nonatomic) MycradInfoViewControllerDataSource *mycradInfoViewControllerDataSource;
 @property (strong, nonatomic) DBTool *dbTool;
