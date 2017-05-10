@@ -21,6 +21,12 @@
 }
 
 - (void)singleTonEdit {
+    self.pATitleLabel.text = self.titleLabelString; //标题
+    if ([self.titleLabelString isEqualToString:@"续卡"]) {
+        [self.uploadButton setTitle:@"提交" forState:UIControlStateNormal];
+    } else {
+        [self.uploadButton setTitle:@"注册" forState:UIControlStateNormal];
+    }
     self.paSingleTon = [PropertyActivationSingleTon sharedInstance];
     [self.paSingleTon initialization];
     self.paSingleTon.delegate = self;

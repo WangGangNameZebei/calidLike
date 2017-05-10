@@ -22,7 +22,10 @@
 @property (strong, nonatomic) IBOutlet UITextField *pAPhoneNumberTextField;
 @property (strong, nonatomic) IBOutlet UITextField *pAPasswordTextField;
 @property (strong, nonatomic) IBOutlet UITextField *pAConfirmPasswordTextField;
+@property (strong, nonatomic) IBOutlet UILabel *pATitleLabel;
+@property (strong, nonatomic) IBOutlet UIButton *uploadButton;      //提交注册按钮
 
+@property (strong, nonatomic) NSString *titleLabelString;
 @property (strong, nonatomic) PropertyActivationSingleTon *paSingleTon;
 @property (strong, nonatomic) NSMutableArray *paLnyaNameArray;
 @property (strong, nonatomic) PropertyActivationViewControllerDataSource *propertyActionViewControllerDataSource;

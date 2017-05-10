@@ -324,12 +324,12 @@ static VisitorSingleTon *_instace = nil;
             return;
     }
 
-  if  (self.receiveData.length == 94 ){
-      [self visitorlanyaSendoutDataAction:[self visitorhexadecimalString:characteristic.value]];
+  if  (self.receiveData.length == 92 ){
+      [self visitorlanyaSendoutDataAction:self.receiveData];
       self.receiveData = @"";
   } else if (self.receiveData.length == 106) {
       if ([self.delegate respondsToSelector:@selector(visitorEditInitPeripheralData:)]){
-          [self.delegate visitorEditInitPeripheralData:[self visitorturnTheHexLiterals:[[self visitorhexadecimalString:characteristic.value] substringWithRange:NSMakeRange(104,2)]]];
+          [self.delegate visitorEditInitPeripheralData:[self visitorturnTheHexLiterals:[self.receiveData substringWithRange:NSMakeRange(104,2)]]];
       }
       self.receiveData = @"";
   } else {

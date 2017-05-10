@@ -20,7 +20,9 @@
                 <outlet property="pAPhoneNumberImageView" destination="cWZ-VX-T61" id="Tno-4E-ZsE"/>
                 <outlet property="pAPhoneNumberTextField" destination="wDT-rD-dRU" id="6PW-32-lhZ"/>
                 <outlet property="pAPhoneNumberView" destination="wmV-HD-w8K" id="SgM-Ed-OJr"/>
+                <outlet property="pATitleLabel" destination="3l4-nB-nvp" id="Evx-EP-JFM"/>
                 <outlet property="paVCTableiVew" destination="fLt-Td-lUn" id="iH4-aV-dIq"/>
+                <outlet property="uploadButton" destination="oe0-pu-uPT" id="sxQ-xD-FeF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

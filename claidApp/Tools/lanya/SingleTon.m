@@ -99,7 +99,6 @@ static SingleTon *_instace = nil;
             if (aa == datalength - 1)
                 jiequlength = CommandStr.length - aa*38;
             strHead = [NSString stringWithFormat:@"%@%ld%@",[strHead substringWithRange:NSMakeRange(0,1)],(long)aa,[CommandStr substringWithRange:NSMakeRange(aa*38,jiequlength)]];
-            LOG(@"##################################%@",strHead);
             writeData = [self ToDealWithCommandString:strHead StrLenght:strHead.length/2];
             [self writeChar:writeData];
             
@@ -136,11 +135,7 @@ static SingleTon *_instace = nil;
         self.scanTimer = nil;
         LOG(@"关闭Scantime");
     }
-    LOG(@"====%@", identifierStr);
     NSUUID * uuid = [[NSUUID alloc]initWithUUIDString:identifierStr];
-    NSString *deviceId = [uuid UUIDString];
-    LOG(@"----%@", uuid);
-    LOG(@"----%@", deviceId);
     NSArray *array = [self.manager retrievePeripheralsWithIdentifiers:@[uuid]];
     CBPeripheral *peripheral = [array lastObject];
     _identiFication = YES;
@@ -185,14 +180,12 @@ static SingleTon *_instace = nil;
 -(void)startScan
 {
     _tarScanBool = NO;
-    LOG(@"正在扫描外设...");
     [_manager scanForPeripheralsWithServices:nil options:@{CBCentralManagerScanOptionAllowDuplicatesKey : @YES }];
  
     
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(self.delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [self.manager stopScan];
-        LOG(@"扫描超时,停止扫描");
         LOG(@"所有扫描到的外设：%@",self.PeripheralArray);
 
     });
@@ -292,7 +285,7 @@ static SingleTon *_instace = nil;
         if(![self.PeripheralArray containsObject:peripheral])
             [self.PeripheralArray addObject:peripheral];
         
-        if ([self.delegate respondsToSelector:@selector(DoSomethingEveryFrame:)])
+           if ([self.delegate respondsToSelector:@selector(DoSomethingEveryFrame:)])
             [self.delegate DoSomethingEveryFrame:self.PeripheralArray];
         
        if ([self.installDelegate respondsToSelector:@selector(installDoSomethingEveryFrame:)]) {
@@ -331,8 +324,6 @@ static SingleTon *_instace = nil;
         LOG(@"指令为空");
         return;
     }
-    LOG(@"外设...==%@",_peripheral);
-    
     [_peripheral writeValue:data forCharacteristic:_writeCharacteristic type:CBCharacteristicWriteWithoutResponse];
     
 }
@@ -397,7 +388,7 @@ static SingleTon *_instace = nil;
         [self.delegate DoSomethingtishiFrame:@"连接成功!"];
     }
     if (!_identiFication && [self.installDelegate respondsToSelector:@selector(installDoSomethingtishiFrame:)]) {
-        [self.installDelegate installDoSomethingtishiFrame:@"连接成功!"];
+        [self.installDelegate installDoSomethingtishiFrame:@"成功!"];
     }
     
     for (CBService *s in peripheral.services) {
@@ -443,7 +434,7 @@ static SingleTon *_instace = nil;
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
     
-    LOG(@"收到特殊的回调error==%@,是否通知中BOOL==%d.仅仅打印没做处理",error,characteristic.isNotifying);
+    //LOG(@"收到特殊的回调error==%@,是否通知中BOOL==%d.仅仅打印没做处理",error,characteristic.isNotifying);
 }
 
 #pragma mark - 获取外设发来的数据，不论是read和notify,获取数据都是从这个方法中读取。
@@ -451,10 +442,9 @@ static SingleTon *_instace = nil;
 {
     NSInteger jishunumber = 38;
    if (self.receiveData.length == 0)
-       self.receiveData = @"";//
+       self.receiveData = @"";//            令其 数据为 "" 否则 拼接的字符串 头为 NULL
    NSLog(@"===== %@",[self hexadecimalString:characteristic.value]);
     NSString *str1 = [self hexadecimalString:characteristic.value];
-   // self.receiveData = [NSString stringWithFormat:@"%@%@",self.receiveData,str1];
     
     if ([self hexadecimalString:characteristic.value].length == 40) {
         if ([[str1 substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"d2"]) {   // 第一串  返回d2结束
@@ -466,16 +456,18 @@ static SingleTon *_instace = nil;
         } else if ([[str1 substringWithRange:NSMakeRange(0, 8)] isEqualToString:@"72656164"]) {   // 软件读取信息
             jishunumber = 10;
             str1 = [NSString stringWithFormat:@"aa%@",str1];
+        } else if ([[str1 substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"f2"]) {   // 第一串
+            jishunumber = 30;
         }
-        self.receiveData = [NSString stringWithFormat:@"%@%@",self.receiveData,[str1 substringWithRange:NSMakeRange(2, jishunumber)]];
-        if (jishunumber == 38)
+        self.receiveData = [NSString stringWithFormat:@"%@%@",self.receiveData,[str1 substringWithRange:NSMakeRange(2, jishunumber)]];                          //截取拼接数据
+        if (jishunumber == 38)                      //长度为 38 表示 没拼接完  返回  等待 接收数据
             return;
     } else {
-      self.receiveData = [NSString stringWithFormat:@"%@%@",self.receiveData,str1];
+      self.receiveData = [NSString stringWithFormat:@"%@%@",self.receiveData,str1];     // 以前的模块 会用
     }
     
-    if  (self.receiveData.length > 106  && self.receiveData.length <= 214){
-        if ([self lanyaDataXiaoyanAction:[self.receiveData substringWithRange:NSMakeRange(4,104)]]) {
+    if  (self.receiveData.length > 104  && self.receiveData.length <= 210 && [self judgmentCardActiondataStr:[self.receiveData substringWithRange:NSMakeRange(0, 2)]] == 1){    // 发卡 接受第一次串数据
+        if ([self lanyaDataXiaoyanAction:[self.receiveData substringWithRange:NSMakeRange(2,104)]]) {
           [self sendCommand:@"aa"];
             LOG(@"成功1");
          } else {
@@ -483,9 +475,11 @@ static SingleTon *_instace = nil;
             LOG(@"失败1");
             self.receiveData = @"";
         }
-    } else if (self.receiveData.length > 214) {
-                if ([self lanyaDataXiaoyanAction:[self.receiveData substringWithRange:NSMakeRange(112,104)]]){
-                    [self hairpinUserCardData:characteristic];      //发卡
+    } else if (self.receiveData.length > 200 && [self judgmentCardActiondataStr:[self.receiveData substringWithRange:NSMakeRange(0, 2)]] == 1) {   // 发卡 接受第一次串数据
+        
+        self.receiveData = [NSString stringWithFormat:@"%@%@",[self.receiveData substringWithRange:NSMakeRange(0,106)],[self.receiveData substringWithRange:NSMakeRange(108,104)]];
+        if ([self lanyaDataXiaoyanAction:[self.receiveData substringWithRange:NSMakeRange(106,104)]]){
+                    [self hairpinUserCardData:self.receiveData];      //发卡
                     self.receiveData = @"";
                 } else {
                     [self sendCommand:@"00"];
@@ -493,7 +487,7 @@ static SingleTon *_instace = nil;
                     LOG(@"失败2");
                 }
         
-    } else if (self.receiveData.length == 106){
+    } else if (self.receiveData.length == 106 && [self judgmentCardActiondataStr:[self.receiveData substringWithRange:NSMakeRange(0, 2)]] == 0){
         if (self.shukaTimer){
             [self.shukaTimer invalidate];    // 释放函数
             self.shukaTimer = nil;

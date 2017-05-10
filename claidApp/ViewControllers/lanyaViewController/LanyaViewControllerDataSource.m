@@ -68,7 +68,7 @@
     if  (indexPath.row == (self.lanyaNameArray.count + 5) || indexPath.row == (self.lanyaNameArray.count + 7)){
         cell.lanyaNameLabel.text = @"";
     } else if (indexPath.row == 1) {
-        NSString *uuidstr = [[NSUserDefaults standardUserDefaults] objectForKey:@"identifierStr"];
+        NSString *uuidstr = [[NSUserDefaults standardUserDefaults] objectForKey:@"LanyaidentifierStr"];
         if (uuidstr.length == 0){
              cell.lanyaNameLabel.text = @"暂无链接";
         } else {

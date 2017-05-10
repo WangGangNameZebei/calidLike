@@ -115,7 +115,6 @@
     NSString *strOne;
     NSString *strTow;
     NSInteger  aa;
-    data = [data substringWithRange:NSMakeRange(2,92)];
     
     for (NSInteger j = 0; j < data.length / 2; j++) {
         TheTwoCharacters = [data substringWithRange:NSMakeRange(j * 2,2)];

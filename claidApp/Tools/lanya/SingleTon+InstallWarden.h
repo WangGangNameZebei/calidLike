@@ -9,7 +9,7 @@
 #import "SingleTon.h"
 
 @interface SingleTon (InstallWarden)
-- (void)hairpinUserCardData:(CBCharacteristic *)characteristic;         //用户卡  发卡
+- (void)hairpinUserCardData:(NSString *)characteristic;         //用户卡  发卡
 - (void)hairpinReadData:(NSString *)characteristic;
-
+- (NSInteger)judgmentCardActiondataStr:(NSString *)datastr;     //判断 是发卡   还是    刷卡数据  返回
 @end

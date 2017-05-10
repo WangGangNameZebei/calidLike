@@ -15,6 +15,7 @@
 #import "AESCrypt.h"
 #import "LoginViewController+LogicalFlow.h"
 #import "VisitorViewController.h"
+
 @implementation LoginViewController
 
 + (instancetype)create {
@@ -44,6 +45,7 @@
 }
 - (IBAction)activationButtonAction:(id)sender {    
     PropertyActivationViewController *paVC = [PropertyActivationViewController create];
+    paVC.titleLabelString = @"物业激活";
     [self hideTabBarAndpushViewController:paVC];
 }
 

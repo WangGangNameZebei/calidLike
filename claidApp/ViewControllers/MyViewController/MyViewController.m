@@ -16,6 +16,7 @@
 #import "invitaionCodeViewController.h"
 #import "MycradInfoViewController.h"
 #import "DBTool.h"
+#import "PropertyActivationViewController.h"
 
 @implementation MyViewController
 
@@ -67,6 +68,10 @@
          invitaionCodeViewController *inviCodeVC = [invitaionCodeViewController create];
          [self hideTabBarAndpushViewController:inviCodeVC];
      
+     } else if (indexPath.row == 0){        //续费
+         PropertyActivationViewController *pAViewController = [PropertyActivationViewController create];
+         pAViewController.titleLabelString = @"续卡";
+         [self hideTabBarAndpushViewController:pAViewController];
      }else {
          [self promptInformationActionWarningString:@"此功能暂未开通!"];
      }

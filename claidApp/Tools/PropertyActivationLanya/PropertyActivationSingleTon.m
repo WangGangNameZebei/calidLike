@@ -8,7 +8,7 @@
 
 #import "PropertyActivationSingleTon.h"
 #import "SingleTon+tool.h"
-
+#import "SingleTon+InstallWarden.h"
 
 @implementation PropertyActivationSingleTon
 static PropertyActivationSingleTon *_instace = nil;
@@ -275,6 +275,9 @@ static PropertyActivationSingleTon *_instace = nil;
     NSString *str1 = [self.singleton hexadecimalString:characteristic.value];
         if ([[str1 substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"f2"]) {   // 第一串
               jishunumber = 30;
+        } else if ([[str1 substringWithRange:NSMakeRange(0, 8)] isEqualToString:@"72656164"]) {   // 软件读取信息
+            jishunumber = 10;
+            str1 = [NSString stringWithFormat:@"aa%@",str1];
         }
         self.receiveData = [NSString stringWithFormat:@"%@%@",self.receiveData,[str1 substringWithRange:NSMakeRange(2, jishunumber)]];
         if (jishunumber == 38)
@@ -308,7 +311,6 @@ static PropertyActivationSingleTon *_instace = nil;
         if (self.receiveData.length > 210) {
             NSString *userInfoOne = [self.singleton lanyaDataDecryptedAction:[self.receiveData substringWithRange:NSMakeRange(2,104)]];
              NSString *userInfoTow = [self.singleton lanyaDataDecryptedAction:[self.receiveData substringWithRange:NSMakeRange(108,104)]];
-            NSLog(@"++++>%@ ===%@",userInfoOne,userInfoTow);
             self.pAtool = [DBTool sharedDBTool];
             NSArray *data = [self.pAtool selectWithClass:[ClassUserInfo class] params:nil];
             NSString *namestr = [self.singleton changeLanguage:[userInfoOne substringWithRange:NSMakeRange(14,16)]];
@@ -326,8 +328,8 @@ static PropertyActivationSingleTon *_instace = nil;
         }
         [self sendCommand:@"aa"];
     } else {
+        [self.singleton hairpinReadData:self.receiveData];                  //读取
         self.receiveData = @"";
-        [self sendCommand:@"00"];
     }
  
 }

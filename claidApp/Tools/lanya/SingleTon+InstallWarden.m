@@ -9,13 +9,11 @@
 #import "SingleTon+InstallWarden.h"
 #import "SingleTon+tool.h"
 @implementation SingleTon (InstallWarden)
-- (void)hairpinUserCardData:(CBCharacteristic *)characteristic {
-    NSString *str = [NSString stringWithFormat:@"收到数据：%@",characteristic.value];
-    LOG(@"收到的String 类型数据：%@",str);
-    str = [self.receiveData substringWithRange:NSMakeRange(0,4)];
+- (void)hairpinUserCardData:(NSString *)characteristic {
+    NSString *str = [characteristic substringWithRange:NSMakeRange(0,2)];
     [self sendCommand:@"aa"];
-    self.receiveData = [NSString stringWithFormat:@"%@%@",[self.receiveData substringWithRange:NSMakeRange(4,104)],[self.receiveData substringWithRange:NSMakeRange(112,104)]];
-    if ([str isEqualToString:@"aa02"]) {    //用户卡
+    self.receiveData = [NSString stringWithFormat:@"%@%@",[characteristic substringWithRange:NSMakeRange(2,104)],[characteristic substringWithRange:NSMakeRange(106,104)]];
+    if ([str isEqualToString:@"02"]) {    //用户卡
         NSString *encryptedData = [AESCrypt encrypt:self.receiveData password:AES_PASSWORD];  //加密
         [[NSUserDefaults standardUserDefaults] setObject:encryptedData forKey:@"lanyaAESData"];  //存储
     } else {
@@ -35,34 +33,34 @@
     for (int i=0;i<data.count;i++)
     {
         InstallCardData *iCardData = data[i];
-        if (iCardData.identification == [[identificationString substringWithRange:NSMakeRange(2,2)] integerValue]) {
+        if (iCardData.identification == [identificationString integerValue]) {
              [self.numberArrar addObject:data[i]];
             
         }
     }
 
-    if ([identificationString isEqualToString:@"aa12"]) {    //地址卡
+    if ([identificationString isEqualToString:@"12"]) {    //地址卡
         self.installCardData = [InstallCardData initinstallNamestr:[NSString stringWithFormat:@"地址%lu",(self.numberArrar.count + 1)] installData:dataString identification:12];
         [self.tool insertWithObj:self.installCardData];
-    } else if ([identificationString isEqualToString:@"aa22"]){     //时间卡
+    } else if ([identificationString isEqualToString:@"22"]){     //时间卡
         self.installCardData = [InstallCardData initinstallNamestr:[NSString stringWithFormat:@"时间%lu",(self.numberArrar.count + 1)] installData:dataString identification:22];
         [self.tool insertWithObj:self.installCardData];
-    } else if ([identificationString isEqualToString:@"aa32"]){     //同步卡
+    } else if ([identificationString isEqualToString:@"32"]){     //同步卡
         self.installCardData = [InstallCardData initinstallNamestr:[NSString stringWithFormat:@"同步%lu",(self.numberArrar.count + 1)] installData:dataString identification:32];
         [self.tool insertWithObj:self.installCardData];
-    } else if ([identificationString isEqualToString:@"aa42"]){     //出厂卡
+    } else if ([identificationString isEqualToString:@"42"]){     //出厂卡
         self.installCardData = [InstallCardData initinstallNamestr:[NSString stringWithFormat:@"出厂%lu",(self.numberArrar.count + 1)] installData:dataString identification:42];
         [self.tool insertWithObj:self.installCardData];
-    } else if ([identificationString isEqualToString:@"aa52"]){     //开放卡
+    } else if ([identificationString isEqualToString:@"52"]){     //开放卡
         self.installCardData = [InstallCardData initinstallNamestr:[NSString stringWithFormat:@"开放%lu",(self.numberArrar.count + 1)] installData:dataString identification:52];
         [self.tool insertWithObj:self.installCardData];
-    } else if ([identificationString isEqualToString:@"aa62"]){     //清空挂失卡
+    } else if ([identificationString isEqualToString:@"62"]){     //清空挂失卡
         self.installCardData = [InstallCardData initinstallNamestr:[NSString stringWithFormat:@"清空挂失卡%lu",(self.numberArrar.count + 1)] installData:dataString identification:62];
         [self.tool insertWithObj:self.installCardData];
-    } else if ([identificationString isEqualToString:@"aa72"]){     //挂失卡
+    } else if ([identificationString isEqualToString:@"72"]){     //挂失卡
         self.installCardData = [InstallCardData initinstallNamestr:[NSString stringWithFormat:@"挂失%lu",(self.numberArrar.count + 1)] installData:dataString identification:72];
         [self.tool insertWithObj:self.installCardData];
-    } else if ([identificationString isEqualToString:@"aa82"]){     //解挂卡
+    } else if ([identificationString isEqualToString:@"82"]){     //解挂卡
         self.installCardData = [InstallCardData initinstallNamestr:[NSString stringWithFormat:@"解挂%lu",(self.numberArrar.count + 1)] installData:dataString identification:82];
         [self.tool insertWithObj:self.installCardData];
     } else {
@@ -95,5 +93,25 @@
     }
 
 }
-
+- (NSInteger)judgmentCardActiondataStr:(NSString *)datastr{
+    NSInteger dataint = [datastr integerValue];
+    switch (dataint) {
+        case 02:
+        case 12:
+        case 22:
+        case 32:
+        case 42:
+        case 52:
+        case 62:
+        case 72:
+        case 82:
+            dataint = 1;
+            break;
+            
+        default:
+            dataint = 0;
+            break;
+    }
+    return dataint;
+}
 @end

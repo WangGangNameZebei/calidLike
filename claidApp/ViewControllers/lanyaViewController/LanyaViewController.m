@@ -27,7 +27,7 @@
     if (indexPath.row == 0 || indexPath.row == 2 || indexPath.row == 4) {
     
     } else if (indexPath.row == 1) {
-        CBPeripheral *peripheral = [[SingleTon sharedInstance] lanyaNameString:[[NSUserDefaults standardUserDefaults] objectForKey:@"identifierStr"]];
+        CBPeripheral *peripheral = [[SingleTon sharedInstance] lanyaNameString:[[NSUserDefaults standardUserDefaults] objectForKey:@"LanyaidentifierStr"]];
         [[SingleTon sharedInstance] shoudongConnectClick:peripheral];
     } else if (indexPath.row == 3) {
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
@@ -47,7 +47,9 @@
     } else {
          if  (indexPath.row != (self.lanyaNameHuoquArray.count + 5) && indexPath.row != (self.lanyaNameHuoquArray.count + 7)){
            CBPeripheral *periphe = [self.lanyaNameHuoquArray objectAtIndex:(indexPath.row - 5)];
-           [[NSUserDefaults standardUserDefaults] setObject:[periphe identifier].UUIDString forKey:@"identifierStr"];
+                 [[NSUserDefaults standardUserDefaults] setObject:[periphe identifier].UUIDString forKey:@"LanyaidentifierStr"];
+         
+           
            [[SingleTon sharedInstance] shoudongConnectClick:periphe];
          }
     }
