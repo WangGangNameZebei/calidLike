@@ -78,6 +78,7 @@
 		0A8C969C1DCC1A9200AAD161 /* UIColor+HcdCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8C96991DCC1A9200AAD161 /* UIColor+HcdCustom.m */; };
 		0A8C969E1DCC30D700AAD161 /* xiangxia_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A8C969D1DCC30D700AAD161 /* xiangxia_1.png */; };
 		0A924F161DCB2A7300785BCF /* MyViewController+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A924F151DCB2A7300785BCF /* MyViewController+Animation.m */; };
+		0A93D0871EDEB45A0039F8B3 /* PropertyActivationViewController+LogicalFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A93D0861EDEB45A0039F8B3 /* PropertyActivationViewController+LogicalFlow.m */; };
 		0A95A2DA1DDA96B50019A691 /* NetWorkJudge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A95A2D91DDA96B50019A691 /* NetWorkJudge.m */; };
 		0A961CE51E10E6C9004050B0 /* installViewController+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A961CE41E10E6C9004050B0 /* installViewController+Animation.m */; };
 		0A98AF461DF270BF00BCA88C /* JYCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A98AF371DF270BF00BCA88C /* JYCarousel.m */; };
@@ -287,6 +288,8 @@
 		0A8C969D1DCC30D700AAD161 /* xiangxia_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xiangxia_1.png; sourceTree = "<group>"; };
 		0A924F141DCB2A7300785BCF /* MyViewController+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MyViewController+Animation.h"; sourceTree = "<group>"; };
 		0A924F151DCB2A7300785BCF /* MyViewController+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MyViewController+Animation.m"; sourceTree = "<group>"; };
+		0A93D0851EDEB45A0039F8B3 /* PropertyActivationViewController+LogicalFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PropertyActivationViewController+LogicalFlow.h"; sourceTree = "<group>"; };
+		0A93D0861EDEB45A0039F8B3 /* PropertyActivationViewController+LogicalFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PropertyActivationViewController+LogicalFlow.m"; sourceTree = "<group>"; };
 		0A95A2D81DDA96B50019A691 /* NetWorkJudge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorkJudge.h; sourceTree = "<group>"; };
 		0A95A2D91DDA96B50019A691 /* NetWorkJudge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorkJudge.m; sourceTree = "<group>"; };
 		0A961CE31E10E6C9004050B0 /* installViewController+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "installViewController+Animation.h"; sourceTree = "<group>"; };
@@ -496,6 +499,8 @@
 				0A3C4D981EB9A92300B6F279 /* PropertyActivationViewController.xib */,
 				0A3C4D9B1EB9B35C00B6F279 /* PropertyActivationViewController+Configuration.h */,
 				0A3C4D9C1EB9B35C00B6F279 /* PropertyActivationViewController+Configuration.m */,
+				0A93D0851EDEB45A0039F8B3 /* PropertyActivationViewController+LogicalFlow.h */,
+				0A93D0861EDEB45A0039F8B3 /* PropertyActivationViewController+LogicalFlow.m */,
 				0A3C4D9E1EB9BBF400B6F279 /* PropertyActivationViewControllerDataSource.h */,
 				0A3C4D9F1EB9BBF400B6F279 /* PropertyActivationViewControllerDataSource.m */,
 			);
@@ -1382,6 +1387,7 @@
 				0ACFF8931DB5CEFF0043D49A /* ChannelBaseView.m in Sources */,
 				0A6402581E1F678E00CADD0F /* SingleTon+MainHairpin.m in Sources */,
 				0A3C4DA01EB9BBF400B6F279 /* PropertyActivationViewControllerDataSource.m in Sources */,
+				0A93D0871EDEB45A0039F8B3 /* PropertyActivationViewController+LogicalFlow.m in Sources */,
 				0A98AF4D1DF270BF00BCA88C /* UIImageView+JYImageViewManager.m in Sources */,
 				0A87F7B01DB75D5E00EFF1F0 /* MinViewControllerDataSource.m in Sources */,
 				0ACFF8181DB5BCA00043D49A /* main.m in Sources */,

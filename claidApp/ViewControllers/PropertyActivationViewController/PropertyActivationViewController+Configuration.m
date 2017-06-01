@@ -52,7 +52,8 @@
     if ([string isEqualToString:@"连接成功"]) {
         [self promptInformationActionWarningString:string];
     } else {
-        //提交  
+        self.userInfo = string;
+        [self promptInformationActionWarningString:@"发卡成功"];
     }
 }
     

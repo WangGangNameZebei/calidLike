@@ -8,6 +8,7 @@
 
 #import "PropertyActivationViewController.h"
 #import "PropertyActivationViewController+Configuration.h"
+#import "PropertyActivationViewController+LogicalFlow.h"
 #import "MBProgressHUD.h"
 
 @implementation PropertyActivationViewController
@@ -29,10 +30,15 @@
 }
 
 - (IBAction)pARegisteredButtonAction:(id)sender {
+    if (self.userInfo.length < 10){
+        [self promptInformationActionWarningString:@"物业未发卡!"];
+        return;
+    }
     if (self.pAPhoneNumberTextField.text.length!=11){
         [self promptInformationActionWarningString:@"请输入正确电话号码!"];
         return;
     }
+  
     if (self.pAPasswordTextField.text.length==0){
         [self promptInformationActionWarningString:@"密码不能为空!"];
         return;
@@ -42,6 +48,8 @@
     } else {
         [self promptInformationActionWarningString:@"密码输入不一致!"];
     }
+    NSString *cardData = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESData"] password:AES_PASSWORD];
+    [self propertyActivationPostForUserData:cardData userInfo:[self.userInfo substringWithRange:NSMakeRange(0,96)] userEqInfo:[self.userInfo substringWithRange:NSMakeRange(96,96)] userPhone:self.pAPhoneNumberTextField.text password:self.pAPasswordTextField.text];
 }
 
 - (IBAction)saoMiaoButtonAction:(id)sender {
@@ -57,7 +65,6 @@
         });
     });
 
-    
 }
 - (IBAction)returnButtonAction:(id)sender {
     [self.paSingleTon disConnection];       // 退出前 断开蓝牙

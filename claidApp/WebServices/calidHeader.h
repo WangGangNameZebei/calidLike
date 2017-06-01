@@ -27,3 +27,8 @@
 #define INVITAION_VISITOR_URL @"http://139.199.102.233:8080/calid/addTourist.do"
 //我是访客   URL
 #define VISITOR_URL @"http://139.199.102.233:8080/calid/getKeyByPhoneNum.do"
+// 物业激活  续卡 (注册)
+#define ADDUSERPROPERTY_URL  @"http://192.168.1.102:8080/calid/addUserProperty.do"
+
+
+

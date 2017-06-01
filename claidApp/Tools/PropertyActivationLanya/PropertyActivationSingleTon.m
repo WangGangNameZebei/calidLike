@@ -46,7 +46,10 @@ static PropertyActivationSingleTon *_instace = nil;
 
 #pragma mark - 处理传进来的字符串并发指令
 - (void)sendCommand:(NSString *)String {
-    
+    NSString *strHead;
+    NSData *writeData;
+    NSInteger datalength;
+    NSInteger jiequlength = 38;
     int length = (unsigned)String.length;
     
     int ZeroNum = 210 - length;  // 38
@@ -57,10 +60,32 @@ static PropertyActivationSingleTon *_instace = nil;
         
         CommandStr = [NSString stringWithFormat:@"%@%@",CommandStr,@"0"];
     }
-    
-    NSData *data = [self ToDealWithCommandString:CommandStr StrLenght:length/2];
-    
-    [self writeChar:data];
+    if (length > 20){
+        if ([[CommandStr substringWithRange:NSMakeRange(0,2)] isEqualToString:@"cc"]) {
+            strHead = @"c";
+        }else{
+            strHead = @"a";
+        }
+        datalength =((length-2)/2) %19;
+        if (datalength>0) {
+            datalength =((length-2)/2) / 19 +1;
+        } else {
+            datalength =((length-2)/2) / 19;
+        }
+        CommandStr = [CommandStr substringWithRange:NSMakeRange(2, length-2)];
+        for (NSInteger aa = 0; aa <datalength; aa++) {
+            if (aa == datalength - 1)
+                jiequlength = CommandStr.length - aa*38;
+            strHead = [NSString stringWithFormat:@"%@%ld%@",[strHead substringWithRange:NSMakeRange(0,1)],(long)aa,[CommandStr substringWithRange:NSMakeRange(aa*38,jiequlength)]];
+            writeData = [self ToDealWithCommandString:strHead StrLenght:strHead.length/2];
+            [self writeChar:writeData];
+            
+        }
+    } else {
+        writeData = [self ToDealWithCommandString:CommandStr StrLenght:length/2];
+        [self writeChar:writeData];
+        
+    }
     
 }
 
@@ -322,13 +347,17 @@ static PropertyActivationSingleTon *_instace = nil;
             } else {
                 [self.pAtool updateWithObj:self.classUserInfo andKey:@"uniqueCodeStr" isEqualValue:[userInfoOne substringWithRange:NSMakeRange(0,8)]];
             }
-            if ([self.delegate respondsToSelector:@selector(pADoSomethingtishiFrame:)])
-                [self.delegate pADoSomethingtishiFrame:self.receiveData];
+            if ([self.singleton lanyaDataXiaoyanAction:[self.receiveData substringWithRange:NSMakeRange(2,104)]] && [self.singleton lanyaDataXiaoyanAction:[self.receiveData substringWithRange:NSMakeRange(108,104)]]) {
+                if ([self.delegate respondsToSelector:@selector(pADoSomethingtishiFrame:)])
+                    [self.delegate pADoSomethingtishiFrame:[NSString stringWithFormat:@"%@%@",userInfoOne,userInfoTow]];
+            }
+            
+           
             self.receiveData = @"";
         }
         [self sendCommand:@"aa"];
     } else {
-        [self.singleton hairpinReadData:self.receiveData];                  //读取
+        [self pahairpinReadData:self.receiveData];                  //读取
         self.receiveData = @"";
     }
  
@@ -352,5 +381,23 @@ static PropertyActivationSingleTon *_instace = nil;
     
 }
 
+- (void)pahairpinReadData:(NSString *)characteristic {
+    if ([characteristic isEqualToString:@"7265616401"]) {
+        self.receiveData = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESData"] password:AES_PASSWORD];
+        self.receiveData = [NSString stringWithFormat:@"%@%@",@"AA",[self.receiveData substringWithRange:NSMakeRange(0,104)]];
+        [self sendCommand:self.receiveData];
+    } else if ([characteristic isEqualToString:@"7265616402"]) {
+        self.receiveData = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESData"] password:AES_PASSWORD];
+        self.receiveData = [NSString stringWithFormat:@"%@%@",@"AA",[self.receiveData substringWithRange:NSMakeRange(104,104)]];
+        [self sendCommand:self.receiveData];
+    } else if ([characteristic isEqualToString:@"7265616403"]) {
+        self.receiveData = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESErrornData"] password:AES_PASSWORD];
+        self.receiveData = [NSString stringWithFormat:@"%@%@",@"AA",self.receiveData];
+        [self sendCommand:self.receiveData];
+    } else {
+       LOG(@"接收到不明格式数据。。。")
+    }
+    
+}
 
 @end

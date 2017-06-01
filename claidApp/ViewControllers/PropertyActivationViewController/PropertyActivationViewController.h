@@ -25,6 +25,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *pATitleLabel;
 @property (strong, nonatomic) IBOutlet UIButton *uploadButton;      //提交注册按钮
 
+@property (strong, nonatomic) NSString *userInfo;           //用户数据
 @property (strong, nonatomic) NSString *titleLabelString;
 @property (strong, nonatomic) PropertyActivationSingleTon *paSingleTon;
 @property (strong, nonatomic) NSMutableArray *paLnyaNameArray;
