@@ -433,8 +433,7 @@ static SingleTon *_instace = nil;
 #pragma mark - 根据特征更新通知状态
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
-    
-    //LOG(@"收到特殊的回调error==%@,是否通知中BOOL==%d.仅仅打印没做处理",error,characteristic.isNotifying);
+   LOG(@"收到特殊的回调error==%@,是否通知中BOOL==%d.仅仅打印没做处理",error,characteristic.isNotifying);
 }
 
 #pragma mark - 获取外设发来的数据，不论是read和notify,获取数据都是从这个方法中读取。
@@ -522,10 +521,8 @@ static SingleTon *_instace = nil;
 
 #pragma mark - 连接意外断开
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(nullable NSError *)error {
-    LOG(@"==>%@",error);
     LOG(@"意外断开，执行重连api");
     [self connectClick:_peripheral];
-    
 }
 
 @end

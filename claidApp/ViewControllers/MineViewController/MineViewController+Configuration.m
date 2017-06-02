@@ -280,7 +280,7 @@
         NSArray *resultArr = appInfo[@"results"];
         NSDictionary *resultDic = resultArr.firstObject;
         // 版本号
-        NSString *version = resultDic[@"trackName"];
+        NSString *version = resultDic[@"version"];
         // 下载地址
       //  NSString *trackViewUrl = resultDic[@"trackViewUrl"];
         // FRXME：比较版本号

@@ -94,20 +94,19 @@
 
 }
 - (NSInteger)judgmentCardActiondataStr:(NSString *)datastr{
-    NSInteger dataint = [datastr integerValue];
+    NSInteger dataint = [self turnTheHexLiterals:datastr];
     switch (dataint) {
-        case 02:
-        case 12:
-        case 22:
-        case 32:
-        case 42:
-        case 52:
-        case 62:
-        case 72:
-        case 82:
+        case 0x02:
+        case 0x12:
+        case 0x22:
+        case 0x32:
+        case 0x42:
+        case 0x52:
+        case 0x62:
+        case 0x72:
+        case 0x82:
             dataint = 1;
             break;
-            
         default:
             dataint = 0;
             break;
