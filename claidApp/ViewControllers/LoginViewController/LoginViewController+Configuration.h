@@ -10,6 +10,6 @@
 
 @interface LoginViewController (Configuration)
 
-- (void)configureViews;
+- (void)configureViews;    
 
 @end

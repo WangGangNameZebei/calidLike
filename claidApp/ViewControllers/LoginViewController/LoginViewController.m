@@ -32,12 +32,12 @@
 //出现的时候调用
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    if ([AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESData"] password:AES_PASSWORD].length > 0){
-    CustomTabBarController *customTabBarController = [self createCustomTabBarController];
-    UIApplication.sharedApplication.delegate.window.rootViewController = customTabBarController;
-    
-  //  NSLog(@"从keyChain中取出的uuid-> %@",[self keyChainIdentifierForVendorString]);    // 获取钥匙串 的UUID
-    }    
+//    if ([AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESData"] password:AES_PASSWORD].length > 0){
+//    CustomTabBarController *customTabBarController = [self createCustomTabBarController];
+//    UIApplication.sharedApplication.delegate.window.rootViewController = customTabBarController;
+//    
+//  //  NSLog(@"从keyChain中取出的uuid-> %@",[self keyChainIdentifierForVendorString]);    // 获取钥匙串 的UUID
+//    }    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

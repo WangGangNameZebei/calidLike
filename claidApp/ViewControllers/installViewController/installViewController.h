@@ -17,14 +17,14 @@
 @interface installViewController : BaseViewController <UITableViewDelegate,installLanyaDelegate,installViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *installTableView;
 @property (strong, nonatomic) IBOutlet UITableView *lanyaTableView;
-@property (strong, nonatomic) SingleTon *sinTon;
+@property (strong, nonatomic) SingleTon *sinTon;        //蓝牙
 
-@property (strong, nonatomic) installViewControllerDataSource *installVCDataSource;
-@property (strong, nonatomic) installLanyaDataSource *iLanyaDataSource;
-@property (strong, nonatomic) InstallLanyaDataDelegate *iLanyaDelegate;
+@property (strong, nonatomic) installViewControllerDataSource *installVCDataSource;     //刷卡
+@property (strong, nonatomic) installLanyaDataSource *iLanyaDataSource;     //蓝牙
+@property (strong, nonatomic) InstallLanyaDataDelegate *iLanyaDelegate;     //蓝牙名字
 
-@property (strong, nonatomic) NSMutableArray *installDataArray;
-@property (strong, nonatomic) NSMutableArray *lanyaNameArray;
+@property (strong, nonatomic) NSMutableArray *installDataArray;     // 蓝牙卡分类 数组
+@property (strong, nonatomic) NSMutableArray *lanyaNameArray;       //蓝牙名字数组
 // 被选中cell的IndexPath;
 @property (nonatomic, strong) NSIndexPath *selectIndexPath;
 @property (strong, nonatomic)UIAlertView *modifyAlertView;

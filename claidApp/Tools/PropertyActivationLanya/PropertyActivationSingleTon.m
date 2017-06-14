@@ -349,7 +349,7 @@ static PropertyActivationSingleTon *_instace = nil;
             }
             if ([self.singleton lanyaDataXiaoyanAction:[self.receiveData substringWithRange:NSMakeRange(2,104)]] && [self.singleton lanyaDataXiaoyanAction:[self.receiveData substringWithRange:NSMakeRange(108,104)]]) {
                 if ([self.delegate respondsToSelector:@selector(pADoSomethingtishiFrame:)])
-                    [self.delegate pADoSomethingtishiFrame:[NSString stringWithFormat:@"%@%@",userInfoOne,userInfoTow]];
+                    [self.delegate pADoSomethingtishiFrame:[NSString stringWithFormat:@"%@%@",[self.receiveData substringWithRange:NSMakeRange(2,104)],[self.receiveData substringWithRange:NSMakeRange(108,104)]]];
             }
             
            

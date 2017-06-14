@@ -20,15 +20,15 @@
 #define NotificationPwdUI CFSTR("com.apple.springboard.hasBlankedScreen")
 
 //登录    URL
-#define LOGIN_URL @"http://139.199.102.233:8080/calid/login.do"
+#define LOGIN_URL @"http://47.93.18.233:3657/calid/login.do"
 //注册    URL
-#define REGISTER_URL @"http://139.199.102.233:8080/calid/addUser.do"
+#define REGISTER_URL @"http://47.93.18.233:3657/calid/addUser.do"
 //邀请访客   URL
-#define INVITAION_VISITOR_URL @"http://139.199.102.233:8080/calid/addTourist.do"
+#define INVITAION_VISITOR_URL @"http://47.93.18.233:3657/calid/addTourist.do"
 //我是访客   URL
-#define VISITOR_URL @"http://139.199.102.233:8080/calid/getKeyByPhoneNum.do"
+#define VISITOR_URL @"http://47.93.18.233:3657/calid/getKeyByPhoneNum.do"
 // 物业激活  续卡 (注册)
-#define ADDUSERPROPERTY_URL  @"http://192.168.1.102:8080/calid/addUserProperty.do"
+#define ADDUSERPROPERTY_URL  @"http://47.93.18.233:3657/calid/addUserProperty.do"
 
 
 

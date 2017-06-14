@@ -38,7 +38,7 @@
         [self promptInformationActionWarningString:@"请输入正确电话号码!"];
         return;
     }
-  
+    
     if (self.pAPasswordTextField.text.length==0){
         [self promptInformationActionWarningString:@"密码不能为空!"];
         return;
@@ -49,7 +49,7 @@
         [self promptInformationActionWarningString:@"密码输入不一致!"];
     }
     NSString *cardData = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESData"] password:AES_PASSWORD];
-    [self propertyActivationPostForUserData:cardData userInfo:[self.userInfo substringWithRange:NSMakeRange(0,96)] userEqInfo:[self.userInfo substringWithRange:NSMakeRange(96,96)] userPhone:self.pAPhoneNumberTextField.text password:self.pAPasswordTextField.text];
+    [self propertyActivationPostForUserData:cardData userInfo:[self.userInfo substringWithRange:NSMakeRange(0,104)] userEqInfo:[self.userInfo substringWithRange:NSMakeRange(104,104)] userPhone:self.pAPhoneNumberTextField.text password:self.pAPasswordTextField.text];
 }
 
 - (IBAction)saoMiaoButtonAction:(id)sender {
@@ -64,7 +64,6 @@
             [hud hideAnimated:YES];
         });
     });
-
 }
 - (IBAction)returnButtonAction:(id)sender {
     [self.paSingleTon disConnection];       // 退出前 断开蓝牙

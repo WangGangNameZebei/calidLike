@@ -195,8 +195,6 @@ static SingleTon *_instace = nil;
 {
     _tarScanBool = YES;
     [self.manager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:SINGLE_TON_UUID_STR]] options:@{ CBCentralManagerScanOptionAllowDuplicatesKey : @YES}];
-   
-    
 }
 #pragma mark - 后台
 - (void)lanyaHoutaiAction {
@@ -213,9 +211,7 @@ static SingleTon *_instace = nil;
 }
 
 - (void)houtaisaomiaoAction {
-
     [self getPeripheralWithIdentifierAndConnect:SINGLE_TON_UUID_STR];    //连接蓝牙
-
 }
 
 #pragma mark - 前台
@@ -522,7 +518,13 @@ static SingleTon *_instace = nil;
 #pragma mark - 连接意外断开
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(nullable NSError *)error {
     LOG(@"意外断开，执行重连api");
-    [self connectClick:_peripheral];
+    //[self connectClick:_peripheral];
+    if (_identiFication && [self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
+        [self.deleGate switchEditInitPeripheralData:4];
+    }
+    if (!_identiFication && [self.delegate respondsToSelector:@selector(DoSomethingtishiFrame:)]) {
+        [self.delegate DoSomethingtishiFrame:@"断开连接!"];
+    }
 }
 
 @end

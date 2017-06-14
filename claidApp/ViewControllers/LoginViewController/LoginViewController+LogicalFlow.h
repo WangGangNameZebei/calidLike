@@ -10,6 +10,6 @@
 
 @interface LoginViewController (LogicalFlow)
 
-- (void)requestLoginPostForUsername:(NSString *)username password:(NSString *)password;
+- (void)requestLoginPostForUsername:(NSString *)username password:(NSString *)password;     //登陆
 
 @end

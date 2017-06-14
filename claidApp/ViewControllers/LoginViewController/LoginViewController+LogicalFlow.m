@@ -29,9 +29,12 @@
              [[NSUserDefaults standardUserDefaults] setObject:dataString forKey:@"userorakey"];  //存储
             CustomTabBarController *customTabBarController = [self createCustomTabBarController];
             UIApplication.sharedApplication.delegate.window.rootViewController = customTabBarController;
+            [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"loginInfo"];  //登录标识
             
         } else {
                 [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
+                [[NSUserDefaults standardUserDefaults] setObject:@"NO" forKey:@"loginInfo"];
+            
 
         }
     

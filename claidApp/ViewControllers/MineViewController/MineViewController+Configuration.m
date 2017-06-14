@@ -129,7 +129,7 @@
             }
             break;
         case 3:                             //  3  为 发送数据成功
-         [self.ton disConnection];             //断开蓝牙
+          [self.ton disConnection];             //断开蓝牙
             break;
         case 4://  4  为 主动断开蓝牙
             if (self.paybycardTimer){
@@ -142,7 +142,6 @@
             break;
         case 5:
             [self autoConnectAction];  //发现蓝牙 连接刷卡
-           
             break;
         case 6:
             [self alertViewmessage:@"数据返回格式错误!"];

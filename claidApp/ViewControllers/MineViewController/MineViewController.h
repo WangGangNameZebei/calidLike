@@ -25,11 +25,11 @@
 
 
 @property (strong, nonatomic) MinViewControllerDataSource *minViewControllerDataSource;
-@property (strong, nonatomic) SingleTon *ton;
+@property (strong, nonatomic) SingleTon *ton;       //蓝牙
 @property (strong, nonatomic) NSString *message;
 @property (assign, nonatomic) BOOL SDshukaBiaoshi; // 手动刷卡 标识
 @property (strong, nonatomic) NSTimer * paybycardTimer;  //刷卡定时器
 
-@property (nonatomic, strong) JYCarousel *carouselView;
-- (void)switchEditInit;
+@property (nonatomic, strong) JYCarousel *carouselView;     // 滚动页面
+- (void)switchEditInit;         // 自动刷卡  初始化
 @end

@@ -31,23 +31,22 @@
     }];
     [self ttSwitchAddImageAction];
     [[SingleTon sharedInstance] initialization];    // 蓝牙设备
-   if (![[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESData"]) {
+   if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"loginInfo"] isEqualToString:@"YES"]) {
+       CustomTabBarController *customTabBarController = [self createCustomTabBarController];
+       self.window.rootViewController = customTabBarController;
        
+    } else {        
         LoginViewController *loginViewController = [LoginViewController create];
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
         navigationController.navigationBarHidden = YES;
         self.window.rootViewController = navigationController;
-       
-       //引导页图片数组
-       NSArray *images =  @[[UIImage imageNamed:@"image1.jpg"],[UIImage imageNamed:@"image2.jpg"],[UIImage imageNamed:@"image3.jpg"],[UIImage imageNamed:@"image4.jpg"],[UIImage imageNamed:@"image5.jpg"]];
-       //创建引导页视图
-       ZLCGuidePageView *pageView = [[ZLCGuidePageView alloc]initWithFrame:self.window.frame WithImages:images];
-       [self.window.rootViewController.view addSubview:pageView];
-
-    } else {
         
-         CustomTabBarController *customTabBarController = [self createCustomTabBarController];
-        self.window.rootViewController = customTabBarController;
+        //引导页图片数组
+        NSArray *images =  @[[UIImage imageNamed:@"image1.jpg"],[UIImage imageNamed:@"image2.jpg"],[UIImage imageNamed:@"image3.jpg"],[UIImage imageNamed:@"image4.jpg"],[UIImage imageNamed:@"image5.jpg"]];
+        //创建引导页视图
+        ZLCGuidePageView *pageView = [[ZLCGuidePageView alloc]initWithFrame:self.window.frame WithImages:images];
+        [self.window.rootViewController.view addSubview:pageView];
+
      }
     
       

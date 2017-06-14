@@ -18,6 +18,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *passwordImageView;
 
 
-- (CustomTabBarController *)createCustomTabBarController;
-- (NSArray *)createTabBarGroups;
+- (CustomTabBarController *)createCustomTabBarController;       //跳转 前 创建 Tabbar
+- (NSArray *)createTabBarGroups;                                // 跳转前  编辑 Tabbar  信息
 @end

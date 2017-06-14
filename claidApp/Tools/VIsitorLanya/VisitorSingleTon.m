@@ -355,7 +355,7 @@ static VisitorSingleTon *_instace = nil;
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(nullable NSError *)error {
     LOG(@"==>%@",error);
     LOG(@"意外断开，执行重连api");
-    [self connectClick:_peripheral];
+   // [self connectClick:_peripheral];
     
 }
 
