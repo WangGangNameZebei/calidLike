@@ -21,6 +21,12 @@
         //系统自带JSON解析
         NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableContainers error:nil];
             [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
+        if([[resultDic objectForKey:@"status"] integerValue] == 200){
+            self.oldPasswordTextField.text = @"";
+            self.changenewPasswordTextField.text = @"";
+            self.confirmnewPasswoedTextField.text = @"";
+            
+        }
         
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
         [self promptInformationActionWarningString:[NSString stringWithFormat:@"%ld",(long)error.code]];

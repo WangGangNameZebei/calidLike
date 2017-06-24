@@ -11,8 +11,8 @@
 #import "UIColor+Utility.h"
 @implementation MycradInfoViewController (Configuration)
 - (void)configureViews {
-    [self infoTextToolArrayEdit];
-    [self mycradInfoTableViewEdit];
+  //  [self infoTextToolArrayEdit];
+  //   [self mycradInfoTableViewEdit];
     [self switchViewEdit];
  
 }

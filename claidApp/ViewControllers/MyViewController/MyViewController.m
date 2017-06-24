@@ -111,7 +111,7 @@
 - (void)clearAllUserDefaultsData {
     DBTool *dbtool = [DBTool sharedDBTool];
    [dbtool dropTableWithClass:[InstallCardData class]];
-   [dbtool dropTableWithClass:[ClassUserInfo class]];
+  // [dbtool dropTableWithClass:[ClassUserInfo class]];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *dic = [userDefaults dictionaryRepresentation];
     for (id  key in dic) {

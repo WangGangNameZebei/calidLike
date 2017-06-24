@@ -334,8 +334,10 @@ static PropertyActivationSingleTon *_instace = nil;
         
     } else if ([[self.receiveData substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"b2"] ||  [[self.receiveData substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"a2"]) {
         if (self.receiveData.length > 210) {
+            /*      续卡暂不存储信息
             NSString *userInfoOne = [self.singleton lanyaDataDecryptedAction:[self.receiveData substringWithRange:NSMakeRange(2,104)]];
              NSString *userInfoTow = [self.singleton lanyaDataDecryptedAction:[self.receiveData substringWithRange:NSMakeRange(108,104)]];
+           
             self.pAtool = [DBTool sharedDBTool];
             NSArray *data = [self.pAtool selectWithClass:[ClassUserInfo class] params:nil];
             NSString *namestr = [self.singleton changeLanguage:[userInfoOne substringWithRange:NSMakeRange(14,16)]];
@@ -347,6 +349,7 @@ static PropertyActivationSingleTon *_instace = nil;
             } else {
                 [self.pAtool updateWithObj:self.classUserInfo andKey:@"uniqueCodeStr" isEqualValue:[userInfoOne substringWithRange:NSMakeRange(0,8)]];
             }
+            */
             if ([self.singleton lanyaDataXiaoyanAction:[self.receiveData substringWithRange:NSMakeRange(2,104)]] && [self.singleton lanyaDataXiaoyanAction:[self.receiveData substringWithRange:NSMakeRange(108,104)]]) {
                 if ([self.delegate respondsToSelector:@selector(pADoSomethingtishiFrame:)])
                     [self.delegate pADoSomethingtishiFrame:[NSString stringWithFormat:@"%@%@",[self.receiveData substringWithRange:NSMakeRange(2,104)],[self.receiveData substringWithRange:NSMakeRange(108,104)]]];
