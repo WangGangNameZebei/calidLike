@@ -21,14 +21,8 @@
         NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableContainers error:nil];
         if ( [[resultDic objectForKey:@"status"] integerValue] == 200) {
             [self promptInformationActionWarningString:@"注册成功"];
-        } else if ( [[resultDic objectForKey:@"status"] integerValue] == 301){
-             [self promptInformationActionWarningString:@"请填写手机号"];
-        } else if ( [[resultDic objectForKey:@"status"] integerValue]== 303){
-            [self promptInformationActionWarningString:@"账号已存在"];
-        } else if ( [[resultDic objectForKey:@"status"] integerValue] == 317){
-            [self promptInformationActionWarningString:@"推荐码无效"];
         } else {
-            [self promptInformationActionWarningString:@"操作失败"];
+            [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
         }
 
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {

@@ -39,8 +39,8 @@
         return;
     }
     
-    if (self.pAPasswordTextField.text.length==0){
-        [self promptInformationActionWarningString:@"密码不能为空!"];
+    if (self.pAPasswordTextField.text.length < 6 || self.pAPasswordTextField.text.length > 16){
+        [self promptInformationActionWarningString:@"请输入6-16位字符组合!"];
         return;
     }
     if ([self.pAPasswordTextField.text isEqualToString:self.pAConfirmPasswordTextField.text] ){
@@ -66,6 +66,7 @@
     });
 }
 - (IBAction)returnButtonAction:(id)sender {
+    [self theinternetCardupData];
     [self.paSingleTon disConnection];       // 退出前 断开蓝牙
     [self.navigationController popViewControllerAnimated:YES];
 }

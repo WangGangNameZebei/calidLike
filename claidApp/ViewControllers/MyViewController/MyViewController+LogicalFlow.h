@@ -9,5 +9,5 @@
 #import "MyViewController.h"
 
 @interface MyViewController (LogicalFlow)
-
+- (void)theinternetCardupData;     //数据更新
 @end

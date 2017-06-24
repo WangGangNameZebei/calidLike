@@ -1,32 +1,31 @@
 //
-//  invitaionCodeViewController+LogicalFlow.m
+//  ChangeThePasswordViewController+LogicalFlow.m
 //  claidApp
 //
-//  Created by kevinpc on 2017/3/23.
+//  Created by kevinpc on 2017/6/24.
 //  Copyright © 2017年 kevinpc. All rights reserved.
 //
 
-#import "invitaionCodeViewController+LogicalFlow.h"
+#import "ChangeThePasswordViewController+LogicalFlow.h"
 #import <AFHTTPRequestOperationManager.h>
 
-@implementation invitaionCodeViewController (LogicalFlow)
 
+@implementation ChangeThePasswordViewController (LogicalFlow)
 
-- (void)invitionCodeForPhonenumber:(NSString *)touristPhone beizhutext:(NSString *)beizhutext  {
+- (void)changeThePasswordPOSTForoldpasssword:(NSString *)oldpassword newpassword:(NSString *)newpassword {
     AFHTTPRequestOperationManager *manager = [self tokenManager];
-    NSString *userorakey =[[NSUserDefaults standardUserDefaults] objectForKey:@"userorakey"];
-    NSDictionary *parameters = @{@"t_owner":userorakey,@"t_touristPhone":touristPhone,@"t_owner_Note":beizhutext};
-    [manager POST:INVITAION_VISITOR_URL parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+    NSDictionary *parameters = @{@"oraKey":[[NSUserDefaults standardUserDefaults] objectForKey:@"userorakey"],@"cn_calid_pptId":[[NSUserDefaults standardUserDefaults] objectForKey:@"districtNumber"],@"passwd":oldpassword,@"new_passwd":newpassword};
+    [manager POST:UP_DATA_USER_PWD_URL parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         NSString *requestTmp = [NSString stringWithString:operation.responseString];
         NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];
         //系统自带JSON解析
-        NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableContainers error:nil]; 
+        NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableContainers error:nil];
             [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
-        self.requestBool = YES;
+        
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
         [self promptInformationActionWarningString:[NSString stringWithFormat:@"%ld",(long)error.code]];
-        self.requestBool = YES;
     }];
+
 }
 
 
@@ -40,8 +39,4 @@
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     return manager;
 }
-
-
-
-
 @end

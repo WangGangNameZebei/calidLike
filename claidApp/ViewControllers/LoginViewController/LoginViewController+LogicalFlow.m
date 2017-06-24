@@ -22,11 +22,13 @@
         //系统自带JSON解析
         NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableContainers error:nil];
         if ([[resultDic objectForKey:@"status"] integerValue] == 200) {
-            NSString *dataString = [resultDic objectForKey:@"data"];
-            NSString *encryptedData = [AESCrypt encrypt:dataString password:AES_PASSWORD];  //加密
+            NSMutableArray *dataArray= [resultDic objectForKey:@"data"];
+            NSString *encryptedData = [AESCrypt encrypt:[NSString stringWithFormat:@"%@",dataArray[2]] password:AES_PASSWORD];  //加密
             [[NSUserDefaults standardUserDefaults] setObject:encryptedData forKey:@"lanyaAESData"];  //存储
-            dataString = [resultDic objectForKey:@"oraKey"];
-             [[NSUserDefaults standardUserDefaults] setObject:dataString forKey:@"userorakey"];  //存储
+            
+             [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%@",dataArray[0]] forKey:@"userorakey"];  //存储     推荐码
+            [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%@",dataArray[1]] forKey:@"districtNumber"];  //存储  小区号
+            
             CustomTabBarController *customTabBarController = [self createCustomTabBarController];
             UIApplication.sharedApplication.delegate.window.rootViewController = customTabBarController;
             [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"loginInfo"];  //登录标识
@@ -51,7 +53,7 @@
      manager.responseSerializer = [AFJSONResponseSerializer serializer];
     // 设置返回格式
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+   // manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     return manager;
 }
 

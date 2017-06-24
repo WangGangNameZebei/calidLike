@@ -13,7 +13,7 @@
 
 - (void)visitorPostForPhoneNumber:(NSString *)phoneNumber {
     AFHTTPRequestOperationManager *manager = [self tokenManager];
-    NSDictionary *parameters = @{@"phoneNumber":phoneNumber};
+    NSDictionary *parameters = @{@"t_touristPhone":phoneNumber};
     [manager POST:VISITOR_URL parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         NSString *requestTmp = [NSString stringWithString:operation.responseString];
         NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];

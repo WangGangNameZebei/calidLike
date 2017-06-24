@@ -29,16 +29,16 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)registerButtonAction:(id)sender {
-    if (self.phoneNumberTextField.text.length==0){
-        [self promptInformationActionWarningString:@"电话不能为空!"];
+    if (self.phoneNumberTextField.text.length != 11){
+        [self promptInformationActionWarningString:@"请输入11位手机号码!"];
         return;
     }
     if (self.mishiTextField.text.length==0){
         [self promptInformationActionWarningString:@"推荐码不能为空!"];
         return;
     }
-    if (self.passwordTextField.text.length==0){
-        [self promptInformationActionWarningString:@"密码不能为空!"];
+    if (self.passwordTextField.text.length < 6 || self.passwordTextField.text.length > 16){
+        [self promptInformationActionWarningString:@"请输入6-16位字符组合!"];
         return;
     }
     if ([self.passwordTextField.text isEqualToString:self.confirmPasswordTextField.text] ){

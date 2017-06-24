@@ -53,6 +53,10 @@
 		0A6830E81DF10B3800D51770 /* LanyaViewControllerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6830E71DF10B3800D51770 /* LanyaViewControllerDataSource.m */; };
 		0A6DA6DA1DB6F8D90013D0CF /* MineViewController+LogicalFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6DA6D91DB6F8D90013D0CF /* MineViewController+LogicalFlow.m */; };
 		0A6DA6DD1DB6F9020013D0CF /* MineViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6DA6DC1DB6F9020013D0CF /* MineViewController+Configuration.m */; };
+		0A6F7F171EFE11A3003E0DDA /* ChangeThePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6F7F151EFE11A3003E0DDA /* ChangeThePasswordViewController.m */; };
+		0A6F7F181EFE11A3003E0DDA /* ChangeThePasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A6F7F161EFE11A3003E0DDA /* ChangeThePasswordViewController.xib */; };
+		0A6F7F1B1EFE2DD8003E0DDA /* ChangeThePasswordViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6F7F1A1EFE2DD8003E0DDA /* ChangeThePasswordViewController+Configuration.m */; };
+		0A6F7F1E1EFE2E04003E0DDA /* ChangeThePasswordViewController+LogicalFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6F7F1D1EFE2E04003E0DDA /* ChangeThePasswordViewController+LogicalFlow.m */; };
 		0A6FB2721DC978BC00345784 /* installViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6FB2701DC978BC00345784 /* installViewController.m */; };
 		0A6FB2731DC978BC00345784 /* installViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A6FB2711DC978BC00345784 /* installViewController.xib */; };
 		0A6FB2761DC978F700345784 /* installViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6FB2751DC978F700345784 /* installViewController+Configuration.m */; };
@@ -247,6 +251,13 @@
 		0A6DA6D91DB6F8D90013D0CF /* MineViewController+LogicalFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MineViewController+LogicalFlow.m"; sourceTree = "<group>"; };
 		0A6DA6DB1DB6F9020013D0CF /* MineViewController+Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MineViewController+Configuration.h"; sourceTree = "<group>"; };
 		0A6DA6DC1DB6F9020013D0CF /* MineViewController+Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MineViewController+Configuration.m"; sourceTree = "<group>"; };
+		0A6F7F141EFE11A3003E0DDA /* ChangeThePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeThePasswordViewController.h; sourceTree = "<group>"; };
+		0A6F7F151EFE11A3003E0DDA /* ChangeThePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeThePasswordViewController.m; sourceTree = "<group>"; };
+		0A6F7F161EFE11A3003E0DDA /* ChangeThePasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangeThePasswordViewController.xib; sourceTree = "<group>"; };
+		0A6F7F191EFE2DD8003E0DDA /* ChangeThePasswordViewController+Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ChangeThePasswordViewController+Configuration.h"; sourceTree = "<group>"; };
+		0A6F7F1A1EFE2DD8003E0DDA /* ChangeThePasswordViewController+Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ChangeThePasswordViewController+Configuration.m"; sourceTree = "<group>"; };
+		0A6F7F1C1EFE2E04003E0DDA /* ChangeThePasswordViewController+LogicalFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ChangeThePasswordViewController+LogicalFlow.h"; sourceTree = "<group>"; };
+		0A6F7F1D1EFE2E04003E0DDA /* ChangeThePasswordViewController+LogicalFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ChangeThePasswordViewController+LogicalFlow.m"; sourceTree = "<group>"; };
 		0A6FB26F1DC978BC00345784 /* installViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = installViewController.h; sourceTree = "<group>"; };
 		0A6FB2701DC978BC00345784 /* installViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = installViewController.m; sourceTree = "<group>"; };
 		0A6FB2711DC978BC00345784 /* installViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = installViewController.xib; sourceTree = "<group>"; };
@@ -583,6 +594,20 @@
 				0AF131DD1EC00A590056F2A0 /* ClassUserInfo.m */,
 			);
 			path = classUserinfo;
+			sourceTree = "<group>";
+		};
+		0A6F7F131EFE115A003E0DDA /* ChangeThePasswordViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0A6F7F141EFE11A3003E0DDA /* ChangeThePasswordViewController.h */,
+				0A6F7F151EFE11A3003E0DDA /* ChangeThePasswordViewController.m */,
+				0A6F7F161EFE11A3003E0DDA /* ChangeThePasswordViewController.xib */,
+				0A6F7F191EFE2DD8003E0DDA /* ChangeThePasswordViewController+Configuration.h */,
+				0A6F7F1A1EFE2DD8003E0DDA /* ChangeThePasswordViewController+Configuration.m */,
+				0A6F7F1C1EFE2E04003E0DDA /* ChangeThePasswordViewController+LogicalFlow.h */,
+				0A6F7F1D1EFE2E04003E0DDA /* ChangeThePasswordViewController+LogicalFlow.m */,
+			);
+			path = ChangeThePasswordViewController;
 			sourceTree = "<group>";
 		};
 		0A6FB26E1DC9788400345784 /* installViewController */ = {
@@ -935,6 +960,7 @@
 				0A6830DD1DF106D500D51770 /* lanyaViewController */,
 				0A131A181E2C5860009D11E2 /* VisitorViewController */,
 				0A7304861E8352420016639A /* InvitationCodeViewController */,
+				0A6F7F131EFE115A003E0DDA /* ChangeThePasswordViewController */,
 				0A3C4D951EB9A8FF00B6F279 /* PropertyActivationViewController */,
 			);
 			path = ViewControllers;
@@ -1234,6 +1260,7 @@
 				0A5FF9371DB5F6A000249F0C /* CustomActionSheetCell.xib in Resources */,
 				0AFA94A51DF7ECD60044362D /* round-switch-thumb-highlight.png in Resources */,
 				0AFA94A91DF7ECD60044362D /* round-switch-track.png in Resources */,
+				0A6F7F181EFE11A3003E0DDA /* ChangeThePasswordViewController.xib in Resources */,
 				0AA491311DC6F27D0013B974 /* LoginViewController.xib in Resources */,
 				0A5FF9461DB6029700249F0C /* MineViewController.xib in Resources */,
 				0AFA94A21DF7ECD60044362D /* round-switch-mask@2x.png in Resources */,
@@ -1351,6 +1378,7 @@
 				0AD75CCD1DBDDDEC00297AC3 /* MyViewController+Configuration.m in Sources */,
 				0A6830E51DF1087600D51770 /* LanyaViewController+Configuration.m in Sources */,
 				0A6FB2721DC978BC00345784 /* installViewController.m in Sources */,
+				0A6F7F171EFE11A3003E0DDA /* ChangeThePasswordViewController.m in Sources */,
 				0ACFF81B1DB5BCA00043D49A /* AppDelegate.m in Sources */,
 				0A51E9211DC82645000D31F3 /* RegisterViewController+Configuration.m in Sources */,
 				0A131A1C1E2C58A3009D11E2 /* VisitorViewController.m in Sources */,
@@ -1413,6 +1441,7 @@
 				0A0EBEA31E2F0E7D00E4A89E /* VisitorSingleTon.m in Sources */,
 				0A8C969A1DCC1A9200AAD161 /* HcdDateTimePickerView.m in Sources */,
 				0ACFF8901DB5CDFA0043D49A /* BaseView.m in Sources */,
+				0A6F7F1B1EFE2DD8003E0DDA /* ChangeThePasswordViewController+Configuration.m in Sources */,
 				0A8C969C1DCC1A9200AAD161 /* UIColor+HcdCustom.m in Sources */,
 				0A98AF471DF270BF00BCA88C /* JYCarouselAnimation.m in Sources */,
 				0A73048A1E8352990016639A /* invitaionCodeViewController.m in Sources */,
@@ -1427,6 +1456,7 @@
 				0A98AF4B1DF270BF00BCA88C /* JYPageControl.m in Sources */,
 				0A98AF4C1DF270BF00BCA88C /* JYWeakTimer.m in Sources */,
 				0A64025B1E1F691000CADD0F /* SingleTon+tool.m in Sources */,
+				0A6F7F1E1EFE2E04003E0DDA /* ChangeThePasswordViewController+LogicalFlow.m in Sources */,
 				0A87F7B61DB7602E00EFF1F0 /* MinFuncTionTableViewCell.m in Sources */,
 				0ABEA9B41E83974B00FC7FD3 /* InstallCardData.m in Sources */,
 				0ABEA9B81E839C3600FC7FD3 /* VisitorCalss.m in Sources */,

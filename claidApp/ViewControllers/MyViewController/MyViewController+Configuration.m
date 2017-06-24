@@ -27,8 +27,8 @@
     self.myViewControllerDataSource = [MyViewControllerDataSource new];
     self.myTableView.delegate = self;
     self.myTableView.dataSource = self.myViewControllerDataSource;
-    self.myViewControllerDataSource.myDataArray = [NSMutableArray arrayWithObjects:@"续卡",@"空",@"连接蓝牙",@"我的信息",@"邀请访客",@"我是访客",@"物业设置",@"2",@"退出登录",@"3", nil];
-    self.myViewControllerDataSource.myImageArray = [NSMutableArray arrayWithObjects:@"my_card_blue",@"空",@"my_bluetooth_blue",@"my_card_information_blue",@"my_visitor_blue-1",@"my_visitor_blue",@"my_setUp_blue",@"2",@"3"@"4", nil];
+    self.myViewControllerDataSource.myDataArray = [NSMutableArray arrayWithObjects:@"续卡",@"空",@"我的信息",@"邀请访客",@"我是访客",@"物业设置",@"修改密码",@"数据更新",@"2",@"退出登录",@"3", nil];
+    self.myViewControllerDataSource.myImageArray = [NSMutableArray arrayWithObjects:@"my_card_blue",@"空",@"my_card_information_blue",@"my_visitor_blue-1",@"my_visitor_blue",@"my_setUp_blue",@"my_changethepassword_blue",@"my_updata_blue",@"2",@"3"@"4", nil];
 
 }
 
@@ -38,7 +38,7 @@
        return 70;
     } else if (indexPath.row == 1) {
         return 28;
-    } else if (indexPath.row == 7) {
+    } else if (indexPath.row == 8) {
         return 100;
     } else {
         return 60;
