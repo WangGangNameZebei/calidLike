@@ -89,6 +89,34 @@
     }];
     
 }
+
+#pragma mark   创建数据库
+- (void)createAdatabaseAction {
+    self.baseTool = [DBTool sharedDBTool];
+    NSArray *data = [self.baseTool selectWithClass:[UserInfo class] params:nil];
+    if (data.count == 0){
+        [self.baseTool createTableWithClass:[UserInfo class]];
+    }
+    
+}
+#pragma mark   用户信息写入
+- (void)userInfowriteuserkey:(NSString *)userkey uservalue:(NSString *)uservalue{
+    UserInfo *userIF = [UserInfo initUserkeystr:userkey uservaluestr:uservalue];
+    
+    [self.baseTool insertWithObj:userIF];
+}
+#pragma mark   用户信息读写
+- (NSString *)userInfoReaduserkey:(NSString *)userkey{
+    NSString * userkeystr;
+    NSArray *data = [self.baseTool selectWithClass:[UserInfo class] params:[NSString stringWithFormat:@"_userkey = '%@'",userkey]];
+    if (data.count != 0){
+        UserInfo *userXI = data[0];
+        userkeystr = userXI.userValue;
+    } else{
+        userkeystr = @"";
+    }
+    return userkeystr;
+}
 /*
 - (void)viewDidLoad {
     [super viewDidLoad];

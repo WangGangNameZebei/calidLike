@@ -30,6 +30,10 @@
 		0A51E91B1DC825B9000D31F3 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A51E9191DC825B9000D31F3 /* RegisterViewController.xib */; };
 		0A51E91E1DC82629000D31F3 /* RegisterViewController+LogicalFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A51E91D1DC82629000D31F3 /* RegisterViewController+LogicalFlow.m */; };
 		0A51E9211DC82645000D31F3 /* RegisterViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A51E9201DC82645000D31F3 /* RegisterViewController+Configuration.m */; };
+		0A52D71B1F05E439009EF865 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A52D71A1F05E439009EF865 /* UserInfo.m */; };
+		0A52D7201F063101009EF865 /* MyFeedBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A52D71E1F063101009EF865 /* MyFeedBackViewController.m */; };
+		0A52D7211F063101009EF865 /* MyFeedBackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A52D71F1F063101009EF865 /* MyFeedBackViewController.xib */; };
+		0A52D7241F06412F009EF865 /* MyFeedBackViewController+logicalFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A52D7231F06412F009EF865 /* MyFeedBackViewController+logicalFlow.m */; };
 		0A5FF9301DB5F05000249F0C /* CustomActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5FF92F1DB5F05000249F0C /* CustomActionSheet.m */; };
 		0A5FF9321DB5F0EF00249F0C /* CustomActionSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A5FF9311DB5F0EF00249F0C /* CustomActionSheet.xib */; };
 		0A5FF9361DB5F6A000249F0C /* CustomActionSheetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5FF9341DB5F6A000249F0C /* CustomActionSheetCell.m */; };
@@ -210,6 +214,13 @@
 		0A51E91D1DC82629000D31F3 /* RegisterViewController+LogicalFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RegisterViewController+LogicalFlow.m"; sourceTree = "<group>"; };
 		0A51E91F1DC82645000D31F3 /* RegisterViewController+Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RegisterViewController+Configuration.h"; sourceTree = "<group>"; };
 		0A51E9201DC82645000D31F3 /* RegisterViewController+Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RegisterViewController+Configuration.m"; sourceTree = "<group>"; };
+		0A52D7191F05E439009EF865 /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
+		0A52D71A1F05E439009EF865 /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
+		0A52D71D1F063101009EF865 /* MyFeedBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFeedBackViewController.h; sourceTree = "<group>"; };
+		0A52D71E1F063101009EF865 /* MyFeedBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFeedBackViewController.m; sourceTree = "<group>"; };
+		0A52D71F1F063101009EF865 /* MyFeedBackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyFeedBackViewController.xib; sourceTree = "<group>"; };
+		0A52D7221F06412F009EF865 /* MyFeedBackViewController+logicalFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MyFeedBackViewController+logicalFlow.h"; sourceTree = "<group>"; };
+		0A52D7231F06412F009EF865 /* MyFeedBackViewController+logicalFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MyFeedBackViewController+logicalFlow.m"; sourceTree = "<group>"; };
 		0A5FF92E1DB5F05000249F0C /* CustomActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomActionSheet.h; sourceTree = "<group>"; };
 		0A5FF92F1DB5F05000249F0C /* CustomActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomActionSheet.m; sourceTree = "<group>"; };
 		0A5FF9311DB5F0EF00249F0C /* CustomActionSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomActionSheet.xib; sourceTree = "<group>"; };
@@ -546,6 +557,27 @@
 			path = RegisterViewController;
 			sourceTree = "<group>";
 		};
+		0A52D7181F05E41B009EF865 /* userInfo */ = {
+			isa = PBXGroup;
+			children = (
+				0A52D7191F05E439009EF865 /* UserInfo.h */,
+				0A52D71A1F05E439009EF865 /* UserInfo.m */,
+			);
+			path = userInfo;
+			sourceTree = "<group>";
+		};
+		0A52D71C1F0630E7009EF865 /* MyFeedBackViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0A52D71D1F063101009EF865 /* MyFeedBackViewController.h */,
+				0A52D71E1F063101009EF865 /* MyFeedBackViewController.m */,
+				0A52D71F1F063101009EF865 /* MyFeedBackViewController.xib */,
+				0A52D7221F06412F009EF865 /* MyFeedBackViewController+logicalFlow.h */,
+				0A52D7231F06412F009EF865 /* MyFeedBackViewController+logicalFlow.m */,
+			);
+			path = MyFeedBackViewController;
+			sourceTree = "<group>";
+		};
 		0A5FF92D1DB5EFF800249F0C /* CustomActionSheet */ = {
 			isa = PBXGroup;
 			children = (
@@ -789,6 +821,7 @@
 				0ABEA9AF1E83974B00FC7FD3 /* DBTool.m */,
 				0ABEA9B01E83974B00FC7FD3 /* InstallCardData.h */,
 				0ABEA9B11E83974B00FC7FD3 /* InstallCardData.m */,
+				0A52D7181F05E41B009EF865 /* userInfo */,
 				0ABEA9B51E839C0700FC7FD3 /* classVisitor */,
 				0A6F65F61EBAF0EE00092DDE /* classUserinfo */,
 			);
@@ -960,6 +993,7 @@
 				0A6830DD1DF106D500D51770 /* lanyaViewController */,
 				0A131A181E2C5860009D11E2 /* VisitorViewController */,
 				0A7304861E8352420016639A /* InvitationCodeViewController */,
+				0A52D71C1F0630E7009EF865 /* MyFeedBackViewController */,
 				0A6F7F131EFE115A003E0DDA /* ChangeThePasswordViewController */,
 				0A3C4D951EB9A8FF00B6F279 /* PropertyActivationViewController */,
 			);
@@ -1256,6 +1290,7 @@
 				0AA5DA281DF554DA00CA816E /* image3.jpg in Resources */,
 				0A5FF94B1DB6032600249F0C /* MyViewController.xib in Resources */,
 				0A51E91B1DC825B9000D31F3 /* RegisterViewController.xib in Resources */,
+				0A52D7211F063101009EF865 /* MyFeedBackViewController.xib in Resources */,
 				0A6830E21DF1072C00D51770 /* LanyaViewController.xib in Resources */,
 				0A5FF9371DB5F6A000249F0C /* CustomActionSheetCell.xib in Resources */,
 				0AFA94A51DF7ECD60044362D /* round-switch-thumb-highlight.png in Resources */,
@@ -1377,6 +1412,7 @@
 				0A0EBEA91E2F3B9600E4A89E /* VisitorSingleTon+Tool.m in Sources */,
 				0AD75CCD1DBDDDEC00297AC3 /* MyViewController+Configuration.m in Sources */,
 				0A6830E51DF1087600D51770 /* LanyaViewController+Configuration.m in Sources */,
+				0A52D71B1F05E439009EF865 /* UserInfo.m in Sources */,
 				0A6FB2721DC978BC00345784 /* installViewController.m in Sources */,
 				0A6F7F171EFE11A3003E0DDA /* ChangeThePasswordViewController.m in Sources */,
 				0ACFF81B1DB5BCA00043D49A /* AppDelegate.m in Sources */,
@@ -1389,6 +1425,7 @@
 				0AA491301DC6F27D0013B974 /* LoginViewController.m in Sources */,
 				0A6DA6DD1DB6F9020013D0CF /* MineViewController+Configuration.m in Sources */,
 				0A611E361E120C4D0002B1C9 /* InstallLanyaDataDelegate.m in Sources */,
+				0A52D7241F06412F009EF865 /* MyFeedBackViewController+logicalFlow.m in Sources */,
 				0AF131E61EC0488D0056F2A0 /* MycradInfoTableViewCell.m in Sources */,
 				0ABEA9B31E83974B00FC7FD3 /* DBTool.m in Sources */,
 				0A9EEC691DCB0E2A00D74FC9 /* OpenCardView.m in Sources */,
@@ -1447,6 +1484,7 @@
 				0A73048A1E8352990016639A /* invitaionCodeViewController.m in Sources */,
 				0A98AF481DF270BF00BCA88C /* JYConfiguration.m in Sources */,
 				0A6830E11DF1072C00D51770 /* LanyaViewController.m in Sources */,
+				0A52D7201F063101009EF865 /* MyFeedBackViewController.m in Sources */,
 				0A45E1BC1EBD9EEC00BE4980 /* MycradInfoViewController.m in Sources */,
 				0AD75CD31DBDDE5300297AC3 /* MyViewControllerDataSource.m in Sources */,
 				0ABEA9B21E83974B00FC7FD3 /* ZBGroup.m in Sources */,

@@ -34,3 +34,5 @@
 #define RENEWAL_USER_DATA_URL  @"http://www.sycalid.cn/api/renewalUserDate.do"
 // 用户修改密码
 #define UP_DATA_USER_PWD_URL  @"http://www.sycalid.cn/api/updateUserPwd.do"
+// 意见反馈
+#define FEED_BACK_URL  @"http://www.sycalid.cn/api/userReturnIdea.do"

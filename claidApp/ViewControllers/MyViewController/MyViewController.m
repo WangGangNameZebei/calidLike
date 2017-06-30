@@ -15,10 +15,9 @@
 #import "VisitorViewController.h"
 #import "invitaionCodeViewController.h"
 #import "MycradInfoViewController.h"
-#import "DBTool.h"
 #import "PropertyActivationViewController.h"
 #import "ChangeThePasswordViewController.h"
-
+#import "MyFeedBackViewController.h"
 
 @implementation MyViewController
 
@@ -52,7 +51,7 @@
      } else if (indexPath.row == 2) {   //卡信息
          MycradInfoViewController *mycradinfoVC = [MycradInfoViewController create];
          [self hideTabBarAndpushViewController:mycradinfoVC];
-     } else if (indexPath.row == 1 || indexPath.row == 8 || indexPath.row == 10) {
+     } else if (indexPath.row == 1 || indexPath.row == 9 || indexPath.row == 11) {
          NSLog(@"空白区");
      } else if (indexPath.row == 3){        // 邀请访客
          invitaionCodeViewController *inviCodeVC = [invitaionCodeViewController create];
@@ -74,9 +73,12 @@
      } else if (indexPath.row == 6){        // 密码修改
          ChangeThePasswordViewController *changethePasswordVC = [ChangeThePasswordViewController create];
          [self hideTabBarAndpushViewController:changethePasswordVC];
-     } else if (indexPath.row == 7){        // 数据更新
+     } else if (indexPath.row == 7) {        // 数据更新
          [self theinternetCardupData];
-     } else if (indexPath.row == 9) {        //退出登入
+     } else if (indexPath.row == 8) {       // 意见反馈
+         MyFeedBackViewController *myFeedBackVC = [MyFeedBackViewController create];
+         [self hideTabBarAndpushViewController:myFeedBackVC];
+     }else if (indexPath.row == 10) {        //退出登入
          [self clearAllUserDefaultsData];
          LoginViewController *loginViewController = [LoginViewController create];
          UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
@@ -111,7 +113,7 @@
 - (void)clearAllUserDefaultsData {
     DBTool *dbtool = [DBTool sharedDBTool];
    [dbtool dropTableWithClass:[InstallCardData class]];
-  // [dbtool dropTableWithClass:[ClassUserInfo class]];
+  // [dbtool dropTableWithClass:[UserInfo class]];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *dic = [userDefaults dictionaryRepresentation];
     for (id  key in dic) {
