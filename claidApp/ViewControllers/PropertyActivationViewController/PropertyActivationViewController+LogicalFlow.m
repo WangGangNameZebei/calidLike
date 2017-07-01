@@ -33,7 +33,11 @@
         }
         
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
-        [self promptInformationActionWarningString:[NSString stringWithFormat:@"%ld",(long)error.code]];
+        if (error.code == -1009){
+            [self promptInformationActionWarningString:@"您的网络有异常"];
+        } else {
+            [self promptInformationActionWarningString:[NSString stringWithFormat:@"%ld",(long)error.code]];
+        }
         
     }];
 
@@ -59,7 +63,6 @@
         }
         
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
-        [self promptInformationActionWarningString:[NSString stringWithFormat:@"%ld",(long)error.code]];
         
     }];
     

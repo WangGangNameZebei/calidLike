@@ -66,7 +66,9 @@
     });
 }
 - (IBAction)returnButtonAction:(id)sender {
-    [self theinternetCardupData];
+    if ([self.titleLabelString isEqualToString:@"续卡"]){
+       [self theinternetCardupData];
+    }
     [self.paSingleTon disConnection];       // 退出前 断开蓝牙
     [self.navigationController popViewControllerAnimated:YES];
 }
