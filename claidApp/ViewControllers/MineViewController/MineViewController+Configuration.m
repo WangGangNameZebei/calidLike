@@ -283,7 +283,9 @@
         // 下载地址
       //  NSString *trackViewUrl = resultDic[@"trackViewUrl"];
         // FRXME：比较版本号
-        return [self compareVersion:version];
+        
+        BOOL upnumber = [self compareVersion:version];
+        return upnumber;
     }else {
         // 返回错误 想当于没有更新吧
         return NO;

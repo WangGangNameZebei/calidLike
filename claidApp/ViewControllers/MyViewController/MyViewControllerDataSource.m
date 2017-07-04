@@ -10,6 +10,7 @@
 #import "MyTableViewCell.h"
 #import "BlankTableViewCell.h"
 #import "LoginOutTableViewCell.h"
+#import "UIColor+Utility.h"
 
 @implementation MyViewControllerDataSource
 
@@ -39,8 +40,11 @@
 
 - (UITableViewCell *)blankTableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
     BlankTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:BLANK_TABLEVIEW_CELL];
-     if (indexPath.row == 9 || indexPath.row == 11)
+    if (indexPath.row == 9 || indexPath.row == 11){
           cell.contentView.backgroundColor = [UIColor whiteColor];
+    } else {
+         cell.contentView.backgroundColor = [UIColor colorFromHexCode:@"#EDEDED"];
+    }
     return cell;
 }
 
