@@ -383,9 +383,9 @@ static SingleTon *_instace = nil;
     if (!_identiFication && [self.delegate respondsToSelector:@selector(DoSomethingtishiFrame:)]) {
         [self.delegate DoSomethingtishiFrame:@"连接成功!"];
     }
-    if (!_identiFication && [self.installDelegate respondsToSelector:@selector(installDoSomethingtishiFrame:)]) {
-        [self.installDelegate installDoSomethingtishiFrame:@"成功!"];
-    }
+//    if (!_identiFication && [self.installDelegate respondsToSelector:@selector(installDoSomethingtishiFrame:)]) {
+//        [self.installDelegate installDoSomethingtishiFrame:@"成功!"];
+//    }
     
     for (CBService *s in peripheral.services) {
         [self.nServices addObject:s];

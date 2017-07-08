@@ -258,7 +258,7 @@
             [self promptInformationActionWarningString:@"权限过期!"];
             break;
         default:
-            [self promptInformationActionWarningString:@"哎呀,什么鬼,出错了吧!"];
+            [self promptInformationActionWarningString:@"出现异常错误！"];
             break;
     }
 }
@@ -298,7 +298,7 @@
     // 获取当前版本号
     NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
     NSString *appVersion = [infoDic objectForKey:@"CFBundleShortVersionString"];
-    // MARK： 比较方法
+    // MARK： 比较方法
     if ([appVersion compare:serverVersion options:NSNumericSearch] == NSOrderedAscending) {
         return YES;
        }else {
@@ -315,7 +315,6 @@ static void screenLockStateChanged(CFNotificationCenterRef center,void* observer
         //通过通知中心发送通知
         [[NSNotificationCenter defaultCenter] postNotification:notification];
     }
-   
 }
 //  通知 亮屏幕  刷卡
 - (void)litActionbiaoshi {

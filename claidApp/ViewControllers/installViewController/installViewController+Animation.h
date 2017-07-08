@@ -9,5 +9,6 @@
 #import "installViewController.h"
 
 @interface installViewController (Animation)
-
+- (void)animationShowPickerConfirmView;      //显示
+- (void)animationHidePickerConfirmView;      //隐藏
 @end

@@ -71,6 +71,15 @@
     sleep(3.);
 }
 
+#pragma mark UIPickerViewDataSource
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return self.numberPickerArrar.count;
+}
+
 /*
 #pragma mark - Navigation
 

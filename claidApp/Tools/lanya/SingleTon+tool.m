@@ -82,12 +82,19 @@
     NSString *strOne = @"";
     NSString *strTow = @"";
     NSInteger  aa;
-    string = [string substringWithRange:NSMakeRange(2, 12)];
+  
+    strOne = [string substringWithRange:NSMakeRange(2, 12)];
+    if ([strOne isEqualToString:@"0181000101FF"]) {  // 设置 灵敏度
+        string = [string substringWithRange:NSMakeRange(2, 20)];
+    } else {
+        strOne = @"";
+        string = [string substringWithRange:NSMakeRange(2, 12)];
         aa =10000000+rand()%(99999999 - 10000000 + 1);
         strOne = [NSString stringWithFormat:@"%@%ld",strOne,(long)aa];
-  
-    string = [NSString stringWithFormat:@"%@%@",string,strOne];
-    
+        
+        string = [NSString stringWithFormat:@"%@%@",string,strOne];
+ 
+    }
     for (NSInteger I = 0; I < 32; I++) {
         string = [NSString stringWithFormat:@"%@%@",string,@"00"];
     }
@@ -113,9 +120,10 @@
     unsigned char key1[4];
     unsigned char key2[100];
     NSString * TheTwoCharacters;
-    NSString *strOne;
-    NSString *strTow;
+    NSString *strOne =@"";
+    NSString *strTow=@"";
     NSInteger  aa;
+   
     
     for (NSInteger j = 0; j < data.length / 2; j++) {
         TheTwoCharacters = [data substringWithRange:NSMakeRange(j * 2,2)];
@@ -131,6 +139,21 @@
     for(NSInteger I = 0; I < 48; I++) {
         key2[I] = key2[I]^tmpstr[I];
     }
+    
+    for (NSInteger i = 0; i < 48; i++) {
+        strOne =[NSString stringWithFormat:@"%x",key2[i]&0xff];
+        if (strOne.length == 1)
+            strOne = [NSString stringWithFormat:@"0%@",strOne];
+        strTow = [NSString stringWithFormat:@"%@%@",strTow,strOne];
+    }
+    strTow = [strTow substringWithRange:NSMakeRange(0,12)];
+    if ([strTow isEqualToString:@"018100010100"]){
+        if ([self.installDelegate  respondsToSelector:@selector(installEditInitPeripheralData:)]){
+            [self.installDelegate installEditInitPeripheralData:3];
+        }
+        return;
+    }
+    
     key1[0] = key2[16];
     key1[1] = key2[17];
     key1[2] = key2[18];

@@ -18,4 +18,6 @@
     [[SingleTon sharedInstance] shoudongConnectClick:periphe];
 
 }
+
+
 @end

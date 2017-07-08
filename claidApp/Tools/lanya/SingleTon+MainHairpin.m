@@ -11,6 +11,10 @@
 
 @implementation SingleTon (MainHairpin)
 - (void)mainHairpinReturnData:(NSString *)characteristic{
+        if (!self.identiFication && [self.installDelegate respondsToSelector:@selector(installDoSomethingtishiFrame:)]) {
+            [self.installDelegate installDoSomethingtishiFrame:@"设置成功!"];
+            return;
+        }
     self.receiveData = [characteristic substringWithRange:NSMakeRange(0,104)];
     NSString *encryptedData = [AESCrypt encrypt:self.receiveData password:AES_PASSWORD];  //加密
     [[NSUserDefaults standardUserDefaults] setObject:encryptedData forKey:@"lanyaAESErrornData"];  //存储

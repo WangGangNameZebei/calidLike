@@ -14,7 +14,8 @@
 #import "SingleTon.h"           //蓝牙
 #import "DBTool.h"              //数据库
 #import "InstallCardData.h"
-@interface installViewController : BaseViewController <UITableViewDelegate,installLanyaDelegate,installViewControllerDelegate>
+
+@interface installViewController : BaseViewController <UITableViewDelegate,installLanyaDelegate,installViewControllerDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *installTableView;
 @property (strong, nonatomic) IBOutlet UITableView *lanyaTableView;
 @property (strong, nonatomic) SingleTon *sinTon;        //蓝牙
@@ -32,4 +33,13 @@
 @property (strong,nonatomic)DBTool *tool;                   //数据库
 @property (strong, nonatomic)InstallCardData *installCardData;      //数据库类
 
+
+@property (assign, nonatomic) BOOL lingminduBool;       //灵敏度
+@property (strong, nonatomic)UIView *sensitivityView;
+@property (strong, nonatomic) UIPickerView *pickerView;
+@property (strong, nonatomic) NSMutableArray *numberPickerArrar;
+@property (strong, nonatomic) UIView *pickerConfirmView;
+@property (strong, nonatomic) UIButton *canshuheaderButton;
+@property (strong, nonatomic) UIButton *returnButton;
+@property (strong, nonatomic) UIButton *confirmButon;
 @end
