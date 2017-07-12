@@ -63,7 +63,7 @@ static SingleTon *_instace = nil;
             self.shukaTimer = nil;
             LOG(@"关闭刷卡定时器");
         }
-        self.shukaTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(shukaShibaiAction) userInfo:nil repeats:NO];
+        self.shukaTimer = [NSTimer scheduledTimerWithTimeInterval:6 target:self selector:@selector(shukaShibaiAction) userInfo:nil repeats:NO];
        LOG(@"开启刷卡定时器");
     }
     if ([String isEqualToString:@"aa"] || [String isEqualToString:@"00"]) {
@@ -82,7 +82,7 @@ static SingleTon *_instace = nil;
         CommandStr = [NSString stringWithFormat:@"%@%@",CommandStr,@"0"];
     }
     
-    if (length > 20){
+    if (length > 20){   // 长度 大于 20  拆分成  20 字节循环发送  否则 直接发送
         if ([[CommandStr substringWithRange:NSMakeRange(0,2)] isEqualToString:@"cc"]) {
             strHead = @"c";
         }else{
@@ -133,7 +133,6 @@ static SingleTon *_instace = nil;
     if (!self.scanTimer){
        [self.scanTimer invalidate];    // 释放函数
         self.scanTimer = nil;
-        LOG(@"关闭Scantime");
     }
     NSUUID * uuid = [[NSUUID alloc]initWithUUIDString:identifierStr];
     NSArray *array = [self.manager retrievePeripheralsWithIdentifiers:@[uuid]];
@@ -167,7 +166,6 @@ static SingleTon *_instace = nil;
     if (!self.scanTimer){
         [self.scanTimer invalidate];    // 释放函数
         self.scanTimer = nil;
-        LOG(@"关闭Scantime");
     }
     
     NSUUID * uuid = [[NSUUID alloc]initWithUUIDString:uuids];
@@ -206,7 +204,6 @@ static SingleTon *_instace = nil;
     if (self.scanTimer){
        [self.scanTimer invalidate];    // 释放函数
         self.scanTimer = nil;
-        LOG(@"关闭Scantime");
     }
 }
 
@@ -259,7 +256,6 @@ static SingleTon *_instace = nil;
         if (self.scanTimer){
           [self.scanTimer invalidate];    // 释放函数
             self.scanTimer = nil;
-            LOG(@"关闭Scantime");
         }
        self.scanTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(lianjielanyaAction) userInfo:nil repeats:0];
         LOG(@"目标扫描 蓝牙 开启 连接蓝牙定时器(scantime)");
@@ -518,7 +514,7 @@ static SingleTon *_instace = nil;
 #pragma mark - 连接意外断开
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(nullable NSError *)error {
     LOG(@"意外断开，执行重连api");
-    //[self connectClick:_peripheral];
+    //  [self connectClick:_peripheral];
     if (_identiFication && [self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
         [self.deleGate switchEditInitPeripheralData:4];
     }

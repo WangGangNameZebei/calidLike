@@ -11,8 +11,10 @@
 
 @implementation SingleTon (MainHairpin)
 - (void)mainHairpinReturnData:(NSString *)characteristic{
+
         if (!self.identiFication && [self.installDelegate respondsToSelector:@selector(installDoSomethingtishiFrame:)]) {
             [self.installDelegate installDoSomethingtishiFrame:@"设置成功!"];
+            
             return;
         }
     self.receiveData = [characteristic substringWithRange:NSMakeRange(0,104)];
@@ -21,9 +23,11 @@
     
     if (!self.jieHhou && [self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
         [self.deleGate switchEditInitPeripheralData:3];
+     
     }
     if ([self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
         [self.deleGate switchEditInitPeripheralData:[self turnTheHexLiterals:[characteristic substringWithRange:NSMakeRange(104,2)]]];
+        
     }
     
 }

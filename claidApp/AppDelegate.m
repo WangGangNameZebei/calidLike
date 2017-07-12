@@ -29,9 +29,9 @@
         
         NSLog(@"--------------->%ld",(long)NetworkStatus);        //网络 监测
     }];
-    [self ttSwitchAddImageAction];
+    [self ttSwitchAddImageAction];    //自动 刷卡  这里  添加图片 需要的时候  直接调用即可
     [[SingleTon sharedInstance] initialization];    // 蓝牙设备
-   if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"loginInfo"] isEqualToString:@"YES"]) {
+   if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"loginInfo"] isEqualToString:@"YES"]) {    //   判断登录标识   是否登录   登录  直接进入 否则 到登录页面
        CustomTabBarController *customTabBarController = [self createCustomTabBarController];
        self.window.rootViewController = customTabBarController;
        
@@ -137,7 +137,7 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application {
 
      NSLog(@"===============  进入前台");
-    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"switch"] isEqualToString:@"YES"]) {
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"switch"] isEqualToString:@"YES"]) {   //判断是否开启自动刷卡
       [[SingleTon sharedInstance] lanyaQiantaiAction];     //前台函数
     }
     

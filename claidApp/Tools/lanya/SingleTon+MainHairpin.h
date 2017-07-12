@@ -10,6 +10,6 @@
 
 @interface SingleTon (MainHairpin)
 
-- (void)mainHairpinReturnData:(NSString *)characteristic;
+- (void)mainHairpinReturnData:(NSString *)characteristic; // 刷卡最后一段返回 
 
 @end

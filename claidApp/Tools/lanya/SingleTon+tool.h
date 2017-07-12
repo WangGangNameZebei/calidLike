@@ -10,7 +10,7 @@
 
 @interface SingleTon (tool)
 - (NSString*)hexadecimalString:(NSData *)data;   //将传入的NSData类型转换成NSString并返回
-- (NSInteger)turnTheHexLiterals:(NSString *)string;
+- (NSInteger)turnTheHexLiterals:(NSString *)string;     // 指令字符  值转16进制数
 - (BOOL)lanyaDataXiaoyanAction:(NSString *)data;            //效验数据
 - (void)lanyaSendoutDataAction:(NSString *)data;            //发送数据加密
 - (NSString *)payByCardInstructionsActionString:(NSString *)string;             //发送数据指令

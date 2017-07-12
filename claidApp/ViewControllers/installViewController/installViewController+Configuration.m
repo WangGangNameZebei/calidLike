@@ -207,7 +207,7 @@
 }
 #pragma mark pickerView 上按钮的方法实现
 - (void)pickerReturnAction:(UIButton *)button {
-     [self animationHidePickerConfirmView];
+    [self animationHidePickerConfirmView];
     [self.canshuheaderButton setTitle:@"选择" forState:UIControlStateNormal];
 }
 

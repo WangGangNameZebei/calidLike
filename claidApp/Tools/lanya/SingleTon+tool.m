@@ -73,7 +73,7 @@
     return 0;
 }
 
-#pragma mark - 发送发卡指令
+#pragma mark -  编辑 发送发卡指令 (添加随机数)
 - (NSString *)payByCardInstructionsActionString:(NSString *)string {
     unsigned int numberKey;
     unsigned char key1[4];
