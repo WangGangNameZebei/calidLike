@@ -9,7 +9,6 @@
 #import "PropertyActivationViewController.h"
 #import "PropertyActivationViewController+Configuration.h"
 #import "PropertyActivationViewController+LogicalFlow.h"
-#import "MBProgressHUD.h"
 
 @implementation PropertyActivationViewController
 
@@ -34,36 +33,61 @@
         [self promptInformationActionWarningString:@"物业未发卡!"];
         return;
     }
-    if (self.pAPhoneNumberTextField.text.length!=11){
+    
+    if ([self isMobileNumber:self.pAPhoneNumberTextField.text]){
         [self promptInformationActionWarningString:@"请输入正确电话号码!"];
         return;
     }
+    if (!self.pAPasswordLabel.hidden) {
+        if (self.pAPasswordTextField.text.length < 6 || self.pAPasswordTextField.text.length > 16){
+            [self promptInformationActionWarningString:@"请输入6-16位密码!"];
+            return;
+        }
+        if ([self.pAPasswordTextField.text isEqualToString:self.pAConfirmPasswordTextField.text] ){
+            // 注册信息 点击   注册
+        } else {
+            [self promptInformationActionWarningString:@"密码输入不一致!"];
+            return;
+        }
+    }
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"请确认电话号码是否正确"  message:self.pAPhoneNumberTextField.text delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"是的", nil];
+    [alertView show];
     
-    if (self.pAPasswordTextField.text.length < 6 || self.pAPasswordTextField.text.length > 16){
-        [self promptInformationActionWarningString:@"请输入6-16位字符组合!"];
-        return;
-    }
-    if ([self.pAPasswordTextField.text isEqualToString:self.pAConfirmPasswordTextField.text] ){
-      // 注册信息 点击   注册
-    } else {
-        [self promptInformationActionWarningString:@"密码输入不一致!"];
-    }
-    NSString *cardData = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESData"] password:AES_PASSWORD];
-    [self propertyActivationPostForUserData:cardData userInfo:[self.userInfo substringWithRange:NSMakeRange(0,104)] userEqInfo:[self.userInfo substringWithRange:NSMakeRange(104,104)] userPhone:self.pAPhoneNumberTextField.text password:self.pAPasswordTextField.text];
 }
-
+#pragma mark  提示框代理
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        NSString *cardData = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESData"] password:AES_PASSWORD];
+        [self propertyActivationPostForUserData:cardData userInfo:[self.userInfo substringWithRange:NSMakeRange(0,104)] userEqInfo:[self.userInfo substringWithRange:NSMakeRange(104,104)] userPhone:self.pAPhoneNumberTextField.text password:self.pAPasswordTextField.text];
+    } else {
+        NSLog(@"点击了取消按钮");
+    }
+}
+- (IBAction)chongzhiButtonAction:(id)sender {
+    if (self.pAPasswordLabel.hidden) {
+        [self.chongzhiButton setImage:[UIImage imageNamed:@"gouxian_blue"] forState:UIControlStateNormal];
+        self.pAPasswordLabel.hidden = NO;
+        self.pAConfirmPasswordLabel.hidden = NO;
+        self.pAPasswordView.hidden = NO;
+        self.pAConfirmPasswordView.hidden = NO;
+        [self.view setNeedsLayout];
+    } else {
+        [self.chongzhiButton setImage:[UIImage imageNamed:@"gouxian_gray"] forState:UIControlStateNormal];
+        self.pAPasswordLabel.hidden = YES;
+        self.pAConfirmPasswordLabel.hidden = YES;
+        self.pAPasswordView.hidden = YES;
+        self.pAConfirmPasswordView.hidden = YES;
+    }
+    
+}
 - (IBAction)saoMiaoButtonAction:(id)sender {
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    hud.label.text = NSLocalizedString(@"扫秒蓝牙中...", @"HUD loading title");
-    dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
+    NSString  *strLanya = FAKAQI_TON_UUID_STR;
+    if (strLanya.length < 3) {
         [self.paSingleTon startScan]; // 扫描
-        [self doSomeWork];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.propertyActionViewControllerDataSource.pAVCDataSourceArray = self.paLnyaNameArray;
-           [self.paVCTableiVew reloadData];
-            [hud hideAnimated:YES];
-        });
-    });
+    } else {
+        [self.paSingleTon getPeripheralWithIdentifierAndConnect:strLanya];
+    }
+ 
 }
 - (IBAction)returnButtonAction:(id)sender {
     if ([self.titleLabelString isEqualToString:@"续卡"]){
@@ -73,17 +97,5 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-#pragma mrak - UItavleView-delegate- 点击
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-        CBPeripheral *periphe = [self.paLnyaNameArray objectAtIndex:(indexPath.row)];
-
-        [self.paSingleTon connectClick:periphe];
-}
-
-#pragma mark - Tasks
-- (void)doSomeWork {
-    // Simulate by just waiting.
-    sleep(3.);
-}
 
 @end

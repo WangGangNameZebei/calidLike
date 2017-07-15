@@ -151,10 +151,14 @@ static SingleTon *_instace = nil;
     return peripheral;
 }
 
-#pragma mark  手动连接   蓝牙设备
-- (void)shoudongConnectClick:(CBPeripheral *)peripheral {
+#pragma mark  设置卡连接   蓝牙发卡器
+- (void)shoudongConnectClick:(NSString *)peripheralstr {
     _identiFication = NO;
     self.installBool  = NO;
+    NSUUID * uuid = [[NSUUID alloc]initWithUUIDString:peripheralstr];
+    NSArray *array = [self.manager retrievePeripheralsWithIdentifiers:@[uuid]];
+    CBPeripheral *peripheral = [array lastObject];
+   
     [self connectClick:peripheral];
 }
 // 设置卡  连接   
@@ -273,16 +277,17 @@ static SingleTon *_instace = nil;
               }
 
           }
-       }
+        } else if ([[NSString stringWithFormat:@"%@",peripheral.name] isEqualToString:@"CALID"]){
+            [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%@",peripheral.identifier] forKey:@"fakaqiIdentifierStr"];  //存储
+            if ([self.installDelegate respondsToSelector:@selector(installEditInitPeripheralData:)]) {
+                [self.installDelegate installEditInitPeripheralData:4];
+            }
+        }
         if(![self.PeripheralArray containsObject:peripheral])
             [self.PeripheralArray addObject:peripheral];
         
-           if ([self.delegate respondsToSelector:@selector(DoSomethingEveryFrame:)])
-            [self.delegate DoSomethingEveryFrame:self.PeripheralArray];
         
-       if ([self.installDelegate respondsToSelector:@selector(installDoSomethingEveryFrame:)]) {
-          [self.installDelegate installDoSomethingEveryFrame:self.PeripheralArray];
-        }
+      
     }
 }
 
@@ -293,9 +298,6 @@ static SingleTon *_instace = nil;
     if (!peripheral) {
         if (_identiFication && [self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
             [self.deleGate switchEditInitPeripheralData:4];
-        }
-        if (!_identiFication && [self.delegate respondsToSelector:@selector(DoSomethingtishiFrame:)]) {
-            [self.delegate DoSomethingtishiFrame:@"断开连接!"];
         }
         return;
     }
@@ -376,12 +378,6 @@ static SingleTon *_instace = nil;
 -(void) peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error{
     LOG(@"发现服务");
     NSString *strone;
-    if (!_identiFication && [self.delegate respondsToSelector:@selector(DoSomethingtishiFrame:)]) {
-        [self.delegate DoSomethingtishiFrame:@"连接成功!"];
-    }
-//    if (!_identiFication && [self.installDelegate respondsToSelector:@selector(installDoSomethingtishiFrame:)]) {
-//        [self.installDelegate installDoSomethingtishiFrame:@"成功!"];
-//    }
     
     for (CBService *s in peripheral.services) {
         [self.nServices addObject:s];
@@ -411,6 +407,15 @@ static SingleTon *_instace = nil;
             if (self.installBool  && [self.installDelegate  respondsToSelector:@selector(installEditInitPeripheralData:)]){
                 [self.installDelegate installEditInitPeripheralData:1];
             }
+            
+            
+            if (!_identiFication && !self.installBool){
+                if ([self.installDelegate  respondsToSelector:@selector(installDoSomethingtishiFrame:)]){
+                    [self.installDelegate installDoSomethingtishiFrame:@"已连接"];
+                }
+                
+            }
+            
         
         }
         if ([str1 isEqualToString:@"FFF7"]) {
@@ -518,8 +523,10 @@ static SingleTon *_instace = nil;
     if (_identiFication && [self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
         [self.deleGate switchEditInitPeripheralData:4];
     }
-    if (!_identiFication && [self.delegate respondsToSelector:@selector(DoSomethingtishiFrame:)]) {
-        [self.delegate DoSomethingtishiFrame:@"断开连接!"];
+    if (!_identiFication && !self.installBool){
+        if ([self.installDelegate  respondsToSelector:@selector(installDoSomethingtishiFrame:)]){
+            [self.installDelegate installDoSomethingtishiFrame:@"已断开"];
+        }
     }
 }
 

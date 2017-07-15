@@ -20,21 +20,13 @@
 
 - (void)configureViews {
     [self myTableViewInitEdit];
-    [self lanyaTableViewEdit];
+    [self lanyaEdit];
     [self installTableHeaderViewEdit];
     [self pickerConfirmEdit];
 }
-- (void)lanyaTableViewEdit {
-    self.lanyaNameArray = [NSMutableArray array];
+- (void)lanyaEdit {
     self.sinTon = [SingleTon sharedInstance];
     self.sinTon.installDelegate = self;
-    
-     [self.lanyaTableView registerNib:[UINib nibWithNibName:@"MinFuncTionTableViewCell" bundle:nil] forCellReuseIdentifier:MINN_FUNCTION_CELL_NIB];
-    self.iLanyaDataSource = [installLanyaDataSource new];
-    self.iLanyaDelegate = [InstallLanyaDataDelegate new];
-    self.lanyaTableView.delegate = self.iLanyaDelegate;
-    self.lanyaTableView.dataSource = self.iLanyaDataSource;
-    self.iLanyaDataSource.lanyaNameArray = self.lanyaNameArray;
     
 }
 - (void)myTableViewInitEdit {
@@ -141,7 +133,7 @@
     
    [self.installTableView.tableHeaderView addSubview:self.sensitivityView];
    
-    self.numberPickerArrar = [[NSMutableArray alloc] initWithObjects:@"00",@"02",@"03",@"04",@"05",@"06",@"07",@"08",@"09", nil];
+    self.numberPickerArrar = [[NSMutableArray alloc] initWithObjects:@"01",@"02",@"03",@"04",@"05",@"06",@"07",@"08",@"09", nil];
     
 }
 
@@ -293,13 +285,11 @@
 }
 
 #pragma mark - 蓝牙 Delegate
-- (void)installDoSomethingEveryFrame:(NSMutableArray *)array {
-    self.lanyaNameArray = array;
-}
-
 - (void)installDoSomethingtishiFrame:(NSString *)string {
     if ([string isEqualToString:@"设置成功"]){
         [self refreshInstallTableView];
+    } else if ([string isEqualToString:@"已连接"] || [string isEqualToString:@"已断开"]){
+      self.installLanyaLabel.text = string;
     } else {
        [self promptInformationActionWarningString:string];
     }
@@ -309,6 +299,9 @@
         
         if (self.lingminduBool){
             NSString *message = self.canshuheaderButton.titleLabel.text;
+            if ([message isEqualToString:@"01"]){
+                message = @"00";
+            }
             message = [NSString stringWithFormat:@"%@0181000101FF%@00000000000000000000000000000000000000000000000000000000000000000000",@"cc",message];
             [self.sinTon sendCommand:message];       //发送控制板灵敏度
             self.lingminduBool = NO;
@@ -323,12 +316,15 @@
     } else if (data == 3){
         [self promptInformationActionWarningString:@"设置成功！"];
     
-   }else {
+    } else if (data == 4) {     //扫描到 发卡器  去连接
+        [self.sinTon shoudongConnectClick:FAKAQI_TON_UUID_STR];
+    
+    } else {
         ZBGroup *group = self.installDataArray[self.selectIndexPath.section];
         NSArray *arr=group.items;
         self.installCardData = arr[self.selectIndexPath.row];
-       NSString *strOne = [self.installCardData.installData substringWithRange:NSMakeRange(0,104)];
-      NSString *strTow = [[SingleTon sharedInstance] jiamiaTostringAcction:strOne numberKey:data];
+        NSString *strOne = [self.installCardData.installData substringWithRange:NSMakeRange(0,104)];
+        NSString *strTow = [[SingleTon sharedInstance] jiamiaTostringAcction:strOne numberKey:data];
         strTow = [NSString stringWithFormat:@"%@%@",strTow,[[SingleTon sharedInstance] jiamiaTostringAcction:[self.installCardData.installData substringWithRange:NSMakeRange(104, 104)] numberKey:data]];
         [self.sinTon sendCommand:[NSString stringWithFormat:@"AA%@",strTow]];     //发送数据
     }
@@ -359,7 +355,7 @@
     [nameView addSubview:numberView];
     UILabel *numberLabel=[[UILabel alloc]initWithFrame:numberView.bounds];
     numberLabel.textColor = [UIColor whiteColor];
-    numberLabel.textAlignment = 1;  //居中
+    numberLabel.textAlignment = NSTextAlignmentCenter;  //居中
     [numberView addSubview:numberLabel];
     numberView.layer.masksToBounds = YES;
     numberView.layer.cornerRadius = 25/2;

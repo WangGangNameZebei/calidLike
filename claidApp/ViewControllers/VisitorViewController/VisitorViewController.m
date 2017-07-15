@@ -39,8 +39,8 @@
 
 - (IBAction)submitButtonAction:(id)sender {
     
-    if (self.visitorTextField.text.length == 0) {
-        [self promptInformationActionWarningString:@"电话号码不能为空!"];
+    if ([self isMobileNumber:self.visitorTextField.text]) {
+        [self promptInformationActionWarningString:@"请输入正确的手机号！"];
         return;
     }
     if (self.requestBool){

@@ -11,16 +11,8 @@
 #import "DBTool.h"
 
 
-@protocol sendDataToVCDelegate <NSObject>           // 蓝牙连接
-@optional
-- (void)DoSomethingEveryFrame:(NSMutableArray *)array;     // 扫描设备代理
-- (void)DoSomethingtishiFrame:(NSString *)string;     // 扫描设备代理
-@end
-
-
 @protocol installLanyaDelegate <NSObject>
 @optional
-- (void)installDoSomethingEveryFrame:(NSMutableArray *)array;     // 扫描设备代理
 - (void)installDoSomethingtishiFrame:(NSString *)string;     // 提示
 - (void)installEditInitPeripheralData:(NSInteger )data;
 @end
@@ -37,7 +29,6 @@
     NSArray *_bleList;
 
 }
-@property (nonatomic, assign) id <sendDataToVCDelegate> delegate;
 @property (nonatomic, assign) id <mindsendDataToVCDelegate> deleGate;
 @property (nonatomic, assign) id <installLanyaDelegate> installDelegate;
 
@@ -47,7 +38,7 @@
 @property (strong, nonatomic) NSMutableArray *nServices;
 @property (strong, nonatomic) NSMutableArray *PeripheralArray;
 @property (assign, nonatomic) double delayInSeconds;        //扫描时长
-@property (assign, nonatomic) BOOL identiFication;          //目标连接  标识
+@property (assign, nonatomic) BOOL identiFication;          //设置 发卡器连接标识
 @property (assign, nonatomic) BOOL tarScanBool;             //   目标扫描  标识
 @property (assign, nonatomic) BOOL installBool;             //   设置卡  连接标识
 @property (strong, nonatomic) NSTimer * scanTimer;
@@ -71,7 +62,7 @@
 - (void)connectClick:(CBPeripheral *)peripheral;            //连接外设
 - (void)disConnection;      // 断开蓝牙
 - (void)targetScan;         //目标扫描
-- (void)shoudongConnectClick:(CBPeripheral *)peripheral;    // 手动 连接蓝牙设备
+- (void)shoudongConnectClick:(NSString *)peripheralstr;    // 手动 连接蓝牙设备
 - (void)installShoudongConnectClick:(NSString *)uuids;   //设置卡  连接 蓝牙
 
 - (CBPeripheral *)lanyaNameString:(NSString *)uuidString;

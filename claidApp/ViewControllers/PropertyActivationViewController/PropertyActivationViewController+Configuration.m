@@ -7,14 +7,13 @@
 //
 
 #import "PropertyActivationViewController+Configuration.h"
-#import "MinFuncTionTableViewCell.h"
 #import "UIColor+Utility.h"
 
 @implementation PropertyActivationViewController (Configuration)
 
 - (void)configureViews {
     [self singleTonEdit];
-    [self paTableViewEdit];
+
     [self textFieldViewEdit];
     [self phoneNumberAndpasswordViewEdit];
     [self addGestRecognizer];
@@ -24,35 +23,39 @@
     self.pATitleLabel.text = self.titleLabelString; //标题
     if ([self.titleLabelString isEqualToString:@"续卡"]) {
         [self.uploadButton setTitle:@"提交" forState:UIControlStateNormal];
+        self.chongzhiPasswordView.hidden = NO;
+        [self.chongzhiButton setImage:[UIImage imageNamed:@"gouxian_gray"] forState:UIControlStateNormal];
+        self.pAPasswordLabel.hidden = YES;
+        self.pAConfirmPasswordLabel.hidden = YES;
+        self.pAPasswordView.hidden = YES;
+        self.pAConfirmPasswordView.hidden = YES;
+        
     } else {
+        [self.chongzhiButton setImage:[UIImage imageNamed:@"gouxian_blue"] forState:UIControlStateNormal];
         [self.uploadButton setTitle:@"注册" forState:UIControlStateNormal];
+        self.chongzhiPasswordView.hidden = YES;
     }
     self.paSingleTon = [PropertyActivationSingleTon sharedInstance];
     [self.paSingleTon initialization];
     self.paSingleTon.delegate = self;
-    self.paLnyaNameArray = [NSMutableArray array];
+  
 }
 
-- (void)paTableViewEdit {
-    [self.paVCTableiVew registerNib:[UINib nibWithNibName:@"MinFuncTionTableViewCell" bundle:nil] forCellReuseIdentifier:MINN_FUNCTION_CELL_NIB];
-    
-    self.propertyActionViewControllerDataSource = [PropertyActivationViewControllerDataSource new];
-    self.paVCTableiVew.delegate = self;
-    self.paVCTableiVew.dataSource = self.propertyActionViewControllerDataSource;
-    self.propertyActionViewControllerDataSource.pAVCDataSourceArray = self.paLnyaNameArray;
-}
 
 #pragma mark paLanyaDelegate 
 
-- (void)pADoSomethingEveryFrame:(NSMutableArray *)array {
-     self.paLnyaNameArray = array;
+- (void)pADoSomethingEveryFrame:(NSInteger *)array {
+    [self.paSingleTon getPeripheralWithIdentifierAndConnect:FAKAQI_TON_UUID_STR];
 }
 
 - (void)pADoSomethingtishiFrame:(NSString *)string {
     if ([string isEqualToString:@"连接成功"]) {
-        [self promptInformationActionWarningString:string];
+        self.pALanyaLabel.text = @"已连接";
+    } else if ([string isEqualToString:@"断开连接"]) {
+         self.pALanyaLabel.text = @"已断开";
     } else {
-        self.userInfo = string;
+        self.userInfo = [string substringWithRange:NSMakeRange(0,208)];
+        self.pAPhoneNumberTextField.text = [NSString stringWithFormat:@"%@", [string substringWithRange:NSMakeRange(208, 11)]];
         [self promptInformationActionWarningString:@"发卡成功"];
     }
 }
@@ -136,4 +139,7 @@
 - (void)tapped:(UIGestureRecognizer *)gestureRecognizer{
     [self.view endEditing:YES];
 }
+
+
+
 @end

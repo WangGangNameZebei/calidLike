@@ -109,7 +109,7 @@
 
 
 
-#pragma mark - sendDataToVCDelegate
+#pragma mark - mindsendDataToVCDelegate
 
 -(void)switchEditInitPeripheralData:(NSInteger)data {
     switch (data) {

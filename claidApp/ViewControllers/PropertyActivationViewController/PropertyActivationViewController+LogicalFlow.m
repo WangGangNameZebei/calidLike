@@ -22,14 +22,9 @@
         NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableContainers error:nil];
         [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
       
-        if ([self.titleLabelString isEqualToString:@"物业激活"] && [[resultDic objectForKey:@"msg"] isEqualToString:@"注册成功"]){  // 注册成功  清除数据
+        if ([[resultDic objectForKey:@"msg"] isEqualToString:@"注册成功"]){  // 注册成功  清除数据
             self.userInfo = @"";
-            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-            NSDictionary *dic = [userDefaults dictionaryRepresentation];
-            for (id  key in dic) {
-               [userDefaults removeObjectForKey:key];
-            }
-            [userDefaults synchronize];
+            self.pAPhoneNumberTextField.text = @"";
         }
         
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {

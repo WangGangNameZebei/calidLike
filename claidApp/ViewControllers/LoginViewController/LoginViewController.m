@@ -56,12 +56,12 @@
 }
 
 - (IBAction)loginButtonAction:(id)sender {
-    if (self.phoneNumberTextField.text.length != 11){
-       [self promptInformationActionWarningString:@"账号不能为空!"];
+    if ([self isMobileNumber:self.phoneNumberTextField.text]){
+       [self promptInformationActionWarningString:@"请输入正确的手机号码"];
         return;
     }
     if (self.passwordTextField.text.length < 6 || self.passwordTextField.text.length > 16){
-      [self promptInformationActionWarningString:@"请输入6-16位字符组合!"];
+      [self promptInformationActionWarningString:@"请输入6-16位密码!"];
         return;
     }
     [self requestLoginPostForUsername:self.phoneNumberTextField.text password:self.passwordTextField.text];
@@ -71,8 +71,9 @@
 }
                                                                                                                                                                                   
 - (IBAction)registerButtonAction:(id)sender {
-    RegisterViewController *registerVC = [RegisterViewController create];
-    [self hideTabBarAndpushViewController:registerVC];
+    [self promptInformationActionWarningString:@"此功能暂未开通!"];
+//    RegisterViewController *registerVC = [RegisterViewController create];
+//    [self hideTabBarAndpushViewController:registerVC];
 }
 
 

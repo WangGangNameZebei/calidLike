@@ -47,14 +47,8 @@
 		0A5FF94B1DB6032600249F0C /* MyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A5FF9491DB6032600249F0C /* MyViewController.xib */; };
 		0A5FF94E1DB604C800249F0C /* CustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5FF94D1DB604C800249F0C /* CustomTabBarController.m */; };
 		0A611E301E11F40E0002B1C9 /* SingleTon+InstallWarden.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A611E2F1E11F40E0002B1C9 /* SingleTon+InstallWarden.m */; };
-		0A611E331E120BFA0002B1C9 /* installLanyaDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A611E321E120BFA0002B1C9 /* installLanyaDataSource.m */; };
-		0A611E361E120C4D0002B1C9 /* InstallLanyaDataDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A611E351E120C4D0002B1C9 /* InstallLanyaDataDelegate.m */; };
 		0A6402581E1F678E00CADD0F /* SingleTon+MainHairpin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6402571E1F678E00CADD0F /* SingleTon+MainHairpin.m */; };
 		0A64025B1E1F691000CADD0F /* SingleTon+tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A64025A1E1F691000CADD0F /* SingleTon+tool.m */; };
-		0A6830E11DF1072C00D51770 /* LanyaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6830DF1DF1072C00D51770 /* LanyaViewController.m */; };
-		0A6830E21DF1072C00D51770 /* LanyaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A6830E01DF1072C00D51770 /* LanyaViewController.xib */; };
-		0A6830E51DF1087600D51770 /* LanyaViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6830E41DF1087600D51770 /* LanyaViewController+Configuration.m */; };
-		0A6830E81DF10B3800D51770 /* LanyaViewControllerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6830E71DF10B3800D51770 /* LanyaViewControllerDataSource.m */; };
 		0A6DA6DA1DB6F8D90013D0CF /* MineViewController+LogicalFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6DA6D91DB6F8D90013D0CF /* MineViewController+LogicalFlow.m */; };
 		0A6DA6DD1DB6F9020013D0CF /* MineViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6DA6DC1DB6F9020013D0CF /* MineViewController+Configuration.m */; };
 		0A6F7F171EFE11A3003E0DDA /* ChangeThePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6F7F151EFE11A3003E0DDA /* ChangeThePasswordViewController.m */; };
@@ -243,21 +237,10 @@
 		0A5FF94D1DB604C800249F0C /* CustomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBarController.m; sourceTree = "<group>"; };
 		0A611E2E1E11F40E0002B1C9 /* SingleTon+InstallWarden.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SingleTon+InstallWarden.h"; sourceTree = "<group>"; };
 		0A611E2F1E11F40E0002B1C9 /* SingleTon+InstallWarden.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SingleTon+InstallWarden.m"; sourceTree = "<group>"; };
-		0A611E311E120BFA0002B1C9 /* installLanyaDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = installLanyaDataSource.h; sourceTree = "<group>"; };
-		0A611E321E120BFA0002B1C9 /* installLanyaDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = installLanyaDataSource.m; sourceTree = "<group>"; };
-		0A611E341E120C4D0002B1C9 /* InstallLanyaDataDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstallLanyaDataDelegate.h; sourceTree = "<group>"; };
-		0A611E351E120C4D0002B1C9 /* InstallLanyaDataDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstallLanyaDataDelegate.m; sourceTree = "<group>"; };
 		0A6402561E1F678E00CADD0F /* SingleTon+MainHairpin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SingleTon+MainHairpin.h"; sourceTree = "<group>"; };
 		0A6402571E1F678E00CADD0F /* SingleTon+MainHairpin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SingleTon+MainHairpin.m"; sourceTree = "<group>"; };
 		0A6402591E1F691000CADD0F /* SingleTon+tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SingleTon+tool.h"; sourceTree = "<group>"; };
 		0A64025A1E1F691000CADD0F /* SingleTon+tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SingleTon+tool.m"; sourceTree = "<group>"; };
-		0A6830DE1DF1072C00D51770 /* LanyaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanyaViewController.h; sourceTree = "<group>"; };
-		0A6830DF1DF1072C00D51770 /* LanyaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanyaViewController.m; sourceTree = "<group>"; };
-		0A6830E01DF1072C00D51770 /* LanyaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LanyaViewController.xib; sourceTree = "<group>"; };
-		0A6830E31DF1087600D51770 /* LanyaViewController+Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LanyaViewController+Configuration.h"; sourceTree = "<group>"; };
-		0A6830E41DF1087600D51770 /* LanyaViewController+Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LanyaViewController+Configuration.m"; sourceTree = "<group>"; };
-		0A6830E61DF10B3800D51770 /* LanyaViewControllerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanyaViewControllerDataSource.h; sourceTree = "<group>"; };
-		0A6830E71DF10B3800D51770 /* LanyaViewControllerDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanyaViewControllerDataSource.m; sourceTree = "<group>"; };
 		0A6DA6D81DB6F8D90013D0CF /* MineViewController+LogicalFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MineViewController+LogicalFlow.h"; sourceTree = "<group>"; };
 		0A6DA6D91DB6F8D90013D0CF /* MineViewController+LogicalFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MineViewController+LogicalFlow.m"; sourceTree = "<group>"; };
 		0A6DA6DB1DB6F9020013D0CF /* MineViewController+Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MineViewController+Configuration.h"; sourceTree = "<group>"; };
@@ -605,20 +588,6 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		0A6830DD1DF106D500D51770 /* lanyaViewController */ = {
-			isa = PBXGroup;
-			children = (
-				0A6830DE1DF1072C00D51770 /* LanyaViewController.h */,
-				0A6830DF1DF1072C00D51770 /* LanyaViewController.m */,
-				0A6830E01DF1072C00D51770 /* LanyaViewController.xib */,
-				0A6830E31DF1087600D51770 /* LanyaViewController+Configuration.h */,
-				0A6830E41DF1087600D51770 /* LanyaViewController+Configuration.m */,
-				0A6830E61DF10B3800D51770 /* LanyaViewControllerDataSource.h */,
-				0A6830E71DF10B3800D51770 /* LanyaViewControllerDataSource.m */,
-			);
-			path = lanyaViewController;
-			sourceTree = "<group>";
-		};
 		0A6F65F61EBAF0EE00092DDE /* classUserinfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -656,10 +625,6 @@
 				0A961CE41E10E6C9004050B0 /* installViewController+Animation.m */,
 				0AC969961DC9820F00F62C57 /* installViewControllerDataSource.h */,
 				0AC969971DC9820F00F62C57 /* installViewControllerDataSource.m */,
-				0A611E311E120BFA0002B1C9 /* installLanyaDataSource.h */,
-				0A611E321E120BFA0002B1C9 /* installLanyaDataSource.m */,
-				0A611E341E120C4D0002B1C9 /* InstallLanyaDataDelegate.h */,
-				0A611E351E120C4D0002B1C9 /* InstallLanyaDataDelegate.m */,
 			);
 			path = installViewController;
 			sourceTree = "<group>";
@@ -990,7 +955,6 @@
 				0ACFF8741DB5C6910043D49A /* MyViewController */,
 				0A45E1B81EBD9EAF00BE4980 /* MycardInfoViewController */,
 				0AC68B951DCC6E8200B71FB1 /* KaikaViewController */,
-				0A6830DD1DF106D500D51770 /* lanyaViewController */,
 				0A131A181E2C5860009D11E2 /* VisitorViewController */,
 				0A7304861E8352420016639A /* InvitationCodeViewController */,
 				0A52D71C1F0630E7009EF865 /* MyFeedBackViewController */,
@@ -1291,7 +1255,6 @@
 				0A5FF94B1DB6032600249F0C /* MyViewController.xib in Resources */,
 				0A51E91B1DC825B9000D31F3 /* RegisterViewController.xib in Resources */,
 				0A52D7211F063101009EF865 /* MyFeedBackViewController.xib in Resources */,
-				0A6830E21DF1072C00D51770 /* LanyaViewController.xib in Resources */,
 				0A5FF9371DB5F6A000249F0C /* CustomActionSheetCell.xib in Resources */,
 				0AFA94A51DF7ECD60044362D /* round-switch-thumb-highlight.png in Resources */,
 				0AFA94A91DF7ECD60044362D /* round-switch-track.png in Resources */,
@@ -1411,7 +1374,6 @@
 				0A5FF9301DB5F05000249F0C /* CustomActionSheet.m in Sources */,
 				0A0EBEA91E2F3B9600E4A89E /* VisitorSingleTon+Tool.m in Sources */,
 				0AD75CCD1DBDDDEC00297AC3 /* MyViewController+Configuration.m in Sources */,
-				0A6830E51DF1087600D51770 /* LanyaViewController+Configuration.m in Sources */,
 				0A52D71B1F05E439009EF865 /* UserInfo.m in Sources */,
 				0A6FB2721DC978BC00345784 /* installViewController.m in Sources */,
 				0A6F7F171EFE11A3003E0DDA /* ChangeThePasswordViewController.m in Sources */,
@@ -1419,12 +1381,10 @@
 				0A51E9211DC82645000D31F3 /* RegisterViewController+Configuration.m in Sources */,
 				0A131A1C1E2C58A3009D11E2 /* VisitorViewController.m in Sources */,
 				0A35C6661DCD87DD0068AA83 /* KaiKaViewController+Configuration.m in Sources */,
-				0A611E331E120BFA0002B1C9 /* installLanyaDataSource.m in Sources */,
 				0A98AF461DF270BF00BCA88C /* JYCarousel.m in Sources */,
 				0A3C4D991EB9A92300B6F279 /* PropertyActivationViewController.m in Sources */,
 				0AA491301DC6F27D0013B974 /* LoginViewController.m in Sources */,
 				0A6DA6DD1DB6F9020013D0CF /* MineViewController+Configuration.m in Sources */,
-				0A611E361E120C4D0002B1C9 /* InstallLanyaDataDelegate.m in Sources */,
 				0A52D7241F06412F009EF865 /* MyFeedBackViewController+logicalFlow.m in Sources */,
 				0AF131E61EC0488D0056F2A0 /* MycradInfoTableViewCell.m in Sources */,
 				0ABEA9B31E83974B00FC7FD3 /* DBTool.m in Sources */,
@@ -1432,7 +1392,6 @@
 				0A95A2DA1DDA96B50019A691 /* NetWorkJudge.m in Sources */,
 				0A98E8EC1E0505B30086F6D5 /* LanyaHeadTableViewCell.m in Sources */,
 				0AF131DE1EC00A590056F2A0 /* ClassUserInfo.m in Sources */,
-				0A6830E81DF10B3800D51770 /* LanyaViewControllerDataSource.m in Sources */,
 				0A5FF94E1DB604C800249F0C /* CustomTabBarController.m in Sources */,
 				0ACFF8891DB5CCAC0043D49A /* BaseViewController.m in Sources */,
 				0A5FF9411DB5FABC00249F0C /* UIScreen+Utility.m in Sources */,
@@ -1483,7 +1442,6 @@
 				0A98AF471DF270BF00BCA88C /* JYCarouselAnimation.m in Sources */,
 				0A73048A1E8352990016639A /* invitaionCodeViewController.m in Sources */,
 				0A98AF481DF270BF00BCA88C /* JYConfiguration.m in Sources */,
-				0A6830E11DF1072C00D51770 /* LanyaViewController.m in Sources */,
 				0A52D7201F063101009EF865 /* MyFeedBackViewController.m in Sources */,
 				0A45E1BC1EBD9EEC00BE4980 /* MycradInfoViewController.m in Sources */,
 				0AD75CD31DBDDE5300297AC3 /* MyViewControllerDataSource.m in Sources */,

@@ -169,8 +169,20 @@ static PropertyActivationSingleTon *_instace = nil;
 {
     if(![self.pAPeripheralArray containsObject:peripheral])
         [self.pAPeripheralArray addObject:peripheral];
-    if ([self.delegate respondsToSelector:@selector(pADoSomethingEveryFrame:)])
-        [self.delegate pADoSomethingEveryFrame:self.pAPeripheralArray];
+    
+    
+    NSString *strUUid = FAKAQI_TON_UUID_STR;
+    if (strUUid.length < 2 && [NSString stringWithFormat:@"%@",peripheral.name].length == 5) {
+        if ([[NSString stringWithFormat:@"%@",peripheral.name]  isEqualToString:@"CALID"]) {
+            [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%@",peripheral.identifier] forKey:@"fakaqiIdentifierStr"];  //存储
+            if ([self.delegate respondsToSelector:@selector(pADoSomethingEveryFrame:)])
+                [self.delegate pADoSomethingEveryFrame:1];
+            
+        }
+    }
+    
+    
+   
 }
 
 #pragma mark - 连接外设
@@ -178,7 +190,8 @@ static PropertyActivationSingleTon *_instace = nil;
 {
     if (!peripheral) {
         
-        LOG(@"主动断开蓝牙");
+        if ([self.delegate respondsToSelector:@selector(pADoSomethingtishiFrame:)])
+            [self.delegate pADoSomethingtishiFrame:@"断开连接"];
         return;
     }
     
@@ -334,8 +347,9 @@ static PropertyActivationSingleTon *_instace = nil;
         
     } else if ([[self.receiveData substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"b2"] ||  [[self.receiveData substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"a2"]) {
         if (self.receiveData.length > 210) {
-            /*      续卡暂不存储信息
+          
             NSString *userInfoOne = [self.singleton lanyaDataDecryptedAction:[self.receiveData substringWithRange:NSMakeRange(2,104)]];
+              /*      续卡暂不存储信息
              NSString *userInfoTow = [self.singleton lanyaDataDecryptedAction:[self.receiveData substringWithRange:NSMakeRange(108,104)]];
            
             self.pAtool = [DBTool sharedDBTool];
@@ -352,7 +366,7 @@ static PropertyActivationSingleTon *_instace = nil;
             */
             if ([self.singleton lanyaDataXiaoyanAction:[self.receiveData substringWithRange:NSMakeRange(2,104)]] && [self.singleton lanyaDataXiaoyanAction:[self.receiveData substringWithRange:NSMakeRange(108,104)]]) {
                 if ([self.delegate respondsToSelector:@selector(pADoSomethingtishiFrame:)])
-                    [self.delegate pADoSomethingtishiFrame:[NSString stringWithFormat:@"%@%@",[self.receiveData substringWithRange:NSMakeRange(2,104)],[self.receiveData substringWithRange:NSMakeRange(108,104)]]];
+                    [self.delegate pADoSomethingtishiFrame:[NSString stringWithFormat:@"%@%@%@",[self.receiveData substringWithRange:NSMakeRange(2,104)],[self.receiveData substringWithRange:NSMakeRange(108,104)],[userInfoOne substringWithRange:NSMakeRange(46,11)]]];
             }
             
            

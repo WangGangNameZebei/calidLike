@@ -8,10 +8,10 @@
 
 #import "BaseViewController.h"
 #import "PropertyActivationSingleTon.h"
-#import "PropertyActivationViewControllerDataSource.h"
 
-@interface PropertyActivationViewController : BaseViewController <pALanyaDelegate,UITableViewDelegate,UITextFieldDelegate>
-@property (strong, nonatomic) IBOutlet UITableView *paVCTableiVew;
+@interface PropertyActivationViewController : BaseViewController <pALanyaDelegate,UITextFieldDelegate,UIAlertViewDelegate>
+@property (strong, nonatomic) IBOutlet UIView *chongzhiPasswordView;
+@property (strong, nonatomic) IBOutlet UIButton *chongzhiButton;
 
 @property (strong, nonatomic) IBOutlet UIView *pAPhoneNumberView;
 @property (strong, nonatomic) IBOutlet UIView *pAPasswordView;
@@ -24,11 +24,13 @@
 @property (strong, nonatomic) IBOutlet UITextField *pAConfirmPasswordTextField;
 @property (strong, nonatomic) IBOutlet UILabel *pATitleLabel;
 @property (strong, nonatomic) IBOutlet UIButton *uploadButton;      //提交注册按钮
+@property (strong, nonatomic) IBOutlet UILabel *pALanyaLabel;
 
+@property (strong, nonatomic) IBOutlet UILabel *pAPhoneNumberLabel;
+@property (strong, nonatomic) IBOutlet UILabel *pAPasswordLabel;
+@property (strong, nonatomic) IBOutlet UILabel *pAConfirmPasswordLabel;
 @property (strong, nonatomic) NSString *userInfo;           //用户数据
 @property (strong, nonatomic) NSString *titleLabelString;          //标题 字符串
 @property (strong, nonatomic) PropertyActivationSingleTon *paSingleTon;     //蓝牙
-@property (strong, nonatomic) NSMutableArray *paLnyaNameArray;
-@property (strong, nonatomic) PropertyActivationViewControllerDataSource *propertyActionViewControllerDataSource;
 
 @end

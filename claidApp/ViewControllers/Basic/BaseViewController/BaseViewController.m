@@ -70,22 +70,30 @@
 }
 
 - (void)promptInformationActionWarningString:(NSString *)warningString {
-    UIView *warningStr = [[UIView alloc] initWithFrame:CGRectMake(([UIScreen screenWidth] - 310 )/ 2  , ([UIScreen screenHeight]) / 2 + 50, 310, 60)];
-    warningStr.backgroundColor = [UIColor blackColor];
-    UILabel *warLabel = [[UILabel alloc] initWithFrame:warningStr.bounds];
-    warLabel.textColor = [UIColor whiteColor];
-    warLabel.text = warningString;
-    warLabel.textAlignment = 1;
-    [warningStr addSubview:warLabel];
-    warningStr.alpha = .0f;
-    [self.view addSubview:warningStr];
+    UIWindow * window = [UIApplication sharedApplication].keyWindow;
+    UIView *showview =  [[UIView alloc]init];
+    showview.backgroundColor = [UIColor blackColor];
+    showview.frame = CGRectMake(1, 1, 1, 1);
+    showview.alpha = 1.0f;
+    showview.layer.cornerRadius = 5.0f;
+    showview.layer.masksToBounds = YES;
+    [window addSubview:showview];
     
-    [UIView animateWithDuration:2.0 delay:0.2 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-        warningStr.alpha = 1;
-        
-        [self.view layoutIfNeeded];
+    UILabel *label = [[UILabel alloc]init];
+    CGSize LabelSize = [warningString sizeWithFont:[UIFont systemFontOfSize:17] constrainedToSize:CGSizeMake(300, 9000)];
+    
+    label.frame = CGRectMake(10, 5, LabelSize.width, LabelSize.height);
+    label.text = warningString;
+    label.textColor = [UIColor whiteColor];
+    label.textAlignment = 1;
+    label.backgroundColor = [UIColor clearColor];
+    label.font = [UIFont boldSystemFontOfSize:15];
+    [showview addSubview:label];
+    showview.frame = CGRectMake(([UIScreen screenWidth] - LabelSize.width - 20)/2, [UIScreen screenHeight] - 200, LabelSize.width+20, LabelSize.height+10);
+    [UIView animateWithDuration:2.0 animations:^{
+        showview.alpha = 0;
     } completion:^(BOOL finished) {
-        [warningStr removeFromSuperview];
+        [showview removeFromSuperview];
     }];
     
 }
@@ -116,6 +124,27 @@
         userkeystr = @"";
     }
     return userkeystr;
+}
+#pragma mark - 判断是否是电话号码   返回 NO 是哦 合法电话
+- (BOOL)isMobileNumber:(NSString *)mobileNum
+{
+    if (mobileNum.length != 11){
+        return YES;
+    }
+    if (![[mobileNum substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"1"]){
+        return YES;
+    }
+    NSScanner* scan = [NSScanner scannerWithString:mobileNum];
+    int val;
+    
+    if ([scan scanInt:&val] && [scan isAtEnd])
+    {
+        return NO;
+    }
+    else
+    {
+        return YES;
+    }
 }
 /*
 - (void)viewDidLoad {

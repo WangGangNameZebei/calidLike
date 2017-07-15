@@ -42,7 +42,7 @@
      [self.navigationController popViewControllerAnimated:YES];
 }
 - (IBAction)tijiaoButtonAction:(id)sender {
-    if (self.fangkePhoneNumberTextField.text.length == 0){
+    if ([self isMobileNumber:self.fangkePhoneNumberTextField.text]){
         [self promptInformationActionWarningString:@"电话号码不能为空!"];
         return;
     }

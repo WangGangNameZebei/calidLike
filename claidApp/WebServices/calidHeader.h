@@ -13,6 +13,10 @@
 
 #define SINGLE_TON_UUID_STR [[NSUserDefaults standardUserDefaults] objectForKey:@"identifierStr"]
 
+/* 蓝牙发卡器 uuid*/
+
+#define FAKAQI_TON_UUID_STR [[NSUserDefaults standardUserDefaults] objectForKey:@"fakaqiIdentifierStr"]
+
 /*输出宏*/
 #define LOG(...) NSLog(__VA_ARGS__);
 #define LOG_METHOD NSLog(@"%s", __func__);

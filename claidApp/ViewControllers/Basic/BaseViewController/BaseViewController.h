@@ -30,5 +30,6 @@
 - (void)userInfowriteuserkey:(NSString *)userkey uservalue:(NSString *)uservalue;       //用户信息写入
 - (NSString *)userInfoReaduserkey:(NSString *)userkey;              // 用户信息读写
 
+- (BOOL)isMobileNumber:(NSString *)mobileNum;       // 判断是否是电话号码
 
 @end

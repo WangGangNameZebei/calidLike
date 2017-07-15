@@ -29,7 +29,7 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)registerButtonAction:(id)sender {
-    if (self.phoneNumberTextField.text.length != 11){
+    if ([self isMobileNumber:self.phoneNumberTextField.text]){
         [self promptInformationActionWarningString:@"请输入11位手机号码!"];
         return;
     }
@@ -38,7 +38,7 @@
         return;
     }
     if (self.passwordTextField.text.length < 6 || self.passwordTextField.text.length > 16){
-        [self promptInformationActionWarningString:@"请输入6-16位字符组合!"];
+        [self promptInformationActionWarningString:@"请输入6-16位密码!"];
         return;
     }
     if ([self.passwordTextField.text isEqualToString:self.confirmPasswordTextField.text] ){

@@ -15,7 +15,7 @@
 
 @protocol pALanyaDelegate <NSObject>
 @optional
-- (void)pADoSomethingEveryFrame:(NSMutableArray *)array;     // 扫描设备代理
+- (void)pADoSomethingEveryFrame:(NSInteger)array;     // 扫描设备代理
 - (void)pADoSomethingtishiFrame:(NSString *)string;     // 提示
 @end
 
@@ -41,6 +41,7 @@
 -(void)startScan;                                         //扫描外设
 -(void)disConnection;                                     // 断开蓝牙
 - (void)connectClick:(CBPeripheral *)peripheral;            //连接外设
+- (void)getPeripheralWithIdentifierAndConnect:(NSString *)identifierStr;   //uuid 目标 连接 蓝牙
 
 
 
