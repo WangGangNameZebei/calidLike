@@ -77,6 +77,7 @@
         self.pAConfirmPasswordLabel.hidden = YES;
         self.pAPasswordView.hidden = YES;
         self.pAConfirmPasswordView.hidden = YES;
+        self.pAPasswordTextField.text = @"";
     }
     
 }

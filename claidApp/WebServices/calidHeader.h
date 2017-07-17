@@ -32,7 +32,7 @@
 //我是访客   URL
 #define VISITOR_URL @"http://www.sycalid.cn/api/getKeyByPhoneNum.do"
 // 物业激活  续卡 (注册)
-#define ADDUSERPROPERTY_URL  @"http://www.sycalid.cn/api/addUserProperty.do"
+#define ADDUSERPROPERTY_URL @"http://www.sycalid.cn/api/addUserProperty.do"
 
 // 更新用户数据
 #define RENEWAL_USER_DATA_URL  @"http://www.sycalid.cn/api/renewalUserDate.do"

@@ -22,7 +22,7 @@
         NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableContainers error:nil];
         [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
       
-        if ([[resultDic objectForKey:@"msg"] isEqualToString:@"注册成功"]){  // 注册成功  清除数据
+        if ([[resultDic objectForKey:@"status"] integerValue] == 200){  // 注册成功  清除数据
             self.userInfo = @"";
             self.pAPhoneNumberTextField.text = @"";
         }
