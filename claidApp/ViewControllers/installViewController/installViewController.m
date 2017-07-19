@@ -50,14 +50,16 @@
 }
 
 - (IBAction)scanLanyaButton:(id)sender {
-
-    NSString  *strLanya = FAKAQI_TON_UUID_STR;
-    if (strLanya.length < 3) {
-        [self.sinTon startScan]; // 扫描
+    if ([self.installLanyaLabel.text isEqualToString:@"已连接"]){
+        [self.sinTon disConnection];       // 退出前 断开蓝牙
     } else {
-        [self.sinTon shoudongConnectClick:strLanya];
+        NSString  *strLanya = FAKAQI_TON_UUID_STR;
+        if (strLanya.length < 3) {
+            [self.sinTon startScan]; // 扫描
+        } else {
+            [self.sinTon shoudongConnectClick:strLanya];
+        }
     }
-    
 }
 #pragma mark - Tasks
 - (void)doSomeWork {

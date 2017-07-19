@@ -90,7 +90,7 @@
     label.font = [UIFont boldSystemFontOfSize:15];
     [showview addSubview:label];
     showview.frame = CGRectMake(([UIScreen screenWidth] - LabelSize.width - 20)/2, [UIScreen screenHeight] - 200, LabelSize.width+20, LabelSize.height+10);
-    [UIView animateWithDuration:2.0 animations:^{
+    [UIView animateWithDuration:3.0 animations:^{
         showview.alpha = 0;
     } completion:^(BOOL finished) {
         [showview removeFromSuperview];

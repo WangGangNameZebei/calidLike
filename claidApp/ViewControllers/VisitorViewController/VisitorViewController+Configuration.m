@@ -210,6 +210,7 @@
     }else{
       [self.tool updateWithObj:self.viReadClass andKey:@"visitorName" isEqualValue:lanyaDataStr];
     }
-
+  self.visitorViewControllerDataSource.beizhuNameArray = [self.tool selectWithClass:[VisitorCalss class] params:nil];
+   [self.visitorTableView reloadData];  //刷新 蓝牙选择
 }
 @end

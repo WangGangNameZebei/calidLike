@@ -70,7 +70,6 @@
         self.pAConfirmPasswordLabel.hidden = NO;
         self.pAPasswordView.hidden = NO;
         self.pAConfirmPasswordView.hidden = NO;
-        [self.view setNeedsLayout];
     } else {
         [self.chongzhiButton setImage:[UIImage imageNamed:@"gouxian_gray"] forState:UIControlStateNormal];
         self.pAPasswordLabel.hidden = YES;
@@ -82,13 +81,16 @@
     
 }
 - (IBAction)saoMiaoButtonAction:(id)sender {
-    NSString  *strLanya = FAKAQI_TON_UUID_STR;
-    if (strLanya.length < 3) {
-        [self.paSingleTon startScan]; // 扫描
-    } else {
-        [self.paSingleTon getPeripheralWithIdentifierAndConnect:strLanya];
+    if ([self.pALanyaLabel.text isEqualToString:@"已连接"]){
+        [self.paSingleTon disConnection];       // 退出前 断开蓝牙
+    } else {   
+        NSString  *strLanya = FAKAQI_TON_UUID_STR;
+        if (strLanya.length < 3) {
+            [self.paSingleTon startScan]; // 扫描
+        } else {
+            [self.paSingleTon getPeripheralWithIdentifierAndConnect:strLanya];
+        }
     }
- 
 }
 - (IBAction)returnButtonAction:(id)sender {
     if ([self.titleLabelString isEqualToString:@"续卡"]){

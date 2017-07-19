@@ -21,6 +21,8 @@
 
 - (void)singleTonEdit {
     self.pATitleLabel.text = self.titleLabelString; //标题
+    self.uploadButton.backgroundColor = [UIColor colorFromHexCode:@"#E6E6E6"]; //  初始按钮 灰色
+
     if ([self.titleLabelString isEqualToString:@"续卡"]) {
         [self.uploadButton setTitle:@"提交" forState:UIControlStateNormal];
         self.chongzhiPasswordView.hidden = NO;
@@ -56,6 +58,7 @@
     } else {
         self.userInfo = [string substringWithRange:NSMakeRange(0,208)];
         self.pAPhoneNumberTextField.text = [NSString stringWithFormat:@"%@", [string substringWithRange:NSMakeRange(208, 11)]];
+        self.uploadButton.backgroundColor = [UIColor colorFromHexCode:@"#1296db"];
         [self promptInformationActionWarningString:@"发卡成功"];
     }
 }
@@ -73,11 +76,19 @@
     self.pAPhoneNumberTextField.delegate = self;
     
     self.pAPasswordTextField.clearButtonMode = UITextFieldViewModeAlways;
-    self.pAPasswordTextField.secureTextEntry = YES;
     self.pAPasswordTextField.delegate = self;
     self.pAConfirmPasswordTextField.clearButtonMode = UITextFieldViewModeAlways;
-    self.pAConfirmPasswordTextField.secureTextEntry = YES;
+   
     self.pAConfirmPasswordTextField.delegate = self;
+    if ([self.titleLabelString isEqualToString:@"续卡"]) {
+        self.pAPasswordTextField.secureTextEntry = YES;
+        self.pAConfirmPasswordTextField.secureTextEntry = YES;
+    } else {
+        self.pAPasswordTextField.text = [NSString stringWithFormat:@"123456"];
+        self.pAConfirmPasswordTextField.text = [NSString stringWithFormat:@"123456"];
+
+    }
+    
 }
 
 //  textFieldView编辑

@@ -8,7 +8,7 @@
 
 #import "PropertyActivationViewController+LogicalFlow.h"
 #import <AFHTTPRequestOperationManager.h>
-
+#import "UIColor+Utility.h"
 
 @implementation PropertyActivationViewController (LogicalFlow)
 - (void)propertyActivationPostForUserData:(NSString *)userData userInfo:(NSString *)userInfo userEqInfo:(NSString *)userEqInfo userPhone:(NSString *)userPhone password:(NSString *)password {
@@ -25,6 +25,7 @@
         if ([[resultDic objectForKey:@"status"] integerValue] == 200){  // 注册成功  清除数据
             self.userInfo = @"";
             self.pAPhoneNumberTextField.text = @"";
+            self.uploadButton.backgroundColor = [UIColor colorFromHexCode:@"#E6E6E6"];
         }
         
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
