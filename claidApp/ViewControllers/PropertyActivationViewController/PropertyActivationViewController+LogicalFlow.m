@@ -26,6 +26,10 @@
             self.userInfo = @"";
             self.pAPhoneNumberTextField.text = @"";
             self.uploadButton.backgroundColor = [UIColor colorFromHexCode:@"#E6E6E6"];
+           [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
+        } else {
+            
+            [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
         }
         
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {

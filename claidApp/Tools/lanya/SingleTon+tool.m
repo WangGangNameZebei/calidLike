@@ -98,7 +98,6 @@
     for (NSInteger I = 0; I < 32; I++) {
         string = [NSString stringWithFormat:@"%@%@",string,@"00"];
     }
-    
     for (NSInteger j = 0; j < string.length / 2; j++) {
         TheTwoCharacters = [string substringWithRange:NSMakeRange(j * 2,2)];
         aa= [self turnTheHexLiterals:TheTwoCharacters];
@@ -277,6 +276,7 @@ unsigned int crcs32( unsigned char buf[], unsigned char len)
     for(i = 0; i < len;i++)
     {
         ret = CRC32_table[((ret & 0xFF) ^ buf[i])] ^ (ret >> 8);
+  
     }
     ret = ~ret;
     return ret;
