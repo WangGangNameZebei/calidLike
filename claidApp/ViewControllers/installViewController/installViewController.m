@@ -29,7 +29,8 @@
 
 // 点击  UItableView
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-   self.selectIndexPath = indexPath;
+    self.lingminduBool = NO;
+    self.selectIndexPath = indexPath;
     SingleTon *ton = [SingleTon sharedInstance];
    NSString *uuidstr = SINGLE_TON_UUID_STR;
     if (!uuidstr) {
@@ -67,14 +68,6 @@
     sleep(3.);
 }
 
-#pragma mark UIPickerViewDataSource
--(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return 1;
-}
-
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return self.numberPickerArrar.count;
-}
 
 /*
 #pragma mark - Navigation

@@ -41,7 +41,7 @@
 
 
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
-    if (event.subtype == UIEventSubtypeMotionShake && [[[NSUserDefaults standardUserDefaults] objectForKey:@"shakeswitch"] isEqualToString:@"YES"]) { // 判断是否是摇动结束
+    if (event.subtype == UIEventSubtypeMotionShake && [[self userInfoReaduserkey:@"shakeswitch"] isEqualToString:@"YES"]) { // 判断是否是摇动结束
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);  //震动
         [self shuakaButtonAction:self.shuaKaButton];
         NSLog(@"摇动结束");
@@ -78,7 +78,7 @@
                                                   configBlock:^JYConfiguration *(JYConfiguration *carouselConfig) {
             carouselConfig.pageContollType = MiddlePageControl;
             carouselConfig.pageTintColor = [UIColor whiteColor];
-            carouselConfig.currentPageTintColor = [UIColor colorFromHexCode:@"#1296db"];
+            carouselConfig.currentPageTintColor = [UIColor setipBlueColor];
             carouselConfig.pushAnimationType = PushCube;
             carouselConfig.placeholder = [UIImage imageNamed:@"zhanweiImage.png"];
             carouselConfig.faileReloadTimes = 5;
@@ -102,6 +102,7 @@
     CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, screenLockStateChanged, NotificationPwdUI, NULL, CFNotificationSuspensionBehaviorDeliverImmediately);  // 解锁检测        后台可运行(选模式)
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(litActionbiaoshi) name:@"litActionbiaoshi" object:nil];       //通知注册
     self.ton = [SingleTon sharedInstance];
+    [self.ton initialization];
     self.ton.deleGate = self;
     self.litBool = YES;
 }
@@ -117,7 +118,8 @@
             [self switchEditInit];
             break;
         case 2:                             //  2  为 自动 连接 发现服务
-            self.message = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESData"] password:AES_PASSWORD];
+            self.message = [self userInfoReaduserkey:@"lanyaAESData"];
+            self.message = [AESCrypt decrypt:[self userInfoReaduserkey:@"lanyaAESData"] password:AES_PASSWORD];
             if (self.message.length > 0) {
                self.message = @"0180010101FF3344556600000000000000000000000000000000000000000000000000000000000000";
                 self.message = [NSString stringWithFormat:@"%@%@",@"cc",self.message];
@@ -137,7 +139,7 @@
                 self.paybycardTimer = nil;
             }
             [self SDshuakabiaoshiAction:YES];
-            if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"switch"] isEqualToString:@"YES"])
+            if ([[self userInfoReaduserkey:@"switch"] isEqualToString:@"YES"])
                 [self.ton targetScan];             //目标扫描
             break;
         case 5:
@@ -309,7 +311,7 @@
 static void screenLockStateChanged(CFNotificationCenterRef center,void* observer,CFStringRef name,const void* object,CFDictionaryRef userInfo)
 
 {
-    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"brightScreenswitch"] isEqualToString:@"YES"]){
+    if ([[[BaseViewController alloc]  userInfoReaduserkey:@"brightScreenswitch"] isEqualToString:@"YES"]){
         //创建通知
         NSNotification *notification =[NSNotification notificationWithName:@"litActionbiaoshi" object:nil userInfo:nil];
         //通过通知中心发送通知

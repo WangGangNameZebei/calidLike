@@ -7,7 +7,7 @@
 //
 
 #import "VisitorSingleTon+Tool.h"
-
+#import "BaseViewController.h"
 @implementation VisitorSingleTon (Tool)
 //将传入的NSData类型转换成NSString并返回
 - (NSString*)visitorhexadecimalString:(NSData *)data{
@@ -135,7 +135,7 @@
     key1[2] = key2[18];
     key1[3] = key2[19];
     numberKey = (key1[3]) + (key1[2]<<8) + (key1[1]<<16) + (key1[0]<<24);
-    NSString *lanyaDataStr = [[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaVisitorAESData"];
+    NSString *lanyaDataStr = [[BaseViewController alloc] userInfoReaduserkey:@"lanyaVisitorAESData"];
     strOne = [lanyaDataStr substringWithRange:NSMakeRange(0,104)];
     strTow = [self jiamiaTostringAcction:strOne numberKey:numberKey];
     strTow = [NSString stringWithFormat:@"%@%@",strTow,[self jiamiaTostringAcction:[lanyaDataStr substringWithRange:NSMakeRange(104, 104)] numberKey:numberKey]];

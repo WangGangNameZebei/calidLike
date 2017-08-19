@@ -23,7 +23,7 @@
 // 发卡数据选择tableView 编辑
 - (void)visitorTableViewEdit {
     self.requestBool = YES;
-    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"lanyaVisitorAESData"];
+    [self userInfowriteuserkey:@"lanyaVisitorAESData" uservalue:@""];
     self.tool = [DBTool sharedDBTool];
     [self.visitorTableView registerNib:[UINib nibWithNibName:@"MinFuncTionTableViewCell" bundle:nil] forCellReuseIdentifier:MINN_FUNCTION_CELL_NIB];
     
@@ -55,7 +55,7 @@
     NSString *message;
     switch (data) {
         case 1:         //连接 成功 发现   服务
-           message = [[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaVisitorAESData"];
+           message = [self userInfoReaduserkey:@"lanyaVisitorAESData"];
             if (message.length > 0) {
                message = @"0180010101FF3344556600000000000000000000000000000000000000000000000000000000000000";
                 message = [NSString stringWithFormat:@"%@%@",@"cc",message];
@@ -81,10 +81,11 @@
 
 //textField 编辑
 - (void)textFieldViewEdit {
-    self.shukaButton.backgroundColor = [UIColor colorFromHexCode:@"C2C2C2"];
+    self.shukaButton.backgroundColor = [UIColor setupGreyColor];
     self.visitorTextField.keyboardType = UIKeyboardTypeNumberPad;        //数字键盘
     self.visitorTextField.clearButtonMode = UITextFieldViewModeAlways;
     self.visitorTextField.delegate = self;
+    self.visitorTextField.text =[self userInfoReaduserkey:@"userName"];
     [self viewlayer:self.visitorView];
 }
 
@@ -93,19 +94,19 @@
     view.layer.cornerRadius = 6;
     view.layer.masksToBounds = YES;
     view.layer.borderWidth = 1;
-    view.layer.borderColor = [[UIColor colorFromHexCode:@"#C2C2C2"] CGColor];
+    view.layer.borderColor = [[UIColor setupGreyColor] CGColor];
     self.visitorImageView.image = [UIImage imageNamed:@"login_accountNumber_gray"];
 }
 
 #pragma mark textField 代理方法
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-        self.visitorView.layer.borderColor = [[UIColor colorFromHexCode:@"#1296db"] CGColor];
+        self.visitorView.layer.borderColor = [[UIColor setipBlueColor] CGColor];
         self.visitorImageView.image = [UIImage imageNamed:@"login_accountNumber_blue"];
         
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-        self.visitorView.layer.borderColor = [[UIColor colorFromHexCode:@"#C2C2C2"] CGColor];
+        self.visitorView.layer.borderColor = [[UIColor setupGreyColor] CGColor];
         self.visitorImageView.image = [UIImage imageNamed:@"login_accountNumber_gray"];
 }
 
@@ -193,7 +194,7 @@
 // 刷卡次数更新
 - (void)paybycardSuccessAction {
     self.readDataArr = [self.tool selectWithClass:[VisitorCalss class] params:nil];
-    NSString *lanyaDataStr = [[NSUserDefaults standardUserDefaults] objectForKey:@"userInformation"];
+    NSString *lanyaDataStr = [self userInfoReaduserkey:@"userInformation"];
     for (NSInteger j=0; j <self.readDataArr.count; j++) {
         self.viReadClass = self.readDataArr[j];
         if (self.viReadClass .visitorName == [lanyaDataStr integerValue]){
@@ -204,8 +205,8 @@
     self.viReadClass.visitorFrequency=self.viReadClass.visitorFrequency-1;
     if (self.viReadClass.visitorFrequency == 0){
        [self.tool deleteRecordWithClass:[VisitorCalss class] andKey:@"visitorName" isEqualValue:lanyaDataStr];
-        self.shukaButton.backgroundColor = [UIColor colorFromHexCode:@"C2C2C2"];
-        [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"lanyaVisitorAESData"];
+        self.shukaButton.backgroundColor = [UIColor setupGreyColor];
+        [self userInfowriteuserkey:@"lanyaVisitorAESData" uservalue:@""];
         
     }else{
       [self.tool updateWithObj:self.viReadClass andKey:@"visitorName" isEqualValue:lanyaDataStr];

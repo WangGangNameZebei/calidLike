@@ -33,17 +33,17 @@
 - (IBAction)sharkSwitchAction:(id)sender {
     UISwitch *mySwitch = (UISwitch *)sender;
     if (mySwitch.isOn){
-       [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"shakeswitch"];
-    }else{
-       [[NSUserDefaults standardUserDefaults] setObject:@"NO" forKey:@"shakeswitch"];
+        [self userInfowriteuserkey:@"shakeswitch" uservalue:@"YES"];
+    } else{
+        [self userInfowriteuserkey:@"shakeswitch" uservalue:@"NO"];
     }
 }
 - (IBAction)brightScreenSwitchAction:(id)sender {
     UISwitch *mySwitch = (UISwitch *)sender;
     if (mySwitch.isOn){
-         [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"brightScreenswitch"];
+         [self userInfowriteuserkey:@"brightScreenswitch" uservalue:@"YES"];
     } else {
-        [[NSUserDefaults standardUserDefaults] setObject:@"NO" forKey:@"brightScreenswitch"];
+        [self userInfowriteuserkey:@"brightScreenswitch" uservalue:@"NO"];
     }
 }
 

@@ -19,8 +19,7 @@
         }
     self.receiveData = [characteristic substringWithRange:NSMakeRange(0,104)];
     NSString *encryptedData = [AESCrypt encrypt:self.receiveData password:AES_PASSWORD];  //加密
-    [[NSUserDefaults standardUserDefaults] setObject:encryptedData forKey:@"lanyaAESErrornData"];  //存储
-    
+    [self.baseViewController userInfowriteuserkey:@"lanyaAESErrornData" uservalue:encryptedData];
     if (!self.jieHhou && [self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
         [self.deleGate switchEditInitPeripheralData:3];
      

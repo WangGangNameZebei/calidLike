@@ -84,7 +84,6 @@ static VisitorSingleTon *_instace = nil;
             strHead = [NSString stringWithFormat:@"%@%ld%@",[strHead substringWithRange:NSMakeRange(0,1)],(long)aa,[CommandStr substringWithRange:NSMakeRange(aa*38,jiequlength)]];
             writeData = [self ToDealWithCommandString:strHead StrLenght:strHead.length/2];
             [self writeChar:writeData];
-            
         }
     } else {
         writeData = [self ToDealWithCommandString:CommandStr StrLenght:length/2];

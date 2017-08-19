@@ -122,7 +122,7 @@
                                 <constraint firstAttribute="width" constant="232" id="8Qy-4A-ZMd"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <state key="normal" title="     连接发卡器">
+                            <state key="normal" title="   连接发卡器">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>

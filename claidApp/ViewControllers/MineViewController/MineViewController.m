@@ -23,7 +23,7 @@
     [self switchEditInit];
 }
 - (void)switchEditInit {
-    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"switch"] isEqualToString:@"YES"]){
+    if ([[self userInfoReaduserkey:@"switch"] isEqualToString:@"YES"]){
         [self.ziDongSwitch setOn:YES];
         [self zidongAction:self.ziDongSwitch];
     } else {
@@ -43,11 +43,11 @@
         }
         [self.ton getPeripheralWithIdentifierAndConnect:SINGLE_TON_UUID_STR];
         self.ziDongLabei.text = @"自动刷卡";
-        [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"switch"];
+        [self userInfowriteuserkey:@"switch" uservalue:@"YES"];
     } else {
         self.ziDongLabei.text = @"手动刷卡";
         [self.ton.manager stopScan];  //停止  扫描
-        [[NSUserDefaults standardUserDefaults] setObject:@"NO" forKey:@"switch"];
+         [self userInfowriteuserkey:@"switch" uservalue:@"NO"];
     }
 
     

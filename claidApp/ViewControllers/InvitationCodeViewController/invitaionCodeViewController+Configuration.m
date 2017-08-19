@@ -36,17 +36,17 @@
     view.layer.cornerRadius = 6;
     view.layer.masksToBounds = YES;
     view.layer.borderWidth = 1;
-    view.layer.borderColor = [[UIColor colorFromHexCode:@"#C2C2C2"] CGColor];
+    view.layer.borderColor = [[UIColor setupGreyColor] CGColor];
 }
 
 #pragma mark textField 代理方法
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-        self.fangkePhoneNumberView.layer.borderColor = [[UIColor colorFromHexCode:@"#1296db"] CGColor];
+        self.fangkePhoneNumberView.layer.borderColor = [[UIColor setipBlueColor] CGColor];
         self.fangkePhoneNumberImageView.image = [UIImage imageNamed:@"login_accountNumber_blue"];
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-        self.fangkePhoneNumberView.layer.borderColor = [[UIColor colorFromHexCode:@"#C2C2C2"] CGColor];
+        self.fangkePhoneNumberView.layer.borderColor = [[UIColor setupGreyColor] CGColor];
         self.fangkePhoneNumberImageView.image = [UIImage imageNamed:@"login_accountNumber_gray"];
   
 }

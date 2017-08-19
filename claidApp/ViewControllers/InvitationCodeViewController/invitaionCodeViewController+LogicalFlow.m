@@ -14,7 +14,7 @@
 
 - (void)invitionCodeForPhonenumber:(NSString *)touristPhone beizhutext:(NSString *)beizhutext  {
     AFHTTPRequestOperationManager *manager = [self tokenManager];
-    NSString *userorakey =[[NSUserDefaults standardUserDefaults] objectForKey:@"userorakey"];
+    NSString *userorakey =[self userInfoReaduserkey:@"userorakey"];
     NSDictionary *parameters = @{@"t_owner":userorakey,@"t_touristPhone":touristPhone,@"t_owner_Note":beizhutext};
     [manager POST:INVITAION_VISITOR_URL parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         NSString *requestTmp = [NSString stringWithString:operation.responseString];

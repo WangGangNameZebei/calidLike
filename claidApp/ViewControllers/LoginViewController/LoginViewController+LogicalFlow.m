@@ -24,10 +24,16 @@
         if ([[resultDic objectForKey:@"status"] integerValue] == 200) {
             NSMutableArray *dataArray= [resultDic objectForKey:@"data"];
             NSString *encryptedData = [AESCrypt encrypt:[NSString stringWithFormat:@"%@",dataArray[2]] password:AES_PASSWORD];  //加密
-            [[NSUserDefaults standardUserDefaults] setObject:encryptedData forKey:@"lanyaAESData"];  //存储
+             [self createAdatabaseAction];
+             [self userInfowriteuserkey:@"lanyaAESData" uservalue:encryptedData]; //存储  刷卡数据
+  
+             [self userInfowriteuserkey:@"userorakey" uservalue:[NSString stringWithFormat:@"%@",dataArray[0]]];    //存储     推荐码
             
-             [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%@",dataArray[0]] forKey:@"userorakey"];  //存储     推荐码
-            [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%@",dataArray[1]] forKey:@"districtNumber"];  //存储  小区号
+            
+            [self userInfowriteuserkey:@"districtNumber" uservalue:[NSString stringWithFormat:@"%@",dataArray[1]]];       //存储  小区号
+            [self userInfowriteuserkey:@"userName" uservalue:username];//存储 账号
+            [self userInfowriteuserkey:@"passWord" uservalue:password];// 存储 密码
+            
             
             CustomTabBarController *customTabBarController = [self createCustomTabBarController];
             UIApplication.sharedApplication.delegate.window.rootViewController = customTabBarController;

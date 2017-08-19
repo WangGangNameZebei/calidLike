@@ -109,12 +109,24 @@
 }
 #pragma mark   用户信息写入
 - (void)userInfowriteuserkey:(NSString *)userkey uservalue:(NSString *)uservalue{
-    UserInfo *userIF = [UserInfo initUserkeystr:userkey uservaluestr:uservalue];
+    self.baseTool = [DBTool sharedDBTool];
+    NSString * userkeystr;
+    NSArray *data = [self.baseTool selectWithClass:[UserInfo class] params:[NSString stringWithFormat:@"_userkey = '%@'",userkey]];
+    if (data.count == 0){   //先查找 没有 插入 有的话  修改
+        userkeystr = @"";
+        UserInfo *userIF = [UserInfo initUserkeystr:userkey uservaluestr:uservalue];
+        [self.baseTool insertWithObj:userIF];
+        
+    } else{
+        UserInfo *userIF = [UserInfo initUserkeystr:userkey uservaluestr:uservalue];
+        
+        [self.baseTool updateWithObj:userIF andKey:@"userkey" isEqualValue:userkey];
+    }
     
-    [self.baseTool insertWithObj:userIF];
 }
 #pragma mark   用户信息读写
 - (NSString *)userInfoReaduserkey:(NSString *)userkey{
+    self.baseTool = [DBTool sharedDBTool];
     NSString * userkeystr;
     NSArray *data = [self.baseTool selectWithClass:[UserInfo class] params:[NSString stringWithFormat:@"_userkey = '%@'",userkey]];
     if (data.count != 0){

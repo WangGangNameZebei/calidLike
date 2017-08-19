@@ -43,33 +43,33 @@
     view.layer.cornerRadius = 6;
     view.layer.masksToBounds = YES;
     view.layer.borderWidth = 1;
-    view.layer.borderColor = [[UIColor colorFromHexCode:@"#C2C2C2"] CGColor];
+    view.layer.borderColor = [[UIColor setupGreyColor] CGColor];
 }
 
 #pragma mark textField 代理方法
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     if (textField.tag == 1) {
-        self.oldPasswordView.layer.borderColor = [[UIColor colorFromHexCode:@"#1296db"] CGColor];
+        self.oldPasswordView.layer.borderColor = [[UIColor setipBlueColor] CGColor];
         self.oldPasswordImage.image = [UIImage imageNamed:@"login_passWord_blue"];
     } else if (textField.tag == 2) {
-        self.changenewPasswordView.layer.borderColor = [[UIColor colorFromHexCode:@"#1296db"] CGColor];
+        self.changenewPasswordView.layer.borderColor = [[UIColor setipBlueColor] CGColor];
         self.changenewPasswordImage.image = [UIImage imageNamed:@"login_passWord_blue"];
     } else {
-        self.confirmnewPasswordView.layer.borderColor = [[UIColor  colorFromHexCode:@"#1296db"] CGColor];
+        self.confirmnewPasswordView.layer.borderColor = [[UIColor setipBlueColor] CGColor];
         self.confirmnewPasswordImage.image = [UIImage imageNamed:@"login_passWord_blue"];
     }
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     if (textField.tag == 1) {
-        self.oldPasswordView.layer.borderColor = [[UIColor colorFromHexCode:@"#C2C2C2"] CGColor];
+        self.oldPasswordView.layer.borderColor = [[UIColor setupGreyColor] CGColor];
         self.oldPasswordImage.image = [UIImage imageNamed:@"login_passWord_gray"];
     } else if (textField.tag == 2) {
-        self.changenewPasswordView.layer.borderColor = [[UIColor colorFromHexCode:@"#C2C2C2"] CGColor];
+        self.changenewPasswordView.layer.borderColor = [[UIColor setupGreyColor] CGColor];
         self.changenewPasswordImage.image = [UIImage imageNamed:@"login_passWord_gray"];
         
     } else {
-        self.confirmnewPasswordView.layer.borderColor = [[UIColor colorFromHexCode:@"#C2C2C2"] CGColor];
+        self.confirmnewPasswordView.layer.borderColor = [[UIColor setupGreyColor] CGColor];
         self.confirmnewPasswordImage.image = [UIImage imageNamed:@"login_passWord_gray"];
     }
 }

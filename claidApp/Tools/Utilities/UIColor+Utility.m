@@ -11,12 +11,12 @@
 @implementation UIColor (Utility)
 
 //example
-+ (instancetype)darkGreyLabelColor {
-    return [UIColor colorWithIntRed:50 green:50 blue:50];
++ (instancetype)setupGreyColor {
+    return [UIColor colorFromHexCode:@"#E6E6E6"];
 }
 
-+ (instancetype)blueTintColor {
-    return [UIColor colorWithIntRed:25 green:149 blue:252];
++ (instancetype)setipBlueColor {
+    return [UIColor colorFromHexCode:@"#3F9DDB"];
 }
 
 + (instancetype)colorWithIntRed:(NSInteger)red green:(NSInteger)green blue:(NSInteger)blue alpha:(NSInteger)alpha {

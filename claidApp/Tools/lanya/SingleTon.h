@@ -9,7 +9,7 @@
 #import <AESCrypt.h>
 #import "InstallCardData.h"
 #import "DBTool.h"
-
+#import "BaseViewController.h"
 
 @protocol installLanyaDelegate <NSObject>
 @optional
@@ -49,6 +49,9 @@
 @property (strong,nonatomic)DBTool *tool;                   //数据库
 @property (strong, nonatomic)InstallCardData *installCardData;      //数据库类
 @property (strong, nonatomic) NSMutableArray *numberArrar ;         //数据库便利数组
+@property (strong, nonatomic) BaseViewController *baseViewController;
+
+
 
 + (SingleTon *)sharedInstance;
 

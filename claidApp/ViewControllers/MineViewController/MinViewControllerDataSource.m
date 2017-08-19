@@ -9,7 +9,6 @@
 #import "MinViewControllerDataSource.h"
 #import "MinFuncTionTableViewCell.h"
 #import "SingleTon.h"
-
 @implementation MinViewControllerDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

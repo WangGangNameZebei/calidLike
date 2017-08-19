@@ -10,6 +10,7 @@
 #import "SingleTon+tool.h"
 #import "SingleTon+InstallWarden.h"
 
+
 @implementation PropertyActivationSingleTon
 static PropertyActivationSingleTon *_instace = nil;
 
@@ -41,6 +42,8 @@ static PropertyActivationSingleTon *_instace = nil;
     self.singleton = [SingleTon sharedInstance];
     self.pAPeripheralArray = [NSMutableArray array];
     self.pAdelayInSeconds = 3.0;
+    self.baseViewController = [[BaseViewController alloc] init];
+    
 }
 
 
@@ -50,6 +53,7 @@ static PropertyActivationSingleTon *_instace = nil;
     NSData *writeData;
     NSInteger datalength;
     NSInteger jiequlength = 38;
+
     int length = (unsigned)String.length;
     
     int ZeroNum = 210 - length;  // 38
@@ -79,7 +83,6 @@ static PropertyActivationSingleTon *_instace = nil;
             strHead = [NSString stringWithFormat:@"%@%ld%@",[strHead substringWithRange:NSMakeRange(0,1)],(long)aa,[CommandStr substringWithRange:NSMakeRange(aa*38,jiequlength)]];
             writeData = [self ToDealWithCommandString:strHead StrLenght:strHead.length/2];
             [self writeChar:writeData];
-            
         }
     } else {
         writeData = [self ToDealWithCommandString:CommandStr StrLenght:length/2];
@@ -175,6 +178,7 @@ static PropertyActivationSingleTon *_instace = nil;
     if (strUUid.length < 2 && [NSString stringWithFormat:@"%@",peripheral.name].length == 5) {
         if ([[NSString stringWithFormat:@"%@",peripheral.name]  isEqualToString:@"CALID"]) {
             [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%@",peripheral.identifier] forKey:@"fakaqiIdentifierStr"];  //存储
+            
             if ([self.delegate respondsToSelector:@selector(pADoSomethingEveryFrame:)])
                 [self.delegate pADoSomethingEveryFrame:1];
             
@@ -188,12 +192,6 @@ static PropertyActivationSingleTon *_instace = nil;
 #pragma mark - 连接外设
 -(void)connectClick:(CBPeripheral *)peripheral
 {
-    if (!peripheral) {
-        
-        if ([self.delegate respondsToSelector:@selector(pADoSomethingtishiFrame:)])
-            [self.delegate pADoSomethingtishiFrame:@"断开连接"];
-        return;
-    }
     
     [self.pAmanager connectPeripheral:peripheral options:@{CBConnectPeripheralOptionNotifyOnConnectionKey: @YES, CBConnectPeripheralOptionNotifyOnDisconnectionKey: @YES, CBConnectPeripheralOptionNotifyOnNotificationKey: @YES,CBCentralManagerScanOptionAllowDuplicatesKey: @YES}];
     
@@ -316,7 +314,8 @@ static PropertyActivationSingleTon *_instace = nil;
         } else if ([[str1 substringWithRange:NSMakeRange(0, 8)] isEqualToString:@"72656164"]) {   // 软件读取信息
             jishunumber = 10;
             str1 = [NSString stringWithFormat:@"aa%@",str1];
-        }
+        } 
+    
         self.receiveData = [NSString stringWithFormat:@"%@%@",self.receiveData,[str1 substringWithRange:NSMakeRange(2, jishunumber)]];
         if (jishunumber == 38)
             return;
@@ -330,13 +329,20 @@ static PropertyActivationSingleTon *_instace = nil;
             LOG(@"失败1");
             self.receiveData = @"";
         }
+    } else if (self.receiveData.length > 104  && self.receiveData.length < 210 && [[self.receiveData substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"bb"]){             // 发卡器连接接收数据
+        
+        if ([self.delegate respondsToSelector:@selector(pADoSomethingtishiFrame:)]){
+            [self.delegate pADoSomethingtishiFrame:[self.receiveData substringWithRange:NSMakeRange(0, 106)]];
+        }
+        self.receiveData = @"";
+        
     } else if (self.receiveData.length > 210 && [[self.receiveData substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"02"]) {
         if ([self.singleton lanyaDataXiaoyanAction:[self.receiveData substringWithRange:NSMakeRange(108,104)]]){
           
             [self sendCommand:@"aa"];
             self.receiveData = [NSString stringWithFormat:@"%@%@",[self.receiveData substringWithRange:NSMakeRange(2,104)],[self.receiveData substringWithRange:NSMakeRange(108,104)]];
                NSString *encryptedData = [AESCrypt encrypt:self.receiveData password:AES_PASSWORD];  //加密
-               [[NSUserDefaults standardUserDefaults] setObject:encryptedData forKey:@"lanyaAESData"];  //存储
+             [[NSUserDefaults standardUserDefaults] setObject:encryptedData forKey:@"wuyeFKAESData"];  //物业发卡数据
         
             self.receiveData = @"";
         } else {
@@ -394,25 +400,30 @@ static PropertyActivationSingleTon *_instace = nil;
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(nullable NSError *)error {
     LOG(@"==>%@",error);
     LOG(@"意外断开，执行重连api");
-    [self connectClick:_pAperipheral];
+    
+    if ([self.delegate respondsToSelector:@selector(pADoSomethingtishiFrame:)]){
+        [self.delegate pADoSomethingtishiFrame:@"断开连接"];
+    }
     
 }
 
+
 - (void)pahairpinReadData:(NSString *)characteristic {
     if ([characteristic isEqualToString:@"7265616401"]) {
-        self.receiveData = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESData"] password:AES_PASSWORD];
+        self.receiveData = [AESCrypt decrypt:[self.baseViewController userInfoReaduserkey:@"lanyaAESData"] password:AES_PASSWORD];
         self.receiveData = [NSString stringWithFormat:@"%@%@",@"AA",[self.receiveData substringWithRange:NSMakeRange(0,104)]];
         [self sendCommand:self.receiveData];
     } else if ([characteristic isEqualToString:@"7265616402"]) {
-        self.receiveData = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESData"] password:AES_PASSWORD];
+        self.receiveData = [AESCrypt decrypt:[self.baseViewController userInfoReaduserkey:@"lanyaAESData"] password:AES_PASSWORD];
         self.receiveData = [NSString stringWithFormat:@"%@%@",@"AA",[self.receiveData substringWithRange:NSMakeRange(104,104)]];
         [self sendCommand:self.receiveData];
     } else if ([characteristic isEqualToString:@"7265616403"]) {
-        self.receiveData = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESErrornData"] password:AES_PASSWORD];
+        self.receiveData = [AESCrypt decrypt:[self.baseViewController userInfoReaduserkey:@"lanyaAESErrornData"] password:AES_PASSWORD];
         self.receiveData = [NSString stringWithFormat:@"%@%@",@"AA",self.receiveData];
         [self sendCommand:self.receiveData];
     } else {
-       LOG(@"接收到不明格式数据。。。")
+        [self disConnection];
+       LOG(@"----接收到不明格式数据。。。")
     }
     
 }

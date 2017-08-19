@@ -50,39 +50,39 @@
     view.layer.cornerRadius = 6;
     view.layer.masksToBounds = YES;
     view.layer.borderWidth = 1;
-    view.layer.borderColor = [[UIColor colorFromHexCode:@"#C2C2C2"] CGColor];
+    view.layer.borderColor = [[UIColor setupGreyColor] CGColor];
 }
 
 #pragma mark textField 代理方法
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     if (textField.tag == 1) {
-        self.phoneNumberView.layer.borderColor = [[UIColor colorFromHexCode:@"#1296db"] CGColor];
+        self.phoneNumberView.layer.borderColor = [[UIColor setipBlueColor] CGColor];
          self.phoneNumberImageView.image = [UIImage imageNamed:@"login_accountNumber_blue"];
     } else if (textField.tag == 2) {
-        self.mishiView.layer.borderColor = [[UIColor colorFromHexCode:@"#1296db"] CGColor];
+        self.mishiView.layer.borderColor = [[UIColor setipBlueColor] CGColor];
         self.mishiImageView.image = [UIImage imageNamed:@"login_secretKey_blue"];
     }else if (textField.tag == 3){
-         self.passwordView.layer.borderColor = [[UIColor  colorFromHexCode:@"#1296db"] CGColor];
+         self.passwordView.layer.borderColor = [[UIColor setipBlueColor] CGColor];
          self.passwordImageView.image = [UIImage imageNamed:@"login_passWord_blue"];
     } else {
-        self.confirmPasswordView.layer.borderColor = [[UIColor  colorFromHexCode:@"#1296db"] CGColor];
+        self.confirmPasswordView.layer.borderColor = [[UIColor setipBlueColor] CGColor];
         self.confirmPasswordImageView.image = [UIImage imageNamed:@"login_passWord_blue"];
     }
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     if (textField.tag == 1) {
-        self.phoneNumberView.layer.borderColor = [[UIColor colorFromHexCode:@"#C2C2C2"] CGColor];
+        self.phoneNumberView.layer.borderColor = [[UIColor setupGreyColor] CGColor];
          self.phoneNumberImageView.image = [UIImage imageNamed:@"login_accountNumber_gray"];
     } else if (textField.tag == 2) {
-        self.mishiView.layer.borderColor = [[UIColor colorFromHexCode:@"#C2C2C2"] CGColor];
+        self.mishiView.layer.borderColor = [[UIColor setupGreyColor] CGColor];
          self.mishiImageView.image = [UIImage imageNamed:@"login_secretKey_gray"];
         
     } else if (textField.tag == 3){
-        self.passwordView.layer.borderColor = [[UIColor colorFromHexCode:@"#C2C2C2"] CGColor];
+        self.passwordView.layer.borderColor = [[UIColor setupGreyColor] CGColor];
          self.passwordImageView.image = [UIImage imageNamed:@"login_passWord_gray"];
     } else{
-        self.confirmPasswordView.layer.borderColor = [[UIColor colorFromHexCode:@"#C2C2C2"] CGColor];
+        self.confirmPasswordView.layer.borderColor = [[UIColor setupGreyColor] CGColor];
         self.confirmPasswordImageView.image = [UIImage imageNamed:@"login_passWord_gray"];
     }
 }

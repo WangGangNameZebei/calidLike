@@ -25,7 +25,7 @@
 }
 
 - (void)textViewEdit {
-    self.feedbackTextView.layer.borderColor =  [[UIColor colorFromHexCode:@"#1296db"] CGColor];
+    self.feedbackTextView.layer.borderColor =  [[UIColor setipBlueColor] CGColor];
     self.feedbackTextView.layer.borderWidth = 2;
     self.feedbackTextView.layer.cornerRadius = 6;
     self.feedbackTextView.layer.masksToBounds = YES;

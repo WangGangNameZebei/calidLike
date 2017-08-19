@@ -16,7 +16,7 @@
     NSString *sysVersion = [[UIDevice currentDevice] systemVersion];
     
     AFHTTPRequestOperationManager *manager = [self tokenManager];
-    NSDictionary *parameters = @{@"i_oraKey":[[NSUserDefaults standardUserDefaults] objectForKey:@"userorakey"],@"i_content":textString,@"i_phone_type":@"1",@"i_phone_model":sysVersion};
+    NSDictionary *parameters = @{@"i_oraKey":[self userInfoReaduserkey:@"userorakey"],@"i_content":textString,@"i_phone_type":@"1",@"i_phone_model":sysVersion};
     [manager POST:FEED_BACK_URL parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         NSString *requestTmp = [NSString stringWithString:operation.responseString];
         NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];

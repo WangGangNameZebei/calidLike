@@ -12,8 +12,10 @@
 #import "SingleTon.h"           //蓝牙
 #import "DBTool.h"              //数据库
 #import "InstallCardData.h"
+#import <MBProgressHUD.h>
 
-@interface installViewController : BaseViewController <UITableViewDelegate,installLanyaDelegate,installViewControllerDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
+
+@interface installViewController : BaseViewController <UITableViewDelegate,installLanyaDelegate,installViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *installTableView;
 @property (strong, nonatomic) IBOutlet UILabel *installLanyaLabel;
 @property (strong, nonatomic) SingleTon *sinTon;        //蓝牙
@@ -25,17 +27,23 @@
 // 被选中cell的IndexPath;
 @property (nonatomic, strong) NSIndexPath *selectIndexPath;
 @property (strong, nonatomic)UIAlertView *modifyAlertView;
-
+@property (strong, nonatomic)UIAlertView *querenAlertView;
 @property (strong,nonatomic)DBTool *tool;                   //数据库
 @property (strong, nonatomic)InstallCardData *installCardData;      //数据库类
 
-
+@property (strong, nonatomic) NSTimer * lingminduTimer; //设置灵敏度 定时器
+@property (strong, nonatomic) NSTimer * lingminduTowTimer; //第二次 定时器
 @property (assign, nonatomic) BOOL lingminduBool;       //灵敏度
-@property (strong, nonatomic)UIView *sensitivityView;
-@property (strong, nonatomic) UIPickerView *pickerView;
-@property (strong, nonatomic) NSMutableArray *numberPickerArrar;
-@property (strong, nonatomic) UIView *pickerConfirmView;
-@property (strong, nonatomic) UIButton *canshuheaderButton;
-@property (strong, nonatomic) UIButton *returnButton;
-@property (strong, nonatomic) UIButton *confirmButon;
+@property (assign, nonatomic) BOOL restoreBool;       //恢复灵敏度
+@property (assign, nonatomic) BOOL qunxianBool;         //设置灵敏度的权限
+@property (strong, nonatomic) UIButton *restoreButon;       //恢复按钮
+@property (strong, nonatomic) UIButton *sendButon;          //设置按钮
+@property (strong, nonatomic) UIButton *querenButon;        //确认控制板按钮
+@property (strong, nonatomic)UIView *sensitivityView;     //灵敏度 View
+@property (strong, nonatomic)UIView *querenView;     //确认控制板 View
+@property (strong, nonatomic) UILabel *canshuheaderLabel;
+@property (strong, nonatomic) MBProgressHUD *progressHUD;
+
+
+
 @end

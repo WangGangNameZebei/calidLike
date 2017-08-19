@@ -8,12 +8,12 @@
 
 #import "PropertyActivationViewController+Configuration.h"
 #import "UIColor+Utility.h"
+#import "PropertyActivationViewController+LogicalFlow.h"
 
 @implementation PropertyActivationViewController (Configuration)
 
 - (void)configureViews {
     [self singleTonEdit];
-
     [self textFieldViewEdit];
     [self phoneNumberAndpasswordViewEdit];
     [self addGestRecognizer];
@@ -22,7 +22,6 @@
 - (void)singleTonEdit {
     self.pATitleLabel.text = self.titleLabelString; //标题
     self.uploadButton.backgroundColor = [UIColor colorFromHexCode:@"#E6E6E6"]; //  初始按钮 灰色
-
     if ([self.titleLabelString isEqualToString:@"续卡"]) {
         [self.uploadButton setTitle:@"提交" forState:UIControlStateNormal];
         self.chongzhiPasswordView.hidden = NO;
@@ -46,19 +45,27 @@
 
 #pragma mark paLanyaDelegate 
 
-- (void)pADoSomethingEveryFrame:(NSInteger *)array {
-    [self.paSingleTon getPeripheralWithIdentifierAndConnect:FAKAQI_TON_UUID_STR];
+- (void)pADoSomethingEveryFrame:(NSInteger)array {
+    if(array == 1){
+      [self.paSingleTon getPeripheralWithIdentifierAndConnect:FAKAQI_TON_UUID_STR];
+    }
+    
 }
 
 - (void)pADoSomethingtishiFrame:(NSString *)string {
     if ([string isEqualToString:@"连接成功"]) {
         self.pALanyaLabel.text = @"已连接";
+        [self.paSingleTon sendCommand:@"99"];       //发送数据
+
     } else if ([string isEqualToString:@"断开连接"]) {
+      
          self.pALanyaLabel.text = @"已断开";
+    } else if (string.length == 106  && [[string substringWithRange:NSMakeRange(0,2)] isEqualToString:@"bb"]){
+        [self checkStatusOfCardPOSTdataStr:[string substringWithRange:NSMakeRange(2, 104)]];
     } else {
         self.userInfo = [string substringWithRange:NSMakeRange(0,208)];
         self.pAPhoneNumberTextField.text = [NSString stringWithFormat:@"%@", [string substringWithRange:NSMakeRange(208, 11)]];
-        self.uploadButton.backgroundColor = [UIColor colorFromHexCode:@"#1296db"];
+        self.uploadButton.backgroundColor = [UIColor setipBlueColor];
         [self promptInformationActionWarningString:@"发卡成功"];
     }
 }
@@ -103,32 +110,32 @@
     view.layer.cornerRadius = 6;
     view.layer.masksToBounds = YES;
     view.layer.borderWidth = 1;
-    view.layer.borderColor = [[UIColor colorFromHexCode:@"#C2C2C2"] CGColor];
+    view.layer.borderColor = [[UIColor setupGreyColor] CGColor];
 }
 
 #pragma mark textField 代理方法
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     if (textField.tag == 1) {
-        self.pAPhoneNumberView.layer.borderColor = [[UIColor colorFromHexCode:@"#1296db"] CGColor];
+        self.pAPhoneNumberView.layer.borderColor = [[UIColor setipBlueColor] CGColor];
         self.pAPhoneNumberImageView.image = [UIImage imageNamed:@"login_accountNumber_blue"];
     } else if (textField.tag == 2) {
-        self.pAPasswordView.layer.borderColor = [[UIColor  colorFromHexCode:@"#1296db"] CGColor];
+        self.pAPasswordView.layer.borderColor = [[UIColor  setipBlueColor] CGColor];
         self.pAPasswordImageView.image = [UIImage imageNamed:@"login_passWord_blue"];
     }else if (textField.tag == 3){
-        self.pAConfirmPasswordView.layer.borderColor = [[UIColor  colorFromHexCode:@"#1296db"] CGColor];
+        self.pAConfirmPasswordView.layer.borderColor = [[UIColor  setipBlueColor] CGColor];
         self.pAConfirmPasswordImageView.image = [UIImage imageNamed:@"login_passWord_blue"];
     }
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     if (textField.tag == 1) {
-        self.pAPhoneNumberView.layer.borderColor = [[UIColor colorFromHexCode:@"#C2C2C2"] CGColor];
+        self.pAPhoneNumberView.layer.borderColor = [[UIColor setupGreyColor] CGColor];
         self.pAPhoneNumberImageView.image = [UIImage imageNamed:@"login_accountNumber_gray"];
     } else if (textField.tag == 2) {
-        self.pAPasswordView.layer.borderColor = [[UIColor colorFromHexCode:@"#C2C2C2"] CGColor];
+        self.pAPasswordView.layer.borderColor = [[UIColor setupGreyColor] CGColor];
         self.pAPasswordImageView.image = [UIImage imageNamed:@"login_passWord_gray"];
     } else if (textField.tag == 3){
-        self.pAConfirmPasswordView.layer.borderColor = [[UIColor colorFromHexCode:@"#C2C2C2"] CGColor];
+        self.pAConfirmPasswordView.layer.borderColor = [[UIColor setupGreyColor] CGColor];
         self.pAConfirmPasswordImageView.image = [UIImage imageNamed:@"login_passWord_gray"];
     }
 }

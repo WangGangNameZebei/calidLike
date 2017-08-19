@@ -57,7 +57,7 @@
 #pragma mark  提示框代理
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
-        NSString *cardData = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESData"] password:AES_PASSWORD];
+        NSString *cardData = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"wuyeFKAESData"] password:AES_PASSWORD];
         [self propertyActivationPostForUserData:cardData userInfo:[self.userInfo substringWithRange:NSMakeRange(0,104)] userEqInfo:[self.userInfo substringWithRange:NSMakeRange(104,104)] userPhone:self.pAPhoneNumberTextField.text password:self.pAPasswordTextField.text];
     } else {
         NSLog(@"点击了取消按钮");
@@ -83,13 +83,15 @@
 - (IBAction)saoMiaoButtonAction:(id)sender {
     if ([self.pALanyaLabel.text isEqualToString:@"已连接"]){
         [self.paSingleTon disConnection];       // 退出前 断开蓝牙
-    } else {   
-        NSString  *strLanya = FAKAQI_TON_UUID_STR;
-        if (strLanya.length < 3) {
-            [self.paSingleTon startScan]; // 扫描
-        } else {
-            [self.paSingleTon getPeripheralWithIdentifierAndConnect:strLanya];
-        }
+    } else {
+
+            NSString  *strLanya = FAKAQI_TON_UUID_STR;
+            if (strLanya.length < 3) {
+                [self.paSingleTon startScan]; // 扫描
+            } else {
+                [self.paSingleTon getPeripheralWithIdentifierAndConnect:strLanya];
+            }
+        
     }
 }
 - (IBAction)returnButtonAction:(id)sender {

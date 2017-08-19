@@ -12,6 +12,7 @@
 #import "SingleTon.h"
 #import "ClassUserInfo.h"
 #import "DBTool.h"
+#import "BaseViewController.h"
 
 @protocol pALanyaDelegate <NSObject>
 @optional
@@ -35,6 +36,7 @@
 
 @property (strong,nonatomic)DBTool *pAtool;                   //数据库
 @property (strong, nonatomic)ClassUserInfo *classUserInfo;      //数据库类
+@property (strong, nonatomic)BaseViewController *baseViewController;
 
 +(PropertyActivationSingleTon *)sharedInstance;
 - (void)initialization;
@@ -42,7 +44,6 @@
 -(void)disConnection;                                     // 断开蓝牙
 - (void)connectClick:(CBPeripheral *)peripheral;            //连接外设
 - (void)getPeripheralWithIdentifierAndConnect:(NSString *)identifierStr;   //uuid 目标 连接 蓝牙
-
-
+- (void)sendCommand:(NSString *)String;// 写
 
 @end

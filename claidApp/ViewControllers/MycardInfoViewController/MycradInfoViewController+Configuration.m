@@ -20,10 +20,10 @@
 - (void)switchViewEdit {
     self.myInfoshakeSwitch.onTintColor = [UIColor colorFromHexCode:@"1296db"];
      self.myInfoBrightScreenSwitch.onTintColor = [UIColor colorFromHexCode:@"1296db"];
-    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"shakeswitch"] isEqualToString:@"YES"]) {
+    if ([[self userInfoReaduserkey:@"shakeswitch"] isEqualToString:@"YES"]) {
         [self.myInfoshakeSwitch setOn:YES animated:YES];
     }
-    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"brightScreenswitch"] isEqualToString:@"YES"]) {
+    if ([[self userInfoReaduserkey:@"brightScreenswitch"] isEqualToString:@"YES"]) {
          [self.myInfoBrightScreenSwitch setOn:YES animated:YES];
     }
 }

@@ -24,19 +24,23 @@
 #define NotificationPwdUI CFSTR("com.apple.springboard.hasBlankedScreen")
 
 //登录    URL
-#define LOGIN_URL @"http://www.sycalid.cn/api/login.do"
+#define LOGIN_URL @"https://www.sycalid.cn/api/login.do"
+//退出登录    URL
+#define LOGOUT_URL @"https://www.sycalid.cn/api/logOut.do"
 //注册    URL
-#define REGISTER_URL @"http://www.sycalid.cn/api/addUser.do"
+#define REGISTER_URL @"https://www.sycalid.cn/api/addUser.do"
 //邀请访客   URL
-#define INVITAION_VISITOR_URL @"http://www.sycalid.cn/api/addTourist.do"
+#define INVITAION_VISITOR_URL @"https://www.sycalid.cn/api/addTourist.do"
 //我是访客   URL
-#define VISITOR_URL @"http://www.sycalid.cn/api/getKeyByPhoneNum.do"
+#define VISITOR_URL @"https://www.sycalid.cn/api/getKeyByPhoneNum.do"
 // 物业激活  续卡 (注册)
-#define ADDUSERPROPERTY_URL @"http://www.sycalid.cn/api/addUserProperty.do"
+#define ADDUSERPROPERTY_URL @"https://www.sycalid.cn/api/addUserProperty.do"
 
 // 更新用户数据
-#define RENEWAL_USER_DATA_URL  @"http://www.sycalid.cn/api/renewalUserDate.do"
+#define RENEWAL_USER_DATA_URL  @"https://www.sycalid.cn/api/renewalUserDate.do"
 // 用户修改密码
-#define UP_DATA_USER_PWD_URL  @"http://www.sycalid.cn/api/updateUserPwd.do"
+#define UP_DATA_USER_PWD_URL  @"https://www.sycalid.cn/api/updateUserPwd.do"
 // 意见反馈
-#define FEED_BACK_URL  @"http://www.sycalid.cn/api/userReturnIdea.do"
+#define FEED_BACK_URL  @"https://www.sycalid.cn/api/userReturnIdea.do"
+// 校验发卡器
+#define CHECK_STATUS_CARD_URL  @"http://192.168.1.104:3657/calid/checkStatusOfCard.do"

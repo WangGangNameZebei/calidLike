@@ -51,7 +51,7 @@
 }
 
 - (IBAction)paybyCardButtonAction:(id)sender {
-   NSString *lanyaDataStr = [[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaVisitorAESData"];
+   NSString *lanyaDataStr = [self userInfoReaduserkey:@"lanyaVisitorAESData"];
     if (lanyaDataStr.length < 20){
         [self promptInformationActionWarningString:@"请点击+号选择发卡权限!"];
         return;
@@ -80,14 +80,14 @@
     }
     self.viReadClass = dianjiArr[indexPath.row];
     if(self.viReadClass.visitorFrequency != 0){
-   self.shukaButton.backgroundColor = [UIColor colorFromHexCode:@"1296db"];
-      [[NSUserDefaults standardUserDefaults] setObject:self.viReadClass.visitorData forKey:@"lanyaVisitorAESData"]; //刷卡数据
-      [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%ld",(long)self.viReadClass.visitorName] forKey:@"userInformation"];
+        self.shukaButton.backgroundColor = [UIColor setipBlueColor];
+        [self userInfowriteuserkey:@"lanyaVisitorAESData" uservalue:self.viReadClass.visitorData];//刷卡数据
+        [self userInfowriteuserkey:@"userInformation" uservalue:[NSString stringWithFormat:@"%ld",(long)self.viReadClass.visitorName]];
      [self animationHideFunctionView]; //收起tableView
     } else {
-          self.shukaButton.backgroundColor = [UIColor colorFromHexCode:@"C2C2C2"];
-           [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"lanyaVisitorAESData"];
-         [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"userInformation"];
+          self.shukaButton.backgroundColor = [UIColor setupGreyColor];
+        [self userInfowriteuserkey:@"lanyaVisitorAESData" uservalue:@""];
+        [self userInfowriteuserkey:@"userInformation" uservalue:@""];
           [self.tool deleteRecordWithClass:[VisitorCalss class] andKey:@"visitorName" isEqualValue:[NSString stringWithFormat:@"%ld",(long)self.viReadClass.visitorName]];
            [self promptInformationActionWarningString:@"此权限使用已到期!"];
     

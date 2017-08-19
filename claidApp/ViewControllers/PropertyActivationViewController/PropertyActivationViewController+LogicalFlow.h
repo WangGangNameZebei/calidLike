@@ -11,4 +11,5 @@
 @interface PropertyActivationViewController (LogicalFlow)
 - (void)propertyActivationPostForUserData:(NSString *)userData userInfo:(NSString *)userInfo userEqInfo:(NSString *)userEqInfo userPhone:(NSString *)userPhone password:(NSString *)password;  //  上传数据
 - (void)theinternetCardupData;      //更新数据
+- (void)checkStatusOfCardPOSTdataStr:(NSString *)dataStr;       //效验发卡器
 @end

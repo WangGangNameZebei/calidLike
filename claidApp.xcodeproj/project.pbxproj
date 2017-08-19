@@ -14,10 +14,6 @@
 		0A0EBEA31E2F0E7D00E4A89E /* VisitorSingleTon.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0EBEA21E2F0E7D00E4A89E /* VisitorSingleTon.m */; };
 		0A0EBEA91E2F3B9600E4A89E /* VisitorSingleTon+Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0EBEA81E2F3B9600E4A89E /* VisitorSingleTon+Tool.m */; };
 		0A0FB99C1DDC367500F5CB7B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A0FB99B1DDC367500F5CB7B /* Security.framework */; };
-		0A131A1C1E2C58A3009D11E2 /* VisitorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A131A1A1E2C58A3009D11E2 /* VisitorViewController.m */; };
-		0A131A1D1E2C58A3009D11E2 /* VisitorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A131A1B1E2C58A3009D11E2 /* VisitorViewController.xib */; };
-		0A131A201E2C62C3009D11E2 /* VisitorViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A131A1F1E2C62C3009D11E2 /* VisitorViewController+Configuration.m */; };
-		0A131A231E2C9838009D11E2 /* VisitorViewController+LogicalFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A131A221E2C9838009D11E2 /* VisitorViewController+LogicalFlow.m */; };
 		0A35C6661DCD87DD0068AA83 /* KaiKaViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A35C6651DCD87DD0068AA83 /* KaiKaViewController+Configuration.m */; };
 		0A3C4D941EB9A66800B6F279 /* PropertyActivationSingleTon.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3C4D921EB9A66800B6F279 /* PropertyActivationSingleTon.m */; };
 		0A3C4D991EB9A92300B6F279 /* PropertyActivationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3C4D971EB9A92300B6F279 /* PropertyActivationViewController.m */; };
@@ -47,7 +43,6 @@
 		0A5FF94B1DB6032600249F0C /* MyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A5FF9491DB6032600249F0C /* MyViewController.xib */; };
 		0A5FF94E1DB604C800249F0C /* CustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5FF94D1DB604C800249F0C /* CustomTabBarController.m */; };
 		0A611E301E11F40E0002B1C9 /* SingleTon+InstallWarden.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A611E2F1E11F40E0002B1C9 /* SingleTon+InstallWarden.m */; };
-		0A6402581E1F678E00CADD0F /* SingleTon+MainHairpin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6402571E1F678E00CADD0F /* SingleTon+MainHairpin.m */; };
 		0A64025B1E1F691000CADD0F /* SingleTon+tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A64025A1E1F691000CADD0F /* SingleTon+tool.m */; };
 		0A6DA6DA1DB6F8D90013D0CF /* MineViewController+LogicalFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6DA6D91DB6F8D90013D0CF /* MineViewController+LogicalFlow.m */; };
 		0A6DA6DD1DB6F9020013D0CF /* MineViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6DA6DC1DB6F9020013D0CF /* MineViewController+Configuration.m */; };
@@ -64,9 +59,15 @@
 		0A73048E1E8359E00016639A /* invitaionCodeViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A73048D1E8359E00016639A /* invitaionCodeViewController+Configuration.m */; };
 		0A7304911E8359FC0016639A /* invitaionCodeViewController+LogicalFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7304901E8359FC0016639A /* invitaionCodeViewController+LogicalFlow.m */; };
 		0A7878CF1DCDBCB1008A37D0 /* KaiKaViewController+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7878CE1DCDBCB1008A37D0 /* KaiKaViewController+Animation.m */; };
+		0A8154BA1F3D5E1D004E524A /* VisitorViewController+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8154B01F3D5E1D004E524A /* VisitorViewController+Animation.m */; };
+		0A8154BB1F3D5E1D004E524A /* VisitorViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8154B21F3D5E1D004E524A /* VisitorViewController+Configuration.m */; };
+		0A8154BC1F3D5E1D004E524A /* VisitorViewController+LogicalFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8154B41F3D5E1D004E524A /* VisitorViewController+LogicalFlow.m */; };
+		0A8154BD1F3D5E1D004E524A /* VisitorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8154B61F3D5E1D004E524A /* VisitorViewController.m */; };
+		0A8154BE1F3D5E1D004E524A /* VisitorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A8154B71F3D5E1D004E524A /* VisitorViewController.xib */; };
+		0A8154BF1F3D5E1D004E524A /* VisitorViewControllerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8154B91F3D5E1D004E524A /* VisitorViewControllerDataSource.m */; };
+		0A823A101F4154D800B10DB3 /* weChatOpenShare.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A823A0F1F4154D800B10DB3 /* weChatOpenShare.png */; };
 		0A83FE1D1DC9B32F006F4D61 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A83FE1C1DC9B32F006F4D61 /* libsqlite3.tbd */; };
 		0A8612261DEC0C8200AC1FB4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A8612251DEC0C8200AC1FB4 /* AVFoundation.framework */; };
-		0A86A0AA1E84BEDF00044556 /* VisitorViewControllerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A86A0A91E84BEDF00044556 /* VisitorViewControllerDataSource.m */; };
 		0A86A9E31E0236C7006AE3CB /* gsgg1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0A86A9E01E0236C7006AE3CB /* gsgg1.jpg */; };
 		0A86A9E41E0236C7006AE3CB /* gsgg2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0A86A9E11E0236C7006AE3CB /* gsgg2.jpg */; };
 		0A86A9E51E0236C7006AE3CB /* gsgg3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0A86A9E21E0236C7006AE3CB /* gsgg3.jpg */; };
@@ -112,7 +113,6 @@
 		0ABEA9B31E83974B00FC7FD3 /* DBTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABEA9AF1E83974B00FC7FD3 /* DBTool.m */; };
 		0ABEA9B41E83974B00FC7FD3 /* InstallCardData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABEA9B11E83974B00FC7FD3 /* InstallCardData.m */; };
 		0ABEA9B81E839C3600FC7FD3 /* VisitorCalss.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABEA9B71E839C3600FC7FD3 /* VisitorCalss.m */; };
-		0ABEA9BB1E83B34200FC7FD3 /* VisitorViewController+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABEA9BA1E83B34200FC7FD3 /* VisitorViewController+Animation.m */; };
 		0AC68B991DCC6EBC00B71FB1 /* KaiKaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AC68B971DCC6EBC00B71FB1 /* KaiKaViewController.m */; };
 		0AC68B9A1DCC6EBC00B71FB1 /* KaiKaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AC68B981DCC6EBC00B71FB1 /* KaiKaViewController.xib */; };
 		0AC969981DC9820F00F62C57 /* installViewControllerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AC969971DC9820F00F62C57 /* installViewControllerDataSource.m */; };
@@ -130,12 +130,17 @@
 		0AD75CD31DBDDE5300297AC3 /* MyViewControllerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD75CD21DBDDE5300297AC3 /* MyViewControllerDataSource.m */; };
 		0AD75CD81DBDE6C100297AC3 /* MyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD75CD61DBDE6C100297AC3 /* MyTableViewCell.m */; };
 		0AD75CD91DBDE6C100297AC3 /* MyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AD75CD71DBDE6C100297AC3 /* MyTableViewCell.xib */; };
+		0AEB0BD51F46CB230046AA30 /* SingleTon+MainHairpin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEB0BD41F46CB230046AA30 /* SingleTon+MainHairpin.m */; };
 		0AEC75201DC83D7E00933D77 /* fanhui_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEC751F1DC83D7E00933D77 /* fanhui_1.png */; };
 		0AF131DE1EC00A590056F2A0 /* ClassUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF131DD1EC00A590056F2A0 /* ClassUserInfo.m */; };
 		0AF131E11EC0435E0056F2A0 /* MycradInfoViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF131E01EC0435E0056F2A0 /* MycradInfoViewController+Configuration.m */; };
 		0AF131E61EC0488D0056F2A0 /* MycradInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF131E41EC0488D0056F2A0 /* MycradInfoTableViewCell.m */; };
 		0AF131E71EC0488D0056F2A0 /* MycradInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AF131E51EC0488D0056F2A0 /* MycradInfoTableViewCell.xib */; };
 		0AF131EA1EC04C190056F2A0 /* MycradInfoViewControllerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF131E91EC04C190056F2A0 /* MycradInfoViewControllerDataSource.m */; };
+		0AF3272E1F3D80F10013122D /* VisitorCarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF3272C1F3D80F10013122D /* VisitorCarViewController.m */; };
+		0AF3272F1F3D80F10013122D /* VisitorCarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AF3272D1F3D80F10013122D /* VisitorCarViewController.xib */; };
+		0AF327371F3D847E0013122D /* VisitorTabPagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF327351F3D847E0013122D /* VisitorTabPagerViewController.m */; };
+		0AF327381F3D847E0013122D /* VisitorTabPagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AF327361F3D847E0013122D /* VisitorTabPagerViewController.xib */; };
 		0AFA948A1DF7EC670044362D /* TTSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFA94891DF7EC670044362D /* TTSwitch.m */; };
 		0AFA94A11DF7ECD60044362D /* round-switch-mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AFA948C1DF7ECD60044362D /* round-switch-mask.png */; };
 		0AFA94A21DF7ECD60044362D /* round-switch-mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AFA948D1DF7ECD60044362D /* round-switch-mask@2x.png */; };
@@ -180,13 +185,6 @@
 		0A0EBEA81E2F3B9600E4A89E /* VisitorSingleTon+Tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VisitorSingleTon+Tool.m"; sourceTree = "<group>"; };
 		0A0FB99A1DDC319C00F5CB7B /* claidApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = claidApp.entitlements; sourceTree = "<group>"; };
 		0A0FB99B1DDC367500F5CB7B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		0A131A191E2C58A3009D11E2 /* VisitorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisitorViewController.h; sourceTree = "<group>"; };
-		0A131A1A1E2C58A3009D11E2 /* VisitorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisitorViewController.m; sourceTree = "<group>"; };
-		0A131A1B1E2C58A3009D11E2 /* VisitorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VisitorViewController.xib; sourceTree = "<group>"; };
-		0A131A1E1E2C62C3009D11E2 /* VisitorViewController+Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VisitorViewController+Configuration.h"; sourceTree = "<group>"; };
-		0A131A1F1E2C62C3009D11E2 /* VisitorViewController+Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VisitorViewController+Configuration.m"; sourceTree = "<group>"; };
-		0A131A211E2C9838009D11E2 /* VisitorViewController+LogicalFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VisitorViewController+LogicalFlow.h"; sourceTree = "<group>"; };
-		0A131A221E2C9838009D11E2 /* VisitorViewController+LogicalFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VisitorViewController+LogicalFlow.m"; sourceTree = "<group>"; };
 		0A35C6641DCD87DD0068AA83 /* KaiKaViewController+Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KaiKaViewController+Configuration.h"; sourceTree = "<group>"; };
 		0A35C6651DCD87DD0068AA83 /* KaiKaViewController+Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KaiKaViewController+Configuration.m"; sourceTree = "<group>"; };
 		0A3C4D911EB9A66800B6F279 /* PropertyActivationSingleTon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyActivationSingleTon.h; sourceTree = "<group>"; };
@@ -237,8 +235,6 @@
 		0A5FF94D1DB604C800249F0C /* CustomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBarController.m; sourceTree = "<group>"; };
 		0A611E2E1E11F40E0002B1C9 /* SingleTon+InstallWarden.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SingleTon+InstallWarden.h"; sourceTree = "<group>"; };
 		0A611E2F1E11F40E0002B1C9 /* SingleTon+InstallWarden.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SingleTon+InstallWarden.m"; sourceTree = "<group>"; };
-		0A6402561E1F678E00CADD0F /* SingleTon+MainHairpin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SingleTon+MainHairpin.h"; sourceTree = "<group>"; };
-		0A6402571E1F678E00CADD0F /* SingleTon+MainHairpin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SingleTon+MainHairpin.m"; sourceTree = "<group>"; };
 		0A6402591E1F691000CADD0F /* SingleTon+tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SingleTon+tool.h"; sourceTree = "<group>"; };
 		0A64025A1E1F691000CADD0F /* SingleTon+tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SingleTon+tool.m"; sourceTree = "<group>"; };
 		0A6DA6D81DB6F8D90013D0CF /* MineViewController+LogicalFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MineViewController+LogicalFlow.h"; sourceTree = "<group>"; };
@@ -268,10 +264,20 @@
 		0A7304901E8359FC0016639A /* invitaionCodeViewController+LogicalFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "invitaionCodeViewController+LogicalFlow.m"; sourceTree = "<group>"; };
 		0A7878CD1DCDBCB1008A37D0 /* KaiKaViewController+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KaiKaViewController+Animation.h"; sourceTree = "<group>"; };
 		0A7878CE1DCDBCB1008A37D0 /* KaiKaViewController+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KaiKaViewController+Animation.m"; sourceTree = "<group>"; };
+		0A8154AF1F3D5E1D004E524A /* VisitorViewController+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VisitorViewController+Animation.h"; sourceTree = "<group>"; };
+		0A8154B01F3D5E1D004E524A /* VisitorViewController+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VisitorViewController+Animation.m"; sourceTree = "<group>"; };
+		0A8154B11F3D5E1D004E524A /* VisitorViewController+Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VisitorViewController+Configuration.h"; sourceTree = "<group>"; };
+		0A8154B21F3D5E1D004E524A /* VisitorViewController+Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VisitorViewController+Configuration.m"; sourceTree = "<group>"; };
+		0A8154B31F3D5E1D004E524A /* VisitorViewController+LogicalFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VisitorViewController+LogicalFlow.h"; sourceTree = "<group>"; };
+		0A8154B41F3D5E1D004E524A /* VisitorViewController+LogicalFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VisitorViewController+LogicalFlow.m"; sourceTree = "<group>"; };
+		0A8154B51F3D5E1D004E524A /* VisitorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisitorViewController.h; sourceTree = "<group>"; };
+		0A8154B61F3D5E1D004E524A /* VisitorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisitorViewController.m; sourceTree = "<group>"; };
+		0A8154B71F3D5E1D004E524A /* VisitorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VisitorViewController.xib; sourceTree = "<group>"; };
+		0A8154B81F3D5E1D004E524A /* VisitorViewControllerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisitorViewControllerDataSource.h; sourceTree = "<group>"; };
+		0A8154B91F3D5E1D004E524A /* VisitorViewControllerDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisitorViewControllerDataSource.m; sourceTree = "<group>"; };
+		0A823A0F1F4154D800B10DB3 /* weChatOpenShare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weChatOpenShare.png; sourceTree = "<group>"; };
 		0A83FE1C1DC9B32F006F4D61 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		0A8612251DEC0C8200AC1FB4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		0A86A0A81E84BEDF00044556 /* VisitorViewControllerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisitorViewControllerDataSource.h; sourceTree = "<group>"; };
-		0A86A0A91E84BEDF00044556 /* VisitorViewControllerDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisitorViewControllerDataSource.m; sourceTree = "<group>"; };
 		0A86A9E01E0236C7006AE3CB /* gsgg1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gsgg1.jpg; sourceTree = "<group>"; };
 		0A86A9E11E0236C7006AE3CB /* gsgg2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gsgg2.jpg; sourceTree = "<group>"; };
 		0A86A9E21E0236C7006AE3CB /* gsgg3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gsgg3.jpg; sourceTree = "<group>"; };
@@ -319,7 +325,6 @@
 		0A98E8E91E0505B20086F6D5 /* LanyaHeadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanyaHeadTableViewCell.h; sourceTree = "<group>"; };
 		0A98E8EA1E0505B30086F6D5 /* LanyaHeadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanyaHeadTableViewCell.m; sourceTree = "<group>"; };
 		0A98E8EB1E0505B30086F6D5 /* LanyaHeadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LanyaHeadTableViewCell.xib; sourceTree = "<group>"; };
-		0A9EEC671DCB0E2A00D74FC9 /* OpenCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenCardView.h; sourceTree = "<group>"; };
 		0A9EEC681DCB0E2A00D74FC9 /* OpenCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenCardView.m; sourceTree = "<group>"; };
 		0A9EEC6A1DCB0E3C00D74FC9 /* OpenCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpenCardView.xib; sourceTree = "<group>"; };
 		0AA4912D1DC6F27D0013B974 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -346,8 +351,6 @@
 		0ABEA9B11E83974B00FC7FD3 /* InstallCardData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstallCardData.m; sourceTree = "<group>"; };
 		0ABEA9B61E839C3600FC7FD3 /* VisitorCalss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisitorCalss.h; sourceTree = "<group>"; };
 		0ABEA9B71E839C3600FC7FD3 /* VisitorCalss.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisitorCalss.m; sourceTree = "<group>"; };
-		0ABEA9B91E83B34200FC7FD3 /* VisitorViewController+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VisitorViewController+Animation.h"; sourceTree = "<group>"; };
-		0ABEA9BA1E83B34200FC7FD3 /* VisitorViewController+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VisitorViewController+Animation.m"; sourceTree = "<group>"; };
 		0AC459801E26288700E813E0 /* calidHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = calidHeader.h; sourceTree = "<group>"; };
 		0AC68B961DCC6EBC00B71FB1 /* KaiKaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KaiKaViewController.h; sourceTree = "<group>"; };
 		0AC68B971DCC6EBC00B71FB1 /* KaiKaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KaiKaViewController.m; sourceTree = "<group>"; };
@@ -382,6 +385,9 @@
 		0AD75CD51DBDE6C100297AC3 /* MyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableViewCell.h; sourceTree = "<group>"; };
 		0AD75CD61DBDE6C100297AC3 /* MyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewCell.m; sourceTree = "<group>"; };
 		0AD75CD71DBDE6C100297AC3 /* MyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyTableViewCell.xib; sourceTree = "<group>"; };
+		0AEB0BD21F46BF8D0046AA30 /* OpenCardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenCardView.h; sourceTree = "<group>"; };
+		0AEB0BD31F46CB230046AA30 /* SingleTon+MainHairpin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SingleTon+MainHairpin.h"; sourceTree = "<group>"; };
+		0AEB0BD41F46CB230046AA30 /* SingleTon+MainHairpin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SingleTon+MainHairpin.m"; sourceTree = "<group>"; };
 		0AEC751F1DC83D7E00933D77 /* fanhui_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fanhui_1.png; sourceTree = "<group>"; };
 		0AF131DC1EC00A590056F2A0 /* ClassUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassUserInfo.h; sourceTree = "<group>"; };
 		0AF131DD1EC00A590056F2A0 /* ClassUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassUserInfo.m; sourceTree = "<group>"; };
@@ -392,6 +398,12 @@
 		0AF131E51EC0488D0056F2A0 /* MycradInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MycradInfoTableViewCell.xib; sourceTree = "<group>"; };
 		0AF131E81EC04C190056F2A0 /* MycradInfoViewControllerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MycradInfoViewControllerDataSource.h; sourceTree = "<group>"; };
 		0AF131E91EC04C190056F2A0 /* MycradInfoViewControllerDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MycradInfoViewControllerDataSource.m; sourceTree = "<group>"; };
+		0AF3272B1F3D80F10013122D /* VisitorCarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisitorCarViewController.h; sourceTree = "<group>"; };
+		0AF3272C1F3D80F10013122D /* VisitorCarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisitorCarViewController.m; sourceTree = "<group>"; };
+		0AF3272D1F3D80F10013122D /* VisitorCarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VisitorCarViewController.xib; sourceTree = "<group>"; };
+		0AF327341F3D847E0013122D /* VisitorTabPagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisitorTabPagerViewController.h; sourceTree = "<group>"; };
+		0AF327351F3D847E0013122D /* VisitorTabPagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisitorTabPagerViewController.m; sourceTree = "<group>"; };
+		0AF327361F3D847E0013122D /* VisitorTabPagerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VisitorTabPagerViewController.xib; sourceTree = "<group>"; };
 		0AFA94881DF7EC670044362D /* TTSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTSwitch.h; sourceTree = "<group>"; };
 		0AFA94891DF7EC670044362D /* TTSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTSwitch.m; sourceTree = "<group>"; };
 		0AFA948C1DF7ECD60044362D /* round-switch-mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "round-switch-mask.png"; sourceTree = "<group>"; };
@@ -467,24 +479,6 @@
 				0A0EBEA81E2F3B9600E4A89E /* VisitorSingleTon+Tool.m */,
 			);
 			path = VIsitorLanya;
-			sourceTree = "<group>";
-		};
-		0A131A181E2C5860009D11E2 /* VisitorViewController */ = {
-			isa = PBXGroup;
-			children = (
-				0A131A191E2C58A3009D11E2 /* VisitorViewController.h */,
-				0A131A1A1E2C58A3009D11E2 /* VisitorViewController.m */,
-				0A131A1B1E2C58A3009D11E2 /* VisitorViewController.xib */,
-				0A131A1E1E2C62C3009D11E2 /* VisitorViewController+Configuration.h */,
-				0A131A1F1E2C62C3009D11E2 /* VisitorViewController+Configuration.m */,
-				0A131A211E2C9838009D11E2 /* VisitorViewController+LogicalFlow.h */,
-				0A131A221E2C9838009D11E2 /* VisitorViewController+LogicalFlow.m */,
-				0ABEA9B91E83B34200FC7FD3 /* VisitorViewController+Animation.h */,
-				0ABEA9BA1E83B34200FC7FD3 /* VisitorViewController+Animation.m */,
-				0A86A0A81E84BEDF00044556 /* VisitorViewControllerDataSource.h */,
-				0A86A0A91E84BEDF00044556 /* VisitorViewControllerDataSource.m */,
-			);
-			path = VisitorViewController;
 			sourceTree = "<group>";
 		};
 		0A3C4D8E1EB9A66800B6F279 /* PropertyActivationLanya */ = {
@@ -643,6 +637,46 @@
 			path = InvitationCodeViewController;
 			sourceTree = "<group>";
 		};
+		0A8154AC1F3D5E1D004E524A /* VisitorViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				0A8154AD1F3D5E1D004E524A /* VisitorCarViewController */,
+				0A8154AE1F3D5E1D004E524A /* VisitorPeopleViewController */,
+				0AF327341F3D847E0013122D /* VisitorTabPagerViewController.h */,
+				0AF327351F3D847E0013122D /* VisitorTabPagerViewController.m */,
+				0AF327361F3D847E0013122D /* VisitorTabPagerViewController.xib */,
+			);
+			path = VisitorViewControllers;
+			sourceTree = "<group>";
+		};
+		0A8154AD1F3D5E1D004E524A /* VisitorCarViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0AF3272B1F3D80F10013122D /* VisitorCarViewController.h */,
+				0AF3272C1F3D80F10013122D /* VisitorCarViewController.m */,
+				0AF3272D1F3D80F10013122D /* VisitorCarViewController.xib */,
+			);
+			path = VisitorCarViewController;
+			sourceTree = "<group>";
+		};
+		0A8154AE1F3D5E1D004E524A /* VisitorPeopleViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0A8154AF1F3D5E1D004E524A /* VisitorViewController+Animation.h */,
+				0A8154B01F3D5E1D004E524A /* VisitorViewController+Animation.m */,
+				0A8154B11F3D5E1D004E524A /* VisitorViewController+Configuration.h */,
+				0A8154B21F3D5E1D004E524A /* VisitorViewController+Configuration.m */,
+				0A8154B31F3D5E1D004E524A /* VisitorViewController+LogicalFlow.h */,
+				0A8154B41F3D5E1D004E524A /* VisitorViewController+LogicalFlow.m */,
+				0A8154B51F3D5E1D004E524A /* VisitorViewController.h */,
+				0A8154B61F3D5E1D004E524A /* VisitorViewController.m */,
+				0A8154B71F3D5E1D004E524A /* VisitorViewController.xib */,
+				0A8154B81F3D5E1D004E524A /* VisitorViewControllerDataSource.h */,
+				0A8154B91F3D5E1D004E524A /* VisitorViewControllerDataSource.m */,
+			);
+			path = VisitorPeopleViewController;
+			sourceTree = "<group>";
+		};
 		0A87F7A71DB74F8E00EFF1F0 /* lanya */ = {
 			isa = PBXGroup;
 			children = (
@@ -650,8 +684,8 @@
 				0A87F7A91DB74F8E00EFF1F0 /* SingleTon.m */,
 				0A611E2E1E11F40E0002B1C9 /* SingleTon+InstallWarden.h */,
 				0A611E2F1E11F40E0002B1C9 /* SingleTon+InstallWarden.m */,
-				0A6402561E1F678E00CADD0F /* SingleTon+MainHairpin.h */,
-				0A6402571E1F678E00CADD0F /* SingleTon+MainHairpin.m */,
+				0AEB0BD31F46CB230046AA30 /* SingleTon+MainHairpin.h */,
+				0AEB0BD41F46CB230046AA30 /* SingleTon+MainHairpin.m */,
 				0A6402591E1F691000CADD0F /* SingleTon+tool.h */,
 				0A64025A1E1F691000CADD0F /* SingleTon+tool.m */,
 			);
@@ -749,7 +783,7 @@
 		0A9EEC631DCB0DCB00D74FC9 /* openCardView */ = {
 			isa = PBXGroup;
 			children = (
-				0A9EEC671DCB0E2A00D74FC9 /* OpenCardView.h */,
+				0AEB0BD21F46BF8D0046AA30 /* OpenCardView.h */,
 				0A9EEC681DCB0E2A00D74FC9 /* OpenCardView.m */,
 				0A9EEC6A1DCB0E3C00D74FC9 /* OpenCardView.xib */,
 			);
@@ -921,6 +955,7 @@
 				0A86A9E01E0236C7006AE3CB /* gsgg1.jpg */,
 				0A86A9E11E0236C7006AE3CB /* gsgg2.jpg */,
 				0A86A9E21E0236C7006AE3CB /* gsgg3.jpg */,
+				0A823A0F1F4154D800B10DB3 /* weChatOpenShare.png */,
 				0A98AF4E1DF295F800BCA88C /* zhanweiImage.png */,
 				0A8C969D1DCC30D700AAD161 /* xiangxia_1.png */,
 				0AEC751F1DC83D7E00933D77 /* fanhui_1.png */,
@@ -955,7 +990,7 @@
 				0ACFF8741DB5C6910043D49A /* MyViewController */,
 				0A45E1B81EBD9EAF00BE4980 /* MycardInfoViewController */,
 				0AC68B951DCC6E8200B71FB1 /* KaikaViewController */,
-				0A131A181E2C5860009D11E2 /* VisitorViewController */,
+				0A8154AC1F3D5E1D004E524A /* VisitorViewControllers */,
 				0A7304861E8352420016639A /* InvitationCodeViewController */,
 				0A52D71C1F0630E7009EF865 /* MyFeedBackViewController */,
 				0A6F7F131EFE115A003E0DDA /* ChangeThePasswordViewController */,
@@ -1249,12 +1284,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A131A1D1E2C58A3009D11E2 /* VisitorViewController.xib in Resources */,
 				0A052F611DBDF0E7002EB567 /* BlankTableViewCell.xib in Resources */,
 				0AA5DA281DF554DA00CA816E /* image3.jpg in Resources */,
 				0A5FF94B1DB6032600249F0C /* MyViewController.xib in Resources */,
 				0A51E91B1DC825B9000D31F3 /* RegisterViewController.xib in Resources */,
 				0A52D7211F063101009EF865 /* MyFeedBackViewController.xib in Resources */,
+				0AF327381F3D847E0013122D /* VisitorTabPagerViewController.xib in Resources */,
+				0AF3272F1F3D80F10013122D /* VisitorCarViewController.xib in Resources */,
 				0A5FF9371DB5F6A000249F0C /* CustomActionSheetCell.xib in Resources */,
 				0AFA94A51DF7ECD60044362D /* round-switch-thumb-highlight.png in Resources */,
 				0AFA94A91DF7ECD60044362D /* round-switch-track.png in Resources */,
@@ -1265,6 +1301,8 @@
 				0AD75CD91DBDE6C100297AC3 /* MyTableViewCell.xib in Resources */,
 				0A98E8ED1E0505B30086F6D5 /* LanyaHeadTableViewCell.xib in Resources */,
 				0AC68B9A1DCC6EBC00B71FB1 /* KaiKaViewController.xib in Resources */,
+				0A823A101F4154D800B10DB3 /* weChatOpenShare.png in Resources */,
+				0A8154BE1F3D5E1D004E524A /* VisitorViewController.xib in Resources */,
 				0AEC75201DC83D7E00933D77 /* fanhui_1.png in Resources */,
 				0A87F7B71DB7602E00EFF1F0 /* MinFuncTionTableViewCell.xib in Resources */,
 				0AFA94A61DF7ECD60044362D /* round-switch-thumb-highlight@2x.png in Resources */,
@@ -1367,7 +1405,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A86A0AA1E84BEDF00044556 /* VisitorViewControllerDataSource.m in Sources */,
 				0A3C4D941EB9A66800B6F279 /* PropertyActivationSingleTon.m in Sources */,
 				0A611E301E11F40E0002B1C9 /* SingleTon+InstallWarden.m in Sources */,
 				0A5FF93F1DB5FABC00249F0C /* UIColor+Utility.m in Sources */,
@@ -1376,10 +1413,10 @@
 				0AD75CCD1DBDDDEC00297AC3 /* MyViewController+Configuration.m in Sources */,
 				0A52D71B1F05E439009EF865 /* UserInfo.m in Sources */,
 				0A6FB2721DC978BC00345784 /* installViewController.m in Sources */,
+				0A8154BC1F3D5E1D004E524A /* VisitorViewController+LogicalFlow.m in Sources */,
 				0A6F7F171EFE11A3003E0DDA /* ChangeThePasswordViewController.m in Sources */,
 				0ACFF81B1DB5BCA00043D49A /* AppDelegate.m in Sources */,
 				0A51E9211DC82645000D31F3 /* RegisterViewController+Configuration.m in Sources */,
-				0A131A1C1E2C58A3009D11E2 /* VisitorViewController.m in Sources */,
 				0A35C6661DCD87DD0068AA83 /* KaiKaViewController+Configuration.m in Sources */,
 				0A98AF461DF270BF00BCA88C /* JYCarousel.m in Sources */,
 				0A3C4D991EB9A92300B6F279 /* PropertyActivationViewController.m in Sources */,
@@ -1393,7 +1430,9 @@
 				0A98E8EC1E0505B30086F6D5 /* LanyaHeadTableViewCell.m in Sources */,
 				0AF131DE1EC00A590056F2A0 /* ClassUserInfo.m in Sources */,
 				0A5FF94E1DB604C800249F0C /* CustomTabBarController.m in Sources */,
+				0A8154BD1F3D5E1D004E524A /* VisitorViewController.m in Sources */,
 				0ACFF8891DB5CCAC0043D49A /* BaseViewController.m in Sources */,
+				0A8154BF1F3D5E1D004E524A /* VisitorViewControllerDataSource.m in Sources */,
 				0A5FF9411DB5FABC00249F0C /* UIScreen+Utility.m in Sources */,
 				0A7878CF1DCDBCB1008A37D0 /* KaiKaViewController+Animation.m in Sources */,
 				0A5FF9451DB6029700249F0C /* MineViewController.m in Sources */,
@@ -1402,14 +1441,12 @@
 				0AA5DA2B1DF554DA00CA816E /* ZLCGuidePageView.m in Sources */,
 				0A5FF94A1DB6032600249F0C /* MyViewController.m in Sources */,
 				0A51E91A1DC825B9000D31F3 /* RegisterViewController.m in Sources */,
-				0ABEA9BB1E83B34200FC7FD3 /* VisitorViewController+Animation.m in Sources */,
 				0A924F161DCB2A7300785BCF /* MyViewController+Animation.m in Sources */,
 				0AC68B991DCC6EBC00B71FB1 /* KaiKaViewController.m in Sources */,
 				0A87F7AA1DB74F8E00EFF1F0 /* SingleTon.m in Sources */,
 				0AD75CD81DBDE6C100297AC3 /* MyTableViewCell.m in Sources */,
 				0A87F7AD1DB7588900EFF1F0 /* MineViewController+Animation.m in Sources */,
 				0ACFF8931DB5CEFF0043D49A /* ChannelBaseView.m in Sources */,
-				0A6402581E1F678E00CADD0F /* SingleTon+MainHairpin.m in Sources */,
 				0A3C4DA01EB9BBF400B6F279 /* PropertyActivationViewControllerDataSource.m in Sources */,
 				0A93D0871EDEB45A0039F8B3 /* PropertyActivationViewController+LogicalFlow.m in Sources */,
 				0A98AF4D1DF270BF00BCA88C /* UIImageView+JYImageViewManager.m in Sources */,
@@ -1423,13 +1460,12 @@
 				0AF131E11EC0435E0056F2A0 /* MycradInfoViewController+Configuration.m in Sources */,
 				0A8C969B1DCC1A9200AAD161 /* MXSCycleScrollView.m in Sources */,
 				0A5FF9401DB5FABC00249F0C /* UIImage+Utility.m in Sources */,
+				0AF327371F3D847E0013122D /* VisitorTabPagerViewController.m in Sources */,
 				0A052F601DBDF0E7002EB567 /* BlankTableViewCell.m in Sources */,
-				0A131A231E2C9838009D11E2 /* VisitorViewController+LogicalFlow.m in Sources */,
 				0AF131EA1EC04C190056F2A0 /* MycradInfoViewControllerDataSource.m in Sources */,
 				0A0C1E521DD989FE0059EFEC /* LoginOutTableViewCell.m in Sources */,
 				0AC969981DC9820F00F62C57 /* installViewControllerDataSource.m in Sources */,
 				0A7304911E8359FC0016639A /* invitaionCodeViewController+LogicalFlow.m in Sources */,
-				0A131A201E2C62C3009D11E2 /* VisitorViewController+Configuration.m in Sources */,
 				0A6FB2761DC978F700345784 /* installViewController+Configuration.m in Sources */,
 				0AA4913D1DC72E6B0013B974 /* LoginViewController+Configuration.m in Sources */,
 				0A6FB2791DC9792A00345784 /* installViewController+LogicalFlow.m in Sources */,
@@ -1437,7 +1473,9 @@
 				0A0EBEA31E2F0E7D00E4A89E /* VisitorSingleTon.m in Sources */,
 				0A8C969A1DCC1A9200AAD161 /* HcdDateTimePickerView.m in Sources */,
 				0ACFF8901DB5CDFA0043D49A /* BaseView.m in Sources */,
+				0AEB0BD51F46CB230046AA30 /* SingleTon+MainHairpin.m in Sources */,
 				0A6F7F1B1EFE2DD8003E0DDA /* ChangeThePasswordViewController+Configuration.m in Sources */,
+				0AF3272E1F3D80F10013122D /* VisitorCarViewController.m in Sources */,
 				0A8C969C1DCC1A9200AAD161 /* UIColor+HcdCustom.m in Sources */,
 				0A98AF471DF270BF00BCA88C /* JYCarouselAnimation.m in Sources */,
 				0A73048A1E8352990016639A /* invitaionCodeViewController.m in Sources */,
@@ -1449,10 +1487,12 @@
 				0A961CE51E10E6C9004050B0 /* installViewController+Animation.m in Sources */,
 				0A3C4D9D1EB9B35C00B6F279 /* PropertyActivationViewController+Configuration.m in Sources */,
 				0AD75CD01DBDDE0F00297AC3 /* MyViewController+LogicalFlow.m in Sources */,
+				0A8154BA1F3D5E1D004E524A /* VisitorViewController+Animation.m in Sources */,
 				0A98AF4B1DF270BF00BCA88C /* JYPageControl.m in Sources */,
 				0A98AF4C1DF270BF00BCA88C /* JYWeakTimer.m in Sources */,
 				0A64025B1E1F691000CADD0F /* SingleTon+tool.m in Sources */,
 				0A6F7F1E1EFE2E04003E0DDA /* ChangeThePasswordViewController+LogicalFlow.m in Sources */,
+				0A8154BB1F3D5E1D004E524A /* VisitorViewController+Configuration.m in Sources */,
 				0A87F7B61DB7602E00EFF1F0 /* MinFuncTionTableViewCell.m in Sources */,
 				0ABEA9B41E83974B00FC7FD3 /* InstallCardData.m in Sources */,
 				0ABEA9B81E839C3600FC7FD3 /* VisitorCalss.m in Sources */,

@@ -72,7 +72,29 @@
     }
     return 0;
 }
-
+#pragma mark - 产生CRC数
++ (NSString *)crc32producedataStr:(NSString *)dataStr{
+    
+    
+    unsigned int numberKey;
+    unsigned char key1[4];
+    unsigned char key2[10];
+    NSString * TheTwoCharacters;
+    NSInteger aa;
+    
+    for (NSInteger j = 0; j < dataStr.length / 2; j++) {
+        TheTwoCharacters = [dataStr substringWithRange:NSMakeRange(j * 2,2)];
+        aa= [[SingleTon alloc] turnTheHexLiterals:TheTwoCharacters];
+        key2[j] = aa;
+    }
+    numberKey = crcs32(key2,dataStr.length/2);
+    key1[0] = numberKey>>24;
+    key1[1] = numberKey>>16;
+    key1[2] = numberKey>>8;
+    key1[3] = numberKey;
+    TheTwoCharacters = [NSString stringWithFormat:@"%02hhx%02hhx%02hhx%02hhx",key1[0],key1[1],key1[2],key1[3]];
+    return TheTwoCharacters;
+}
 #pragma mark -  编辑 发送发卡指令 (添加随机数)
 - (NSString *)payByCardInstructionsActionString:(NSString *)string {
     unsigned int numberKey;
@@ -85,19 +107,53 @@
   
     strOne = [string substringWithRange:NSMakeRange(2, 12)];
     if ([strOne isEqualToString:@"0181000101FF"]) {  // 设置 灵敏度
-        string = [string substringWithRange:NSMakeRange(2, 20)];
+        string = [string substringWithRange:NSMakeRange(2, 22)];
+        for (NSInteger I = 0; I < 31; I++) {
+            string = [NSString stringWithFormat:@"%@%@",string,@"00"];
+        }
     } else {
-        strOne = @"";
-        string = [string substringWithRange:NSMakeRange(2, 12)];
-        aa =10000000+rand()%(99999999 - 10000000 + 1);
-        strOne = [NSString stringWithFormat:@"%@%ld",strOne,(long)aa];
         
-        string = [NSString stringWithFormat:@"%@%@",string,strOne];
+    
+        if([[string substringWithRange:NSMakeRange(22, 2)]   isEqualToString:@"01"]){       //设置卡
+            strOne = @"";
+            string = [string substringWithRange:NSMakeRange(2, 12)];
+            aa =10000000+rand()%(99999999 - 10000000 + 1);
+            strOne = [NSString stringWithFormat:@"%@%ld",strOne,(long)aa];
+            
+            string = [NSString stringWithFormat:@"%@%@01",string,strOne];
+            if ([[self.baseViewController userInfoReaduserkey:@"setupNumber"] isEqualToString:@"0000"] || [[self.baseViewController userInfoReaduserkey:@"setupNumber"] isEqualToString:@""]){  //无随机数存储
+                aa =1000+rand()%(9999 - 1000 + 1);
+                [self.baseViewController userInfowriteuserkey:@"setupNumber" uservalue:[NSString stringWithFormat:@"%ld",(long)aa]]; //修改随机数
+
+                 string = [NSString stringWithFormat:@"%@0000%ld",string,(long)aa];
+                for (NSInteger I = 0; I < 27; I++) {
+                    string = [NSString stringWithFormat:@"%@%@",string,@"00"];
+                }
+            } else {   //有
+                string = [NSString stringWithFormat:@"%@%@",string,[self.baseViewController userInfoReaduserkey:@"setupNumber"]];
+                for (NSInteger I = 0; I < 29; I++) {
+                    string = [NSString stringWithFormat:@"%@%@",string,@"00"];
+                }
  
+            }
+            
+          
+
+            
+        } else {
+            strOne = @"";
+            string = [string substringWithRange:NSMakeRange(2, 12)];
+            aa =10000000+rand()%(99999999 - 10000000 + 1);
+            strOne = [NSString stringWithFormat:@"%@%ld",strOne,(long)aa];
+            
+            string = [NSString stringWithFormat:@"%@%@",string,strOne];
+            for (NSInteger I = 0; I < 32; I++) {
+                string = [NSString stringWithFormat:@"%@%@",string,@"00"];
+            }
+
+        }
     }
-    for (NSInteger I = 0; I < 32; I++) {
-        string = [NSString stringWithFormat:@"%@%@",string,@"00"];
-    }
+    
     for (NSInteger j = 0; j < string.length / 2; j++) {
         TheTwoCharacters = [string substringWithRange:NSMakeRange(j * 2,2)];
         aa= [self turnTheHexLiterals:TheTwoCharacters];
@@ -151,6 +207,11 @@
             [self.installDelegate installEditInitPeripheralData:3];
         }
         return;
+    } else if ([strTow isEqualToString:@"018100010101"]) {
+        if ([self.installDelegate  respondsToSelector:@selector(installEditInitPeripheralData:)]){
+            [self.installDelegate installEditInitPeripheralData:5];
+        }
+        return;
     }
     
     key1[0] = key2[16];
@@ -165,7 +226,7 @@
         }
         return;
     }
-    NSString *lanyaDataStr = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESData"] password:AES_PASSWORD];
+    NSString *lanyaDataStr = [AESCrypt decrypt:[self.baseViewController userInfoReaduserkey:@"lanyaAESData"] password:AES_PASSWORD];
     strOne = [lanyaDataStr substringWithRange:NSMakeRange(0,104)];
     strTow = [self jiamiaTostringAcction:strOne numberKey:numberKey];
     strTow = [NSString stringWithFormat:@"%@%@",strTow,[self jiamiaTostringAcction:[lanyaDataStr substringWithRange:NSMakeRange(104, 104)] numberKey:numberKey]];
@@ -241,25 +302,26 @@
     unsigned char key2[100];
     NSString * TheTwoCharacters;
     NSInteger  aa;
-    for (NSInteger j = 0; j < data.length / 2; j++) {
+    NSInteger datalength = data.length / 2;
+    for (NSInteger j = 0; j <datalength; j++) {
         TheTwoCharacters = [data substringWithRange:NSMakeRange(j * 2,2)];
         aa= [self turnTheHexLiterals:TheTwoCharacters];
         key2[j] = aa;
+        if (j > (datalength - 5)) {
+            key1[j -(datalength - 4)] = key2[j];
+        }
     }
-    key1[0] = key2[48];
-    key1[1] = key2[49];
-    key1[2] = key2[50];
-    key1[3] = key2[51];
     xor(key1);
     
-    for(NSInteger I = 0; I < 48; I++) {
+    for(NSInteger I = 0; I < datalength - 4; I++) {
         key2[I] = key2[I]^tmpstr[I];
     }
 
-    for (NSInteger i = 0; i < 48; i++) {
+
+    for (NSInteger i = 0; i < datalength - 4; i++) {
         strrone =[NSString stringWithFormat:@"%x",key2[i]&0xff];
         if (strrone.length == 1)
-          strrone = [NSString stringWithFormat:@"0%@",strrone];
+            strrone = [NSString stringWithFormat:@"0%@",strrone];
         dataString = [NSString stringWithFormat:@"%@%@",dataString,strrone];
     }
     

@@ -14,7 +14,7 @@
 
 - (void)changeThePasswordPOSTForoldpasssword:(NSString *)oldpassword newpassword:(NSString *)newpassword {
     AFHTTPRequestOperationManager *manager = [self tokenManager];
-    NSDictionary *parameters = @{@"oraKey":[[NSUserDefaults standardUserDefaults] objectForKey:@"userorakey"],@"cn_calid_pptId":[[NSUserDefaults standardUserDefaults] objectForKey:@"districtNumber"],@"passwd":oldpassword,@"new_passwd":newpassword};
+    NSDictionary *parameters = @{@"oraKey":[self userInfoReaduserkey:@"userorakey"],@"cn_calid_pptId":[self userInfoReaduserkey:@"districtNumber"],@"passwd":oldpassword,@"new_passwd":newpassword};
     [manager POST:UP_DATA_USER_PWD_URL parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         NSString *requestTmp = [NSString stringWithString:operation.responseString];
         NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];
@@ -22,6 +22,7 @@
         NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableContainers error:nil];
             [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
         if([[resultDic objectForKey:@"status"] integerValue] == 200){
+            [self userInfowriteuserkey:@"passWord" uservalue:newpassword]; //修改数据库密码
             self.oldPasswordTextField.text = @"";
             self.changenewPasswordTextField.text = @"";
             self.confirmnewPasswoedTextField.text = @"";

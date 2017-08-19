@@ -13,12 +13,9 @@
     NSString *str = [characteristic substringWithRange:NSMakeRange(0,2)];
     [self sendCommand:@"aa"];
     self.receiveData = [NSString stringWithFormat:@"%@%@",[characteristic substringWithRange:NSMakeRange(2,104)],[characteristic substringWithRange:NSMakeRange(106,104)]];
-    if ([str isEqualToString:@"02"]) {    //用户卡
-        NSString *encryptedData = [AESCrypt encrypt:self.receiveData password:AES_PASSWORD];  //加密
-        [[NSUserDefaults standardUserDefaults] setObject:encryptedData forKey:@"lanyaAESData"];  //存储
-    } else {
-         [self cradClassificationData:self.receiveData identificationString:str];
-    }
+ 
+   [self cradClassificationData:self.receiveData identificationString:str];
+
     LOG(@"成功2");
     
 }
@@ -63,11 +60,15 @@
     } else if ([identificationString isEqualToString:@"82"]){     //解挂卡
         self.installCardData = [InstallCardData initinstallNamestr:[NSString stringWithFormat:@"解挂%lu",(self.numberArrar.count + 1)] installData:dataString identification:82];
         [self.tool insertWithObj:self.installCardData];
-    } else {
+    } else if ([identificationString isEqualToString:@"02"]){     //测试用户卡
+        self.installCardData = [InstallCardData initinstallNamestr:[NSString stringWithFormat:@"用户%lu",(self.numberArrar.count + 1)] installData:dataString identification:02];
+        [self.tool insertWithObj:self.installCardData];
+    
+    }else {
          LOG(@"数据头错误");
     }
     if ([self.installDelegate respondsToSelector:@selector(installDoSomethingtishiFrame:)]) {
-        [self.installDelegate installDoSomethingtishiFrame:@"设置成功"];
+        [self.installDelegate installDoSomethingtishiFrame:@"发卡成功"];
     }
     
 }
@@ -75,19 +76,25 @@
 
 - (void)hairpinReadData:(NSString *)characteristic {
     if ([characteristic isEqualToString:@"7265616401"]) {
-        self.receiveData = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESData"] password:AES_PASSWORD];
+        self.receiveData = [AESCrypt decrypt:[self.baseViewController userInfoReaduserkey:@"lanyaAESData"] password:AES_PASSWORD];
         self.receiveData = [NSString stringWithFormat:@"%@%@",@"AA",[self.receiveData substringWithRange:NSMakeRange(0,104)]];
         [self sendCommand:self.receiveData];
     } else if ([characteristic isEqualToString:@"7265616402"]) {
-        self.receiveData = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESData"] password:AES_PASSWORD];
+        self.receiveData = [AESCrypt decrypt:[self.baseViewController userInfoReaduserkey:@"lanyaAESData"] password:AES_PASSWORD];
         self.receiveData = [NSString stringWithFormat:@"%@%@",@"AA",[self.receiveData substringWithRange:NSMakeRange(104,104)]];
         [self sendCommand:self.receiveData];
     } else if ([characteristic isEqualToString:@"7265616403"]) {
-        self.receiveData = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESErrornData"] password:AES_PASSWORD];
+        self.receiveData = [AESCrypt decrypt:[self.baseViewController userInfoReaduserkey:@"lanyaAESErrornData"] password:AES_PASSWORD];
         self.receiveData = [NSString stringWithFormat:@"%@%@",@"AA",self.receiveData];
         [self sendCommand:self.receiveData];
+    } else if ([characteristic isEqualToString:@"eebb1122330b"] ||[characteristic isEqualToString:@"eebb1122330a"]) {
+        if ([self.installDelegate respondsToSelector:@selector(installDoSomethingtishiFrame:)]) {
+            [self.installDelegate installDoSomethingtishiFrame:characteristic];
+        }
+        
     } else {
-        if ( [self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
+        
+        if (!self.installBool && [self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
             [self.deleGate switchEditInitPeripheralData:7];  //数据格式错误
         }
     }

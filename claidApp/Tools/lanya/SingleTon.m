@@ -44,6 +44,8 @@ static SingleTon *_instace = nil;
     
     self.PeripheralArray = [NSMutableArray array];
     self.delayInSeconds = 3.0;
+    self.baseViewController = [[BaseViewController alloc] init];
+
 }
 
 
@@ -201,7 +203,7 @@ static SingleTon *_instace = nil;
 #pragma mark - 后台
 - (void)lanyaHoutaiAction {
    [self stopScan];
-    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"switch"] isEqualToString:@"YES"]) {
+    if ([[self.baseViewController userInfoReaduserkey:@"switch"] isEqualToString:@"YES"]) {
      self.houtaiTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(houtaisaomiaoAction) userInfo:nil repeats:YES];
     }
     LOG(@"开启后台定时器");
@@ -448,11 +450,17 @@ static SingleTon *_instace = nil;
         } else if ([[str1 substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"b2"]) {       //  刷卡正确返回
             jishunumber = 30;
         } else if ([[str1 substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"ee"]) {        //刷卡错误
-            jishunumber = 10;
+            if ([[str1 substringWithRange:NSMakeRange(0, 10)] isEqualToString:@"eebb112233"]){
+                jishunumber = 12;
+                str1 = [NSString stringWithFormat:@"aa%@",[str1 substringWithRange:NSMakeRange(0, 12)]];
+            } else {
+               jishunumber = 10;
+            }
+           
         } else if ([[str1 substringWithRange:NSMakeRange(0, 8)] isEqualToString:@"72656164"]) {   // 软件读取信息
             jishunumber = 10;
             str1 = [NSString stringWithFormat:@"aa%@",str1];
-        } else if ([[str1 substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"f2"]) {   // 第一串
+        }  else if ([[str1 substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"f2"]) {   // 第一串
             jishunumber = 30;
         }
         self.receiveData = [NSString stringWithFormat:@"%@%@",self.receiveData,[str1 substringWithRange:NSMakeRange(2, jishunumber)]];                          //截取拼接数据
@@ -471,7 +479,16 @@ static SingleTon *_instace = nil;
             LOG(@"失败1");
             self.receiveData = @"";
         }
-    } else if (self.receiveData.length > 200 && [self judgmentCardActiondataStr:[self.receiveData substringWithRange:NSMakeRange(0, 2)]] == 1) {   // 发卡 接受第一次串数据
+    }  else if (self.receiveData.length > 104  && self.receiveData.length < 210 && [[self.receiveData substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"bb"]){             // 发卡器连接接收数据
+        if (!_identiFication && !self.installBool){
+            if ([self.installDelegate  respondsToSelector:@selector(installDoSomethingtishiFrame:)]){
+                [self.installDelegate installDoSomethingtishiFrame:self.receiveData];
+            }
+            
+        }
+        self.receiveData = @"";
+        
+    }else if (self.receiveData.length > 200 && [self judgmentCardActiondataStr:[self.receiveData substringWithRange:NSMakeRange(0, 2)]] == 1) {   // 发卡 接受第一次串数据
         
         self.receiveData = [NSString stringWithFormat:@"%@%@",[self.receiveData substringWithRange:NSMakeRange(0,106)],[self.receiveData substringWithRange:NSMakeRange(108,104)]];
         if ([self lanyaDataXiaoyanAction:[self.receiveData substringWithRange:NSMakeRange(106,104)]]){
@@ -483,13 +500,14 @@ static SingleTon *_instace = nil;
                     LOG(@"失败2");
                 }
         
-    } else if (self.receiveData.length == 106 && [self judgmentCardActiondataStr:[self.receiveData substringWithRange:NSMakeRange(0, 2)]] == 0){
+    } else if (self.receiveData.length == 106 && [self judgmentCardActiondataStr:[self.receiveData substringWithRange:NSMakeRange(0, 2)]] == 0){ // 这里发用户卡 最后信息两段  设置里不需要做任何操作
         if (self.shukaTimer){
             [self.shukaTimer invalidate];    // 释放函数
             self.shukaTimer = nil;
             LOG(@"关闭shukaTimer");
         }
-        [self mainHairpinReturnData:self.receiveData];            //刷卡最后 返回 数据
+        [self mainHairpinReturnData:self.receiveData];
+        
        self.receiveData = @"";
     } else if (self.receiveData.length == 92 || self.receiveData.length == 94) {                 //刷卡 第1串 返回
         if (self.receiveData.length == 94) {

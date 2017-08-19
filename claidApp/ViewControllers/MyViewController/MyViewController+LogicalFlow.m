@@ -16,9 +16,9 @@
 - (void)theinternetCardupData {
     AFHTTPRequestOperationManager *manager = [self tokenManager];
     
-    NSString *cardData = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESData"] password:AES_PASSWORD];
+    NSString *cardData = [AESCrypt decrypt:[self userInfoReaduserkey:@"lanyaAESData"] password:AES_PASSWORD];
     
-    NSDictionary *parameters = @{@"oraKey":[[NSUserDefaults standardUserDefaults] objectForKey:@"userorakey"],@"cn_calid_pptId":[[NSUserDefaults standardUserDefaults] objectForKey:@"districtNumber"],@"res":cardData};
+    NSDictionary *parameters = @{@"oraKey":[self userInfoReaduserkey:@"userorakey"],@"cn_calid_pptId":[self userInfoReaduserkey:@"districtNumber"],@"res":cardData};
     [manager POST:RENEWAL_USER_DATA_URL parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         NSString *requestTmp = [NSString stringWithString:operation.responseString];
         NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];
@@ -27,7 +27,7 @@
         if ([[resultDic objectForKey:@"status"] integerValue] == 318) {
            NSMutableArray *dataArray= [resultDic objectForKey:@"data"];
             NSString *encryptedData = [AESCrypt encrypt:[NSString stringWithFormat:@"%@",dataArray[1]] password:AES_PASSWORD];  //加密
-            [[NSUserDefaults standardUserDefaults] setObject:encryptedData forKey:@"lanyaAESData"];  //存储
+            [self userInfowriteuserkey:@"lanyaAESData" uservalue:encryptedData]; //存储
             [self alertViewmessage:[NSString stringWithFormat:@"数据已经更新,由于是物业更新的数据,登录密码已被初始化,可以到修改密码页面进行更改,重置密码为:  %@  ,点击确认,密码不再提示!",dataArray[0]]];
             
         } else {
@@ -46,6 +46,25 @@
 
 }
 
+- (void)logOutPOSTkeystr:(NSString *)keyStr {
+    AFHTTPRequestOperationManager *manager = [self tokenManager];
+    NSDictionary *parameters = @{@"oraKey":keyStr};
+    [manager POST:LOGOUT_URL parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+//        NSString *requestTmp = [NSString stringWithString:operation.responseString];
+//        NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];
+//        //系统自带JSON解析
+//        NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableContainers error:nil];
+//        if ([[resultDic objectForKey:@"status"] integerValue] == 200) {
+//            
+//            NSLog(@"%@",[resultDic objectForKey:@"status"]);
+//        }
+        
+    } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
+        
+        
+    }];
+}
+
 - (AFHTTPRequestOperationManager *)tokenManager {
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -56,4 +75,7 @@
     // manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     return manager;
 }
+
+
+
 @end

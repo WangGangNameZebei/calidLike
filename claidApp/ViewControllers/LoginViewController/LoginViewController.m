@@ -31,13 +31,7 @@
 }
 //出现的时候调用
 - (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-//    if ([AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"lanyaAESData"] password:AES_PASSWORD].length > 0){
-//    CustomTabBarController *customTabBarController = [self createCustomTabBarController];
-//    UIApplication.sharedApplication.delegate.window.rootViewController = customTabBarController;
-//    
-//  //  NSLog(@"从keyChain中取出的uuid-> %@",[self keyChainIdentifierForVendorString]);    // 获取钥匙串 的UUID
-//    }    
+    [super viewDidAppear:animated];   
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -50,7 +44,6 @@
 }
 
 - (IBAction)visitorButtonAction:(id)sender {
-    [self promptInformationActionWarningString:@"此功能暂未开通!"];
    VisitorViewController *visitorVC = [VisitorViewController create];
    [self hideTabBarAndpushViewController:visitorVC];
 }

@@ -18,4 +18,5 @@
 - (NSString *)lanyaDataDecryptedAction:(NSString *)data;                // 数据解密
 - (NSString *)changeLanguage:(NSString *)chinese;         //16 进制的数转换字符串
 - (NSString *)chineseToHex:(NSString *)chineseStr;       //将汉字字符串转换成16进制字符串
++ (NSString *)crc32producedataStr:(NSString *)dataStr;      //产生CRC
 @end

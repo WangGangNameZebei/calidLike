@@ -14,7 +14,7 @@
 + (instancetype)colorWithIntRed:(NSInteger)red green:(NSInteger)green blue:(NSInteger)blue alpha:(NSInteger)alpha;
 + (UIColor *)colorFromHexCode:(NSString *)hexString;
 //custom color
-+ (instancetype)darkGreyLabelColor;
-+ (instancetype)blueTintColor;
++ (instancetype)setupGreyColor;
++ (instancetype)setipBlueColor;
 
 @end

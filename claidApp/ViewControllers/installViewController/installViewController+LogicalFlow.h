@@ -10,4 +10,6 @@
 
 @interface installViewController (LogicalFlow)
 
+- (void)checkStatusOfCardPOSTdataStr:(NSString *)dataStr;       //效验发卡器
+
 @end

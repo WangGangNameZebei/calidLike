@@ -229,10 +229,7 @@
                     <rect key="frame" x="0.0" y="64" width="375" height="50"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XB4-Ua-GEa">
-                            <rect key="frame" x="0.0" y="0.0" width="150" height="50"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="150" id="xYU-Ad-OEA"/>
-                            </constraints>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
                             <state key="normal" title="    连接发卡器">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -253,13 +250,14 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="XB4-Ua-GEa" firstAttribute="top" secondItem="lZT-e3-OWn" secondAttribute="top" id="Bjq-8f-gBA"/>
-                        <constraint firstAttribute="bottom" secondItem="XB4-Ua-GEa" secondAttribute="bottom" id="Ci7-f9-Zvv"/>
+                        <constraint firstAttribute="bottom" secondItem="XB4-Ua-GEa" secondAttribute="bottom" id="4Vi-6t-VL8"/>
+                        <constraint firstItem="1PG-k1-WSB" firstAttribute="leading" secondItem="XB4-Ua-GEa" secondAttribute="trailing" constant="-102" id="BMg-FY-OPT"/>
                         <constraint firstItem="1PG-k1-WSB" firstAttribute="top" secondItem="lZT-e3-OWn" secondAttribute="top" constant="11" id="Kua-kv-d8x"/>
                         <constraint firstAttribute="bottom" secondItem="1PG-k1-WSB" secondAttribute="bottom" constant="12" id="Oy3-lY-dGD"/>
                         <constraint firstAttribute="trailing" secondItem="1PG-k1-WSB" secondAttribute="trailing" constant="22" id="P2O-sa-Dmd"/>
+                        <constraint firstItem="XB4-Ua-GEa" firstAttribute="leading" secondItem="lZT-e3-OWn" secondAttribute="leading" id="PRi-oa-rSZ"/>
                         <constraint firstAttribute="height" constant="50" id="dgM-5h-ap2"/>
-                        <constraint firstItem="XB4-Ua-GEa" firstAttribute="leading" secondItem="lZT-e3-OWn" secondAttribute="leading" id="e5P-NC-VKZ"/>
+                        <constraint firstItem="XB4-Ua-GEa" firstAttribute="top" secondItem="lZT-e3-OWn" secondAttribute="top" id="n6v-Kd-oh9"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TnW-nk-WNH">
@@ -331,7 +329,7 @@
                 <constraint firstItem="nmh-PZ-Zf8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="yDm-ng-EPi"/>
                 <constraint firstItem="rWJ-EU-wl8" firstAttribute="top" secondItem="lZT-e3-OWn" secondAttribute="bottom" id="yrR-NU-x34"/>
             </constraints>
-            <point key="canvasLocation" x="-281.5" y="-47.5"/>
+            <point key="canvasLocation" x="-668.5" y="-24.5"/>
         </view>
     </objects>
     <resources>
