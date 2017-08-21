@@ -29,6 +29,8 @@
 	</dict>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>使用蓝牙发送门禁数据权限</string>
+	<key>NSContactsUsageDescription</key>
+	<string>云梯控请求访问您的通讯录?</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>en</string>
 	<key>UIBackgroundModes</key>

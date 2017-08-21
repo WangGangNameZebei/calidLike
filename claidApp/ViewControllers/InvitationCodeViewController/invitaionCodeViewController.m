@@ -9,6 +9,7 @@
 #import "invitaionCodeViewController.h"
 #import "invitaionCodeViewController+Configuration.h"
 #import "invitaionCodeViewController+LogicalFlow.h"
+#import "SYContacter.h"
 
 
 @implementation invitaionCodeViewController
@@ -51,4 +52,18 @@
       [self invitionCodeForPhonenumber:self.fangkePhoneNumberTextField.text beizhutext:self.bezhuTextView.text];
     }
 }
+//通讯录按钮
+- (IBAction)contactsButtonAction:(id)sender {
+    
+    SYContactsPickerController *vcContacts = [[SYContactsPickerController alloc] init];
+    vcContacts.delegate = self;
+    [self.navigationController pushViewController:vcContacts animated:NO];
+}
+#pragma mark - SYContactsPickerControllerDelegate
+
+- (void)contactsPickerController:(SYContactsPickerController *)picker didSelectContacter:(SYContacter *)contacter {
+    self.fangkePhoneNumberTextField.text = [NSString stringWithFormat:@"%@",contacter.phone];
+
+}
+
 @end

@@ -7,8 +7,9 @@
 //
 
 #import "BaseViewController.h"
+#import "SYContactsPickerController.h"
 
-@interface invitaionCodeViewController : BaseViewController<UITextFieldDelegate>
+@interface invitaionCodeViewController : BaseViewController<UITextFieldDelegate,SYContactsPickerControllerDelegate>
 - (IBAction)returnAction:(id)sender;
 @property (strong, nonatomic) IBOutlet UIView *fangkePhoneNumberView;
 @property (strong, nonatomic) IBOutlet UITextField *fangkePhoneNumberTextField;

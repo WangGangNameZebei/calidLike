@@ -318,7 +318,7 @@
         
     } else if ([string isEqualToString:@"eebb1122330b"] ){
         
-         self.querenAlertView = [[UIAlertView alloc] initWithTitle:@"请您确认控制器是否正确?" message:nil delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
+         self.querenAlertView = [[UIAlertView alloc] initWithTitle:@"请您确认设备是否正确?" message:nil delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
          self.querenAlertView.tag = 1;
 
         [self.querenAlertView show];

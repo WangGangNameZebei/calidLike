@@ -43,4 +43,4 @@
 // 意见反馈
 #define FEED_BACK_URL  @"https://www.sycalid.cn/api/userReturnIdea.do"
 // 校验发卡器
-#define CHECK_STATUS_CARD_URL  @"http://192.168.1.104:3657/calid/checkStatusOfCard.do"
+#define CHECK_STATUS_CARD_URL  @"https://www.sycalid.cn/api/checkStatusOfCard.do"

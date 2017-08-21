@@ -22,6 +22,10 @@
 		0A3C4DA01EB9BBF400B6F279 /* PropertyActivationViewControllerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3C4D9F1EB9BBF400B6F279 /* PropertyActivationViewControllerDataSource.m */; };
 		0A45E1BC1EBD9EEC00BE4980 /* MycradInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A45E1BA1EBD9EEC00BE4980 /* MycradInfoViewController.m */; };
 		0A45E1BD1EBD9EED00BE4980 /* MycradInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A45E1BB1EBD9EEC00BE4980 /* MycradInfoViewController.xib */; };
+		0A50C1A61F48379700FB9B9A /* NSString+SY.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A50C19F1F48379700FB9B9A /* NSString+SY.m */; };
+		0A50C1A71F48379700FB9B9A /* SYContacter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A50C1A11F48379700FB9B9A /* SYContacter.m */; };
+		0A50C1A81F48379700FB9B9A /* SYContactsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A50C1A31F48379700FB9B9A /* SYContactsHelper.m */; };
+		0A50C1A91F48379700FB9B9A /* SYContactsPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A50C1A51F48379700FB9B9A /* SYContactsPickerController.m */; };
 		0A51E91A1DC825B9000D31F3 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A51E9181DC825B9000D31F3 /* RegisterViewController.m */; };
 		0A51E91B1DC825B9000D31F3 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A51E9191DC825B9000D31F3 /* RegisterViewController.xib */; };
 		0A51E91E1DC82629000D31F3 /* RegisterViewController+LogicalFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A51E91D1DC82629000D31F3 /* RegisterViewController+LogicalFlow.m */; };
@@ -59,6 +63,9 @@
 		0A73048E1E8359E00016639A /* invitaionCodeViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A73048D1E8359E00016639A /* invitaionCodeViewController+Configuration.m */; };
 		0A7304911E8359FC0016639A /* invitaionCodeViewController+LogicalFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7304901E8359FC0016639A /* invitaionCodeViewController+LogicalFlow.m */; };
 		0A7878CF1DCDBCB1008A37D0 /* KaiKaViewController+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7878CE1DCDBCB1008A37D0 /* KaiKaViewController+Animation.m */; };
+		0A7FDE2D1F4805B100BEBEF0 /* advertisement1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A7FDE2A1F4805B100BEBEF0 /* advertisement1.png */; };
+		0A7FDE2E1F4805B100BEBEF0 /* advertisement2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A7FDE2B1F4805B100BEBEF0 /* advertisement2.png */; };
+		0A7FDE2F1F4805B100BEBEF0 /* advertisement3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A7FDE2C1F4805B100BEBEF0 /* advertisement3.png */; };
 		0A8154BA1F3D5E1D004E524A /* VisitorViewController+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8154B01F3D5E1D004E524A /* VisitorViewController+Animation.m */; };
 		0A8154BB1F3D5E1D004E524A /* VisitorViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8154B21F3D5E1D004E524A /* VisitorViewController+Configuration.m */; };
 		0A8154BC1F3D5E1D004E524A /* VisitorViewController+LogicalFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8154B41F3D5E1D004E524A /* VisitorViewController+LogicalFlow.m */; };
@@ -68,9 +75,6 @@
 		0A823A101F4154D800B10DB3 /* weChatOpenShare.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A823A0F1F4154D800B10DB3 /* weChatOpenShare.png */; };
 		0A83FE1D1DC9B32F006F4D61 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A83FE1C1DC9B32F006F4D61 /* libsqlite3.tbd */; };
 		0A8612261DEC0C8200AC1FB4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A8612251DEC0C8200AC1FB4 /* AVFoundation.framework */; };
-		0A86A9E31E0236C7006AE3CB /* gsgg1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0A86A9E01E0236C7006AE3CB /* gsgg1.jpg */; };
-		0A86A9E41E0236C7006AE3CB /* gsgg2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0A86A9E11E0236C7006AE3CB /* gsgg2.jpg */; };
-		0A86A9E51E0236C7006AE3CB /* gsgg3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0A86A9E21E0236C7006AE3CB /* gsgg3.jpg */; };
 		0A87F7AA1DB74F8E00EFF1F0 /* SingleTon.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A87F7A91DB74F8E00EFF1F0 /* SingleTon.m */; };
 		0A87F7AD1DB7588900EFF1F0 /* MineViewController+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A87F7AC1DB7588900EFF1F0 /* MineViewController+Animation.m */; };
 		0A87F7B01DB75D5E00EFF1F0 /* MinViewControllerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A87F7AF1DB75D5E00EFF1F0 /* MinViewControllerDataSource.m */; };
@@ -199,6 +203,14 @@
 		0A45E1B91EBD9EEC00BE4980 /* MycradInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MycradInfoViewController.h; sourceTree = "<group>"; };
 		0A45E1BA1EBD9EEC00BE4980 /* MycradInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MycradInfoViewController.m; sourceTree = "<group>"; };
 		0A45E1BB1EBD9EEC00BE4980 /* MycradInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MycradInfoViewController.xib; sourceTree = "<group>"; };
+		0A50C19E1F48379700FB9B9A /* NSString+SY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SY.h"; sourceTree = "<group>"; };
+		0A50C19F1F48379700FB9B9A /* NSString+SY.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SY.m"; sourceTree = "<group>"; };
+		0A50C1A01F48379700FB9B9A /* SYContacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYContacter.h; sourceTree = "<group>"; };
+		0A50C1A11F48379700FB9B9A /* SYContacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYContacter.m; sourceTree = "<group>"; };
+		0A50C1A21F48379700FB9B9A /* SYContactsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYContactsHelper.h; sourceTree = "<group>"; };
+		0A50C1A31F48379700FB9B9A /* SYContactsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYContactsHelper.m; sourceTree = "<group>"; };
+		0A50C1A41F48379700FB9B9A /* SYContactsPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYContactsPickerController.h; sourceTree = "<group>"; };
+		0A50C1A51F48379700FB9B9A /* SYContactsPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYContactsPickerController.m; sourceTree = "<group>"; };
 		0A51E9171DC825B9000D31F3 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		0A51E9181DC825B9000D31F3 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		0A51E9191DC825B9000D31F3 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
@@ -264,6 +276,9 @@
 		0A7304901E8359FC0016639A /* invitaionCodeViewController+LogicalFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "invitaionCodeViewController+LogicalFlow.m"; sourceTree = "<group>"; };
 		0A7878CD1DCDBCB1008A37D0 /* KaiKaViewController+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KaiKaViewController+Animation.h"; sourceTree = "<group>"; };
 		0A7878CE1DCDBCB1008A37D0 /* KaiKaViewController+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KaiKaViewController+Animation.m"; sourceTree = "<group>"; };
+		0A7FDE2A1F4805B100BEBEF0 /* advertisement1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = advertisement1.png; sourceTree = "<group>"; };
+		0A7FDE2B1F4805B100BEBEF0 /* advertisement2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = advertisement2.png; sourceTree = "<group>"; };
+		0A7FDE2C1F4805B100BEBEF0 /* advertisement3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = advertisement3.png; sourceTree = "<group>"; };
 		0A8154AF1F3D5E1D004E524A /* VisitorViewController+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VisitorViewController+Animation.h"; sourceTree = "<group>"; };
 		0A8154B01F3D5E1D004E524A /* VisitorViewController+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VisitorViewController+Animation.m"; sourceTree = "<group>"; };
 		0A8154B11F3D5E1D004E524A /* VisitorViewController+Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VisitorViewController+Configuration.h"; sourceTree = "<group>"; };
@@ -278,9 +293,6 @@
 		0A823A0F1F4154D800B10DB3 /* weChatOpenShare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weChatOpenShare.png; sourceTree = "<group>"; };
 		0A83FE1C1DC9B32F006F4D61 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		0A8612251DEC0C8200AC1FB4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		0A86A9E01E0236C7006AE3CB /* gsgg1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gsgg1.jpg; sourceTree = "<group>"; };
-		0A86A9E11E0236C7006AE3CB /* gsgg2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gsgg2.jpg; sourceTree = "<group>"; };
-		0A86A9E21E0236C7006AE3CB /* gsgg3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gsgg3.jpg; sourceTree = "<group>"; };
 		0A87F7A81DB74F8E00EFF1F0 /* SingleTon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleTon.h; sourceTree = "<group>"; };
 		0A87F7A91DB74F8E00EFF1F0 /* SingleTon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleTon.m; sourceTree = "<group>"; };
 		0A87F7AB1DB7588900EFF1F0 /* MineViewController+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MineViewController+Animation.h"; sourceTree = "<group>"; };
@@ -518,6 +530,21 @@
 				0AF131E91EC04C190056F2A0 /* MycradInfoViewControllerDataSource.m */,
 			);
 			path = MycardInfoViewController;
+			sourceTree = "<group>";
+		};
+		0A50C1911F4825EB00FB9B9A /* ZBContacts */ = {
+			isa = PBXGroup;
+			children = (
+				0A50C19E1F48379700FB9B9A /* NSString+SY.h */,
+				0A50C19F1F48379700FB9B9A /* NSString+SY.m */,
+				0A50C1A01F48379700FB9B9A /* SYContacter.h */,
+				0A50C1A11F48379700FB9B9A /* SYContacter.m */,
+				0A50C1A21F48379700FB9B9A /* SYContactsHelper.h */,
+				0A50C1A31F48379700FB9B9A /* SYContactsHelper.m */,
+				0A50C1A41F48379700FB9B9A /* SYContactsPickerController.h */,
+				0A50C1A51F48379700FB9B9A /* SYContactsPickerController.m */,
+			);
+			path = ZBContacts;
 			sourceTree = "<group>";
 		};
 		0A51E9161DC82576000D31F3 /* RegisterViewController */ = {
@@ -952,9 +979,9 @@
 		0ACFF84C1DB5C48E0043D49A /* claidAppImage */ = {
 			isa = PBXGroup;
 			children = (
-				0A86A9E01E0236C7006AE3CB /* gsgg1.jpg */,
-				0A86A9E11E0236C7006AE3CB /* gsgg2.jpg */,
-				0A86A9E21E0236C7006AE3CB /* gsgg3.jpg */,
+				0A7FDE2A1F4805B100BEBEF0 /* advertisement1.png */,
+				0A7FDE2B1F4805B100BEBEF0 /* advertisement2.png */,
+				0A7FDE2C1F4805B100BEBEF0 /* advertisement3.png */,
 				0A823A0F1F4154D800B10DB3 /* weChatOpenShare.png */,
 				0A98AF4E1DF295F800BCA88C /* zhanweiImage.png */,
 				0A8C969D1DCC30D700AAD161 /* xiangxia_1.png */,
@@ -972,6 +999,7 @@
 				0A95A2D71DDA96640019A691 /* NetWorkJudge */,
 				0AA5DA1D1DF554DA00CA816E /* ZLCGuidePage */,
 				0A8C96931DCC1A9200AAD161 /* HcdDateTimePicker */,
+				0A50C1911F4825EB00FB9B9A /* ZBContacts */,
 				0A98AF351DF270BF00BCA88C /* JYCarousel */,
 				0AFA94871DF7EC670044362D /* TTSwitch */,
 				0A5FF9381DB5FABC00249F0C /* Utilities */,
@@ -1293,7 +1321,9 @@
 				0AF3272F1F3D80F10013122D /* VisitorCarViewController.xib in Resources */,
 				0A5FF9371DB5F6A000249F0C /* CustomActionSheetCell.xib in Resources */,
 				0AFA94A51DF7ECD60044362D /* round-switch-thumb-highlight.png in Resources */,
+				0A7FDE2E1F4805B100BEBEF0 /* advertisement2.png in Resources */,
 				0AFA94A91DF7ECD60044362D /* round-switch-track.png in Resources */,
+				0A7FDE2F1F4805B100BEBEF0 /* advertisement3.png in Resources */,
 				0A6F7F181EFE11A3003E0DDA /* ChangeThePasswordViewController.xib in Resources */,
 				0AA491311DC6F27D0013B974 /* LoginViewController.xib in Resources */,
 				0A5FF9461DB6029700249F0C /* MineViewController.xib in Resources */,
@@ -1308,13 +1338,11 @@
 				0AFA94A61DF7ECD60044362D /* round-switch-thumb-highlight@2x.png in Resources */,
 				0AFA94AA1DF7ECD60044362D /* round-switch-track@2x.png in Resources */,
 				0A73048B1E8352990016639A /* invitaionCodeViewController.xib in Resources */,
-				0A86A9E51E0236C7006AE3CB /* gsgg3.jpg in Resources */,
 				0AA5DA291DF554DA00CA816E /* image4.jpg in Resources */,
-				0A86A9E31E0236C7006AE3CB /* gsgg1.jpg in Resources */,
 				0ACFF8231DB5BCA00043D49A /* Assets.xcassets in Resources */,
-				0A86A9E41E0236C7006AE3CB /* gsgg2.jpg in Resources */,
 				0AA5DA2A1DF554DA00CA816E /* image5.jpg in Resources */,
 				0A3C4D9A1EB9A92300B6F279 /* PropertyActivationViewController.xib in Resources */,
+				0A7FDE2D1F4805B100BEBEF0 /* advertisement1.png in Resources */,
 				0AFA94A31DF7ECD60044362D /* round-switch-overlay.png in Resources */,
 				0AFA94A81DF7ECD60044362D /* round-switch-thumb@2x.png in Resources */,
 				0AA5DA271DF554DA00CA816E /* image2.jpg in Resources */,
@@ -1457,6 +1485,7 @@
 				0A51E91E1DC82629000D31F3 /* RegisterViewController+LogicalFlow.m in Sources */,
 				0AFA948A1DF7EC670044362D /* TTSwitch.m in Sources */,
 				0A5FF9361DB5F6A000249F0C /* CustomActionSheetCell.m in Sources */,
+				0A50C1A81F48379700FB9B9A /* SYContactsHelper.m in Sources */,
 				0AF131E11EC0435E0056F2A0 /* MycradInfoViewController+Configuration.m in Sources */,
 				0A8C969B1DCC1A9200AAD161 /* MXSCycleScrollView.m in Sources */,
 				0A5FF9401DB5FABC00249F0C /* UIImage+Utility.m in Sources */,
@@ -1476,6 +1505,7 @@
 				0AEB0BD51F46CB230046AA30 /* SingleTon+MainHairpin.m in Sources */,
 				0A6F7F1B1EFE2DD8003E0DDA /* ChangeThePasswordViewController+Configuration.m in Sources */,
 				0AF3272E1F3D80F10013122D /* VisitorCarViewController.m in Sources */,
+				0A50C1A61F48379700FB9B9A /* NSString+SY.m in Sources */,
 				0A8C969C1DCC1A9200AAD161 /* UIColor+HcdCustom.m in Sources */,
 				0A98AF471DF270BF00BCA88C /* JYCarouselAnimation.m in Sources */,
 				0A73048A1E8352990016639A /* invitaionCodeViewController.m in Sources */,
@@ -1495,6 +1525,8 @@
 				0A8154BB1F3D5E1D004E524A /* VisitorViewController+Configuration.m in Sources */,
 				0A87F7B61DB7602E00EFF1F0 /* MinFuncTionTableViewCell.m in Sources */,
 				0ABEA9B41E83974B00FC7FD3 /* InstallCardData.m in Sources */,
+				0A50C1A71F48379700FB9B9A /* SYContacter.m in Sources */,
+				0A50C1A91F48379700FB9B9A /* SYContactsPickerController.m in Sources */,
 				0ABEA9B81E839C3600FC7FD3 /* VisitorCalss.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

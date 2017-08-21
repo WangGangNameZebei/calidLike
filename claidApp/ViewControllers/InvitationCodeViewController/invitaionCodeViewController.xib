@@ -79,7 +79,7 @@
                     <rect key="frame" x="52" y="136" width="293" height="50"/>
                     <subviews>
                         <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HWg-R7-Ha3">
-                            <rect key="frame" x="40" y="0.0" width="253" height="50"/>
+                            <rect key="frame" x="40" y="0.0" width="205" height="50"/>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
@@ -89,17 +89,30 @@
                                 <constraint firstAttribute="width" constant="30" id="0t2-dg-wIq"/>
                             </constraints>
                         </imageView>
+                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b8e-G6-nyA">
+                            <rect key="frame" x="245" y="1" width="48" height="48"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="48" id="lFy-38-ROl"/>
+                            </constraints>
+                            <state key="normal" image="Contacts_blue"/>
+                            <connections>
+                                <action selector="contactsButtonAction:" destination="-1" eventType="touchUpInside" id="W4P-Qs-8ds"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="4Ve-b2-2qz"/>
                         <constraint firstItem="iy2-p7-4eZ" firstAttribute="leading" secondItem="aMy-xH-ie2" secondAttribute="leading" constant="8" id="5bM-9W-xsC"/>
+                        <constraint firstAttribute="bottom" secondItem="HWg-R7-Ha3" secondAttribute="bottom" id="6aZ-vr-sXt"/>
+                        <constraint firstAttribute="trailing" secondItem="b8e-G6-nyA" secondAttribute="trailing" id="8w3-Kc-ee3"/>
                         <constraint firstItem="iy2-p7-4eZ" firstAttribute="top" secondItem="aMy-xH-ie2" secondAttribute="top" constant="10" id="SuU-6V-6eA"/>
-                        <constraint firstAttribute="trailing" secondItem="HWg-R7-Ha3" secondAttribute="trailing" id="XmD-su-1Ih"/>
-                        <constraint firstAttribute="bottom" secondItem="HWg-R7-Ha3" secondAttribute="bottom" id="cGK-fI-GaM"/>
+                        <constraint firstItem="b8e-G6-nyA" firstAttribute="top" secondItem="aMy-xH-ie2" secondAttribute="top" constant="1" id="Tv0-kE-BEw"/>
+                        <constraint firstItem="HWg-R7-Ha3" firstAttribute="leading" secondItem="iy2-p7-4eZ" secondAttribute="trailing" constant="2" id="b8P-i5-2cz"/>
+                        <constraint firstAttribute="bottom" secondItem="b8e-G6-nyA" secondAttribute="bottom" constant="1" id="bK8-np-tn0"/>
                         <constraint firstAttribute="bottom" secondItem="iy2-p7-4eZ" secondAttribute="bottom" constant="10" id="drY-Nl-pR9"/>
-                        <constraint firstItem="HWg-R7-Ha3" firstAttribute="leading" secondItem="iy2-p7-4eZ" secondAttribute="trailing" constant="2" id="hvs-aG-cHD"/>
-                        <constraint firstItem="HWg-R7-Ha3" firstAttribute="top" secondItem="aMy-xH-ie2" secondAttribute="top" id="ms6-7r-8AG"/>
+                        <constraint firstItem="b8e-G6-nyA" firstAttribute="leading" secondItem="HWg-R7-Ha3" secondAttribute="trailing" id="pTm-ou-CAA"/>
+                        <constraint firstItem="HWg-R7-Ha3" firstAttribute="top" secondItem="aMy-xH-ie2" secondAttribute="top" id="ul8-C0-7Jx"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的备注信息  :" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pYg-u4-Dup">
@@ -163,6 +176,7 @@
         </view>
     </objects>
     <resources>
+        <image name="Contacts_blue" width="100" height="100"/>
         <image name="fanhui_1.png" width="64" height="64"/>
         <image name="login_accountNumber_gray" width="100" height="100"/>
     </resources>

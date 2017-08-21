@@ -72,7 +72,7 @@
 
 #pragma mark  滚动视图
 - (void)carouselViewEdit {
-    NSMutableArray *imageArray = [[NSMutableArray alloc] initWithArray: @[@"gsgg1.jpg",@"gsgg2.jpg",@"gsgg3.jpg"]];
+    NSMutableArray *imageArray = [[NSMutableArray alloc] initWithArray: @[@"advertisement1.png",@"advertisement2.png",@"advertisement3.png"]];
     if (!self.carouselView) {
         self.carouselView = [[JYCarousel alloc] initWithFrame:CGRectMake(0, 0, [UIScreen screenWidth],[UIScreen screenHeight] *19/55)
                                                   configBlock:^JYConfiguration *(JYConfiguration *carouselConfig) {
