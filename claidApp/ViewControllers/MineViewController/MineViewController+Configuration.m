@@ -72,9 +72,9 @@
 
 #pragma mark  滚动视图
 - (void)carouselViewEdit {
-    NSMutableArray *imageArray = [[NSMutableArray alloc] initWithArray: @[@"advertisement1.png",@"advertisement2.png",@"advertisement3.png"]];
+    NSMutableArray *imageArray = [[NSMutableArray alloc] initWithArray: @[@"advertisment_1.jpg",@"advertisment_2.jpg",@"advertisment_3.jpg"]];
     if (!self.carouselView) {
-        self.carouselView = [[JYCarousel alloc] initWithFrame:CGRectMake(0, 0, [UIScreen screenWidth],[UIScreen screenHeight] *19/55)
+        self.carouselView = [[JYCarousel alloc] initWithFrame:CGRectMake(0, 0, [UIScreen screenWidth],[UIScreen screenHeight] *7/22)
                                                   configBlock:^JYConfiguration *(JYConfiguration *carouselConfig) {
             carouselConfig.pageContollType = MiddlePageControl;
             carouselConfig.pageTintColor = [UIColor whiteColor];
@@ -84,6 +84,7 @@
             carouselConfig.faileReloadTimes = 5;
             carouselConfig.interValTime = 4.0f;
             return carouselConfig;
+                                                      
         } target:self];
         
         [self.JYimageView addSubview:self.carouselView];
@@ -303,7 +304,7 @@
     // MARK： 比较方法
     if ([appVersion compare:serverVersion options:NSNumericSearch] == NSOrderedAscending) {
         return YES;
-       }else {
+       } else {
         return NO;
        }
 }

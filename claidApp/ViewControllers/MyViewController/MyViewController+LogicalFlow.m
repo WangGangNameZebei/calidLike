@@ -40,8 +40,6 @@
         } else {
             [self promptInformationActionWarningString:[NSString stringWithFormat:@"%ld",(long)error.code]];
         }
-
-        
     }];
 
 }

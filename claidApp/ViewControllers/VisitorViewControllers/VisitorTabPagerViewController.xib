@@ -50,29 +50,16 @@
                                 <action selector="tabPagerReturnButtonAction:" destination="-1" eventType="touchUpInside" id="RtY-z8-Mom"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nak-X9-mYh">
-                            <rect key="frame" x="337" y="22.5" width="30" height="30"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="30" id="2cH-hR-brN"/>
-                                <constraint firstAttribute="width" constant="30" id="nHk-Ut-uK1"/>
-                            </constraints>
-                            <state key="normal" image="visiter_wechat_White"/>
-                            <connections>
-                                <action selector="wechatVisitorButtonAction:" destination="-1" eventType="touchUpInside" id="RZe-CC-Z90"/>
-                            </connections>
-                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.068421952430000002" green="0.58686798809999996" blue="0.84999686480000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="tintColor" red="0.99599474669999999" green="0.99613386390000003" blue="0.99595087770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="nak-X9-mYh" firstAttribute="centerY" secondItem="lE6-jG-NaE" secondAttribute="centerY" constant="5.5700000000000003" id="2u2-Rt-ODy"/>
                         <constraint firstItem="vCw-iT-GvT" firstAttribute="leading" secondItem="lE6-jG-NaE" secondAttribute="leading" constant="8" id="4gJ-0L-Yjx"/>
                         <constraint firstItem="OsG-ub-uxX" firstAttribute="leading" secondItem="lE6-jG-NaE" secondAttribute="leading" constant="2" id="8pV-OH-Vrb"/>
                         <constraint firstItem="elW-BY-Eqr" firstAttribute="centerY" secondItem="lE6-jG-NaE" secondAttribute="centerY" constant="5.5700000000000003" id="J6e-fk-Mcn"/>
                         <constraint firstAttribute="height" constant="64" id="KiT-eB-AVr"/>
                         <constraint firstItem="OsG-ub-uxX" firstAttribute="centerY" secondItem="lE6-jG-NaE" secondAttribute="centerY" constant="5.5700000000000003" id="qKa-qz-jn6"/>
                         <constraint firstItem="elW-BY-Eqr" firstAttribute="centerX" secondItem="lE6-jG-NaE" secondAttribute="centerX" id="rP2-c6-ywQ"/>
-                        <constraint firstAttribute="trailing" secondItem="nak-X9-mYh" secondAttribute="trailing" constant="8" id="uSl-ib-DRd"/>
                         <constraint firstItem="elW-BY-Eqr" firstAttribute="leading" secondItem="OsG-ub-uxX" secondAttribute="trailing" constant="84" id="udc-IP-31x"/>
                         <constraint firstItem="vCw-iT-GvT" firstAttribute="centerY" secondItem="lE6-jG-NaE" secondAttribute="centerY" constant="5.5700000000000003" id="zqr-nR-xCm"/>
                     </constraints>
@@ -97,6 +84,5 @@
     </objects>
     <resources>
         <image name="fanhui_1.png" width="64" height="64"/>
-        <image name="visiter_wechat_White" width="100" height="91"/>
     </resources>
 </document>

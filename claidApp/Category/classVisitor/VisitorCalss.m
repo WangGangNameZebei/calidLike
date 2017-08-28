@@ -15,7 +15,7 @@
     visitor.visitorName = visitorNameint;
     visitor.visitorRemarks = visitorRemarksStr;
     visitor.visitorData = visitorDataStr;
-    visitor.visitorFrequency = 2;
+    visitor.visitorFrequency = 3;
     return visitor;
 }
 

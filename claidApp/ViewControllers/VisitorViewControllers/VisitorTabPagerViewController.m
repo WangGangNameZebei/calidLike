@@ -8,7 +8,7 @@
 
 #import "VisitorTabPagerViewController.h"
 #import "UIScreen+Utility.h"
-#import <OpenShareHeader.h>
+
 @implementation VisitorTabPagerViewController
 
 + (instancetype) create {
@@ -123,22 +123,6 @@
 - (IBAction)tabPagerReturnButtonAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
-- (IBAction)wechatVisitorButtonAction:(id)sender {
-    OSMessage *msg=[[OSMessage alloc]init];
-    msg.title = @"云梯控";
-    msg.image =  [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"weChatOpenShare" ofType:@"png"]];
-   // msg.link=@"https://mp.weixin.qq.com/a/~ZhrslzZzetovgzsn0iGOOw~~";
-    msg.thumbnail=[NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"weChatOpenShare" ofType:@"png"]];
-    [OpenShare shareToWeixinSession:msg Success:^(OSMessage *message) {
-        NSLog(@"微信分享到会话成功：\n%@",message);
-    } Fail:^(OSMessage *message, NSError *error) {
-        NSLog(@"微信分享到会话失败：\n%@\n%@",error,message);
-    }];
-
-
-    
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

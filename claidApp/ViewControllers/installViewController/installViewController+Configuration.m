@@ -113,7 +113,7 @@
     self.sensitivityView = [[UIView alloc] initWithFrame:CGRectMake(0, self.installTableView.tableHeaderView.frame.size.height/2, self.installTableView.tableHeaderView.frame.size.width, self.installTableView.tableHeaderView.frame.size.height/2)];
    
      UILabel *xzLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, self.sensitivityView.frame.size.height / 2  - 10, 182, 20)];
-     xzLabel.text = [NSString stringWithFormat:@"设置控制板的灵敏度   :"];
+     xzLabel.text = [NSString stringWithFormat:@"设备灵敏度设置      :"];
       [self.sensitivityView addSubview:xzLabel];
     
     self.canshuheaderLabel = [[UILabel alloc] initWithFrame:CGRectMake(195, self.sensitivityView.frame.size.height / 2  - 10, 50, 20)];

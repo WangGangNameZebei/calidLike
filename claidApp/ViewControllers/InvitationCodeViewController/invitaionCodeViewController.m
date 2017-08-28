@@ -9,8 +9,8 @@
 #import "invitaionCodeViewController.h"
 #import "invitaionCodeViewController+Configuration.h"
 #import "invitaionCodeViewController+LogicalFlow.h"
-#import "SYContacter.h"
-
+#import "SYContacter.h" 
+#import <OpenShareHeader.h>
 
 @implementation invitaionCodeViewController
 
@@ -38,6 +38,20 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (IBAction)weChatButtonAction:(id)sender {
+    OSMessage *msg=[[OSMessage alloc]init];
+    msg.title = @"云梯控";
+    msg.image =  [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"weChatOpenShare" ofType:@"png"]];
+    // msg.link=@"https://mp.weixin.qq.com/a/~ZhrslzZzetovgzsn0iGOOw~~";
+    msg.thumbnail=[NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"weChatOpenShare" ofType:@"png"]];
+    [OpenShare shareToWeixinSession:msg Success:^(OSMessage *message) {
+        NSLog(@"微信分享到会话成功：\n%@",message);
+    } Fail:^(OSMessage *message, NSError *error) {
+        NSLog(@"微信分享到会话失败：\n%@\n%@",error,message);
+    }];
+    
+
+}
 
 - (IBAction)returnAction:(id)sender {
      [self.navigationController popViewControllerAnimated:YES];

@@ -53,6 +53,17 @@
                                 <action selector="returnAction:" destination="-1" eventType="touchUpInside" id="SXq-qL-CDT"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yxU-4w-OYT">
+                            <rect key="frame" x="337" y="22.5" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="MgA-Bq-Bg7"/>
+                                <constraint firstAttribute="height" constant="30" id="ega-GD-wYL"/>
+                            </constraints>
+                            <state key="normal" image="visiter_wechat_White"/>
+                            <connections>
+                                <action selector="weChatButtonAction:" destination="-1" eventType="touchUpInside" id="Q1n-j5-VVn"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.068421952430000002" green="0.58686798809999996" blue="0.84999686480000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="tintColor" red="0.99599474669999999" green="0.99613386390000003" blue="0.99595087770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -63,7 +74,9 @@
                         <constraint firstAttribute="height" constant="64" id="PUa-U9-HlH"/>
                         <constraint firstItem="WRc-Mh-LSe" firstAttribute="leading" secondItem="wPH-4r-KgV" secondAttribute="leading" id="W9v-ET-Fwp"/>
                         <constraint firstItem="yrd-Ft-Gb1" firstAttribute="centerX" secondItem="wPH-4r-KgV" secondAttribute="centerX" id="f6Q-AG-v7m"/>
+                        <constraint firstAttribute="trailing" secondItem="yxU-4w-OYT" secondAttribute="trailing" constant="8" id="fbL-3L-NhN"/>
                         <constraint firstItem="zgg-uf-ajI" firstAttribute="centerY" secondItem="wPH-4r-KgV" secondAttribute="centerY" constant="5.5" id="l3b-Zn-lHB"/>
+                        <constraint firstItem="yxU-4w-OYT" firstAttribute="centerY" secondItem="wPH-4r-KgV" secondAttribute="centerY" constant="5.5700000000000003" id="sAb-dD-ied"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入访客电话号码  :" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSJ-gy-pGJ">
@@ -179,5 +192,6 @@
         <image name="Contacts_blue" width="100" height="100"/>
         <image name="fanhui_1.png" width="64" height="64"/>
         <image name="login_accountNumber_gray" width="100" height="100"/>
+        <image name="visiter_wechat_White" width="100" height="91"/>
     </resources>
 </document>
