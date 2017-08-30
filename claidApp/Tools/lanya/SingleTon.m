@@ -489,7 +489,6 @@ static SingleTon *_instace = nil;
         self.receiveData = @"";
         
     }else if (self.receiveData.length > 200 && [self judgmentCardActiondataStr:[self.receiveData substringWithRange:NSMakeRange(0, 2)]] == 1) {   // 发卡 接受第一次串数据
-        
         self.receiveData = [NSString stringWithFormat:@"%@%@",[self.receiveData substringWithRange:NSMakeRange(0,106)],[self.receiveData substringWithRange:NSMakeRange(108,104)]];
         if ([self lanyaDataXiaoyanAction:[self.receiveData substringWithRange:NSMakeRange(106,104)]]){
                     [self hairpinUserCardData:self.receiveData];      //发卡
@@ -501,12 +500,17 @@ static SingleTon *_instace = nil;
                 }
         
     } else if (self.receiveData.length == 106 && [self judgmentCardActiondataStr:[self.receiveData substringWithRange:NSMakeRange(0, 2)]] == 0){ // 这里发用户卡 最后信息两段  设置里不需要做任何操作
-        if (self.shukaTimer){
+       if (self.shukaTimer){
             [self.shukaTimer invalidate];    // 释放函数
             self.shukaTimer = nil;
             LOG(@"关闭shukaTimer");
         }
-        [self mainHairpinReturnData:self.receiveData];
+        if ([[self.receiveData substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"b2"] ||  [[self.receiveData substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"a2"]) {
+            [self sendCommand:@"aa"];
+        } else {
+            [self mainHairpinReturnData:self.receiveData]; 
+        }
+       
         
        self.receiveData = @"";
     } else if (self.receiveData.length == 92 || self.receiveData.length == 94) {                 //刷卡 第1串 返回
@@ -524,13 +528,12 @@ static SingleTon *_instace = nil;
 }
 
 #pragma mark - 用于检测中心向外设写数据是否成功
--(void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
-{    if (error) {
+-(void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error{
+    if (error) {
         LOG(@"ereor:====>%@",error.userInfo);
         
     }else{
-        LOG(@"发送数据成功==%@",characteristic.value);
-        
+        LOG(@"发送数据成功==%@",characteristic.value);        
     }
 }
 

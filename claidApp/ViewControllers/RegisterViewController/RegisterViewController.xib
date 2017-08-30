@@ -23,6 +23,7 @@
                 <outlet property="phoneNumberImageView" destination="Sdx-BV-aV8" id="0tm-df-TMU"/>
                 <outlet property="phoneNumberTextField" destination="9Gh-nc-fiD" id="WXN-Ov-8Nq"/>
                 <outlet property="phoneNumberView" destination="GKx-1M-oPz" id="917-CP-TWQ"/>
+                <outlet property="verificationButton" destination="uO9-ab-LbJ" id="O5x-QJ-QnS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -43,23 +44,39 @@
                                         <constraint firstAttribute="width" constant="30" id="gbS-6J-UWG"/>
                                     </constraints>
                                 </imageView>
-                                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入推荐码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g4c-R0-maK">
-                                    <rect key="frame" x="40" y="0.0" width="203" height="50"/>
+                                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g4c-R0-maK">
+                                    <rect key="frame" x="40" y="0.0" width="139" height="50"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uO9-ab-LbJ">
+                                    <rect key="frame" x="181" y="1" width="62" height="48"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" id="3QS-Ja-sh6"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <state key="normal" title="获取验证码">
+                                        <color key="titleColor" red="0.11372549019607843" green="0.60784313725490191" blue="0.85490196078431369" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="verificationButtonAction:" destination="-1" eventType="touchUpInside" id="bvp-YQ-LyA"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
+                                <constraint firstAttribute="bottom" secondItem="uO9-ab-LbJ" secondAttribute="bottom" constant="1" id="0nO-0F-Ezq"/>
+                                <constraint firstAttribute="trailing" secondItem="uO9-ab-LbJ" secondAttribute="trailing" constant="2" id="45u-ps-6Ts"/>
                                 <constraint firstAttribute="width" constant="245" id="Bmh-9t-Zth"/>
                                 <constraint firstItem="d8i-EF-GpT" firstAttribute="leading" secondItem="i2P-gG-bYb" secondAttribute="leading" constant="8" id="LYc-Yr-2pb"/>
-                                <constraint firstAttribute="bottom" secondItem="g4c-R0-maK" secondAttribute="bottom" id="M7y-Gf-xf9"/>
                                 <constraint firstAttribute="bottom" secondItem="d8i-EF-GpT" secondAttribute="bottom" constant="10" id="Mp1-vQ-uNd"/>
-                                <constraint firstItem="g4c-R0-maK" firstAttribute="top" secondItem="i2P-gG-bYb" secondAttribute="top" id="gw9-kI-Z2j"/>
+                                <constraint firstItem="g4c-R0-maK" firstAttribute="top" secondItem="i2P-gG-bYb" secondAttribute="top" id="Q8K-IP-nq1"/>
+                                <constraint firstItem="g4c-R0-maK" firstAttribute="leading" secondItem="d8i-EF-GpT" secondAttribute="trailing" constant="2" id="Rav-Rf-KBe"/>
+                                <constraint firstItem="uO9-ab-LbJ" firstAttribute="leading" secondItem="g4c-R0-maK" secondAttribute="trailing" constant="2" id="VLd-CC-qpl"/>
+                                <constraint firstItem="uO9-ab-LbJ" firstAttribute="top" secondItem="i2P-gG-bYb" secondAttribute="top" constant="1" id="faS-Na-R4P"/>
                                 <constraint firstAttribute="height" constant="50" id="l52-cY-Si4"/>
-                                <constraint firstAttribute="trailing" secondItem="g4c-R0-maK" secondAttribute="trailing" constant="2" id="m66-dz-iVH"/>
-                                <constraint firstItem="g4c-R0-maK" firstAttribute="leading" secondItem="d8i-EF-GpT" secondAttribute="trailing" constant="2" id="o1Q-X2-gV1"/>
                                 <constraint firstItem="d8i-EF-GpT" firstAttribute="top" secondItem="i2P-gG-bYb" secondAttribute="top" constant="10" id="wjL-al-RdU"/>
+                                <constraint firstAttribute="bottom" secondItem="g4c-R0-maK" secondAttribute="bottom" id="x4B-Zt-8hV"/>
                             </constraints>
                         </view>
                         <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wal-DU-dsC">
@@ -90,7 +107,7 @@
                                 <constraint firstAttribute="bottom" secondItem="Nzv-um-5ne" secondAttribute="bottom" constant="10" id="zkv-N4-A4D"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="推荐码 :" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XIV-4f-V2y">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="验证码 :" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XIV-4f-V2y">
                             <rect key="frame" x="0.0" y="99" width="78" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="omF-5P-cTi"/>

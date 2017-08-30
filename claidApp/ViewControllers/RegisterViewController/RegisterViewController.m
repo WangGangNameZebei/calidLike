@@ -50,6 +50,10 @@
 - (IBAction)returnButtonAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+//  获取验证码
+- (IBAction)verificationButtonAction:(id)sender {
+    
+}
 
 /*
 #pragma mark - Navigation

@@ -21,5 +21,6 @@
 @property (strong, nonatomic) IBOutlet UIView *confirmPasswordView;
 @property (strong, nonatomic) IBOutlet UIImageView *confirmPasswordImageView;
 @property (strong, nonatomic) IBOutlet UITextField *confirmPasswordTextField;
+@property (strong, nonatomic) IBOutlet UIButton *verificationButton;    //获取验证码
 
 @end

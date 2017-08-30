@@ -64,9 +64,9 @@
 }
                                                                                                                                                                                   
 - (IBAction)registerButtonAction:(id)sender {
-    [self promptInformationActionWarningString:@"此功能暂未开通!"];
-//    RegisterViewController *registerVC = [RegisterViewController create];
-//    [self hideTabBarAndpushViewController:registerVC];
+    
+      RegisterViewController *registerVC = [RegisterViewController create];
+      [self hideTabBarAndpushViewController:registerVC];
 }
 
 
