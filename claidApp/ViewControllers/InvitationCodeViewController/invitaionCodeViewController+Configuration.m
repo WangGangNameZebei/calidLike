@@ -48,7 +48,6 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField {
         self.fangkePhoneNumberView.layer.borderColor = [[UIColor setupGreyColor] CGColor];
         self.fangkePhoneNumberImageView.image = [UIImage imageNamed:@"login_accountNumber_gray"];
-  
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

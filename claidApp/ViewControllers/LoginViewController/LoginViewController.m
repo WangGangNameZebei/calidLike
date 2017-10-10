@@ -11,10 +11,10 @@
 #import "RegisterViewController.h"
 #import "MineViewController.h"
 #import "MyViewController.h"
-#import "PropertyActivationViewController.h"
 #import "AESCrypt.h"
 #import "LoginViewController+LogicalFlow.h"
 #import "VisitorViewController.h"
+#import "RetrieveThePasswordViewController.h"
 
 @implementation LoginViewController
 
@@ -36,11 +36,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-- (IBAction)activationButtonAction:(id)sender {    
-    PropertyActivationViewController *paVC = [PropertyActivationViewController create];
-    paVC.titleLabelString = @"物业激活";
-    [self hideTabBarAndpushViewController:paVC];
 }
 
 - (IBAction)visitorButtonAction:(id)sender {
@@ -64,11 +59,15 @@
 }
                                                                                                                                                                                   
 - (IBAction)registerButtonAction:(id)sender {
-    
+     //[self promptInformationActionWarningString:@"此功能暂未开通！"];
       RegisterViewController *registerVC = [RegisterViewController create];
       [self hideTabBarAndpushViewController:registerVC];
 }
-
+//找回密码
+- (IBAction)getbackPasswordButtonAction:(id)sender {
+    RetrieveThePasswordViewController *retrieveVC = [RetrieveThePasswordViewController create];
+    [self hideTabBarAndpushViewController:retrieveVC];
+}
 
 - (CustomTabBarController *)createCustomTabBarController {
     MineViewController *minViewController = [MineViewController create];

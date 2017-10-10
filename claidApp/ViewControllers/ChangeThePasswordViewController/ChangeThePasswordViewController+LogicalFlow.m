@@ -8,13 +8,14 @@
 
 #import "ChangeThePasswordViewController+LogicalFlow.h"
 #import <AFHTTPRequestOperationManager.h>
-
+#import "InternetServices.h"
 
 @implementation ChangeThePasswordViewController (LogicalFlow)
 
 - (void)changeThePasswordPOSTForoldpasssword:(NSString *)oldpassword newpassword:(NSString *)newpassword {
     AFHTTPRequestOperationManager *manager = [self tokenManager];
-    NSDictionary *parameters = @{@"oraKey":[self userInfoReaduserkey:@"userorakey"],@"cn_calid_pptId":[self userInfoReaduserkey:@"districtNumber"],@"passwd":oldpassword,@"new_passwd":newpassword};
+    [manager.requestSerializer setValue:[self userInfoReaduserkey:@"Token"] forHTTPHeaderField:@"access_token"];
+    NSDictionary *parameters = @{@"accounts":[self userInfoReaduserkey:@"userName"],@"passwd":oldpassword,@"new_passwd":newpassword};
     [manager POST:UP_DATA_USER_PWD_URL parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         NSString *requestTmp = [NSString stringWithString:operation.responseString];
         NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];
@@ -27,7 +28,16 @@
             self.changenewPasswordTextField.text = @"";
             self.confirmnewPasswoedTextField.text = @"";
             
+        } else if ([[resultDic objectForKey:@"status"] integerValue] == 329){ //过期
+            [InternetServices requestLoginPostForUsername:[self userInfoReaduserkey:@"userName"] password:[self userInfoReaduserkey:@"passWord"]];
+            [self changeThePasswordPOSTForoldpasssword:oldpassword newpassword:newpassword];
+        } else if ([[resultDic objectForKey:@"status"] integerValue] == 316 || [[resultDic objectForKey:@"status"] integerValue] == 203 || [[resultDic objectForKey:@"status"] integerValue] == 204) {
+            [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
+        } else {
+            [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
+            [InternetServices logOutPOSTkeystr:[self userInfoReaduserkey:@"userName"]];
         }
+        
         
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
         if (error.code == -1009){

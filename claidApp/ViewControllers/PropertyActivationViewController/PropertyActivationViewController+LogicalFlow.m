@@ -7,15 +7,18 @@
 //
 
 #import "PropertyActivationViewController+LogicalFlow.h"
+#import "PropertyActivationViewController+Configuration.h"
 #import <AFHTTPRequestOperationManager.h>
 #import "UIColor+Utility.h"
-#import "SingleTon+tool.h"
+#import "CalidTool.h"
+#import "InternetServices.h"
 
 @implementation PropertyActivationViewController (LogicalFlow)
-- (void)propertyActivationPostForUserData:(NSString *)userData userInfo:(NSString *)userInfo userEqInfo:(NSString *)userEqInfo userPhone:(NSString *)userPhone password:(NSString *)password {
+- (void)propertyActivationPostForUserData:(NSString *)userData userInfo:(NSString *)userInfo userEqInfo:(NSString *)userEqInfo userPhone:(NSString *)userPhone {
     
     AFHTTPRequestOperationManager *manager = [self tokenManager];
-    NSDictionary *parameters = @{@"swipingData":userData,@"userInfo":userInfo,@"userEqInfo":userEqInfo ,@"userPhone":userPhone,@"userPassword":password,@"userMode":self.titleLabelString};
+    [manager.requestSerializer setValue:[self userInfoReaduserkey:@"Token"] forHTTPHeaderField:@"access_token"];
+    NSDictionary *parameters = @{@"swipingData":userData,@"userInfo":userInfo,@"userEqInfo":userEqInfo ,@"accounts":userPhone,@"userMode":self.titleLabelString,@"userDisableStatus":[NSString stringWithFormat:@"%ld",(long)self.stopBiaoshi]};
     [manager POST:ADDUSERPROPERTY_URL parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         NSString *requestTmp = [NSString stringWithString:operation.responseString];
         NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];
@@ -27,10 +30,17 @@
             self.pAPhoneNumberTextField.text = @"";
             self.uploadButton.backgroundColor = [UIColor setupGreyColor];
            [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
+        } else if ([[resultDic objectForKey:@"status"] integerValue] == 329) { //token  过期
+             [InternetServices requestLoginPostForUsername:[self userInfoReaduserkey:@"userName"] password:[self userInfoReaduserkey:@"passWord"]];
+            [self propertyActivationPostForUserData:userData userInfo:userInfo userEqInfo:userEqInfo userPhone:userPhone];
+        } else if ([[resultDic objectForKey:@"status"] integerValue] == 296 || [[resultDic objectForKey:@"status"] integerValue] == 301 || [[resultDic objectForKey:@"status"] integerValue] == 328 || [[resultDic objectForKey:@"status"] integerValue] == 330) {
+            [InternetServices logOutPOSTkeystr:[self userInfoReaduserkey:@"userName"]];
         } else {
-            
             [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
         }
+            
+      
+  
         
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
         if (error.code == -1009){
@@ -55,9 +65,15 @@
         NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableContainers error:nil];
     if ([[resultDic objectForKey:@"status"] integerValue] == 200){  //
      
-        [self lanyaCardChuliActiondataStr:[resultDic objectForKey:@"data"] olddata:dataStr];
+        NSArray *arrar = [resultDic objectForKey:@"data"];
+        [self lanyaCardChuliActiondataStr:arrar[0] olddata:dataStr];
+        if (![arrar[1] isEqualToString:@"0"]){
+            [self propertyNameAlertEditdataStr:arrar[1]];
+        }
          
     } else {
+        NSString *receiveData =  [CalidTool lanyaDataDecryptedAction:dataStr];
+        self.xiaoquNumber = [NSString stringWithFormat:@"%@",[receiveData substringWithRange:NSMakeRange(2,8)]];
         [self lanyaCardChuliActiondataStr:@"00" olddata:dataStr];
     }
         
@@ -74,30 +90,42 @@
     
 
 }
-//更新数据
-- (void)theinternetCardupData {
+
+
+#pragma mark- 提交小区信息
+- (void)districtInfoPOSTNameStr:(NSString *)nameStr dataStr:(NSString *)dataStr {
     AFHTTPRequestOperationManager *manager = [self tokenManager];
-    
-    NSString *cardData = [AESCrypt decrypt:[self userInfoReaduserkey:@"lanyaAESData"] password:AES_PASSWORD];
-    
-    NSDictionary *parameters = @{@"oraKey":[self userInfoReaduserkey:@"userorakey"],@"cn_calid_pptId":[self userInfoReaduserkey:@"districtNumber"],@"res":cardData};
-    [manager POST:RENEWAL_USER_DATA_URL parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+    [manager.requestSerializer setValue:[self userInfoReaduserkey:@"Token"] forHTTPHeaderField:@"access_token"];
+    NSDictionary *parameters = @{@"pptId":self.xiaoquNumber,@"pptName":nameStr,@"pptLoc":dataStr};
+    [manager POST:CHANGE_OF_INFO_URL parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         NSString *requestTmp = [NSString stringWithString:operation.responseString];
         NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];
         //系统自带JSON解析
         NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableContainers error:nil];
-        if ([[resultDic objectForKey:@"status"] integerValue] == 318) {
-            NSMutableArray *dataArray= [resultDic objectForKey:@"data"];
-            NSString *encryptedData = [AESCrypt encrypt:[NSString stringWithFormat:@"%@",dataArray[1]] password:AES_PASSWORD];  //加密
-            [self userInfowriteuserkey:@"lanyaAESData" uservalue:encryptedData];  //存储
+        if ([[resultDic objectForKey:@"status"] integerValue] == 200){  //
+             [self promptInformationActionWarningString:@"园区信息提交成功"];
+        } else if ([[resultDic objectForKey:@"status"] integerValue] == 329){ //过期
+            [InternetServices requestLoginPostForUsername:[self userInfoReaduserkey:@"userName"] password:[self userInfoReaduserkey:@"passWord"]];
+            [self districtInfoPOSTNameStr:nameStr dataStr:dataStr];
+        } else if ([[resultDic objectForKey:@"status"] integerValue] == 326 || [[resultDic objectForKey:@"status"] integerValue] == 203 || [[resultDic objectForKey:@"status"] integerValue] == 204) {
+            [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
+        } else {
+            [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
+            [InternetServices logOutPOSTkeystr:[self userInfoReaduserkey:@"userName"]];
         }
         
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
+        [self.paSingleTon disConnection];       // 退出前 断开蓝牙
+        if (error.code == -1009){
+            [self promptInformationActionWarningString:@"您的网络有异常"];
+            
+        } else {
+            [self promptInformationActionWarningString:[NSString stringWithFormat:@"%ld",(long)error.code]];
+        }
         
     }];
-    
-}
 
+}
 - (AFHTTPRequestOperationManager *)tokenManager {
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -110,8 +138,9 @@
 }
 
 - (void)lanyaCardChuliActiondataStr:(NSString *)datastr olddata:(NSString *)loddata {
-    NSString *receiveData =  [[SingleTon alloc] lanyaDataDecryptedAction:loddata];
-    NSString *message = [SingleTon crc32producedataStr:[NSString stringWithFormat:@"01%@%@",[receiveData substringWithRange:NSMakeRange(48,8)],datastr]];
+    NSString *receiveData =  [CalidTool lanyaDataDecryptedAction:loddata];
+    self.xiaoquNumber = [NSString stringWithFormat:@"%@",[receiveData substringWithRange:NSMakeRange(2,8)]];
+    NSString *message = [CalidTool crc32producedataStr:[NSString stringWithFormat:@"01%@%@",[receiveData substringWithRange:NSMakeRange(48,8)],datastr]];
     message = [NSString stringWithFormat:@"dd01%@%@",message,datastr];
     [self.paSingleTon sendCommand:message];       //发送数据
 

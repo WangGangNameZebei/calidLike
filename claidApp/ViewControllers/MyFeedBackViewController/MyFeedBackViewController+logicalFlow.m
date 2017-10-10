@@ -8,6 +8,7 @@
 
 #import "MyFeedBackViewController+logicalFlow.h"
 #import <AFHTTPRequestOperationManager.h>
+#import "InternetServices.h"
 
 @implementation MyFeedBackViewController (logicalFlow)
 
@@ -16,12 +17,24 @@
     NSString *sysVersion = [[UIDevice currentDevice] systemVersion];
     
     AFHTTPRequestOperationManager *manager = [self tokenManager];
-    NSDictionary *parameters = @{@"i_oraKey":[self userInfoReaduserkey:@"userorakey"],@"i_content":textString,@"i_phone_type":@"1",@"i_phone_model":sysVersion};
+     [manager.requestSerializer setValue:[self userInfoReaduserkey:@"Token"] forHTTPHeaderField:@"access_token"];
+    NSDictionary *parameters = @{@"accounts":[self userInfoReaduserkey:@"userName"],@"content":textString,@"phone_type":@"1",@"phone_model":sysVersion};
     [manager POST:FEED_BACK_URL parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         NSString *requestTmp = [NSString stringWithString:operation.responseString];
         NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];
         //系统自带JSON解析
         NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableContainers error:nil];
+        
+        if ([[resultDic objectForKey:@"status"] integerValue] == 329){ //过期
+            [InternetServices requestLoginPostForUsername:[self userInfoReaduserkey:@"userName"] password:[self userInfoReaduserkey:@"passWord"]];
+            [self feedbackPOSTtextString:textString];
+        } else if ([[resultDic objectForKey:@"status"] integerValue] == 200 || [[resultDic objectForKey:@"status"] integerValue] == 203 || [[resultDic objectForKey:@"status"] integerValue] == 204|| [[resultDic objectForKey:@"status"] integerValue] == 324) {
+            [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
+        } else {
+            [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
+            [InternetServices logOutPOSTkeystr:[self userInfoReaduserkey:@"userName"]];
+        }
+        
             [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
         self.feedbackTextView.text = @"";
         self.feedbacklabel.alpha = 1;

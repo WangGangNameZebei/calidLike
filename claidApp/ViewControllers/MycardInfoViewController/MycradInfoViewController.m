@@ -8,6 +8,7 @@
 
 #import "MycradInfoViewController.h"
 #import "MycradInfoViewController+Configuration.h"
+#import "SingleTon.h"
 
 @implementation MycradInfoViewController
 
@@ -22,14 +23,12 @@
     [self configureViews];
 }
 
-// 点击  UItableView
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-}
+
 
 - (IBAction)myinforeturnButtonAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+#pragma mark- 摇一摇
 - (IBAction)sharkSwitchAction:(id)sender {
     UISwitch *mySwitch = (UISwitch *)sender;
     if (mySwitch.isOn){
@@ -38,13 +37,36 @@
         [self userInfowriteuserkey:@"shakeswitch" uservalue:@"NO"];
     }
 }
+#pragma mark- 亮屏
 - (IBAction)brightScreenSwitchAction:(id)sender {
     UISwitch *mySwitch = (UISwitch *)sender;
     if (mySwitch.isOn){
          [self userInfowriteuserkey:@"brightScreenswitch" uservalue:@"YES"];
     } else {
         [self userInfowriteuserkey:@"brightScreenswitch" uservalue:@"NO"];
+    }     
+}
+#pragma mark - 自动
+- (IBAction)automaticSwitchAction:(id)sender {
+    UISwitch *mySwitch = (UISwitch *)sender;
+    SingleTon *ton = [SingleTon sharedInstance];
+    [ton initialization];
+    if (mySwitch.isOn){
+        [self userInfowriteuserkey:@"switch" uservalue:@"YES"];
+        NSString *strUUid = SINGLE_TON_UUID_STR;
+        if (!strUUid) {
+            [ton startScan]; // 扫描
+            return;
+        }
+        [ton getPeripheralWithIdentifierAndConnect:SINGLE_TON_UUID_STR];
+       
+    } else {
+        [self userInfowriteuserkey:@"switch" uservalue:@"NO"];
+         [ton.manager stopScan];  //停止  扫描
     }
+   
+
+    
 }
 
 - (void)didReceiveMemoryWarning {

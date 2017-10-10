@@ -9,7 +9,10 @@
 #import "PropertyActivationViewController.h"
 
 @interface PropertyActivationViewController (LogicalFlow)
-- (void)propertyActivationPostForUserData:(NSString *)userData userInfo:(NSString *)userInfo userEqInfo:(NSString *)userEqInfo userPhone:(NSString *)userPhone password:(NSString *)password;  //  上传数据
-- (void)theinternetCardupData;      //更新数据
+
+
+- (void)propertyActivationPostForUserData:(NSString *)userData userInfo:(NSString *)userInfo userEqInfo:(NSString *)userEqInfo userPhone:(NSString *)userPhone;  //  上传数据
+
 - (void)checkStatusOfCardPOSTdataStr:(NSString *)dataStr;       //效验发卡器
+- (void)districtInfoPOSTNameStr:(NSString *)nameStr dataStr:(NSString *)dataStr;        //园区信息提交
 @end

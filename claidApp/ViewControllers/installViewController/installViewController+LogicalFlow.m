@@ -8,7 +8,7 @@
 
 #import "installViewController+LogicalFlow.h"
 #import <AFHTTPRequestOperationManager.h>
-#import "SingleTon+tool.h"
+#import "CalidTool.h"
 
 @implementation installViewController (LogicalFlow)
 #pragma mark- 效验发卡器
@@ -21,15 +21,15 @@
         //系统自带JSON解析
         NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableContainers error:nil];
         if ([[resultDic objectForKey:@"status"] integerValue] == 200){  //
-            
-            [self lanyaCardChuliActiondataStr:[resultDic objectForKey:@"data"] olddata:dataStr];
+             NSArray *arrar = [resultDic objectForKey:@"data"];
+            [self lanyaCardChuliActiondataStr:arrar[0] olddata:dataStr];
             
         } else {
             [self lanyaCardChuliActiondataStr:@"00" olddata:dataStr];
         }
         
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
-        [self.sinTon disConnection];       // 退出前 断开蓝牙
+       [self.sinTon iwdisConnection];       // 退出前 断开蓝牙
         if (error.code == -1009){
             [self promptInformationActionWarningString:@"您的网络有异常"];
             
@@ -42,7 +42,6 @@
     
 }
 - (AFHTTPRequestOperationManager *)tokenManager {
-    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     // 设置请求格式
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -52,10 +51,10 @@
     return manager;
 }
 - (void)lanyaCardChuliActiondataStr:(NSString *)datastr olddata:(NSString *)loddata {
-    NSString *receiveData =  [[SingleTon alloc] lanyaDataDecryptedAction:loddata];
-    NSString *message = [SingleTon crc32producedataStr:[NSString stringWithFormat:@"01%@%@",[receiveData substringWithRange:NSMakeRange(48,8)],datastr]];
+    NSString *receiveData =  [CalidTool lanyaDataDecryptedAction:loddata];
+    NSString *message = [CalidTool crc32producedataStr:[NSString stringWithFormat:@"01%@%@",[receiveData substringWithRange:NSMakeRange(48,8)],datastr]];
     message = [NSString stringWithFormat:@"dd01%@%@",message,datastr];
-    [self.sinTon sendCommand:message];       //发送数据
+    [self.sinTon iwsendCommand:message];       //发送数据
 }
 
 @end

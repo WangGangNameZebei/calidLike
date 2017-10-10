@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -161,7 +161,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="登录" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rVh-ch-x7H">
-                            <rect key="frame" x="165" y="25" width="45" height="26"/>
+                            <rect key="frame" x="165" y="29" width="45" height="26"/>
                             <constraints>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" id="RaY-hK-cvL"/>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" id="ath-lO-MI6"/>
@@ -174,7 +174,7 @@
                     <color key="backgroundColor" red="0.068421952426433563" green="0.58686798810958862" blue="0.84999686479568481" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="tintColor" red="0.99599474669999999" green="0.99613386390000003" blue="0.99595087770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="rVh-ch-x7H" firstAttribute="centerY" secondItem="wii-iG-Gyf" secondAttribute="centerY" constant="6" id="RVt-1u-c8v"/>
+                        <constraint firstItem="rVh-ch-x7H" firstAttribute="centerY" secondItem="wii-iG-Gyf" secondAttribute="centerY" constant="10" id="RVt-1u-c8v"/>
                         <constraint firstItem="rVh-ch-x7H" firstAttribute="centerX" secondItem="wii-iG-Gyf" secondAttribute="centerX" id="t3G-s0-eXs"/>
                         <constraint firstAttribute="height" constant="64" id="yXn-Y4-y86"/>
                     </constraints>
@@ -186,49 +186,60 @@
                         <constraint firstAttribute="width" constant="110" id="YHh-5t-769"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c36-H7-dNa">
-                    <rect key="frame" x="281" y="66" width="90" height="39"/>
-                    <constraints>
-                        <constraint firstAttribute="width" relation="greaterThanOrEqual" id="dhg-B2-JBx"/>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" id="hmY-Is-iTU"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                    <state key="normal" title="物业激活">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="activationButtonAction:" destination="-1" eventType="touchUpInside" id="qfJ-f1-WqI"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q3T-Nc-tA3">
-                    <rect key="frame" x="6" y="66" width="90" height="39"/>
+                    <rect key="frame" x="117.5" y="643" width="66" height="20"/>
                     <constraints>
-                        <constraint firstAttribute="width" relation="greaterThanOrEqual" id="7M5-HV-sW9"/>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" id="Yu6-0g-pVM"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" id="HhQ-cC-y8z"/>
+                        <constraint firstAttribute="height" constant="20" id="cZQ-Hw-qns"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <state key="normal" title="我是访客">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleColor" red="0.11332534998655319" green="0.60901933908462524" blue="0.85404843091964722" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
                         <action selector="visitorButtonAction:" destination="-1" eventType="touchUpInside" id="Wfl-Te-jBu"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i8A-4S-eNX">
+                    <rect key="frame" x="186.5" y="644" width="2" height="18"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="2" id="PeC-aY-jwb"/>
+                        <constraint firstAttribute="height" constant="18" id="VGz-a6-Td4"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TwD-lR-o4l">
+                    <rect key="frame" x="191" y="643" width="66" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" id="2zN-5O-O97"/>
+                        <constraint firstAttribute="height" constant="20" id="j3B-8W-clI"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <state key="normal" title="找回密码">
+                        <color key="titleColor" red="0.11332535000000001" green="0.60901933909999995" blue="0.85404843090000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="getbackPasswordButtonAction:" destination="-1" eventType="touchUpInside" id="Z99-sK-mWk"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="c36-H7-dNa" firstAttribute="top" secondItem="wii-iG-Gyf" secondAttribute="bottom" constant="2" id="3Oa-7d-du9"/>
                 <constraint firstItem="nZv-Al-x00" firstAttribute="top" secondItem="4R4-Zf-z36" secondAttribute="bottom" constant="24" id="4EL-uf-fRU"/>
-                <constraint firstItem="q3T-Nc-tA3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="6" id="7Eu-ym-WCL"/>
+                <constraint firstItem="i8A-4S-eNX" firstAttribute="leading" secondItem="q3T-Nc-tA3" secondAttribute="trailing" constant="3" id="CTt-Bd-zJ4"/>
+                <constraint firstItem="i8A-4S-eNX" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="EMz-3Y-t5f"/>
+                <constraint firstAttribute="bottom" secondItem="i8A-4S-eNX" secondAttribute="bottom" constant="5" id="Mow-Tf-luT"/>
                 <constraint firstItem="4R4-Zf-z36" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="OGv-8i-GeZ"/>
                 <constraint firstItem="wii-iG-Gyf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="XeL-Mr-FGH"/>
+                <constraint firstAttribute="bottom" secondItem="q3T-Nc-tA3" secondAttribute="bottom" constant="4" id="Xt1-ta-8kx"/>
                 <constraint firstAttribute="trailing" secondItem="nZv-Al-x00" secondAttribute="trailing" constant="15" id="bB3-ds-wDd"/>
-                <constraint firstItem="q3T-Nc-tA3" firstAttribute="top" secondItem="wii-iG-Gyf" secondAttribute="bottom" constant="2" id="iwT-Qs-rEL"/>
+                <constraint firstItem="TwD-lR-o4l" firstAttribute="leading" secondItem="i8A-4S-eNX" secondAttribute="trailing" constant="3" id="hUA-f7-pCh"/>
                 <constraint firstItem="wii-iG-Gyf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="mp1-Tu-jC7"/>
                 <constraint firstItem="nZv-Al-x00" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="mqJ-8f-IMC"/>
                 <constraint firstItem="nZv-Al-x00" firstAttribute="top" secondItem="wii-iG-Gyf" secondAttribute="bottom" constant="150" id="rfF-4t-dWD"/>
                 <constraint firstAttribute="trailing" secondItem="wii-iG-Gyf" secondAttribute="trailing" id="uEz-Hy-rwU"/>
-                <constraint firstAttribute="trailing" secondItem="c36-H7-dNa" secondAttribute="trailing" constant="4" id="uPq-R4-TkC"/>
+                <constraint firstAttribute="bottom" secondItem="TwD-lR-o4l" secondAttribute="bottom" constant="4" id="zEw-f6-vdZ"/>
             </constraints>
             <point key="canvasLocation" x="13.5" y="48.5"/>
         </view>

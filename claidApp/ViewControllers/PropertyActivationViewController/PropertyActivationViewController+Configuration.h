@@ -11,5 +11,6 @@
 @interface PropertyActivationViewController (Configuration)
 
 - (void)configureViews;
-
+- (void)propertyNameAlertEditdataStr:(NSString *)datastr;
+- (void)viewdataInfoinit;
 @end

@@ -7,16 +7,11 @@
 //
 
 #import "SingleTon+MainHairpin.h"
-#import "SingleTon+tool.h"
+#import "CalidTool.h"
 
 @implementation SingleTon (MainHairpin)
 - (void)mainHairpinReturnData:(NSString *)characteristic{
 
-        if (!self.identiFication && [self.installDelegate respondsToSelector:@selector(installDoSomethingtishiFrame:)]) {
-            [self.installDelegate installDoSomethingtishiFrame:@"设置成功!"];
-            
-            return;
-        }
     self.receiveData = [characteristic substringWithRange:NSMakeRange(0,104)];
     NSString *encryptedData = [AESCrypt encrypt:self.receiveData password:AES_PASSWORD];  //加密
     [self.baseViewController userInfowriteuserkey:@"lanyaAESErrornData" uservalue:encryptedData];
@@ -25,7 +20,7 @@
      
     }
     if ([self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
-        [self.deleGate switchEditInitPeripheralData:[self turnTheHexLiterals:[characteristic substringWithRange:NSMakeRange(104,2)]]];
+        [self.deleGate switchEditInitPeripheralData:[CalidTool turnTheHexLiterals:[characteristic substringWithRange:NSMakeRange(104,2)]]];
         
     }
     

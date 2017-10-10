@@ -10,6 +10,6 @@
 
 @interface RegisterViewController (LogicalFlow)
 
-- (void)registerPostForUsername:(NSString *)username password:(NSString *)password oraKey:(NSString *)orakey;       // 注册  接口
-
+- (void)registerPostForUsername:(NSString *)username password:(NSString *)password;       // 注册  接口
+- (void)userphoneisrequestPostDataPhoneNumber:(NSString *)phoneNumber;  //判断是否已注册 
 @end

@@ -197,7 +197,7 @@
     NSString *lanyaDataStr = [self userInfoReaduserkey:@"userInformation"];
     for (NSInteger j=0; j <self.readDataArr.count; j++) {
         self.viReadClass = self.readDataArr[j];
-        if (self.viReadClass .visitorName == [lanyaDataStr integerValue]){
+        if (self.viReadClass.visitorName == [lanyaDataStr integerValue]){
             j = self.readDataArr.count + 1;
         }
     }

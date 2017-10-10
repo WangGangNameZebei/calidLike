@@ -7,19 +7,28 @@
 //
 
 #import "BaseViewController.h"
-#import "MycradInfoViewControllerDataSource.h"
 #import "DBTool.h"
 #import "ClassUserInfo.h"
+#import "SXSearchHeadView.h"
 
-@interface MycradInfoViewController : BaseViewController<UITableViewDelegate>
-@property (strong, nonatomic) IBOutlet UITableView *myCradInfoTableView;
+
+@protocol MycradInfoViewControllerDelegate <NSObject>
+@optional
+- (void)mycradInfoViewControllerAutomaticSwitchStr:(NSString *)datastr;
+@end
+
+
+@interface MycradInfoViewController : BaseViewController
 @property (strong, nonatomic) IBOutlet UISwitch *myInfoshakeSwitch;
+@property (strong, nonatomic) IBOutlet UISwitch *myInfoAutomaticSwitch;
 @property (strong, nonatomic) IBOutlet UISwitch *myInfoBrightScreenSwitch;
+@property (strong, nonatomic) IBOutlet UIView *myInfoNameView;
 
-@property (strong, nonatomic) MycradInfoViewControllerDataSource *mycradInfoViewControllerDataSource;
+@property (assign, nonatomic)id<MycradInfoViewControllerDelegate>delegate;
+
 @property (strong, nonatomic) DBTool *dbTool;
 @property (strong, nonatomic)ClassUserInfo *infoclassUser;      //数据库类
-
-@property (strong, nonatomic) NSMutableArray *myinfotextArray;
+@property (strong,nonatomic) SXSearchHeadView *selectNameView;
+@property (strong, nonatomic) NSMutableArray *myinfoNameArray;
 
 @end

@@ -7,10 +7,7 @@
 //
 
 #import "PropertyActivationSingleTon.h"
-#import "SingleTon+tool.h"
-#import "SingleTon+InstallWarden.h"
-
-
+#import "CalidTool.h"
 @implementation PropertyActivationSingleTon
 static PropertyActivationSingleTon *_instace = nil;
 
@@ -39,7 +36,6 @@ static PropertyActivationSingleTon *_instace = nil;
 
 - (void)initialization {
     _pAmanager = [[CBCentralManager alloc]initWithDelegate:self queue:nil];
-    self.singleton = [SingleTon sharedInstance];
     self.pAPeripheralArray = [NSMutableArray array];
     self.pAdelayInSeconds = 3.0;
     self.baseViewController = [[BaseViewController alloc] init];
@@ -98,7 +94,7 @@ static PropertyActivationSingleTon *_instace = nil;
     Byte byte[110] = {};
     for (int j = 0; j < strlenght; j++) {
         TheTwoCharacters =[String substringWithRange:NSMakeRange((2*j),2)];
-        aa = [self.singleton turnTheHexLiterals:TheTwoCharacters];
+        aa = [CalidTool turnTheHexLiterals:TheTwoCharacters];
         byte[j] = aa;
     }
     NSData *data = [[NSData alloc] initWithBytes:byte length:strlenght];
@@ -219,9 +215,9 @@ static PropertyActivationSingleTon *_instace = nil;
     
     if (_pAperipheral != nil)
     {
-        LOG(@"主动断开设备");
-        [self.pAmanager cancelPeripheralConnection:_pAperipheral];
-        _pAperipheral = nil;
+            LOG(@"主动断开设备");
+            [self.pAmanager cancelPeripheralConnection:_pAperipheral];
+            _pAperipheral = nil;
     }
     
 }
@@ -304,9 +300,9 @@ static PropertyActivationSingleTon *_instace = nil;
     NSInteger jishunumber = 38;
     if (self.receiveData.length == 0)
         self.receiveData = @"";
-    NSLog(@"===== %@",[self.singleton hexadecimalString:characteristic.value]);
+    NSLog(@"===== %@",[CalidTool hexadecimalString:characteristic.value]);
 
-    NSString *str1 = [self.singleton hexadecimalString:characteristic.value];
+    NSString *str1 = [CalidTool hexadecimalString:characteristic.value];
         if ([[str1 substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"f2"]) {   // 第一串
               jishunumber = 30;
         } else if ([[str1 substringWithRange:NSMakeRange(0, 8)] isEqualToString:@"72656164"]) {   // 软件读取信息
@@ -318,8 +314,8 @@ static PropertyActivationSingleTon *_instace = nil;
         if (jishunumber == 38)
             return;
 
-    if  (self.receiveData.length > 104  && self.receiveData.length < 210 && [[self.receiveData substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"02"]){
-        if ([self.singleton lanyaDataXiaoyanAction:[self.receiveData substringWithRange:NSMakeRange(2,104)]]) {
+    if  (self.receiveData.length > 104  && self.receiveData.length < 210 && ([[self.receiveData substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"02"] || [[self.receiveData substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"42"])){
+        if ([CalidTool lanyaDataXiaoyanAction:[self.receiveData substringWithRange:NSMakeRange(2,104)]]) {
             [self sendCommand:@"aa"];
             LOG(@"成功1");
         } else {
@@ -328,14 +324,13 @@ static PropertyActivationSingleTon *_instace = nil;
             self.receiveData = @"";
         }
     } else if (self.receiveData.length > 104  && self.receiveData.length < 210 && [[self.receiveData substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"bb"]){             // 发卡器连接接收数据
-        
         if ([self.delegate respondsToSelector:@selector(pADoSomethingtishiFrame:)]){
             [self.delegate pADoSomethingtishiFrame:[self.receiveData substringWithRange:NSMakeRange(0, 106)]];
         }
         self.receiveData = @"";
         
-    } else if (self.receiveData.length > 210 && [[self.receiveData substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"02"]) {
-        if ([self.singleton lanyaDataXiaoyanAction:[self.receiveData substringWithRange:NSMakeRange(108,104)]]){
+    } else if (self.receiveData.length > 210 && [[self.receiveData substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"02"]) {   // 用户卡
+        if ([CalidTool lanyaDataXiaoyanAction:[self.receiveData substringWithRange:NSMakeRange(108,104)]]){
           
             [self sendCommand:@"aa"];
             self.receiveData = [NSString stringWithFormat:@"%@%@",[self.receiveData substringWithRange:NSMakeRange(2,104)],[self.receiveData substringWithRange:NSMakeRange(108,104)]];
@@ -349,26 +344,25 @@ static PropertyActivationSingleTon *_instace = nil;
             LOG(@"失败2");
         }
         
-    } else if ([[self.receiveData substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"b2"] ||  [[self.receiveData substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"a2"]) {
-        if (self.receiveData.length > 210) {
+    }  else if (self.receiveData.length > 210 && [[self.receiveData substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"42"]) {  //  出厂卡  头两个
+        if ([CalidTool lanyaDataXiaoyanAction:[self.receiveData substringWithRange:NSMakeRange(108,104)]]){
+            self.receiveData = @"";
+            [self sendCommand:@"aa"];
+            if ([self.delegate respondsToSelector:@selector(pADoSomethingEveryFrame:)])
+                [self.delegate pADoSomethingEveryFrame:2];
+
+        } else {
+            [self sendCommand:@"00"];
+            self.receiveData = [self.receiveData substringWithRange:NSMakeRange(0,108)];
+            LOG(@"失败2");
+        }
+
+        
+    }else if ([[self.receiveData substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"b2"] ||  [[self.receiveData substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"a2"]) {   // 发卡 后俩个
+        if (self.receiveData.length > 210 ) {
           
-            NSString *userInfoOne = [self.singleton lanyaDataDecryptedAction:[self.receiveData substringWithRange:NSMakeRange(2,104)]];
-              /*      续卡暂不存储信息
-             NSString *userInfoTow = [self.singleton lanyaDataDecryptedAction:[self.receiveData substringWithRange:NSMakeRange(108,104)]];
-           
-            self.pAtool = [DBTool sharedDBTool];
-            NSArray *data = [self.pAtool selectWithClass:[ClassUserInfo class] params:nil];
-            NSString *namestr = [self.singleton changeLanguage:[userInfoOne substringWithRange:NSMakeRange(14,16)]];
-            NSString *notestr = [self.singleton changeLanguage:[userInfoOne substringWithRange:NSMakeRange(58,32)]];
-            self.classUserInfo = [ClassUserInfo classUserinfouniqueCodeStr:[userInfoOne substringWithRange:NSMakeRange(0,8)] userNameStr:namestr validityStr:[userInfoOne substringWithRange:NSMakeRange(8,6)] addressStr:[userInfoOne substringWithRange:NSMakeRange(30,16)] telePhoneStr:[userInfoOne substringWithRange:NSMakeRange(46,11)] noteStr:notestr eqIdStr:userInfoTow];
-            if (data.count == 0){
-                [self.pAtool createTableWithClass:[ClassUserInfo class]];
-                [self.pAtool insertWithObj:self.classUserInfo];
-            } else {
-                [self.pAtool updateWithObj:self.classUserInfo andKey:@"uniqueCodeStr" isEqualValue:[userInfoOne substringWithRange:NSMakeRange(0,8)]];
-            }
-            */
-            if ([self.singleton lanyaDataXiaoyanAction:[self.receiveData substringWithRange:NSMakeRange(2,104)]] && [self.singleton lanyaDataXiaoyanAction:[self.receiveData substringWithRange:NSMakeRange(108,104)]]) {
+            NSString *userInfoOne = [CalidTool lanyaDataDecryptedAction:[self.receiveData substringWithRange:NSMakeRange(2,104)]];
+            if ([CalidTool lanyaDataXiaoyanAction:[self.receiveData substringWithRange:NSMakeRange(2,104)]] && [CalidTool lanyaDataXiaoyanAction:[self.receiveData substringWithRange:NSMakeRange(108,104)]]) {
                 if ([self.delegate respondsToSelector:@selector(pADoSomethingtishiFrame:)])
                     [self.delegate pADoSomethingtishiFrame:[NSString stringWithFormat:@"%@%@%@",[self.receiveData substringWithRange:NSMakeRange(2,104)],[self.receiveData substringWithRange:NSMakeRange(108,104)],[userInfoOne substringWithRange:NSMakeRange(46,11)]]];
             }

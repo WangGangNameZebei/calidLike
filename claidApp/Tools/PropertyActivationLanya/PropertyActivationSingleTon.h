@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
 #import <AESCrypt.h>
-#import "SingleTon.h"
 #import "ClassUserInfo.h"
 #import "DBTool.h"
 #import "BaseViewController.h"
@@ -31,7 +30,6 @@
 @property (strong, nonatomic) NSMutableArray *pAPeripheralArray;
 @property (assign, nonatomic) double pAdelayInSeconds;        //扫描时长
 @property (strong, nonatomic) NSString *receiveData;
-@property (strong, nonatomic) SingleTon *singleton;
 @property (nonatomic, assign) id <pALanyaDelegate> delegate;
 
 @property (strong,nonatomic)DBTool *pAtool;                   //数据库

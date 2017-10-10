@@ -26,7 +26,7 @@
 @property (strong, nonatomic) VisitorSingleTon *visitorton;
 @property (strong,nonatomic)DBTool *tool;                   //数据库
 @property (strong, nonatomic)VisitorCalss *visitorClassData;      //数据库类
-@property (strong, nonatomic) NSDictionary *dataDic;
+@property (strong, nonatomic) NSMutableArray *dataArray;
 @property (strong, nonatomic) NSArray *readDataArr;
 @property (strong, nonatomic) VisitorCalss *viReadClass;
 @property (assign, nonatomic) BOOL readBool;   //数据库请求请求标识;

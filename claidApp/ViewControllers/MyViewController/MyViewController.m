@@ -19,6 +19,7 @@
 #import "MyFeedBackViewController.h"
 #import "LoginViewController.h"
 
+
 @implementation MyViewController
 
 + (instancetype) create {
@@ -79,28 +80,11 @@
          MyFeedBackViewController *myFeedBackVC = [MyFeedBackViewController create];
          [self hideTabBarAndpushViewController:myFeedBackVC];
      } else if (indexPath.row == 10) {        //退出登入
-         LoginViewController *loginViewController = [LoginViewController create];
-         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
-         navigationController.navigationBarHidden = YES;
-         UIApplication.sharedApplication.delegate.window.rootViewController = navigationController;
-         [self logOutPOSTkeystr:[self userInfoReaduserkey:@"userorakey"]];
-         [self clearAllUserDefaultsData];
+         [InternetServices logOutPOSTkeystr:[self userInfoReaduserkey:@"userName"]];
      } else {
          [self promptInformationActionWarningString:@"此功能暂未开通!"];
      }
 
-}
-//清除数据
-- (void)clearAllUserDefaultsData {
-    DBTool *dbtool = [DBTool sharedDBTool];
-    [dbtool dropTableWithClass:[InstallCardData class]];
-    [dbtool dropTableWithClass:[UserInfo class]];
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *dic = [userDefaults dictionaryRepresentation];
-    for (id  key in dic) {
-        [userDefaults removeObjectForKey:key];
-    }
-    [userDefaults synchronize];
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     
@@ -109,7 +93,7 @@
         
         if ([nameField.text isEqual:@"admin"] && nameField.tag ==0) {
                 PropertyActivationViewController *pAViewController = [PropertyActivationViewController create];
-                    pAViewController.titleLabelString = @"续卡";
+                    pAViewController.titleLabelString = @"物业激活";
                     [self hideTabBarAndpushViewController:pAViewController];
         } else if ([nameField.text isEqual:@"calid"] && nameField.tag == 1){
                 installViewController *installVC = [installViewController create];

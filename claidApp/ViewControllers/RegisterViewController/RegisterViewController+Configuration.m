@@ -25,8 +25,8 @@
     self.phoneNumberTextField.clearButtonMode = UITextFieldViewModeAlways;
     self.phoneNumberTextField.delegate = self;
     
+    self.mishiTextField.keyboardType = UIKeyboardTypeNumberPad;        //数字键盘
     self.mishiTextField.clearButtonMode = UITextFieldViewModeAlways;
-
     self.mishiTextField.delegate = self;
     
     self.passwordTextField.clearButtonMode = UITextFieldViewModeAlways;

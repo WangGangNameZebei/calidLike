@@ -80,7 +80,9 @@
     [window addSubview:showview];
     
     UILabel *label = [[UILabel alloc]init];
-    CGSize LabelSize = [warningString sizeWithFont:[UIFont systemFontOfSize:17] constrainedToSize:CGSizeMake(300, 9000)];
+    NSDictionary *attribute = @{NSFontAttributeName: [UIFont systemFontOfSize:17]};
+    CGSize LabelSize = [warningString boundingRectWithSize:CGSizeMake(300, 9000) options: NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attribute context:nil].size;
+    //CGSize LabelSize = [warningString sizeWithFont:[UIFont systemFontOfSize:17] constrainedToSize:CGSizeMake(300, 9000)];
     
     label.frame = CGRectMake(10, 5, LabelSize.width, LabelSize.height);
     label.text = warningString;
@@ -90,7 +92,7 @@
     label.font = [UIFont boldSystemFontOfSize:15];
     [showview addSubview:label];
     showview.frame = CGRectMake(([UIScreen screenWidth] - LabelSize.width - 20)/2, [UIScreen screenHeight] - 200, LabelSize.width+20, LabelSize.height+10);
-    [UIView animateWithDuration:3.0 animations:^{
+    [UIView animateWithDuration:3.0f animations:^{
         showview.alpha = 0;
     } completion:^(BOOL finished) {
         [showview removeFromSuperview];
@@ -109,6 +111,10 @@
 }
 #pragma mark   用户信息写入
 - (void)userInfowriteuserkey:(NSString *)userkey uservalue:(NSString *)uservalue{
+    if ([userkey isEqualToString:@"lanyaAESData"] || [userkey isEqualToString:@"userorakey"] || [userkey isEqualToString:@"districtNumber"] || [userkey isEqualToString:@"lanyaAESErrornData"] || [userkey isEqualToString:@"districtName"]) {
+        userkey = [NSString stringWithFormat:@"%@%@",userkey,[[NSUserDefaults standardUserDefaults] objectForKey:@"currentUser"]];
+    }
+  
     self.baseTool = [DBTool sharedDBTool];
     NSString * userkeystr;
     NSArray *data = [self.baseTool selectWithClass:[UserInfo class] params:[NSString stringWithFormat:@"_userkey = '%@'",userkey]];
@@ -126,6 +132,9 @@
 }
 #pragma mark   用户信息读写
 - (NSString *)userInfoReaduserkey:(NSString *)userkey{
+    if ([userkey isEqualToString:@"lanyaAESData"] || [userkey isEqualToString:@"userorakey"] || [userkey isEqualToString:@"districtNumber"] || [userkey isEqualToString:@"lanyaAESErrornData"] || [userkey isEqualToString:@"districtName"]) {
+        userkey = [NSString stringWithFormat:@"%@%@",userkey,[[NSUserDefaults standardUserDefaults] objectForKey:@"currentUser"]];
+    }
     self.baseTool = [DBTool sharedDBTool];
     NSString * userkeystr;
     NSArray *data = [self.baseTool selectWithClass:[UserInfo class] params:[NSString stringWithFormat:@"_userkey = '%@'",userkey]];
