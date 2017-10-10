@@ -22,5 +22,9 @@
 @property (strong, nonatomic) IBOutlet UIImageView *confirmPasswordImageView;
 @property (strong, nonatomic) IBOutlet UITextField *confirmPasswordTextField;
 @property (strong, nonatomic) IBOutlet UIButton *verificationButton;    //获取验证码
+@property (strong, nonatomic) IBOutlet UILabel *verificationLabel;
+@property (assign, nonatomic) NSInteger timeDown;
+@property (strong, nonatomic) NSTimer * jishuTimer;  // 验证码倒计时
 
+- (void)obtainYanzhengmaAction;
 @end

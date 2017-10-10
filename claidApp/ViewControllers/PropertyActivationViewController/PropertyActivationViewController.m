@@ -9,6 +9,8 @@
 #import "PropertyActivationViewController.h"
 #import "PropertyActivationViewController+Configuration.h"
 #import "PropertyActivationViewController+LogicalFlow.h"
+#import "ParkModifyViewController.h"
+#import "UIColor+Utility.h"
 
 @implementation PropertyActivationViewController
 
@@ -38,68 +40,104 @@
         [self promptInformationActionWarningString:@"请输入正确电话号码!"];
         return;
     }
-    if (!self.pAPasswordLabel.hidden) {
-        if (self.pAPasswordTextField.text.length < 6 || self.pAPasswordTextField.text.length > 16){
-            [self promptInformationActionWarningString:@"请输入6-16位密码!"];
-            return;
-        }
-        if ([self.pAPasswordTextField.text isEqualToString:self.pAConfirmPasswordTextField.text] ){
-            // 注册信息 点击   注册
-        } else {
-            [self promptInformationActionWarningString:@"密码输入不一致!"];
-            return;
-        }
-    }
+
+   
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"请确认电话号码是否正确"  message:self.pAPhoneNumberTextField.text delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"是的", nil];
+    alertView.tag = 1;
     [alertView show];
     
 }
+
 #pragma mark  提示框代理
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) {
-        NSString *cardData = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"wuyeFKAESData"] password:AES_PASSWORD];
-        [self propertyActivationPostForUserData:cardData userInfo:[self.userInfo substringWithRange:NSMakeRange(0,104)] userEqInfo:[self.userInfo substringWithRange:NSMakeRange(104,104)] userPhone:self.pAPhoneNumberTextField.text password:self.pAPasswordTextField.text];
+    if (alertView.tag ==1){
+        if (buttonIndex == 1) {
+            NSString *cardData = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"wuyeFKAESData"] password:AES_PASSWORD];
+        [self propertyActivationPostForUserData:cardData userInfo:[self.userInfo substringWithRange:NSMakeRange(0,104)] userEqInfo:[self.userInfo substringWithRange:NSMakeRange(104,104)] userPhone:self.pAPhoneNumberTextField.text];
+        }
     } else {
-        NSLog(@"点击了取消按钮");
-    }
+        
+        if (buttonIndex == alertView.firstOtherButtonIndex) {
+            UITextField *nameField = [alertView textFieldAtIndex:0];
+            
+            
+            if (nameField.tag == 10) {
+                UITextField *dizhiField = [alertView textFieldAtIndex:1];
+                
+                self.dizhiString = [NSString stringWithFormat:@"%@%@",self.dizhiString,dizhiField.text];  //地址
+                [self districtInfoPOSTNameStr:nameField.text dataStr:self.dizhiString];
+            } else if (nameField.tag == 0) {
+                [self districtInfoPOSTNameStr:nameField.text dataStr:@""];
+
+            } else if (nameField.tag == 1) {
+                self.dizhiString = [NSString stringWithFormat:@"%@%@",self.dizhiString,nameField.text];  //地址
+                [self districtInfoPOSTNameStr:@"" dataStr:self.dizhiString];
+            }
+            self.propertyNameAlertView = nil;
+        
+            
+        }
+    
+   }
 }
 - (IBAction)chongzhiButtonAction:(id)sender {
-    if (self.pAPasswordLabel.hidden) {
-        [self.chongzhiButton setImage:[UIImage imageNamed:@"gouxian_blue"] forState:UIControlStateNormal];
-        self.pAPasswordLabel.hidden = NO;
-        self.pAConfirmPasswordLabel.hidden = NO;
-        self.pAPasswordView.hidden = NO;
-        self.pAConfirmPasswordView.hidden = NO;
-    } else {
+    if (self.stopBiaoshi == 0) {
+        self.stopBiaoshi = 1;
         [self.chongzhiButton setImage:[UIImage imageNamed:@"gouxian_gray"] forState:UIControlStateNormal];
-        self.pAPasswordLabel.hidden = YES;
-        self.pAConfirmPasswordLabel.hidden = YES;
-        self.pAPasswordView.hidden = YES;
-        self.pAConfirmPasswordView.hidden = YES;
-        self.pAPasswordTextField.text = @"";
+    } else {
+        self.stopBiaoshi = 0;
+        [self.chongzhiButton setImage:[UIImage imageNamed:@"gouxian_blue"] forState:UIControlStateNormal];
     }
     
 }
+// 链接蓝牙按钮
 - (IBAction)saoMiaoButtonAction:(id)sender {
     if ([self.pALanyaLabel.text isEqualToString:@"已连接"]){
         [self.paSingleTon disConnection];       // 退出前 断开蓝牙
     } else {
 
-            NSString  *strLanya = FAKAQI_TON_UUID_STR;
-            if (strLanya.length < 3) {
-                [self.paSingleTon startScan]; // 扫描
-            } else {
-                [self.paSingleTon getPeripheralWithIdentifierAndConnect:strLanya];
-            }
+        NSString  *strLanya = FAKAQI_TON_UUID_STR;
+        if (strLanya.length < 3) {
+            [self.paSingleTon startScan]; // 扫描
+        } else {
+            [self.paSingleTon getPeripheralWithIdentifierAndConnect:strLanya];
+        }
         
     }
 }
-- (IBAction)returnButtonAction:(id)sender {
-    if ([self.titleLabelString isEqualToString:@"续卡"]){
-       [self theinternetCardupData];
+// 物业信息修改
+- (IBAction)parkmodifyButtonAction:(id)sender {
+    if (!self.parkInfoBool) {
+        [self promptInformationActionWarningString:@"先发出厂卡后进入"];
+        return;
     }
+    if (self.xiaoquNumber.length != 8){
+        [self promptInformationActionWarningString:@"请重新连接发卡器"];
+        return;
+    }
+    ParkModifyViewController *parkmodifyVC = [ParkModifyViewController create];
+    parkmodifyVC.parkIdString = self.xiaoquNumber;
+    parkmodifyVC.addressString = self.dizhiString;
+    [self hideTabBarAndpushViewController:parkmodifyVC];
+    self.parkInfoBool = NO;
+    self.parkInfoButton.tintColor = [UIColor setupGreyColor];
+    
+}
+//  页面返回按钮
+- (IBAction)returnButtonAction:(id)sender {
     [self.paSingleTon disConnection];       // 退出前 断开蓝牙
     [self.navigationController popViewControllerAnimated:YES];
+}
+// 标题切换
+- (IBAction)piSegmentedButtonAction:(id)sender {
+    UISegmentedControl *segmentControl = sender;
+    NSInteger index = segmentControl.selectedSegmentIndex;
+    if (index == 0){
+        self.titleLabelString = @"物业激活";
+    } else {
+        self.titleLabelString = @"续卡";
+    }
+    [self viewdataInfoinit];
 }
 
 

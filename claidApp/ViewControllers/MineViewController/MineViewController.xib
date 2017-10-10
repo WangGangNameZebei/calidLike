@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,7 +16,6 @@
                 <outlet property="titleLabel" destination="ZUI-mA-zzj" id="pUO-I0-9Jy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="ziDongLabei" destination="dnG-wM-EgI" id="Nf2-hw-Spd"/>
-                <outlet property="ziDongSwitch" destination="rXj-5A-LRC" id="oOo-1G-kxa"/>
                 <outlet property="ziDongView" destination="yF2-R9-9cp" id="r5B-Gc-7FS"/>
             </connections>
         </placeholder>
@@ -30,7 +28,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="主页" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZUI-mA-zzj">
-                            <rect key="frame" x="165" y="24" width="45" height="27"/>
+                            <rect key="frame" x="165" y="28.5" width="45" height="27"/>
                             <constraints>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" id="0nu-HD-VDR"/>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" id="A6f-57-IXe"/>
@@ -43,7 +41,7 @@
                     <color key="backgroundColor" red="0.068421952426433563" green="0.58686798810958862" blue="0.84999686479568481" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="tintColor" red="0.99599474668502808" green="0.99613386392593384" blue="0.99595087766647339" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="ZUI-mA-zzj" firstAttribute="centerY" secondItem="wYL-n9-X8y" secondAttribute="centerY" constant="5.5" id="XcL-hi-edu"/>
+                        <constraint firstItem="ZUI-mA-zzj" firstAttribute="centerY" secondItem="wYL-n9-X8y" secondAttribute="centerY" constant="10" id="XcL-hi-edu"/>
                         <constraint firstItem="ZUI-mA-zzj" firstAttribute="centerX" secondItem="wYL-n9-X8y" secondAttribute="centerX" id="j8l-ay-FN5"/>
                         <constraint firstAttribute="height" constant="64" id="t25-nO-mVd"/>
                     </constraints>
@@ -55,13 +53,13 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yF2-R9-9cp">
                     <rect key="frame" x="0.0" y="320" width="375" height="48"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="自动刷卡 " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dnG-wM-EgI">
-                            <rect key="frame" x="10" y="9" width="166" height="31"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当前小区     " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dnG-wM-EgI">
+                            <rect key="frame" x="136" y="9.5" width="104" height="30"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="31" id="QGh-05-G3D"/>
-                                <constraint firstAttribute="width" constant="166" id="mt0-SX-4ET"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" id="B3a-cX-1AG"/>
+                                <constraint firstAttribute="height" constant="30" id="fo1-00-ecS"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                             <userDefinedRuntimeAttributes>
@@ -70,25 +68,12 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </label>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rXj-5A-LRC" customClass="TTSwitch">
-                            <rect key="frame" x="269" y="10" width="76" height="28"/>
-                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="28" id="8jo-rS-fIA"/>
-                                <constraint firstAttribute="width" constant="76" id="bRW-nB-nMK"/>
-                            </constraints>
-                            <connections>
-                                <action selector="zidongAction:" destination="-1" eventType="valueChanged" id="aHo-9x-yrv"/>
-                            </connections>
-                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="rXj-5A-LRC" secondAttribute="trailing" constant="30" id="1QU-Jv-hd6"/>
-                        <constraint firstItem="rXj-5A-LRC" firstAttribute="centerY" secondItem="yF2-R9-9cp" secondAttribute="centerY" id="2ZV-Vb-hpR"/>
-                        <constraint firstItem="dnG-wM-EgI" firstAttribute="bottom" secondItem="yF2-R9-9cp" secondAttribute="bottomMargin" id="KFJ-V3-YQe"/>
-                        <constraint firstItem="dnG-wM-EgI" firstAttribute="leading" secondItem="yF2-R9-9cp" secondAttribute="leading" constant="10" id="Vyp-4p-H3Z"/>
                         <constraint firstAttribute="height" constant="48" id="lrE-cL-c5W"/>
+                        <constraint firstItem="dnG-wM-EgI" firstAttribute="centerX" secondItem="yF2-R9-9cp" secondAttribute="centerX" id="tzl-Wz-iFq"/>
+                        <constraint firstItem="dnG-wM-EgI" firstAttribute="centerY" secondItem="yF2-R9-9cp" secondAttribute="centerY" id="uh1-RX-rLH"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GWh-6t-HIA">

@@ -9,29 +9,56 @@
 #import "MyViewController+LogicalFlow.h"
 #import <AFHTTPRequestOperationManager.h>
 #import <AESCrypt.h>
-
+#import "LoginViewController.h"
+#import "InternetServices.h"
 
 @implementation MyViewController (LogicalFlow)
 
 - (void)theinternetCardupData {
     AFHTTPRequestOperationManager *manager = [self tokenManager];
-    
-    NSString *cardData = [AESCrypt decrypt:[self userInfoReaduserkey:@"lanyaAESData"] password:AES_PASSWORD];
-    
-    NSDictionary *parameters = @{@"oraKey":[self userInfoReaduserkey:@"userorakey"],@"cn_calid_pptId":[self userInfoReaduserkey:@"districtNumber"],@"res":cardData};
+    [manager.requestSerializer setValue:[self userInfoReaduserkey:@"Token"] forHTTPHeaderField:@"access_token"];
+    NSDictionary *parameters = @{@"accounts":[self userInfoReaduserkey:@"userName"],@"passwd":[self userInfoReaduserkey:@"passWord"],@"imei":[self keyChainIdentifierForVendorString]};
     [manager POST:RENEWAL_USER_DATA_URL parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        NSMutableArray *userdataArray;
+        NSString *encryptedData;
         NSString *requestTmp = [NSString stringWithString:operation.responseString];
         NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];
         //系统自带JSON解析
         NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableContainers error:nil];
-        if ([[resultDic objectForKey:@"status"] integerValue] == 318) {
-           NSMutableArray *dataArray= [resultDic objectForKey:@"data"];
-            NSString *encryptedData = [AESCrypt encrypt:[NSString stringWithFormat:@"%@",dataArray[1]] password:AES_PASSWORD];  //加密
-            [self userInfowriteuserkey:@"lanyaAESData" uservalue:encryptedData]; //存储
-            [self alertViewmessage:[NSString stringWithFormat:@"数据已经更新,由于是物业更新的数据,登录密码已被初始化,可以到修改密码页面进行更改,重置密码为:  %@  ,点击确认,密码不再提示!",dataArray[0]]];
+        if ([[resultDic objectForKey:@"status"] integerValue] == 200) {
             
+            NSString *currentUserstr =[[NSUserDefaults standardUserDefaults] objectForKey:@"currentUser"];
+            NSMutableArray *dataArray= [resultDic objectForKey:@"data"];
+            if ([currentUserstr integerValue] >= dataArray.count) {
+                currentUserstr = [NSString stringWithFormat:@"%lu",(unsigned long)dataArray.count - 1];
+            }
+            [self createAdatabaseAction];
+            [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%ld",dataArray.count] forKey:@"userNumber"];// 存储 用户下小区的个数
+            for (NSInteger i = 0; i <dataArray.count; i++) {
+                [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%ld",(long)i] forKey:@"currentUser"]; // ／／存储 当前小区标识
+                userdataArray = dataArray[i];
+                encryptedData = [AESCrypt encrypt:[NSString stringWithFormat:@"%@",userdataArray[2]] password:AES_PASSWORD];  //加密
+                
+                [self userInfowriteuserkey:@"lanyaAESData" uservalue:encryptedData]; //存储  刷卡数据
+                
+                [self userInfowriteuserkey:@"userorakey" uservalue:[NSString stringWithFormat:@"%@",userdataArray[0]]];    //存储     推荐码
+                
+                
+                [self userInfowriteuserkey:@"districtNumber" uservalue:[NSString stringWithFormat:@"%@",userdataArray[1]]];       //存储  小区号
+                [self userInfowriteuserkey:@"districtName" uservalue:[NSString stringWithFormat:@"%@%@",userdataArray[3],userdataArray[4]]];       //存储  小区名称
+            }
+            [[NSUserDefaults standardUserDefaults] setObject:currentUserstr forKey:@"currentUser"]; // 恢复之前存储
+            [self promptInformationActionWarningString:@"数据更新成功!"];
+        } else if ([[resultDic objectForKey:@"status"] integerValue] == 205){
+            [InternetServices clearAllUserDefaultsData];  //清除数据
+            [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"userNumber"];// 存储 用户下小区的个数
+            [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"currentUser"]; //登录后默认 为第一个
+        } else if ([[resultDic objectForKey:@"status"] integerValue] == 329) {      // Token  失效获取新的
+            [InternetServices requestLoginPostForUsername:[self userInfoReaduserkey:@"userName"] password:[self userInfoReaduserkey:@"passWord"]];
+            [self theinternetCardupData];
         } else {
-            [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
+              [InternetServices logOutPOSTkeystr:[self userInfoReaduserkey:@"userName"]]; //退出登录
+              [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
         }
         
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
@@ -40,27 +67,10 @@
         } else {
             [self promptInformationActionWarningString:[NSString stringWithFormat:@"%ld",(long)error.code]];
         }
-    }];
-
-}
-
-- (void)logOutPOSTkeystr:(NSString *)keyStr {
-    AFHTTPRequestOperationManager *manager = [self tokenManager];
-    NSDictionary *parameters = @{@"oraKey":keyStr};
-    [manager POST:LOGOUT_URL parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-//        NSString *requestTmp = [NSString stringWithString:operation.responseString];
-//        NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];
-//        //系统自带JSON解析
-//        NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableContainers error:nil];
-//        if ([[resultDic objectForKey:@"status"] integerValue] == 200) {
-//            
-//            NSLog(@"%@",[resultDic objectForKey:@"status"]);
-//        }
-        
-    } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
-        
         
     }];
+
+
 }
 
 - (AFHTTPRequestOperationManager *)tokenManager {

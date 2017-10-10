@@ -19,18 +19,15 @@
 }
 
 
-
 - (void)myTableViewInitEdit {
-    
     [self.myTableView registerNib:[UINib nibWithNibName:@"MyTableViewCell" bundle:nil] forCellReuseIdentifier:My_TABLEVIEW_CELL];
     [self.myTableView registerNib:[UINib nibWithNibName:@"BlankTableViewCell" bundle:nil] forCellReuseIdentifier:BLANK_TABLEVIEW_CELL];
      [self.myTableView registerNib:[UINib nibWithNibName:@"LoginOutTableViewCell" bundle:nil] forCellReuseIdentifier:LOGIN_OUT_TABLEVIEW_CELL];
     self.myViewControllerDataSource = [MyViewControllerDataSource new];
     self.myTableView.delegate = self;
     self.myTableView.dataSource = self.myViewControllerDataSource;
-    self.myViewControllerDataSource.myDataArray = [NSMutableArray arrayWithObjects:@"物业续卡",@"空",@"我的设置",@"邀请访客",@"我是访客",@"设备设置",@"修改密码",@"数据同步",@"意见反馈",@"2",@"退出登录",@"4", nil];
+    self.myViewControllerDataSource.myDataArray = [NSMutableArray arrayWithObjects:@"物业管理",@"空",@"我的设置",@"邀请访客",@"我是访客",@"设备设置",@"修改密码",@"数据同步",@"意见反馈",@"2",@"退出登录",@"4", nil];
     self.myViewControllerDataSource.myImageArray = [NSMutableArray arrayWithObjects:@"my_card_blue",@"空",@"my_setUp_blue",@"my_visitor_blue-1",@"my_visitor_blue",@"my_user_setUp_blue",@"my_changethepassword_blue",@"my_updata_blue",@"my_feedback_blue",@"2",@"3"@"4", nil];
-
 }
 
 #pragma mark - UITableView Delegate

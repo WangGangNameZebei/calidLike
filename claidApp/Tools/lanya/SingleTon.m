@@ -8,10 +8,9 @@
 
 #import "SingleTon.h"
 #import "MineViewController.h"
-#import "MineViewController+Configuration.h"
-#import "SingleTon+InstallWarden.h"
+
 #import "SingleTon+MainHairpin.h"
-#import "SingleTon+tool.h"
+#import "CalidTool.h"
 
 
 @implementation SingleTon
@@ -56,7 +55,7 @@ static SingleTon *_instace = nil;
     NSInteger datalength;
     NSInteger jiequlength = 38;
     if ([[String substringWithRange:NSMakeRange(0,2)] isEqualToString:@"cc"]  &&  String.length < 200) {
-       String = [self payByCardInstructionsActionString:String];
+       String = [CalidTool payByCardInstructionsActionString:String];
     }
     
     if(String.length > 200) {
@@ -84,7 +83,7 @@ static SingleTon *_instace = nil;
         CommandStr = [NSString stringWithFormat:@"%@%@",CommandStr,@"0"];
     }
     
-    if (length > 20){   // 长度 大于 20  拆分成  20 字节循环发送  否则 直接发送
+    if (length > 40){   // 长度 大于 40  拆分成  20 字节循环发送  否则 直接发送
         if ([[CommandStr substringWithRange:NSMakeRange(0,2)] isEqualToString:@"cc"]) {
             strHead = @"c";
         }else{
@@ -122,7 +121,7 @@ static SingleTon *_instace = nil;
     Byte byte[110] = {};
       for (int j = 0; j < strlenght; j++) {
           TheTwoCharacters =[String substringWithRange:NSMakeRange((2*j),2)];
-          aa = [self turnTheHexLiterals:TheTwoCharacters];
+          aa = [CalidTool turnTheHexLiterals:TheTwoCharacters];
            byte[j] = aa;
       }
     NSData *data = [[NSData alloc] initWithBytes:byte length:strlenght];
@@ -139,8 +138,6 @@ static SingleTon *_instace = nil;
     NSUUID * uuid = [[NSUUID alloc]initWithUUIDString:identifierStr];
     NSArray *array = [self.manager retrievePeripheralsWithIdentifiers:@[uuid]];
     CBPeripheral *peripheral = [array lastObject];
-    _identiFication = YES;
-    self.installBool  = NO;
     [self connectClick:peripheral];
     
 }
@@ -153,37 +150,9 @@ static SingleTon *_instace = nil;
     return peripheral;
 }
 
-#pragma mark  设置卡连接   蓝牙发卡器
-- (void)shoudongConnectClick:(NSString *)peripheralstr {
-    _identiFication = NO;
-    self.installBool  = NO;
-    NSUUID * uuid = [[NSUUID alloc]initWithUUIDString:peripheralstr];
-    NSArray *array = [self.manager retrievePeripheralsWithIdentifiers:@[uuid]];
-    CBPeripheral *peripheral = [array lastObject];
-   
-    [self connectClick:peripheral];
-}
-// 设置卡  连接   
-- (void)installShoudongConnectClick:(NSString *)uuids {
-    _identiFication = NO;
-    self.installBool  = YES;
-    
-    [self stopScan];
-    if (!self.scanTimer){
-        [self.scanTimer invalidate];    // 释放函数
-        self.scanTimer = nil;
-    }
-    
-    NSUUID * uuid = [[NSUUID alloc]initWithUUIDString:uuids];
-    NSArray *array = [self.manager retrievePeripheralsWithIdentifiers:@[uuid]];
-    CBPeripheral *peripheral = [array lastObject];
-    [self connectClick:peripheral];
-  
-}
 #pragma mark - 扫描
 -(void)startScan
 {
-    _tarScanBool = NO;
     [_manager scanForPeripheralsWithServices:nil options:@{CBCentralManagerScanOptionAllowDuplicatesKey : @YES }];
  
     
@@ -197,7 +166,6 @@ static SingleTon *_instace = nil;
 #pragma mark - 目标扫描
 - (void)targetScan
 {
-    _tarScanBool = YES;
     [self.manager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:SINGLE_TON_UUID_STR]] options:@{ CBCentralManagerScanOptionAllowDuplicatesKey : @YES}];
 }
 #pragma mark - 后台
@@ -228,18 +196,10 @@ static SingleTon *_instace = nil;
     if (self.manager)
         [self targetScan];
 }
-//定时器  到时 连接     蓝牙设备
-- (void) lianjielanyaAction {
-    [self stopScan];
-    [self getPeripheralWithIdentifierAndConnect:SINGLE_TON_UUID_STR];
-}
-
 #pragma mark - 停止扫描
 - (void)stopScan {
     [self.manager stopScan];
-    _tarScanBool = NO;
 }
-
 #pragma mark - 开始查看服务，蓝牙开启
 -(void)centralManagerDidUpdateState:(CBCentralManager *)central
 {
@@ -258,15 +218,6 @@ static SingleTon *_instace = nil;
 #pragma mark - 查到外设时
 -(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
 {
-    if (_tarScanBool){
-        if (self.scanTimer){
-          [self.scanTimer invalidate];    // 释放函数
-            self.scanTimer = nil;
-        }
-       self.scanTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(lianjielanyaAction) userInfo:nil repeats:0];
-        LOG(@"目标扫描 蓝牙 开启 连接蓝牙定时器(scantime)");
-       
-    } else {
         NSString *strUUid = SINGLE_TON_UUID_STR;
         if (strUUid.length < 2 && [NSString stringWithFormat:@"%@",peripheral.name].length > 10) {
           if ([[[NSString stringWithFormat:@"%@",peripheral.name]  substringWithRange:NSMakeRange(0,5)] isEqualToString:@"CALID"]) {
@@ -274,23 +225,14 @@ static SingleTon *_instace = nil;
                if ([self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
                    [self.deleGate switchEditInitPeripheralData:5];
                }
-              if ([self.installDelegate  respondsToSelector:@selector(installEditInitPeripheralData:)]){
-                  [self.installDelegate installEditInitPeripheralData:2];
-              }
 
           }
         } else if ([[NSString stringWithFormat:@"%@",peripheral.name] isEqualToString:@"CALID"]){
             [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%@",peripheral.identifier] forKey:@"fakaqiIdentifierStr"];  //存储
-            if ([self.installDelegate respondsToSelector:@selector(installEditInitPeripheralData:)]) {
-                [self.installDelegate installEditInitPeripheralData:4];
-            }
         }
         if(![self.PeripheralArray containsObject:peripheral])
             [self.PeripheralArray addObject:peripheral];
-        
-        
-      
-    }
+    
 }
 
 #pragma mark - 连接外设
@@ -298,7 +240,7 @@ static SingleTon *_instace = nil;
 {
     
     if (!peripheral) {
-        if (_identiFication && [self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
+        if ([self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
             [self.deleGate switchEditInitPeripheralData:4];
         }
         return;
@@ -340,9 +282,14 @@ static SingleTon *_instace = nil;
     
     if (_peripheral != nil)
     {
-        LOG(@"主动断开设备");
-        [self.manager cancelPeripheralConnection:_peripheral];
-        _peripheral = nil;
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            // 0.4s后自动执行这个block里面的代码
+            LOG(@"主动断开设备");
+            [self.manager cancelPeripheralConnection:_peripheral];
+            _peripheral = nil;
+        });
+        
     }
     
 }
@@ -403,19 +350,8 @@ static SingleTon *_instace = nil;
         if ([str1 isEqualToString:@"FFF6"]) {
             _writeCharacteristic = c;
     
-            if (_identiFication && [self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
+            if ([self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
                 [self.deleGate switchEditInitPeripheralData:2];
-            }
-            if (self.installBool  && [self.installDelegate  respondsToSelector:@selector(installEditInitPeripheralData:)]){
-                [self.installDelegate installEditInitPeripheralData:1];
-            }
-            
-            
-            if (!_identiFication && !self.installBool){
-                if ([self.installDelegate  respondsToSelector:@selector(installDoSomethingtishiFrame:)]){
-                    [self.installDelegate installDoSomethingtishiFrame:@"已连接"];
-                }
-                
             }
             
         
@@ -441,10 +377,10 @@ static SingleTon *_instace = nil;
     NSInteger jishunumber = 38;
    if (self.receiveData.length == 0)
        self.receiveData = @"";//            令其 数据为 "" 否则 拼接的字符串 头为 NULL
-   NSLog(@"===== %@",[self hexadecimalString:characteristic.value]);
-    NSString *str1 = [self hexadecimalString:characteristic.value];
+   NSLog(@"===== %@",[CalidTool hexadecimalString:characteristic.value]);
+    NSString *str1 = [CalidTool hexadecimalString:characteristic.value];
     
-    if ([self hexadecimalString:characteristic.value].length == 40) {
+    if ([CalidTool hexadecimalString:characteristic.value].length == 40) {
         if ([[str1 substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"d2"]) {   // 第一串  返回d2结束
             jishunumber = 16;
         } else if ([[str1 substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"b2"]) {       //  刷卡正确返回
@@ -470,36 +406,7 @@ static SingleTon *_instace = nil;
       self.receiveData = [NSString stringWithFormat:@"%@%@",self.receiveData,str1];     // 以前的模块 会用
     }
     
-    if  (self.receiveData.length > 104  && self.receiveData.length <= 210 && [self judgmentCardActiondataStr:[self.receiveData substringWithRange:NSMakeRange(0, 2)]] == 1){    // 发卡 接受第一次串数据
-        if ([self lanyaDataXiaoyanAction:[self.receiveData substringWithRange:NSMakeRange(2,104)]]) {
-          [self sendCommand:@"aa"];
-            LOG(@"成功1");
-         } else {
-            [self sendCommand:@"00"];
-            LOG(@"失败1");
-            self.receiveData = @"";
-        }
-    }  else if (self.receiveData.length > 104  && self.receiveData.length < 210 && [[self.receiveData substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"bb"]){             // 发卡器连接接收数据
-        if (!_identiFication && !self.installBool){
-            if ([self.installDelegate  respondsToSelector:@selector(installDoSomethingtishiFrame:)]){
-                [self.installDelegate installDoSomethingtishiFrame:self.receiveData];
-            }
-            
-        }
-        self.receiveData = @"";
-        
-    }else if (self.receiveData.length > 200 && [self judgmentCardActiondataStr:[self.receiveData substringWithRange:NSMakeRange(0, 2)]] == 1) {   // 发卡 接受第一次串数据
-        self.receiveData = [NSString stringWithFormat:@"%@%@",[self.receiveData substringWithRange:NSMakeRange(0,106)],[self.receiveData substringWithRange:NSMakeRange(108,104)]];
-        if ([self lanyaDataXiaoyanAction:[self.receiveData substringWithRange:NSMakeRange(106,104)]]){
-                    [self hairpinUserCardData:self.receiveData];      //发卡
-                    self.receiveData = @"";
-                } else {
-                    [self sendCommand:@"00"];
-                    self.receiveData = [self.receiveData substringWithRange:NSMakeRange(0,108)];
-                    LOG(@"失败2");
-                }
-        
-    } else if (self.receiveData.length == 106 && [self judgmentCardActiondataStr:[self.receiveData substringWithRange:NSMakeRange(0, 2)]] == 0){ // 这里发用户卡 最后信息两段  设置里不需要做任何操作
+  if (self.receiveData.length == 106){ // 
        if (self.shukaTimer){
             [self.shukaTimer invalidate];    // 释放函数
             self.shukaTimer = nil;
@@ -515,14 +422,17 @@ static SingleTon *_instace = nil;
        self.receiveData = @"";
     } else if (self.receiveData.length == 92 || self.receiveData.length == 94) {                 //刷卡 第1串 返回
         if (self.receiveData.length == 94) {
-            [self lanyaSendoutDataAction:[self.receiveData substringWithRange:NSMakeRange(2,92)]];
+            [self sendCommand:[CalidTool lanyaSendoutDataAction:[self.receiveData substringWithRange:NSMakeRange(2,92)]]];
+
         } else {
-          [self lanyaSendoutDataAction:self.receiveData];
+            [self sendCommand:[CalidTool lanyaSendoutDataAction:self.receiveData]];
         }
         self.receiveData = @"";
         
     } else {
-        [self hairpinReadData:self.receiveData];                  //读取
+        if ([self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
+            [self.deleGate switchEditInitPeripheralData:7];
+        }
         self.receiveData = @"";
     }
 }
@@ -541,13 +451,8 @@ static SingleTon *_instace = nil;
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(nullable NSError *)error {
     LOG(@"意外断开，执行重连api");
     //  [self connectClick:_peripheral];
-    if (_identiFication && [self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
+    if ([self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
         [self.deleGate switchEditInitPeripheralData:4];
-    }
-    if (!_identiFication && !self.installBool){
-        if ([self.installDelegate  respondsToSelector:@selector(installDoSomethingtishiFrame:)]){
-            [self.installDelegate installDoSomethingtishiFrame:@"已断开"];
-        }
     }
 }
 

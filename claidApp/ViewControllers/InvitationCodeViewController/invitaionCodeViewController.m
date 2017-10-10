@@ -42,7 +42,6 @@
     OSMessage *msg=[[OSMessage alloc]init];
     msg.title = @"云梯控";
     msg.image =  [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"weChatOpenShare" ofType:@"png"]];
-    // msg.link=@"https://mp.weixin.qq.com/a/~ZhrslzZzetovgzsn0iGOOw~~";
     msg.thumbnail=[NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"weChatOpenShare" ofType:@"png"]];
     [OpenShare shareToWeixinSession:msg Success:^(OSMessage *message) {
         NSLog(@"微信分享到会话成功：\n%@",message);

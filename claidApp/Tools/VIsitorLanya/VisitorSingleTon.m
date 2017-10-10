@@ -7,7 +7,7 @@
 //
 
 #import "VisitorSingleTon.h"
-#import "VisitorSingleTon+Tool.h"
+#import "CalidTool.h"
 
 
 @implementation VisitorSingleTon
@@ -50,7 +50,7 @@ static VisitorSingleTon *_instace = nil;
     NSInteger datalength;
     NSInteger jiequlength = 38;
     if ([[String substringWithRange:NSMakeRange(0,2)] isEqualToString:@"cc"]  &&  String.length < 200) {
-        String = [self visitorpayByCardInstructionsActionString:String];
+        String = [CalidTool payByCardInstructionsActionString:String];
     }
 
   
@@ -102,7 +102,7 @@ static VisitorSingleTon *_instace = nil;
     Byte byte[110] = {};
     for (int j = 0; j < strlenght; j++) {
         TheTwoCharacters =[String substringWithRange:NSMakeRange((2*j),2)];
-        aa = [self visitorturnTheHexLiterals:TheTwoCharacters];
+        aa = [CalidTool turnTheHexLiterals:TheTwoCharacters];
         byte[j] = aa;
     }
     NSData *data = [[NSData alloc] initWithBytes:byte length:strlenght];
@@ -222,9 +222,14 @@ static VisitorSingleTon *_instace = nil;
     
     if (_peripheral != nil)
     {
-        LOG(@"主动断开设备");
-        [self.manager cancelPeripheralConnection:_peripheral];
-        _peripheral = nil;
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            // 0.4s后自动执行这个block里面的代码
+            LOG(@"主动断开设备");
+            [self.manager cancelPeripheralConnection:_peripheral];
+            _peripheral = nil;
+        });
+       
     }
     
 }
@@ -307,10 +312,10 @@ static VisitorSingleTon *_instace = nil;
     NSInteger jishunumber = 38;
     if (self.receiveData.length == 0)
         self.receiveData = @"";
-    NSLog(@"===== %@",[self visitorhexadecimalString:characteristic.value]);
-    NSString *str1 = [self visitorhexadecimalString:characteristic.value];
+    NSLog(@"===== %@",[CalidTool hexadecimalString:characteristic.value]);
+    NSString *str1 = [CalidTool hexadecimalString:characteristic.value];
     //self.receiveData = [NSString stringWithFormat:@"%@%@",self.receiveData,str1];
-    if ([self visitorhexadecimalString:characteristic.value].length == 40) {
+    if ([CalidTool hexadecimalString:characteristic.value].length == 40) {
         if ([[str1 substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"d2"]) {   // 第一串  返回d2结束
             jishunumber = 16;
         } else if ([[str1 substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"b2"]) {       //  刷卡正确返回
@@ -324,14 +329,15 @@ static VisitorSingleTon *_instace = nil;
     }
 
   if  (self.receiveData.length == 92 ){
-      [self visitorlanyaSendoutDataAction:self.receiveData];
+      [self sendCommand:[CalidTool visitorlanyaSendoutDataAction:self.receiveData]];
       self.receiveData = @"";
   } else if (self.receiveData.length == 106) {
       if ([self.delegate respondsToSelector:@selector(visitorEditInitPeripheralData:)]){
-          [self.delegate visitorEditInitPeripheralData:[self visitorturnTheHexLiterals:[self.receiveData substringWithRange:NSMakeRange(104,2)]]];
+          [self.delegate visitorEditInitPeripheralData:[CalidTool turnTheHexLiterals:[self.receiveData substringWithRange:NSMakeRange(104,2)]]];
       }
       self.receiveData = @"";
   } else {
+      self.receiveData = @"";
       if ([self.delegate respondsToSelector:@selector(visitorEditInitPeripheralData:)]){
           [self.delegate visitorEditInitPeripheralData:2];
       }

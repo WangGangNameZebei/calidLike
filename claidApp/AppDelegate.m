@@ -14,10 +14,11 @@
 #import "CustomTabBarController.h"
 #import "NetWorkJudge.h"
 #import "ZLCGuidePageView.h"    //引导
-#import "TTSwitch.h"
 #import <OpenShareHeader.h>
 #import "BaseViewController.h"
 #import <AFHTTPRequestOperationManager.h>
+#import "InternetServices.h"        //网络服务
+
 
 @implementation AppDelegate
 
@@ -25,8 +26,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    
-    [self ttSwitchAddImageAction];    //自动 刷卡  这里  添加图片 需要的时候  直接调用即可
     [[SingleTon sharedInstance] initialization];    // 蓝牙设备
     //微信 ：注册key
     [OpenShare connectWeixinWithAppId:@"wx1d20477069cf97a6"];
@@ -60,17 +59,6 @@
     return YES;
 }
 
-//
-- (void)ttSwitchAddImageAction {
-    [[TTSwitch appearance] setTrackImage:[UIImage imageNamed:@"round-switch-track.png"]];
-    [[TTSwitch appearance] setOverlayImage:[UIImage imageNamed:@"round-switch-overlay"]];
-    [[TTSwitch appearance] setTrackMaskImage:[UIImage imageNamed:@"round-switch-mask"]];
-    [[TTSwitch appearance] setThumbImage:[UIImage imageNamed:@"round-switch-thumb"]];
-    [[TTSwitch appearance] setThumbHighlightImage:[UIImage imageNamed:@"round-switch-thumb-highlight"]];
-    [[TTSwitch appearance] setThumbMaskImage:[UIImage imageNamed:@"round-switch-mask"]];
-    [[TTSwitch appearance] setThumbInsetX:-3.0f];
-    [[TTSwitch appearance] setThumbOffsetY:-3.0f];
-}
 - (CustomTabBarController *)createCustomTabBarController {
     MineViewController *minViewController = [MineViewController create];
     MyViewController *myViewController = [MyViewController create];
@@ -94,21 +82,57 @@
 }
 //后台登陆
 - (void)loginPostForUsername:(NSString *)username password:(NSString *)password {
+   BaseViewController *baseVC = [[BaseViewController alloc] init];
     AFHTTPRequestOperationManager *manager = [self tokenManager];
-    NSDictionary *parameters = @{@"accounts":username,@"passwd":password,@"IMEI":[[BaseViewController alloc]keyChainIdentifierForVendorString]};
-    [manager POST:LOGIN_URL parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+    [manager.requestSerializer setValue:[baseVC userInfoReaduserkey:@"Token"] forHTTPHeaderField:@"access_token"];
+    NSDictionary *parameters = @{@"accounts":username,@"passwd":password,@"imei":[baseVC keyChainIdentifierForVendorString]};
+    [manager POST:RENEWAL_USER_DATA_URL parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        NSMutableArray *userdataArray;
+        NSString *encryptedData;
         NSString *requestTmp = [NSString stringWithString:operation.responseString];
         NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];
         //系统自带JSON解析
         NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableContainers error:nil];
-        if ([[resultDic objectForKey:@"status"] integerValue] != 200) {
-           
-            LoginViewController *loginViewController = [LoginViewController create];
-            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
-            navigationController.navigationBarHidden = YES;
-            self.window.rootViewController = navigationController;
+       
+        if ([[resultDic objectForKey:@"status"] integerValue] == 200 ) {
+            
+            NSString *currentUserstr =[[NSUserDefaults standardUserDefaults] objectForKey:@"currentUser"];
+            NSMutableArray *dataArray= [resultDic objectForKey:@"data"];
+            if ([currentUserstr integerValue] >= dataArray.count) {
+                currentUserstr = [NSString stringWithFormat:@"%lu",(unsigned long)dataArray.count - 1];
+            }
+            [baseVC createAdatabaseAction];
+            [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%ld",dataArray.count] forKey:@"userNumber"];// 存储 用户下小区的个数
+            for (NSInteger i = 0; i <dataArray.count; i++) {
+                [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%ld",(long)i] forKey:@"currentUser"]; // ／／存储 当前小区标识
+                userdataArray = dataArray[i];
+                encryptedData = [AESCrypt encrypt:[NSString stringWithFormat:@"%@",userdataArray[2]] password:AES_PASSWORD];  //加密
+                [baseVC userInfowriteuserkey:@"lanyaAESData" uservalue:encryptedData]; //存储  刷卡数据
+                [baseVC userInfowriteuserkey:@"userorakey" uservalue:[NSString stringWithFormat:@"%@",userdataArray[0]]];    //存储     推荐码
+                
+                [baseVC userInfowriteuserkey:@"districtNumber" uservalue:[NSString stringWithFormat:@"%@",userdataArray[1]]];       //存储  小区号
+                [baseVC userInfowriteuserkey:@"districtName" uservalue:[NSString stringWithFormat:@"%@%@",userdataArray[3],userdataArray[4]]];       //存储  小区名称
+            }
+            
+            [[NSUserDefaults standardUserDefaults] setObject:currentUserstr forKey:@"currentUser"]; // 恢复之前存储
+        } else if ([[resultDic objectForKey:@"status"] integerValue] == 205){
+            [InternetServices clearAllUserDefaultsData];
+            [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"userNumber"];// 存储 用户下小区的个数
+            [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"loginInfo"];  //登录标识
+            [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"currentUser"]; //登录后默认 为第一个
+            
+        } else if ([[resultDic objectForKey:@"status"] integerValue] == 329) {      // Token  失效获取新的
+            [InternetServices requestLoginPostForUsername:username password:password];
+            
+        } else {
+            if([[resultDic objectForKey:@"status"] integerValue] != 203 && [[resultDic objectForKey:@"status"] integerValue] != 204 ){
+               [InternetServices logOutPOSTkeystr:username];//退出登录
+            }
         }
+
         
+        
+
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
     }];
 }
@@ -141,14 +165,9 @@
 
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-
-     NSLog(@"===============  进入后台");
-
+   NSLog(@"===============  进入后台");
    [[SingleTon sharedInstance] lanyaHoutaiAction];
     
-
-    
-
     UIApplication*   app = [UIApplication sharedApplication];
     __block  UIBackgroundTaskIdentifier bgTask;
     bgTask = [app beginBackgroundTaskWithExpirationHandler:^{
@@ -180,8 +199,7 @@
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-
-     NSLog(@"===============  进入前台");
+    NSLog(@"===============  进入前台");
     NSString *strWitch = [[[BaseViewController alloc] init] userInfoReaduserkey:@"switch"];
     if ([strWitch isEqualToString:@"YES"]) {   //判断是否开启自动刷卡
       [[SingleTon sharedInstance] lanyaQiantaiAction];     //前台函数
@@ -192,7 +210,7 @@
 
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-   
+    
 }
 
 @end

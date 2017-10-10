@@ -13,7 +13,7 @@
 
 - (void)visitorPostForPhoneNumber:(NSString *)phoneNumber {
     AFHTTPRequestOperationManager *manager = [self tokenManager];
-    NSDictionary *parameters = @{@"t_touristPhone":phoneNumber};
+    NSDictionary *parameters = @{@"tourist_phone":phoneNumber};
     [manager POST:VISITOR_URL parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         NSString *requestTmp = [NSString stringWithString:operation.responseString];
         NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];
@@ -58,6 +58,7 @@
         [self promptInformationActionWarningString:@"暂无可用的权限"];
         return;
     } else {
+        [self createAdatabaseAction];
         [self promptInformationActionWarningString:[NSString stringWithFormat:@"您有%lu个权限,请点+号进行选择",(unsigned long)dataArray.count]];
     }
     self.tool = [DBTool sharedDBTool];
@@ -67,12 +68,13 @@
     }
     for (NSInteger i=0; i < dataArray.count; i++) {
         self.readBool = YES;
-        self.dataDic = [dataArray objectAtIndex:i];
-        self.visitorClassData = [VisitorCalss assignmentVisitorName:[[self.dataDic objectForKey:@"t_owner"] integerValue] visitorRemarks:[self.dataDic objectForKey:@"t_owner_Note"] visitorData:[self.dataDic objectForKey:@"res"]];
+        self.dataArray = [dataArray objectAtIndex:i];
+       
+        self.visitorClassData = [VisitorCalss assignmentVisitorName:[self.dataArray[2] integerValue] visitorRemarks:self.dataArray[0] visitorData:self.dataArray[1]];
       self.readDataArr = [self.tool selectWithClass:[VisitorCalss class] params:nil];
         for (NSInteger j=0; j <self.readDataArr.count; j++) {
             self.viReadClass = self.readDataArr[j];
-            if (self.viReadClass .visitorName == self.visitorClassData.visitorName){
+            if (self.viReadClass.visitorName == self.visitorClassData.visitorName){
                 self.readBool = NO;
              }
         }

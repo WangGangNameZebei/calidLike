@@ -97,7 +97,7 @@ static CGFloat pageControlMagin = 20.0;
 
 - (void)updateCurrentPageWithIndex:(NSInteger)index{
     self.pageControl.currentPage = index;
-    self.pageLabel.text = [NSString stringWithFormat:@"%d/%@",(index+1),@(self.numberOfPages)];
+    self.pageLabel.text = [NSString stringWithFormat:@"%ld/%@",(index+1),@(self.numberOfPages)];
 }
 
 

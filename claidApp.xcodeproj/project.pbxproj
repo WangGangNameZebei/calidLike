@@ -12,9 +12,7 @@
 		0A0C1E521DD989FE0059EFEC /* LoginOutTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0C1E501DD989FE0059EFEC /* LoginOutTableViewCell.m */; };
 		0A0C1E531DD989FE0059EFEC /* LoginOutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A0C1E511DD989FE0059EFEC /* LoginOutTableViewCell.xib */; };
 		0A0EBEA31E2F0E7D00E4A89E /* VisitorSingleTon.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0EBEA21E2F0E7D00E4A89E /* VisitorSingleTon.m */; };
-		0A0EBEA91E2F3B9600E4A89E /* VisitorSingleTon+Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0EBEA81E2F3B9600E4A89E /* VisitorSingleTon+Tool.m */; };
 		0A0FB99C1DDC367500F5CB7B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A0FB99B1DDC367500F5CB7B /* Security.framework */; };
-		0A35C6661DCD87DD0068AA83 /* KaiKaViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A35C6651DCD87DD0068AA83 /* KaiKaViewController+Configuration.m */; };
 		0A3C4D941EB9A66800B6F279 /* PropertyActivationSingleTon.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3C4D921EB9A66800B6F279 /* PropertyActivationSingleTon.m */; };
 		0A3C4D991EB9A92300B6F279 /* PropertyActivationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3C4D971EB9A92300B6F279 /* PropertyActivationViewController.m */; };
 		0A3C4D9A1EB9A92300B6F279 /* PropertyActivationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A3C4D981EB9A92300B6F279 /* PropertyActivationViewController.xib */; };
@@ -22,6 +20,8 @@
 		0A3C4DA01EB9BBF400B6F279 /* PropertyActivationViewControllerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3C4D9F1EB9BBF400B6F279 /* PropertyActivationViewControllerDataSource.m */; };
 		0A45E1BC1EBD9EEC00BE4980 /* MycradInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A45E1BA1EBD9EEC00BE4980 /* MycradInfoViewController.m */; };
 		0A45E1BD1EBD9EED00BE4980 /* MycradInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A45E1BB1EBD9EEC00BE4980 /* MycradInfoViewController.xib */; };
+		0A4E180A1F70DE7400C81B8E /* InstallWardensingleTon.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E18091F70DE7400C81B8E /* InstallWardensingleTon.m */; };
+		0A4E18101F70DF8400C81B8E /* InstallWardensingleTon+Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E180F1F70DF8400C81B8E /* InstallWardensingleTon+Tool.m */; };
 		0A50C1A61F48379700FB9B9A /* NSString+SY.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A50C19F1F48379700FB9B9A /* NSString+SY.m */; };
 		0A50C1A71F48379700FB9B9A /* SYContacter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A50C1A11F48379700FB9B9A /* SYContacter.m */; };
 		0A50C1A81F48379700FB9B9A /* SYContactsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A50C1A31F48379700FB9B9A /* SYContactsHelper.m */; };
@@ -46,8 +46,6 @@
 		0A5FF94A1DB6032600249F0C /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5FF9481DB6032600249F0C /* MyViewController.m */; };
 		0A5FF94B1DB6032600249F0C /* MyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A5FF9491DB6032600249F0C /* MyViewController.xib */; };
 		0A5FF94E1DB604C800249F0C /* CustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5FF94D1DB604C800249F0C /* CustomTabBarController.m */; };
-		0A611E301E11F40E0002B1C9 /* SingleTon+InstallWarden.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A611E2F1E11F40E0002B1C9 /* SingleTon+InstallWarden.m */; };
-		0A64025B1E1F691000CADD0F /* SingleTon+tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A64025A1E1F691000CADD0F /* SingleTon+tool.m */; };
 		0A6DA6DA1DB6F8D90013D0CF /* MineViewController+LogicalFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6DA6D91DB6F8D90013D0CF /* MineViewController+LogicalFlow.m */; };
 		0A6DA6DD1DB6F9020013D0CF /* MineViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6DA6DC1DB6F9020013D0CF /* MineViewController+Configuration.m */; };
 		0A6F7F171EFE11A3003E0DDA /* ChangeThePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6F7F151EFE11A3003E0DDA /* ChangeThePasswordViewController.m */; };
@@ -62,7 +60,6 @@
 		0A73048B1E8352990016639A /* invitaionCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7304891E8352990016639A /* invitaionCodeViewController.xib */; };
 		0A73048E1E8359E00016639A /* invitaionCodeViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A73048D1E8359E00016639A /* invitaionCodeViewController+Configuration.m */; };
 		0A7304911E8359FC0016639A /* invitaionCodeViewController+LogicalFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7304901E8359FC0016639A /* invitaionCodeViewController+LogicalFlow.m */; };
-		0A7878CF1DCDBCB1008A37D0 /* KaiKaViewController+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7878CE1DCDBCB1008A37D0 /* KaiKaViewController+Animation.m */; };
 		0A8154BA1F3D5E1D004E524A /* VisitorViewController+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8154B01F3D5E1D004E524A /* VisitorViewController+Animation.m */; };
 		0A8154BB1F3D5E1D004E524A /* VisitorViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8154B21F3D5E1D004E524A /* VisitorViewController+Configuration.m */; };
 		0A8154BC1F3D5E1D004E524A /* VisitorViewController+LogicalFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8154B41F3D5E1D004E524A /* VisitorViewController+LogicalFlow.m */; };
@@ -81,6 +78,18 @@
 		0A8C969B1DCC1A9200AAD161 /* MXSCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8C96971DCC1A9200AAD161 /* MXSCycleScrollView.m */; };
 		0A8C969C1DCC1A9200AAD161 /* UIColor+HcdCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8C96991DCC1A9200AAD161 /* UIColor+HcdCustom.m */; };
 		0A8C969E1DCC30D700AAD161 /* xiangxia_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A8C969D1DCC30D700AAD161 /* xiangxia_1.png */; };
+		0A8DAAF71F6B5E21004893B1 /* ParkModifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8DAAF51F6B5E21004893B1 /* ParkModifyViewController.m */; };
+		0A8DAAF81F6B5E21004893B1 /* ParkModifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A8DAAF61F6B5E21004893B1 /* ParkModifyViewController.xib */; };
+		0A8DAAFB1F6B6D55004893B1 /* ParkModifyViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8DAAFA1F6B6D55004893B1 /* ParkModifyViewController+Configuration.m */; };
+		0A8DAAFE1F6B6D6E004893B1 /* ParkModifyViewController+LogicalFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8DAAFD1F6B6D6E004893B1 /* ParkModifyViewController+LogicalFlow.m */; };
+		0A8DB3541F7A23BB008B9799 /* RetrieveThePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8DB3521F7A23BB008B9799 /* RetrieveThePasswordViewController.m */; };
+		0A8DB3551F7A23BB008B9799 /* RetrieveThePasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A8DB3531F7A23BB008B9799 /* RetrieveThePasswordViewController.xib */; };
+		0A8DB3591F7A2941008B9799 /* RetrieveThePasswordViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8DB3581F7A2941008B9799 /* RetrieveThePasswordViewController+Configuration.m */; };
+		0A8DB35C1F7A2960008B9799 /* RetrieveThePasswordViewController+LogicalFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8DB35B1F7A2960008B9799 /* RetrieveThePasswordViewController+LogicalFlow.m */; };
+		0A8DB3611F7A314C008B9799 /* RetrieveTowpasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8DB35F1F7A314C008B9799 /* RetrieveTowpasswordViewController.m */; };
+		0A8DB3621F7A314C008B9799 /* RetrieveTowpasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A8DB3601F7A314C008B9799 /* RetrieveTowpasswordViewController.xib */; };
+		0A8DB3651F7A31CC008B9799 /* RetrieveTowpasswordViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8DB3641F7A31CC008B9799 /* RetrieveTowpasswordViewController+Configuration.m */; };
+		0A8DB3681F7A3204008B9799 /* RetrieveTowpasswordViewController+LogicalFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8DB3671F7A3204008B9799 /* RetrieveTowpasswordViewController+LogicalFlow.m */; };
 		0A924F161DCB2A7300785BCF /* MyViewController+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A924F151DCB2A7300785BCF /* MyViewController+Animation.m */; };
 		0A93D0871EDEB45A0039F8B3 /* PropertyActivationViewController+LogicalFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A93D0861EDEB45A0039F8B3 /* PropertyActivationViewController+LogicalFlow.m */; };
 		0A95A2DA1DDA96B50019A691 /* NetWorkJudge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A95A2D91DDA96B50019A691 /* NetWorkJudge.m */; };
@@ -96,8 +105,16 @@
 		0A98AF4F1DF295F800BCA88C /* zhanweiImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A98AF4E1DF295F800BCA88C /* zhanweiImage.png */; };
 		0A98E8EC1E0505B30086F6D5 /* LanyaHeadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A98E8EA1E0505B30086F6D5 /* LanyaHeadTableViewCell.m */; };
 		0A98E8ED1E0505B30086F6D5 /* LanyaHeadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A98E8EB1E0505B30086F6D5 /* LanyaHeadTableViewCell.xib */; };
+		0A9EA4E01F667B020088B861 /* SXSearchHeadView+LogicalFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9EA4DF1F667B020088B861 /* SXSearchHeadView+LogicalFlow.m */; };
 		0A9EEC691DCB0E2A00D74FC9 /* OpenCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9EEC681DCB0E2A00D74FC9 /* OpenCardView.m */; };
 		0A9EEC6B1DCB0E3C00D74FC9 /* OpenCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A9EEC6A1DCB0E3C00D74FC9 /* OpenCardView.xib */; };
+		0AA023B81F5CFDE000231C07 /* selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AA023AF1F5CFDE000231C07 /* selected.png */; };
+		0AA023B91F5CFDE000231C07 /* SXSearchHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA023B11F5CFDE000231C07 /* SXSearchHeadView.m */; };
+		0AA023BA1F5CFDE000231C07 /* SXShowConditionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA023B31F5CFDE000231C07 /* SXShowConditionCell.m */; };
+		0AA023BB1F5CFDE000231C07 /* SXShowConditionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AA023B41F5CFDE000231C07 /* SXShowConditionCell.xib */; };
+		0AA023BC1F5CFDE000231C07 /* up.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AA023B51F5CFDE000231C07 /* up.png */; };
+		0AA023BD1F5CFDE000231C07 /* upblack.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AA023B61F5CFDE000231C07 /* upblack.png */; };
+		0AA023BE1F5CFDE000231C07 /* upwhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AA023B71F5CFDE000231C07 /* upwhite.png */; };
 		0AA491301DC6F27D0013B974 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA4912E1DC6F27D0013B974 /* LoginViewController.m */; };
 		0AA491311DC6F27D0013B974 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AA4912F1DC6F27D0013B974 /* LoginViewController.xib */; };
 		0AA4913A1DC72E4F0013B974 /* LoginViewController+LogicalFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA491391DC72E4F0013B974 /* LoginViewController+LogicalFlow.m */; };
@@ -110,6 +127,7 @@
 		0AA5DA2B1DF554DA00CA816E /* ZLCGuidePageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA5DA251DF554DA00CA816E /* ZLCGuidePageView.m */; };
 		0AA5DA2D1DF558C500CA816E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AA5DA2C1DF558C500CA816E /* Images.xcassets */; };
 		0AA5DA301DF55A5C00CA816E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AA5DA2E1DF55A5C00CA816E /* LaunchScreen.storyboard */; };
+		0AAEA6261F63CAE600B88A8E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AAEA6251F63CAE600B88A8E /* CoreLocation.framework */; };
 		0ABEA9B21E83974B00FC7FD3 /* ZBGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABEA9AD1E83974B00FC7FD3 /* ZBGroup.m */; };
 		0ABEA9B31E83974B00FC7FD3 /* DBTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABEA9AF1E83974B00FC7FD3 /* DBTool.m */; };
 		0ABEA9B41E83974B00FC7FD3 /* InstallCardData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABEA9B11E83974B00FC7FD3 /* InstallCardData.m */; };
@@ -117,9 +135,9 @@
 		0AC032221F53C054009633A9 /* advertisment_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0AC0321F1F53C054009633A9 /* advertisment_1.jpg */; };
 		0AC032231F53C054009633A9 /* advertisment_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0AC032201F53C054009633A9 /* advertisment_2.jpg */; };
 		0AC032241F53C054009633A9 /* advertisment_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0AC032211F53C054009633A9 /* advertisment_3.jpg */; };
-		0AC68B991DCC6EBC00B71FB1 /* KaiKaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AC68B971DCC6EBC00B71FB1 /* KaiKaViewController.m */; };
-		0AC68B9A1DCC6EBC00B71FB1 /* KaiKaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AC68B981DCC6EBC00B71FB1 /* KaiKaViewController.xib */; };
 		0AC969981DC9820F00F62C57 /* installViewControllerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AC969971DC9820F00F62C57 /* installViewControllerDataSource.m */; };
+		0ACC32651F78AC5E0092318B /* CalidTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACC32641F78AC5E0092318B /* CalidTool.m */; };
+		0ACC327D1F78D9AA0092318B /* InternetServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACC327C1F78D9A90092318B /* InternetServices.m */; };
 		0ACFF8181DB5BCA00043D49A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACFF8171DB5BCA00043D49A /* main.m */; };
 		0ACFF81B1DB5BCA00043D49A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACFF81A1DB5BCA00043D49A /* AppDelegate.m */; };
 		0ACFF8211DB5BCA00043D49A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ACFF81F1DB5BCA00043D49A /* Main.storyboard */; };
@@ -140,12 +158,10 @@
 		0AF131E11EC0435E0056F2A0 /* MycradInfoViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF131E01EC0435E0056F2A0 /* MycradInfoViewController+Configuration.m */; };
 		0AF131E61EC0488D0056F2A0 /* MycradInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF131E41EC0488D0056F2A0 /* MycradInfoTableViewCell.m */; };
 		0AF131E71EC0488D0056F2A0 /* MycradInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AF131E51EC0488D0056F2A0 /* MycradInfoTableViewCell.xib */; };
-		0AF131EA1EC04C190056F2A0 /* MycradInfoViewControllerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF131E91EC04C190056F2A0 /* MycradInfoViewControllerDataSource.m */; };
 		0AF3272E1F3D80F10013122D /* VisitorCarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF3272C1F3D80F10013122D /* VisitorCarViewController.m */; };
 		0AF3272F1F3D80F10013122D /* VisitorCarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AF3272D1F3D80F10013122D /* VisitorCarViewController.xib */; };
 		0AF327371F3D847E0013122D /* VisitorTabPagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF327351F3D847E0013122D /* VisitorTabPagerViewController.m */; };
 		0AF327381F3D847E0013122D /* VisitorTabPagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AF327361F3D847E0013122D /* VisitorTabPagerViewController.xib */; };
-		0AFA948A1DF7EC670044362D /* TTSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFA94891DF7EC670044362D /* TTSwitch.m */; };
 		0AFA94A11DF7ECD60044362D /* round-switch-mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AFA948C1DF7ECD60044362D /* round-switch-mask.png */; };
 		0AFA94A21DF7ECD60044362D /* round-switch-mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AFA948D1DF7ECD60044362D /* round-switch-mask@2x.png */; };
 		0AFA94A31DF7ECD60044362D /* round-switch-overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AFA948E1DF7ECD60044362D /* round-switch-overlay.png */; };
@@ -185,12 +201,8 @@
 		0A0C1E511DD989FE0059EFEC /* LoginOutTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginOutTableViewCell.xib; sourceTree = "<group>"; };
 		0A0EBEA11E2F0E7D00E4A89E /* VisitorSingleTon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisitorSingleTon.h; sourceTree = "<group>"; };
 		0A0EBEA21E2F0E7D00E4A89E /* VisitorSingleTon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisitorSingleTon.m; sourceTree = "<group>"; };
-		0A0EBEA71E2F3B9600E4A89E /* VisitorSingleTon+Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VisitorSingleTon+Tool.h"; sourceTree = "<group>"; };
-		0A0EBEA81E2F3B9600E4A89E /* VisitorSingleTon+Tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VisitorSingleTon+Tool.m"; sourceTree = "<group>"; };
 		0A0FB99A1DDC319C00F5CB7B /* claidApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = claidApp.entitlements; sourceTree = "<group>"; };
 		0A0FB99B1DDC367500F5CB7B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		0A35C6641DCD87DD0068AA83 /* KaiKaViewController+Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KaiKaViewController+Configuration.h"; sourceTree = "<group>"; };
-		0A35C6651DCD87DD0068AA83 /* KaiKaViewController+Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KaiKaViewController+Configuration.m"; sourceTree = "<group>"; };
 		0A3C4D911EB9A66800B6F279 /* PropertyActivationSingleTon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyActivationSingleTon.h; sourceTree = "<group>"; };
 		0A3C4D921EB9A66800B6F279 /* PropertyActivationSingleTon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropertyActivationSingleTon.m; sourceTree = "<group>"; };
 		0A3C4D961EB9A92300B6F279 /* PropertyActivationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyActivationViewController.h; sourceTree = "<group>"; };
@@ -203,6 +215,10 @@
 		0A45E1B91EBD9EEC00BE4980 /* MycradInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MycradInfoViewController.h; sourceTree = "<group>"; };
 		0A45E1BA1EBD9EEC00BE4980 /* MycradInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MycradInfoViewController.m; sourceTree = "<group>"; };
 		0A45E1BB1EBD9EEC00BE4980 /* MycradInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MycradInfoViewController.xib; sourceTree = "<group>"; };
+		0A4E18081F70DE7400C81B8E /* InstallWardensingleTon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstallWardensingleTon.h; sourceTree = "<group>"; };
+		0A4E18091F70DE7400C81B8E /* InstallWardensingleTon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstallWardensingleTon.m; sourceTree = "<group>"; };
+		0A4E180E1F70DF8400C81B8E /* InstallWardensingleTon+Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "InstallWardensingleTon+Tool.h"; sourceTree = "<group>"; };
+		0A4E180F1F70DF8400C81B8E /* InstallWardensingleTon+Tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "InstallWardensingleTon+Tool.m"; sourceTree = "<group>"; };
 		0A50C19E1F48379700FB9B9A /* NSString+SY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SY.h"; sourceTree = "<group>"; };
 		0A50C19F1F48379700FB9B9A /* NSString+SY.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SY.m"; sourceTree = "<group>"; };
 		0A50C1A01F48379700FB9B9A /* SYContacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYContacter.h; sourceTree = "<group>"; };
@@ -245,10 +261,6 @@
 		0A5FF9491DB6032600249F0C /* MyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyViewController.xib; sourceTree = "<group>"; };
 		0A5FF94C1DB604C800249F0C /* CustomTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabBarController.h; sourceTree = "<group>"; };
 		0A5FF94D1DB604C800249F0C /* CustomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBarController.m; sourceTree = "<group>"; };
-		0A611E2E1E11F40E0002B1C9 /* SingleTon+InstallWarden.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SingleTon+InstallWarden.h"; sourceTree = "<group>"; };
-		0A611E2F1E11F40E0002B1C9 /* SingleTon+InstallWarden.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SingleTon+InstallWarden.m"; sourceTree = "<group>"; };
-		0A6402591E1F691000CADD0F /* SingleTon+tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SingleTon+tool.h"; sourceTree = "<group>"; };
-		0A64025A1E1F691000CADD0F /* SingleTon+tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SingleTon+tool.m"; sourceTree = "<group>"; };
 		0A6DA6D81DB6F8D90013D0CF /* MineViewController+LogicalFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MineViewController+LogicalFlow.h"; sourceTree = "<group>"; };
 		0A6DA6D91DB6F8D90013D0CF /* MineViewController+LogicalFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MineViewController+LogicalFlow.m"; sourceTree = "<group>"; };
 		0A6DA6DB1DB6F9020013D0CF /* MineViewController+Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MineViewController+Configuration.h"; sourceTree = "<group>"; };
@@ -274,8 +286,6 @@
 		0A73048D1E8359E00016639A /* invitaionCodeViewController+Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "invitaionCodeViewController+Configuration.m"; sourceTree = "<group>"; };
 		0A73048F1E8359FC0016639A /* invitaionCodeViewController+LogicalFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "invitaionCodeViewController+LogicalFlow.h"; sourceTree = "<group>"; };
 		0A7304901E8359FC0016639A /* invitaionCodeViewController+LogicalFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "invitaionCodeViewController+LogicalFlow.m"; sourceTree = "<group>"; };
-		0A7878CD1DCDBCB1008A37D0 /* KaiKaViewController+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KaiKaViewController+Animation.h"; sourceTree = "<group>"; };
-		0A7878CE1DCDBCB1008A37D0 /* KaiKaViewController+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KaiKaViewController+Animation.m"; sourceTree = "<group>"; };
 		0A8154AF1F3D5E1D004E524A /* VisitorViewController+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VisitorViewController+Animation.h"; sourceTree = "<group>"; };
 		0A8154B01F3D5E1D004E524A /* VisitorViewController+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VisitorViewController+Animation.m"; sourceTree = "<group>"; };
 		0A8154B11F3D5E1D004E524A /* VisitorViewController+Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VisitorViewController+Configuration.h"; sourceTree = "<group>"; };
@@ -306,6 +316,27 @@
 		0A8C96981DCC1A9200AAD161 /* UIColor+HcdCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HcdCustom.h"; sourceTree = "<group>"; };
 		0A8C96991DCC1A9200AAD161 /* UIColor+HcdCustom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HcdCustom.m"; sourceTree = "<group>"; };
 		0A8C969D1DCC30D700AAD161 /* xiangxia_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xiangxia_1.png; sourceTree = "<group>"; };
+		0A8DAAF41F6B5E21004893B1 /* ParkModifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkModifyViewController.h; sourceTree = "<group>"; };
+		0A8DAAF51F6B5E21004893B1 /* ParkModifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkModifyViewController.m; sourceTree = "<group>"; };
+		0A8DAAF61F6B5E21004893B1 /* ParkModifyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParkModifyViewController.xib; sourceTree = "<group>"; };
+		0A8DAAF91F6B6D55004893B1 /* ParkModifyViewController+Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ParkModifyViewController+Configuration.h"; sourceTree = "<group>"; };
+		0A8DAAFA1F6B6D55004893B1 /* ParkModifyViewController+Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ParkModifyViewController+Configuration.m"; sourceTree = "<group>"; };
+		0A8DAAFC1F6B6D6E004893B1 /* ParkModifyViewController+LogicalFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ParkModifyViewController+LogicalFlow.h"; sourceTree = "<group>"; };
+		0A8DAAFD1F6B6D6E004893B1 /* ParkModifyViewController+LogicalFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ParkModifyViewController+LogicalFlow.m"; sourceTree = "<group>"; };
+		0A8DB3511F7A23BB008B9799 /* RetrieveThePasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RetrieveThePasswordViewController.h; sourceTree = "<group>"; };
+		0A8DB3521F7A23BB008B9799 /* RetrieveThePasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RetrieveThePasswordViewController.m; sourceTree = "<group>"; };
+		0A8DB3531F7A23BB008B9799 /* RetrieveThePasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RetrieveThePasswordViewController.xib; sourceTree = "<group>"; };
+		0A8DB3571F7A2941008B9799 /* RetrieveThePasswordViewController+Configuration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RetrieveThePasswordViewController+Configuration.h"; sourceTree = "<group>"; };
+		0A8DB3581F7A2941008B9799 /* RetrieveThePasswordViewController+Configuration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RetrieveThePasswordViewController+Configuration.m"; sourceTree = "<group>"; };
+		0A8DB35A1F7A2960008B9799 /* RetrieveThePasswordViewController+LogicalFlow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RetrieveThePasswordViewController+LogicalFlow.h"; sourceTree = "<group>"; };
+		0A8DB35B1F7A2960008B9799 /* RetrieveThePasswordViewController+LogicalFlow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RetrieveThePasswordViewController+LogicalFlow.m"; sourceTree = "<group>"; };
+		0A8DB35E1F7A314C008B9799 /* RetrieveTowpasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RetrieveTowpasswordViewController.h; sourceTree = "<group>"; };
+		0A8DB35F1F7A314C008B9799 /* RetrieveTowpasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RetrieveTowpasswordViewController.m; sourceTree = "<group>"; };
+		0A8DB3601F7A314C008B9799 /* RetrieveTowpasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RetrieveTowpasswordViewController.xib; sourceTree = "<group>"; };
+		0A8DB3631F7A31CC008B9799 /* RetrieveTowpasswordViewController+Configuration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RetrieveTowpasswordViewController+Configuration.h"; sourceTree = "<group>"; };
+		0A8DB3641F7A31CC008B9799 /* RetrieveTowpasswordViewController+Configuration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RetrieveTowpasswordViewController+Configuration.m"; sourceTree = "<group>"; };
+		0A8DB3661F7A3204008B9799 /* RetrieveTowpasswordViewController+LogicalFlow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RetrieveTowpasswordViewController+LogicalFlow.h"; sourceTree = "<group>"; };
+		0A8DB3671F7A3204008B9799 /* RetrieveTowpasswordViewController+LogicalFlow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RetrieveTowpasswordViewController+LogicalFlow.m"; sourceTree = "<group>"; };
 		0A924F141DCB2A7300785BCF /* MyViewController+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MyViewController+Animation.h"; sourceTree = "<group>"; };
 		0A924F151DCB2A7300785BCF /* MyViewController+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MyViewController+Animation.m"; sourceTree = "<group>"; };
 		0A93D0851EDEB45A0039F8B3 /* PropertyActivationViewController+LogicalFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PropertyActivationViewController+LogicalFlow.h"; sourceTree = "<group>"; };
@@ -334,8 +365,19 @@
 		0A98E8E91E0505B20086F6D5 /* LanyaHeadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanyaHeadTableViewCell.h; sourceTree = "<group>"; };
 		0A98E8EA1E0505B30086F6D5 /* LanyaHeadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanyaHeadTableViewCell.m; sourceTree = "<group>"; };
 		0A98E8EB1E0505B30086F6D5 /* LanyaHeadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LanyaHeadTableViewCell.xib; sourceTree = "<group>"; };
+		0A9EA4DE1F667B020088B861 /* SXSearchHeadView+LogicalFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SXSearchHeadView+LogicalFlow.h"; sourceTree = "<group>"; };
+		0A9EA4DF1F667B020088B861 /* SXSearchHeadView+LogicalFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SXSearchHeadView+LogicalFlow.m"; sourceTree = "<group>"; };
 		0A9EEC681DCB0E2A00D74FC9 /* OpenCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenCardView.m; sourceTree = "<group>"; };
 		0A9EEC6A1DCB0E3C00D74FC9 /* OpenCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpenCardView.xib; sourceTree = "<group>"; };
+		0AA023AF1F5CFDE000231C07 /* selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selected.png; sourceTree = "<group>"; };
+		0AA023B01F5CFDE000231C07 /* SXSearchHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXSearchHeadView.h; sourceTree = "<group>"; };
+		0AA023B11F5CFDE000231C07 /* SXSearchHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXSearchHeadView.m; sourceTree = "<group>"; };
+		0AA023B21F5CFDE000231C07 /* SXShowConditionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXShowConditionCell.h; sourceTree = "<group>"; };
+		0AA023B31F5CFDE000231C07 /* SXShowConditionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXShowConditionCell.m; sourceTree = "<group>"; };
+		0AA023B41F5CFDE000231C07 /* SXShowConditionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SXShowConditionCell.xib; sourceTree = "<group>"; };
+		0AA023B51F5CFDE000231C07 /* up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = up.png; sourceTree = "<group>"; };
+		0AA023B61F5CFDE000231C07 /* upblack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upblack.png; sourceTree = "<group>"; };
+		0AA023B71F5CFDE000231C07 /* upwhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upwhite.png; sourceTree = "<group>"; };
 		0AA4912D1DC6F27D0013B974 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		0AA4912E1DC6F27D0013B974 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		0AA4912F1DC6F27D0013B974 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -352,6 +394,7 @@
 		0AA5DA251DF554DA00CA816E /* ZLCGuidePageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLCGuidePageView.m; sourceTree = "<group>"; };
 		0AA5DA2C1DF558C500CA816E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0AA5DA2F1DF55A5C00CA816E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0AAEA6251F63CAE600B88A8E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		0ABEA9AC1E83974B00FC7FD3 /* ZBGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBGroup.h; sourceTree = "<group>"; };
 		0ABEA9AD1E83974B00FC7FD3 /* ZBGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBGroup.m; sourceTree = "<group>"; };
 		0ABEA9AE1E83974B00FC7FD3 /* DBTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTool.h; sourceTree = "<group>"; };
@@ -364,11 +407,12 @@
 		0AC032201F53C054009633A9 /* advertisment_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = advertisment_2.jpg; sourceTree = "<group>"; };
 		0AC032211F53C054009633A9 /* advertisment_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = advertisment_3.jpg; sourceTree = "<group>"; };
 		0AC459801E26288700E813E0 /* calidHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = calidHeader.h; sourceTree = "<group>"; };
-		0AC68B961DCC6EBC00B71FB1 /* KaiKaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KaiKaViewController.h; sourceTree = "<group>"; };
-		0AC68B971DCC6EBC00B71FB1 /* KaiKaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KaiKaViewController.m; sourceTree = "<group>"; };
-		0AC68B981DCC6EBC00B71FB1 /* KaiKaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KaiKaViewController.xib; sourceTree = "<group>"; };
 		0AC969961DC9820F00F62C57 /* installViewControllerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = installViewControllerDataSource.h; sourceTree = "<group>"; };
 		0AC969971DC9820F00F62C57 /* installViewControllerDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = installViewControllerDataSource.m; sourceTree = "<group>"; };
+		0ACC32631F78AC5E0092318B /* CalidTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalidTool.h; sourceTree = "<group>"; };
+		0ACC32641F78AC5E0092318B /* CalidTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalidTool.m; sourceTree = "<group>"; };
+		0ACC327B1F78D9A90092318B /* InternetServices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InternetServices.h; sourceTree = "<group>"; };
+		0ACC327C1F78D9A90092318B /* InternetServices.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InternetServices.m; sourceTree = "<group>"; };
 		0ACFF8131DB5BCA00043D49A /* claidApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = claidApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0ACFF8171DB5BCA00043D49A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0ACFF8191DB5BCA00043D49A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -408,16 +452,12 @@
 		0AF131E31EC0488D0056F2A0 /* MycradInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MycradInfoTableViewCell.h; sourceTree = "<group>"; };
 		0AF131E41EC0488D0056F2A0 /* MycradInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MycradInfoTableViewCell.m; sourceTree = "<group>"; };
 		0AF131E51EC0488D0056F2A0 /* MycradInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MycradInfoTableViewCell.xib; sourceTree = "<group>"; };
-		0AF131E81EC04C190056F2A0 /* MycradInfoViewControllerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MycradInfoViewControllerDataSource.h; sourceTree = "<group>"; };
-		0AF131E91EC04C190056F2A0 /* MycradInfoViewControllerDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MycradInfoViewControllerDataSource.m; sourceTree = "<group>"; };
 		0AF3272B1F3D80F10013122D /* VisitorCarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisitorCarViewController.h; sourceTree = "<group>"; };
 		0AF3272C1F3D80F10013122D /* VisitorCarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisitorCarViewController.m; sourceTree = "<group>"; };
 		0AF3272D1F3D80F10013122D /* VisitorCarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VisitorCarViewController.xib; sourceTree = "<group>"; };
 		0AF327341F3D847E0013122D /* VisitorTabPagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisitorTabPagerViewController.h; sourceTree = "<group>"; };
 		0AF327351F3D847E0013122D /* VisitorTabPagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisitorTabPagerViewController.m; sourceTree = "<group>"; };
 		0AF327361F3D847E0013122D /* VisitorTabPagerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VisitorTabPagerViewController.xib; sourceTree = "<group>"; };
-		0AFA94881DF7EC670044362D /* TTSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTSwitch.h; sourceTree = "<group>"; };
-		0AFA94891DF7EC670044362D /* TTSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTSwitch.m; sourceTree = "<group>"; };
 		0AFA948C1DF7ECD60044362D /* round-switch-mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "round-switch-mask.png"; sourceTree = "<group>"; };
 		0AFA948D1DF7ECD60044362D /* round-switch-mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "round-switch-mask@2x.png"; sourceTree = "<group>"; };
 		0AFA948E1DF7ECD60044362D /* round-switch-overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "round-switch-overlay.png"; sourceTree = "<group>"; };
@@ -438,6 +478,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AAEA6261F63CAE600B88A8E /* CoreLocation.framework in Frameworks */,
 				0A8612261DEC0C8200AC1FB4 /* AVFoundation.framework in Frameworks */,
 				0A0FB99C1DDC367500F5CB7B /* Security.framework in Frameworks */,
 				0A83FE1D1DC9B32F006F4D61 /* libsqlite3.tbd in Frameworks */,
@@ -487,8 +528,6 @@
 			children = (
 				0A0EBEA11E2F0E7D00E4A89E /* VisitorSingleTon.h */,
 				0A0EBEA21E2F0E7D00E4A89E /* VisitorSingleTon.m */,
-				0A0EBEA71E2F3B9600E4A89E /* VisitorSingleTon+Tool.h */,
-				0A0EBEA81E2F3B9600E4A89E /* VisitorSingleTon+Tool.m */,
 			);
 			path = VIsitorLanya;
 			sourceTree = "<group>";
@@ -526,10 +565,19 @@
 				0A45E1BB1EBD9EEC00BE4980 /* MycradInfoViewController.xib */,
 				0AF131DF1EC0435D0056F2A0 /* MycradInfoViewController+Configuration.h */,
 				0AF131E01EC0435E0056F2A0 /* MycradInfoViewController+Configuration.m */,
-				0AF131E81EC04C190056F2A0 /* MycradInfoViewControllerDataSource.h */,
-				0AF131E91EC04C190056F2A0 /* MycradInfoViewControllerDataSource.m */,
 			);
 			path = MycardInfoViewController;
+			sourceTree = "<group>";
+		};
+		0A4E18011F70AA4300C81B8E /* InstallWardenSingleTon */ = {
+			isa = PBXGroup;
+			children = (
+				0A4E18081F70DE7400C81B8E /* InstallWardensingleTon.h */,
+				0A4E18091F70DE7400C81B8E /* InstallWardensingleTon.m */,
+				0A4E180E1F70DF8400C81B8E /* InstallWardensingleTon+Tool.h */,
+				0A4E180F1F70DF8400C81B8E /* InstallWardensingleTon+Tool.m */,
+			);
+			path = InstallWardenSingleTon;
 			sourceTree = "<group>";
 		};
 		0A50C1911F4825EB00FB9B9A /* ZBContacts */ = {
@@ -709,12 +757,10 @@
 			children = (
 				0A87F7A81DB74F8E00EFF1F0 /* SingleTon.h */,
 				0A87F7A91DB74F8E00EFF1F0 /* SingleTon.m */,
-				0A611E2E1E11F40E0002B1C9 /* SingleTon+InstallWarden.h */,
-				0A611E2F1E11F40E0002B1C9 /* SingleTon+InstallWarden.m */,
 				0AEB0BD31F46CB230046AA30 /* SingleTon+MainHairpin.h */,
 				0AEB0BD41F46CB230046AA30 /* SingleTon+MainHairpin.m */,
-				0A6402591E1F691000CADD0F /* SingleTon+tool.h */,
-				0A64025A1E1F691000CADD0F /* SingleTon+tool.m */,
+				0ACC32631F78AC5E0092318B /* CalidTool.h */,
+				0ACC32641F78AC5E0092318B /* CalidTool.m */,
 			);
 			path = lanya;
 			sourceTree = "<group>";
@@ -754,6 +800,49 @@
 				0A8C96991DCC1A9200AAD161 /* UIColor+HcdCustom.m */,
 			);
 			path = HcdDateTimePicker;
+			sourceTree = "<group>";
+		};
+		0A8DAAF31F6B5D95004893B1 /* ParkModifyViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0A8DAAF41F6B5E21004893B1 /* ParkModifyViewController.h */,
+				0A8DAAF51F6B5E21004893B1 /* ParkModifyViewController.m */,
+				0A8DAAF61F6B5E21004893B1 /* ParkModifyViewController.xib */,
+				0A8DAAF91F6B6D55004893B1 /* ParkModifyViewController+Configuration.h */,
+				0A8DAAFA1F6B6D55004893B1 /* ParkModifyViewController+Configuration.m */,
+				0A8DAAFC1F6B6D6E004893B1 /* ParkModifyViewController+LogicalFlow.h */,
+				0A8DAAFD1F6B6D6E004893B1 /* ParkModifyViewController+LogicalFlow.m */,
+			);
+			path = ParkModifyViewController;
+			sourceTree = "<group>";
+		};
+		0A8DB34B1F7A21B1008B9799 /* RetrieveThePasswordViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0A8DB3511F7A23BB008B9799 /* RetrieveThePasswordViewController.h */,
+				0A8DB3521F7A23BB008B9799 /* RetrieveThePasswordViewController.m */,
+				0A8DB3531F7A23BB008B9799 /* RetrieveThePasswordViewController.xib */,
+				0A8DB3571F7A2941008B9799 /* RetrieveThePasswordViewController+Configuration.h */,
+				0A8DB3581F7A2941008B9799 /* RetrieveThePasswordViewController+Configuration.m */,
+				0A8DB35A1F7A2960008B9799 /* RetrieveThePasswordViewController+LogicalFlow.h */,
+				0A8DB35B1F7A2960008B9799 /* RetrieveThePasswordViewController+LogicalFlow.m */,
+				0A8DB35D1F7A3137008B9799 /* RetrieveTowpasswordViewController */,
+			);
+			path = RetrieveThePasswordViewController;
+			sourceTree = "<group>";
+		};
+		0A8DB35D1F7A3137008B9799 /* RetrieveTowpasswordViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0A8DB35E1F7A314C008B9799 /* RetrieveTowpasswordViewController.h */,
+				0A8DB35F1F7A314C008B9799 /* RetrieveTowpasswordViewController.m */,
+				0A8DB3601F7A314C008B9799 /* RetrieveTowpasswordViewController.xib */,
+				0A8DB3631F7A31CC008B9799 /* RetrieveTowpasswordViewController+Configuration.h */,
+				0A8DB3641F7A31CC008B9799 /* RetrieveTowpasswordViewController+Configuration.m */,
+				0A8DB3661F7A3204008B9799 /* RetrieveTowpasswordViewController+LogicalFlow.h */,
+				0A8DB3671F7A3204008B9799 /* RetrieveTowpasswordViewController+LogicalFlow.m */,
+			);
+			path = RetrieveTowpasswordViewController;
 			sourceTree = "<group>";
 		};
 		0A95A2D71DDA96640019A691 /* NetWorkJudge */ = {
@@ -802,6 +891,7 @@
 			isa = PBXGroup;
 			children = (
 				0A9EEC631DCB0DCB00D74FC9 /* openCardView */,
+				0AA023AE1F5CFDE000231C07 /* SelectButtonview */,
 			);
 			name = Components;
 			path = Basic/Components;
@@ -815,6 +905,24 @@
 				0A9EEC6A1DCB0E3C00D74FC9 /* OpenCardView.xib */,
 			);
 			path = openCardView;
+			sourceTree = "<group>";
+		};
+		0AA023AE1F5CFDE000231C07 /* SelectButtonview */ = {
+			isa = PBXGroup;
+			children = (
+				0AA023AF1F5CFDE000231C07 /* selected.png */,
+				0AA023B01F5CFDE000231C07 /* SXSearchHeadView.h */,
+				0AA023B11F5CFDE000231C07 /* SXSearchHeadView.m */,
+				0A9EA4DE1F667B020088B861 /* SXSearchHeadView+LogicalFlow.h */,
+				0A9EA4DF1F667B020088B861 /* SXSearchHeadView+LogicalFlow.m */,
+				0AA023B21F5CFDE000231C07 /* SXShowConditionCell.h */,
+				0AA023B31F5CFDE000231C07 /* SXShowConditionCell.m */,
+				0AA023B41F5CFDE000231C07 /* SXShowConditionCell.xib */,
+				0AA023B51F5CFDE000231C07 /* up.png */,
+				0AA023B61F5CFDE000231C07 /* upblack.png */,
+				0AA023B71F5CFDE000231C07 /* upwhite.png */,
+			);
+			path = SelectButtonview;
 			sourceTree = "<group>";
 		};
 		0AA5DA1D1DF554DA00CA816E /* ZLCGuidePage */ = {
@@ -872,18 +980,13 @@
 			path = classVisitor;
 			sourceTree = "<group>";
 		};
-		0AC68B951DCC6E8200B71FB1 /* KaikaViewController */ = {
+		0ACC327A1F78D9600092318B /* ServicesTools */ = {
 			isa = PBXGroup;
 			children = (
-				0AC68B961DCC6EBC00B71FB1 /* KaiKaViewController.h */,
-				0AC68B971DCC6EBC00B71FB1 /* KaiKaViewController.m */,
-				0AC68B981DCC6EBC00B71FB1 /* KaiKaViewController.xib */,
-				0A35C6641DCD87DD0068AA83 /* KaiKaViewController+Configuration.h */,
-				0A35C6651DCD87DD0068AA83 /* KaiKaViewController+Configuration.m */,
-				0A7878CD1DCDBCB1008A37D0 /* KaiKaViewController+Animation.h */,
-				0A7878CE1DCDBCB1008A37D0 /* KaiKaViewController+Animation.m */,
+				0ACC327B1F78D9A90092318B /* InternetServices.h */,
+				0ACC327C1F78D9A90092318B /* InternetServices.m */,
 			);
-			path = KaikaViewController;
+			path = ServicesTools;
 			sourceTree = "<group>";
 		};
 		0ACFF80A1DB5BC9F0043D49A = {
@@ -995,13 +1098,13 @@
 			children = (
 				0A87F7A71DB74F8E00EFF1F0 /* lanya */,
 				0A0EBEA01E2F0E3E00E4A89E /* VIsitorLanya */,
+				0A4E18011F70AA4300C81B8E /* InstallWardenSingleTon */,
 				0A3C4D8E1EB9A66800B6F279 /* PropertyActivationLanya */,
 				0A95A2D71DDA96640019A691 /* NetWorkJudge */,
 				0AA5DA1D1DF554DA00CA816E /* ZLCGuidePage */,
 				0A8C96931DCC1A9200AAD161 /* HcdDateTimePicker */,
 				0A50C1911F4825EB00FB9B9A /* ZBContacts */,
 				0A98AF351DF270BF00BCA88C /* JYCarousel */,
-				0AFA94871DF7EC670044362D /* TTSwitch */,
 				0A5FF9381DB5FABC00249F0C /* Utilities */,
 			);
 			path = Tools;
@@ -1017,12 +1120,13 @@
 				0A6FB26E1DC9788400345784 /* installViewController */,
 				0ACFF8741DB5C6910043D49A /* MyViewController */,
 				0A45E1B81EBD9EAF00BE4980 /* MycardInfoViewController */,
-				0AC68B951DCC6E8200B71FB1 /* KaikaViewController */,
 				0A8154AC1F3D5E1D004E524A /* VisitorViewControllers */,
 				0A7304861E8352420016639A /* InvitationCodeViewController */,
 				0A52D71C1F0630E7009EF865 /* MyFeedBackViewController */,
 				0A6F7F131EFE115A003E0DDA /* ChangeThePasswordViewController */,
+				0A8DB34B1F7A21B1008B9799 /* RetrieveThePasswordViewController */,
 				0A3C4D951EB9A8FF00B6F279 /* PropertyActivationViewController */,
+				0A8DAAF31F6B5D95004893B1 /* ParkModifyViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1031,6 +1135,7 @@
 			isa = PBXGroup;
 			children = (
 				0AC459801E26288700E813E0 /* calidHeader.h */,
+				0ACC327A1F78D9600092318B /* ServicesTools */,
 			);
 			path = WebServices;
 			sourceTree = "<group>";
@@ -1151,15 +1256,6 @@
 			path = MycradInfoTableViewCell;
 			sourceTree = "<group>";
 		};
-		0AFA94871DF7EC670044362D /* TTSwitch */ = {
-			isa = PBXGroup;
-			children = (
-				0AFA94881DF7EC670044362D /* TTSwitch.h */,
-				0AFA94891DF7EC670044362D /* TTSwitch.m */,
-			);
-			path = TTSwitch;
-			sourceTree = "<group>";
-		};
 		0AFA948B1DF7ECD60044362D /* Round */ = {
 			isa = PBXGroup;
 			children = (
@@ -1180,6 +1276,7 @@
 		51EC2D4BCFC8A555B596AA46 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0AAEA6251F63CAE600B88A8E /* CoreLocation.framework */,
 				0A8612251DEC0C8200AC1FB4 /* AVFoundation.framework */,
 				0A0FB99B1DDC367500F5CB7B /* Security.framework */,
 				0A83FE1C1DC9B32F006F4D61 /* libsqlite3.tbd */,
@@ -1312,12 +1409,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AA023BE1F5CFDE000231C07 /* upwhite.png in Resources */,
 				0A052F611DBDF0E7002EB567 /* BlankTableViewCell.xib in Resources */,
 				0AA5DA281DF554DA00CA816E /* image3.jpg in Resources */,
 				0A5FF94B1DB6032600249F0C /* MyViewController.xib in Resources */,
+				0A8DB3551F7A23BB008B9799 /* RetrieveThePasswordViewController.xib in Resources */,
 				0A51E91B1DC825B9000D31F3 /* RegisterViewController.xib in Resources */,
 				0A52D7211F063101009EF865 /* MyFeedBackViewController.xib in Resources */,
 				0AF327381F3D847E0013122D /* VisitorTabPagerViewController.xib in Resources */,
+				0AA023BD1F5CFDE000231C07 /* upblack.png in Resources */,
 				0AF3272F1F3D80F10013122D /* VisitorCarViewController.xib in Resources */,
 				0A5FF9371DB5F6A000249F0C /* CustomActionSheetCell.xib in Resources */,
 				0AFA94A51DF7ECD60044362D /* round-switch-thumb-highlight.png in Resources */,
@@ -1325,21 +1425,24 @@
 				0A6F7F181EFE11A3003E0DDA /* ChangeThePasswordViewController.xib in Resources */,
 				0AA491311DC6F27D0013B974 /* LoginViewController.xib in Resources */,
 				0A5FF9461DB6029700249F0C /* MineViewController.xib in Resources */,
+				0AA023BB1F5CFDE000231C07 /* SXShowConditionCell.xib in Resources */,
 				0AFA94A21DF7ECD60044362D /* round-switch-mask@2x.png in Resources */,
 				0AD75CD91DBDE6C100297AC3 /* MyTableViewCell.xib in Resources */,
 				0A98E8ED1E0505B30086F6D5 /* LanyaHeadTableViewCell.xib in Resources */,
-				0AC68B9A1DCC6EBC00B71FB1 /* KaiKaViewController.xib in Resources */,
 				0A823A101F4154D800B10DB3 /* weChatOpenShare.png in Resources */,
 				0A8154BE1F3D5E1D004E524A /* VisitorViewController.xib in Resources */,
 				0AEC75201DC83D7E00933D77 /* fanhui_1.png in Resources */,
 				0A87F7B71DB7602E00EFF1F0 /* MinFuncTionTableViewCell.xib in Resources */,
+				0A8DB3621F7A314C008B9799 /* RetrieveTowpasswordViewController.xib in Resources */,
 				0AFA94A61DF7ECD60044362D /* round-switch-thumb-highlight@2x.png in Resources */,
 				0AFA94AA1DF7ECD60044362D /* round-switch-track@2x.png in Resources */,
 				0A73048B1E8352990016639A /* invitaionCodeViewController.xib in Resources */,
 				0AC032231F53C054009633A9 /* advertisment_2.jpg in Resources */,
+				0AA023BC1F5CFDE000231C07 /* up.png in Resources */,
 				0AA5DA291DF554DA00CA816E /* image4.jpg in Resources */,
 				0ACFF8231DB5BCA00043D49A /* Assets.xcassets in Resources */,
 				0AA5DA2A1DF554DA00CA816E /* image5.jpg in Resources */,
+				0AA023B81F5CFDE000231C07 /* selected.png in Resources */,
 				0A3C4D9A1EB9A92300B6F279 /* PropertyActivationViewController.xib in Resources */,
 				0AFA94A31DF7ECD60044362D /* round-switch-overlay.png in Resources */,
 				0AFA94A81DF7ECD60044362D /* round-switch-thumb@2x.png in Resources */,
@@ -1352,6 +1455,7 @@
 				0AA5DA301DF55A5C00CA816E /* LaunchScreen.storyboard in Resources */,
 				0A98AF4F1DF295F800BCA88C /* zhanweiImage.png in Resources */,
 				0A45E1BD1EBD9EED00BE4980 /* MycradInfoViewController.xib in Resources */,
+				0A8DAAF81F6B5E21004893B1 /* ParkModifyViewController.xib in Resources */,
 				0AC032221F53C054009633A9 /* advertisment_1.jpg in Resources */,
 				0ACFF8211DB5BCA00043D49A /* Main.storyboard in Resources */,
 				0AFA94A11DF7ECD60044362D /* round-switch-mask.png in Resources */,
@@ -1387,9 +1491,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-claidApp/Pods-claidApp-resources.sh",
+				"${PODS_ROOT}/SSKeychain/Support/SSKeychain.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1402,13 +1509,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-claidApp-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D10398E05D43DD89BC7E3CA0 /* [CP] Embed Pods Frameworks */ = {
@@ -1434,10 +1544,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A3C4D941EB9A66800B6F279 /* PropertyActivationSingleTon.m in Sources */,
-				0A611E301E11F40E0002B1C9 /* SingleTon+InstallWarden.m in Sources */,
 				0A5FF93F1DB5FABC00249F0C /* UIColor+Utility.m in Sources */,
 				0A5FF9301DB5F05000249F0C /* CustomActionSheet.m in Sources */,
-				0A0EBEA91E2F3B9600E4A89E /* VisitorSingleTon+Tool.m in Sources */,
 				0AD75CCD1DBDDDEC00297AC3 /* MyViewController+Configuration.m in Sources */,
 				0A52D71B1F05E439009EF865 /* UserInfo.m in Sources */,
 				0A6FB2721DC978BC00345784 /* installViewController.m in Sources */,
@@ -1445,8 +1553,8 @@
 				0A6F7F171EFE11A3003E0DDA /* ChangeThePasswordViewController.m in Sources */,
 				0ACFF81B1DB5BCA00043D49A /* AppDelegate.m in Sources */,
 				0A51E9211DC82645000D31F3 /* RegisterViewController+Configuration.m in Sources */,
-				0A35C6661DCD87DD0068AA83 /* KaiKaViewController+Configuration.m in Sources */,
 				0A98AF461DF270BF00BCA88C /* JYCarousel.m in Sources */,
+				0A8DB3651F7A31CC008B9799 /* RetrieveTowpasswordViewController+Configuration.m in Sources */,
 				0A3C4D991EB9A92300B6F279 /* PropertyActivationViewController.m in Sources */,
 				0AA491301DC6F27D0013B974 /* LoginViewController.m in Sources */,
 				0A6DA6DD1DB6F9020013D0CF /* MineViewController+Configuration.m in Sources */,
@@ -1457,41 +1565,46 @@
 				0A95A2DA1DDA96B50019A691 /* NetWorkJudge.m in Sources */,
 				0A98E8EC1E0505B30086F6D5 /* LanyaHeadTableViewCell.m in Sources */,
 				0AF131DE1EC00A590056F2A0 /* ClassUserInfo.m in Sources */,
+				0AA023BA1F5CFDE000231C07 /* SXShowConditionCell.m in Sources */,
 				0A5FF94E1DB604C800249F0C /* CustomTabBarController.m in Sources */,
 				0A8154BD1F3D5E1D004E524A /* VisitorViewController.m in Sources */,
 				0ACFF8891DB5CCAC0043D49A /* BaseViewController.m in Sources */,
 				0A8154BF1F3D5E1D004E524A /* VisitorViewControllerDataSource.m in Sources */,
+				0A8DAAFB1F6B6D55004893B1 /* ParkModifyViewController+Configuration.m in Sources */,
 				0A5FF9411DB5FABC00249F0C /* UIScreen+Utility.m in Sources */,
-				0A7878CF1DCDBCB1008A37D0 /* KaiKaViewController+Animation.m in Sources */,
 				0A5FF9451DB6029700249F0C /* MineViewController.m in Sources */,
+				0A4E180A1F70DE7400C81B8E /* InstallWardensingleTon.m in Sources */,
 				0A73048E1E8359E00016639A /* invitaionCodeViewController+Configuration.m in Sources */,
 				0A98AF491DF270BF00BCA88C /* JYImageCache.m in Sources */,
 				0AA5DA2B1DF554DA00CA816E /* ZLCGuidePageView.m in Sources */,
 				0A5FF94A1DB6032600249F0C /* MyViewController.m in Sources */,
 				0A51E91A1DC825B9000D31F3 /* RegisterViewController.m in Sources */,
+				0A8DB3681F7A3204008B9799 /* RetrieveTowpasswordViewController+LogicalFlow.m in Sources */,
 				0A924F161DCB2A7300785BCF /* MyViewController+Animation.m in Sources */,
-				0AC68B991DCC6EBC00B71FB1 /* KaiKaViewController.m in Sources */,
 				0A87F7AA1DB74F8E00EFF1F0 /* SingleTon.m in Sources */,
 				0AD75CD81DBDE6C100297AC3 /* MyTableViewCell.m in Sources */,
 				0A87F7AD1DB7588900EFF1F0 /* MineViewController+Animation.m in Sources */,
 				0ACFF8931DB5CEFF0043D49A /* ChannelBaseView.m in Sources */,
 				0A3C4DA01EB9BBF400B6F279 /* PropertyActivationViewControllerDataSource.m in Sources */,
+				0A8DB35C1F7A2960008B9799 /* RetrieveThePasswordViewController+LogicalFlow.m in Sources */,
+				0A4E18101F70DF8400C81B8E /* InstallWardensingleTon+Tool.m in Sources */,
 				0A93D0871EDEB45A0039F8B3 /* PropertyActivationViewController+LogicalFlow.m in Sources */,
 				0A98AF4D1DF270BF00BCA88C /* UIImageView+JYImageViewManager.m in Sources */,
+				0A8DB3611F7A314C008B9799 /* RetrieveTowpasswordViewController.m in Sources */,
 				0A87F7B01DB75D5E00EFF1F0 /* MinViewControllerDataSource.m in Sources */,
 				0ACFF8181DB5BCA00043D49A /* main.m in Sources */,
 				0AA4913A1DC72E4F0013B974 /* LoginViewController+LogicalFlow.m in Sources */,
 				0A98AF4A1DF270BF00BCA88C /* JYImageDownloader.m in Sources */,
 				0A51E91E1DC82629000D31F3 /* RegisterViewController+LogicalFlow.m in Sources */,
-				0AFA948A1DF7EC670044362D /* TTSwitch.m in Sources */,
 				0A5FF9361DB5F6A000249F0C /* CustomActionSheetCell.m in Sources */,
+				0ACC327D1F78D9AA0092318B /* InternetServices.m in Sources */,
 				0A50C1A81F48379700FB9B9A /* SYContactsHelper.m in Sources */,
 				0AF131E11EC0435E0056F2A0 /* MycradInfoViewController+Configuration.m in Sources */,
 				0A8C969B1DCC1A9200AAD161 /* MXSCycleScrollView.m in Sources */,
 				0A5FF9401DB5FABC00249F0C /* UIImage+Utility.m in Sources */,
 				0AF327371F3D847E0013122D /* VisitorTabPagerViewController.m in Sources */,
 				0A052F601DBDF0E7002EB567 /* BlankTableViewCell.m in Sources */,
-				0AF131EA1EC04C190056F2A0 /* MycradInfoViewControllerDataSource.m in Sources */,
+				0AA023B91F5CFDE000231C07 /* SXSearchHeadView.m in Sources */,
 				0A0C1E521DD989FE0059EFEC /* LoginOutTableViewCell.m in Sources */,
 				0AC969981DC9820F00F62C57 /* installViewControllerDataSource.m in Sources */,
 				0A7304911E8359FC0016639A /* invitaionCodeViewController+LogicalFlow.m in Sources */,
@@ -1501,6 +1614,7 @@
 				0A6DA6DA1DB6F8D90013D0CF /* MineViewController+LogicalFlow.m in Sources */,
 				0A0EBEA31E2F0E7D00E4A89E /* VisitorSingleTon.m in Sources */,
 				0A8C969A1DCC1A9200AAD161 /* HcdDateTimePickerView.m in Sources */,
+				0A8DB3541F7A23BB008B9799 /* RetrieveThePasswordViewController.m in Sources */,
 				0ACFF8901DB5CDFA0043D49A /* BaseView.m in Sources */,
 				0AEB0BD51F46CB230046AA30 /* SingleTon+MainHairpin.m in Sources */,
 				0A6F7F1B1EFE2DD8003E0DDA /* ChangeThePasswordViewController+Configuration.m in Sources */,
@@ -1510,6 +1624,8 @@
 				0A98AF471DF270BF00BCA88C /* JYCarouselAnimation.m in Sources */,
 				0A73048A1E8352990016639A /* invitaionCodeViewController.m in Sources */,
 				0A98AF481DF270BF00BCA88C /* JYConfiguration.m in Sources */,
+				0ACC32651F78AC5E0092318B /* CalidTool.m in Sources */,
+				0A9EA4E01F667B020088B861 /* SXSearchHeadView+LogicalFlow.m in Sources */,
 				0A52D7201F063101009EF865 /* MyFeedBackViewController.m in Sources */,
 				0A45E1BC1EBD9EEC00BE4980 /* MycradInfoViewController.m in Sources */,
 				0AD75CD31DBDDE5300297AC3 /* MyViewControllerDataSource.m in Sources */,
@@ -1518,11 +1634,13 @@
 				0A3C4D9D1EB9B35C00B6F279 /* PropertyActivationViewController+Configuration.m in Sources */,
 				0AD75CD01DBDDE0F00297AC3 /* MyViewController+LogicalFlow.m in Sources */,
 				0A8154BA1F3D5E1D004E524A /* VisitorViewController+Animation.m in Sources */,
+				0A8DAAFE1F6B6D6E004893B1 /* ParkModifyViewController+LogicalFlow.m in Sources */,
 				0A98AF4B1DF270BF00BCA88C /* JYPageControl.m in Sources */,
 				0A98AF4C1DF270BF00BCA88C /* JYWeakTimer.m in Sources */,
-				0A64025B1E1F691000CADD0F /* SingleTon+tool.m in Sources */,
+				0A8DAAF71F6B5E21004893B1 /* ParkModifyViewController.m in Sources */,
 				0A6F7F1E1EFE2E04003E0DDA /* ChangeThePasswordViewController+LogicalFlow.m in Sources */,
 				0A8154BB1F3D5E1D004E524A /* VisitorViewController+Configuration.m in Sources */,
+				0A8DB3591F7A2941008B9799 /* RetrieveThePasswordViewController+Configuration.m in Sources */,
 				0A87F7B61DB7602E00EFF1F0 /* MinFuncTionTableViewCell.m in Sources */,
 				0ABEA9B41E83974B00FC7FD3 /* InstallCardData.m in Sources */,
 				0A50C1A71F48379700FB9B9A /* SYContacter.m in Sources */,
@@ -1689,6 +1807,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 9D67V2X4VK;
 				ENABLE_BITCODE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/claidApp/Tools/DXSDK/Required",
+					"$(PROJECT_DIR)/claidApp/Tools/DXSDK/SMSSDK",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/claidApp/WebServices/calidHeader.h";
 				INFOPLIST_FILE = claidApp/Info.plist;
@@ -1719,6 +1842,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 9D67V2X4VK;
 				ENABLE_BITCODE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/claidApp/Tools/DXSDK/Required",
+					"$(PROJECT_DIR)/claidApp/Tools/DXSDK/SMSSDK",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/claidApp/WebServices/calidHeader.h";
 				INFOPLIST_FILE = claidApp/Info.plist;

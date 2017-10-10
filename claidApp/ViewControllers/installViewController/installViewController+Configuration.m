@@ -8,7 +8,7 @@
 
 #import "installViewController+Configuration.h"
 #import "MinFuncTionTableViewCell.h"
-#import "SingleTon+tool.h"
+#import "CalidTool.h"
 #import "UIScreen+Utility.h"
 #import "UIColor+Utility.h"
 #import "installViewController+Animation.h"
@@ -28,8 +28,8 @@
 }
 #pragma mark - 蓝牙初始化
 - (void)lanyaEdit {
-    self.sinTon = [SingleTon sharedInstance];
-    [self.sinTon initialization];
+    self.sinTon = [InstallWardensingleTon iwsharedInstance];
+    [self.sinTon iwinitialization];
     self.sinTon.installDelegate = self;
 }
 #pragma mark - tableView初始化
@@ -41,7 +41,7 @@
     [self.installTableView registerNib:[UINib nibWithNibName:@"MinFuncTionTableViewCell" bundle:nil] forCellReuseIdentifier:MINN_FUNCTION_CELL_NIB];
     self.installVCDataSource = [installViewControllerDataSource new];
     self.installVCDataSource.delegate = self;
-    self.installTableView.tableHeaderView = [[UIView alloc] initWithFrame:(CGRectMake(0, 0,[UIScreen screenWidth], 120))];
+    self.installTableView.tableFooterView = [[UIView alloc] initWithFrame:(CGRectMake(0, 0,[UIScreen screenWidth], 50))];
     self.installTableView.delegate = self;
     self.installTableView.dataSource = self.installVCDataSource;
     
@@ -108,9 +108,9 @@
 #pragma mark - 控制板手机灵敏度修改
 - (void)installTableHeaderViewEdit {
     self.lingminduBool = NO;
-    
+    self.setupBool = NO;
     self.restoreBool = NO;
-    self.sensitivityView = [[UIView alloc] initWithFrame:CGRectMake(0, self.installTableView.tableHeaderView.frame.size.height/2, self.installTableView.tableHeaderView.frame.size.width, self.installTableView.tableHeaderView.frame.size.height/2)];
+    self.sensitivityView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.installTableView.tableFooterView.frame.size.width, self.installTableView.tableFooterView.frame.size.height)];
    
      UILabel *xzLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, self.sensitivityView.frame.size.height / 2  - 10, 182, 20)];
      xzLabel.text = [NSString stringWithFormat:@"设备灵敏度设置      :"];
@@ -149,8 +149,7 @@
     fGView.backgroundColor = [UIColor setupGreyColor];
     [self.sensitivityView addSubview:fGView];
     
-    [self.installTableView.tableHeaderView addSubview:self.sensitivityView];
-    
+    [self.installTableView.tableFooterView addSubview:self.sensitivityView];
     
 }
 #pragma mark -灵敏度按钮样视切换
@@ -160,72 +159,78 @@
         self.sendButon.backgroundColor = [UIColor setipBlueColor];
         self.restoreButon.backgroundColor = [UIColor setipBlueColor];
         self.querenButon.backgroundColor = [UIColor whiteColor];
+        [self.querenButon.layer setBorderColor:[UIColor setipBlueColor].CGColor];
     } else {
         self.sendButon.backgroundColor = [UIColor setupGreyColor];
         self.restoreButon.backgroundColor = [UIColor setupGreyColor];
         self.querenButon.backgroundColor = [UIColor setupGreyColor];
+        [self.querenButon.layer setBorderColor:[UIColor setupGreyColor].CGColor];
     }
     
 }
 
 #pragma mark - 连接控制板确认按钮编辑
 - (void)installTableHeaderConfirmtheobjectEdit {
-    self.querenView  = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.installTableView.tableHeaderView.frame.size.width, self.installTableView.tableHeaderView.frame.size.height/2)];
 
-    
     self.querenButon = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [self.querenButon setFrame:CGRectMake(0, 0, self.querenView.frame.size.width,  self.querenView.frame.size.height-1)];
+    [self.querenButon setFrame:CGRectMake(0, 0, self.setupView.frame.size.width,  self.setupView.frame.size.height)];
     [self.querenButon addTarget:self action:@selector(qurenKongzhibanButtonAction:) forControlEvents:(UIControlEventTouchUpInside)];
     
     [self.querenButon.layer setMasksToBounds:YES];
+    [self.querenButon.layer setBorderWidth:0.8];
 
     [self.querenButon setTitle:@"   请先选择设备 听到'滴'声选择YES/NO"forState:UIControlStateNormal];
     [self.querenButon setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     self.querenButon.titleLabel.font = [UIFont systemFontOfSize: 16.0];
     self.querenButon.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    [self.querenView addSubview:self.querenButon];
+    [self.setupView addSubview:self.querenButon];
 
     
-    UIView *fGView = [[UIView alloc] initWithFrame:CGRectMake(0, self.querenView.frame.size.height - 1, self.querenView.frame.size.width, 1)];
-    fGView.backgroundColor = [UIColor setupGreyColor];
-    [self.querenView addSubview:fGView];
-    [self.installTableView.tableHeaderView addSubview:self.querenView];
-    
-}
+}     
 
 #pragma mark - 控制板手机灵敏度修改 按钮方法
 - (void)sendheaderButtonAction:(UIButton *)button {
-    if (self.qunxianBool){
-        self.canshuheaderLabel.text =[NSString stringWithFormat:@"9"];
-        [self shezhilingminduAction];
-        [self determinateExample];
+    if (self.qunxianBool && self.setupBool){
+        UIAlertView *jinggaoAlertView = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"设置后，有可能断开链接，若继续设置需重新选择设备！" delegate:self cancelButtonTitle:@"稍后再试" otherButtonTitles:@"确定", nil];
+        jinggaoAlertView.tag = 2;
+        [jinggaoAlertView show];
     }
 }
 - (void)restoreheaderButtonAction:(UIButton *)button {
-    if (self.qunxianBool){
-        NSString *uuidstr = SINGLE_TON_UUID_STR;
-        if (!uuidstr) {
-            [self.sinTon startScan]; //扫描
-            return;
+    if (self.qunxianBool && self.setupBool){
+        NSString *message = [NSString stringWithFormat:@"%@0181000101FF09%@000000000000000000000000000000000000000000000000000000000000",@"cc",@"00147369"];//[self userInfoReaduserkey:@"districtNumber"]   修改的
+        [self.sinTon iwsendCommand:message];       //发送控制板灵敏度
+        if (!self.restoreBool) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self doSomeWorkWithProgress:0.2f];
+            });
+            
         }
         self.restoreBool = YES;
         self.lingminduBool =YES;
-        [self.sinTon installShoudongConnectClick:SINGLE_TON_UUID_STR];
  
     }
 }
 #pragma mark -确认控制板 按钮方法
 - (void)qurenKongzhibanButtonAction:(UIButton *)button {
     if (self.qunxianBool){
+        NSString *message = @"d0446973636f6e6e656374696e67000000000000";
+        [self.sinTon iwsendCommand:message];       //发送数据
+      //  [self.sinTon iwdisConnection];       //  断开蓝牙
         [self userInfowriteuserkey:@"setupNumber" uservalue:@"0000"];  //修改随机数
-        NSString *uuidstr = SINGLE_TON_UUID_STR;
-        if (!uuidstr) {
-            [self.sinTon startScan]; //扫描
-            return;
-        }
-        self.restoreBool = NO;
-        self.lingminduBool =NO;
-        [self.sinTon installShoudongConnectClick:SINGLE_TON_UUID_STR];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            // 0.6s后自动执行这个block里面的代码
+            NSString *uuidstr = SINGLE_TON_UUID_STR;
+            if (!uuidstr) {
+                [self.sinTon iwstartScan]; //扫描
+                return;
+            }
+            self.restoreBool = NO;
+            self.lingminduBool =NO;
+            [self.sinTon iwinstallShoudongConnectClick:SINGLE_TON_UUID_STR];
+        });
+
+        
     }
 }
 
@@ -280,10 +285,19 @@
           [self.tool updateWithObj:iCData andKey:@"installName" isEqualValue:self.installCardData.installName];
           [self refreshInstallTableView];
       }
-    } else {
+    } else if (alertView.tag == 2) {
+        if (buttonIndex == alertView.firstOtherButtonIndex) {
+            self.canshuheaderLabel.text =[NSString stringWithFormat:@"9"];
+            [self shezhilingminduAction];
+            [self determinateExample];
+        }
+   } else {
         if (buttonIndex == alertView.cancelButtonIndex) {
-            [self userInfowriteuserkey:@"setupNumber" uservalue:@"0000"];  //修改随机数
-            
+              NSString *message = @"d0446973636f6e6e656374696e67000000000000";
+            [self.sinTon iwsendCommand:message];       //发送数据
+           [self userInfowriteuserkey:@"setupNumber" uservalue:@"0000"];  //修改随机数
+        } else {
+            self.setupBool = YES;  //链接蓝牙
         }
     }
     
@@ -301,19 +315,19 @@
 }
 
 #pragma mark - 蓝牙 Delegate
-- (void)installDoSomethingtishiFrame:(NSString *)string {
+- (void)iwinstallDoSomethingtishiFrame:(NSString *)string {
     if ([string isEqualToString:@"发卡成功"]){
         [self refreshInstallTableView];
     } else if ([string isEqualToString:@"已连接"] || [string isEqualToString:@"已断开"]){
        self.installLanyaLabel.text = string;
         if([string isEqualToString:@"已连接"]) {
-            [self.sinTon sendCommand:@"99"];       //发送数据
+            [self.sinTon iwsendCommand:@"99"];       //发送数据
         }
     } else if (string.length == 106  && [[string substringWithRange:NSMakeRange(0,2)] isEqualToString:@"bb"]){
         [self checkStatusOfCardPOSTdataStr:[string substringWithRange:NSMakeRange(2,104)]];
       
     } else if ([string isEqualToString:@"eebb1122330a"] ){
-        [self.sinTon disConnection];       //  断开蓝牙
+      //  [self.sinTon iwdisConnection];       //  断开蓝牙
         [self promptInformationActionWarningString:@"设置错误!"];
         
     } else if ([string isEqualToString:@"eebb1122330b"] ){
@@ -323,7 +337,6 @@
 
         [self.querenAlertView show];
         
-
         
     } else if ([string isEqualToString:@"设置成功!"]) {
         [self promptInformationActionWarningString:string];
@@ -333,12 +346,13 @@
         
     }
 }
-- (void)installEditInitPeripheralData:(NSInteger)data {
+
+- (void)iwinstallEditInitPeripheralData:(NSInteger)data {
     if (data == 1) {
         
         if (self.lingminduBool){
-           NSString *message = [NSString stringWithFormat:@"%@0181000101FF09%@000000000000000000000000000000000000000000000000000000000000",@"cc",[self userInfoReaduserkey:@"districtNumber"]];
-            [self.sinTon sendCommand:message];       //发送控制板灵敏度
+           NSString *message = [NSString stringWithFormat:@"%@0181000101FF09%@000000000000000000000000000000000000000000000000000000000000",@"cc",@"00147369"];//[self userInfoReaduserkey:@"districtNumber"]
+            [self.sinTon iwsendCommand:message];       //发送控制板灵敏度
             if (!self.restoreBool) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self doSomeWorkWithProgress:0.2f];
@@ -349,19 +363,15 @@
         } else{
           NSString *message = @"0180010101FF3344556601000000000000000000000000000000000000000000000000000000000000";
           message = [NSString stringWithFormat:@"%@%@",@"cc",message];
-             [self.sinTon sendCommand:message];       //发送数据
+             [self.sinTon iwsendCommand:message];       //发送数据
         }
        
     } else if (data == 2){
-         [self.sinTon installShoudongConnectClick:SINGLE_TON_UUID_STR];
+         [self.sinTon iwinstallShoudongConnectClick:SINGLE_TON_UUID_STR];
     } else if (data == 3){          //设置卡
           if (self.restoreBool && self.lingminduBool) {  //恢复
-              dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                  // 2.2s后自动执行这个block里面的代码
                   self.canshuheaderLabel.text = @"9";
                   [self promptInformationActionWarningString:@"恢复成功！"];
-              });
-              
               self.restoreBool = NO;
               return;
           }
@@ -392,12 +402,12 @@
             }
             return;
         }
-        message = [NSString stringWithFormat:@"%@0181000101FF0%@%@000000000000000000000000000000000000000000000000000000000000",@"cc",message,[self userInfoReaduserkey:@"districtNumber"]];
-        [self.sinTon sendCommand:message];       //发送控制板灵敏度
+        message = [NSString stringWithFormat:@"%@0181000101FF0%@%@000000000000000000000000000000000000000000000000000000000000",@"cc",message,@"00147369"];//[self userInfoReaduserkey:@"districtNumber"]
+        [self.sinTon iwsendCommand:message];       //发送控制板灵敏度
 
     
     } else if (data == 4) {     //扫描到 发卡器  去连接
-        [self.sinTon shoudongConnectClick:FAKAQI_TON_UUID_STR];
+        [self.sinTon iwshoudongConnectClick:FAKAQI_TON_UUID_STR];
     
     } else if (data == 5) {     // 设置灵敏度 失败
         if (self.lingminduTimer){
@@ -409,37 +419,42 @@
             self.lingminduTowTimer = nil;
         }
 
-        [self.sinTon disConnection];       //  断开蓝牙
         if (!self.restoreBool) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.progressHUD hideAnimated:YES];
             });
         }
-        
         self.lingminduBool = NO;
         self.restoreBool = NO;
         [self promptInformationActionWarningString:@"设置失败！"];
+    } else if (data == 6) { // 蓝牙断开链接
+         self.setupBool = NO;
     }else {
+
         ZBGroup *group = self.installDataArray[self.selectIndexPath.section];
         NSArray *arr=group.items;
         self.installCardData = arr[self.selectIndexPath.row];
         NSString *strOne = [self.installCardData.installData substringWithRange:NSMakeRange(0,104)];
-        NSString *strTow = [self.sinTon jiamiaTostringAcction:strOne numberKey:data];
-        strTow = [NSString stringWithFormat:@"%@%@",strTow,[self.sinTon jiamiaTostringAcction:[self.installCardData.installData substringWithRange:NSMakeRange(104, 104)] numberKey:data]];
-        [self.sinTon sendCommand:[NSString stringWithFormat:@"AA%@",strTow]];     //发送数据
+        NSString *strTow = [CalidTool jiamiaTostringAcction:strOne numberKey:data];
+        strTow = [NSString stringWithFormat:@"%@%@",strTow,[CalidTool  jiamiaTostringAcction:[self.installCardData.installData substringWithRange:NSMakeRange(104, 104)] numberKey:data]];
+        [self.sinTon iwsendCommand:[NSString stringWithFormat:@"AA%@",strTow]];     //发送数据
+   
     }
 }
 #pragma mark - 灵敏度 设置 连接 
 - (void)shezhilingminduAction {
     self.lingminduTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(lingminduAction) userInfo:nil repeats:NO];
-    NSString *uuidstr = SINGLE_TON_UUID_STR;
-    if (!uuidstr) {
-        [self.sinTon startScan]; //扫描
-        return;
+    NSString *message = [NSString stringWithFormat:@"%@0181000101FF09%@000000000000000000000000000000000000000000000000000000000000",@"cc",@"00147369"];//[self userInfoReaduserkey:@"districtNumber"]
+    [self.sinTon iwsendCommand:message];       //发送控制板灵敏度
+    if (!self.restoreBool) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self doSomeWorkWithProgress:0.2f];
+        });
+        
     }
      self.restoreBool = NO;
     self.lingminduBool =YES;
-    [self.sinTon installShoudongConnectClick:SINGLE_TON_UUID_STR];
+
 }
 #pragma mark - 灵敏度 第一个定时器函数
 - (void)lingminduAction {
@@ -455,15 +470,14 @@
         }
        return;
     }
-    message = [NSString stringWithFormat:@"%@0181000101FF0%@%@000000000000000000000000000000000000000000000000000000000000",@"cc",message,[self userInfoReaduserkey:@"districtNumber"]];
-    [self.sinTon sendCommand:message];       //发送控制板灵敏度
+    message = [NSString stringWithFormat:@"%@0181000101FF0%@%@000000000000000000000000000000000000000000000000000000000000",@"cc",message,@"00147369"]; //[self userInfoReaduserkey:@"districtNumber"]
+    [self.sinTon iwsendCommand:message];       //发送控制板灵敏度
 
     
     
 }
 #pragma mark -  灵敏度 第二个定时器函数
 - (void)lingminduTowAction {
-    [self.sinTon disConnection];       //  断开蓝牙
     self.lingminduBool = NO;
     NSString *message = self.canshuheaderLabel.text;
     if ([message integerValue] < 9){
@@ -563,16 +577,12 @@
 - (void)determinateExample {
     
    self.progressHUD  = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-   
-    
     self.progressHUD.mode = MBProgressHUDModeAnnularDeterminate;
 
     self.progressHUD.label.text = NSLocalizedString(@"设置中...", @"设置中");
     dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
         [self doSomeWorkWithProgress:0.1f];
-        
     });
-    
     
 }
 #pragma mark -  进度条 动画

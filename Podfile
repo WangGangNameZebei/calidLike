@@ -6,4 +6,5 @@ target ‘claidApp’ do
   pod ‘SSKeychain’
   pod 'AESCrypt-ObjC', '~> 1.0.1'
   pod 'OpenShare', '~> 0.0.1'
+  pod 'SMSSDK'
 end

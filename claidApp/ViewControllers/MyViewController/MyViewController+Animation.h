@@ -10,6 +10,4 @@
 
 @interface MyViewController (Animation)
 
-
-
 @end

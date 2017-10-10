@@ -11,9 +11,35 @@
 
 
 @implementation RegisterViewController (LogicalFlow)
-- (void)registerPostForUsername:(NSString *)username password:(NSString *)password oraKey:(NSString *)orakey {
+- (void)userphoneisrequestPostDataPhoneNumber:(NSString *)phoneNumber {
     AFHTTPRequestOperationManager *manager = [self tokenManager];
-    NSDictionary *parameters = @{@"accounts":username,@"passwd":password,@"oraKey":orakey};
+    NSDictionary *parameters = @{@"accounts":phoneNumber};
+    [manager POST:DETECTION_REGISTER_URL  parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        NSString *requestTmp = [NSString stringWithString:operation.responseString];
+        NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];
+        //系统自带JSON解析
+        NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableContainers error:nil];
+        if ([[resultDic objectForKey:@"status"] integerValue] == 301) {
+            [self obtainYanzhengmaAction];
+        } else {
+            [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
+        }
+        
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        if (error.code == -1009){
+            [self promptInformationActionWarningString:@"您的网络有异常"];
+        } else {
+            [self promptInformationActionWarningString:[NSString stringWithFormat:@"%ld",(long)error.code]];
+        }
+        
+    }];
+    
+}
+
+
+- (void)registerPostForUsername:(NSString *)username password:(NSString *)password {
+    AFHTTPRequestOperationManager *manager = [self tokenManager];
+    NSDictionary *parameters = @{@"accounts":username,@"passwd":password};
     [manager POST:REGISTER_URL parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         NSString *requestTmp = [NSString stringWithString:operation.responseString];
         NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];

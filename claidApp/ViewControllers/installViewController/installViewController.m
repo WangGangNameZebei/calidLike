@@ -29,20 +29,20 @@
 
 // 点击  UItableView
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    self.lingminduBool = NO;
-    self.selectIndexPath = indexPath;
-    SingleTon *ton = [SingleTon sharedInstance];
-   NSString *uuidstr = SINGLE_TON_UUID_STR;
-    if (!uuidstr) {
-        [ton startScan]; //扫描
-        return;
+    if (self.setupBool){
+        self.lingminduBool = NO;
+        self.selectIndexPath = indexPath;
+        NSString *message = @"0180010101FF3344556601000000000000000000000000000000000000000000000000000000000000";
+        message = [NSString stringWithFormat:@"%@%@",@"cc",message];
+        [self.sinTon iwsendCommand:message];       //发送数据
     }
-     [ton installShoudongConnectClick:SINGLE_TON_UUID_STR];
-    
+   
 }
 
 - (IBAction)installReturnButtonAction:(id)sender {
-    [[SingleTon sharedInstance] disConnection];  //断开蓝牙
+    NSString *message = @"d0446973636f6e6e656374696e67000000000000";
+    [self.sinTon iwsendCommand:message];       //发送数据
+    [self.sinTon iwdisConnection];  //断开蓝牙
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (IBAction)emptyButtonAction:(id)sender {
@@ -52,13 +52,13 @@
 
 - (IBAction)scanLanyaButton:(id)sender {
     if ([self.installLanyaLabel.text isEqualToString:@"已连接"]){
-        [self.sinTon disConnection];       // 退出前 断开蓝牙
+        [self.sinTon iwdisConnection];       // 退出前 断开蓝牙
     } else {
         NSString  *strLanya = FAKAQI_TON_UUID_STR;
         if (strLanya.length < 3) {
-            [self.sinTon startScan]; // 扫描
+            [self.sinTon iwstartScan]; // 扫描
         } else {
-            [self.sinTon shoudongConnectClick:strLanya];
+            [self.sinTon iwshoudongConnectClick:strLanya];
         }
     }
 }
