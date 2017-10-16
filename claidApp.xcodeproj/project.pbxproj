@@ -162,16 +162,6 @@
 		0AF3272F1F3D80F10013122D /* VisitorCarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AF3272D1F3D80F10013122D /* VisitorCarViewController.xib */; };
 		0AF327371F3D847E0013122D /* VisitorTabPagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF327351F3D847E0013122D /* VisitorTabPagerViewController.m */; };
 		0AF327381F3D847E0013122D /* VisitorTabPagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AF327361F3D847E0013122D /* VisitorTabPagerViewController.xib */; };
-		0AFA94A11DF7ECD60044362D /* round-switch-mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AFA948C1DF7ECD60044362D /* round-switch-mask.png */; };
-		0AFA94A21DF7ECD60044362D /* round-switch-mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AFA948D1DF7ECD60044362D /* round-switch-mask@2x.png */; };
-		0AFA94A31DF7ECD60044362D /* round-switch-overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AFA948E1DF7ECD60044362D /* round-switch-overlay.png */; };
-		0AFA94A41DF7ECD60044362D /* round-switch-overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AFA948F1DF7ECD60044362D /* round-switch-overlay@2x.png */; };
-		0AFA94A51DF7ECD60044362D /* round-switch-thumb-highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AFA94901DF7ECD60044362D /* round-switch-thumb-highlight.png */; };
-		0AFA94A61DF7ECD60044362D /* round-switch-thumb-highlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AFA94911DF7ECD60044362D /* round-switch-thumb-highlight@2x.png */; };
-		0AFA94A71DF7ECD60044362D /* round-switch-thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AFA94921DF7ECD60044362D /* round-switch-thumb.png */; };
-		0AFA94A81DF7ECD60044362D /* round-switch-thumb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AFA94931DF7ECD60044362D /* round-switch-thumb@2x.png */; };
-		0AFA94A91DF7ECD60044362D /* round-switch-track.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AFA94941DF7ECD60044362D /* round-switch-track.png */; };
-		0AFA94AA1DF7ECD60044362D /* round-switch-track@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AFA94951DF7ECD60044362D /* round-switch-track@2x.png */; };
 		18EAEB9BC0645DD57F644E46 /* libPods-claidApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E454F03FAF2701EE86E173D /* libPods-claidApp.a */; };
 /* End PBXBuildFile section */
 
@@ -458,16 +448,6 @@
 		0AF327341F3D847E0013122D /* VisitorTabPagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisitorTabPagerViewController.h; sourceTree = "<group>"; };
 		0AF327351F3D847E0013122D /* VisitorTabPagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisitorTabPagerViewController.m; sourceTree = "<group>"; };
 		0AF327361F3D847E0013122D /* VisitorTabPagerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VisitorTabPagerViewController.xib; sourceTree = "<group>"; };
-		0AFA948C1DF7ECD60044362D /* round-switch-mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "round-switch-mask.png"; sourceTree = "<group>"; };
-		0AFA948D1DF7ECD60044362D /* round-switch-mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "round-switch-mask@2x.png"; sourceTree = "<group>"; };
-		0AFA948E1DF7ECD60044362D /* round-switch-overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "round-switch-overlay.png"; sourceTree = "<group>"; };
-		0AFA948F1DF7ECD60044362D /* round-switch-overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "round-switch-overlay@2x.png"; sourceTree = "<group>"; };
-		0AFA94901DF7ECD60044362D /* round-switch-thumb-highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "round-switch-thumb-highlight.png"; sourceTree = "<group>"; };
-		0AFA94911DF7ECD60044362D /* round-switch-thumb-highlight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "round-switch-thumb-highlight@2x.png"; sourceTree = "<group>"; };
-		0AFA94921DF7ECD60044362D /* round-switch-thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "round-switch-thumb.png"; sourceTree = "<group>"; };
-		0AFA94931DF7ECD60044362D /* round-switch-thumb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "round-switch-thumb@2x.png"; sourceTree = "<group>"; };
-		0AFA94941DF7ECD60044362D /* round-switch-track.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "round-switch-track.png"; sourceTree = "<group>"; };
-		0AFA94951DF7ECD60044362D /* round-switch-track@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "round-switch-track@2x.png"; sourceTree = "<group>"; };
 		2E454F03FAF2701EE86E173D /* libPods-claidApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-claidApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FAE10D1BB41DF3C48FA7264 /* Pods-claidApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-claidApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-claidApp/Pods-claidApp.release.xcconfig"; sourceTree = "<group>"; };
 		B07114D1ACC8FA1ADF51B95E /* Pods-claidApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-claidApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-claidApp/Pods-claidApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1074,7 +1054,6 @@
 			isa = PBXGroup;
 			children = (
 				0ACFF84C1DB5C48E0043D49A /* claidAppImage */,
-				0AFA948B1DF7ECD60044362D /* Round */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1256,23 +1235,6 @@
 			path = MycradInfoTableViewCell;
 			sourceTree = "<group>";
 		};
-		0AFA948B1DF7ECD60044362D /* Round */ = {
-			isa = PBXGroup;
-			children = (
-				0AFA948C1DF7ECD60044362D /* round-switch-mask.png */,
-				0AFA948D1DF7ECD60044362D /* round-switch-mask@2x.png */,
-				0AFA948E1DF7ECD60044362D /* round-switch-overlay.png */,
-				0AFA948F1DF7ECD60044362D /* round-switch-overlay@2x.png */,
-				0AFA94901DF7ECD60044362D /* round-switch-thumb-highlight.png */,
-				0AFA94911DF7ECD60044362D /* round-switch-thumb-highlight@2x.png */,
-				0AFA94921DF7ECD60044362D /* round-switch-thumb.png */,
-				0AFA94931DF7ECD60044362D /* round-switch-thumb@2x.png */,
-				0AFA94941DF7ECD60044362D /* round-switch-track.png */,
-				0AFA94951DF7ECD60044362D /* round-switch-track@2x.png */,
-			);
-			path = Round;
-			sourceTree = "<group>";
-		};
 		51EC2D4BCFC8A555B596AA46 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1420,13 +1382,10 @@
 				0AA023BD1F5CFDE000231C07 /* upblack.png in Resources */,
 				0AF3272F1F3D80F10013122D /* VisitorCarViewController.xib in Resources */,
 				0A5FF9371DB5F6A000249F0C /* CustomActionSheetCell.xib in Resources */,
-				0AFA94A51DF7ECD60044362D /* round-switch-thumb-highlight.png in Resources */,
-				0AFA94A91DF7ECD60044362D /* round-switch-track.png in Resources */,
 				0A6F7F181EFE11A3003E0DDA /* ChangeThePasswordViewController.xib in Resources */,
 				0AA491311DC6F27D0013B974 /* LoginViewController.xib in Resources */,
 				0A5FF9461DB6029700249F0C /* MineViewController.xib in Resources */,
 				0AA023BB1F5CFDE000231C07 /* SXShowConditionCell.xib in Resources */,
-				0AFA94A21DF7ECD60044362D /* round-switch-mask@2x.png in Resources */,
 				0AD75CD91DBDE6C100297AC3 /* MyTableViewCell.xib in Resources */,
 				0A98E8ED1E0505B30086F6D5 /* LanyaHeadTableViewCell.xib in Resources */,
 				0A823A101F4154D800B10DB3 /* weChatOpenShare.png in Resources */,
@@ -1434,8 +1393,6 @@
 				0AEC75201DC83D7E00933D77 /* fanhui_1.png in Resources */,
 				0A87F7B71DB7602E00EFF1F0 /* MinFuncTionTableViewCell.xib in Resources */,
 				0A8DB3621F7A314C008B9799 /* RetrieveTowpasswordViewController.xib in Resources */,
-				0AFA94A61DF7ECD60044362D /* round-switch-thumb-highlight@2x.png in Resources */,
-				0AFA94AA1DF7ECD60044362D /* round-switch-track@2x.png in Resources */,
 				0A73048B1E8352990016639A /* invitaionCodeViewController.xib in Resources */,
 				0AC032231F53C054009633A9 /* advertisment_2.jpg in Resources */,
 				0AA023BC1F5CFDE000231C07 /* up.png in Resources */,
@@ -1444,21 +1401,16 @@
 				0AA5DA2A1DF554DA00CA816E /* image5.jpg in Resources */,
 				0AA023B81F5CFDE000231C07 /* selected.png in Resources */,
 				0A3C4D9A1EB9A92300B6F279 /* PropertyActivationViewController.xib in Resources */,
-				0AFA94A31DF7ECD60044362D /* round-switch-overlay.png in Resources */,
-				0AFA94A81DF7ECD60044362D /* round-switch-thumb@2x.png in Resources */,
 				0AA5DA271DF554DA00CA816E /* image2.jpg in Resources */,
 				0AA5DA261DF554DA00CA816E /* image1.jpg in Resources */,
 				0A0C1E531DD989FE0059EFEC /* LoginOutTableViewCell.xib in Resources */,
-				0AFA94A41DF7ECD60044362D /* round-switch-overlay@2x.png in Resources */,
 				0AF131E71EC0488D0056F2A0 /* MycradInfoTableViewCell.xib in Resources */,
-				0AFA94A71DF7ECD60044362D /* round-switch-thumb.png in Resources */,
 				0AA5DA301DF55A5C00CA816E /* LaunchScreen.storyboard in Resources */,
 				0A98AF4F1DF295F800BCA88C /* zhanweiImage.png in Resources */,
 				0A45E1BD1EBD9EED00BE4980 /* MycradInfoViewController.xib in Resources */,
 				0A8DAAF81F6B5E21004893B1 /* ParkModifyViewController.xib in Resources */,
 				0AC032221F53C054009633A9 /* advertisment_1.jpg in Resources */,
 				0ACFF8211DB5BCA00043D49A /* Main.storyboard in Resources */,
-				0AFA94A11DF7ECD60044362D /* round-switch-mask.png in Resources */,
 				0A6FB2731DC978BC00345784 /* installViewController.xib in Resources */,
 				0A9EEC6B1DCB0E3C00D74FC9 /* OpenCardView.xib in Resources */,
 				0AC032241F53C054009633A9 /* advertisment_3.jpg in Resources */,

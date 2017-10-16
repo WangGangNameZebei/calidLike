@@ -55,6 +55,12 @@
     NSString *message = [CalidTool crc32producedataStr:[NSString stringWithFormat:@"01%@%@",[receiveData substringWithRange:NSMakeRange(48,8)],datastr]];
     message = [NSString stringWithFormat:@"dd01%@%@",message,datastr];
     [self.sinTon iwsendCommand:message];       //发送数据
+    if ([datastr isEqualToString:@"55"]){
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            // 0.4s后自动执行这个block里面的代码
+            [self.sinTon iwdisConnection];
+        });
+    }
 }
 
 @end

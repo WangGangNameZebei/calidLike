@@ -35,6 +35,8 @@
         NSString *message = @"0180010101FF3344556601000000000000000000000000000000000000000000000000000000000000";
         message = [NSString stringWithFormat:@"%@%@",@"cc",message];
         [self.sinTon iwsendCommand:message];       //发送数据
+    } else {
+         [self promptInformationActionWarningString:@"请先选择设备!"];
     }
    
 }

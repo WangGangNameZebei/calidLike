@@ -54,9 +54,10 @@
              [self createAdatabaseAction];
              NSMutableArray *dataArray= [resultDic objectForKey:@"data"];
              
+             NSArray *dataTowArray =dataArray[0];
              [self userInfowriteuserkey:@"userName" uservalue:username];//存储 账号
              [self userInfowriteuserkey:@"passWord" uservalue:password];// 存储 密码//
-          [self userInfowriteuserkey:@"Token" uservalue:dataArray[0]];//存储 tpken
+            [self userInfowriteuserkey:@"Token" uservalue:dataTowArray[0]];//存储 tpken
              [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"userNumber"];// 存储 用户下小区的个数
              CustomTabBarController *customTabBarController = [self createCustomTabBarController];
              UIApplication.sharedApplication.delegate.window.rootViewController = customTabBarController;
@@ -67,8 +68,6 @@
          } else {
                 [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
                 [[NSUserDefaults standardUserDefaults] setObject:@"NO" forKey:@"loginInfo"];
-            
-
         }
     
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {

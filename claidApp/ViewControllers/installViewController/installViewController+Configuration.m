@@ -230,7 +230,8 @@
             [self.sinTon iwinstallShoudongConnectClick:SINGLE_TON_UUID_STR];
         });
 
-        
+    } else {
+       [self promptInformationActionWarningString:@"请先发出厂卡!"];
     }
 }
 
@@ -405,7 +406,6 @@
         message = [NSString stringWithFormat:@"%@0181000101FF0%@%@000000000000000000000000000000000000000000000000000000000000",@"cc",message,@"00147369"];//[self userInfoReaduserkey:@"districtNumber"]
         [self.sinTon iwsendCommand:message];       //发送控制板灵敏度
 
-    
     } else if (data == 4) {     //扫描到 发卡器  去连接
         [self.sinTon iwshoudongConnectClick:FAKAQI_TON_UUID_STR];
     

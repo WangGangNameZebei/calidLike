@@ -67,12 +67,18 @@
                             </connections>
                         </segmentedControl>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yIV-lE-Hne">
-                            <rect key="frame" x="321" y="27" width="46" height="30"/>
+                            <rect key="frame" x="302" y="28" width="65" height="28"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="46" id="GJw-ED-ajz"/>
-                                <constraint firstAttribute="height" constant="30" id="Spp-2p-WXH"/>
+                                <constraint firstAttribute="width" constant="65" id="GJw-ED-ajz"/>
+                                <constraint firstAttribute="height" constant="28" id="Spp-2p-WXH"/>
                             </constraints>
-                            <state key="normal" title="园区"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" title="园区设置"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="2"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="parkmodifyButtonAction:" destination="-1" eventType="touchUpInside" id="Uks-fE-DrO"/>
                             </connections>
