@@ -9,7 +9,7 @@
 #import "PropertyActivationViewController+Configuration.h"
 #import "UIColor+Utility.h"
 #import "PropertyActivationViewController+LogicalFlow.h"
-
+#import "ParkModifyViewController.h"
 @implementation PropertyActivationViewController (Configuration)
 
 - (void)configureViews {
@@ -30,6 +30,9 @@
    }
     self.stopBiaoshi = 1;
     self.parkInfoBool = NO;
+    [self.parkInfoButton.layer setMasksToBounds:YES];
+    self.parkInfoButton.layer.borderColor=[UIColor whiteColor].CGColor;
+    [self.parkInfoButton.layer setBorderWidth:1.0];
     self.parkInfoButton.tintColor = [UIColor setupGreyColor];
     if ([self.titleLabelString isEqualToString:@"续卡"]) {
         self.piTieleSegmentedControl.selectedSegmentIndex = 1;
@@ -46,9 +49,8 @@
     
 }
 - (void)propertyNameAlertEditdataStr:(NSString *)datastr {
-    
     if (!self.propertyNameAlertView){
-        self.propertyNameAlertView = [[UIAlertView alloc] initWithTitle:@"请输入管理园区名称" message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+        self.propertyNameAlertView = [[UIAlertView alloc] initWithTitle:@"请输入管理园区名称" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
         self.propertyNameAlertView.tag = 2;
         if ([datastr isEqualToString:@"1"]){
             [self.propertyNameAlertView  setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
@@ -116,7 +118,16 @@
       [self.paSingleTon getPeripheralWithIdentifierAndConnect:FAKAQI_TON_UUID_STR];
     } else if (array == 2){     //发出厂卡 可以进入园区编辑
       self.parkInfoBool = YES;
-      self.parkInfoButton.tintColor = [UIColor whiteColor];
+        if (self.xiaoquNumber.length != 8){
+            [self promptInformationActionWarningString:@"请重新连接发卡器"];
+            return;
+        }
+        ParkModifyViewController *parkmodifyVC = [ParkModifyViewController create];
+        parkmodifyVC.parkIdString = self.xiaoquNumber;
+        parkmodifyVC.addressString = self.dizhiString;
+        [self hideTabBarAndpushViewController:parkmodifyVC];
+        self.parkInfoBool = NO;
+        self.parkInfoButton.tintColor = [UIColor setupGreyColor];
     }
     
 }

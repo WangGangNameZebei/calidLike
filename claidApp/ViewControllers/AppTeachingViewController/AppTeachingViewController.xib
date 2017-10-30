@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AppTeachingViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.94999998807907104" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghi-a4-PDU">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="使用教学" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCI-zr-gpU">
+                            <rect key="frame" x="162.66666666666666" y="29" width="90" height="26"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="26" id="SdC-T4-9zu"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" id="hLk-dl-bCW"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                            <color key="textColor" red="0.9999160171" green="1" blue="0.99987202880000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="highlightedColor" red="0.9999160171" green="1" blue="0.99987202880000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fanhui_1.png" translatesAutoresizingMaskIntoConstraints="NO" id="H8u-im-elH">
+                            <rect key="frame" x="8" y="25" width="31" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="cmG-cj-KrY"/>
+                                <constraint firstAttribute="width" constant="31" id="vdI-D9-vQQ"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N7q-bQ-8JR">
+                            <rect key="frame" x="0.0" y="15" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="bZZ-Z9-Meg"/>
+                                <constraint firstAttribute="width" constant="50" id="cBB-zo-cb9"/>
+                            </constraints>
+                            <connections>
+                                <action selector="returnButtonAction:" destination="-1" eventType="touchUpInside" id="2R0-CU-4nV"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.068421952430000002" green="0.58686798809999996" blue="0.84999686480000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="tintColor" red="0.99599474669999999" green="0.99613386390000003" blue="0.99595087770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="H8u-im-elH" firstAttribute="centerY" secondItem="ghi-a4-PDU" secondAttribute="centerY" constant="10" id="6GM-Ed-aiT"/>
+                        <constraint firstAttribute="height" constant="64" id="74m-Ov-Wl4"/>
+                        <constraint firstItem="N7q-bQ-8JR" firstAttribute="leading" secondItem="ghi-a4-PDU" secondAttribute="leading" id="LXB-xb-Pez"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="64" id="OiO-6b-nxQ"/>
+                        <constraint firstItem="H8u-im-elH" firstAttribute="leading" secondItem="ghi-a4-PDU" secondAttribute="leading" constant="8" id="SFT-xx-Hj6"/>
+                        <constraint firstItem="N7q-bQ-8JR" firstAttribute="centerY" secondItem="ghi-a4-PDU" secondAttribute="centerY" constant="8" id="eL9-Sv-buA"/>
+                        <constraint firstItem="CCI-zr-gpU" firstAttribute="centerY" secondItem="ghi-a4-PDU" secondAttribute="centerY" constant="10" id="jwy-5y-sbe"/>
+                        <constraint firstItem="CCI-zr-gpU" firstAttribute="centerX" secondItem="ghi-a4-PDU" secondAttribute="centerX" id="v7x-uW-Sx1"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="ghi-a4-PDU" secondAttribute="trailing" id="DJG-tF-lVe"/>
+                <constraint firstItem="ghi-a4-PDU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="SUF-kF-dkC"/>
+                <constraint firstItem="ghi-a4-PDU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Uas-ic-GkY"/>
+            </constraints>
+            <point key="canvasLocation" x="86.5" y="59.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="fanhui_1.png" width="64" height="64"/>
+    </resources>
+</document>

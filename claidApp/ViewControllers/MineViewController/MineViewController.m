@@ -38,7 +38,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     if ([[self userInfoReaduserkey:@"districtName"] isEqualToString:@""]){
-        self.ziDongLabei.text = @"当前小区  ：   无";
+        self.ziDongLabei.text = @"当前小区  ：   暂无数据";
     } else {
         self.ziDongLabei.text = [NSString stringWithFormat:@"当前小区  ：   %@",[self userInfoReaduserkey:@"districtName"]];
     }

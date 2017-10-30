@@ -24,31 +24,31 @@
 #define NotificationPwdUI CFSTR("com.apple.springboard.hasBlankedScreen")
 
 //登录    URL
-#define LOGIN_URL @"https://www.sycalid.cn/calid/userLogin.do"
+#define LOGIN_URL @"https://www.sycalid.cn/api/userLogin.do"
 // 检测是否注册
-#define DETECTION_REGISTER_URL @"https://www.sycalid.cn/calid/userIsRegister.do"
-//退出登录    URL
-#define LOGOUT_URL @"https://www.sycalid.cn/calid/logOut.do"
+#define DETECTION_REGISTER_URL @"https://www.sycalid.cn/api/userIsRegister.do"
+//退出登录   URL
+#define LOGOUT_URL @"https://www.sycalid.cn/api/logOut.do"
 //注册    URL
-#define REGISTER_URL @"https://www.sycalid.cn/calid/userRegister.do"
+#define REGISTER_URL @"https://www.sycalid.cn/api/userRegister.do"
 //邀请访客   URL
-#define INVITAION_VISITOR_URL @"https://www.sycalid.cn/calid/addTourist.do"
+#define INVITAION_VISITOR_URL @"https://www.sycalid.cn/api/addTourist.do"
 //我是访客   URL
-#define VISITOR_URL @"https://www.sycalid.cn/calid/getKeyByPhoneNum.do"
+#define VISITOR_URL @"https://www.sycalid.cn/api/getKeyByPhoneNum.do"
 // 物业激活  续卡 (注册)
-#define ADDUSERPROPERTY_URL @"https://www.sycalid.cn/calid/propertyToActivate.do"
+#define ADDUSERPROPERTY_URL @"https://www.sycalid.cn/api/propertyToActivate.do"
 
 // 更新用户数据/后台登陆
-#define RENEWAL_USER_DATA_URL @"https://www.sycalid.cn/calid/accountDetection.do"
+#define RENEWAL_USER_DATA_URL @"https://www.sycalid.cn/api/accountDetection.do"
 // 用户修改密码
-#define UP_DATA_USER_PWD_URL  @"https://www.sycalid.cn/calid/updateUserPwd.do"
+#define UP_DATA_USER_PWD_URL  @"https://www.sycalid.cn/api/updateUserPwd.do"
 // 用户找回密码
-#define RETRIEVE_THE_PASSWORD_URL @"https://www.sycalid.cn/calid/updateUserPwdByPhone.do"
+#define RETRIEVE_THE_PASSWORD_URL @"https://www.sycalid.cn/api/updateUserPwdByPhone.do"
 // 意见反馈
-#define FEED_BACK_URL  @"https://www.sycalid.cn/calid/userReturnIdea.do"
+#define FEED_BACK_URL  @"https://www.sycalid.cn/api/userReturnIdea.do"
 // 校验发卡器
-#define CHECK_STATUS_CARD_URL @"https://www.sycalid.cn/calid/checkStatusOfCard.do"
+#define CHECK_STATUS_CARD_URL @"https://www.sycalid.cn/api/checkStatusOfCard.do"
 //修改小区信息
-#define CHANGE_OF_INFO_URL @"https://www.sycalid.cn/calid/ChangeOfPPTInfo.do"
+#define CHANGE_OF_INFO_URL @"https://www.sycalid.cn/api/ChangeOfPPTInfo.do"
 //修改小区备注
-#define CHANGE_OF_NOTE_URL @"https://www.sycalid.cn/calid/updatePPTNote.do"
+#define CHANGE_OF_NOTE_URL @"https://www.sycalid.cn/api/updatePPTNote.do"
