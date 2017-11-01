@@ -11,19 +11,24 @@
 
 @implementation SingleTon (MainHairpin)
 - (void)mainHairpinReturnData:(NSString *)characteristic{
-
-    self.receiveData = [characteristic substringWithRange:NSMakeRange(0,104)];
-    NSString *encryptedData = [AESCrypt encrypt:self.receiveData password:AES_PASSWORD];  //加密
-    [self.baseViewController userInfowriteuserkey:@"lanyaAESErrornData" uservalue:encryptedData];
     if (!self.jieHhou && [self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
         [self.deleGate switchEditInitPeripheralData:3];
-     
-    }
-    if ([self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
-        [self.deleGate switchEditInitPeripheralData:[CalidTool turnTheHexLiterals:[characteristic substringWithRange:NSMakeRange(104,2)]]];
         
     }
-    
+    if ([[characteristic substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"ea"]) {
+        if ([self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
+            [self.deleGate switchEditInitPeripheralData:[CalidTool turnTheHexLiterals:[characteristic substringWithRange:NSMakeRange(24,2)]]];
+        }
+    }  else {
+        self.receiveData = [characteristic substringWithRange:NSMakeRange(0,104)];
+        NSString *encryptedData = [AESCrypt encrypt:self.receiveData password:AES_PASSWORD];  //加密
+        [self.baseViewController userInfowriteuserkey:@"lanyaAESErrornData" uservalue:encryptedData];
+        if ([self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
+            [self.deleGate switchEditInitPeripheralData:[CalidTool turnTheHexLiterals:[characteristic substringWithRange:NSMakeRange(104,2)]]];
+            
+        }
+    }
+
 }
 
 @end

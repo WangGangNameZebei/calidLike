@@ -82,8 +82,6 @@
     UILabel *label = [[UILabel alloc]init];
     NSDictionary *attribute = @{NSFontAttributeName: [UIFont systemFontOfSize:17]};
     CGSize LabelSize = [warningString boundingRectWithSize:CGSizeMake(300, 9000) options: NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attribute context:nil].size;
-    //CGSize LabelSize = [warningString sizeWithFont:[UIFont systemFontOfSize:17] constrainedToSize:CGSizeMake(300, 9000)];
-    
     label.frame = CGRectMake(10, 5, LabelSize.width, LabelSize.height);
     label.text = warningString;
     label.textColor = [UIColor whiteColor];

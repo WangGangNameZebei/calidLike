@@ -320,8 +320,10 @@ static VisitorSingleTon *_instace = nil;
             jishunumber = 16;
         } else if ([[str1 substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"b2"]) {       //  刷卡正确返回
             jishunumber = 30;
-        }else if ([[str1 substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"ee"]) {        //刷卡错误
+        } else if ([[str1 substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"ee"]) {        //刷卡错误
             jishunumber = 10;
+        } else if ([[str1 substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"ea"]) {
+            jishunumber = 24;
         }
         self.receiveData = [NSString stringWithFormat:@"%@%@",self.receiveData,[str1 substringWithRange:NSMakeRange(2, jishunumber)]];
         if (jishunumber == 38)
@@ -331,9 +333,14 @@ static VisitorSingleTon *_instace = nil;
   if  (self.receiveData.length == 92 ){
       [self sendCommand:[CalidTool visitorlanyaSendoutDataAction:self.receiveData]];
       self.receiveData = @"";
-  } else if (self.receiveData.length == 106) {
+  } else if (self.receiveData.length == 106) {  //刷卡最后一段
       if ([self.delegate respondsToSelector:@selector(visitorEditInitPeripheralData:)]){
           [self.delegate visitorEditInitPeripheralData:[CalidTool turnTheHexLiterals:[self.receiveData substringWithRange:NSMakeRange(104,2)]]];
+      }
+      self.receiveData = @"";
+  } else if (self.receiveData.length == 24) {  // 刷卡最后一段
+      if ([self.delegate respondsToSelector:@selector(visitorEditInitPeripheralData:)]){
+          [self.delegate visitorEditInitPeripheralData:[CalidTool turnTheHexLiterals:[self.receiveData substringWithRange:NSMakeRange(22,2)]]];
       }
       self.receiveData = @"";
   } else {

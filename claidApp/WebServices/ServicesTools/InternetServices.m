@@ -44,10 +44,10 @@
         } else if ([[resultDic objectForKey:@"status"] integerValue] == 205){
             [baseVC createAdatabaseAction];
             NSMutableArray *dataArray= [resultDic objectForKey:@"data"];
-            
+            NSArray *dataTowArrar = dataArray[0];
             [baseVC userInfowriteuserkey:@"userName" uservalue:username];//存储 账号
             [baseVC userInfowriteuserkey:@"passWord" uservalue:password];// 存储 密码//
-            [baseVC userInfowriteuserkey:@"Token" uservalue:dataArray[0]];//存储 token
+            [baseVC userInfowriteuserkey:@"Token" uservalue:dataTowArrar[0]];//存储 token
             [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"userNumber"];// 存储 用户下小区的个数
             [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"currentUser"]; //登录后默认 为第一个
             

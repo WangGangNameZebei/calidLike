@@ -379,12 +379,13 @@ static SingleTon *_instace = nil;
        self.receiveData = @"";//            令其 数据为 "" 否则 拼接的字符串 头为 NULL
    NSLog(@"===== %@",[CalidTool hexadecimalString:characteristic.value]);
     NSString *str1 = [CalidTool hexadecimalString:characteristic.value];
-    
     if ([CalidTool hexadecimalString:characteristic.value].length == 40) {
         if ([[str1 substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"d2"]) {   // 第一串  返回d2结束
             jishunumber = 16;
-        } else if ([[str1 substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"b2"]) {       //  刷卡正确返回
+        } else if ([[str1 substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"b2"]) {       //  刷卡  最后正确返回
             jishunumber = 30;
+        } else if ([[str1 substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"ea"]) {
+           jishunumber = 24;
         } else if ([[str1 substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"ee"]) {        //刷卡错误
             if ([[str1 substringWithRange:NSMakeRange(0, 10)] isEqualToString:@"eebb112233"]){
                 jishunumber = 12;
@@ -405,8 +406,7 @@ static SingleTon *_instace = nil;
     } else {
       self.receiveData = [NSString stringWithFormat:@"%@%@",self.receiveData,str1];     // 以前的模块 会用
     }
-    
-  if (self.receiveData.length == 106){ // 
+  if (self.receiveData.length == 106 || self.receiveData.length == 24){ //  最后一串
        if (self.shukaTimer){
             [self.shukaTimer invalidate];    // 释放函数
             self.shukaTimer = nil;
@@ -415,20 +415,18 @@ static SingleTon *_instace = nil;
         if ([[self.receiveData substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"b2"] ||  [[self.receiveData substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"a2"]) {
             [self sendCommand:@"aa"];
         } else {
-            [self mainHairpinReturnData:self.receiveData]; 
+            if (self.receiveData.length == 24) {
+               [self mainHairpinReturnData:[NSString stringWithFormat:@"ea%@",self.receiveData]];
+            } else{
+              [self mainHairpinReturnData:self.receiveData];
+            }
         }
        
         
        self.receiveData = @"";
-    } else if (self.receiveData.length == 92 || self.receiveData.length == 94) {                 //刷卡 第1串 返回
-        if (self.receiveData.length == 94) {
-            [self sendCommand:[CalidTool lanyaSendoutDataAction:[self.receiveData substringWithRange:NSMakeRange(2,92)]]];
-
-        } else {
-            [self sendCommand:[CalidTool lanyaSendoutDataAction:self.receiveData]];
-        }
-        self.receiveData = @"";
-        
+    } else if (self.receiveData.length == 92) {                 //刷卡 第1串 返回
+         [self sendCommand:[CalidTool lanyaSendoutDataAction:self.receiveData]];
+         self.receiveData = @"";
     } else {
         if ([self.deleGate respondsToSelector:@selector(switchEditInitPeripheralData:)]){
             [self.deleGate switchEditInitPeripheralData:7];

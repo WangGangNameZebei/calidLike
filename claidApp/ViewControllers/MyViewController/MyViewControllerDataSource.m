@@ -19,7 +19,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 1 || indexPath.row == 9|| indexPath.row == 11) {
+    if (indexPath.row == 2 || indexPath.row == 9|| indexPath.row == 11) {
         return [self blankTableView:tableView indexPath:indexPath];
     } else if (indexPath.row == 10){
         return [self loginOutTableView:tableView indexPath:indexPath];

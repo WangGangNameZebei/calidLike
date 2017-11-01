@@ -50,6 +50,7 @@
 
 #pragma mark  提示框代理
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    self.propertyNameAlertView =nil;
     if (alertView.tag ==1){
         if (buttonIndex == 1) {
             NSString *cardData = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"wuyeFKAESData"] password:AES_PASSWORD];
@@ -73,7 +74,6 @@
                 self.dizhiString = [NSString stringWithFormat:@"%@%@",self.dizhiString,nameField.text];  //地址
                 [self districtInfoPOSTNameStr:@"" dataStr:self.dizhiString];
             }
-            self.propertyNameAlertView = nil;
         
             
         }

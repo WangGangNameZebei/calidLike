@@ -17,6 +17,6 @@
 @property (strong, nonatomic) IBOutlet UITextView *bezhuTextView;
 - (IBAction)tijiaoButtonAction:(id)sender;
 
-
+@property (strong, nonatomic)UIAlertView *openSahreAlertView;
 @property (assign, nonatomic) BOOL requestBool;   //网络数据请求标识;
 @end
