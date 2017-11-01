@@ -85,8 +85,13 @@
         self.iwreceiveData = [AESCrypt decrypt:[self.iwbaseViewController userInfoReaduserkey:@"lanyaAESData"] password:AES_PASSWORD];
         self.iwreceiveData = [NSString stringWithFormat:@"%@%@",@"AA",[self.iwreceiveData substringWithRange:NSMakeRange(104,104)]];
         [self iwsendCommand:self.iwreceiveData];
-    } else if ([characteristic isEqualToString:@"7265616403"]) {
-        self.iwreceiveData = [AESCrypt decrypt:[self.iwbaseViewController userInfoReaduserkey:@"lanyaAESErrornData"] password:AES_PASSWORD];
+    } else if ([characteristic isEqualToString:@"7265616403"]) {   
+        NSString *strData = [self.iwbaseViewController userInfoReaduserkey:@"lanyaAESErrornData"];
+        if (strData.length < 10){
+            self.iwreceiveData = @"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
+        } else {
+            self.iwreceiveData = [AESCrypt decrypt:strData password:AES_PASSWORD];
+        }
         self.iwreceiveData = [NSString stringWithFormat:@"%@%@",@"AA",self.iwreceiveData];
         [self iwsendCommand:self.iwreceiveData];
     } else if ([characteristic isEqualToString:@"eebb1122330b"] ||[characteristic isEqualToString:@"eebb1122330a"]) {

@@ -17,7 +17,9 @@
 - (void)theinternetCardupData {
     AFHTTPRequestOperationManager *manager = [self tokenManager];
     [manager.requestSerializer setValue:[self userInfoReaduserkey:@"Token"] forHTTPHeaderField:@"access_token"];
-    NSDictionary *parameters = @{@"accounts":[self userInfoReaduserkey:@"userName"],@"passwd":[self userInfoReaduserkey:@"passWord"],@"imei":[self keyChainIdentifierForVendorString]};
+    NSString *username = [self userInfoReaduserkey:@"userName"];
+    NSString *password = [self userInfoReaduserkey:@"passWord"];
+    NSDictionary *parameters = @{@"accounts":username,@"passwd":password,@"imei":[self keyChainIdentifierForVendorString]};
     [manager POST:RENEWAL_USER_DATA_URL parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         NSMutableArray *userdataArray;
         NSString *encryptedData;
@@ -50,9 +52,18 @@
             [[NSUserDefaults standardUserDefaults] setObject:currentUserstr forKey:@"currentUser"]; // 恢复之前存储
             [self promptInformationActionWarningString:@"数据更新成功!"];
         } else if ([[resultDic objectForKey:@"status"] integerValue] == 205){
-            [InternetServices clearAllUserDefaultsData];  //清除数据
+            [InternetServices clearAllUserDefaultsData];
+            [self createAdatabaseAction];
+            NSMutableArray *dataArray= [resultDic objectForKey:@"data"];
+            NSArray *dataTowArray =dataArray[0];
+            [self userInfowriteuserkey:@"Token" uservalue:dataTowArray[0]];//存储 token
+            [self userInfowriteuserkey:@"userName" uservalue:username];//存储 账号
+            [self userInfowriteuserkey:@"passWord" uservalue:password];// 存储 密码//
             [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"userNumber"];// 存储 用户下小区的个数
+            [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"loginInfo"];  //登录标识
             [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"currentUser"]; //登录后默认 为第一个
+            
+            [self promptInformationActionWarningString:@"该账号未激活"];
         } else if ([[resultDic objectForKey:@"status"] integerValue] == 329) {      // Token  失效获取新的
             [InternetServices requestLoginPostForUsername:[self userInfoReaduserkey:@"userName"] password:[self userInfoReaduserkey:@"passWord"]];
             [self theinternetCardupData];

@@ -39,17 +39,25 @@
 }
 */
 - (IBAction)weChatButtonAction:(id)sender {
-    OSMessage *msg=[[OSMessage alloc]init];
-    msg.title = @"云梯控";
-    msg.image =  [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"weChatOpenShare" ofType:@"png"]];
-    msg.thumbnail=[NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"weChatOpenShare" ofType:@"png"]];
-    [OpenShare shareToWeixinSession:msg Success:^(OSMessage *message) {
-        NSLog(@"微信分享到会话成功：\n%@",message);
-    } Fail:^(OSMessage *message, NSError *error) {
-        NSLog(@"微信分享到会话失败：\n%@\n%@",error,message);
-    }];
-    
+    self.openSahreAlertView = [[UIAlertView alloc] initWithTitle:@"分享访客小程序" message:@"云梯控请求打开微信？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"允许", nil];
+    self.openSahreAlertView.tag = 1;
+    [self.openSahreAlertView show];
 
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == alertView.firstOtherButtonIndex && alertView.tag == 1) {
+        OSMessage *msg=[[OSMessage alloc]init];
+        msg.title = @"云梯控";
+        msg.image =  [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"weChatOpenShare" ofType:@"png"]];
+        msg.thumbnail=[NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"weChatOpenShare" ofType:@"png"]];
+        [OpenShare shareToWeixinSession:msg Success:^(OSMessage *message) {
+            NSLog(@"微信分享到会话成功：\n%@",message);
+        } Fail:^(OSMessage *message, NSError *error) {
+            NSLog(@"微信分享到会话失败：\n%@\n%@",error,message);
+        }];        
+    }
+    
 }
 
 - (IBAction)returnAction:(id)sender {

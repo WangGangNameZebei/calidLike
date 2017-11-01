@@ -35,7 +35,7 @@
        [NetWorkJudge StartWithBlock:^(NSInteger NetworkStatus) {
            NSLog(@"%ld",(long)NetworkStatus);
            if(NetworkStatus >0){ //有网络
-               [self loginPostForUsername:[[BaseViewController alloc] userInfoReaduserkey:@"userName"] password:[[BaseViewController alloc] userInfoReaduserkey:@"passWord"]];
+              [self loginPostForUsername:[[BaseViewController alloc] userInfoReaduserkey:@"userName"] password:[[BaseViewController alloc] userInfoReaduserkey:@"passWord"]];
            }
        }];
        
@@ -44,7 +44,6 @@
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
         navigationController.navigationBarHidden = YES;
         self.window.rootViewController = navigationController;
-        
 //        //引导页图片数组
 //        NSArray *images =  @[[UIImage imageNamed:@"image1.jpg"],[UIImage imageNamed:@"image2.jpg"],[UIImage imageNamed:@"image3.jpg"],[UIImage imageNamed:@"image4.jpg"],[UIImage imageNamed:@"image6.jpg"]];
 //        //创建引导页视图

@@ -63,7 +63,7 @@ static PropertyActivationSingleTon *_instace = nil;
     if (length > 20){
         if ([[CommandStr substringWithRange:NSMakeRange(0,2)] isEqualToString:@"cc"]) {
             strHead = @"c";
-        }else{
+        } else{
             strHead = @"a";
         }
         datalength =((length-2)/2) %19;
@@ -77,6 +77,8 @@ static PropertyActivationSingleTon *_instace = nil;
             if (aa == datalength - 1)
                 jiequlength = CommandStr.length - aa*38;
             strHead = [NSString stringWithFormat:@"%@%ld%@",[strHead substringWithRange:NSMakeRange(0,1)],(long)aa,[CommandStr substringWithRange:NSMakeRange(aa*38,jiequlength)]];
+            writeData = [self ToDealWithCommandString:strHead StrLenght:strHead.length/2];
+            [self writeChar:writeData];
          }
     } else {
         writeData = [self ToDealWithCommandString:CommandStr StrLenght:length/2];
@@ -410,7 +412,12 @@ static PropertyActivationSingleTon *_instace = nil;
         self.receiveData = [NSString stringWithFormat:@"%@%@",@"AA",[self.receiveData substringWithRange:NSMakeRange(104,104)]];
         [self sendCommand:self.receiveData];
     } else if ([characteristic isEqualToString:@"7265616403"]) {
-        self.receiveData = [AESCrypt decrypt:[self.baseViewController userInfoReaduserkey:@"lanyaAESErrornData"] password:AES_PASSWORD];
+        NSString *strData = [self.baseViewController userInfoReaduserkey:@"lanyaAESErrornData"];
+        if (strData.length < 10){
+           self.receiveData = @"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
+        } else {
+            self.receiveData = [AESCrypt decrypt:strData password:AES_PASSWORD];
+        }
         self.receiveData = [NSString stringWithFormat:@"%@%@",@"AA",self.receiveData];
         [self sendCommand:self.receiveData];
     } else {

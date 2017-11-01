@@ -255,6 +255,7 @@
         case 0x2f:
         case 0x39:
         case 0x3a:
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);        //进入震动
             [self promptInformationActionWarningString:@"正常进入"];
             break;
         case 0x11:

@@ -16,7 +16,7 @@
 #import "MycradInfoViewController.h"
 #import "PropertyActivationViewController.h"
 #import "ChangeThePasswordViewController.h"
-#import "MyFeedBackViewController.h"
+#import "AboutUsViewController.h"
 #import "LoginViewController.h"
 
 
@@ -49,19 +49,19 @@
          nameField.placeholder = @"您的口令是...";
          [self.customAlertView show];
         
-     } else if (indexPath.row == 2) {   //卡信息
+     } else if (indexPath.row == 3) {   //卡信息
          MycradInfoViewController *mycradinfoVC = [MycradInfoViewController create];
          [self hideTabBarAndpushViewController:mycradinfoVC];
-     } else if (indexPath.row == 1 || indexPath.row == 9 || indexPath.row == 11) {
+     } else if (indexPath.row == 2 || indexPath.row == 9 || indexPath.row == 11) {
          NSLog(@"空白区");
-     } else if (indexPath.row == 3){        // 邀请访客
+     } else if (indexPath.row == 4){        // 邀请访客
          invitaionCodeViewController *inviCodeVC = [invitaionCodeViewController create];
          [self hideTabBarAndpushViewController:inviCodeVC];
          
-     } else if (indexPath.row == 4){     // 我是 访客
+     } else if (indexPath.row == 5){     // 我是 访客
         VisitorViewController *visitor = [VisitorViewController create];
         [self hideTabBarAndpushViewController:visitor];
-     } else if (indexPath.row == 5) {     //物业设置
+     } else if (indexPath.row == 1) {     //物业设置
          self.customAlertView = [[UIAlertView alloc] initWithTitle:@"请输入管理员口令" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
          [self.customAlertView setAlertViewStyle:UIAlertViewStylePlainTextInput];
          self.customAlertView.tag = 1;
@@ -77,8 +77,8 @@
      } else if (indexPath.row == 7) {        // 数据更新
          [self theinternetCardupData];
      } else if (indexPath.row == 8) {       // 意见反馈
-         MyFeedBackViewController *myFeedBackVC = [MyFeedBackViewController create];
-         [self hideTabBarAndpushViewController:myFeedBackVC];
+         AboutUsViewController *aboutUsVC = [AboutUsViewController create];
+         [self hideTabBarAndpushViewController:aboutUsVC];
      } else if (indexPath.row == 10) {        //退出登入
          self.customAlertView = [[UIAlertView alloc] initWithTitle:@"退出登录" message:@"退出登录会删除您的所有信息，确定退出？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
          self.customAlertView.tag = 2;

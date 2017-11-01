@@ -397,6 +397,8 @@ static InstallWardensingleTon *_instaceton = nil;
             jishunumber = 16;
         } else if ([[str1 substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"b2"]) {       //  刷卡正确返回
             jishunumber = 30;
+        } else if ([[str1 substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"ea"]) {       //  刷卡正确返回
+            jishunumber = 24;
         } else if ([[str1 substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"ee"]) {        //刷卡错误
             if ([[str1 substringWithRange:NSMakeRange(0, 10)] isEqualToString:@"eebb112233"]){
                 jishunumber = 12;
@@ -456,17 +458,22 @@ static InstallWardensingleTon *_instaceton = nil;
         if ([[self.iwreceiveData substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"b2"] ||  [[self.iwreceiveData substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"a2"]) {
             [self iwsendCommand:@"aa"];
         } else {
-            [self iwmainHairpinReturnData:self.iwreceiveData];
+            [self iwmainHairpinReturnData:self.iwreceiveData]; // //刷卡 最后一串（旧） 返回
         }
         
         
         self.iwreceiveData = @"";
-    } else if (self.iwreceiveData.length == 92 || self.iwreceiveData.length == 94) {                 //刷卡 第1串 返回
-        if (self.iwreceiveData.length == 94) {
-            [self lanyaSendoutDataAction:[self.iwreceiveData substringWithRange:NSMakeRange(2,92)]];
-        } else {
-            [self lanyaSendoutDataAction:self.iwreceiveData];
+    } else if (self.iwreceiveData.length == 92) {                 //刷卡 第1串 返回
+        [self lanyaSendoutDataAction:self.iwreceiveData];
+        self.iwreceiveData = @"";
+        
+    } else if (self.iwreceiveData.length == 24) {                 //刷卡 最后一串（新） 返回
+        if (self.iwshukaTimer){
+            [self.iwshukaTimer invalidate];    // 释放函数
+            self.iwshukaTimer = nil;
+            LOG(@"关闭shukaTimer");
         }
+        [self iwmainHairpinReturnData:self.iwreceiveData];
         self.iwreceiveData = @"";
         
     } else {

@@ -163,6 +163,14 @@
 		0AF327371F3D847E0013122D /* VisitorTabPagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF327351F3D847E0013122D /* VisitorTabPagerViewController.m */; };
 		0AF327381F3D847E0013122D /* VisitorTabPagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AF327361F3D847E0013122D /* VisitorTabPagerViewController.xib */; };
 		18EAEB9BC0645DD57F644E46 /* libPods-claidApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E454F03FAF2701EE86E173D /* libPods-claidApp.a */; };
+		1A061C391F9B3B49003F76C9 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A061C371F9B3B49003F76C9 /* AboutUsViewController.m */; };
+		1A061C3A1F9B3B49003F76C9 /* AboutUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A061C381F9B3B49003F76C9 /* AboutUsViewController.xib */; };
+		1AAB88841F9DB81400742AEA /* AboutUsViewController+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB88831F9DB81400742AEA /* AboutUsViewController+Configuration.m */; };
+		1AAB88871F9DB8A500742AEA /* AboutUsViewControllerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB88861F9DB8A500742AEA /* AboutUsViewControllerDataSource.m */; };
+		1AAB888D1F9DD8A300742AEA /* ytkappOpenShare.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AAB888C1F9DD7E900742AEA /* ytkappOpenShare.png */; };
+		1AE81E831FA06DDD00FB8514 /* AppTeachingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE81E811FA06DDD00FB8514 /* AppTeachingViewController.m */; };
+		1AE81E841FA06DDD00FB8514 /* AppTeachingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AE81E821FA06DDD00FB8514 /* AppTeachingViewController.xib */; };
+		1AE81E861FA072D100FB8514 /* appteachimage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1AE81E851FA0718D00FB8514 /* appteachimage.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -448,6 +456,18 @@
 		0AF327341F3D847E0013122D /* VisitorTabPagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisitorTabPagerViewController.h; sourceTree = "<group>"; };
 		0AF327351F3D847E0013122D /* VisitorTabPagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisitorTabPagerViewController.m; sourceTree = "<group>"; };
 		0AF327361F3D847E0013122D /* VisitorTabPagerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VisitorTabPagerViewController.xib; sourceTree = "<group>"; };
+		1A061C361F9B3B49003F76C9 /* AboutUsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
+		1A061C371F9B3B49003F76C9 /* AboutUsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
+		1A061C381F9B3B49003F76C9 /* AboutUsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutUsViewController.xib; sourceTree = "<group>"; };
+		1AAB88821F9DB81400742AEA /* AboutUsViewController+Configuration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AboutUsViewController+Configuration.h"; sourceTree = "<group>"; };
+		1AAB88831F9DB81400742AEA /* AboutUsViewController+Configuration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AboutUsViewController+Configuration.m"; sourceTree = "<group>"; };
+		1AAB88851F9DB8A500742AEA /* AboutUsViewControllerDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutUsViewControllerDataSource.h; sourceTree = "<group>"; };
+		1AAB88861F9DB8A500742AEA /* AboutUsViewControllerDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewControllerDataSource.m; sourceTree = "<group>"; };
+		1AAB888C1F9DD7E900742AEA /* ytkappOpenShare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ytkappOpenShare.png; sourceTree = "<group>"; };
+		1AE81E801FA06DDD00FB8514 /* AppTeachingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppTeachingViewController.h; sourceTree = "<group>"; };
+		1AE81E811FA06DDD00FB8514 /* AppTeachingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppTeachingViewController.m; sourceTree = "<group>"; };
+		1AE81E821FA06DDD00FB8514 /* AppTeachingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppTeachingViewController.xib; sourceTree = "<group>"; };
+		1AE81E851FA0718D00FB8514 /* appteachimage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = appteachimage.jpg; sourceTree = "<group>"; };
 		2E454F03FAF2701EE86E173D /* libPods-claidApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-claidApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FAE10D1BB41DF3C48FA7264 /* Pods-claidApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-claidApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-claidApp/Pods-claidApp.release.xcconfig"; sourceTree = "<group>"; };
 		B07114D1ACC8FA1ADF51B95E /* Pods-claidApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-claidApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-claidApp/Pods-claidApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1065,6 +1085,8 @@
 				0AC032201F53C054009633A9 /* advertisment_2.jpg */,
 				0AC032211F53C054009633A9 /* advertisment_3.jpg */,
 				0A823A0F1F4154D800B10DB3 /* weChatOpenShare.png */,
+				1AAB888C1F9DD7E900742AEA /* ytkappOpenShare.png */,
+				1AE81E851FA0718D00FB8514 /* appteachimage.jpg */,
 				0A98AF4E1DF295F800BCA88C /* zhanweiImage.png */,
 				0A8C969D1DCC30D700AAD161 /* xiangxia_1.png */,
 				0AEC751F1DC83D7E00933D77 /* fanhui_1.png */,
@@ -1106,6 +1128,8 @@
 				0A8DB34B1F7A21B1008B9799 /* RetrieveThePasswordViewController */,
 				0A3C4D951EB9A8FF00B6F279 /* PropertyActivationViewController */,
 				0A8DAAF31F6B5D95004893B1 /* ParkModifyViewController */,
+				1A061C351F9B3B03003F76C9 /* AboutUsViewController */,
+				1AE81E7F1FA06D9F00FB8514 /* AppTeachingViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1235,6 +1259,30 @@
 			path = MycradInfoTableViewCell;
 			sourceTree = "<group>";
 		};
+		1A061C351F9B3B03003F76C9 /* AboutUsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1A061C361F9B3B49003F76C9 /* AboutUsViewController.h */,
+				1A061C371F9B3B49003F76C9 /* AboutUsViewController.m */,
+				1A061C381F9B3B49003F76C9 /* AboutUsViewController.xib */,
+				1AAB88821F9DB81400742AEA /* AboutUsViewController+Configuration.h */,
+				1AAB88831F9DB81400742AEA /* AboutUsViewController+Configuration.m */,
+				1AAB88851F9DB8A500742AEA /* AboutUsViewControllerDataSource.h */,
+				1AAB88861F9DB8A500742AEA /* AboutUsViewControllerDataSource.m */,
+			);
+			path = AboutUsViewController;
+			sourceTree = "<group>";
+		};
+		1AE81E7F1FA06D9F00FB8514 /* AppTeachingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1AE81E801FA06DDD00FB8514 /* AppTeachingViewController.h */,
+				1AE81E811FA06DDD00FB8514 /* AppTeachingViewController.m */,
+				1AE81E821FA06DDD00FB8514 /* AppTeachingViewController.xib */,
+			);
+			path = AppTeachingViewController;
+			sourceTree = "<group>";
+		};
 		51EC2D4BCFC8A555B596AA46 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1321,7 +1369,7 @@
 		0ACFF80B1DB5BC9F0043D49A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = kevinpc;
 				TargetAttributes = {
 					0ACFF8121DB5BC9F0043D49A = {
@@ -1371,6 +1419,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AE81E861FA072D100FB8514 /* appteachimage.jpg in Resources */,
+				1AAB888D1F9DD8A300742AEA /* ytkappOpenShare.png in Resources */,
 				0AA023BE1F5CFDE000231C07 /* upwhite.png in Resources */,
 				0A052F611DBDF0E7002EB567 /* BlankTableViewCell.xib in Resources */,
 				0AA5DA281DF554DA00CA816E /* image3.jpg in Resources */,
@@ -1397,6 +1447,7 @@
 				0AC032231F53C054009633A9 /* advertisment_2.jpg in Resources */,
 				0AA023BC1F5CFDE000231C07 /* up.png in Resources */,
 				0AA5DA291DF554DA00CA816E /* image4.jpg in Resources */,
+				1A061C3A1F9B3B49003F76C9 /* AboutUsViewController.xib in Resources */,
 				0ACFF8231DB5BCA00043D49A /* Assets.xcassets in Resources */,
 				0AA5DA2A1DF554DA00CA816E /* image5.jpg in Resources */,
 				0AA023B81F5CFDE000231C07 /* selected.png in Resources */,
@@ -1413,6 +1464,7 @@
 				0ACFF8211DB5BCA00043D49A /* Main.storyboard in Resources */,
 				0A6FB2731DC978BC00345784 /* installViewController.xib in Resources */,
 				0A9EEC6B1DCB0E3C00D74FC9 /* OpenCardView.xib in Resources */,
+				1AE81E841FA06DDD00FB8514 /* AppTeachingViewController.xib in Resources */,
 				0AC032241F53C054009633A9 /* advertisment_3.jpg in Resources */,
 				0A5FF9321DB5F0EF00249F0C /* CustomActionSheet.xib in Resources */,
 				0AA5DA2D1DF558C500CA816E /* Images.xcassets in Resources */,
@@ -1512,6 +1564,7 @@
 				0A6DA6DD1DB6F9020013D0CF /* MineViewController+Configuration.m in Sources */,
 				0A52D7241F06412F009EF865 /* MyFeedBackViewController+logicalFlow.m in Sources */,
 				0AF131E61EC0488D0056F2A0 /* MycradInfoTableViewCell.m in Sources */,
+				1AAB88841F9DB81400742AEA /* AboutUsViewController+Configuration.m in Sources */,
 				0ABEA9B31E83974B00FC7FD3 /* DBTool.m in Sources */,
 				0A9EEC691DCB0E2A00D74FC9 /* OpenCardView.m in Sources */,
 				0A95A2DA1DDA96B50019A691 /* NetWorkJudge.m in Sources */,
@@ -1528,6 +1581,7 @@
 				0A4E180A1F70DE7400C81B8E /* InstallWardensingleTon.m in Sources */,
 				0A73048E1E8359E00016639A /* invitaionCodeViewController+Configuration.m in Sources */,
 				0A98AF491DF270BF00BCA88C /* JYImageCache.m in Sources */,
+				1AE81E831FA06DDD00FB8514 /* AppTeachingViewController.m in Sources */,
 				0AA5DA2B1DF554DA00CA816E /* ZLCGuidePageView.m in Sources */,
 				0A5FF94A1DB6032600249F0C /* MyViewController.m in Sources */,
 				0A51E91A1DC825B9000D31F3 /* RegisterViewController.m in Sources */,
@@ -1587,9 +1641,11 @@
 				0AD75CD01DBDDE0F00297AC3 /* MyViewController+LogicalFlow.m in Sources */,
 				0A8154BA1F3D5E1D004E524A /* VisitorViewController+Animation.m in Sources */,
 				0A8DAAFE1F6B6D6E004893B1 /* ParkModifyViewController+LogicalFlow.m in Sources */,
+				1A061C391F9B3B49003F76C9 /* AboutUsViewController.m in Sources */,
 				0A98AF4B1DF270BF00BCA88C /* JYPageControl.m in Sources */,
 				0A98AF4C1DF270BF00BCA88C /* JYWeakTimer.m in Sources */,
 				0A8DAAF71F6B5E21004893B1 /* ParkModifyViewController.m in Sources */,
+				1AAB88871F9DB8A500742AEA /* AboutUsViewControllerDataSource.m in Sources */,
 				0A6F7F1E1EFE2E04003E0DDA /* ChangeThePasswordViewController+LogicalFlow.m in Sources */,
 				0A8154BB1F3D5E1D004E524A /* VisitorViewController+Configuration.m in Sources */,
 				0A8DB3591F7A2941008B9799 /* RetrieveThePasswordViewController+Configuration.m in Sources */,
@@ -1661,7 +1717,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1669,7 +1727,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -1712,7 +1774,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1720,7 +1784,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
