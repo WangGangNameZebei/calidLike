@@ -9,5 +9,6 @@
 #import "MineViewController.h"
 
 @interface MineViewController (LogicalFlow)
-
+- (void)uploadRecordingDataAction;      //数据更新
+- (void)loginPostForUsername:(NSString *)username password:(NSString *)password;   //后台登陆
 @end

@@ -10,4 +10,6 @@
 
 @interface AboutUsViewController (Configuration)
 - (void)configureViews;
+- (void)manageApplicationsEdits; //管理申请
+- (void)propertyNameAlertEditdataStr:(NSString *)datastr;
 @end

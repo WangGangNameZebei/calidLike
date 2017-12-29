@@ -16,7 +16,7 @@
 - (void)districtInfoPOSTNameStr:(NSString *)nameStr dataStr:(NSString *)dataStr {
     AFHTTPRequestOperationManager *manager = [self tokenManager];
     [manager.requestSerializer setValue:[self userInfoReaduserkey:@"Token"] forHTTPHeaderField:@"access_token"];
-    NSDictionary *parameters = @{@"pptId":self.parkIdString,@"pptName":nameStr,@"pptLoc":dataStr};
+    NSDictionary *parameters = @{@"pptId":[self userInfoReaduserkey:@"districtNumber"],@"pptName":nameStr,@"pptLoc":dataStr};
     [manager POST:CHANGE_OF_INFO_URL parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         NSString *requestTmp = [NSString stringWithString:operation.responseString];
         NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];
@@ -28,10 +28,10 @@
         } else if ([[resultDic objectForKey:@"status"] integerValue] == 329){ //过期
             [InternetServices requestLoginPostForUsername:[self userInfoReaduserkey:@"userName"] password:[self userInfoReaduserkey:@"passWord"]];
             [self districtInfoPOSTNameStr:nameStr dataStr:dataStr];
-        } else if ([[resultDic objectForKey:@"status"] integerValue] == 326 || [[resultDic objectForKey:@"status"] integerValue] == 203 || [[resultDic objectForKey:@"status"] integerValue] == 204) {
-            [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
+        } else if ([[resultDic objectForKey:@"status"] integerValue] == 326 || [[resultDic objectForKey:@"status"] integerValue] == 203 || [[resultDic objectForKey:@"status"] integerValue] == 204 || [[resultDic objectForKey:@"status"] integerValue] == 100) {
+            [self alertViewmessage:[resultDic objectForKey:@"msg"]];
         } else {
-            [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
+            [self alertViewmessage:[resultDic objectForKey:@"msg"]];
             [InternetServices logOutPOSTkeystr:[self userInfoReaduserkey:@"userName"]];
         }
         
@@ -52,7 +52,6 @@
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     // 设置返回格式
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     return manager;
 }
 

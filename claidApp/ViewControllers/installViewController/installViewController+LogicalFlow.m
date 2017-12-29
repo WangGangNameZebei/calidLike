@@ -47,7 +47,7 @@
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     // 设置返回格式
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+   // manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     return manager;
 }
 - (void)lanyaCardChuliActiondataStr:(NSString *)datastr olddata:(NSString *)loddata {

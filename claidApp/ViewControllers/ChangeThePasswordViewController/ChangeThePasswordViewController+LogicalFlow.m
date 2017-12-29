@@ -21,20 +21,19 @@
         NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];
         //系统自带JSON解析
         NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableContainers error:nil];
-            [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
         if([[resultDic objectForKey:@"status"] integerValue] == 200){
             [self userInfowriteuserkey:@"passWord" uservalue:newpassword]; //修改数据库密码
             self.oldPasswordTextField.text = @"";
             self.changenewPasswordTextField.text = @"";
             self.confirmnewPasswoedTextField.text = @"";
-            
+            [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
         } else if ([[resultDic objectForKey:@"status"] integerValue] == 329){ //过期
             [InternetServices requestLoginPostForUsername:[self userInfoReaduserkey:@"userName"] password:[self userInfoReaduserkey:@"passWord"]];
             [self changeThePasswordPOSTForoldpasssword:oldpassword newpassword:newpassword];
-        } else if ([[resultDic objectForKey:@"status"] integerValue] == 316 || [[resultDic objectForKey:@"status"] integerValue] == 203 || [[resultDic objectForKey:@"status"] integerValue] == 204) {
-            [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
+        } else if ([[resultDic objectForKey:@"status"] integerValue] == 316 || [[resultDic objectForKey:@"status"] integerValue] == 203 || [[resultDic objectForKey:@"status"] integerValue] == 204 || [[resultDic objectForKey:@"status"] integerValue] == 100) {
+            [self alertViewmessage:[resultDic objectForKey:@"msg"]];
         } else {
-            [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
+            [self alertViewmessage:[resultDic objectForKey:@"msg"]];
             [InternetServices logOutPOSTkeystr:[self userInfoReaduserkey:@"userName"]];
         }
         
@@ -58,7 +57,7 @@
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     // 设置返回格式
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    //manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     return manager;
 }
 @end

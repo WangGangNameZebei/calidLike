@@ -11,6 +11,7 @@
 #import "MyFeedBackViewController.h"
 #import <OpenShareHeader.h>
 #import "AppTeachingViewController.h"
+#import "AboutUsViewController+LogicalFlow.h"
 
 @implementation AboutUsViewController
 + (instancetype)create {
@@ -30,6 +31,7 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)returnButtonAction:(id)sender {
+    [self.managementSingleTon disConnection];
      [self.navigationController popViewControllerAnimated:YES];
 }
 #pragma mark - UITableView Delegate
@@ -44,14 +46,17 @@
     } else if (indexPath.row == 1) {
         MyFeedBackViewController *myfeedBackVC = [MyFeedBackViewController create];
         [self hideTabBarAndpushViewController:myfeedBackVC];
-    } else {
+    } else if (indexPath.row == 2) {
         self.ablouusAlertView = [[UIAlertView alloc] initWithTitle:@"软件分享" message:@"云梯控请求打开微信？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"允许", nil];
         self.ablouusAlertView.tag = 1;
         [self.ablouusAlertView show];
+    } else {
+        [self manageApplicationsEdits];  //处理管理申请
     }
     
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    self.ablouusAlertView =nil;
     if (buttonIndex == alertView.firstOtherButtonIndex && alertView.tag == 1) {
         OSMessage *msg=[[OSMessage alloc]init];
         msg.title = @"扫一扫下载云梯控";
@@ -65,6 +70,28 @@
             NSLog(@"微信分享到会话失败：\n%@\n%@",error,message);
         }];
                 
+    }  else {
+        
+        if (buttonIndex == alertView.firstOtherButtonIndex) {
+            UITextField *nameField = [alertView textFieldAtIndex:0];
+            
+            
+            if (nameField.tag == 10) {
+                UITextField *dizhiField = [alertView textFieldAtIndex:1];
+                
+                self.dizhiString = [NSString stringWithFormat:@"%@%@",self.dizhiString,dizhiField.text];  //地址
+                [self districtInfoPOSTNameStr:nameField.text dataStr:self.dizhiString];
+            } else if (nameField.tag == 0) {
+                [self districtInfoPOSTNameStr:nameField.text dataStr:@""];
+                
+            } else if (nameField.tag == 1) {
+                self.dizhiString = [NSString stringWithFormat:@"%@%@",self.dizhiString,nameField.text];  //地址
+                [self districtInfoPOSTNameStr:@"" dataStr:self.dizhiString];
+            }
+            
+            
+        }
+        
     }
     
 }

@@ -328,7 +328,7 @@
         [self checkStatusOfCardPOSTdataStr:[string substringWithRange:NSMakeRange(2,104)]];
       
     } else if ([string isEqualToString:@"eebb1122330a"] ){
-      //  [self.sinTon iwdisConnection];       //  断开蓝牙
+       [self.sinTon iwdisConnection];       //  断开蓝牙
         [self promptInformationActionWarningString:@"设置错误!"];
         
     } else if ([string isEqualToString:@"eebb1122330b"] ){
@@ -421,7 +421,7 @@
 
         if (!self.restoreBool) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.progressHUD hideAnimated:YES];
+            [self.progressHUD hide:YES];
             });
         }
         self.lingminduBool = NO;
@@ -491,7 +491,7 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
          [self doSomeWorkWithProgress:1.0f];
-        [self.progressHUD hideAnimated:YES];
+       [self.progressHUD hide:YES];
     });
     [self promptInformationActionWarningString:@"设置成功！"];
 
@@ -579,7 +579,7 @@
    self.progressHUD  = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     self.progressHUD.mode = MBProgressHUDModeAnnularDeterminate;
 
-    self.progressHUD.label.text = NSLocalizedString(@"设置中...", @"设置中");
+     self.progressHUD.labelText = NSLocalizedString(@"设置中...", @"设置中");
     dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
         [self doSomeWorkWithProgress:0.1f];
     });

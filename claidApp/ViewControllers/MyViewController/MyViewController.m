@@ -18,7 +18,7 @@
 #import "ChangeThePasswordViewController.h"
 #import "AboutUsViewController.h"
 #import "LoginViewController.h"
-
+#import "CommunityManagementViewController.h" //  园区管理
 
 @implementation MyViewController
 
@@ -39,70 +39,81 @@
 
 // 点击  UItableView
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-     if (indexPath.row == 0){       // 续卡
-         self.customAlertView = [[UIAlertView alloc] initWithTitle:@"请输入管理员口令" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-         [self.customAlertView setAlertViewStyle:UIAlertViewStylePlainTextInput];
-         self.customAlertView.tag = 0;
-         UITextField *nameField = [self.customAlertView textFieldAtIndex:0];
-         nameField.tag = 0;
-         nameField.secureTextEntry = YES;
-         nameField.placeholder = @"您的口令是...";
-         [self.customAlertView show];
-        
-     } else if (indexPath.row == 3) {   //卡信息
-         MycradInfoViewController *mycradinfoVC = [MycradInfoViewController create];
-         [self hideTabBarAndpushViewController:mycradinfoVC];
-     } else if (indexPath.row == 2 || indexPath.row == 9 || indexPath.row == 11) {
-         NSLog(@"空白区");
-     } else if (indexPath.row == 4){        // 邀请访客
-         invitaionCodeViewController *inviCodeVC = [invitaionCodeViewController create];
-         [self hideTabBarAndpushViewController:inviCodeVC];
-         
-     } else if (indexPath.row == 5){     // 我是 访客
-        VisitorViewController *visitor = [VisitorViewController create];
-        [self hideTabBarAndpushViewController:visitor];
-     } else if (indexPath.row == 1) {     //物业设置
-         self.customAlertView = [[UIAlertView alloc] initWithTitle:@"请输入管理员口令" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-         [self.customAlertView setAlertViewStyle:UIAlertViewStylePlainTextInput];
-         self.customAlertView.tag = 1;
-         UITextField *nameField = [self.customAlertView textFieldAtIndex:0];
-         nameField.tag = 1;
-         nameField.secureTextEntry = YES;
-         nameField.placeholder = @"您的口令是..";
-         [self.customAlertView show];
-         
-     } else if (indexPath.row == 6){        // 密码修改
-         ChangeThePasswordViewController *changethePasswordVC = [ChangeThePasswordViewController create];
-         [self hideTabBarAndpushViewController:changethePasswordVC];
-     } else if (indexPath.row == 7) {        // 数据更新
-         [self theinternetCardupData];
-     } else if (indexPath.row == 8) {       // 意见反馈
-         AboutUsViewController *aboutUsVC = [AboutUsViewController create];
-         [self hideTabBarAndpushViewController:aboutUsVC];
-     } else if (indexPath.row == 10) {        //退出登入
-         self.customAlertView = [[UIAlertView alloc] initWithTitle:@"退出登录" message:@"退出登录会删除您的所有信息，确定退出？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-         self.customAlertView.tag = 2;
-         [self.customAlertView show];
-     } else {
-         [self promptInformationActionWarningString:@"此功能暂未开通!"];
-     }
+     if([[self userInfoReaduserkey:@"role"] isEqualToString:@"1"]){
+         if (indexPath.row == 0){  // 社区管理
+             CommunityManagementViewController *communityManagementVC = [CommunityManagementViewController create];
+             [self presentViewController:communityManagementVC animated:YES completion:nil];
+         } else if (indexPath.row == 1){       // 续卡
+             PropertyActivationViewController *pAViewController = [PropertyActivationViewController create];
+             [self presentViewController:pAViewController animated:YES completion:nil];
+         } else if (indexPath.row == 4) {   //卡信息
+             MycradInfoViewController *mycradinfoVC = [MycradInfoViewController create];
+             [self hideTabBarAndpushViewController:mycradinfoVC];
+         } else if (indexPath.row == 3 || indexPath.row == 10 || indexPath.row == 12) {
+             NSLog(@"空白区");
+         } else if (indexPath.row == 5){        // 邀请访客
+             invitaionCodeViewController *inviCodeVC = [invitaionCodeViewController create];
+             [self hideTabBarAndpushViewController:inviCodeVC];
+             
+         } else if (indexPath.row == 6){     // 我是 访客
+             VisitorViewController *visitor = [VisitorViewController create];
+             [self hideTabBarAndpushViewController:visitor];
+         } else if (indexPath.row == 2) {     //物业设置
+             installViewController *installVC = [installViewController create];
+             //[installVC setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+             [self presentViewController:installVC animated:YES completion:nil];
+             
+         } else if (indexPath.row == 7){        // 密码修改
+             ChangeThePasswordViewController *changethePasswordVC = [ChangeThePasswordViewController create];
+             [self hideTabBarAndpushViewController:changethePasswordVC];
+         } else if (indexPath.row == 8) {        // 数据更新
+             [self theinternetCardupData];
+         } else if (indexPath.row == 9) {       // 关于我们
+             AboutUsViewController *aboutUsVC = [AboutUsViewController create];
+             [self hideTabBarAndpushViewController:aboutUsVC];
+         } else if (indexPath.row == 11) {        //退出登入
+             self.customAlertView = [[UIAlertView alloc] initWithTitle:@"退出登录" message:@"退出登录会删除您的所有信息，确定退出？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+             self.customAlertView.tag = 2;
+             [self.customAlertView show];
+         } else {
+             [self promptInformationActionWarningString:@"此功能暂未开通!"];
+         }
 
+     } else {
+          if (indexPath.row == 0) {   //卡信息
+             MycradInfoViewController *mycradinfoVC = [MycradInfoViewController create];
+             [self hideTabBarAndpushViewController:mycradinfoVC];
+         } else if (indexPath.row == 6 || indexPath.row == 8) {
+             NSLog(@"空白区");
+         } else if (indexPath.row == 1){        // 邀请访客
+             invitaionCodeViewController *inviCodeVC = [invitaionCodeViewController create];
+             [self hideTabBarAndpushViewController:inviCodeVC];
+             
+         } else if (indexPath.row == 2){     // 我是 访客
+             VisitorViewController *visitor = [VisitorViewController create];
+             [self hideTabBarAndpushViewController:visitor];
+         } else if (indexPath.row == 3){        // 密码修改
+             ChangeThePasswordViewController *changethePasswordVC = [ChangeThePasswordViewController create];
+             [self hideTabBarAndpushViewController:changethePasswordVC];
+         } else if (indexPath.row == 4) {        // 数据更新
+             [self theinternetCardupData];
+         } else if (indexPath.row == 5) {       // 关于我们
+             AboutUsViewController *aboutUsVC = [AboutUsViewController create];
+             [self hideTabBarAndpushViewController:aboutUsVC];
+         } else if (indexPath.row == 7) {        //退出登入
+             self.customAlertView = [[UIAlertView alloc] initWithTitle:@"退出登录" message:@"退出登录会删除您的所有信息，确定退出？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+             self.customAlertView.tag = 2;
+             [self.customAlertView show];
+         } else {
+             [self promptInformationActionWarningString:@"此功能暂未开通!"];
+         }
+
+     }
+    
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     
-    if (buttonIndex == alertView.firstOtherButtonIndex && (alertView.tag == 0 || alertView.tag == 1)) {
-        UITextField *nameField = [alertView textFieldAtIndex:0];
-        
-        if ([nameField.text isEqual:@"admin"] && nameField.tag ==0) {
-                PropertyActivationViewController *pAViewController = [PropertyActivationViewController create];
-                    pAViewController.titleLabelString = @"物业激活";
-                    [self hideTabBarAndpushViewController:pAViewController];
-        } else if ([nameField.text isEqual:@"calid"] && nameField.tag == 1){
-                installViewController *installVC = [installViewController create];
-                [self hideTabBarAndpushViewController:installVC];
-        }
-        
-    } else if (buttonIndex == alertView.firstOtherButtonIndex && alertView.tag == 2) {
+    if (buttonIndex == alertView.firstOtherButtonIndex && alertView.tag == 2) {
         [InternetServices logOutPOSTkeystr:[self userInfoReaduserkey:@"userName"]];
     }
     

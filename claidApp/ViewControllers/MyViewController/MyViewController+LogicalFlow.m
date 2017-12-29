@@ -11,6 +11,7 @@
 #import <AESCrypt.h>
 #import "LoginViewController.h"
 #import "InternetServices.h"
+#import "MyViewController+Configuration.h"
 
 @implementation MyViewController (LogicalFlow)
 
@@ -20,6 +21,7 @@
     NSString *username = [self userInfoReaduserkey:@"userName"];
     NSString *password = [self userInfoReaduserkey:@"passWord"];
     NSDictionary *parameters = @{@"accounts":username,@"passwd":password,@"imei":[self keyChainIdentifierForVendorString]};
+    
     [manager POST:RENEWAL_USER_DATA_URL parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         NSMutableArray *userdataArray;
         NSString *encryptedData;
@@ -48,6 +50,7 @@
                 
                 [self userInfowriteuserkey:@"districtNumber" uservalue:[NSString stringWithFormat:@"%@",userdataArray[1]]];       //存储  小区号
                 [self userInfowriteuserkey:@"districtName" uservalue:[NSString stringWithFormat:@"%@%@",userdataArray[3],userdataArray[4]]];       //存储  小区名称
+                [self userInfowriteuserkey:@"role" uservalue:[NSString stringWithFormat:@"%@",userdataArray[6]]];       // 小区 管理员标识
             }
             [[NSUserDefaults standardUserDefaults] setObject:currentUserstr forKey:@"currentUser"]; // 恢复之前存储
             [self promptInformationActionWarningString:@"数据更新成功!"];
@@ -67,11 +70,14 @@
         } else if ([[resultDic objectForKey:@"status"] integerValue] == 329) {      // Token  失效获取新的
             [InternetServices requestLoginPostForUsername:[self userInfoReaduserkey:@"userName"] password:[self userInfoReaduserkey:@"passWord"]];
             [self theinternetCardupData];
+        } else if ([[resultDic objectForKey:@"status"] integerValue] == 100){//  操作频繁
+             [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];            
         } else {
               [InternetServices logOutPOSTkeystr:[self userInfoReaduserkey:@"userName"]]; //退出登录
-              [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
+              [self alertViewmessage:[resultDic objectForKey:@"msg"]];
         }
-        
+        [self myTableViewInitdataArray];
+        [self.myTableView reloadData];
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
         if (error.code == -1009){
             [self promptInformationActionWarningString:@"您的网络有异常"];
@@ -91,7 +97,7 @@
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     // 设置返回格式
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    // manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+     //manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     return manager;
 }
 

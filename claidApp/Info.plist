@@ -2,6 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>调用相册上传图片</string>
+	<key>NSCameraUsageDescription</key>
+	<string>调用相机拍摄上传图片</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>访问通讯录获取您需要的电话号码</string>
 	<key>CFBundleDisplayName</key>
@@ -34,11 +43,6 @@
 	<string>209679ac24694</string>
 	<key>MOBAppSecret</key>
 	<string>59b9bd32f940ad5513b1d8379606002f</string>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-	</dict>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>使用蓝牙发送门禁数据权限</string>
 	<key>NSContactsUsageDescription</key>

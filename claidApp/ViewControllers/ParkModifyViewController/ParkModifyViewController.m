@@ -23,7 +23,7 @@
     [self configureViews];
 }
 - (IBAction)returnButtonAction:(id)sender {
-     [self.navigationController popViewControllerAnimated:YES];
+     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)modifyButtonAction:(id)sender {
     if (self.parkAddressTextfield.text.length < 4){

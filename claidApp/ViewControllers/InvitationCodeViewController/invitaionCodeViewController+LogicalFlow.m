@@ -30,10 +30,10 @@
        if ([[resultDic objectForKey:@"status"] integerValue] == 329){ //过期
            [InternetServices requestLoginPostForUsername:useroraNamestr password:[self userInfoReaduserkey:@"passWord"]];
            [self invitionCodeForPhonenumber:touristPhone beizhutext:beizhutext];
-       } else if ([[resultDic objectForKey:@"status"] integerValue] == 200 || [[resultDic objectForKey:@"status"] integerValue] == 312 || [[resultDic objectForKey:@"status"] integerValue] == 203 || [[resultDic objectForKey:@"status"] integerValue] == 204 || [[resultDic objectForKey:@"status"] integerValue] == 331) {
-          [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
+       } else if ([[resultDic objectForKey:@"status"] integerValue] == 200 || [[resultDic objectForKey:@"status"] integerValue] == 312 || [[resultDic objectForKey:@"status"] integerValue] == 203 || [[resultDic objectForKey:@"status"] integerValue] == 204 || [[resultDic objectForKey:@"status"] integerValue] == 331 || [[resultDic objectForKey:@"status"] integerValue] == 100) {
+          [self alertViewmessage:[resultDic objectForKey:@"msg"]];
        } else {
-           [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
+           [self alertViewmessage:[resultDic objectForKey:@"msg"]];
            [InternetServices logOutPOSTkeystr:useroraNamestr];
        }
         
@@ -55,7 +55,7 @@
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     // 设置返回格式
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+  //  manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     return manager;
 }
 

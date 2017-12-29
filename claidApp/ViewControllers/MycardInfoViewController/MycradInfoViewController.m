@@ -68,6 +68,16 @@
 
     
 }
+#pragma mark - 震动
+- (IBAction)shockSwitchAction:(id)sender {
+    UISwitch *mySwitch = (UISwitch *)sender;
+    if (mySwitch.isOn){
+        [self userInfowriteuserkey:@"shockswitch" uservalue:@"YES"];
+    } else {
+        [self userInfowriteuserkey:@"shockswitch" uservalue:@"NO"];
+    }
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -7,15 +7,18 @@
 //
 
 #import "MineViewController+Configuration.h"
+#import "MineViewController+LogicalFlow.h"
 #import "AESCrypt.h"
 #import "UIColor+Utility.h"
 #import "UIScreen+Utility.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import "NetWorkJudge.h"
+
 
 @implementation MineViewController (Configuration)
 
 - (void)configureViews{
-    [self upgradeAppAction];
+    [self netWorkdataAction];
     [self initData];
     [self carouselViewEdit];
     [self addGestRecognizer];
@@ -39,7 +42,6 @@
     return;
 }
 
-
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
     if (event.subtype == UIEventSubtypeMotionShake && [[self userInfoReaduserkey:@"shakeswitch"] isEqualToString:@"YES"]) { // 判断是否是摇动结束
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);  //震动
@@ -48,7 +50,21 @@
     }  
     return;  
 }
-
+#pragma mark 检测 网络
+- (void)netWorkdataAction {
+    self.wifiBool = YES;
+    [NetWorkJudge StartWithBlock:^(NSInteger NetworkStatus) {
+        NSLog(@"%ld",(long)NetworkStatus);
+        if(NetworkStatus >0){ //有网络
+            [self upgradeAppAction];
+            [self loginPostForUsername:[self userInfoReaduserkey:@"userName"] password:[self userInfoReaduserkey:@"passWord"]];
+            if (NetworkStatus == 1 && self.wifiBool){
+                self.wifiBool = NO;
+                [self uploadRecordingDataAction];
+            }
+        }
+    }];
+}
 #pragma mark检测升级
 - (void)upgradeAppAction {
     static NSString *appId = @"1219844769";
@@ -61,13 +77,12 @@
 }
 
 - (void)SDshuakabiaoshiAction:(BOOL)boolData{
-     self.SDshukaBiaoshi = boolData;
     if(boolData){
       self.shuaKaButton.backgroundColor = [UIColor colorFromHexCode:@"1296db"];        
     } else {
       self.shuaKaButton.backgroundColor = [UIColor colorFromHexCode:@"C2C2C2"];
     }
-    
+     self.SDshukaBiaoshi = boolData;
 }
 
 #pragma mark  滚动视图
@@ -109,8 +124,6 @@
 }
 
 
-
-
 #pragma mark - mindsendDataToVCDelegate
 
 -(void)switchEditInitPeripheralData:(NSInteger)data {
@@ -126,9 +139,13 @@
                 self.message = [NSString stringWithFormat:@"%@%@",@"cc",self.message];
                  [self.ton sendCommand:self.message];       //发送数据
             } else {
-                [self SDshuakabiaoshiAction:YES];
-                [self promptInformationActionWarningString:@"暂未发卡!"];
                 [self.ton disConnection];
+                [self promptInformationActionWarningString:@"暂无数据!"];
+                if (self.paybycardTimer){
+                    [self.paybycardTimer invalidate];    // 释放函数
+                    self.paybycardTimer = nil;
+                }
+                 [self SDshuakabiaoshiAction:YES];
             }
             break;
         case 3:                             //  3  为 发送数据成功
@@ -160,10 +177,16 @@
 }
 
 - (IBAction)shuakaButtonAction:(id)sender {     // 手动刷卡
-    if (self.SDshukaBiaoshi){
-     
+    self.message = [self userInfoReaduserkey:@"lanyaAESData"];
+    self.message = [AESCrypt decrypt:[self userInfoReaduserkey:@"lanyaAESData"] password:AES_PASSWORD];
+    if (self.message.length < 10) {
+       [self promptInformationActionWarningString:@"暂无数据!"];
+        return;
+    }
+    
+     if (self.SDshukaBiaoshi){
       [self SDshuakabiaoshiAction:NO];
-    self.paybycardTimer = [NSTimer scheduledTimerWithTimeInterval:6 target:self selector:@selector(paybycardTimerAction) userInfo:nil repeats:NO];
+     self.paybycardTimer = [NSTimer scheduledTimerWithTimeInterval:6 target:self selector:@selector(paybycardTimerAction) userInfo:nil repeats:NO];
         NSString *strUUid = SINGLE_TON_UUID_STR;
         if (!strUUid) {
             [self.ton startScan]; // 扫描
@@ -255,7 +278,8 @@
         case 0x2f:
         case 0x39:
         case 0x3a:
-            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);        //进入震动
+            if ([[self userInfoReaduserkey:@"shockswitch"] isEqualToString:@"YES"])
+                     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);        //进入震动
             [self promptInformationActionWarningString:@"正常进入"];
             break;
         case 0x11:
@@ -285,7 +309,7 @@
         // 版本号
         NSString *version = resultDic[@"version"];
         // 下载地址
-      //  NSString *trackViewUrl = resultDic[@"trackViewUrl"];
+        //  NSString   trackViewUrl = resultDic[@"trackViewUrl"];
         // FRXME：比较版本号
         
         BOOL upnumber = [self compareVersion:version];
