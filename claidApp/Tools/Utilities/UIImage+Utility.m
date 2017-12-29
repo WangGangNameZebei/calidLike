@@ -186,5 +186,30 @@
     }
     return [UIColor colorWithRed:([MaxColor[0] intValue]/255.0f) green:([MaxColor[1] intValue]/255.0f) blue:([MaxColor[2] intValue]/255.0f) alpha:([MaxColor[3] intValue]/255.0f)];
 }
-
++(UIImage *)scaleImage:(UIImage *)image toKb:(NSInteger)kb{
+    
+    if (!image) {
+        return image;
+    }
+    if (kb<1) {
+        return image;
+    }
+    
+    kb*=1024;
+    
+    
+    
+    CGFloat compression = 0.9f;
+    CGFloat maxCompression = 0.1f;
+    NSData *imageData = UIImageJPEGRepresentation(image, compression);
+    while ([imageData length] > kb && compression > maxCompression) {
+        compression -= 0.1;
+        imageData = UIImageJPEGRepresentation(image, compression);
+    }
+    UIImage *compressedImage = [UIImage imageWithData:imageData];
+    return compressedImage;
+    
+    
+    
+}
 @end

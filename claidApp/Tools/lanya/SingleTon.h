@@ -10,6 +10,7 @@
 #import "InstallCardData.h"
 #import "DBTool.h"
 #import "BaseViewController.h"
+#import "CreditCardRecords.h"
 
 @protocol mindsendDataToVCDelegate <NSObject>           //主界面 连接 蓝牙
 @optional
@@ -38,7 +39,7 @@
 @property (strong,nonatomic)DBTool *tool;                   //数据库
 @property (strong, nonatomic) NSMutableArray *numberArrar ;         //数据库便利数组
 @property (strong, nonatomic) BaseViewController *baseViewController;
-
+@property (strong, nonatomic) CreditCardRecords *creditCardRecords;    // 刷卡记录
 
 
 + (SingleTon *)sharedInstance;

@@ -61,7 +61,7 @@
                 message = [NSString stringWithFormat:@"%@%@",@"cc",message];
                 [self.visitorton sendCommand:message];       //发送数据
             } else {
-                [self promptInformationActionWarningString:@"暂未发卡!"];
+                [self promptInformationActionWarningString:@"暂无数据!"];
                 [self.visitorton disConnection];
             }
             break;

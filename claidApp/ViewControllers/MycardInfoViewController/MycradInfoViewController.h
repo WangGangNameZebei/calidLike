@@ -7,8 +7,6 @@
 //
 
 #import "BaseViewController.h"
-#import "DBTool.h"
-#import "ClassUserInfo.h"
 #import "SXSearchHeadView.h"
 
 
@@ -23,11 +21,10 @@
 @property (strong, nonatomic) IBOutlet UISwitch *myInfoAutomaticSwitch;
 @property (strong, nonatomic) IBOutlet UISwitch *myInfoBrightScreenSwitch;
 @property (strong, nonatomic) IBOutlet UIView *myInfoNameView;
+@property (strong, nonatomic) IBOutlet UISwitch *myInfoShockSwitch;
 
 @property (assign, nonatomic)id<MycradInfoViewControllerDelegate>delegate;
 
-@property (strong, nonatomic) DBTool *dbTool;
-@property (strong, nonatomic)ClassUserInfo *infoclassUser;      //数据库类
 @property (strong,nonatomic) SXSearchHeadView *selectNameView;
 @property (strong, nonatomic) NSMutableArray *myinfoNameArray;
 

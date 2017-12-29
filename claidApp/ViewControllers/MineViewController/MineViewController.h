@@ -30,5 +30,8 @@
 @property (strong, nonatomic) NSTimer * paybycardTimer;  //刷卡定时器
 @property (nonatomic, strong) MycradInfoViewController *mycardinfoVC;
 @property (nonatomic, strong) JYCarousel *carouselView;     // 滚动页面
+@property (nonatomic, assign) BOOL wifiBool;
+
+
 - (void)switchEditInit;         // 自动刷卡  初始化
 @end

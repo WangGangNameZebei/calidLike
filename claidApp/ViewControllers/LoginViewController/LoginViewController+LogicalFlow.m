@@ -40,6 +40,8 @@
                 
                   [self userInfowriteuserkey:@"districtNumber" uservalue:[NSString stringWithFormat:@"%@",userdataArray[1]]];       //存储  小区号
                   [self userInfowriteuserkey:@"districtName" uservalue:[NSString stringWithFormat:@"%@%@",userdataArray[3],userdataArray[4]]];       //存储  小区名称
+                
+                [self userInfowriteuserkey:@"role" uservalue:[NSString stringWithFormat:@"%@",userdataArray[6]]];       // 小区 管理员标识
             }
            [self userInfowriteuserkey:@"Token" uservalue:userdataArray[5]];//存储 tpken
             [self userInfowriteuserkey:@"userName" uservalue:username];//存储 账号
@@ -87,7 +89,6 @@
      manager.responseSerializer = [AFJSONResponseSerializer serializer];
     // 设置返回格式
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-   // manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     return manager;
 }
 

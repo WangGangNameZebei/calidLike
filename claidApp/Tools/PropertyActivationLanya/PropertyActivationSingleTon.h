@@ -9,8 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
 #import <AESCrypt.h>
-#import "ClassUserInfo.h"
-#import "DBTool.h"
 #import "BaseViewController.h"
 
 @protocol pALanyaDelegate <NSObject>
@@ -32,8 +30,6 @@
 @property (strong, nonatomic) NSString *receiveData;
 @property (nonatomic, assign) id <pALanyaDelegate> delegate;
 
-@property (strong,nonatomic)DBTool *pAtool;                   //数据库
-@property (strong, nonatomic)ClassUserInfo *classUserInfo;      //数据库类
 @property (strong, nonatomic)BaseViewController *baseViewController;
 
 +(PropertyActivationSingleTon *)sharedInstance;

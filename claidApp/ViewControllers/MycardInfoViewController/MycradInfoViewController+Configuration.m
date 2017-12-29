@@ -115,6 +115,7 @@
     self.myInfoshakeSwitch.onTintColor = [UIColor colorFromHexCode:@"1296db"];
      self.myInfoBrightScreenSwitch.onTintColor = [UIColor colorFromHexCode:@"1296db"];
     self.myInfoAutomaticSwitch.onTintColor = [UIColor colorFromHexCode:@"1296db"];
+    self.myInfoShockSwitch.onTintColor = [UIColor colorFromHexCode:@"1296db"];
     if ([[self userInfoReaduserkey:@"shakeswitch"] isEqualToString:@"YES"]) {
         [self.myInfoshakeSwitch setOn:YES animated:YES];
     }
@@ -123,6 +124,9 @@
     }
     if ([[self userInfoReaduserkey:@"switch"] isEqualToString:@"YES"]) {
         [self.myInfoAutomaticSwitch setOn:YES animated:YES];
+    }
+    if ([[self userInfoReaduserkey:@"shockswitch"] isEqualToString:@"YES"]){
+        [self.myInfoShockSwitch setOn:YES animated:YES];
     }
 }
 

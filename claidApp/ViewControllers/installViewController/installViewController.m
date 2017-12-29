@@ -45,7 +45,7 @@
     NSString *message = @"d0446973636f6e6e656374696e67000000000000";
     [self.sinTon iwsendCommand:message];       //发送数据
     [self.sinTon iwdisConnection];  //断开蓝牙
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)emptyButtonAction:(id)sender {
        [self.tool dropTableWithClass:[InstallCardData class]];

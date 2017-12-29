@@ -19,13 +19,25 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 2 || indexPath.row == 9|| indexPath.row == 11) {
-        return [self blankTableView:tableView indexPath:indexPath];
-    } else if (indexPath.row == 10){
-        return [self loginOutTableView:tableView indexPath:indexPath];
+    if (self.myDataArray.count >10) {
+        if (indexPath.row == 3 || indexPath.row == 10|| indexPath.row == 12) {
+            return [self blankTableView:tableView indexPath:indexPath];
+        } else if (indexPath.row == 11){
+            return [self loginOutTableView:tableView indexPath:indexPath];
+        } else {
+            return [self myTableView:tableView indexPath:indexPath];
+        }
     } else {
-        return [self myTableView:tableView indexPath:indexPath];
+        if (indexPath.row == 6 || indexPath.row == 8) {
+            return [self blankTableView:tableView indexPath:indexPath];
+        } else if (indexPath.row == 7){
+            return [self loginOutTableView:tableView indexPath:indexPath];
+        } else {
+            return [self myTableView:tableView indexPath:indexPath];
+        }
     }
+    
+    
     return nil;
     
 }
@@ -40,11 +52,20 @@
 
 - (UITableViewCell *)blankTableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
     BlankTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:BLANK_TABLEVIEW_CELL];
-    if (indexPath.row == 9 || indexPath.row == 11){
-          cell.contentView.backgroundColor = [UIColor whiteColor];
-    } else {
-         cell.contentView.backgroundColor = [UIColor colorFromHexCode:@"#EDEDED"];
-    }
+     if (self.myDataArray.count >10){
+         if (indexPath.row == 10 || indexPath.row == 12){
+             cell.contentView.backgroundColor = [UIColor whiteColor];
+         } else {
+             cell.contentView.backgroundColor = [UIColor colorFromHexCode:@"#EDEDED"];
+         }
+     } else {
+         if (indexPath.row == 6 || indexPath.row == 8){
+             cell.contentView.backgroundColor = [UIColor whiteColor];
+         } else {
+             cell.contentView.backgroundColor = [UIColor colorFromHexCode:@"#EDEDED"];
+         }
+     }
+   
     return cell;
 }
 

@@ -21,10 +21,10 @@
 
 + (instancetype)create;
 - (void)hideTabBarAndpushViewController:(UIViewController *)viewController;     // 跳转页面
-- (void)alertViewmessage:(NSString *)massage;      //无代理提示
+- (void)alertViewmessage:(NSString *)massage;      //无代理提示（确定）
 
 - (NSString *)keyChainIdentifierForVendorString;        //从钥匙串读取UUID
-- (void)alertViewDelegateString:(NSString *)stringMassage;  //有代理的提示
+- (void)alertViewDelegateString:(NSString *)stringMassage;  //有代理的提示（确定）
 - (void)promptInformationActionWarningString:(NSString *)warningString;       // 提示
 - (void)createAdatabaseAction;              //创建数据库
 - (void)userInfowriteuserkey:(NSString *)userkey uservalue:(NSString *)uservalue;       //用户信息写入

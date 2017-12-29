@@ -14,6 +14,7 @@
 #import "AESCrypt.h"
 #import "LoginViewController+LogicalFlow.h"
 #import "VisitorViewController.h"
+#import "CommunityViewController.h"
 #import "RetrieveThePasswordViewController.h"
 
 @implementation LoginViewController
@@ -71,15 +72,16 @@
 
 - (CustomTabBarController *)createCustomTabBarController {
     MineViewController *minViewController = [MineViewController create];
+    CommunityViewController *communityViewController = [CommunityViewController create];
     MyViewController *myViewController = [MyViewController create];
-    CustomTabBarController *customTabBarController = [[CustomTabBarController alloc] initWithControllers:@[minViewController, myViewController] andImageGroups:[self createTabBarGroups]];
+    CustomTabBarController *customTabBarController = [[CustomTabBarController alloc] initWithControllers:@[minViewController,communityViewController, myViewController] andImageGroups:[self createTabBarGroups]];
     return customTabBarController;
 }
 
 - (NSArray *)createTabBarGroups {
-    NSArray *titles = @[NSLocalizedString(@"主页", nil), NSLocalizedString(@"我的", nil),];
-    NSArray *selectImages = @[@"homePage_blue", @"my_blue"];
-    NSArray *unSelectImages = @[@"homePage_gray",@"my_gray"];
+    NSArray *titles = @[NSLocalizedString(@"主页", nil), NSLocalizedString(@"社区", nil),NSLocalizedString(@"我的", nil),];
+    NSArray *selectImages = @[@"homePage_blue",@"community_blue", @"my_blue"];
+    NSArray *unSelectImages = @[@"homePage_gray",@"community_gray",@"my_gray"];
     NSMutableArray *imageGroups = [[NSMutableArray alloc] init];
     for (int i = 0; i < titles.count; i++) {
         TabBarItemImageGroup *imageGroup = [[TabBarItemImageGroup alloc] init];

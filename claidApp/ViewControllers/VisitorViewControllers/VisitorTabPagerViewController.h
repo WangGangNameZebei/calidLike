@@ -9,16 +9,17 @@
 #import "BaseViewController.h"
 #import "VisitorViewController.h"
 #import "VisitorCarViewController.h"
+#import "SPPageMenu.h"
 
-@interface VisitorTabPagerViewController : BaseViewController
+@interface VisitorTabPagerViewController : BaseViewController<SPPageMenuDelegate>
 @property (strong, nonatomic) IBOutlet UIView *pagerView;
 
 @property (strong, nonatomic) VisitorCarViewController *visitorCarViewController;
 @property (strong, nonatomic) VisitorViewController *visitorViewController;
 @property (nonatomic, strong) UIViewController *currentVC; 
 
-@property (nonatomic, strong) UIScrollView *headScrollView;
 @property (nonatomic, strong) NSMutableArray *itemArray;
 @property (nonatomic, strong) UIView *contentView;
+@property (nonatomic, weak) SPPageMenu *pageMenu;
 
 @end

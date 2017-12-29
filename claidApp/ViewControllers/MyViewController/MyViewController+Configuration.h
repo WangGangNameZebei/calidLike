@@ -11,4 +11,5 @@
 @interface MyViewController (Configuration)
 
 - (void)configureViews;
+- (void)myTableViewInitdataArray;
 @end

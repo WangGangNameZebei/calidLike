@@ -17,5 +17,7 @@
 - (NSString *)saveWithName:(NSString *)imageName;
 + (UIImage *)fixOrientation:(UIImage *)aImage;
 - (UIColor *)mostColor;
++(UIImage *)scaleImage:(UIImage *)image toKb:(NSInteger)kb;
+
 
 @end

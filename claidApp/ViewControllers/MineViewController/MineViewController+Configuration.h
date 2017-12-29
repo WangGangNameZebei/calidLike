@@ -9,6 +9,5 @@
 #import "MineViewController.h"
 
 @interface MineViewController (Configuration)
-
 - (void)configureViews;
 @end

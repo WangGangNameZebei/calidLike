@@ -28,14 +28,13 @@
         if ([[resultDic objectForKey:@"status"] integerValue] == 329){ //过期
             [InternetServices requestLoginPostForUsername:[self userInfoReaduserkey:@"userName"] password:[self userInfoReaduserkey:@"passWord"]];
             [self feedbackPOSTtextString:textString];
-        } else if ([[resultDic objectForKey:@"status"] integerValue] == 200 || [[resultDic objectForKey:@"status"] integerValue] == 203 || [[resultDic objectForKey:@"status"] integerValue] == 204|| [[resultDic objectForKey:@"status"] integerValue] == 324) {
-            [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
+        } else if ([[resultDic objectForKey:@"status"] integerValue] == 200 || [[resultDic objectForKey:@"status"] integerValue] == 203 || [[resultDic objectForKey:@"status"] integerValue] == 204|| [[resultDic objectForKey:@"status"] integerValue] == 324 ||  [[resultDic objectForKey:@"status"] integerValue] == 100) {
+            //[self alertViewmessage:[resultDic objectForKey:@"msg"]];
         } else {
-            [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
             [InternetServices logOutPOSTkeystr:[self userInfoReaduserkey:@"userName"]];
         }
         
-            [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
+            [self alertViewmessage:[resultDic objectForKey:@"msg"]];
         self.feedbackTextView.text = @"";
         self.feedbacklabel.alpha = 1;
         
@@ -56,7 +55,7 @@
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     // 设置返回格式
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+   // manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     return manager;
 }
 

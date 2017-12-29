@@ -11,7 +11,7 @@
 @implementation MineViewController (Animation)
 
 - (void)animationShowFunctionView {
-        [UIView animateWithDuration:0.3 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:5.0 options:UIViewAnimationOptionCurveLinear animations:^{
+    [UIView animateWithDuration:0.3 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:5.0 options:UIViewAnimationOptionCurveLinear animations:^{
     
         [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {

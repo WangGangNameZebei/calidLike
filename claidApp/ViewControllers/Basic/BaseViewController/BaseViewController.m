@@ -90,7 +90,7 @@
     label.font = [UIFont boldSystemFontOfSize:15];
     [showview addSubview:label];
     showview.frame = CGRectMake(([UIScreen screenWidth] - LabelSize.width - 20)/2, [UIScreen screenHeight] - 200, LabelSize.width+20, LabelSize.height+10);
-    [UIView animateWithDuration:3.0f animations:^{
+    [UIView animateWithDuration:3.5f animations:^{
         showview.alpha = 0;
     } completion:^(BOOL finished) {
         [showview removeFromSuperview];
@@ -109,7 +109,7 @@
 }
 #pragma mark   用户信息写入
 - (void)userInfowriteuserkey:(NSString *)userkey uservalue:(NSString *)uservalue{
-    if ([userkey isEqualToString:@"lanyaAESData"] || [userkey isEqualToString:@"userorakey"] || [userkey isEqualToString:@"districtNumber"] || [userkey isEqualToString:@"lanyaAESErrornData"] || [userkey isEqualToString:@"districtName"]) {
+    if ([userkey isEqualToString:@"lanyaAESData"] || [userkey isEqualToString:@"userorakey"] || [userkey isEqualToString:@"districtNumber"] || [userkey isEqualToString:@"lanyaAESErrornData"] || [userkey isEqualToString:@"districtName"] || [userkey isEqualToString:@"role"]) {
         userkey = [NSString stringWithFormat:@"%@%@",userkey,[[NSUserDefaults standardUserDefaults] objectForKey:@"currentUser"]];
     }
   
@@ -130,7 +130,7 @@
 }
 #pragma mark   用户信息读写
 - (NSString *)userInfoReaduserkey:(NSString *)userkey{
-    if ([userkey isEqualToString:@"lanyaAESData"] || [userkey isEqualToString:@"userorakey"] || [userkey isEqualToString:@"districtNumber"] || [userkey isEqualToString:@"lanyaAESErrornData"] || [userkey isEqualToString:@"districtName"]) {
+    if ([userkey isEqualToString:@"lanyaAESData"] || [userkey isEqualToString:@"userorakey"] || [userkey isEqualToString:@"districtNumber"] || [userkey isEqualToString:@"lanyaAESErrornData"] || [userkey isEqualToString:@"districtName"] || [userkey isEqualToString:@"role"]) {
         userkey = [NSString stringWithFormat:@"%@%@",userkey,[[NSUserDefaults standardUserDefaults] objectForKey:@"currentUser"]];
     }
     self.baseTool = [DBTool sharedDBTool];
