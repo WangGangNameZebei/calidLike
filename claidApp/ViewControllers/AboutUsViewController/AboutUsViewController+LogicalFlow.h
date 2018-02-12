@@ -11,5 +11,4 @@
 @interface AboutUsViewController (LogicalFlow)
 - (void)administratorApplicationPOSTdataaccountsstr:(NSString *)accounts pptCellId:(NSString *)pptCellId role:(NSString *)role;
 - (void)checkStatusOfCardPOSTdataStr:(NSString *)dataStr;       //效验发卡器
-- (void)districtInfoPOSTNameStr:(NSString *)nameStr dataStr:(NSString *)dataStr;
 @end

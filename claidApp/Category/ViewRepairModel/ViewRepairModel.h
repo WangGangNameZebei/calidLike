@@ -16,4 +16,5 @@
 @property (nonatomic, strong) NSString *timebe;
 @property (nonatomic, strong) NSString *buttonTextbe;
 @property (nonatomic, strong) NSString *idtextString;
+@property (nonatomic, strong) NSString *nameString;
 @end

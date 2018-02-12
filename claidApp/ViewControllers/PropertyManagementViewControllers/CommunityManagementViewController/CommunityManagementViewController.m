@@ -32,18 +32,29 @@
     if (indexPath.row == 0){
         UploadViewController *uploadVC = [UploadViewController create];
         uploadVC.titleString = @"公告上传";
-     [self presentViewController:uploadVC animated:YES completion:nil];
+         uploadVC.transitioningDelegate = self;
+       [self presentViewController:uploadVC animated:YES completion:nil];
     } else if (indexPath.row == 1){
         RecordQueryViewController *recordQueryVC =  [RecordQueryViewController create];
+         recordQueryVC.transitioningDelegate = self;
        [self presentViewController:recordQueryVC animated:YES completion:nil];
     } else if (indexPath.row == 2) {
         ViewRepairViewController *viewRepairVC = [ViewRepairViewController create];
+         viewRepairVC.transitioningDelegate = self;
         [self presentViewController:viewRepairVC animated:YES completion:nil];
     } else {
         ParkModifyViewController *parkModiftyVC = [ParkModifyViewController create];
+        parkModiftyVC.transitioningDelegate = self;
         [self presentViewController:parkModiftyVC animated:YES completion:nil];
     }
     
+}
+#pragma Mark - UIViewControllerTransitioningDelegate
+-(id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source{
+    return [[PresentTransitionAnimated alloc] init];
+}
+- (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    return [[DismissTransitionAnimated alloc] init];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -8,7 +8,7 @@
 
 #import "AnnouncementViewController+LogicalFlow.h"
 #import <AFHTTPRequestOperationManager.h>
-
+#import "InternetServices.h"
 
 @implementation AnnouncementViewController (LogicalFlow)
 
@@ -28,16 +28,39 @@
             if (self.mjBool){
                 [self.layouts removeAllObjects];
             }
-            NSLog(@"-----------  %@",resultDic);
             [self returnRefreshData:resultDic];
+        } else if ([[resultDic objectForKey:@"status"] integerValue] == 205){
+            [self alertViewmessage:[resultDic objectForKey:@"msg"]];
+            [self.layouts removeAllObjects];
+            [self.indicator stopAnimating];
+            [self.announcementTableView showEmptyViewWithType:NoContentTypeOrder];
+            [self mjreloadDataTableViewAction];
+        }else if ([[resultDic objectForKey:@"status"] integerValue] == 329){
+            [InternetServices requestLoginPostForUsername:[self userInfoReaduserkey:@"userName"] password:[self userInfoReaduserkey:@"passWord"]];
+            [self announcementsetPOSTDataAction:pageNum];
+        } else if ([[resultDic objectForKey:@"status"] integerValue] == 296 ||[[resultDic objectForKey:@"status"] integerValue] == 301 || [[resultDic objectForKey:@"status"] integerValue] == 328 || [[resultDic objectForKey:@"status"] integerValue] == 330){
+            [self.indicator stopAnimating];
+            [self mjreloadDataTableViewAction];
+            [InternetServices logOutPOSTkeystr:[self userInfoReaduserkey:@"userName"]]; //退出登录
+            [self alertViewmessage:[resultDic objectForKey:@"msg"]];
+        } else if ([[resultDic objectForKey:@"status"] integerValue] == 342){   //小区 管理员失效
+            [self userInfowriteuserkey:@"role" uservalue:@"0"];       // 小区 管理员标识
+            [self alertViewmessage:[resultDic objectForKey:@"msg"]];
+            [self.layouts removeAllObjects];
+            [self.indicator stopAnimating];
+            [self.announcementTableView showEmptyViewWithType:NoContentTypeNetwork];
+            [self mjreloadDataTableViewAction];
         } else {
-             [self.indicator stopAnimating];
-             [self mjreloadDataTableViewAction];
+            [self.indicator stopAnimating];
+            [self mjreloadDataTableViewAction];
         }
         
-         NSLog(@"-----=====--  %@",[resultDic objectForKey:@"msg"]);
         
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
+        [self.layouts removeAllObjects];
+        [self.indicator stopAnimating];
+        [self.announcementTableView showEmptyViewWithType:NoContentTypeNetwork];
+        [self mjreloadDataTableViewAction];
         if (error.code == -1009){
             [self promptInformationActionWarningString:@"您的网络有异常"];
         } else {
@@ -56,11 +79,12 @@
             NSMutableArray *dataArray = [NSMutableArray array];
             NSDictionary * resultDataDic =resultDataArr[i];
             NSString *strimage=[resultDataDic objectForKey:@"notification_pictrue_path"];
+            NSString *thumbnailimage=[resultDataDic objectForKey:@"notification_thumbnail_pictrue_path"];
             if (![strimage isKindOfClass:[NSNull class]] && strimage.length > 8){
             NSArray *temp=[strimage componentsSeparatedByString:@","];
-           
+            NSArray *thumbnailtemp=[thumbnailimage componentsSeparatedByString:@"@"];
              for (int j = 0; j < temp.count; j++) {
-               NSString *thumbnail =[NSString stringWithFormat:@"http://sycalid.cn//%@",temp[j]];
+               NSString *thumbnail =[NSString stringWithFormat:@"http://sycalid.cn//%@",thumbnailtemp[j]];
                NSString *large = [NSString stringWithFormat:@"http://sycalid.cn//%@",temp[j]];
                 DSImagesData *imagesData =[[DSImagesData alloc] init];
                 imagesData.thumbnailImage.width = 750;
@@ -77,12 +101,17 @@
             DSDemoModel *model = [[DSDemoModel alloc] init];
             model.imageDataArray = dataArray;
             model.describe = desc;
-            model.timebe = [NSString stringWithFormat:@"  %@  \n  %@  ",[[resultDataDic objectForKey:@"publish_time"] substringWithRange:NSMakeRange(2, 8)],[[resultDataDic objectForKey:@"publish_time"] substringWithRange:NSMakeRange(11, 8)]];
+            model.timebe = [NSString stringWithFormat:@"%@\n%@",[[resultDataDic objectForKey:@"publish_time"] substringWithRange:NSMakeRange(2, 8)],[[resultDataDic objectForKey:@"publish_time"] substringWithRange:NSMakeRange(11, 8)]];
             model.titlebe = [resultDataDic objectForKey:@"notification_title"];
             DSDemoLayout *layout = [[DSDemoLayout alloc] initWithDSDemoMode:model];
             [self.layouts addObject:layout];
         }      
-        
+      
+        if (self.layouts.count == 0){
+           [self.announcementTableView showEmptyViewWithType:NoContentTypeOrder];
+        } else {
+            [self.announcementTableView removeEmptyView];
+        }
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.indicator stopAnimating];
             [self mjreloadDataTableViewAction];
@@ -101,16 +130,12 @@
 }
 // 刷新Tableview
 - (void)mjreloadDataTableViewAction {
-    //这里假设2秒之后获取到了更多的数据，刷新tableview，并且结束刷新控件的刷新状态
-    __weak typeof(self) weakSelf = self;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [weakSelf.announcementTableView reloadData];
+        [self.announcementTableView reloadData];
         if (self.mjBool){
-             [weakSelf.announcementTableView.mj_header endRefreshing];
+             [self.announcementTableView.mj_header endRefreshing];
         } else {
-             [weakSelf.announcementTableView.mj_footer endRefreshing];
+             [self.announcementTableView.mj_footer endRefreshing];
         }
-        
-    });
+
 }
 @end

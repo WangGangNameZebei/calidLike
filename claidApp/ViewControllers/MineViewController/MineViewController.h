@@ -9,9 +9,8 @@
 #import "BaseViewController.h"
 #import "SingleTon.h"
 #import "MinViewControllerDataSource.h"
-#import "MycradInfoViewController.h"
 #import "JYCarousel.h"
-@interface MineViewController : BaseViewController<mindsendDataToVCDelegate,JYCarouselDelegate,MycradInfoViewControllerDelegate>
+@interface MineViewController : BaseViewController<mindsendDataToVCDelegate,JYCarouselDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -28,7 +27,6 @@
 @property (strong, nonatomic) NSString *message;
 @property (assign, nonatomic) BOOL SDshukaBiaoshi; // 手动刷卡 标识
 @property (strong, nonatomic) NSTimer * paybycardTimer;  //刷卡定时器
-@property (nonatomic, strong) MycradInfoViewController *mycardinfoVC;
 @property (nonatomic, strong) JYCarousel *carouselView;     // 滚动页面
 @property (nonatomic, assign) BOOL wifiBool;
 

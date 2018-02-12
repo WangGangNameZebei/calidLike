@@ -10,7 +10,6 @@
 #import <AFHTTPRequestOperationManager.h>
 
 @implementation VisitorViewController (LogicalFlow)
-
 - (void)visitorPostForPhoneNumber:(NSString *)phoneNumber {
     AFHTTPRequestOperationManager *manager = [self tokenManager];
     NSDictionary *parameters = @{@"tourist_phone":phoneNumber};
@@ -68,8 +67,7 @@
     for (NSInteger i=0; i < dataArray.count; i++) {
         self.readBool = YES;
         self.dataArray = [dataArray objectAtIndex:i];
-       
-        self.visitorClassData = [VisitorCalss assignmentVisitorName:[self.dataArray[2] integerValue] visitorRemarks:self.dataArray[0] visitorData:self.dataArray[1]];
+        self.visitorClassData = [VisitorCalss assignmentVisitorName:[self.dataArray[2] integerValue] visitorRemarks:self.dataArray[0] visitorData:self.dataArray[1] visitorFrequency:[self.dataArray[3] integerValue]];
       self.readDataArr = [self.tool selectWithClass:[VisitorCalss class] params:nil];
         for (NSInteger j=0; j <self.readDataArr.count; j++) {
             self.viReadClass = self.readDataArr[j];

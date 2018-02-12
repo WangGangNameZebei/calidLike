@@ -12,7 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserRepairQueryViewController">
             <connections>
                 <outlet property="pageMenuView" destination="LTK-Ji-K4a" id="K9t-Kt-YOM"/>
-                <outlet property="userRepairQueryTableView" destination="ZNk-dY-hD8" id="DM1-oW-0pL"/>
+                <outlet property="userRepairQueryTableView" destination="ZNk-dY-hD8" id="LuA-s9-GXc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -71,7 +71,7 @@
                         <constraint firstAttribute="height" constant="40" id="5Vz-Th-nh7"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZNk-dY-hD8">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZNk-dY-hD8" customClass="MyTableView">
                     <rect key="frame" x="0.0" y="104" width="375" height="563"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>

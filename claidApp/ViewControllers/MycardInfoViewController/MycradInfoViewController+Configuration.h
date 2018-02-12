@@ -10,4 +10,5 @@
 
 @interface MycradInfoViewController (Configuration)
 - (void)configureViews;
+- (void)myInfoEditBoolAction:(BOOL)boolData; // 修改权限
 @end

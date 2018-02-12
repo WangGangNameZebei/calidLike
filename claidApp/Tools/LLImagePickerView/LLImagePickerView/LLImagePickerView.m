@@ -196,7 +196,6 @@ static NSInteger countOfRow;
         cell.deleteButton.hidden = !_showDelete;
         
         cell.LLClickDeleteButton = ^(NSIndexPath *cellIndexPath) {
-            
             LLImagePickerModel *model = _mediaArray[cellIndexPath.row];
             
             if (!_allowMultipleSelection) {

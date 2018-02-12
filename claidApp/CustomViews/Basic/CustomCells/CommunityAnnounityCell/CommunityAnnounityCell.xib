@@ -34,15 +34,13 @@
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="160" id="sCo-GQ-adp"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这是一个测试的数据" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HiG-mY-YgB">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tox-NN-uuG">
                         <rect key="frame" x="8" y="173" width="305" height="25"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="25" id="r8D-Zs-D4i"/>
+                            <constraint firstAttribute="height" constant="25" id="C1O-q0-Vtg"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="叔叔护额问问 iu 个无辜也更为 iu 郝军看哈个 iu 规划 iu 无辜额问我" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWL-ZQ-jOT">
                         <rect key="frame" x="8" y="206" width="243" height="22"/>
                         <constraints>
@@ -72,30 +70,30 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="EJY-dz-cEc" secondAttribute="trailing" id="0En-Kp-nAn"/>
+                    <constraint firstItem="Tox-NN-uuG" firstAttribute="top" secondItem="EJY-dz-cEc" secondAttribute="bottom" constant="3" id="1AO-bI-Sxv"/>
                     <constraint firstAttribute="trailing" secondItem="4Nj-ks-JCw" secondAttribute="trailing" constant="8" id="5Ah-Em-fkx"/>
+                    <constraint firstAttribute="trailing" secondItem="Tox-NN-uuG" secondAttribute="trailing" constant="8" id="95Z-gR-wnR"/>
                     <constraint firstItem="EJY-dz-cEc" firstAttribute="top" secondItem="JGE-nP-s7a" secondAttribute="bottom" constant="2" id="AzV-Gz-kWf"/>
                     <constraint firstAttribute="trailing" secondItem="25X-zV-DgL" secondAttribute="trailing" id="EE6-5V-CNX"/>
                     <constraint firstItem="25X-zV-DgL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Ewa-wx-7rA"/>
-                    <constraint firstItem="HiG-mY-YgB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="GcA-IM-3vd"/>
                     <constraint firstAttribute="trailing" secondItem="JGE-nP-s7a" secondAttribute="trailing" id="Kn0-DO-rmf"/>
                     <constraint firstItem="JGE-nP-s7a" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="NsS-Oe-bzJ"/>
                     <constraint firstItem="aWL-ZQ-jOT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Upb-vf-MNK"/>
-                    <constraint firstAttribute="trailing" secondItem="HiG-mY-YgB" secondAttribute="trailing" constant="8" id="XXW-cT-xAb"/>
                     <constraint firstItem="EJY-dz-cEc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ZSk-ma-eNl"/>
-                    <constraint firstItem="aWL-ZQ-jOT" firstAttribute="top" secondItem="HiG-mY-YgB" secondAttribute="bottom" constant="8" id="axv-z3-Fy2"/>
                     <constraint firstItem="JGE-nP-s7a" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="f6a-QN-kVq"/>
                     <constraint firstAttribute="trailing" secondItem="EJY-dz-cEc" secondAttribute="trailing" id="fe4-WN-DdY"/>
                     <constraint firstItem="25X-zV-DgL" firstAttribute="top" secondItem="aWL-ZQ-jOT" secondAttribute="bottom" constant="8" id="kau-d5-VgY"/>
-                    <constraint firstItem="4Nj-ks-JCw" firstAttribute="top" secondItem="HiG-mY-YgB" secondAttribute="bottom" constant="8" id="nI3-bR-LEY"/>
+                    <constraint firstItem="4Nj-ks-JCw" firstAttribute="top" secondItem="aWL-ZQ-jOT" secondAttribute="top" id="n9S-Cy-k4X"/>
                     <constraint firstItem="EJY-dz-cEc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="q2n-k5-XqH"/>
+                    <constraint firstItem="Tox-NN-uuG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="sKk-dv-uvQ"/>
                     <constraint firstItem="EJY-dz-cEc" firstAttribute="top" secondItem="JGE-nP-s7a" secondAttribute="bottom" constant="2" id="u0x-o4-1Sf"/>
                     <constraint firstItem="4Nj-ks-JCw" firstAttribute="leading" secondItem="aWL-ZQ-jOT" secondAttribute="trailing" constant="10" id="udO-sQ-dKy"/>
-                    <constraint firstItem="HiG-mY-YgB" firstAttribute="top" secondItem="EJY-dz-cEc" secondAttribute="bottom" constant="3" id="yIN-Wd-VoD"/>
+                    <constraint firstItem="4Nj-ks-JCw" firstAttribute="top" secondItem="Tox-NN-uuG" secondAttribute="bottom" constant="8" symbolic="YES" id="xGb-6s-N7a"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="caImageView" destination="EJY-dz-cEc" id="zeD-t7-rAC"/>
-                <outlet property="caTitleLabel" destination="HiG-mY-YgB" id="STC-W3-Jze"/>
+                <outlet property="caTitleView" destination="Tox-NN-uuG" id="WnW-pE-nXR"/>
                 <outlet property="caimageViewWidth" destination="XbI-Y3-5TF" id="1Us-sJ-7x4"/>
                 <outlet property="catextInfoLabel" destination="aWL-ZQ-jOT" id="RC4-9u-OhS"/>
             </connections>

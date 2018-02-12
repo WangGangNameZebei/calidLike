@@ -11,7 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UploadViewController">
             <connections>
-                <outlet property="barbutton" destination="Inc-t4-A5b" id="ge5-7f-L49"/>
                 <outlet property="textNumberLaber" destination="cH4-Zn-WP1" id="xFG-Lt-9dm"/>
                 <outlet property="textTitleField" destination="0mL-TJ-1tP" id="mwW-bc-XjM"/>
                 <outlet property="textTitleFieldHelght" destination="TmU-3K-kB4" id="Emo-JR-qkl"/>
@@ -41,7 +40,7 @@
                             <color key="highlightedColor" red="0.9999160171" green="1" blue="0.99987202880000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fanhui_1.png" translatesAutoresizingMaskIntoConstraints="NO" id="6JR-It-rIO">
-                            <rect key="frame" x="8" y="25" width="31" height="35"/>
+                            <rect key="frame" x="6" y="25" width="31" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="6IB-I8-9OH"/>
                                 <constraint firstAttribute="width" constant="31" id="9tH-pe-KZR"/>
@@ -57,33 +56,17 @@
                                 <action selector="returnButtonAction:" destination="-1" eventType="touchUpInside" id="Jsr-Eg-Ovx"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Inc-t4-A5b">
-                            <rect key="frame" x="307" y="22" width="60" height="40"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="60" id="3sR-GZ-clY"/>
-                                <constraint firstAttribute="height" constant="40" id="uBU-Nx-WaM"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <state key="normal" title="编辑">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="yulanButtonAction:" destination="-1" eventType="touchUpInside" id="jlS-lc-Dwh"/>
-                            </connections>
-                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.068421952430000002" green="0.58686798809999996" blue="0.84999686480000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="tintColor" red="0.99599474669999999" green="0.99613386390000003" blue="0.99595087770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="64" id="1fe-vr-4ii"/>
-                        <constraint firstAttribute="trailing" secondItem="Inc-t4-A5b" secondAttribute="trailing" constant="8" id="1gJ-hE-o40"/>
                         <constraint firstItem="uFb-Uc-Vgs" firstAttribute="leading" secondItem="MbC-bH-hpl" secondAttribute="leading" id="G9R-rC-dMg"/>
                         <constraint firstItem="uFb-Uc-Vgs" firstAttribute="centerY" secondItem="MbC-bH-hpl" secondAttribute="centerY" constant="8" id="MlV-fG-tom"/>
                         <constraint firstItem="Af2-3L-TYq" firstAttribute="centerX" secondItem="MbC-bH-hpl" secondAttribute="centerX" id="PUY-jf-boE"/>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="64" id="QnE-Mc-Hhp"/>
                         <constraint firstItem="6JR-It-rIO" firstAttribute="centerY" secondItem="MbC-bH-hpl" secondAttribute="centerY" constant="10" id="cIm-AI-IE2"/>
-                        <constraint firstItem="Inc-t4-A5b" firstAttribute="centerY" secondItem="MbC-bH-hpl" secondAttribute="centerY" constant="10" id="h4a-Vy-whg"/>
-                        <constraint firstItem="6JR-It-rIO" firstAttribute="leading" secondItem="MbC-bH-hpl" secondAttribute="leading" constant="8" id="tc1-yh-th5"/>
+                        <constraint firstItem="6JR-It-rIO" firstAttribute="leading" secondItem="MbC-bH-hpl" secondAttribute="leading" constant="6" id="tc1-yh-th5"/>
                         <constraint firstItem="Af2-3L-TYq" firstAttribute="centerY" secondItem="MbC-bH-hpl" secondAttribute="centerY" constant="10" id="zk9-JB-CA5"/>
                     </constraints>
                 </view>

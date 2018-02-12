@@ -28,7 +28,7 @@
 
 - (void)initDataArray {
     self.nameDataArray = [NSMutableArray arrayWithObjects:@"我要报修",@"报修记录", nil];
-    self.imageDataArray = [NSMutableArray arrayWithObjects:@"community_blue",@"community_blue", nil];
+    self.imageDataArray = [NSMutableArray arrayWithObjects:@"community_repair_blue",@"community_repair_recording_blue", nil];
 }
 
 - (void)classificationCollectionViewEdit {
@@ -64,7 +64,8 @@
         UploadViewController *uploadVC = [UploadViewController create];
         uploadVC.titleString = @"我要报修";
         [uploadVC setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
-        [[self getCurrentViewController] presentViewController:uploadVC animated:NO completion:nil];
+        uploadVC.transitioningDelegate = self;
+        [[self getCurrentViewController] presentViewController:uploadVC animated:YES completion:nil];
     } else {
         UserRepairQueryViewController *userRepairQueryVC = [UserRepairQueryViewController create];
         [[self getCurrentViewController] hideTabBarAndpushViewController:userRepairQueryVC];
@@ -91,5 +92,11 @@
     }
     return result;
 }
-
+#pragma Mark - UIViewControllerTransitioningDelegate
+-(id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source{
+    return [[PresentTransitionAnimated alloc] init];
+}
+- (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    return [[DismissTransitionAnimated alloc] init];
+}
 @end

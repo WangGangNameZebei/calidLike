@@ -33,27 +33,24 @@
 - (UITableViewCell *)communityAnnounityTableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
     CommunityAnnounityCell *cell = [tableView dequeueReusableCellWithIdentifier:COMMUNITY_ANNOUNITY_CELL];
     NSMutableArray *imageData = [NSMutableArray new];
-    if (self.resultDataDic){
-        cell.caTimeLabel.text = [self.resultDataDic objectForKey:@"publish_time"];
-        cell.caTitleLabel.text = [self.resultDataDic objectForKey:@"notification_title"];
-        cell.catextInfoLabel.text = [self.resultDataDic objectForKey:@"notification_content"];
+    if (self.resultDataDic.count > 0){
         NSString *strimage=[self.resultDataDic objectForKey:@"notification_pictrue_path"];
-        if (![strimage isKindOfClass:[NSNull class]] ){
+        if (![strimage isKindOfClass:[NSNull class]] && strimage.length > 10){
             NSArray *temp=[strimage componentsSeparatedByString:@","];
-            //NSURL *imageUrl = [NSURL URLWithString:[NSString stringWithFormat:@"http://sycalid.cn//%@",temp[0]]];
-           // UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:imageUrl]];
-            
-            
             for (int j = 0; j < temp.count; j++) {
                 NSString *thumbnail =[NSString stringWithFormat:@"http://sycalid.cn//%@",temp[j]];
                 [imageData addObject:thumbnail];
             }
-       }
-        [cell animationImplementationAction:imageData];
+        } else {
+            NSString *thumbnail =[NSString stringWithFormat:@"http://sycalid.cn/data/image/notification/final/notification_pic_default.png"];
+            [imageData addObject:thumbnail];
+        }
+        
+        [cell setinfocaTimeText:[self.resultDataDic objectForKey:@"publish_time"] caTitleText:[self.resultDataDic objectForKey:@"notification_title"] caTextinfo:[self.resultDataDic objectForKey:@"notification_content"] dataImageArr:imageData];
     } else {
-        cell.caTimeLabel.text = @"无";
-        cell.caTitleLabel.text = @"暂无公告";
-        cell.catextInfoLabel.text = @"...";
+        NSString *thumbnail =[NSString stringWithFormat:@"http://sycalid.cn/data/image/notification/final/notification_not.png"];
+        [imageData addObject:thumbnail];
+        [cell setinfocaTimeText:@"  " caTitleText:@"暂无公告" caTextinfo:@"..." dataImageArr:imageData];
     }
     return cell;
 }

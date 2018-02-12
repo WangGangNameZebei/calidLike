@@ -8,6 +8,7 @@
 
 #import "UserRepairQueryViewController+LogicalFlow.h"
 #import <AFHTTPRequestOperationManager.h>
+#import "InternetServices.h"
 
 @implementation UserRepairQueryViewController (LogicalFlow)
 
@@ -25,12 +26,9 @@
             if (self.mjBool) {
                 switch (self.userpageMenu.selectedItemIndex) {
                     case 0:
-                        [self.layoutsOneArr removeAllObjects];
-                        break;
-                    case 1:
                         [self.layoutsTowArr removeAllObjects];
                         break;
-                    case 2:
+                    case 1:
                         [self.layoutsThreeArr removeAllObjects];
                         break;
                     default:
@@ -38,10 +36,10 @@
                         break;
                 }
             }
-            NSLog(@"=========hgsuysu---%@",resultDic);
             [self returnRefreshData:resultDic];
         }  else if ([[resultDic objectForKey:@"status"] integerValue] == 205) {
             [self.layouts removeAllObjects];
+            [self.userRepairQueryTableView showEmptyViewWithType:NoContentTypeOrder];
             [self.userRepairQueryTableView reloadData];
             [self.indicator stopAnimating];
             if (self.mjBool){
@@ -49,10 +47,36 @@
             } else {
                 [self.userRepairQueryTableView.mj_footer endRefreshing];
             }
-        } else {
+        } else if ([[resultDic objectForKey:@"status"] integerValue] == 329){
+            [InternetServices requestLoginPostForUsername:[self userInfoReaduserkey:@"userName"] password:[self userInfoReaduserkey:@"passWord"]];
+            [self setuserRepairQueryPostDataStatus:userstatus pageNum:pageNum];
+        } else if ([[resultDic objectForKey:@"status"] integerValue] == 296 ||[[resultDic objectForKey:@"status"] integerValue] == 301 || [[resultDic objectForKey:@"status"] integerValue] == 328 || [[resultDic objectForKey:@"status"] integerValue] == 330){
+            [self.indicator stopAnimating];
+            if (self.mjBool){
+                [self.userRepairQueryTableView.mj_header endRefreshing];
+            } else {
+                [self.userRepairQueryTableView.mj_footer endRefreshing];
+            }
+            [InternetServices logOutPOSTkeystr:[self userInfoReaduserkey:@"userName"]]; //退出登录
+            [self alertViewmessage:[resultDic objectForKey:@"msg"]];
+        } else if ([[resultDic objectForKey:@"status"] integerValue] == 342){   //小区 管理员失效
+            [self userInfowriteuserkey:@"role" uservalue:@"0"];       // 小区 管理员标识
+            [self alertViewmessage:[resultDic objectForKey:@"msg"]];
             [self.layouts removeAllObjects];
+            [self.userRepairQueryTableView showEmptyViewWithType:NoContentTypeNetwork];
             [self.userRepairQueryTableView reloadData];
-             [self.indicator stopAnimating];
+            [self.indicator stopAnimating];
+            if (self.mjBool){
+                [self.userRepairQueryTableView.mj_header endRefreshing];
+            } else {
+                [self.userRepairQueryTableView.mj_footer endRefreshing];
+            }
+        }  else {
+            [self alertViewmessage:[resultDic objectForKey:@"msg"]];
+            [self.layouts removeAllObjects];
+            [self.userRepairQueryTableView showEmptyViewWithType:NoContentTypeNetwork];
+            [self.userRepairQueryTableView reloadData];
+            [self.indicator stopAnimating];
             if (self.mjBool){
                 [self.userRepairQueryTableView.mj_header endRefreshing];
             } else {
@@ -60,9 +84,13 @@
             }
         }
         
-        NSLog(@"-----=====--  %@=======%@",[resultDic objectForKey:@"msg"],[resultDic objectForKey:@"status"]);
+
         
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
+        [self.layouts removeAllObjects];
+        [self.userRepairQueryTableView showEmptyViewWithType:NoContentTypeNetwork];
+        [self.indicator stopAnimating];
+        [self.userRepairQueryTableView reloadData];
         if (error.code == -1009){
             [self promptInformationActionWarningString:@"您的网络有异常"];
         } else {
@@ -87,18 +115,18 @@
     self.dataNextPageArr[self.userpageMenu.selectedItemIndex] =@(dataNumber);
     dataNumber = [[resultDic objectForKey:@"pageNum"] integerValue];
     self.dataPageArr[self.userpageMenu.selectedItemIndex] =@(dataNumber);
-    NSLog(@"====================%@---2---%@-----",self.dataNextPageArr,self.dataPageArr);
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         for (int i = 0; i < resultDataArr.count; i ++) {
             NSMutableArray *dataArray = [NSMutableArray array];
             NSDictionary *resultDataDic = resultDataArr[i];
             NSString *strimage=[resultDataDic objectForKey:@"repairs_pictrue_path"];
+            NSString *thumbnailimage=[resultDataDic objectForKey:@"repairs_thumbnai_pictrue_path"];
             if (![strimage isKindOfClass:[NSNull class]] && strimage.length > 8){
                 NSArray *temp=[strimage componentsSeparatedByString:@","];
-                
+                NSArray *thumbnailtemp=[thumbnailimage componentsSeparatedByString:@"@"];
                 for (int j = 0; j < temp.count; j++) {
-                    NSString *thumbnail =[NSString stringWithFormat:@"http://sycalid.cn//%@",temp[j]];
+                    NSString *thumbnail =[NSString stringWithFormat:@"http://sycalid.cn//%@",thumbnailtemp[j]];
                     NSString *large = [NSString stringWithFormat:@"http://sycalid.cn//%@",temp[j]];
                     DSImagesData *imagesData =[[DSImagesData alloc] init];
                     imagesData.thumbnailImage.width = 750;
@@ -131,11 +159,9 @@
             }
             
             UserRepairQueryLayout *layout = [[UserRepairQueryLayout alloc] initWithDSDemoMode:model];
-            if (self.userpageMenu.selectedItemIndex == 0){
-                [self.layoutsOneArr addObject:layout];
-            } else if (self.userpageMenu.selectedItemIndex == 1) {
+            if (self.userpageMenu.selectedItemIndex == 0) {
                 [self.layoutsTowArr addObject:layout];
-            } else if (self.userpageMenu.selectedItemIndex == 2) {
+            } else if (self.userpageMenu.selectedItemIndex == 1) {
                 [self.layoutsThreeArr addObject:layout];
             } else  {
                 [self.layoutsFourArr addObject:layout];
@@ -144,14 +170,17 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.indicator stopAnimating];
-            if (self.userpageMenu.selectedItemIndex == 0){
-                self.layouts = self.layoutsOneArr;
-            } else if (self.userpageMenu.selectedItemIndex == 1) {
+            if (self.userpageMenu.selectedItemIndex == 0) {
                 self.layouts = self.layoutsTowArr;
-            } else if (self.userpageMenu.selectedItemIndex == 2) {
+            } else if (self.userpageMenu.selectedItemIndex == 1) {
                 self.layouts = self.layoutsThreeArr;
             } else {
                 self.layouts = self.layoutsFourArr;
+            }
+            if (self.layouts.count == 0){
+                [self.userRepairQueryTableView showEmptyViewWithType:NoContentTypeOrder];
+            } else {
+                [self.userRepairQueryTableView removeEmptyView];
             }
             [self mjreloadDataTableViewAction];
         });
@@ -160,13 +189,14 @@
 // 刷新Tableview
 - (void)mjreloadDataTableViewAction {
     //这里假设2秒之后获取到了更多的数据，刷新tableview，并且结束刷新控件的刷新状态
-    __weak typeof(self) weakSelf = self;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [weakSelf.userRepairQueryTableView reloadData];
-        [weakSelf.userRepairQueryTableView.mj_header endRefreshing];
-        [weakSelf.userRepairQueryTableView.mj_footer endRefreshing];
-        
-    });
+    [self.userRepairQueryTableView reloadData];
+    if (self.mjBool){
+        [self.userRepairQueryTableView.mj_header endRefreshing];
+    } else {
+         [self.userRepairQueryTableView.mj_footer endRefreshing];
+    }
+    
+    
 }
 
 @end

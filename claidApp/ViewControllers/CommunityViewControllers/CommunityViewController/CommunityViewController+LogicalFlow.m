@@ -26,6 +26,11 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.communityTableView reloadData];
             });
+        } else if ([[resultDic objectForKey:@"status"] integerValue] == 205){
+            self.communityViewControllerDataSource.resultDataDic = nil;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.communityTableView reloadData];
+            });
         } else if ([[resultDic objectForKey:@"status"] integerValue] == 296 || [[resultDic objectForKey:@"status"] integerValue] == 301 || [[resultDic objectForKey:@"status"] integerValue] == 328 || [[resultDic objectForKey:@"status"] integerValue] == 330){
             [InternetServices logOutPOSTkeystr:[self userInfoReaduserkey:@"userName"]]; //退出登录
             [self alertViewmessage:[resultDic objectForKey:@"msg"]];

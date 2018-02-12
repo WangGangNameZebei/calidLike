@@ -33,7 +33,7 @@
     
     _titleHeight = [_model.titlebe ds_sizeForFont:[UIFont systemFontOfSize:19] size:CGSizeMake([UIScreen screenWidth] - 18, HUGE) mode:NSLineBreakByWordWrapping].height;
     
-    _cellHeight = _titleHeight+_descHeight + _imageLayout.imageBrowseHeight + 22;
+    _cellHeight = _titleHeight+_descHeight + _imageLayout.imageBrowseHeight + 28;
 }
 
 @end

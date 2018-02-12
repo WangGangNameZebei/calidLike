@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="113" id="KGk-i7-Jjw" customClass="MyInfoAvatarTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="113"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="112.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="HWH-od-dTD">
+                        <rect key="frame" x="112.5" y="11" width="95" height="89"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="my_blue" translatesAutoresizingMaskIntoConstraints="NO" id="lNV-aX-PMM">
+                                <rect key="frame" x="12" y="10" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="F4I-jG-c3y"/>
+                                    <constraint firstAttribute="width" constant="70" id="OwN-hA-Gr6"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="35"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slt_photo_btn.png" translatesAutoresizingMaskIntoConstraints="NO" id="kWL-Eu-w16">
+                                <rect key="frame" x="60.5" y="52" width="24" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="B7N-gx-pou"/>
+                                    <constraint firstAttribute="width" constant="24" id="aOW-mA-te9"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vgC-Bw-ok0">
+                                <rect key="frame" x="12" y="9" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="5NL-Jh-QpJ"/>
+                                    <constraint firstAttribute="width" constant="70" id="x96-fu-Sou"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="setupAvatarImageAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="bui-xx-2gN"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="vgC-Bw-ok0" firstAttribute="centerX" secondItem="HWH-od-dTD" secondAttribute="centerX" id="644-zU-apS"/>
+                            <constraint firstAttribute="height" constant="89" id="7u9-wO-oO7"/>
+                            <constraint firstItem="kWL-Eu-w16" firstAttribute="leading" secondItem="HWH-od-dTD" secondAttribute="leading" constant="61" id="GLk-ey-UQw"/>
+                            <constraint firstItem="vgC-Bw-ok0" firstAttribute="centerY" secondItem="HWH-od-dTD" secondAttribute="centerY" id="LkR-gV-Uj9"/>
+                            <constraint firstItem="kWL-Eu-w16" firstAttribute="top" secondItem="HWH-od-dTD" secondAttribute="top" constant="52" id="ZHc-Wz-JM9"/>
+                            <constraint firstItem="lNV-aX-PMM" firstAttribute="centerX" secondItem="HWH-od-dTD" secondAttribute="centerX" id="duf-fT-7dx"/>
+                            <constraint firstItem="lNV-aX-PMM" firstAttribute="centerY" secondItem="HWH-od-dTD" secondAttribute="centerY" id="p0i-Ca-8du"/>
+                            <constraint firstAttribute="width" constant="95" id="vPX-7u-Fnl"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H1V-hU-QjG">
+                        <rect key="frame" x="0.0" y="112" width="320" height="1"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="9rM-R2-uk1"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="H1V-hU-QjG" secondAttribute="trailing" id="ar3-Nh-yVX"/>
+                    <constraint firstItem="H1V-hU-QjG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="cb8-57-uZg"/>
+                    <constraint firstAttribute="bottom" secondItem="H1V-hU-QjG" secondAttribute="bottom" id="duL-v5-Qmb"/>
+                    <constraint firstItem="HWH-od-dTD" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="hTX-Ke-Xhu"/>
+                    <constraint firstItem="HWH-od-dTD" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="xv4-Lk-A2c"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="avatarImageView" destination="lNV-aX-PMM" id="8eA-Kj-ssy"/>
+            </connections>
+            <point key="canvasLocation" x="25" y="86.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="my_blue" width="30" height="30"/>
+        <image name="slt_photo_btn.png" width="88" height="88"/>
+    </resources>
+</document>

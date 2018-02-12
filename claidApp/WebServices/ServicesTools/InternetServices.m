@@ -11,7 +11,8 @@
 #import "BaseViewController.h"
 #import "InstallCardData.h"
 #import "LoginViewController.h"
-
+#import "DBTool.h"
+#import "CreditCardRecords.h"
 @implementation InternetServices
 + (AFHTTPRequestOperationManager *)tokenManager {
     
@@ -115,6 +116,65 @@
     navigationController.navigationBarHidden = YES;
     UIApplication.sharedApplication.delegate.window.rootViewController = navigationController;
    [[NSUserDefaults standardUserDefaults] setObject:@"NO" forKey:@"loginInfo"];
+}
+#pragma mark - 上传数据
++ (void)uploadRecordingDataAction {
+    AFHTTPRequestOperationManager *manager = [self tokenManager];
+    BaseViewController *baseVC = [[BaseViewController alloc] init];
+    [manager.requestSerializer setValue:[baseVC userInfoReaduserkey:@"Token"] forHTTPHeaderField:@"access_token"];
+    DBTool *tool = [DBTool sharedDBTool];
+    CreditCardRecords *creditCardRecords;
+    NSDictionary *uploadDictionary;
+    NSString *uploadString = @"";
+    NSData * jsonData;
+    NSString * myString;
+    NSArray *data = [tool selectWithClass:[CreditCardRecords class] params:nil];
+    if (data.count == 0){
+        return;
+    } else {
+        for (NSInteger i = 0; i <data.count ; i++) {
+            creditCardRecords = data[i];
+            uploadDictionary = @{@"accounts":[baseVC userInfoReaduserkey:@"userName"],@"ppt_cell_id": creditCardRecords.communityNumber,@"swiping_address":creditCardRecords.swipeAddress,@"swiping_sensitivity":creditCardRecords.swipeSensitivity,@"swiping_status": creditCardRecords.swipeStatus,@"swiping_time":creditCardRecords.swipeTime};
+            jsonData = [NSJSONSerialization dataWithJSONObject:uploadDictionary options:0 error:nil];
+            myString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+            if (uploadString.length < 8){
+                uploadString = [NSString stringWithFormat:@"%@",myString];
+            } else {
+                uploadString = [NSString stringWithFormat:@"%@,%@",uploadString,myString];
+            }
+        }
+    }
+    
+    
+    uploadString = [NSString stringWithFormat:@"[%@]",uploadString];
+    NSDictionary *parameters = @{@"recordJson":uploadString};
+    
+    [manager POST:UPLOAD_RECORDING_URL parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        
+        NSString *requestTmp = [NSString stringWithString:operation.responseString];
+        NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];
+        //系统自带JSON解析
+        NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableContainers error:nil];
+        if ([[resultDic objectForKey:@"status"] integerValue] == 200) {
+            [tool dropTableWithClass:[CreditCardRecords class]]; // 成功删除记录
+        } else if ([[resultDic objectForKey:@"status"] integerValue] == 296 || [[resultDic objectForKey:@"status"] integerValue] == 301 || [[resultDic objectForKey:@"status"] integerValue] == 328 || [[resultDic objectForKey:@"status"] integerValue] == 330){
+            [InternetServices logOutPOSTkeystr:[baseVC userInfoReaduserkey:@"userName"]]; //退出登录
+            [baseVC alertViewmessage:[resultDic objectForKey:@"msg"]];
+        } else if ([[resultDic objectForKey:@"status"] integerValue] == 329){ //过期
+            [InternetServices requestLoginPostForUsername:[baseVC userInfoReaduserkey:@"userName"] password:[baseVC userInfoReaduserkey:@"passWord"]];
+            [self uploadRecordingDataAction];
+        } else {
+            [baseVC alertViewmessage:[resultDic objectForKey:@"msg"]];
+        }
+        
+    } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
+        if (error.code == -1009){
+            [baseVC promptInformationActionWarningString:@"您的网络有异常"];
+        } else {
+            [baseVC promptInformationActionWarningString:[NSString stringWithFormat:@"%ld",(long)error.code]];
+        }
+        
+    }];
 }
 
 @end

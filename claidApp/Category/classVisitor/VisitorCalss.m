@@ -10,12 +10,12 @@
 
 @implementation VisitorCalss
 
-+(instancetype)assignmentVisitorName:(NSInteger)visitorNameint visitorRemarks:(NSString *)visitorRemarksStr visitorData:(NSString *)visitorDataStr {
++(instancetype)assignmentVisitorName:(NSInteger)visitorNameint visitorRemarks:(NSString *)visitorRemarksStr visitorData:(NSString *)visitorDataStr visitorFrequency:(NSInteger)visitorFrequency {
     VisitorCalss *visitor = [[VisitorCalss alloc] init];
     visitor.visitorName = visitorNameint;
     visitor.visitorRemarks = visitorRemarksStr;
     visitor.visitorData = visitorDataStr;
-    visitor.visitorFrequency = 3;
+    visitor.visitorFrequency = visitorFrequency;
     return visitor;
 }
 

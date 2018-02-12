@@ -14,6 +14,6 @@
 @property (strong, nonatomic) NSString *visitorData;            //刷卡数据
 @property (assign, nonatomic) NSInteger visitorFrequency;       //刷卡次数
 
-+(instancetype)assignmentVisitorName:(NSInteger )visitorNameint visitorRemarks:(NSString *)visitorRemarksStr visitorData:(NSString * )visitorDataStr;
++(instancetype)assignmentVisitorName:(NSInteger)visitorNameint visitorRemarks:(NSString *)visitorRemarksStr visitorData:(NSString *)visitorDataStr visitorFrequency:(NSInteger)visitorFrequency;
 
 @end

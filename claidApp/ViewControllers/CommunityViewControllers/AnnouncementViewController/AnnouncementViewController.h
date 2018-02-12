@@ -15,10 +15,13 @@
 #import "DSImageShowView.h"
 #import "YYImageCoder.h"
 #import <MJRefresh.h>  // 上拉加载下拉刷新
+#import "MyTableView.h"
+#import "NoContentView.h"
 
 @interface AnnouncementViewController : BaseViewController<UITableViewDelegate,UITableViewDataSource,DSImageBrowseCellDelegate>
 
-@property (strong, nonatomic) IBOutlet UITableView *announcementTableView;
+
+@property (strong, nonatomic) IBOutlet MyTableView *announcementTableView;
 
 @property (nonatomic, strong) NSMutableArray *layouts;
 

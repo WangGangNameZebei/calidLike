@@ -26,6 +26,7 @@
 
 #import "HcdDateTimePickerView.h"
 #import "UIColor+HcdCustom.h"
+#import "UIColor+Utility.h"
 
 @interface HcdDateTimePickerView()<UIGestureRecognizerDelegate>
 {
@@ -111,7 +112,7 @@
 */
 
 - (void)initDatas {
-    _topViewColor = [UIColor colorWithHexString:@"0x6271f3"];
+    _topViewColor = [UIColor setipBlueColor];
     _buttonTitleColor = [UIColor colorWithHexString:@"0xffffff"];
 }
 
@@ -673,7 +674,7 @@
     }
     typeof(self) __weak weak = self;
     [self dismissBlock:^(BOOL Complete) {
-     weak.clickedOkBtn(@"11");
+     weak.clickedOkBtn(@"");
     }];
     return YES;
 }
@@ -713,7 +714,7 @@
             
             weak.clickedOkBtn(dateTimeStr);
         } else {
-            weak.clickedOkBtn(@"11");
+            weak.clickedOkBtn(@"");
         }
     }];
     

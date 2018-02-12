@@ -43,10 +43,12 @@
     if (indexPath.row == 0) {
         AppTeachingViewController *appteachingVC = [AppTeachingViewController create];
         [self hideTabBarAndpushViewController:appteachingVC];
-    } else if (indexPath.row == 1) {
+    } else if (indexPath.row == 2) {
+        [self upgradeAppAction];
+    }else if (indexPath.row == 1) {
         MyFeedBackViewController *myfeedBackVC = [MyFeedBackViewController create];
         [self hideTabBarAndpushViewController:myfeedBackVC];
-    } else if (indexPath.row == 2) {
+    } else if (indexPath.row == 3) {
         self.ablouusAlertView = [[UIAlertView alloc] initWithTitle:@"软件分享" message:@"云梯控请求打开微信？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"允许", nil];
         self.ablouusAlertView.tag = 1;
         [self.ablouusAlertView show];
@@ -70,33 +72,66 @@
             NSLog(@"微信分享到会话失败：\n%@\n%@",error,message);
         }];
                 
-    }  else {
+    } 
+}
+
+#pragma mark检测升级
+- (void)upgradeAppAction {
+    static NSString *appId = @"1219844769";
+    // 返回是否有新版本
+    BOOL update = [self checkAppStoreVersionWithAppId:appId];
+    // 添加自己的代码 可以弹出一个提示框 这里不实现了
+    if (update) {
+        [self alertViewDelegateString:@"有新的版本可供检测,是否升级?"];
+    } else {
+        [self alertViewmessage:@"已经是最新的版本!"];
+    }
+}
+#pragma mark -  检测 版本 号 是否升级
+- (BOOL)checkAppStoreVersionWithAppId:(NSString *)appId {
+    
+    // MARK: 拼接链接，转换成URL
+    NSString *checkUrlString = [NSString stringWithFormat:@"https://itunes.apple.com/lookup?id=%@", appId];
+    NSURL *checkUrl = [NSURL URLWithString:checkUrlString];
+    // MARK: 获取网路数据AppStore上app的信息
+    NSString *appInfoString = [NSString stringWithContentsOfURL:checkUrl encoding:NSUTF8StringEncoding error:nil];
+    // MARK: 字符串转json转字典
+    NSError *error = nil;
+    if (appInfoString.length < 5 ){
+        return NO;
+    }
+    NSData *JSONData = [appInfoString dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *appInfo = [NSJSONSerialization JSONObjectWithData:JSONData options:NSJSONReadingMutableLeaves error:&error];
+    if (!error && appInfo) {
+        NSArray *resultArr = appInfo[@"results"];
+        NSDictionary *resultDic = resultArr.firstObject;
+        // 版本号
+        NSString *version = resultDic[@"version"];
+        // 下载地址
+        //  NSString   trackViewUrl = resultDic[@"trackViewUrl"];
+        // FRXME：比较版本号
         
-        if (buttonIndex == alertView.firstOtherButtonIndex) {
-            UITextField *nameField = [alertView textFieldAtIndex:0];
-            
-            
-            if (nameField.tag == 10) {
-                UITextField *dizhiField = [alertView textFieldAtIndex:1];
-                
-                self.dizhiString = [NSString stringWithFormat:@"%@%@",self.dizhiString,dizhiField.text];  //地址
-                [self districtInfoPOSTNameStr:nameField.text dataStr:self.dizhiString];
-            } else if (nameField.tag == 0) {
-                [self districtInfoPOSTNameStr:nameField.text dataStr:@""];
-                
-            } else if (nameField.tag == 1) {
-                self.dizhiString = [NSString stringWithFormat:@"%@%@",self.dizhiString,nameField.text];  //地址
-                [self districtInfoPOSTNameStr:@"" dataStr:self.dizhiString];
-            }
-            
-            
-        }
-        
+        BOOL upnumber = [self compareVersion:version];
+        return upnumber;
+    }else {
+        // 返回错误 想当于没有更新吧
+        return NO;
     }
     
 }
 
 
+- (BOOL)compareVersion:(NSString *)serverVersion {
+    // 获取当前版本号
+    NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
+    NSString *appVersion = [infoDic objectForKey:@"CFBundleShortVersionString"];
+    // MARK： 比较方法
+    if ([appVersion compare:serverVersion options:NSNumericSearch] == NSOrderedAscending) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
 /*
 #pragma mark - Navigation
 

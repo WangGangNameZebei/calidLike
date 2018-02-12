@@ -7,7 +7,10 @@
 //
 
 #import "BaseView.h"
-@interface ClassificationView : BaseView <UICollectionViewDataSource,UICollectionViewDelegate>
+#import "PresentTransitionAnimated.h"
+#import "DismissTransitionAnimated.h"
+
+@interface ClassificationView : BaseView <UICollectionViewDataSource,UICollectionViewDelegate,UIViewControllerTransitioningDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *classificationCollectionView;
 @property (strong, nonatomic) NSMutableArray *imageDataArray;
 @property (strong, nonatomic) NSMutableArray *nameDataArray;

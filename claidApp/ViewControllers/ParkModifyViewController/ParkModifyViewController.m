@@ -27,9 +27,9 @@
 }
 - (IBAction)modifyButtonAction:(id)sender {
     if (self.parkAddressTextfield.text.length < 4){
-    [self districtInfoPOSTNameStr:self.parkNameTextfield.text dataStr:[NSString stringWithFormat:@"%@%@",self.addressString,self.parkAddressTextView.text]];
+        [self districtInfoPOSTNameStr:self.parkNameTextfield.text dataStr:[NSString stringWithFormat:@"%@%@",self.addressString,self.parkAddressTextView.text] propertyName:self.propertyNameTextField.text propertyPhone:self.propertyPhoneNumber.text];
     } else {
-        [self districtInfoPOSTNameStr:self.parkNameTextfield.text dataStr:[NSString stringWithFormat:@"%@%@",self.parkAddressTextfield.text,self.parkAddressTextView.text]];
+        [self districtInfoPOSTNameStr:self.parkNameTextfield.text dataStr:[NSString stringWithFormat:@"%@%@",self.parkAddressTextfield.text,self.parkAddressTextView.text] propertyName:self.propertyNameTextField.text propertyPhone:self.propertyPhoneNumber.text];
     }
     
 }

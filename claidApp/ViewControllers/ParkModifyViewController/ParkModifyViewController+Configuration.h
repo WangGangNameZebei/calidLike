@@ -10,4 +10,5 @@
 
 @interface ParkModifyViewController (Configuration)
 - (void)configureViews;
+- (void)locationEdit;
 @end
