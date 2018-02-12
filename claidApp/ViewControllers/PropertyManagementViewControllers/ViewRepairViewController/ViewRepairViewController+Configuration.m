@@ -121,6 +121,9 @@
         //刷新时候，需要执行的代码。一般是请求更多数据，请求成功之后，刷新列表
         [weakSelf loadNoreData];
     }];
+    self.viewRepairTableView.noContentViewTapedBlock = ^{
+        [weakSelf loadNewData];
+    };
    
 }
 

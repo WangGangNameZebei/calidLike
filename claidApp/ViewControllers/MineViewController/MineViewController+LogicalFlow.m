@@ -8,70 +8,9 @@
 
 #import "MineViewController+LogicalFlow.h"
 #import <AFHTTPRequestOperationManager.h>
-#import "DBTool.h"
-#import "CreditCardRecords.h"
 #import "InternetServices.h"
 
 @implementation MineViewController (LogicalFlow)
-
-
-- (void)uploadRecordingDataAction {
-    AFHTTPRequestOperationManager *manager = [self tokenManager];
-    [manager.requestSerializer setValue:[self userInfoReaduserkey:@"Token"] forHTTPHeaderField:@"access_token"];
-    DBTool *tool = [DBTool sharedDBTool];
-    CreditCardRecords *creditCardRecords;
-    NSDictionary *uploadDictionary;
-    NSString *uploadString = @"";
-    NSData * jsonData;
-    NSString * myString;
-    NSArray *data = [tool selectWithClass:[CreditCardRecords class] params:nil];
-    if (data.count == 0){
-        return;
-    } else {
-        for (NSInteger i = 0; i <data.count ; i++) {
-            creditCardRecords = data[i];
-            uploadDictionary = @{@"accounts":[self userInfoReaduserkey:@"userName"],@"ppt_cell_id": creditCardRecords.communityNumber,@"swiping_address":creditCardRecords.swipeAddress,@"swiping_sensitivity":creditCardRecords.swipeSensitivity,@"swiping_status": creditCardRecords.swipeStatus,@"swiping_time":creditCardRecords.swipeTime};
-            jsonData = [NSJSONSerialization dataWithJSONObject:uploadDictionary options:0 error:nil];
-            myString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-            if (uploadString.length < 8){
-                uploadString = [NSString stringWithFormat:@"%@",myString];
-            } else {
-                uploadString = [NSString stringWithFormat:@"%@,%@",uploadString,myString];
-            }
-        }
-    }
-
-    
-    uploadString = [NSString stringWithFormat:@"[%@]",uploadString];
-    NSDictionary *parameters = @{@"recordJson":uploadString};
-    
-    [manager POST:UPLOAD_RECORDING_URL parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-
-        NSString *requestTmp = [NSString stringWithString:operation.responseString];
-        NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];
-        //系统自带JSON解析
-        NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableContainers error:nil];
-        if ([[resultDic objectForKey:@"status"] integerValue] == 200) {
-            [tool dropTableWithClass:[CreditCardRecords class]]; // 成功删除记录
-        } else if ([[resultDic objectForKey:@"status"] integerValue] == 296 || [[resultDic objectForKey:@"status"] integerValue] == 301 || [[resultDic objectForKey:@"status"] integerValue] == 328 || [[resultDic objectForKey:@"status"] integerValue] == 330){
-            [InternetServices logOutPOSTkeystr:[self userInfoReaduserkey:@"userName"]]; //退出登录
-            [self alertViewmessage:[resultDic objectForKey:@"msg"]];
-        } else if ([[resultDic objectForKey:@"status"] integerValue] == 329){ //过期
-            [InternetServices requestLoginPostForUsername:[self userInfoReaduserkey:@"userName"] password:[self userInfoReaduserkey:@"passWord"]];
-            [self uploadRecordingDataAction];
-        } else {
-            [self alertViewmessage:[resultDic objectForKey:@"msg"]];
-        }
-
-    } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
-        if (error.code == -1009){
-            [self promptInformationActionWarningString:@"您的网络有异常"];
-        } else {
-            [self promptInformationActionWarningString:[NSString stringWithFormat:@"%ld",(long)error.code]];
-        }
-
-    }];
-}
 
 //后台登陆
 - (void)loginPostForUsername:(NSString *)username password:(NSString *)password {
@@ -141,20 +80,5 @@
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     // manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     return manager;
-}
-//字符串转日期格式
-- (NSDate *)stringToDate:(NSString *)dateString withDateFormat:(NSString *)format {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:format];
-    NSDate *date = [dateFormatter dateFromString:dateString];
-    return [self worldTimeToChinaTime:date];
-}
-
-//将世界时间转化为中国区时间
-- (NSDate *)worldTimeToChinaTime:(NSDate *)date {
-    NSTimeZone *timeZone = [NSTimeZone systemTimeZone];
-    NSInteger interval = [timeZone secondsFromGMTForDate:date];
-    NSDate *localeDate = [date  dateByAddingTimeInterval:interval];
-    return localeDate;
 }
 @end

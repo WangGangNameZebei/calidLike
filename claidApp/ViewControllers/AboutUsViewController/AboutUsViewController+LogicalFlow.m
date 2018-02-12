@@ -24,13 +24,15 @@
         //系统自带JSON解析
         NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableContainers error:nil];
         
-        if ([[resultDic objectForKey:@"status"] integerValue] == 296 || [[resultDic objectForKey:@"status"] integerValue] == 301 || [[resultDic objectForKey:@"status"] integerValue] == 328 || [[resultDic objectForKey:@"status"] integerValue] == 330){  //异常 退出登录
+        if ([[resultDic objectForKey:@"status"] integerValue] == 296 || [[resultDic objectForKey:@"status"] integerValue] == 328 || [[resultDic objectForKey:@"status"] integerValue] == 330){  //异常 退出登录
             [self.managementSingleTon disConnection];
             [InternetServices logOutPOSTkeystr:[self userInfoReaduserkey:@"userName"]];
         } else if ([[resultDic objectForKey:@"status"] integerValue] == 329){
             [InternetServices requestLoginPostForUsername:[self userInfoReaduserkey:@"userName"] password:[self userInfoReaduserkey:@"passWord"]];
             [self administratorApplicationPOSTdataaccountsstr:accounts pptCellId:pptCellId role:role];
-        }else {
+        } else if ( [[resultDic objectForKey:@"status"] integerValue] == 301 ){
+            [self alertViewmessage:[resultDic objectForKey:@"msg"]];
+        } else {
             [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
         }
         
@@ -59,9 +61,6 @@
             
             NSArray *arrar = [resultDic objectForKey:@"data"];
             [self lanyaCardChuliActiondataStr:arrar[0] olddata:dataStr];
-            if (![arrar[1] isEqualToString:@"0"]){
-                [self propertyNameAlertEditdataStr:arrar[1]];
-            }
             
         } else {
             NSString *receiveData =  [CalidTool lanyaDataDecryptedAction:dataStr];
@@ -83,41 +82,6 @@
     
 }
 
-
-#pragma mark- 提交小区信息
-- (void)districtInfoPOSTNameStr:(NSString *)nameStr dataStr:(NSString *)dataStr {
-    AFHTTPRequestOperationManager *manager = [self tokenManager];
-    [manager.requestSerializer setValue:[self userInfoReaduserkey:@"Token"] forHTTPHeaderField:@"access_token"];
-    NSDictionary *parameters = @{@"pptId":self.xiaoquNumber,@"pptName":nameStr,@"pptLoc":dataStr};
-    [manager POST:CHANGE_OF_INFO_URL parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-        NSString *requestTmp = [NSString stringWithString:operation.responseString];
-        NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];
-        //系统自带JSON解析
-        NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableContainers error:nil];
-        if ([[resultDic objectForKey:@"status"] integerValue] == 200){  //
-            [self promptInformationActionWarningString:@"园区信息提交成功"];
-        } else if ([[resultDic objectForKey:@"status"] integerValue] == 329){ //过期
-            [InternetServices requestLoginPostForUsername:[self userInfoReaduserkey:@"userName"] password:[self userInfoReaduserkey:@"passWord"]];
-            [self districtInfoPOSTNameStr:nameStr dataStr:dataStr];
-        } else if ([[resultDic objectForKey:@"status"] integerValue] == 326 || [[resultDic objectForKey:@"status"] integerValue] == 203 || [[resultDic objectForKey:@"status"] integerValue] == 204|| [[resultDic objectForKey:@"status"] integerValue] == 100) {
-            [self alertViewmessage:[resultDic objectForKey:@"msg"]];
-        } else {
-            [self alertViewmessage:[resultDic objectForKey:@"msg"]];
-            [InternetServices logOutPOSTkeystr:[self userInfoReaduserkey:@"userName"]];
-        }
-        
-    } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
-        [self.managementSingleTon disConnection];       // 退出前 断开蓝牙
-        if (error.code == -1009){
-            [self promptInformationActionWarningString:@"您的网络有异常"];
-            
-        } else {
-            [self promptInformationActionWarningString:[NSString stringWithFormat:@"%ld",(long)error.code]];
-        }
-        
-    }];
-    
-}
 - (AFHTTPRequestOperationManager *)tokenManager {
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];

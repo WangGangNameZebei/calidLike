@@ -19,6 +19,13 @@
   
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     [self carouselViewEdit];
+    [self lmjScrollTextViewEdit];
+}
+#pragma mark  滚动标题
+- (void)lmjScrollTextViewEdit {
+    self.lmjScrollTextView = [[LMJScrollTextView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen screenWidth] - 16, 25) textScrollModel:LMJTextScrollWandering direction:LMJTextScrollMoveLeft];
+
+    [self.caTitleView addSubview:self.lmjScrollTextView];
 }
 #pragma mark  滚动视图
 - (void)carouselViewEdit {
@@ -34,6 +41,7 @@
                                                       carouselConfig.placeholder = [UIImage imageNamed:@"zhanweiImage.png"];
                                                       carouselConfig.faileReloadTimes = 3;
                                                       carouselConfig.interValTime = 4.0f;
+                                                      carouselConfig.contentMode = UIViewContentModeScaleAspectFill;
                                                       return carouselConfig;
                                                       
                                                   } target:self];
@@ -50,10 +58,13 @@
     [self.carouselView startCarouselWithArray:imageArray];
     
 }
-
-- (void)animationImplementationAction:(NSMutableArray *)dataImageArr {
+- (void)setinfocaTimeText:(NSString *)timeText caTitleText:(NSString *)titleText caTextinfo:(NSString *)textInfo dataImageArr:(NSMutableArray *)dataImageArr {
+    self.caTimeLabel.text = timeText;
+     [self.lmjScrollTextView startScrollWithText:titleText textColor:[UIColor blackColor] font:[UIFont systemFontOfSize:19]];
+    self.catextInfoLabel.text = textInfo;
     [self.carouselView startCarouselWithArray:dataImageArr];
 }
+
 - (void)carouselViewClick:(NSInteger)index{
     AnnouncementViewController *annoucementVC = [AnnouncementViewController create];
     [[self getCurrentViewController] hideTabBarAndpushViewController:annoucementVC];

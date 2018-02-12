@@ -53,6 +53,7 @@
                 [self userInfowriteuserkey:@"role" uservalue:[NSString stringWithFormat:@"%@",userdataArray[6]]];       // 小区 管理员标识
             }
             [[NSUserDefaults standardUserDefaults] setObject:currentUserstr forKey:@"currentUser"]; // 恢复之前存储
+            [InternetServices uploadRecordingDataAction];  //顺便 上传刷卡数据
             [self promptInformationActionWarningString:@"数据更新成功!"];
         } else if ([[resultDic objectForKey:@"status"] integerValue] == 205){
             [InternetServices clearAllUserDefaultsData];
@@ -100,7 +101,5 @@
      //manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     return manager;
 }
-
-
 
 @end

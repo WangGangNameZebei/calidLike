@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "wlcom_main_red.png",
+      "filename" : "applyformanagement_blue.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "wlcom_main_red@2x.png",
+      "filename" : "applyformanagement_blue@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "wlcom_main_red@3x.png",
+      "filename" : "applyformanagement_blue@3x.png",
       "scale" : "3x"
     }
   ],

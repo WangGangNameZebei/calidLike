@@ -13,5 +13,5 @@
 + (BOOL)userphoneisrequestPostDataPhoneNumber:(NSString *)phoneNumber;      //检测帐号是否注册 YES 被注册 NO 没有注册
 + (void)logOutPOSTkeystr:(NSString *)keyStr;        //退出登录
 + (void)clearAllUserDefaultsData;        //清除 数据
-
++ (void)uploadRecordingDataAction;       //  上传刷卡数据
 @end

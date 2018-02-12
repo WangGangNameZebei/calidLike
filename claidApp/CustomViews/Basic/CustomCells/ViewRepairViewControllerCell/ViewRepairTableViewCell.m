@@ -52,6 +52,7 @@
     }
      self.height = layout.cellHeight;
      self.timeLabel.text = layout.model.timebe;
+     self.nameTextLabel.text = layout.model.nameString;
      self.phoneNumberLabel.text = layout.model.phoneNumberbe;
      self.infoTextLabel.text = layout.model.describe;
      [self.dealWithbutton setTitle:layout.model.buttonTextbe forState:UIControlStateNormal];

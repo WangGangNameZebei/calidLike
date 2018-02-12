@@ -17,8 +17,12 @@
 #import "DSImageShowView.h"
 #import "YYImageCoder.h"
 
+#import "MyTableView.h"
+#import "NoContentView.h"
+
 @interface UserRepairQueryViewController : BaseViewController <SPPageMenuDelegate,DSImageBrowseCellDelegate,UITableViewDelegate,UITableViewDataSource>
-@property (strong, nonatomic) IBOutlet UITableView *userRepairQueryTableView;
+@property (strong, nonatomic) IBOutlet MyTableView *userRepairQueryTableView;
+
 @property (strong, nonatomic) IBOutlet UIView *pageMenuView;
 
 @property (strong, nonatomic)NSArray *datapageMenuArray;
@@ -26,7 +30,6 @@
 @property (nonatomic, strong) UIActivityIndicatorView *indicator;
 
 @property (nonatomic, strong) NSMutableArray *layouts;
-@property (nonatomic, strong) NSMutableArray *layoutsOneArr;
 @property (nonatomic, strong) NSMutableArray *layoutsTowArr;
 @property (nonatomic, strong) NSMutableArray *layoutsThreeArr;
 @property (nonatomic, strong) NSMutableArray *layoutsFourArr;

@@ -13,7 +13,7 @@
 #import "UIScreen+Utility.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import "NetWorkJudge.h"
-
+#import "InternetServices.h"
 
 @implementation MineViewController (Configuration)
 
@@ -60,7 +60,7 @@
             [self loginPostForUsername:[self userInfoReaduserkey:@"userName"] password:[self userInfoReaduserkey:@"passWord"]];
             if (NetworkStatus == 1 && self.wifiBool){
                 self.wifiBool = NO;
-                [self uploadRecordingDataAction];
+                [InternetServices uploadRecordingDataAction];
             }
         }
     }];
@@ -221,69 +221,86 @@
 - (void)lanyaShuakareturnPromptActioninteger:(NSInteger)promptInteger {
     
     switch (promptInteger) {
-        case 0x2b:
-            [self alertViewmessage:@"循环用的EEPROM读写出现致命错误!"];
+        case 0x00:
+            [self alertViewmessage:@"此卡没有刷设备!"];
             break;
-        case 0x34:
-            [self alertViewmessage:@"在设置卡上发现的UID卡!"];
-            break;
-        case 0x2c:
-            [self alertViewmessage:@"CRC错误或老卡变新卡时错误!"];
-            break;
-        case 0x24:
-            [self alertViewmessage:@"被复制或写附属地址出错!"];
-            break;
-        case 0x04:
-            [self alertViewmessage:@"卡被复制!"];
-            break;
-        case 0x2a:
-            [self alertViewmessage:@"在用户卡上发现的UID!"];
-            break;
-        case 0x30:
-            [self alertViewmessage:@"防潜返,已经是进入或出去!"];
-            break;
-        case 0x1a:
-            [self alertViewmessage:@"减次数为0!"];
-            break;
-        case 0x1b:
-            [self alertViewmessage:@"减次数为0!"];
-            break;
-        case 0x05:
-            [self alertViewmessage:@"滚动码处理出错!"];
+        case 0x2d:
+            [self alertViewmessage:@"此卡为新发卡！"];
             break;
         case 0x1f:
-            [self alertViewmessage:@"第一次被顶掉!"];
+        case 0x04:
+            [self alertViewmessage:@"此卡被复制过!"];
+            break;
+        case 0x3c:
+        case 0x3d:
+            [self alertViewmessage:@"系统自动挂失!"];
+            break;
+        case 0x12:
+            [self alertViewmessage:@"此卡已被挂失!"];
             break;
         case 0x22:
-            [self alertViewmessage:@"没有通讯上!"];
-            break;
-        case 0x23:
-            [self alertViewmessage:@"测试卡处理!"];
+            [self alertViewmessage:@"读卡器通讯错误!"];
             break;
         case 0x0d:
-            [self alertViewmessage:@"地址不对!"];
-            break;
-        case 0x20:
-            [self promptInformationActionWarningString:@"成功,权限所剩不多!"];
+            [self alertViewmessage:@"此卡地址与设备不符!"];
             break;
         case 0x0f:
-            [self alertViewmessage:@"准时段可进入!"];
+            [self alertViewmessage:@"此卡不在准进时段内!"];
+            break;
+        case 0x11:
+            [self alertViewmessage:@"此卡有效期已过!"];
+            break;
+        case 0x1a:
+            [self alertViewmessage:@"此卡次数已用完!"];
+            break;
+        case 0x14:
+            [self alertViewmessage:@"此卡次数为0!"];
+            break;
+        case 0x30:
+            [self alertViewmessage:@"防潜返功能启动!"];
+            break;
+        case 0x33:
+            [self alertViewmessage:@"防潜返没有压地感输入!"];
+            break;
+        case 0x34:
+            [self alertViewmessage:@"此设置卡为UID复制卡!"];
+            break;
+        case 0x2a:
+            [self alertViewmessage:@"此用户卡为UID复制卡!"];
+            break;
+        case 0x2b:
+            [self alertViewmessage:@"存储器错误1!"];
+            break;
+        case 0x3b:
+            [self alertViewmessage:@"存储器错误2!"];
+            break;
+        case 0x2c:
+            [self alertViewmessage:@"效验码错误!"];
+            break;
+        case 0x24:
+            [self alertViewmessage:@"刷新附属地址错误!"];
+            break;
+        case 0x05:
+            [self alertViewmessage:@"动态码处理错误!"];
             break;
         case 0x35:
+        case 0x3e:
         case 0x36:
+        case 0x20:
+        case 0x3f:
         case 0x2e:
         case 0x37:
+        case 0x40:
         case 0x38:
         case 0x21:
+        case 0x41:
         case 0x2f:
         case 0x39:
+        case 0x42:
         case 0x3a:
             if ([[self userInfoReaduserkey:@"shockswitch"] isEqualToString:@"YES"])
                      AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);        //进入震动
             [self promptInformationActionWarningString:@"正常进入"];
-            break;
-        case 0x11:
-            [self promptInformationActionWarningString:@"权限过期!"];
             break;
         default:
             [self promptInformationActionWarningString:@"出现异常错误！"];
@@ -301,6 +318,9 @@
     NSString *appInfoString = [NSString stringWithContentsOfURL:checkUrl encoding:NSUTF8StringEncoding error:nil];
     // MARK: 字符串转json转字典
     NSError *error = nil;
+    if (appInfoString.length < 5 ){
+        return NO;
+    }
     NSData *JSONData = [appInfoString dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary *appInfo = [NSJSONSerialization JSONObjectWithData:JSONData options:NSJSONReadingMutableLeaves error:&error];
     if (!error && appInfo) {

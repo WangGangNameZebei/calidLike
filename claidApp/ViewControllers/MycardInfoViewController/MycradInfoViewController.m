@@ -8,7 +8,9 @@
 
 #import "MycradInfoViewController.h"
 #import "MycradInfoViewController+Configuration.h"
-#import "SingleTon.h"
+#import <TZImagePickerController.h>
+#import "UIImage+Utility.h"
+#import "MycradInfoViewController+LogicalFlow.h"
 
 @implementation MycradInfoViewController
 
@@ -22,61 +24,76 @@
     
     [self configureViews];
 }
-
-
-
-- (IBAction)myinforeturnButtonAction:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-#pragma mark- 摇一摇
-- (IBAction)sharkSwitchAction:(id)sender {
-    UISwitch *mySwitch = (UISwitch *)sender;
-    if (mySwitch.isOn){
-        [self userInfowriteuserkey:@"shakeswitch" uservalue:@"YES"];
-    } else{
-        [self userInfowriteuserkey:@"shakeswitch" uservalue:@"NO"];
+- (IBAction)uploadButtonAction:(id)sender {
+    if (self.editBool) {
+        [self uploadPOSTuserInfoActionUserNameString:self.userNameString];
     }
 }
-#pragma mark- 亮屏
-- (IBAction)brightScreenSwitchAction:(id)sender {
-    UISwitch *mySwitch = (UISwitch *)sender;
-    if (mySwitch.isOn){
-         [self userInfowriteuserkey:@"brightScreenswitch" uservalue:@"YES"];
-    } else {
-        [self userInfowriteuserkey:@"brightScreenswitch" uservalue:@"NO"];
-    }     
+
+// 点击  UItableView
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
 }
-#pragma mark - 自动
-- (IBAction)automaticSwitchAction:(id)sender {
-    UISwitch *mySwitch = (UISwitch *)sender;
-    SingleTon *ton = [SingleTon sharedInstance];
-    [ton initialization];
-    if (mySwitch.isOn){
-        [self userInfowriteuserkey:@"switch" uservalue:@"YES"];
-        NSString *strUUid = SINGLE_TON_UUID_STR;
-        if (!strUUid) {
-            [ton startScan]; // 扫描
-            return;
+#pragma mark-TableView dataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.mydataArray.count;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+        if (indexPath.row == 0) {
+            MyInfoAvatarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_INFO_AVTAR_TABLEVIEW_CELL];
+            cell.delegate = self;
+            cell.avatarImageView.image = self.imagedata;
+            return cell;
+        } else if (indexPath.row == 3){
+            MyInfoCommunityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_INFO_COMMUNITY_TABLEVIEW_CELL];
+            return cell;
+        } else if (indexPath.row == 4){
+            MyInfoSetUpTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_INFO_SETUP_TABLEVIEW_CELL];
+            return cell;
+        } else {
+            MyInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_INFO_TABLEVIEW_CELL];
+            if (indexPath.row == 1){
+                cell.infoKeyLabel.text = @"我的名称";
+                cell.infoValueTextField.text =self.userNameString;
+                [cell returntextFieldDelegate];
+                cell.delegate= self;
+            } else {
+                cell.infoKeyLabel.text = @"我的账号";
+                cell.infoValueTextField.text =@"13130186066";
+                cell.infoValueTextField.enabled = NO;
+            }
+            return cell;
         }
-        [ton getPeripheralWithIdentifierAndConnect:SINGLE_TON_UUID_STR];
-       
-    } else {
-        [self userInfowriteuserkey:@"switch" uservalue:@"NO"];
-         [ton.manager stopScan];  //停止  扫描
-    }
-   
 
+    return nil;
+}
+
+- (void)myInfoAvatarTableViewCellDelegate:(id)data {
+    self.avatarAlertView = [[UIAlertView alloc] initWithTitle:@"更换头像" message:@"您确定更换新的头像？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    self.avatarAlertView.tag = 100;
+    [self.avatarAlertView show];
+}
+- (void)myInfoTableViewCellDelegate:(NSString *)dataStr {
+    [self myInfoEditBoolAction:YES];
+    self.userNameString = dataStr;
+}
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    if (buttonIndex == alertView.firstOtherButtonIndex && alertView.tag == 100) {
+        TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:1 delegate:nil];
+        imagePickerVc.allowCrop = YES;
+        [imagePickerVc setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
+            self.imagedata =  [UIImage scaleImage:photos[0] toKb:300];
+            self.fileName =[assets[0] objectForKey:@"filename"];
+            [self myInfoEditBoolAction:YES];
+            [self.myInfoTableView reloadData];
+        }];
+        [self presentViewController:imagePickerVc animated:YES completion:nil];
+    }
     
 }
-#pragma mark - 震动
-- (IBAction)shockSwitchAction:(id)sender {
-    UISwitch *mySwitch = (UISwitch *)sender;
-    if (mySwitch.isOn){
-        [self userInfowriteuserkey:@"shockswitch" uservalue:@"YES"];
-    } else {
-        [self userInfowriteuserkey:@"shockswitch" uservalue:@"NO"];
-    }
-    
+- (IBAction)myinforeturnButtonAction:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

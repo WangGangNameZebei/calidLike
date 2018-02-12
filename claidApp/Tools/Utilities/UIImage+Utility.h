@@ -18,6 +18,6 @@
 + (UIImage *)fixOrientation:(UIImage *)aImage;
 - (UIColor *)mostColor;
 +(UIImage *)scaleImage:(UIImage *)image toKb:(NSInteger)kb;
-
++ (UIImage *)getImageFromURL:(NSString *)fileURL;
 
 @end

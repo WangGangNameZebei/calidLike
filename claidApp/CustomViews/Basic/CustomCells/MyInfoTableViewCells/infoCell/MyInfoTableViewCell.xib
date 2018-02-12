@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="MyInfoTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用户账号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NAh-EL-5Nz">
+                        <rect key="frame" x="35" y="5" width="80" height="33.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="Kfi-1r-mWN"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BIu-de-uoD">
+                        <rect key="frame" x="165" y="0.0" width="155" height="43"/>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RwK-bO-uVO">
+                        <rect key="frame" x="0.0" y="43" width="320" height="1"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="fZ4-Zt-RaD"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="RwK-bO-uVO" firstAttribute="top" secondItem="BIu-de-uoD" secondAttribute="bottom" id="0Gv-0S-vub"/>
+                    <constraint firstItem="RwK-bO-uVO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="2Rp-Zv-3Wi"/>
+                    <constraint firstAttribute="trailing" secondItem="BIu-de-uoD" secondAttribute="trailing" id="8cJ-iN-HIy"/>
+                    <constraint firstItem="BIu-de-uoD" firstAttribute="leading" secondItem="NAh-EL-5Nz" secondAttribute="trailing" constant="50" id="Cqu-iV-xoJ"/>
+                    <constraint firstItem="NAh-EL-5Nz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Fqf-Hh-Kke"/>
+                    <constraint firstItem="BIu-de-uoD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="XCw-KJ-Lxy"/>
+                    <constraint firstItem="NAh-EL-5Nz" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Z5N-ix-17Y"/>
+                    <constraint firstAttribute="bottom" secondItem="RwK-bO-uVO" secondAttribute="bottom" id="aJC-fO-UdG"/>
+                    <constraint firstAttribute="trailing" secondItem="RwK-bO-uVO" secondAttribute="trailing" id="qqg-d5-Qe4"/>
+                    <constraint firstAttribute="bottom" secondItem="NAh-EL-5Nz" secondAttribute="bottom" constant="5" id="sVo-lz-xAG"/>
+                    <constraint firstItem="NAh-EL-5Nz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="35" id="wgP-QU-QiD"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="infoKeyLabel" destination="NAh-EL-5Nz" id="oyb-Px-xbx"/>
+                <outlet property="infoValueTextField" destination="BIu-de-uoD" id="k8H-9t-RoV"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

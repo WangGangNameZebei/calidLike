@@ -13,14 +13,13 @@
 
 @implementation UserRepairQueryViewController (Configuration)
 - (void)configureViews {
-   
-    [self userRepairQueryTableViewEdit];
     [self initDSImageBrowseView];
+    [self userRepairQueryTableViewEdit];
     [self setupMenuViewEdit];
 }
 
 - (void)setupMenuViewEdit {
-    self.datapageMenuArray = @[@"全部",@"已提交",@"已撤回",@"被拒绝"];
+    self.datapageMenuArray = @[@"已提交",@"已完成",@"被拒绝"];
     // trackerStyle:跟踪器的样式
     SPPageMenu  *pageMenu = [SPPageMenu pageMenuWithFrame:CGRectMake(0, 0 ,[UIScreen screenWidth], 40) trackerStyle:SPPageMenuTrackerStyleLine];
     pageMenu.permutationWay = SPPageMenuPermutationWayNotScrollAdaptContent;
@@ -42,28 +41,23 @@
     if (fromIndex == toIndex && self.layouts.count > 0){
         dispatch_async(dispatch_get_main_queue(), ^{
             if (self.userpageMenu.selectedItemIndex == 0){
-                self.layouts = self.layoutsOneArr;
+                  self.layouts = self.layoutsTowArr;
             } else if (self.userpageMenu.selectedItemIndex == 1) {
-                self.layouts = self.layoutsTowArr;
-            } else if (self.userpageMenu.selectedItemIndex == 2) {
-                self.layouts = self.layoutsThreeArr;
+                  self.layouts = self.layoutsThreeArr;
             } else  {
                 self.layouts = self.layoutsFourArr;
             }
-            [self.userRepairQueryTableView reloadData];
+             [self.userRepairQueryTableView reloadData];
         });
         return;
     } else {
-        if (toIndex == 0 && self.layoutsOneArr.count > 0){
-            self.layouts = self.layoutsOneArr;
-            [self.userRepairQueryTableView reloadData];
-        } else if (toIndex == 1 && self.layoutsTowArr.count > 0) {
+         if (toIndex == 0 && self.layoutsTowArr.count > 0) {
             self.layouts = self.layoutsTowArr;
             [self.userRepairQueryTableView reloadData];
-        } else if (toIndex == 2 && self.layoutsThreeArr.count > 0) {
+        } else if (toIndex == 1 && self.layoutsThreeArr.count > 0) {
             self.layouts = self.layoutsThreeArr;
             [self.userRepairQueryTableView reloadData];
-        } else if (toIndex == 3 && self.layoutsFourArr.count > 0) {
+        } else if (toIndex == 2 && self.layoutsFourArr.count > 0) {
             self.layouts = self.layoutsFourArr;
             [self.userRepairQueryTableView reloadData];
         }  else {
@@ -71,13 +65,10 @@
             [self.indicator startAnimating];
             switch (toIndex) {
                 case 0:
-                    [self setuserRepairQueryPostDataStatus:0 pageNum:1];
-                    break;
-                case 1:
                     [self setuserRepairQueryPostDataStatus:1 pageNum:1];
                     break;
-                case 2:
-                    [self setuserRepairQueryPostDataStatus:2 pageNum:1];
+                case 1:
+                    [self setuserRepairQueryPostDataStatus:5 pageNum:1];
                     break;
                 default:
                     [self setuserRepairQueryPostDataStatus:3 pageNum:1];
@@ -91,12 +82,11 @@
 - (void)userRepairQueryTableViewEdit {
     
     self.layouts = [NSMutableArray array];
-    self.layoutsOneArr = [NSMutableArray array];
     self.layoutsTowArr = [NSMutableArray array];
     self.layoutsThreeArr = [NSMutableArray array];
     self.layoutsFourArr = [NSMutableArray array];
-    self.dataNextPageArr = [NSMutableArray arrayWithObjects:@1,@1,@1,@1, nil];
-    self.dataPageArr = [NSMutableArray arrayWithObjects:@1,@1,@1,@1, nil];
+    self.dataNextPageArr = [NSMutableArray arrayWithObjects:@1,@1,@1, nil];
+    self.dataPageArr = [NSMutableArray arrayWithObjects:@1,@1,@1, nil];
     [self.userRepairQueryTableView registerNib:[UINib nibWithNibName:@"UserRepairTableViewCell" bundle:nil] forCellReuseIdentifier:USER_REPAIR_TABLEVIEW_CELL];
     self.userRepairQueryTableView.dataSource = self;
     self.userRepairQueryTableView.delegate = self;
@@ -109,6 +99,9 @@
         //刷新时候，需要执行的代码。一般是请求更多数据，请求成功之后，刷新列表
         [weakSelf loadNoreData];
     }];
+    self.userRepairQueryTableView.noContentViewTapedBlock = ^{
+        [weakSelf loadNewData];
+    };
     
 }
 - (void)loadNewData {
@@ -116,13 +109,10 @@
     [self.indicator startAnimating];
     switch (self.userpageMenu.selectedItemIndex) {
         case 0:
-            [self setuserRepairQueryPostDataStatus:0 pageNum:1];
-            break;
-        case 1:
             [self setuserRepairQueryPostDataStatus:1 pageNum:1];
             break;
-        case 2:
-            [self setuserRepairQueryPostDataStatus:2 pageNum:1];
+        case 1:
+            [self setuserRepairQueryPostDataStatus:5 pageNum:1];
             break;
         default:
             [self setuserRepairQueryPostDataStatus:3 pageNum:1];
@@ -137,13 +127,10 @@
         [self.indicator startAnimating];
         switch (self.userpageMenu.selectedItemIndex) {
             case 0:
-                [self setuserRepairQueryPostDataStatus:0 pageNum:nextNum+1];
-                break;
-            case 1:
                 [self setuserRepairQueryPostDataStatus:1 pageNum:nextNum+1];
                 break;
-            case 2:
-                [self setuserRepairQueryPostDataStatus:2 pageNum:nextNum+1];
+            case 1:
+                [self setuserRepairQueryPostDataStatus:5 pageNum:nextNum+1];
                 break;
             default:
                 [self setuserRepairQueryPostDataStatus:3 pageNum:nextNum+1];

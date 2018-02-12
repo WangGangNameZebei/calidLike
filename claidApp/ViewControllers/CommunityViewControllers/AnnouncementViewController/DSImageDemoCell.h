@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DSImageBrowseView.h"
 #import "DSDemoLayout.h"
-
+#import "LMJScrollTextView.h"
 @class DSImageDemoCell;
 
 @protocol DSImageBrowseCellDelegate <NSObject>
@@ -24,8 +24,9 @@
 @property (nonatomic, weak) id<DSImageBrowseCellDelegate> delegate;
 @property (nonatomic, strong) DSImageBrowseView *imageBrowseView;
 @property (nonatomic, strong) UILabel *describeLabel;
-@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) LMJScrollTextView *titleLabel;
 @property (nonatomic, strong) UILabel *timeLabel;
+@property (nonatomic, strong) UIView *bottomLineView;
 - (void)setLayout:(DSDemoLayout *)layout;
 
 @end

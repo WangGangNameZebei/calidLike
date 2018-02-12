@@ -36,6 +36,8 @@
         } else if ([[resultDic objectForKey:@"status"] integerValue] == 296 || [[resultDic objectForKey:@"status"] integerValue] == 301 || [[resultDic objectForKey:@"status"] integerValue] == 328 || [[resultDic objectForKey:@"status"] integerValue] == 330) {
             [self alertViewmessage:[resultDic objectForKey:@"msg"]];
             [InternetServices logOutPOSTkeystr:[self userInfoReaduserkey:@"userName"]];
+        } else if ([[resultDic objectForKey:@"status"] integerValue] == 342){   //小区 管理员失效
+            [self userInfowriteuserkey:@"role" uservalue:@"0"];       // 小区 管理员标识
         } else {
             [self alertViewmessage:[resultDic objectForKey:@"msg"]];
         }
@@ -97,7 +99,7 @@
 - (void)districtInfoPOSTNameStr:(NSString *)nameStr dataStr:(NSString *)dataStr {
     AFHTTPRequestOperationManager *manager = [self tokenManager];
     [manager.requestSerializer setValue:[self userInfoReaduserkey:@"Token"] forHTTPHeaderField:@"access_token"];
-    NSDictionary *parameters = @{@"pptId":self.xiaoquNumber,@"pptName":nameStr,@"pptLoc":dataStr};
+    NSDictionary *parameters = @{@"ppt_cell_id":self.xiaoquNumber,@"pptName":nameStr,@"pptLoc":dataStr};
     [manager POST:CHANGE_OF_INFO_URL parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         NSString *requestTmp = [NSString stringWithString:operation.responseString];
         NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];

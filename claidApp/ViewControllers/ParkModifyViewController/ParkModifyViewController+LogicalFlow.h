@@ -9,5 +9,6 @@
 #import "ParkModifyViewController.h"
 
 @interface ParkModifyViewController (LogicalFlow)
-- (void)districtInfoPOSTNameStr:(NSString *)nameStr dataStr:(NSString *)dataStr;
+- (void)getpostInfoAction; // 获取信息
+- (void)districtInfoPOSTNameStr:(NSString *)nameStr dataStr:(NSString *)dataStr propertyName:(NSString *)propertyName propertyPhone:(NSString *)propertyPhone;
 @end

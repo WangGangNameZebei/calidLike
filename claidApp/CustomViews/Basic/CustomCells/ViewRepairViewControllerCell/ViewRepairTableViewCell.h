@@ -27,6 +27,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *timeLabel;
 @property (strong, nonatomic) IBOutlet UILabel *phoneNumberLabel;
 @property (strong, nonatomic) IBOutlet UILabel *infoTextLabel;
+@property (strong, nonatomic) IBOutlet UILabel *nameTextLabel;
 @property (strong, nonatomic) IBOutlet UIButton *dealWithbutton;
 @property (strong, nonatomic) IBOutlet UIButton *refuseButton;
 - (void)setLayout:(ViewRepairLayout *)layout;

@@ -17,9 +17,12 @@
 #import "DSImageShowView.h"
 #import "YYImageCoder.h"
 
+#import "MyTableView.h"
+#import "NoContentView.h"
 @interface ViewRepairViewController : BaseViewController <SPPageMenuDelegate,DSImageBrowseCellDelegate,UITableViewDelegate,UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UIView *pageMenuView;
-@property (strong, nonatomic) IBOutlet UITableView *viewRepairTableView;
+
+@property (strong, nonatomic) IBOutlet MyTableView *viewRepairTableView;
 
 @property (strong, nonatomic)NSArray *dataClassificationArray;
 @property (nonatomic, weak) SPPageMenu *pageMenu;

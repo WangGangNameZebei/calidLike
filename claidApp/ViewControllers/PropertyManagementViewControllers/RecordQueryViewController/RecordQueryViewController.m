@@ -8,6 +8,7 @@
 
 #import "RecordQueryViewController.h"
 #import "RecordQueryViewController+Controller.h"
+#import "RecordQueryViewController+LogicalFlow.h"
 #import "UIScreen+Utility.h"
 
 @implementation RecordQueryViewController
@@ -25,19 +26,42 @@
       [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)viewButtonAction:(id)sender {
-    UIButton *btn = (UIButton *)sender;
-    if (btn.tag == 100){
-        [self.recordQueryView addSubview:self.searchView];
-        self.recordQueryViewheight.constant = 60;
-    } else if (btn.tag == 200) {
-        [self.searchView removeFromSuperview];
-        self.recordQueryViewheight.constant = 32;
-    } else {
-       
-    }
+- (IBAction)conditionLnquiryButtonAction:(id)sender {
+     [[CQSideBarManager sharedInstance] openSideBar:self];
+}
+#pragma mark - CQSideBarManagerDelegate
+- (UIView *)viewForSideBar
+{
+    self.conditionInquiryView = [ConditionInquiryView create];
+    self.conditionInquiryView.delegate = self;
+    self.conditionInquiryView.cq_width = self.view.cq_width - 45.f;
+    return self.conditionInquiryView;
 }
 
+- (BOOL)canCloseSideBar
+{
+    return YES;
+}
+
+- (void)conditionInquiryViewAccounts:(NSString *)accounts swipingTime:(NSString *)swipingTime swipingEndTime:(NSString *)swipingEndTime swipingStatusText:(NSString *)swipingStatusText swipingAddressText:(NSString *)swipingAddress {
+    
+    self.accounts = accounts;
+    self.swipingTime = swipingTime;
+    self.swipingEndTime = swipingEndTime;
+    self.swipingStatusText = swipingStatusText;
+    self.swipingAddressText = swipingAddress;
+    
+    self.mjBool = YES;
+    [self.indicator startAnimating];
+    [self getPOSTConditionRecordQuerypageNum:1 accounts:accounts swipingTime:swipingTime swipingEndTime:swipingEndTime swipingStatus:swipingStatusText swipingAddress:swipingAddress];
+    
+    [[CQSideBarManager sharedInstance] closeSideBar];
+}
+
+#pragma mark-点击TableView
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

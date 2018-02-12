@@ -40,15 +40,21 @@
 // 点击  UItableView
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
      if([[self userInfoReaduserkey:@"role"] isEqualToString:@"1"]){
-         if (indexPath.row == 0){  // 社区管理
-             CommunityManagementViewController *communityManagementVC = [CommunityManagementViewController create];
-             [self presentViewController:communityManagementVC animated:YES completion:nil];
-         } else if (indexPath.row == 1){       // 续卡
+         if (indexPath.row == 0){  // 续卡
              PropertyActivationViewController *pAViewController = [PropertyActivationViewController create];
-             [self presentViewController:pAViewController animated:YES completion:nil];
+             pAViewController.transitioningDelegate = self;
+             [self addScreenLeftEdgePanGestureRecognizer:pAViewController.view];
+             [self presentViewController:pAViewController animated:YES completion:nil];            
+         } else if (indexPath.row == 1){       //社区管理
+             CommunityManagementViewController *communityManagementVC = [CommunityManagementViewController create];
+             communityManagementVC.transitioningDelegate = self;
+             [self addScreenLeftEdgePanGestureRecognizer:communityManagementVC.view];
+             [self presentViewController:communityManagementVC animated:YES completion:nil];
          } else if (indexPath.row == 4) {   //卡信息
              MycradInfoViewController *mycradinfoVC = [MycradInfoViewController create];
-             [self hideTabBarAndpushViewController:mycradinfoVC];
+             mycradinfoVC.transitioningDelegate = self;
+             [self addScreenLeftEdgePanGestureRecognizer:mycradinfoVC.view];
+            [self presentViewController:mycradinfoVC animated:YES completion:nil];
          } else if (indexPath.row == 3 || indexPath.row == 10 || indexPath.row == 12) {
              NSLog(@"空白区");
          } else if (indexPath.row == 5){        // 邀请访客
@@ -60,7 +66,8 @@
              [self hideTabBarAndpushViewController:visitor];
          } else if (indexPath.row == 2) {     //物业设置
              installViewController *installVC = [installViewController create];
-             //[installVC setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+             installVC.transitioningDelegate = self;
+             [self addScreenLeftEdgePanGestureRecognizer:installVC.view];
              [self presentViewController:installVC animated:YES completion:nil];
              
          } else if (indexPath.row == 7){        // 密码修改
@@ -81,8 +88,10 @@
 
      } else {
           if (indexPath.row == 0) {   //卡信息
-             MycradInfoViewController *mycradinfoVC = [MycradInfoViewController create];
-             [self hideTabBarAndpushViewController:mycradinfoVC];
+              MycradInfoViewController *mycradinfoVC = [MycradInfoViewController create];
+              mycradinfoVC.transitioningDelegate = self;
+              [self addScreenLeftEdgePanGestureRecognizer:mycradinfoVC.view];
+              [self presentViewController:mycradinfoVC animated:YES completion:nil];
          } else if (indexPath.row == 6 || indexPath.row == 8) {
              NSLog(@"空白区");
          } else if (indexPath.row == 1){        // 邀请访客
@@ -118,15 +127,47 @@
     }
     
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)addScreenLeftEdgePanGestureRecognizer:(UIView *)view{
+    UIScreenEdgePanGestureRecognizer *screenEdgePan = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(edgePanGesture:)];
+    screenEdgePan.edges = UIRectEdgeLeft;
+    [view addGestureRecognizer:screenEdgePan];
 }
-*/
+
+- (void)edgePanGesture:(UIScreenEdgePanGestureRecognizer *)edgePan{
+    CGFloat progress = fabs([edgePan translationInView:[UIApplication sharedApplication].keyWindow].x/[UIApplication sharedApplication].keyWindow.bounds.size.width);
+    if (edgePan.state == UIGestureRecognizerStateBegan) {
+        self.percentDrivenTransition = [[UIPercentDrivenInteractiveTransition alloc]init];
+        if (edgePan.edges == UIRectEdgeLeft) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+    }else if (edgePan.state == UIGestureRecognizerStateChanged){
+        [self.percentDrivenTransition updateInteractiveTransition:progress];
+    }else if (edgePan.state == UIGestureRecognizerStateEnded || edgePan.state == UIGestureRecognizerStateCancelled){
+        if (progress > 0.5) {
+            [_percentDrivenTransition finishInteractiveTransition];
+        }else{
+            [_percentDrivenTransition cancelInteractiveTransition];
+        }
+        _percentDrivenTransition = nil;
+    }
+}
+
+
+#pragma Mark - UIViewControllerTransitioningDelegate
+-(id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source{
+    return [[PresentTransitionAnimated alloc] init];
+}
+- (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    return [[DismissTransitionAnimated alloc] init];
+}
+
+- (id<UIViewControllerInteractiveTransitioning>)interactionControllerForPresentation:(id<UIViewControllerAnimatedTransitioning>)animator{
+    return _percentDrivenTransition;
+}
+
+- (id<UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id<UIViewControllerAnimatedTransitioning>)animator{
+    return _percentDrivenTransition;
+}
+
 
 @end

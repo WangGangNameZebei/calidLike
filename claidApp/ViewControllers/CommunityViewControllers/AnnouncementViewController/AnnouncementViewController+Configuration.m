@@ -25,6 +25,7 @@
     self.layouts = [NSMutableArray array];
     self.announcementTableView.delegate = self;
     self.announcementTableView.dataSource = self;
+    [self.announcementTableView showEmptyViewWithType:NoContentTypeOrder];
     __weak typeof(self) weakSelf = self;
     self.announcementTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         //刷新时候，需要执行的代码。一般是请求最新数据，请求成功之后，刷新列表
@@ -34,6 +35,11 @@
         //刷新时候，需要执行的代码。一般是请求更多数据，请求成功之后，刷新列表
         [weakSelf loadNoreData];
     }];
+    self.announcementTableView.noContentViewTapedBlock = ^{
+        [weakSelf.indicator startAnimating];
+        [weakSelf loadNewData];
+    };
+   
 }
 #pragma mark- MJRefresh delegate
 - (void)loadNewData {

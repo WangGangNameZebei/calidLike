@@ -20,19 +20,6 @@
     
     [self configureViews];
 }
-- (IBAction)yulanButtonAction:(id)sender {
-    if ([self.barbutton.titleLabel.text isEqualToString:@"编辑"]) {
-        self.pickerV.showAddButton = YES;
-        self.pickerV.showDelete = YES;
-        [self.pickerV reload];
-        [self.barbutton setTitle:@"预览" forState:UIControlStateNormal];
-    }else{
-        [self.barbutton setTitle:@"编辑" forState:UIControlStateNormal];
-        self.pickerV.showAddButton = NO;
-        self.pickerV.showDelete = NO;
-        [self.pickerV reload];
-    }
-}
 - (IBAction)returnButtonAction:(id)sender {
      [self dismissViewControllerAnimated:YES completion:nil];
 }

@@ -8,6 +8,7 @@
 
 #import "ViewRepairViewController+LogicalFow.h"
 #import <AFHTTPRequestOperationManager.h>
+#import "InternetServices.h"
 
 @implementation ViewRepairViewController (LogicalFow)
 - (void)getDataPostpptRepairsByConditinorepairsPPTstatus:(NSInteger)statusString pageNum:(NSInteger)pageNum pageSize:(NSInteger)pageSize {
@@ -44,14 +45,38 @@
         } else if ([[resultDic objectForKey:@"status"] integerValue] == 205) {
             [self.layouts removeAllObjects];
             [self.viewRepairTableView reloadData];
+             [self.viewRepairTableView showEmptyViewWithType:NoContentTypeOrder];
             [self.indicator stopAnimating];
             if (self.mjBool){
                 [self.viewRepairTableView.mj_header endRefreshing];
             } else {
                 [self.viewRepairTableView.mj_footer endRefreshing];
             }
-        } else {
+        } else if ([[resultDic objectForKey:@"status"] integerValue] == 329){
+            [InternetServices requestLoginPostForUsername:[self userInfoReaduserkey:@"userName"] password:[self userInfoReaduserkey:@"passWord"]];
+            [self getDataPostpptRepairsByConditinorepairsPPTstatus:statusString pageNum:pageNum pageSize:pageSize];
+        } else if ([[resultDic objectForKey:@"status"] integerValue] == 296 ||[[resultDic objectForKey:@"status"] integerValue] == 301 || [[resultDic objectForKey:@"status"] integerValue] == 328 || [[resultDic objectForKey:@"status"] integerValue] == 330){
             [self.indicator stopAnimating];
+            if (self.mjBool){
+                [self.viewRepairTableView.mj_header endRefreshing];
+            } else {
+                [self.viewRepairTableView.mj_footer endRefreshing];
+            }
+            [InternetServices logOutPOSTkeystr:[self userInfoReaduserkey:@"userName"]]; //退出登录
+            [self alertViewmessage:[resultDic objectForKey:@"msg"]];
+        } else if ([[resultDic objectForKey:@"status"] integerValue] == 342){   //小区 管理员失效
+            [self userInfowriteuserkey:@"role" uservalue:@"0"];       // 小区 管理员标识
+            [self alertViewmessage:[resultDic objectForKey:@"msg"]];
+            [self.indicator stopAnimating];
+            if (self.mjBool){
+                [self.viewRepairTableView.mj_header endRefreshing];
+            } else {
+                [self.viewRepairTableView.mj_footer endRefreshing];
+            }
+        }  else {
+            [self alertViewmessage:[resultDic objectForKey:@"msg"]];
+            [self.indicator stopAnimating];
+             [self.viewRepairTableView showEmptyViewWithType:NoContentTypeNetwork];
             if (self.mjBool){
                 [self.viewRepairTableView.mj_header endRefreshing];
             } else {
@@ -59,7 +84,6 @@
             }
         }
 
-           NSLog(@"-----=====--  %@=======%@",[resultDic objectForKey:@"msg"],[resultDic objectForKey:@"status"]);
         
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
         if (error.code == -1009){
@@ -67,8 +91,10 @@
         } else {
             [self promptInformationActionWarningString:[NSString stringWithFormat:@"%ld",(long)error.code]];
         }
-        [self.viewRepairTableView.mj_header endRefreshing];
-        [self.viewRepairTableView.mj_footer endRefreshing];
+        [self.layouts removeAllObjects];
+        [self.viewRepairTableView showEmptyViewWithType:NoContentTypeNetwork];
+        [self.indicator stopAnimating];
+        [self mjreloadDataTableViewAction];
     }];
 }
 
@@ -84,9 +110,8 @@
         //系统自带JSON解析 
         NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableContainers error:nil];
         
-        if ([[resultDic objectForKey:@"status"] integerValue] == 200) {
-            [self alertViewmessage:[resultDic objectForKey:@"msg"]];
-        }
+        [self alertViewmessage:[resultDic objectForKey:@"msg"]];
+
         
 
         
@@ -122,18 +147,18 @@
     self.dataNextPageArr[self.pageMenu.selectedItemIndex] =@(dataNumber);
     dataNumber = [[resultDic objectForKey:@"pageNum"] integerValue];
     self.dataPageArr[self.pageMenu.selectedItemIndex] =@(dataNumber);
-    NSLog(@"====================%@---2---%@-----",self.dataNextPageArr,self.dataPageArr);
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         for (int i = 0; i < resultDataArr.count; i ++) {
              NSMutableArray *dataArray = [NSMutableArray array];
              NSDictionary *resultDataDic = resultDataArr[i];
             NSString *strimage=[resultDataDic objectForKey:@"repairs_pictrue_path"];
+            NSString *thumbnailimage=[resultDataDic objectForKey:@"repairs_thumbnai_pictrue_path"];
            if (![strimage isKindOfClass:[NSNull class]] && strimage.length > 8){
             NSArray *temp=[strimage componentsSeparatedByString:@","];
-            
+            NSArray *thumbnailtemp=[thumbnailimage componentsSeparatedByString:@"@"];
              for (int j = 0; j < temp.count; j++) {
-                NSString *thumbnail =[NSString stringWithFormat:@"http://sycalid.cn//%@",temp[j]];
+                NSString *thumbnail =[NSString stringWithFormat:@"http://sycalid.cn//%@",thumbnailtemp[j]];
                 NSString *large = [NSString stringWithFormat:@"http://sycalid.cn//%@",temp[j]];
                 DSImagesData *imagesData =[[DSImagesData alloc] init];
                 imagesData.thumbnailImage.width = 750;
@@ -150,6 +175,7 @@
             model.imageDataArray = dataArray;
             model.describe = desc;
             model.idtextString = [NSString stringWithFormat:@"%@",[resultDataDic objectForKey:@"id"]];
+            model.nameString = [resultDataDic objectForKey:@"name"];
             model.timebe = [NSString stringWithFormat:@"  %@  \n  %@  ",[[resultDataDic objectForKey:@"repairs_time"] substringWithRange:NSMakeRange(2, 8)],[[resultDataDic objectForKey:@"repairs_time"] substringWithRange:NSMakeRange(11, 8)]];
             model.phoneNumberbe = [resultDataDic objectForKey:@"accounts"];
             if ([[resultDataDic objectForKey:@"repairs_ppt_status"] integerValue] == 1){
@@ -182,13 +208,18 @@
             if (self.pageMenu.selectedItemIndex == 0){
                 self.layouts = self.layoutsOneArr;
             } else if (self.pageMenu.selectedItemIndex == 1) {
-                 self.layouts = self.layoutsTowArr;
+                self.layouts = self.layoutsTowArr;
             } else if (self.pageMenu.selectedItemIndex == 2) {
-                 self.layouts = self.layoutsThreeArr;
+                self.layouts = self.layoutsThreeArr;
             } else if (self.pageMenu.selectedItemIndex == 3) {
                 self.layouts = self.layoutsFourArr;
             } else {
                 self.layouts = self.layoutsFiveArr;
+            }
+            if (self.layouts.count == 0){
+                [self.viewRepairTableView showEmptyViewWithType:NoContentTypeOrder];
+            } else {
+                [self.viewRepairTableView removeEmptyView];
             }
             [self mjreloadDataTableViewAction];
         });
@@ -196,18 +227,12 @@
 }
 // 刷新Tableview
 - (void)mjreloadDataTableViewAction {
-    //这里假设2秒之后获取到了更多的数据，刷新tableview，并且结束刷新控件的刷新状态
-    __weak typeof(self) weakSelf = self;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [weakSelf.viewRepairTableView reloadData];
+        [self.viewRepairTableView reloadData];
         if (self.mjBool){
-            [weakSelf.viewRepairTableView.mj_header endRefreshing];
+            [self.viewRepairTableView.mj_header endRefreshing];
         } else {
-           [weakSelf.viewRepairTableView.mj_footer endRefreshing];
+           [self.viewRepairTableView.mj_footer endRefreshing];
         }
         
-       
-       
-    });
 }
 @end
