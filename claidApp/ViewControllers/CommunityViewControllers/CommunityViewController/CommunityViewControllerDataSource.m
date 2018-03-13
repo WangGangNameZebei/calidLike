@@ -9,6 +9,7 @@
 #import "CommunityViewControllerDataSource.h"
 #import "ClassificationTypeCell.h"
 #import "CommunityAnnounityCell.h"
+#import "CommunityPropertyTableViewCell.h"
 
 @implementation CommunityViewControllerDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -16,17 +17,36 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 0) {
-        return [self communityAnnounityTableView:tableView indexPath:indexPath];
+    if (self.myDataArray.count ==2){
+        if (indexPath.row == 0) {
+            return [self communityAnnounityTableView:tableView indexPath:indexPath];
+        } else {
+            return [self myTableView:tableView indexPath:indexPath];
+        }
     } else {
-        return [self myTableView:tableView indexPath:indexPath];
+        if (indexPath.row == 0) {
+            return [self communityAnnounityTableView:tableView indexPath:indexPath];
+        } else if (indexPath.row == 1){
+            return [self communityPropertyTableView:tableView indexPath:indexPath];
+        }else {
+            return [self myTableView:tableView indexPath:indexPath];
+        }
     }
+    
     
 }
 
 #pragma mark 自定cell
 - (UITableViewCell *)myTableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
     ClassificationTypeCell *cell = [tableView dequeueReusableCellWithIdentifier:CLASSIFCATION_TYPE_CELL];
+    return cell;
+}
+
+- (UITableViewCell *)communityPropertyTableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
+    CommunityPropertyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:COMMUNITY_PROPERTY_TABLEVIEW_CELL];
+     cell.nameLabel.text =[NSString stringWithFormat:@"%@",self.mypropertyArray[0]];
+    cell.numberLabel.text =[NSString stringWithFormat:@"%@",self.mypropertyArray[1]];
+    
     return cell;
 }
 
@@ -45,8 +65,12 @@
             NSString *thumbnail =[NSString stringWithFormat:@"http://sycalid.cn/data/image/notification/final/notification_pic_default.png"];
             [imageData addObject:thumbnail];
         }
+        if (self.status == 200){
+            [cell setinfocaTimeText:[self.resultDataDic objectForKey:@"publish_time"] caTitleText:[self.resultDataDic objectForKey:@"notification_title"] caTextinfo:[self.resultDataDic objectForKey:@"notification_content"] dataImageArr:imageData];
+        } else {
+             [cell setinfocaTimeText:@"  " caTitleText:@"暂无公告" caTextinfo:@"..." dataImageArr:imageData];
+        }
         
-        [cell setinfocaTimeText:[self.resultDataDic objectForKey:@"publish_time"] caTitleText:[self.resultDataDic objectForKey:@"notification_title"] caTextinfo:[self.resultDataDic objectForKey:@"notification_content"] dataImageArr:imageData];
     } else {
         NSString *thumbnail =[NSString stringWithFormat:@"http://sycalid.cn/data/image/notification/final/notification_not.png"];
         [imageData addObject:thumbnail];

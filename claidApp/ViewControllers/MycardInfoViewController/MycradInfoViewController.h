@@ -10,7 +10,6 @@
 #import "MyInfoAvatarTableViewCell.h"
 #import "MyInfoCommunityTableViewCell.h"
 #import "MyInfoTableViewCell.h"
-#import "MyInfoSetUpTableViewCell.h"
 
 @interface MycradInfoViewController : BaseViewController<UITableViewDelegate,UITableViewDataSource,myInfoAvatarTableViewCellDelegate,MyInfoTableViewCellDelegate>
 
@@ -20,6 +19,5 @@
 @property (strong, nonatomic) NSMutableArray *mydataArray;
 @property (strong, nonatomic) UIImage *imagedata;// 头像
 @property (strong, nonatomic) NSString *userNameString; //用户名称 
-@property (strong, nonatomic) NSString *fileName;
 @property (strong, nonatomic)UIAlertView *avatarAlertView;
 @end

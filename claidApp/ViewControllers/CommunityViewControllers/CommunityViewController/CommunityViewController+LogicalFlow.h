@@ -10,4 +10,5 @@
 
 @interface CommunityViewController (LogicalFlow)
 - (void)announcementsetPOSTDataAction;
+- (void)getpostInfoAction;  //  获取小区名称
 @end

@@ -47,9 +47,6 @@
         } else if (indexPath.row == 3){
             MyInfoCommunityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_INFO_COMMUNITY_TABLEVIEW_CELL];
             return cell;
-        } else if (indexPath.row == 4){
-            MyInfoSetUpTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_INFO_SETUP_TABLEVIEW_CELL];
-            return cell;
         } else {
             MyInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MY_INFO_TABLEVIEW_CELL];
             if (indexPath.row == 1){
@@ -84,7 +81,6 @@
         imagePickerVc.allowCrop = YES;
         [imagePickerVc setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
             self.imagedata =  [UIImage scaleImage:photos[0] toKb:300];
-            self.fileName =[assets[0] objectForKey:@"filename"];
             [self myInfoEditBoolAction:YES];
             [self.myInfoTableView reloadData];
         }];

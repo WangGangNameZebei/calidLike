@@ -26,6 +26,7 @@
 @property (nonatomic, strong) UILabel *describeLabel;
 @property (nonatomic, strong) LMJScrollTextView *titleLabel;
 @property (nonatomic, strong) UILabel *timeLabel;
+@property (nonatomic, strong) UILabel *announcerLabel;
 @property (nonatomic, strong) UIView *bottomLineView;
 - (void)setLayout:(DSDemoLayout *)layout;
 

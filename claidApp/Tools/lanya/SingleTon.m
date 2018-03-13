@@ -377,7 +377,6 @@ static SingleTon *_instace = nil;
     NSInteger jishunumber = 38;
    if (self.receiveData.length == 0)
        self.receiveData = @"";//            令其 数据为 "" 否则 拼接的字符串 头为 NULL
-   NSLog(@"===== %@",[CalidTool hexadecimalString:characteristic.value]);
     NSString *str1 = [CalidTool hexadecimalString:characteristic.value];
     if ([CalidTool hexadecimalString:characteristic.value].length == 40) {
         if ([[str1 substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"d2"]) {   // 第一串  返回d2结束

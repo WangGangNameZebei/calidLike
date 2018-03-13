@@ -38,7 +38,6 @@
                                                       carouselConfig.pageTintColor = [UIColor whiteColor];
                                                       carouselConfig.currentPageTintColor = [UIColor setipBlueColor];
                                                       carouselConfig.pushAnimationType = PushDefault;
-                                                      carouselConfig.placeholder = [UIImage imageNamed:@"zhanweiImage.png"];
                                                       carouselConfig.faileReloadTimes = 3;
                                                       carouselConfig.interValTime = 4.0f;
                                                       carouselConfig.contentMode = UIViewContentModeScaleAspectFill;

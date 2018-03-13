@@ -56,11 +56,26 @@
     [NetWorkJudge StartWithBlock:^(NSInteger NetworkStatus) {
         NSLog(@"%ld",(long)NetworkStatus);
         if(NetworkStatus >0){ //有网络
+            NSDate *date=[NSDate date];
+            NSDateFormatter *format=[[NSDateFormatter alloc] init];
+            [format setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+            NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@"Asia/Beijing"];
+            [format setTimeZone:timeZone];
+            NSString *timedateStr=[format stringFromDate:date];
+            
+            [self userInfowriteuserkey:@"netWorkTime" uservalue:timedateStr]; // 存储最后一次网络连接
             [self upgradeAppAction];
             [self loginPostForUsername:[self userInfoReaduserkey:@"userName"] password:[self userInfoReaduserkey:@"passWord"]];
             if (NetworkStatus == 1 && self.wifiBool){
                 self.wifiBool = NO;
                 [InternetServices uploadRecordingDataAction];
+            }
+            
+        } else  {
+            NSString *timedateStr = [self userInfoReaduserkey:@"netWorkTime"];
+            if([self isTimeExpiredJudgmentaimsTime:timedateStr span:3]) {
+                [InternetServices logOutPOSTkeystr:[self userInfoReaduserkey:@"userName"]];//退出登录
+                [self alertViewmessage:@"长时间没有链接网络,请开启网络重新登录"];
             }
         }
     }];
@@ -167,7 +182,7 @@
             [self alertViewmessage:@"数据返回格式错误!"];
             break;
         case 7:
-            [self promptInformationActionWarningString:@"刷卡失败!"];
+            [self promptInformationActionWarningString:@"刷卡错误!"];
             break;
         default:
             [self lanyaShuakareturnPromptActioninteger:data];

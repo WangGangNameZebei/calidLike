@@ -64,10 +64,18 @@
     if (data.count == 0){
         [self.tool createTableWithClass:[VisitorCalss class]];
     }
+    // 获取当前时间
+    NSDate *date=[NSDate date];
+    NSDateFormatter *format=[[NSDateFormatter alloc] init];
+    [format setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@"Asia/Beijing"];
+    [format setTimeZone:timeZone];
+    NSString *timedateStr=[format stringFromDate:date];
+    
     for (NSInteger i=0; i < dataArray.count; i++) {
         self.readBool = YES;
         self.dataArray = [dataArray objectAtIndex:i];
-        self.visitorClassData = [VisitorCalss assignmentVisitorName:[self.dataArray[2] integerValue] visitorRemarks:self.dataArray[0] visitorData:self.dataArray[1] visitorFrequency:[self.dataArray[3] integerValue]];
+        self.visitorClassData = [VisitorCalss assignmentVisitorName:[self.dataArray[2] integerValue] visitorRemarks:self.dataArray[0] visitorData:self.dataArray[1] visitorFrequency:[self.dataArray[3] integerValue] visitorTime:timedateStr];
       self.readDataArr = [self.tool selectWithClass:[VisitorCalss class] params:nil];
         for (NSInteger j=0; j <self.readDataArr.count; j++) {
             self.viReadClass = self.readDataArr[j];

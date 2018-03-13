@@ -27,7 +27,9 @@
       
         if ([[resultDic objectForKey:@"status"] integerValue] == 200){  // 注册成功  清除数据
             self.userInfo = @"";
-            self.pAPhoneNumberTextField.text = @"";
+            self.pAPhoneNumberLabel.text = @"";
+            self.pAPhoneNumberView.layer.borderColor = [[UIColor setupGreyColor] CGColor];
+            self.pAPhoneNumberImageView.image = [UIImage imageNamed:@"login_accountNumber_gray"];
             self.uploadButton.backgroundColor = [UIColor setupGreyColor];
            [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
         } else if ([[resultDic objectForKey:@"status"] integerValue] == 329) { //token  过期
@@ -59,6 +61,16 @@
 
 #pragma mark- 效验发卡器
 - (void)checkStatusOfCardPOSTdataStr:(NSString *)dataStr {
+    
+    NSString *xyId =  [CalidTool lanyaDataDecryptedAction:dataStr];
+    xyId = [xyId substringWithRange:NSMakeRange(2, 8)];
+    if (![xyId isEqualToString:[self userInfoReaduserkey:@"districtNumber"]]){
+        [self alertViewmessage:@"当前小区与设备不匹配,请选择正确小区"];
+        [self.paSingleTon disConnection];       // 退出前 断开蓝牙
+        [self dismissViewControllerAnimated:YES completion:nil];
+        return;
+    }
+    
     AFHTTPRequestOperationManager *manager = [self tokenManager];
     NSDictionary *parameters = @{@"cardData":dataStr};
     [manager POST:CHECK_STATUS_CARD_URL parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {

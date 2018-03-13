@@ -12,4 +12,6 @@
 
 @property(strong, nonatomic) NSMutableArray *myDataArray;
 @property(strong, nonatomic) NSDictionary * resultDataDic;
+@property(strong, nonatomic) NSMutableArray *mypropertyArray;
+@property(assign, nonatomic) NSUInteger status;
 @end

@@ -38,4 +38,8 @@
 @property (nonatomic, assign) BOOL mjBool;
 @property (nonatomic, strong) UIActivityIndicatorView *indicator;
 
+
+@property (nonatomic, assign) NSInteger cellButtonTag;
+@property (nonatomic, strong) NSString *cellButtonName;
+
 @end

@@ -36,13 +36,13 @@
         return;
     }
     
-    if ([self isMobileNumber:self.pAPhoneNumberTextField.text]){
+    if ([self isMobileNumber:self.pAPhoneNumberLabel.text]){
         [self promptInformationActionWarningString:@"请输入正确电话号码!"];
         return;
     }
 
    
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"请确认电话号码是否正确"  message:self.pAPhoneNumberTextField.text delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"是的", nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"请确认电话号码是否正确"  message:self.pAPhoneNumberLabel.text delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"是的", nil];
     alertView.tag = 1;
     [alertView show];
     
@@ -54,7 +54,7 @@
     if (alertView.tag ==1){
         if (buttonIndex == 1) {
             NSString *cardData = [AESCrypt decrypt:[[NSUserDefaults standardUserDefaults] objectForKey:@"wuyeFKAESData"] password:AES_PASSWORD];
-        [self propertyActivationPostForUserData:cardData userInfo:[self.userInfo substringWithRange:NSMakeRange(0,104)] userEqInfo:[self.userInfo substringWithRange:NSMakeRange(104,104)] userPhone:self.pAPhoneNumberTextField.text];
+        [self propertyActivationPostForUserData:cardData userInfo:[self.userInfo substringWithRange:NSMakeRange(0,104)] userEqInfo:[self.userInfo substringWithRange:NSMakeRange(104,104)] userPhone:self.pAPhoneNumberLabel.text];
         }
     } else {
         

@@ -13,7 +13,8 @@
 @property (strong, nonatomic) NSString *visitorRemarks;         //备注
 @property (strong, nonatomic) NSString *visitorData;            //刷卡数据
 @property (assign, nonatomic) NSInteger visitorFrequency;       //刷卡次数
+@property (strong, nonatomic) NSString *visitorTime;            //获取的时间
 
-+(instancetype)assignmentVisitorName:(NSInteger)visitorNameint visitorRemarks:(NSString *)visitorRemarksStr visitorData:(NSString *)visitorDataStr visitorFrequency:(NSInteger)visitorFrequency;
++(instancetype)assignmentVisitorName:(NSInteger)visitorNameint visitorRemarks:(NSString *)visitorRemarksStr visitorData:(NSString *)visitorDataStr visitorFrequency:(NSInteger)visitorFrequency visitorTime:(NSString *)visitorTime;
 
 @end
