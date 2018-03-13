@@ -61,7 +61,7 @@
     [manager POST:USER_UPLOAD_INFO_DATD_URL parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
             self.imagedata = [UIImage scaleImage:self.imagedata toKb:200];
             NSData *imageData = UIImagePNGRepresentation(self.imagedata);
-            [formData appendPartWithFileData:imageData name:@"avatarfile" fileName:self.fileName mimeType:@"image/png"];
+        [formData appendPartWithFileData:imageData name:@"avatarfile" fileName:[NSString stringWithFormat:@"%utouxiang.png",arc4random()] mimeType:@"image/png"];
         
     } success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         NSString *requestTmp = [NSString stringWithString:operation.responseString];
@@ -82,8 +82,6 @@
          } else {
              [self alertViewmessage:[resultDic objectForKey:@"msg"]];
          }
-       
-        [self alertViewmessage:[resultDic objectForKey:@"msg"]];
       
     } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
         if (error.code == -1009){

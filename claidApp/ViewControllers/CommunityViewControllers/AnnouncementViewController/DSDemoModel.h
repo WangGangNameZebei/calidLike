@@ -14,4 +14,5 @@
 @property (nonatomic, copy)  NSString *describe;
 @property (nonatomic, strong) NSString *titlebe;
 @property (nonatomic, strong) NSString *timebe;
+@property (nonatomic, strong) NSString *announcerbe;  //发布者
 @end

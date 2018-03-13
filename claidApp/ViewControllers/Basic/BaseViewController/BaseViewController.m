@@ -165,7 +165,23 @@
         return YES;
     }
 }
-
+#pragma mark - 判断是否时间过期  span 为 允许过期天使
+- (BOOL)isTimeExpiredJudgmentaimsTime:(NSString *)aimstime span:(NSInteger)span {
+     // 当前时间
+    NSDate *date=[NSDate date];
+    NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@"Asia/Beijing"];
+    NSDateFormatter *format=[[NSDateFormatter alloc] init];
+    [format setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    [format setTimeZone:timeZone];
+    NSString *timedateStr=[format stringFromDate:date];
+    date = [format dateFromString:timedateStr];
+    // 指定的时间
+    NSDate *aimsdate = [[NSDate alloc] init];
+    aimsdate = [format dateFromString:aimstime];
+    // 判断是否超过一天，想判断超过多少天可以自己设置 60 * 60 * 24 是一天的秒数，这里是拿当前时间和指定的时间判断
+    BOOL isAday = date.timeIntervalSince1970 - aimsdate.timeIntervalSince1970 > 60 * 60 * (24 * span);
+    return isAday;
+}
 
 
 

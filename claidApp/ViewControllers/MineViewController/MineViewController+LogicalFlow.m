@@ -63,6 +63,7 @@
             
         } else {
             if([[resultDic objectForKey:@"status"] integerValue] != 203 && [[resultDic objectForKey:@"status"] integerValue] != 204  && [[resultDic objectForKey:@"status"] integerValue] != 100 ){
+                [self promptInformationActionWarningString:[resultDic objectForKey:@"msg"]];
                 [InternetServices logOutPOSTkeystr:username];//退出登录
             }
         }

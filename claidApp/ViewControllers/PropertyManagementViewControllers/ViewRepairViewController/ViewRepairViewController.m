@@ -56,6 +56,8 @@
 - (void)dealWithButton:(id)sender{
     UIButton *button = (UIButton *)sender;
     ViewRepairLayout *layoutData =self.layouts[button.tag];
+    self.cellButtonTag =button.tag;
+    self.cellButtonName = [button currentTitle];
     if([[button currentTitle] isEqualToString:@"处理"]) {
       [self getDataPostPropertyOperationsSubmittedid:layoutData.model.idtextString repairsStatus:2];
     } else if([[button currentTitle] isEqualToString:@"完成"]) {
@@ -67,6 +69,8 @@
 - (void)refuseWithButton:(id)sender {
     UIButton *button = (UIButton *)sender;
     ViewRepairLayout *layoutData =self.layouts[button.tag];
+    self.cellButtonTag =button.tag;
+    self.cellButtonName = [button currentTitle];
     if([[button currentTitle] isEqualToString:@"拒绝"]) {
         [self getDataPostPropertyOperationsSubmittedid:layoutData.model.idtextString repairsStatus:3];
     }

@@ -32,4 +32,6 @@
 
 - (BOOL)isMobileNumber:(NSString *)mobileNum;       // 判断是否是电话号码
 
+
+- (BOOL)isTimeExpiredJudgmentaimsTime:(NSString *)aimstime span:(NSInteger)span;       //判断时间是否过期  1.目标时间  2.跨度时长（天）
 @end

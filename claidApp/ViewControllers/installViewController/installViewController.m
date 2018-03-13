@@ -42,10 +42,12 @@
 }
 
 - (IBAction)installReturnButtonAction:(id)sender {
-    NSString *message = @"d0446973636f6e6e656374696e67000000000000";
-    [self.sinTon iwsendCommand:message];       //发送数据
+    if (![self.installLanyaLabel.text isEqualToString:@"已连接"]){
+        NSString *message = @"d0446973636f6e6e656374696e67000000000000";
+        [self.sinTon iwsendCommand:message];       //发送数据
+    }    
     [self.sinTon iwdisConnection];  //断开蓝牙
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 - (IBAction)emptyButtonAction:(id)sender {
        [self.tool dropTableWithClass:[InstallCardData class]];

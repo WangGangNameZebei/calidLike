@@ -31,8 +31,8 @@
     }
 
     if([self.titleString isEqualToString:@"公告上传"]) {
-        if (self.textTitleField.text.length < 5 || self.textTitleField.text.length >20){
-            [self promptInformationActionWarningString:@"标题字数五到二十"] ;
+        if (self.textTitleField.text.length < 2 || self.textTitleField.text.length >20){
+            [self promptInformationActionWarningString:@"标题字数二到二十"] ;
             return;
         }
         

@@ -103,6 +103,7 @@
             model.describe = desc;
             model.timebe = [NSString stringWithFormat:@"%@\n%@",[[resultDataDic objectForKey:@"publish_time"] substringWithRange:NSMakeRange(2, 8)],[[resultDataDic objectForKey:@"publish_time"] substringWithRange:NSMakeRange(11, 8)]];
             model.titlebe = [resultDataDic objectForKey:@"notification_title"];
+            model.announcerbe =  [resultDataDic objectForKey:@"accounts"];  //发布者手机号
             DSDemoLayout *layout = [[DSDemoLayout alloc] initWithDSDemoMode:model];
             [self.layouts addObject:layout];
         }      

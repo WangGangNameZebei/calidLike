@@ -66,7 +66,7 @@
             }
             break;
           case 2:
-            [self promptInformationActionWarningString:@"刷卡失败!"];
+            [self promptInformationActionWarningString:@"刷卡错误!"];
             [self.visitorton disConnection];
             break;
           case 3:
@@ -239,5 +239,6 @@
     }
   self.visitorViewControllerDataSource.beizhuNameArray = [self.tool selectWithClass:[VisitorCalss class] params:nil];
    [self.visitorTableView reloadData];  //刷新 蓝牙选择
+    
 }
 @end

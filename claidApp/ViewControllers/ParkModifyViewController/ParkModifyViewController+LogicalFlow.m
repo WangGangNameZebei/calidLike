@@ -26,17 +26,35 @@
         //系统自带JSON解析
         NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableContainers error:nil];
         if ([[resultDic objectForKey:@"status"] integerValue] == 200){  //
+            NSString *dataPD;
             NSDictionary *resultInfoDic = [resultDic objectForKey:@"data"];
-            self.parkNameTextfield.text = [resultInfoDic objectForKey:@"ppt_name"];
-            self.propertyNameTextField.text = [resultInfoDic objectForKey:@"property_name"];
-            self.propertyPhoneNumber.text = [resultInfoDic objectForKey:@"property_phone"];
-            NSString *pptloc = [resultInfoDic objectForKey:@"ppt_loc"];
-            if (pptloc==nil || pptloc==NULL || [pptloc isKindOfClass:[NSNull class]]) {
+            dataPD = [resultInfoDic objectForKey:@"ppt_name"];
+            if (dataPD==nil || dataPD==NULL || [dataPD isKindOfClass:[NSNull class]]) {
+                self.parkNameTextfield.text = @"";
+            } else {
+                self.parkNameTextfield.text = dataPD;
+            }
+           
+            dataPD = [resultInfoDic objectForKey:@"property_name"];
+            if (dataPD==nil || dataPD==NULL || [dataPD isKindOfClass:[NSNull class]]) {
+                self.propertyNameTextField.text = @"";
+            } else {
+                self.propertyNameTextField.text = dataPD;
+            }
+            
+            dataPD = [resultInfoDic objectForKey:@"property_phone"];
+            if (dataPD==nil || dataPD==NULL || [dataPD isKindOfClass:[NSNull class]]) {
+                self.propertyPhoneNumber.text = @"";
+            } else {
+                self.propertyPhoneNumber.text = dataPD;
+            }
+            dataPD = [resultInfoDic objectForKey:@"ppt_loc"];
+            if (dataPD==nil || dataPD==NULL || [dataPD isKindOfClass:[NSNull class]]) {
                  [self locationEdit];
                  [self promptInformationActionWarningString:@"地址暂无，此位置是由定位获得!"];
     
             } else {
-                self.parkAddressTextfield.text =pptloc;
+                self.parkAddressTextfield.text =dataPD;
             }
             
             NSString *strimage=[resultInfoDic objectForKey:@"property_pictrue_path"];

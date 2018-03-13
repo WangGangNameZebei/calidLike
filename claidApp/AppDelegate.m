@@ -88,7 +88,6 @@
 
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-   NSLog(@"===============  进入后台");
    [[SingleTon sharedInstance] lanyaHoutaiAction];
     
     UIApplication*   app = [UIApplication sharedApplication];
@@ -121,7 +120,6 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    NSLog(@"===============  进入前台");
     NSString *strWitch = [[[BaseViewController alloc] init] userInfoReaduserkey:@"switch"];
     if ([strWitch isEqualToString:@"YES"]) {   //判断是否开启自动刷卡
       [[SingleTon sharedInstance] lanyaQiantaiAction];     //前台函数

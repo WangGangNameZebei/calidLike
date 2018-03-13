@@ -7,14 +7,17 @@
 //
 
 #import "MyInfoCommunityTableViewCell.h"
-#import "BaseViewController.h"
 #import "UIScreen+Utility.h"
+#import "UIColor+Utility.h"
+#import "SingleTon.h"
 
 @implementation MyInfoCommunityTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     [self selectButtonViewEdit];
+    self.baseVC = [[BaseViewController alloc] init];
+    [self switchViewEdit];
 }
 
 - (void)selectButtonViewEdit {
@@ -29,7 +32,7 @@
     [[NSUserDefaults standardUserDefaults] setObject:nameStr forKey:@"currentUser"];    //恢复当前小区的存储
     
     float width=[UIScreen screenWidth] -150;
-    self.selectNameView=[[SXSearchHeadView alloc] initWithFrame:CGRectMake(125, 0,width, 45) andDataSource:self.myinfoNameArray];
+    self.selectNameView=[[SXSearchHeadView alloc] initWithFrame:CGRectMake(125, 0,width, 38) andDataSource:self.myinfoNameArray];
     __weak MyInfoCommunityTableViewCell *vc=self;
     
     //接受点击button时的下标
@@ -43,7 +46,7 @@
     
     self.selectNameView.selectBlock=^(NSString *str){
         [UIView animateWithDuration:.6 animations:^{
-            float height=45;
+            float height=38;
             
             CGRect rect=view.frame;
             
@@ -79,7 +82,7 @@
     if (value==0) {
         
         [UIView animateWithDuration:.3 animations:^{
-            height=45;
+            height=38;
             
             CGRect rect=self.selectNameView.frame;
             
@@ -97,7 +100,13 @@
         
         [UIView animateWithDuration:.3 delay:0 usingSpringWithDamping:.9 initialSpringVelocity:.5 options:0 animations:^{
             
-            float height=40 *self.myinfoNameArray.count + 45;
+            float height;
+            if (self.myinfoNameArray.count > 6) {
+               height=40 *self.myinfoNameArray.count + 40;
+            } else {
+              height=40 *self.myinfoNameArray.count + 40;
+            }
+            
             
             CGRect rect=self.selectNameView.frame;
             
@@ -109,6 +118,72 @@
     }
 }
 
+- (void)switchViewEdit {
+    self.myInfoshakeSwitch.onTintColor = [UIColor colorFromHexCode:@"1296db"];
+    self.myInfoBrightScreenSwitch.onTintColor = [UIColor colorFromHexCode:@"1296db"];
+    self.myInfoAutomaticSwitch.onTintColor = [UIColor colorFromHexCode:@"1296db"];
+    self.myInfoShockSwitch.onTintColor = [UIColor colorFromHexCode:@"1296db"];
+    if ([[self.baseVC userInfoReaduserkey:@"shakeswitch"] isEqualToString:@"YES"]) {
+        [self.myInfoshakeSwitch setOn:YES animated:YES];
+    }
+    if ([[self.baseVC userInfoReaduserkey:@"brightScreenswitch"] isEqualToString:@"YES"]) {
+        [self.myInfoBrightScreenSwitch setOn:YES animated:YES];
+    }
+    if ([[self.baseVC userInfoReaduserkey:@"switch"] isEqualToString:@"YES"]) {
+        [self.myInfoAutomaticSwitch setOn:YES animated:YES];
+    }
+    if ([[self.baseVC userInfoReaduserkey:@"shockswitch"] isEqualToString:@"YES"]){
+        [self.myInfoShockSwitch setOn:YES animated:YES];
+    }
+}
+
+#pragma mark - 摇一摇
+- (IBAction)shakeSwitchAction:(id)sender {
+    UISwitch *mySwitch = (UISwitch *)sender;
+    if (mySwitch.isOn){
+        [self.baseVC userInfowriteuserkey:@"shakeswitch" uservalue:@"YES"];
+    } else{
+        [self.baseVC userInfowriteuserkey:@"shakeswitch" uservalue:@"NO"];
+    }
+}
+#pragma mark -亮屏幕
+- (IBAction)brightScreenSwitchAction:(id)sender {
+    UISwitch *mySwitch = (UISwitch *)sender;
+    if (mySwitch.isOn){
+        [self.baseVC userInfowriteuserkey:@"brightScreenswitch" uservalue:@"YES"];
+    } else {
+        [self.baseVC userInfowriteuserkey:@"brightScreenswitch" uservalue:@"NO"];
+    }
+}
+#pragma mark -自动
+- (IBAction)automaticSwitchAction:(id)sender {
+    UISwitch *mySwitch = (UISwitch *)sender;
+    SingleTon *ton = [SingleTon sharedInstance];
+    [ton initialization];
+    if (mySwitch.isOn){
+        [self.baseVC userInfowriteuserkey:@"switch" uservalue:@"YES"];
+        NSString *strUUid = SINGLE_TON_UUID_STR;
+        if (!strUUid) {
+            [ton startScan]; // 扫描
+            return;
+        }
+        [ton getPeripheralWithIdentifierAndConnect:SINGLE_TON_UUID_STR];
+        
+    } else {
+        [self.baseVC userInfowriteuserkey:@"switch" uservalue:@"NO"];
+        [ton.manager stopScan];  //停止  扫描
+    }
+    
+}
+#pragma mark -震动
+- (IBAction)shockSwitchAction:(id)sender {
+    UISwitch *mySwitch = (UISwitch *)sender;
+    if (mySwitch.isOn){
+        [self.baseVC userInfowriteuserkey:@"shockswitch" uservalue:@"YES"];
+    } else {
+        [self.baseVC userInfowriteuserkey:@"shockswitch" uservalue:@"NO"];
+    }
+}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

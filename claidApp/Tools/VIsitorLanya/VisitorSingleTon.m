@@ -312,7 +312,6 @@ static VisitorSingleTon *_instace = nil;
     NSInteger jishunumber = 38;
     if (self.receiveData.length == 0)
         self.receiveData = @"";
-    NSLog(@"===== %@",[CalidTool hexadecimalString:characteristic.value]);
     NSString *str1 = [CalidTool hexadecimalString:characteristic.value];
     //self.receiveData = [NSString stringWithFormat:@"%@%@",self.receiveData,str1];
     if ([CalidTool hexadecimalString:characteristic.value].length == 40) {

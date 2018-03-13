@@ -11,40 +11,154 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="MyInfoCommunityTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="238" id="KGk-i7-Jjw" customClass="MyInfoCommunityTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="238"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="237.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当前小区" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bOp-u6-MKo">
-                        <rect key="frame" x="35" y="5" width="80" height="33.5"/>
+                        <rect key="frame" x="35" y="5" width="80" height="34"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="80" id="hO0-by-ZHI"/>
+                            <constraint firstAttribute="width" constant="80" id="IYH-P3-IK4"/>
+                            <constraint firstAttribute="height" constant="33.5" id="hPC-dG-WB2"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ceX-16-bFt">
-                        <rect key="frame" x="0.0" y="42.5" width="320" height="1"/>
+                        <rect key="frame" x="0.0" y="40" width="320" height="1"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="1" id="eZu-4G-Kos"/>
+                            <constraint firstAttribute="height" constant="1" id="Vxc-dM-RlH"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WeJ-is-0FF">
+                        <rect key="frame" x="0.0" y="41" width="320" height="196.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="亮屏刷卡" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VNX-CV-8oN">
+                                <rect key="frame" x="41" y="46" width="100" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="7ex-Mt-guy"/>
+                                    <constraint firstAttribute="width" constant="100" id="Gpk-Bb-fWp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gai-cl-4M4">
+                                <rect key="frame" x="241" y="2" width="51" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="49" id="I5N-LN-1Tq"/>
+                                    <constraint firstAttribute="height" constant="31" id="PXE-DZ-dia"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="shakeSwitchAction:" destination="KGk-i7-Jjw" eventType="valueChanged" id="6xT-Rt-J7o"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="摇一摇刷卡" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNB-96-Lak">
+                                <rect key="frame" x="41" y="7" width="100" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="Rl3-am-N0q"/>
+                                    <constraint firstAttribute="height" constant="21" id="i49-tT-LvZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mPj-pN-eVj">
+                                <rect key="frame" x="241" y="41" width="51" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="omC-RB-oHa"/>
+                                    <constraint firstAttribute="width" constant="49" id="zBL-YE-FMW"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="brightScreenSwitchAction:" destination="KGk-i7-Jjw" eventType="valueChanged" id="7qc-6N-gw7"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="自动刷卡" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3he-gx-eUA">
+                                <rect key="frame" x="41" y="88" width="100" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="5al-HI-1tm"/>
+                                    <constraint firstAttribute="height" constant="21" id="Zs4-ev-KTe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="k4K-O3-ql4">
+                                <rect key="frame" x="241" y="83" width="51" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="4TD-kr-fre"/>
+                                    <constraint firstAttribute="width" constant="49" id="JU6-5O-hW4"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="automaticSwitchAction:" destination="KGk-i7-Jjw" eventType="valueChanged" id="PHc-aH-axg"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="刷卡震动" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VJh-Jh-UI4">
+                                <rect key="frame" x="41" y="127" width="100" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="EdS-lT-HIZ"/>
+                                    <constraint firstAttribute="height" constant="21" id="cVV-6s-lcy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ToR-pL-qlY">
+                                <rect key="frame" x="241" y="122" width="51" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="4Xz-Ev-5jN"/>
+                                    <constraint firstAttribute="width" constant="49" id="Cdm-7N-5Zc"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="shockSwitchAction:" destination="KGk-i7-Jjw" eventType="valueChanged" id="HQi-H0-8bI"/>
+                                </connections>
+                            </switch>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="k4K-O3-ql4" firstAttribute="leading" secondItem="3he-gx-eUA" secondAttribute="trailing" constant="100" id="8h3-kk-XMD"/>
+                            <constraint firstItem="VNX-CV-8oN" firstAttribute="leading" secondItem="WeJ-is-0FF" secondAttribute="leading" constant="41" id="93c-gu-1Ya"/>
+                            <constraint firstItem="ZNB-96-Lak" firstAttribute="top" secondItem="WeJ-is-0FF" secondAttribute="top" constant="7" id="9j2-hb-fl0"/>
+                            <constraint firstItem="3he-gx-eUA" firstAttribute="leading" secondItem="WeJ-is-0FF" secondAttribute="leading" constant="41" id="CBU-tv-JEO"/>
+                            <constraint firstItem="3he-gx-eUA" firstAttribute="top" secondItem="VNX-CV-8oN" secondAttribute="bottom" constant="21" id="EqL-9t-2EU"/>
+                            <constraint firstItem="ToR-pL-qlY" firstAttribute="top" secondItem="k4K-O3-ql4" secondAttribute="bottom" constant="8" id="LU3-Pj-0Lq"/>
+                            <constraint firstItem="gai-cl-4M4" firstAttribute="leading" secondItem="ZNB-96-Lak" secondAttribute="trailing" constant="100" id="Nvg-dn-3Ko"/>
+                            <constraint firstItem="k4K-O3-ql4" firstAttribute="top" secondItem="mPj-pN-eVj" secondAttribute="bottom" constant="11" id="Ozg-PN-laP"/>
+                            <constraint firstItem="mPj-pN-eVj" firstAttribute="top" secondItem="gai-cl-4M4" secondAttribute="bottom" constant="8" id="TFr-xc-t0F"/>
+                            <constraint firstItem="ToR-pL-qlY" firstAttribute="leading" secondItem="VJh-Jh-UI4" secondAttribute="trailing" constant="100" id="ViT-hz-hqO"/>
+                            <constraint firstItem="gai-cl-4M4" firstAttribute="top" secondItem="WeJ-is-0FF" secondAttribute="top" constant="2" id="dS9-sb-5qS"/>
+                            <constraint firstItem="VJh-Jh-UI4" firstAttribute="leading" secondItem="WeJ-is-0FF" secondAttribute="leading" constant="41" id="dhM-Xf-19j"/>
+                            <constraint firstItem="ZNB-96-Lak" firstAttribute="leading" secondItem="WeJ-is-0FF" secondAttribute="leading" constant="41" id="gYR-D1-KNe"/>
+                            <constraint firstItem="VNX-CV-8oN" firstAttribute="top" secondItem="ZNB-96-Lak" secondAttribute="bottom" constant="18" id="ihj-aY-0gk"/>
+                            <constraint firstItem="mPj-pN-eVj" firstAttribute="leading" secondItem="VNX-CV-8oN" secondAttribute="trailing" constant="100" id="jIZ-YF-ipb"/>
+                            <constraint firstItem="VJh-Jh-UI4" firstAttribute="top" secondItem="3he-gx-eUA" secondAttribute="bottom" constant="18" id="vFy-3w-3UX"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="bOp-u6-MKo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="6wB-Za-lTl"/>
-                    <constraint firstAttribute="bottom" secondItem="bOp-u6-MKo" secondAttribute="bottom" constant="5" id="Jno-ut-4Dy"/>
-                    <constraint firstItem="ceX-16-bFt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="VNQ-Cc-WvE"/>
-                    <constraint firstItem="bOp-u6-MKo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="35" id="atf-KN-6MC"/>
-                    <constraint firstAttribute="bottom" secondItem="ceX-16-bFt" secondAttribute="bottom" id="dU5-uE-z8W"/>
-                    <constraint firstItem="bOp-u6-MKo" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="geg-am-UZu"/>
-                    <constraint firstAttribute="trailing" secondItem="ceX-16-bFt" secondAttribute="trailing" id="nb5-yP-3bd"/>
+                    <constraint firstItem="ceX-16-bFt" firstAttribute="top" secondItem="bOp-u6-MKo" secondAttribute="bottom" constant="1" id="0G8-cg-kx8"/>
+                    <constraint firstItem="WeJ-is-0FF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="77c-oj-RO1"/>
+                    <constraint firstAttribute="trailing" secondItem="ceX-16-bFt" secondAttribute="trailing" id="8AO-q3-zC0"/>
+                    <constraint firstAttribute="bottom" secondItem="WeJ-is-0FF" secondAttribute="bottom" id="D8L-rK-8de"/>
+                    <constraint firstAttribute="trailing" secondItem="WeJ-is-0FF" secondAttribute="trailing" id="Gdr-oa-eej"/>
+                    <constraint firstItem="bOp-u6-MKo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="35" id="GhI-0j-NDg"/>
+                    <constraint firstItem="ceX-16-bFt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="SXl-BF-9XB"/>
+                    <constraint firstItem="bOp-u6-MKo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="gga-T1-UgD"/>
+                    <constraint firstItem="WeJ-is-0FF" firstAttribute="top" secondItem="ceX-16-bFt" secondAttribute="bottom" id="mNb-84-Cgc"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="myInfoAutomaticSwitch" destination="k4K-O3-ql4" id="pqt-m8-te1"/>
+                <outlet property="myInfoBrightScreenSwitch" destination="mPj-pN-eVj" id="tbM-SU-wt4"/>
+                <outlet property="myInfoShockSwitch" destination="ToR-pL-qlY" id="gDK-eT-OCY"/>
+                <outlet property="myInfoshakeSwitch" destination="gai-cl-4M4" id="JiN-Ld-Oxf"/>
+            </connections>
+            <point key="canvasLocation" x="25" y="155"/>
         </tableViewCell>
     </objects>
 </document>

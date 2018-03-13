@@ -80,9 +80,19 @@
     }
     self.viReadClass = dianjiArr[indexPath.row];
     if(self.viReadClass.visitorFrequency != 0){
-        self.shukaButton.backgroundColor = [UIColor setipBlueColor];
-        [self userInfowriteuserkey:@"lanyaVisitorAESData" uservalue:self.viReadClass.visitorData];//刷卡数据
-        [self userInfowriteuserkey:@"userInformation" uservalue:[NSString stringWithFormat:@"%ld",(long)self.viReadClass.visitorName]];
+        if([self isTimeExpiredJudgmentaimsTime:self.viReadClass.visitorTime span:1]) {
+            self.shukaButton.backgroundColor = [UIColor setupGreyColor];
+            [self userInfowriteuserkey:@"lanyaVisitorAESData" uservalue:@""];
+            [self userInfowriteuserkey:@"userInformation" uservalue:@""];
+            [self.tool deleteRecordWithClass:[VisitorCalss class] andKey:@"visitorName" isEqualValue:[NSString stringWithFormat:@"%ld",(long)self.viReadClass.visitorName]];
+            self.visitorViewControllerDataSource.beizhuNameArray = [self.tool selectWithClass:[VisitorCalss class] params:nil];
+            [self.visitorTableView reloadData];  //刷新 蓝牙选择
+            [self alertViewmessage:@"此权限长时间未使用，已过期请重新申请"];
+        } else {
+            self.shukaButton.backgroundColor = [UIColor setipBlueColor];
+            [self userInfowriteuserkey:@"lanyaVisitorAESData" uservalue:self.viReadClass.visitorData];//刷卡数据
+            [self userInfowriteuserkey:@"userInformation" uservalue:[NSString stringWithFormat:@"%ld",(long)self.viReadClass.visitorName]];
+        }       
      [self animationHideFunctionView]; //收起tableView
     } else {
           self.shukaButton.backgroundColor = [UIColor setupGreyColor];
@@ -90,7 +100,9 @@
         [self userInfowriteuserkey:@"userInformation" uservalue:@""];
           [self.tool deleteRecordWithClass:[VisitorCalss class] andKey:@"visitorName" isEqualValue:[NSString stringWithFormat:@"%ld",(long)self.viReadClass.visitorName]];
            [self promptInformationActionWarningString:@"此权限使用已到期!"];
-    
+        self.visitorViewControllerDataSource.beizhuNameArray = [self.tool selectWithClass:[VisitorCalss class] params:nil];
+        [self.visitorTableView reloadData];  //刷新 蓝牙选择
+        [self animationHideFunctionView]; //收起tableView
     }
 }
 

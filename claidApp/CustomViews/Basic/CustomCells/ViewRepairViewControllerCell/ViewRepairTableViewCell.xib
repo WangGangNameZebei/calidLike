@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="威廉姆斯" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AHe-ur-wlL">
-                        <rect key="frame" x="4" y="0.0" width="96" height="40"/>
+                        <rect key="frame" x="6" y="0.0" width="94" height="40"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="38U-GQ-IIQ"/>
                         </constraints>
@@ -129,7 +129,7 @@
                     <constraint firstItem="AHe-ur-wlL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="OhC-mL-8Hf"/>
                     <constraint firstAttribute="trailing" secondItem="FRo-8q-89Q" secondAttribute="trailing" id="PYg-jH-JHb"/>
                     <constraint firstItem="iC0-Uc-tqF" firstAttribute="top" secondItem="AHe-ur-wlL" secondAttribute="bottom" id="TeA-FY-jct"/>
-                    <constraint firstItem="AHe-ur-wlL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="4" id="VGc-6v-uHp"/>
+                    <constraint firstItem="AHe-ur-wlL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="6" id="VGc-6v-uHp"/>
                     <constraint firstAttribute="trailing" secondItem="tWv-gU-WUE" secondAttribute="trailing" id="WZc-yS-y8E"/>
                     <constraint firstItem="fNY-9D-BVV" firstAttribute="leading" secondItem="AHe-ur-wlL" secondAttribute="trailing" id="XR3-kD-zNt"/>
                     <constraint firstItem="iC0-Uc-tqF" firstAttribute="top" secondItem="FRo-8q-89Q" secondAttribute="bottom" id="fV1-Q1-Nkz"/>

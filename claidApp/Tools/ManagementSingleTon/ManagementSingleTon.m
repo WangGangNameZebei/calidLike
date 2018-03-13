@@ -304,7 +304,6 @@ static ManagementSingleTon *_instace = nil;
     NSInteger jishunumber = 38;
     if (self.receiveData.length == 0)
         self.receiveData = @"";
-    NSLog(@"===== %@",[CalidTool hexadecimalString:characteristic.value]);
     
     NSString *str1 = [CalidTool hexadecimalString:characteristic.value];
     if ([[str1 substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"f2"]) {   // 第一串

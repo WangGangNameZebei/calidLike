@@ -389,7 +389,6 @@ static InstallWardensingleTon *_instaceton = nil;
     NSInteger jishunumber = 38;
     if (self.iwreceiveData.length == 0)
         self.iwreceiveData = @"";//            令其 数据为 "" 否则 拼接的字符串 头为 NULL
-    NSLog(@"===== %@",[CalidTool hexadecimalString:characteristic.value]);
     NSString *str1 = [CalidTool hexadecimalString:characteristic.value];
     
     if ([CalidTool hexadecimalString:characteristic.value].length == 40) {

@@ -25,6 +25,9 @@
         _describeLabel = [[UILabel alloc] init];
         _describeLabel.font = [UIFont systemFontOfSize:16];
         _describeLabel.numberOfLines = 0;
+        _announcerLabel = [[UILabel alloc] init];
+        _announcerLabel.font = [UIFont systemFontOfSize:10];
+        _announcerLabel.textColor = [UIColor grayColor];
         _bottomLineView = [[UIView alloc] init];
         _bottomLineView.backgroundColor = [UIColor colorFromHexCode:@"#BEBEBE"];
         [self addSubview:_titleLabel];
@@ -32,6 +35,7 @@
         [self addSubview:_describeLabel];
         [self addSubview:_imageBrowseView];
         [self addSubview:_bottomLineView];
+        [self addSubview:_announcerLabel];
         self.backgroundColor = [UIColor colorWithIntRed:240 green:240 blue:240];
     }
     return self;
@@ -44,11 +48,14 @@
     _titleLabel.LmjScrollTextViewWidth = [UIScreen screenWidth] / 5 * 4- 11;
     _imageBrowseView.frame = CGRectMake(10, 27 + layout.descHeight + layout.titleHeight, 0, 0);
     _imageBrowseView.layout = layout.imageLayout;
+    _announcerLabel.frame = CGRectMake(10, layout.cellHeight - 21, [UIScreen screenWidth] -20, 20);
     _bottomLineView.frame = CGRectMake(0, layout.cellHeight-1, [UIScreen screenWidth], 1);
+    
     self.height = layout.cellHeight;
     _describeLabel.text = layout.model.describe;
     [_titleLabel startScrollWithText:layout.model.titlebe textColor:[UIColor setipBlueColor] font:[UIFont systemFontOfSize:19]];
     _timeLabel.text = layout.model.timebe;
+    _announcerLabel.text = [NSString stringWithFormat:@"发布者: %@",layout.model.announcerbe];
 }
 
 - (void)imageBrowse:(DSImageBrowseView *)imageView didSelectImageAtIndex:(NSInteger)index {

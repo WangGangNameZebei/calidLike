@@ -8,6 +8,7 @@
 
 #import "CommunityViewController.h"
 #import "CommunityViewController+Configuration.h"
+#import "CommunityViewController+LogicalFlow.h"
 #import "AnnouncementViewController.h"      //  查看公告
 
 @implementation CommunityViewController
@@ -22,6 +23,12 @@
     [super viewDidLoad];
     
     [self configureViews];
+}
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+   
+    [self announcementsetPOSTDataAction];
+    [self getpostInfoAction];
 }
 
 #pragma mark-点击TableView

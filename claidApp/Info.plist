@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>访问通讯录获取您需要的电话号码</string>
 	<key>CFBundleDisplayName</key>
-	<string>云梯控</string>
+	<string>云卡社区</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -18,6 +18,7 @@
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 <<<<<<< HEAD
+<<<<<<< HEAD
 	<string>1.10.5</string>
 	<key>CFBundleVersion</key>
 	<string>1.2.9</string>
@@ -26,6 +27,11 @@
 	<key>CFBundleVersion</key>
 	<string>1.2.8</string>
 >>>>>>> 04aa2893128796c045dfd9f2340c3feaf4c90bde
+=======
+	<string>2.0.0</string>
+	<key>CFBundleVersion</key>
+	<string>1.3.1</string>
+>>>>>>> zebei
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>

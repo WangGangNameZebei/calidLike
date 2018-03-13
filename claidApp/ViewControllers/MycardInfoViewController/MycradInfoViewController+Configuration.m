@@ -22,24 +22,23 @@
 #pragma mark - TableView
 - (void)myinfoTableViewEdit {
     [self myInfoEditBoolAction:NO];
-    self.fileName = @"wu.png";
     self.imagedata = [UIImage imageNamed:@"my_blue"];
     [self.myInfoTableView registerNib:[UINib nibWithNibName:@"MyInfoAvatarTableViewCell" bundle:nil] forCellReuseIdentifier:MY_INFO_AVTAR_TABLEVIEW_CELL];
     [self.myInfoTableView registerNib:[UINib nibWithNibName:@"MyInfoCommunityTableViewCell" bundle:nil] forCellReuseIdentifier:MY_INFO_COMMUNITY_TABLEVIEW_CELL];
     [self.myInfoTableView registerNib:[UINib nibWithNibName:@"MyInfoTableViewCell" bundle:nil] forCellReuseIdentifier:MY_INFO_TABLEVIEW_CELL];
-    [self.myInfoTableView registerNib:[UINib nibWithNibName:@"MyInfoSetUpTableViewCell" bundle:nil] forCellReuseIdentifier:MY_INFO_SETUP_TABLEVIEW_CELL];
-    
+
     self.myInfoTableView.delegate = self;
     self.myInfoTableView.dataSource = self;
-    self.mydataArray = [NSMutableArray arrayWithObjects:@"头像",@"名称",@"账号",@"当前小区",@"设置", nil];
+    self.mydataArray = [NSMutableArray arrayWithObjects:@"头像",@"名称",@"账号",@"当前小区", nil];
+    self.myInfoTableView.scrollEnabled = NO; // 禁止滑动
 }
 
 #pragma mark - UITableView Delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         if (indexPath.row == 0){
             return 200;
-        } else if (indexPath.row == 4) {
-            return 180;
+        } else if (indexPath.row == 3) {
+            return 300;
         } else {
             return 50;
         }
@@ -49,7 +48,7 @@
 - (void)addGestRecognizer {
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapped:)];
     tap.numberOfTouchesRequired =1;
-    tap.numberOfTapsRequired =1;
+    tap.numberOfTapsRequired =1;  
     tap.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tap];
 }

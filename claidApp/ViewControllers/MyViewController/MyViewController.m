@@ -31,6 +31,12 @@
     
     [self configureViews];
 }
+//进来走的函数
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self myTableViewInitdataArray];
+    [self.myTableView reloadData];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -66,9 +72,7 @@
              [self hideTabBarAndpushViewController:visitor];
          } else if (indexPath.row == 2) {     //物业设置
              installViewController *installVC = [installViewController create];
-             installVC.transitioningDelegate = self;
-             [self addScreenLeftEdgePanGestureRecognizer:installVC.view];
-             [self presentViewController:installVC animated:YES completion:nil];
+             [self hideTabBarAndpushViewController:installVC];
              
          } else if (indexPath.row == 7){        // 密码修改
              ChangeThePasswordViewController *changethePasswordVC = [ChangeThePasswordViewController create];

@@ -575,15 +575,12 @@
 
 #pragma mark - 圆环进度条+文字
 - (void)determinateExample {
-    
    self.progressHUD  = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    self.progressHUD.mode = MBProgressHUDModeAnnularDeterminate;
-
-     self.progressHUD.labelText = NSLocalizedString(@"设置中...", @"设置中");
-    dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
+   self.progressHUD.mode = MBProgressHUDModeAnnularDeterminate;
+   self.progressHUD.labelText = NSLocalizedString(@"设置中...", @"设置中");
+   dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
         [self doSomeWorkWithProgress:0.1f];
-    });
-    
+   });
 }
 #pragma mark -  进度条 动画
 - (void)doSomeWorkWithProgress:(float)progress{

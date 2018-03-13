@@ -13,4 +13,7 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *communityTableView;
 @property (strong, nonatomic) CommunityViewControllerDataSource *communityViewControllerDataSource;
+@property (strong, nonatomic) NSString *propertyNameString;
+@property (strong, nonatomic) NSString *propertyNumberString;
+
 @end

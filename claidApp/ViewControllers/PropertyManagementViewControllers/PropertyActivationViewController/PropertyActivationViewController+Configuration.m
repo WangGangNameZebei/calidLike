@@ -14,9 +14,8 @@
 
 - (void)configureViews {
     [self viewdataInfoinit];
+    [self viewlayer:self.pAPhoneNumberView];
     [self singleTonEdit];
-    [self textFieldViewEdit];
-    [self phoneNumberAndpasswordViewEdit];
     [self addGestRecognizer];
     [self locationEdit];  // 定位
     
@@ -119,8 +118,10 @@
         [self checkStatusOfCardPOSTdataStr:[string substringWithRange:NSMakeRange(2, 104)]];
     } else {
         self.userInfo = [string substringWithRange:NSMakeRange(0,208)];
-        self.pAPhoneNumberTextField.text = [NSString stringWithFormat:@"%@", [string substringWithRange:NSMakeRange(208, 11)]];
+        self.pAPhoneNumberLabel.text = [NSString stringWithFormat:@"%@", [string substringWithRange:NSMakeRange(208, 11)]];
         self.uploadButton.backgroundColor = [UIColor setipBlueColor];
+        self.pAPhoneNumberView.layer.borderColor = [[UIColor setipBlueColor] CGColor];
+        self.pAPhoneNumberImageView.image = [UIImage imageNamed:@"login_accountNumber_blue"];
         [self promptInformationActionWarningString:@"发卡成功"];
     }
 }
@@ -129,47 +130,12 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 40;
 }
-
-
-//textField 编辑
-- (void)textFieldViewEdit {
-    self.pAPhoneNumberTextField.keyboardType = UIKeyboardTypeNumberPad;        //数字键盘
-    self.pAPhoneNumberTextField.clearButtonMode = UITextFieldViewModeAlways;
-    self.pAPhoneNumberTextField.delegate = self;
-    
-}
-
-//  textFieldView编辑
-- (void)phoneNumberAndpasswordViewEdit {
-    [self viewlayer:self.pAPhoneNumberView];
-}
-
 #pragma mark UIView 边框编辑
 - (void)viewlayer:(UIView *)view {
     view.layer.cornerRadius = 6;
     view.layer.masksToBounds = YES;
     view.layer.borderWidth = 1;
     view.layer.borderColor = [[UIColor setupGreyColor] CGColor];
-}
-
-#pragma mark textField 代理方法
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    if (textField.tag == 1) {
-        self.pAPhoneNumberView.layer.borderColor = [[UIColor setipBlueColor] CGColor];
-        self.pAPhoneNumberImageView.image = [UIImage imageNamed:@"login_accountNumber_blue"];
-    }
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-    if (textField.tag == 1) {
-        self.pAPhoneNumberView.layer.borderColor = [[UIColor setupGreyColor] CGColor];
-        self.pAPhoneNumberImageView.image = [UIImage imageNamed:@"login_accountNumber_gray"];
-    }
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [self.pAPhoneNumberTextField resignFirstResponder];
-    return YES;
 }
 #pragma mark - 空白处收起键盘
 - (void)addGestRecognizer {

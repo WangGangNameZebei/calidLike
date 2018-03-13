@@ -109,6 +109,40 @@
         NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];
         //系统自带JSON解析 
         NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableContainers error:nil];
+        NSString *buttonNameStr;
+        
+        if ([[resultDic objectForKey:@"status"] integerValue] == 200) {
+            if ([self.cellButtonName isEqualToString:@"处理"]) {
+                buttonNameStr = @"完成";
+            } else if ([self.cellButtonName isEqualToString:@"完成"]){
+                buttonNameStr = @"已完成";
+            } else {
+                buttonNameStr = @"已拒绝";
+            }
+            ViewRepairLayout *layoutData =self.layouts[self.cellButtonTag];
+            layoutData.model.buttonTextbe = buttonNameStr;
+            
+            
+            if (self.pageMenu.selectedItemIndex == 0){
+                self.layoutsOneArr[self.cellButtonTag] = layoutData;
+                self.layouts = self.layoutsOneArr;
+            } else if (self.pageMenu.selectedItemIndex == 1) {
+                self.layoutsTowArr[self.cellButtonTag] = layoutData;
+                self.layouts = self.layoutsTowArr;
+            } else if (self.pageMenu.selectedItemIndex == 2) {
+                self.layoutsThreeArr[self.cellButtonTag] = layoutData;
+                self.layouts = self.layoutsThreeArr;
+            } else if (self.pageMenu.selectedItemIndex == 3) {
+                self.layoutsFourArr[self.cellButtonTag] = layoutData;
+                self.layouts = self.layoutsFourArr;
+            } else {
+                self.layoutsFiveArr[self.cellButtonTag] = layoutData;
+                self.layouts = self.layoutsFiveArr;
+            }
+            
+             [self.viewRepairTableView reloadData];
+        }
+        
         
         [self alertViewmessage:[resultDic objectForKey:@"msg"]];
 

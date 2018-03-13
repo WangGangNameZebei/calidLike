@@ -10,19 +10,17 @@
 #import "PropertyActivationSingleTon.h"
 #import <CoreLocation/CoreLocation.h>       //系统定位
 
-@interface PropertyActivationViewController : BaseViewController <pALanyaDelegate,UITextFieldDelegate,UIAlertViewDelegate,CLLocationManagerDelegate>
+@interface PropertyActivationViewController : BaseViewController <pALanyaDelegate,UIAlertViewDelegate,CLLocationManagerDelegate>
 @property (strong, nonatomic) IBOutlet UIView *chongzhiPasswordView;
 @property (strong, nonatomic) IBOutlet UIButton *chongzhiButton;
 
 @property (strong, nonatomic) IBOutlet UIView *pAPhoneNumberView;
 @property (strong, nonatomic) IBOutlet UIImageView *pAPhoneNumberImageView;
 
-@property (strong, nonatomic) IBOutlet UITextField *pAPhoneNumberTextField;
-;
+@property (strong, nonatomic) IBOutlet UILabel *pAPhoneNumberLabel;
 @property (strong, nonatomic) IBOutlet UIButton *uploadButton;      //提交注册按钮
 @property (strong, nonatomic) IBOutlet UILabel *pALanyaLabel;
 
-@property (strong, nonatomic) IBOutlet UILabel *pAPhoneNumberLabel;
 @property (strong, nonatomic) NSString *userInfo;           //用户数据
 @property (strong, nonatomic) PropertyActivationSingleTon *paSingleTon;     //蓝牙
 

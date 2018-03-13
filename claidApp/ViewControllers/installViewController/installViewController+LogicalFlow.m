@@ -13,6 +13,18 @@
 @implementation installViewController (LogicalFlow)
 #pragma mark- 效验发卡器
 - (void)checkStatusOfCardPOSTdataStr:(NSString *)dataStr {
+    NSString *xyId =  [CalidTool lanyaDataDecryptedAction:dataStr];
+    xyId = [xyId substringWithRange:NSMakeRange(2, 8)];
+    if (![xyId isEqualToString:[self userInfoReaduserkey:@"districtNumber"]]){
+        [self alertViewmessage:@"当前小区与设备不匹配,请选择正确小区"];
+        if (![self.installLanyaLabel.text isEqualToString:@"已连接"]){
+            NSString *message = @"d0446973636f6e6e656374696e67000000000000";
+            [self.sinTon iwsendCommand:message];       //发送数据
+        }
+        [self.sinTon iwdisConnection];  //断开蓝牙
+        [self.navigationController popViewControllerAnimated:YES];
+        return;
+    }
     AFHTTPRequestOperationManager *manager = [self tokenManager];
     NSDictionary *parameters = @{@"cardData":dataStr};
     [manager POST:CHECK_STATUS_CARD_URL parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
